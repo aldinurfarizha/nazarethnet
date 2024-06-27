@@ -1,0 +1,37 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2024-06-12 00:14:03 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-12 00:28:26 --> 404 Page Not Found: Wp-includes/wlwmanifest.xml
+ERROR - 2024-06-12 00:28:26 --> 404 Page Not Found: Xmlrpcphp/index
+ERROR - 2024-06-12 00:28:27 --> 404 Page Not Found: Blog/wp-includes
+ERROR - 2024-06-12 00:28:27 --> 404 Page Not Found: Web/wp-includes
+ERROR - 2024-06-12 00:28:27 --> 404 Page Not Found: Wordpress/wp-includes
+ERROR - 2024-06-12 00:28:27 --> 404 Page Not Found: Website/wp-includes
+ERROR - 2024-06-12 00:28:28 --> 404 Page Not Found: Wp/wp-includes
+ERROR - 2024-06-12 00:28:28 --> 404 Page Not Found: News/wp-includes
+ERROR - 2024-06-12 00:28:28 --> 404 Page Not Found: 2020/wp-includes
+ERROR - 2024-06-12 00:28:28 --> 404 Page Not Found: 2019/wp-includes
+ERROR - 2024-06-12 00:28:29 --> 404 Page Not Found: Shop/wp-includes
+ERROR - 2024-06-12 00:28:29 --> 404 Page Not Found: Wp1/wp-includes
+ERROR - 2024-06-12 00:28:29 --> 404 Page Not Found: Test/wp-includes
+ERROR - 2024-06-12 00:28:29 --> 404 Page Not Found: Wp2/wp-includes
+ERROR - 2024-06-12 00:28:29 --> 404 Page Not Found: Site/wp-includes
+ERROR - 2024-06-12 00:28:31 --> 404 Page Not Found: Cms/wp-includes
+ERROR - 2024-06-12 00:28:31 --> 404 Page Not Found: Sito/wp-includes
+ERROR - 2024-06-12 03:22:05 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-12 06:49:41 --> 404 Page Not Found: Inputsphp/index
+ERROR - 2024-06-12 06:49:57 --> 404 Page Not Found: Wp-includes/inputs.php
+ERROR - 2024-06-12 06:50:19 --> 404 Page Not Found: Wp-content/uploads
+ERROR - 2024-06-12 06:50:39 --> 404 Page Not Found: Wp-content/plugins
+ERROR - 2024-06-12 06:51:04 --> 404 Page Not Found: Wp-admin/inputs.php
+ERROR - 2024-06-12 06:51:22 --> 404 Page Not Found: Images/inputs.php
+ERROR - 2024-06-12 06:51:57 --> 404 Page Not Found: Well-known/acme-challenge
+ERROR - 2024-06-12 06:52:04 --> 404 Page Not Found: Wp-content/themes
+ERROR - 2024-06-12 06:52:57 --> 404 Page Not Found: Wp-content/inputs.php
+ERROR - 2024-06-12 06:53:10 --> 404 Page Not Found: Cgi-bin/inputs.php
+ERROR - 2024-06-12 07:38:06 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-12 10:26:25 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-12 11:14:02 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-12 13:25:15 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-12 13:25:18 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-12 19:12:37 --> 404 Page Not Found: Robotstxt/index

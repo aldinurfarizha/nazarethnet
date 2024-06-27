@@ -1,0 +1,177 @@
+@media print {
+    .conty{
+        display:none!important;
+    }
+      body {
+        display: none!important;
+      }
+      #id-card-holder, #id-card-holder * {
+        visibility: visible!important;
+      }
+      #id-card-holder {
+        position: absolute!important;
+        left: 0!important;
+        top: 0!important;
+      }
+    }
+    
+.id-card-holder {
+width: 225px!important;
+padding: 4px!important;
+margin: 0 auto!important;
+background-color: #1f1f1f;
+border-radius: 5px!important;
+position: relative!important;
+border: 1px solid #BDBDBD !important;
+}
+.id-card {
+background-color: #fff!important;
+padding: 10px!important;
+border-radius: 10px!important;
+text-align: center;
+box-shadow: 0 0 1.5px 0px #b9b9b9!important;
+}
+.id-card img {
+margin: 0 auto!important;
+}
+.header img {
+width: 100px!important;
+margin-top: 15px!important;
+}
+.photo img {
+width: 80px!important;
+margin-top: 15px!important;
+}
+h2 {
+font-size: 17px!important;
+margin: 8px 0!important;
+}
+h3 {
+font-size: 12px!important;
+margin: 4.5px 0!important;
+font-weight: 300!important;
+}
+.qr-code img {
+width: 50px!important;
+}
+p {
+font-size: 5px!important;
+margin: 2px!important;
+}
+.id-card-tag-strip {
+width: 45px!important;
+height: 40px!important;
+background-color: #0950ef;
+margin: 0 auto!important;
+border-radius: 5px!important;
+position: relative!important;
+top: 9px!important;
+z-index: 1!important;
+border: 1px solid #0041ad;
+}
+.id-card-tag-strip:after {
+content: ''!important;
+display: block!important;
+width: 100%!important;
+height: 1px!important;
+background-color: #c1c1c1;
+position: relative!important;
+top: 10px!important;
+}
+.id-card-tag {
+width: 0;
+height: 0;
+border-left: 100px solid transparent;
+border-right: 100px solid transparent;
+border-top: 100px solid #0958db;
+margin: -10px auto -30px auto;
+}
+.id-card-tag:after {
+content: '';
+display: block;
+width: 0;
+height: 0;
+border-left: 50px solid transparent;
+border-right: 50px solid transparent;
+border-top: 100px solid #d7d6d3;
+margin: -10px auto -30px auto;
+position: relative;
+top: -130px;
+left: -50px;
+}
+.school_title {
+font-size: 16px;
+margin-top: 5px;
+font-weight: 600;
+}
+@media print{
+body {transform: scale(170);}
+
+.d-print-none{display:none!important;}
+
+.header{
+    display:none!important;
+}
+}
+.title{
+    text-align: center;
+    font-size: 16px; 
+    margin-top: 5px; 
+    font-weight: 600;
+}
+
+.holder{
+    width: 285px; 
+    padding: 2px; 
+    margin: 0 auto; 
+    background-color: #1f1f1f; 
+    border-radius: 11px; 
+    position: relative; 
+    border: 1px solid #BDBDBD !important;
+}
+
+.id-card{
+    background-color: #fff!important;
+    padding: 10px!important;
+    border-radius: 10px!important;
+    text-align: center!important;
+    box-shadow: 0 0 1.5px 0px #b9b9b9!important;
+}
+
+.title_s{
+    text-align: center!important;
+    font-size: 17px!important;
+    margin: 8px 0!important;
+}
+
+.card-table{
+    font-size: 11px!important;
+    text-align: center!important;
+    width:100%!important;
+}
+
+.text-left{
+    text-align: left!important;
+}
+
+.text-right{
+    text-align: left!important;
+}
+.w-50{
+    width: 50%!important;
+}
+
+.roudend-circle{
+    width: 80px!important;
+    margin-top: 15px!important;
+}
+
+.stitle{
+    width: 50px!important;
+    margin-top: 15px!important;
+}
+
+.ptext{
+    font-size: 10px!important; 
+    margin: 2px!important;
+}

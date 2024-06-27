@@ -1,0 +1,32 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2024-06-11 01:09:13 --> 404 Page Not Found: Sitemapxml/index
+ERROR - 2024-06-11 02:00:30 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-11 03:13:44 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-11 03:13:54 --> 404 Page Not Found: Sitemaptxt/index
+ERROR - 2024-06-11 04:02:12 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-11 04:08:46 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-11 04:08:58 --> 404 Page Not Found: Sitemaptxt/index
+ERROR - 2024-06-11 04:47:19 --> 404 Page Not Found: DS_Store/index
+ERROR - 2024-06-11 05:26:10 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-11 06:04:39 --> 404 Page Not Found: Git/config
+ERROR - 2024-06-11 07:44:48 --> 404 Page Not Found: Git/config
+ERROR - 2024-06-11 07:54:02 --> 404 Page Not Found: Git/config
+ERROR - 2024-06-11 08:09:39 --> 404 Page Not Found: DS_Store/index
+ERROR - 2024-06-11 08:10:16 --> 404 Page Not Found: DS_Store/index
+ERROR - 2024-06-11 08:47:35 --> 404 Page Not Found: DS_Store/index
+ERROR - 2024-06-11 09:00:52 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-11 09:09:32 --> 404 Page Not Found: Git/config
+ERROR - 2024-06-11 09:14:15 --> 404 Page Not Found: Wp-loginphp/index
+ERROR - 2024-06-11 12:36:39 --> 404 Page Not Found: Git/config
+ERROR - 2024-06-11 12:41:26 --> 404 Page Not Found: Git/config
+ERROR - 2024-06-11 12:42:18 --> 404 Page Not Found: Git/config
+ERROR - 2024-06-11 13:07:25 --> 404 Page Not Found: Git/config
+ERROR - 2024-06-11 13:59:12 --> 404 Page Not Found: Git/config
+ERROR - 2024-06-11 14:02:13 --> 404 Page Not Found: Git/config
+ERROR - 2024-06-11 14:18:20 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-11 15:22:51 --> 404 Page Not Found: Git/config
+ERROR - 2024-06-11 17:58:12 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-11 18:45:52 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-11 22:14:27 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-11 22:15:53 --> 404 Page Not Found: Robotstxt/index

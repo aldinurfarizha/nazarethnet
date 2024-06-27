@@ -1,0 +1,37 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2024-06-10 02:32:40 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-10 05:39:08 --> 404 Page Not Found: Wp-admin/install.php
+ERROR - 2024-06-10 05:39:10 --> 404 Page Not Found: Wp/wp-admin
+ERROR - 2024-06-10 05:39:12 --> 404 Page Not Found: New/wp-admin
+ERROR - 2024-06-10 05:39:13 --> 404 Page Not Found: Old/wp-admin
+ERROR - 2024-06-10 05:39:16 --> 404 Page Not Found: Wordpress/wp-admin
+ERROR - 2024-06-10 05:39:17 --> 404 Page Not Found: Test/wp-admin
+ERROR - 2024-06-10 05:39:19 --> 404 Page Not Found: Blog/wp-admin
+ERROR - 2024-06-10 05:39:19 --> 404 Page Not Found: Cms/wp-admin
+ERROR - 2024-06-10 05:39:20 --> 404 Page Not Found: Web/wp-admin
+ERROR - 2024-06-10 05:39:22 --> 404 Page Not Found: Backup/wp-admin
+ERROR - 2024-06-10 05:39:25 --> 404 Page Not Found: Site/wp-admin
+ERROR - 2024-06-10 05:39:26 --> 404 Page Not Found: Oldsite/wp-admin
+ERROR - 2024-06-10 06:11:48 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-10 06:11:48 --> 404 Page Not Found: Sitemapxml/index
+ERROR - 2024-06-10 06:12:03 --> 404 Page Not Found: Axis2-admin/index
+ERROR - 2024-06-10 06:12:03 --> 404 Page Not Found: Axis2/index
+ERROR - 2024-06-10 06:12:04 --> 404 Page Not Found: Axis2/axis2-admin
+ERROR - 2024-06-10 06:12:04 --> 404 Page Not Found: Phpmyadmin/index.php
+ERROR - 2024-06-10 06:12:05 --> 404 Page Not Found: Php/thinkphp
+ERROR - 2024-06-10 06:12:05 --> 404 Page Not Found: Index_ssophp/index
+ERROR - 2024-06-10 06:13:30 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-10 06:13:30 --> 404 Page Not Found: Sitemapxml/index
+ERROR - 2024-06-10 06:13:31 --> 404 Page Not Found: Axis2-admin/index
+ERROR - 2024-06-10 06:13:32 --> 404 Page Not Found: Axis2/index
+ERROR - 2024-06-10 06:13:33 --> 404 Page Not Found: Axis2/axis2-admin
+ERROR - 2024-06-10 06:13:34 --> 404 Page Not Found: Phpmyadmin/index.php
+ERROR - 2024-06-10 06:13:34 --> 404 Page Not Found: Php/thinkphp
+ERROR - 2024-06-10 06:13:35 --> 404 Page Not Found: Index_ssophp/index
+ERROR - 2024-06-10 13:29:08 --> 404 Page Not Found: Wp-loginphp/index
+ERROR - 2024-06-10 14:22:46 --> 404 Page Not Found: DS_Store/index
+ERROR - 2024-06-10 14:54:40 --> 404 Page Not Found: DS_Store/index
+ERROR - 2024-06-10 16:51:42 --> 404 Page Not Found: Well-known/traffic-advice
+ERROR - 2024-06-10 20:57:08 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-06-10 22:19:49 --> 404 Page Not Found: Git/config

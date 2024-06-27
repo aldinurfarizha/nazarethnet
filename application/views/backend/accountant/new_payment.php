@@ -1,0 +1,231 @@
+    <?php $running_year = $this->crud->getInfo('running_year'); ?>
+    <script src="<?php echo base_url();?>public/style/js/payments.js"></script>
+    <div class="content-w">
+	    <?php include 'fancy.php';?>
+        <div class="header-spacer"></div>
+            <div class="conty">
+                <div class="os-tabs-w menu-shad">
+                    <div class="os-tabs-controls">
+                        <ul class="navs navs-tabs upper">
+                            <li class="navs-item">
+                                <a class="navs-links" href="<?php echo base_url();?>accountant/payments/"><i class="os-icon picons-thin-icon-thin-0482_gauge_dashboard_empty"></i><span><?php echo getEduAppGTLang('home');?></span></a>
+                            </li>
+                            <li class="navs-item">
+                                <a class="navs-links active" href="<?php echo base_url();?>accountant/students_payments/"><i class="os-icon picons-thin-icon-thin-0426_money_payment_dollars_coins_cash"></i><span><?php echo getEduAppGTLang('payments');?></span></a>
+                            </li>
+                            <li class="navs-item">
+                                <a class="navs-links" href="<?php echo base_url();?>accountant/expense/"><i class="os-icon picons-thin-icon-thin-0420_money_cash_coins_payment_dollars"></i><span><?php echo getEduAppGTLang('expense');?></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div><br>
+                <div class="content-i">
+                    <div class="content-box">
+    	                <div class="element-wrapper">
+    		                <div class="os-tabs-w">
+    			                <div class="os-tabs-controls">
+    			                    <ul class="navs navs-tabs upper">
+    				                    <li class="navs-item">
+    				                        <a class="navs-links active" data-toggle="tab" href="#single"><?php echo getEduAppGTLang('single_invoice');?></a>
+    				                    </li>
+    				                    <li class="navs-item">
+    				                        <a class="navs-links" data-toggle="tab" href="#bulk"><?php echo getEduAppGTLang('bulk_invoice');?></a>
+    				                    </li>
+    			                    </ul>
+    			                </div>
+    		                </div>
+    		                <div class="tab-content">
+    			                <div class="tab-pane active" id="single">
+    			                    <div class="row">
+    			                        <div class="col-sm-6">
+    		                                <?php echo form_open(base_url() . 'accountant/invoice/create');?>
+                                                <div class="element-box lined-primary shadow">
+    		                                        <h5 class="form-header"><?php echo getEduAppGTLang('invoice_details');?></h5><br>
+    		                                        <div class="row">
+    		                                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <div class="form-group label-floating is-select">
+                                                                <label class="control-label"><?php echo getEduAppGTLang('class');?></label>
+                                                                <div class="select">
+                                                                    <select name="class_id" required="" onchange="get_class_sections(this.value)">
+                                                                        <option value=""><?php echo getEduAppGTLang('select');?></option>
+                                                                        <?php 
+                                                                            $classes = $this->db->get('class')->result_array();
+                                                                            foreach ($classes as $row):
+                                                                        ?>
+                                                                        <option value="<?php echo $row['class_id'];?>"><?php echo $row['name'];?></option>
+                                                                    <?php endforeach;?>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                							                <div class="form-group label-floating is-select">
+                                                                <label class="control-label"><?php echo getEduAppGTLang('section');?></label>
+                                                                <div class="select">
+                		  								            <select name="section_id" required id="section_holder" onchange="return get_class_students_p(this.value)">
+                            								            <option value=""><?php echo getEduAppGTLang('select');?></option>
+                										            </select>
+                                                                </div>
+                                                            </div>
+                							            </div>
+                                                        <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <div class="form-group label-floating is-select">
+                                                                <label class="control-label"><?php echo getEduAppGTLang('student');?></label>
+                                                                <div class="select">
+                                                                    <select name="student_id" required="" id="student_selection_holder">
+                                                                        <option value=""><?php echo getEduAppGTLang('select');?></option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+    		                                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <div class="form-group label-floating">
+                      	                                        <label class="control-label"><?php echo getEduAppGTLang('title');?></label>
+                      	                                        <input class="form-control" name="title" type="text" required="">
+                                                            </div>
+                                                        </div>
+    		                                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+    				                                        <div class="form-group label-floating is-empty">
+    				                                            <label class="control-label"><?php echo getEduAppGTLang('description');?>:</label>
+    				                                            <textarea class="form-control" name="description" rows="3" required=""></textarea>
+    				                                            <span class="material-input"></span>
+    				                                        </div>
+    			                                        </div>
+    		                                        </div>
+    		                                    </div>
+    		                                </div>
+    		                                <div class="col-sm-6">
+                                                <div class="element-box lined-success shadow">
+    		                                        <h5 class="form-header"><?php echo getEduAppGTLang('payment_details');?></h5><br>
+        		                                    <div class="row">
+    		                                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <div class="form-group label-floating">
+                          	                                    <label class="control-label"><?php echo getEduAppGTLang('amount');?></label>
+                      	                                        <input class="form-control" name="amount" type="number" required="">
+                                                            </div>
+                                                        </div>
+    		                                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <div class="form-group label-floating is-select">
+                                                                <label class="control-label"><?php echo getEduAppGTLang('status');?></label>
+                                                                <div class="select">
+                                                                    <select name="status" required="">
+                                                                        <option value=""><?php echo getEduAppGTLang('select');?></option>
+                                                                        <option value="completed"><?php echo getEduAppGTLang('completed');?></option>
+    					                                                <option value="pending"><?php echo getEduAppGTLang('pending');?></option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <div class="form-group label-floating is-select">
+                                                                <label class="control-label"><?php echo getEduAppGTLang('method');?></label>
+                                                                <div class="select">
+                                                                    <select name="method" required="">
+                                                                        <option value=""><?php echo getEduAppGTLang('select');?></option>
+                                                                        <option value="3"><?php echo getEduAppGTLang('card');?></option>
+                                            					        <option value="1"><?php echo getEduAppGTLang('cash');?></option>
+                                            					        <option value="2"><?php echo getEduAppGTLang('check');?></option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div><br>
+    		                                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <button class="btn btn-success btn-rounded" type="submit"><?php echo getEduAppGTLang('create_invoice');?></button>
+                                                        </div>
+                                                    </div>
+    		                                    </div>
+    		                                <?php echo form_close();?>
+    		                            </div>
+    	                            </div>
+              	                </div>
+    		    	            <div class="tab-pane" id="bulk">
+    		  		                <?php echo form_open(base_url() . 'accountant/invoice/bulk', array('class' => 'form-horizontal form-groups-bordered validate', 'id'=> 'mass' ,'target'=>'_top'));?>
+    		  	                        <div class="row">
+    			                            <div class="col-sm-6">
+                                                <div class="element-box lined-primary shadow">
+    		                                        <h5 class="form-header"><?php echo getEduAppGTLang('payment_details');?></h5><br>
+    		                                        <div class="row">
+    		                                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <div class="form-group label-floating is-select">
+                                                                <label class="control-label"><?php echo getEduAppGTLang('class');?></label>
+                                                                <div class="select">
+                                                                    <select name="class_id" required="" class="class_id" onchange="return get_class_students_mass(this.value)">
+                                                                        <option value=""><?php echo getEduAppGTLang('select');?></option>
+                                                                        <?php 
+                                                                            $classes = $this->db->get('class')->result_array();
+                                                                            foreach ($classes as $row):
+                                                                        ?>
+                                                                            <option value="<?php echo $row['class_id'];?>"><?php echo $row['name'];?></option>
+                                                                        <?php endforeach;?>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                                            <div class="form-group label-floating">
+                          	                                <label class="control-label"><?php echo getEduAppGTLang('amount');?></label>
+                      	                                    <input class="form-control" name="amount" type="number" required="">
+                                                        </div>
+                                                    </div>
+    		                                        <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="form-group label-floating">
+                      	                                    <label class="control-label"><?php echo getEduAppGTLang('title');?></label>
+                      	                                    <input class="form-control" name="title" type="text" required="">
+                                                        </div>
+                                                    </div>
+                                        		    <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                        				<div class="form-group label-floating is-empty">
+                                        				    <label class="control-label"><?php echo getEduAppGTLang('description');?>:</label>
+                                        				    <textarea class="form-control" name="description" rows="3" required=""></textarea>
+                                        				    <span class="material-input"></span>
+                                        				</div>
+                                        			</div>
+                                        			<div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="form-group label-floating is-select">
+                                                            <label class="control-label"><?php echo getEduAppGTLang('method');?></label>
+                                                            <div class="select">
+                                                                <select name="method" required="">
+                                                                    <option value=""><?php echo getEduAppGTLang('select');?></option>
+                                                                    <option value="3"><?php echo getEduAppGTLang('card');?></option>
+                                        					        <option value="1"><?php echo getEduAppGTLang('cash');?></option>
+                                        					        <option value="2"><?php echo getEduAppGTLang('check');?></option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div><br>
+    		                                    </div>
+    		                                </div>
+    		                            </div>
+    		                            <div class="col-sm-6">
+                                            <div class="element-box lined-success shadow">
+    		                                    <h5 class="form-header"><?php echo getEduAppGTLang('students');?></h5><br>
+    		                                    <div class="row">
+    		                                        <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                                        <div class="form-group label-floating is-select">
+                                                            <label class="control-label"><?php echo getEduAppGTLang('status');?></label>
+                                                            <div class="select">
+                                                                <select name="status" required="">
+                                                                    <option value=""><?php echo getEduAppGTLang('select');?></option>
+                                                                    <option value="completed"><?php echo getEduAppGTLang('completed');?></option>
+    					                                            <option value="pending"><?php echo getEduAppGTLang('pending');?></option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+        	                                    <div id="student_selection_holder_mass"></div>
+        	                                    <hr>
+        	                                    <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <button class="btn btn-success btn-rounded" type="submit"><?php echo getEduAppGTLang('create_invoice');?></button>
+                                                </div>  
+                                            </div>
+    		                            </div>
+    		                        </div>
+    		                    <?php echo form_close();?>
+    	                    </div>
+              	        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

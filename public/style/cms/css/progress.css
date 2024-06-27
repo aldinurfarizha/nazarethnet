@@ -1,0 +1,37 @@
+.popover-header{
+    font-weight:bold;
+    background:#a01a7a;
+    color:#ffffff!important;
+}
+.popover-body{
+    color:#000!important;
+}
+.todo-app-w .todo-content .tasks-list li.draggable-task.complete:before{
+    background-color:#24b314!important;
+}
+.todo-app-w .todo-content .tasks-list li.draggable-task.warning:before{
+    background-color:#f4af08!important;
+}
+.progs{
+    margin-top: 50px!important;
+    width: 100%!important;
+}
+
+.brprg{
+    background: #a01a7a; 
+    border-radius: 12px; 
+    padding: 10px;
+}
+
+.noprogress{
+    font-size:70px!important;
+    color:#dadada!important;
+}
+
+.opct{
+    color: #454545!important;
+}
+
+.rmpx{
+    font-size: 0.95rem!important;
+}

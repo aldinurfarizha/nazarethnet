@@ -1,0 +1,84 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: rgb(82, 86, 89);
+}
+
+
+.btn-danger{
+    border-radius: 25px!important;
+}
+
+.toolbar {
+    width: 100%;
+    background-color: #615dfa;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+#pdf-container {
+    margin-top: 60px;
+    padding-left: 10px;
+    text-align: center;
+}
+
+button:focus {
+    outline: 0;
+}
+
+.toolbar .tool {
+    display: inline-block;
+    color: #fff;
+    height: 100%;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-right: 5px;
+}
+
+.toolbar .tool label,
+.toolbar .tool select,
+.toolbar .tool input {
+    display: inline-block;
+    width: auto;
+    height: auto !important;
+    padding: 0;
+
+}
+
+.toolbar .tool input {
+    width: 50px;
+}
+
+.toolbar .tool .color-tool {
+    height: 22px;
+    width: 22px;
+    border-radius: 25px;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    border:  2px solid transparent;
+}
+
+.toolbar .tool .color-tool.active {
+    border:  2px solid #ffffff;
+}
+
+.toolbar .tool:nth-last-child(1) {
+    float: right;
+}
+
+.toolbar .tool .tool-button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.toolbar .tool .tool-button:hover,
+.toolbar .tool .tool-button.active {
+    background-color: #90be2e;
+    border-color: none;
+    border-radius: 7px;
+}

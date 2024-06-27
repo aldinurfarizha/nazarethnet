@@ -1,0 +1,46 @@
+html { 
+    height:100%;
+    min-height: 100vh;
+    text-align:center!important;
+}
+body{
+	font-family: poppins;
+	min-height: 100vh;
+    text-align:center!important;
+	margin: 0px;
+}
+.contenedor {
+	min-height: 100%;
+	background-color: white;	 
+	min-height: 100%;
+	border-top-right-radius: 75px;
+	border-bottom-left-radius: 75px;
+}
+.text-center{
+	text-align: center!important;
+}
+.signatures{
+	margin-top: 25px;
+	margin-bottom: 55px;
+}
+.logo{
+	height:100px;
+	width:auto;
+	padding-top: 30px;
+	padding-bottom: 0px;
+}
+.student{
+	text-decoration: underline;
+	line-height:0px;
+}
+.footer {
+    padding-top:7px;
+	  position: fixed;
+	  left: 0;
+	  bottom: 0;
+	  width: 100%;
+	  background-color: #143f34;
+	  color: white;
+	  text-align: center;
+	  height: 50px;
+}

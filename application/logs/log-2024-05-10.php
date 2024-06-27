@@ -1,0 +1,35 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2024-05-10 00:06:53 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-05-10 03:20:18 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-05-10 03:20:28 --> 404 Page Not Found: Sitemaptxt/index
+ERROR - 2024-05-10 04:18:20 --> 404 Page Not Found: Sitemaptxt/index
+ERROR - 2024-05-10 06:47:14 --> 404 Page Not Found: Wp-includes/wlwmanifest.xml
+ERROR - 2024-05-10 06:47:14 --> 404 Page Not Found: Xmlrpcphp/index
+ERROR - 2024-05-10 06:47:15 --> 404 Page Not Found: Blog/wp-includes
+ERROR - 2024-05-10 06:47:15 --> 404 Page Not Found: Web/wp-includes
+ERROR - 2024-05-10 06:47:15 --> 404 Page Not Found: Wordpress/wp-includes
+ERROR - 2024-05-10 06:47:15 --> 404 Page Not Found: Website/wp-includes
+ERROR - 2024-05-10 06:47:15 --> 404 Page Not Found: Wp/wp-includes
+ERROR - 2024-05-10 06:47:16 --> 404 Page Not Found: News/wp-includes
+ERROR - 2024-05-10 06:47:16 --> 404 Page Not Found: 2020/wp-includes
+ERROR - 2024-05-10 06:47:16 --> 404 Page Not Found: 2019/wp-includes
+ERROR - 2024-05-10 06:47:16 --> 404 Page Not Found: Shop/wp-includes
+ERROR - 2024-05-10 06:47:17 --> 404 Page Not Found: Wp1/wp-includes
+ERROR - 2024-05-10 06:47:17 --> 404 Page Not Found: Test/wp-includes
+ERROR - 2024-05-10 06:47:17 --> 404 Page Not Found: Wp2/wp-includes
+ERROR - 2024-05-10 06:47:17 --> 404 Page Not Found: Site/wp-includes
+ERROR - 2024-05-10 06:47:17 --> 404 Page Not Found: Cms/wp-includes
+ERROR - 2024-05-10 06:47:18 --> 404 Page Not Found: Sito/wp-includes
+ERROR - 2024-05-10 13:54:55 --> 404 Page Not Found: Wp-includes/wlwmanifest.xml
+ERROR - 2024-05-10 13:54:55 --> 404 Page Not Found: Administrator/index.php
+ERROR - 2024-05-10 13:54:55 --> 404 Page Not Found: View-source:/index
+ERROR - 2024-05-10 13:54:56 --> 404 Page Not Found: Misc/ajax.js
+ERROR - 2024-05-10 15:20:17 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-05-10 15:20:17 --> 404 Page Not Found: Faviconico/index
+ERROR - 2024-05-10 16:24:21 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-05-10 17:35:42 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-05-10 17:51:02 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-05-10 21:34:49 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2024-05-10 21:54:06 --> 404 Page Not Found: Faviconico/index
+ERROR - 2024-05-10 22:48:53 --> 404 Page Not Found: Robotstxt/index
