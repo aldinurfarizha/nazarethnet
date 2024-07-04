@@ -1,7 +1,8 @@
 <?php
 $running_year = $this->crud->getInfo('running_year');
 $student_info = $this->db->get_where('student', array('student_id' => $student_id))->result_array();
-foreach ($student_info as $row) : ?>
+foreach ($student_info as $row) :
+?>
     <div class="content-w">
         <?php include 'fancy.php'; ?>
         <div class="header-spacer"></div>
@@ -52,46 +53,42 @@ foreach ($student_info as $row) : ?>
                                         </div>
                                         <div class="ui-block">
                                             <div class="ui-block-title">
-                                                <h6 class="title"><?php echo getEduAppGTLang('behavior'); ?></h6>
+                                                <h6 class="title"><?php echo getEduAppGTLang('class_section'); ?>
+                                                    <button class="btn btn-success float-right" onclick="showAjaxModal('http://localhost/nazarethnet/modal/popup/modal_teacher/10');"><i class="fa fa-plus"></i> Add</button>
+                                                </h6>
                                             </div>
                                             <div class="ui-block-content">
                                                 <div class="table-responsive">
                                                     <table class="table table-padded">
                                                         <thead>
                                                             <tr>
-                                                                <th><?php echo getEduAppGTLang('priority'); ?></th>
-                                                                <th><?php echo getEduAppGTLang('date'); ?></th>
-                                                                <th><?php echo getEduAppGTLang('created_by'); ?></th>
-                                                                <th><?php echo getEduAppGTLang('title'); ?></th>
-                                                                <th><?php echo getEduAppGTLang('options'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('no'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('class'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('section'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('action'); ?></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <?php $reports = $this->db->get_where('reports', array('student_id' => $row['student_id']))->result_array();
-                                                            foreach ($reports as $row) :
+                                                            <?php
+                                                            $datax = getStudentClassAndSectionById($student_id);
+                                                            $no = 1;
+                                                            foreach ($datax as $item) :
                                                             ?>
-                                                                <?php $user = $row['user_id'];
-                                                                $re = explode('-', $user); ?>
                                                                 <tr>
                                                                     <td>
-                                                                        <?php if ($row['priority'] == 'alta') : ?>
-                                                                            <span class="status-pill red"></span><span><?php echo getEduAppGTLang('high'); ?></span>
-                                                                        <?php endif; ?>
-                                                                        <?php if ($row['priority'] == 'media') : ?>
-                                                                            <span class="status-pill yellow"></span><span><?php echo getEduAppGTLang('medium'); ?></span>
-                                                                        <?php endif; ?>
-                                                                        <?php if ($row['priority'] == 'baja') : ?>
-                                                                            <span class="status-pill green"></span><span><?php echo getEduAppGTLang('low'); ?></span>
-                                                                        <?php endif; ?>
+                                                                        <?= $no ?>
                                                                     </td>
-                                                                    <td><span><?php echo $row['date']; ?></span></td>
-                                                                    <td class="cell-with-media">
-                                                                        <img alt="" src="<?php echo $this->crud->get_image_url($re[0], $re[1]); ?>" class="height25"><span><?php echo $this->crud->get_name($re[0], $re[1]); ?></span>
+                                                                    <td>
+                                                                        <?= $item->class_name ?>
                                                                     </td>
-                                                                    <td><?php echo $row['title']; ?></td>
-                                                                    <td class="bolder">
-                                                                        <a href="<?php echo base_url(); ?>admin/looking_report/<?php echo $row['code']; ?>/" class="grey"><i class="px20 picons-thin-icon-thin-0012_notebook_paper_certificate" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('view_details'); ?>"></i></a>
+                                                                    <td>
+                                                                        <?= $item->section_name ?>
                                                                     </td>
+                                                                    <td>
+                                                                        <button class="btn btn-sm btn-primary" href="javascript:void(0);" onclick="showAjaxModal('http://localhost/nazarethnet/modal/popup/modal_teacher/10');"><i class="fa fa-edit"></i></button>
+                                                                        <button class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this?')" href="http://localhost/nazarethnet/admin/teachers/delete/10"><i class="fa fa-times"></i></button>
+                                                                    </td>
+
                                                                 </tr>
                                                             <?php endforeach; ?>
                                                         </tbody>
@@ -129,7 +126,7 @@ foreach ($student_info as $row) : ?>
                                                         <a href="<?php echo base_url(); ?>admin/student_portal/<?php echo $student_id; ?>/"><?php echo getEduAppGTLang('personal_information'); ?></a>
                                                     </li>
                                                     <li>
-                                                        <i class="px20 picons-thin-icon-thin-0133_arrow_right_next"></i> &nbsp;&nbsp;&nbsp;
+                                                        <i class="picons-thin-icon-thin-0133_arrow_right_next px20"></i> &nbsp;&nbsp;&nbsp;
                                                         <a href="<?php echo base_url(); ?>admin/student_update/<?php echo $student_id; ?>/"><?php echo getEduAppGTLang('update_information'); ?></a>
                                                     </li>
                                                     <li>
@@ -142,7 +139,7 @@ foreach ($student_info as $row) : ?>
                                                     </li>
                                                     <li>
                                                         <i class="picons-thin-icon-thin-0133_arrow_right_next px20"></i> &nbsp;&nbsp;&nbsp;
-                                                        <a href="<?php echo base_url(); ?>admin/student_profile_attendance/<?php echo $student_id; ?>/"><?php echo getEduAppGTLang('attendance'); ?></a>
+                                                        <a href="<?php echo base_url(); ?>admin/student_profile_attendance/<?php echo $student_id; ?>/"><?php echo getEduAppGTLang('atendance'); ?></a>
                                                     </li>
                                                     <li>
                                                         <i class="picons-thin-icon-thin-0133_arrow_right_next px20"></i> &nbsp;&nbsp;&nbsp;

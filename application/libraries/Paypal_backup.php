@@ -104,7 +104,7 @@ class Paypal
    var $fields = array();           // array holds the fields to submit to paypal
 
 
-   function  __construct()
+   function Paypal()
    {
 
       // initialization constructor.  Called when class is created.

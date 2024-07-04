@@ -11,7 +11,7 @@ class Student extends EduAppGT
         PHP: 5.6+
         Created: 27 September 16.
     */
-    
+
     function __construct()
     {
         parent::__construct();
@@ -22,26 +22,27 @@ class Student extends EduAppGT
         $this->output->set_header('Pragma: no-cache');
         $this->output->set_header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
     }
-    
+
     function upload_video($video_name)
     {
-        move_uploaded_file($_FILES["video"]["tmp_name"], "public/uploads/homework_delivery/video/" . $video_name.'.mp4');
-        $fileURL = "public/uploads/homework_delivery/video/" . $video_name.'.mp4';
+        move_uploaded_file($_FILES["video"]["tmp_name"], "public/uploads/homework_delivery/video/" . $video_name . '.mp4');
+        $fileURL = "public/uploads/homework_delivery/video/" . $video_name . '.mp4';
         echo $fileURL;
     }
 
     function upload_audio($audio_name)
     {
-        move_uploaded_file($_FILES["audio"]["tmp_name"],"public/uploads/homework_delivery/audio/" . $audio_name.'.mp3');
-        $fileURL = "public/uploads/homework_delivery/audio/" . $audio_name.'.mp3';
+        move_uploaded_file($_FILES["audio"]["tmp_name"], "public/uploads/homework_delivery/audio/" . $audio_name . '.mp3');
+        $fileURL = "public/uploads/homework_delivery/audio/" . $audio_name . '.mp3';
         echo $fileURL;
     }
-    
-    function viewFile($id){
+
+    function viewFile($id)
+    {
         $this->drive_model->setPermissions($id);
-        header("Location: ". $this->drive_model->get_embed_url($id));
+        header("Location: " . $this->drive_model->get_embed_url($id));
     }
-    
+
     function calculate_quiz_mark($online_exam_id)
     {
 
@@ -53,8 +54,7 @@ class Student extends EduAppGT
         $online_exam_result = $this->db->get_where('online_quiz_result', $checker);
         if ($online_exam_result->num_rows() == 0) {
             $data['obtained_mark'] = 0;
-        }
-        else{
+        } else {
             $results = $online_exam_result->row_array();
             $answer_script = json_decode($results['answer_script'], true);
             foreach ($answer_script as $row) {
@@ -65,48 +65,48 @@ class Student extends EduAppGT
             $data['obtained_mark'] = $obtained_marks;
         }
         $total_mark = $this->get_total_mark_quiz($online_exam_id);
-            $data['result'] = $total_mark;
-      
+        $data['result'] = $total_mark;
+
         $this->db->where($checker);
         $this->db->update('online_quiz_result', $data);
     }
-    
-    function get_quiz_details_by_id($question_bank_id, $column_name = "") 
+
+    function get_quiz_details_by_id($question_bank_id, $column_name = "")
     {
         return $this->db->get_where('quiz_bank', array('quiz_bank_id' => $question_bank_id))->row()->$column_name;
     }
-    
-    function get_total_mark_quiz($online_exam_id){
+
+    function get_total_mark_quiz($online_exam_id)
+    {
         $added_question_info = $this->db->get_where('quiz_bank', array('quiz_id' => $online_exam_id))->result_array();
         $total_mark = 0;
-        if (sizeof($added_question_info) > 0){
+        if (sizeof($added_question_info) > 0) {
             foreach ($added_question_info as $single_question) {
                 $total_mark = $total_mark + $single_question['mark'];
             }
         }
         return $total_mark;
     }
-    
-    function quiz_result($param1  = '', $param2 = '') 
+
+    function quiz_result($param1  = '', $param2 = '')
     {
-         if ($this->session->userdata('student_login') != 1)
-        { 
+        if ($this->session->userdata('student_login') != 1) {
             redirect(base_url(), 'refresh');
         }
-         $page_data['quiz_id']              = $param2;
-         $page_data['online_course_id']     = $param1;
-         $page_data['page_name']            = 'quiz_result';
-         $page_data['page_title']           = getEduAppGTLang('quiz_result');
-         $this->load->view('backend/index',$page_data);
+        $page_data['quiz_id']              = $param2;
+        $page_data['online_course_id']     = $param1;
+        $page_data['page_name']            = 'quiz_result';
+        $page_data['page_title']           = getEduAppGTLang('quiz_result');
+        $this->load->view('backend/index', $page_data);
     }
-    
+
     function get_correct_answer_quiz($question_bank_id = "")
     {
         $question_details = $this->db->get_where('quiz_bank', array('quiz_bank_id' => $question_bank_id))->row_array();
         return $question_details['correct_answers'];
     }
-    
-    
+
+
     function submit_online_quiz($online_exam_id = "", $answer_script = "")
     {
         $checker = array(
@@ -121,71 +121,64 @@ class Student extends EduAppGT
         $this->db->update('online_quiz_result', $updated_array);
         $this->calculate_quiz_mark($online_exam_id);
     }
-    
+
     function submit_quiz($quiz_id = '')
     {
         $course_id = $this->db->get_where('quiz', array('quiz_id' => $quiz_id))->row()->online_course_id;
         $answer_script = array();
         $question_bank = $this->db->get_where('quiz_bank', array('quiz_id' => $quiz_id))->result_array();
-        foreach ($question_bank as $question) 
-        {
-          $correct_answers  = $this->get_correct_answer_quiz($question['quiz_bank_id']);
-          $container_2 = array();
-          if (isset($_POST[$question['quiz_bank_id']])) 
-          {
-              foreach ($this->input->post($question['quiz_bank_id']) as $row) 
-              {
-                $submitted_answer = "";
-                  if ($question['type'] == 'true_false') {
-                      $submitted_answer = $row;
-                  }
-                  elseif($question['type'] == 'fill_in_the_blanks'){
-                    $suitable_words = array();
-                    $suitable_words_array = explode(',', $row);
-                    foreach ($suitable_words_array as $key) {
-                      array_push($suitable_words, strtolower($key));
+        foreach ($question_bank as $question) {
+            $correct_answers  = $this->get_correct_answer_quiz($question['quiz_bank_id']);
+            $container_2 = array();
+            if (isset($_POST[$question['quiz_bank_id']])) {
+                foreach ($this->input->post($question['quiz_bank_id']) as $row) {
+                    $submitted_answer = "";
+                    if ($question['type'] == 'true_false') {
+                        $submitted_answer = $row;
+                    } elseif ($question['type'] == 'fill_in_the_blanks') {
+                        $suitable_words = array();
+                        $suitable_words_array = explode(',', $row);
+                        foreach ($suitable_words_array as $key) {
+                            array_push($suitable_words, strtolower($key));
+                        }
+                        $submitted_answer = json_encode(array_map('trim', $suitable_words));
+                    } else {
+                        array_push($container_2, strtolower($row));
+                        $submitted_answer = json_encode($container_2);
                     }
-                    $submitted_answer = json_encode(array_map('trim',$suitable_words));
-                  }
-                  else{
-                      array_push($container_2, strtolower($row));
-                      $submitted_answer = json_encode($container_2);
-                  }
-                  $container = array(
-                      "quiz_bank_id" => $question['quiz_bank_id'],
-                      "submitted_answer" => $submitted_answer,
-                      "correct_answers"  => $correct_answers
-                  );
-              }
-          }
-          else {
-                  $container = array(
-                  "quiz_bank_id" => $question['quiz_bank_id'],
-                  "submitted_answer" => "",
-                  "correct_answers"  => $correct_answers
-              );
-          }
-          array_push($answer_script, $container);
+                    $container = array(
+                        "quiz_bank_id" => $question['quiz_bank_id'],
+                        "submitted_answer" => $submitted_answer,
+                        "correct_answers"  => $correct_answers
+                    );
+                }
+            } else {
+                $container = array(
+                    "quiz_bank_id" => $question['quiz_bank_id'],
+                    "submitted_answer" => "",
+                    "correct_answers"  => $correct_answers
+                );
+            }
+            array_push($answer_script, $container);
         }
-        
+
         $this->submit_online_quiz($quiz_id, json_encode($answer_script));
-        redirect(base_url() . 'student/quiz_result/'.$course_id.'/'.$quiz_id.'/', 'refresh');
+        redirect(base_url() . 'student/quiz_result/' . $course_id . '/' . $quiz_id . '/', 'refresh');
     }
-    
+
     function check_for_student($online_exam_id)
     {
         $result = $this->db->get_where('online_quiz_result', array('quiz_id' => $online_exam_id, 'student_id' => $this->session->userdata('login_user_id')))->row_array();
         return $result['status'];
     }
-    
+
     function change_quiz_status($online_exam_id = "")
     {
         $checker = array(
             'quiz_id' => $online_exam_id,
             'student_id' => $this->session->userdata('login_user_id')
         );
-        if($this->db->get_where('online_quiz_result', $checker)->num_rows() == 0)
-        {
+        if ($this->db->get_where('online_quiz_result', $checker)->num_rows() == 0) {
             $inserted_array = array(
                 'status' => 'attended',
                 'quiz_id' => $online_exam_id,
@@ -194,23 +187,21 @@ class Student extends EduAppGT
             $this->db->insert('online_quiz_result', $inserted_array);
         }
     }
-    
+
     function quiz_contest($param1 = '', $param2 = '', $param3 = '')
     {
-        if ($this->session->userdata('student_login') != 1) 
-        {
+        if ($this->session->userdata('student_login') != 1) {
             $this->session->set_userdata('last_page', current_url());
             redirect(base_url(), 'refresh');
         }
-        
+
         $less  = $this->db->get_where('progress_course', array('online_course_id' => $param1, 'student_id' => $this->session->userdata('login_user_id'), 'quiz_id' => $param2))->num_rows();
 
-        if($less < 1)
-        {
-            $data['quiz_id']                  =  $param2; 
-            $data['online_course_id']         =  $param1; 
-            $data['student_id']               =  $this->session->userdata('login_user_id'); 
-            $this->db->insert('progress_course',$data);
+        if ($less < 1) {
+            $data['quiz_id']                  =  $param2;
+            $data['online_course_id']         =  $param1;
+            $data['student_id']               =  $this->session->userdata('login_user_id');
+            $this->db->insert('progress_course', $data);
         }
 
         $student_id = $this->session->userdata('login_user_id');
@@ -218,13 +209,11 @@ class Student extends EduAppGT
         $taken = $this->db->where($check)->get('online_quiz_result')->num_rows();
         $this->change_quiz_status($param2);
         $status = $this->check_for_student($param2);
-        
-        if ($status == 'submitted')
-        {
-            redirect(base_url() . 'student/quiz_result/'.$param1.'/'.$param2.'/', 'refresh');
-        }
-        else{
-          
+
+        if ($status == 'submitted') {
+            redirect(base_url() . 'student/quiz_result/' . $param1 . '/' . $param2 . '/', 'refresh');
+        } else {
+
             $page_data['online_course_id']    = $param1;
             $page_data['quiz_id']             = $param2;
             $page_data['lesson_id']           = $param3;
@@ -233,30 +222,27 @@ class Student extends EduAppGT
             $this->load->view('backend/index', $page_data);
         }
     }
-    
+
     function view_lesson($param1 = '', $param2 = '', $param3 = '')
     {
-        if ($this->session->userdata('student_login') != 1) 
-        {
+        if ($this->session->userdata('student_login') != 1) {
             $this->session->set_userdata('last_page', current_url());
             redirect(base_url(), 'refresh');
         }
-        if($param1 == "download")
-        {
+        if ($param1 == "download") {
             $file_name = $this->db->get_where('lesson_online', array('lesson_online_id' => $param3))->row()->attachment;
             $this->load->helper('download');
             $info = file_get_contents("public/uploads/online_course_file/" . $file_name);
             $name = $file_name;
             force_download($name, $info);
         }
-        $less  = $this->db->get_where('progress_course', array('online_course_id' => $param2, 'student_id' => $this->session->userdata('login_user_id'), 'lesson_id' =>$param3))->num_rows();
-        if($less == 0)
-        {
-            $data['lesson_id']                =  $param3; 
-            $data['online_course_id']         =  $param2; 
-            $data['student_id']               =  $this->session->userdata('login_user_id'); 
+        $less  = $this->db->get_where('progress_course', array('online_course_id' => $param2, 'student_id' => $this->session->userdata('login_user_id'), 'lesson_id' => $param3))->num_rows();
+        if ($less == 0) {
+            $data['lesson_id']                =  $param3;
+            $data['online_course_id']         =  $param2;
+            $data['student_id']               =  $this->session->userdata('login_user_id');
             $data['quiz_id']                  =  0;
-            $this->db->insert('progress_course',$data);
+            $this->db->insert('progress_course', $data);
         }
         $page_data['type']                = $param1;
         $page_data['online_course_id']    = $param2;
@@ -265,10 +251,10 @@ class Student extends EduAppGT
         $page_data['page_title']          = getEduAppGTLang('view_lesson');
         $this->load->view('backend/index', $page_data);
     }
-    
-    function online_courses($param1 = '', $param2 = '', $param3 ='') 
+
+    function online_courses($param1 = '', $param2 = '', $param3 = '')
     {
-        if ($this->session->userdata('student_login') != 1){
+        if ($this->session->userdata('student_login') != 1) {
             redirect(site_url('login'), 'refresh');
         }
         $page_data['data']       = $param1;
@@ -276,29 +262,28 @@ class Student extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('online_courses');
         $this->load->view('backend/index', $page_data);
     }
-    
-    function watch($param1= '', $param2= '') 
-    { 
-        if ($this->session->userdata('student_login') != 1) 
-        {
+
+    function watch($param1 = '', $param2 = '')
+    {
+        if ($this->session->userdata('student_login') != 1) {
             $this->session->set_userdata('last_page', current_url());
             redirect(base_url(), 'refresh');
         }
         $cont = $this->db->get_where('progress_course', array('online_course_id' => $param1, 'student_id' => $this->session->userdata('login_user_id')))->num_rows();
-        if($cont < 1){
-           $data['student_id']              =  $this->session->userdata('login_user_id');
-           $data['online_course_id']        =  $param1;
-           $data['count_lesson']            =  0;
-           $data['lesson_id']               =  0;
-           $data['quiz_id']                 =  0;
-           $this->db->insert('progress_course',$data);
+        if ($cont < 1) {
+            $data['student_id']              =  $this->session->userdata('login_user_id');
+            $data['online_course_id']        =  $param1;
+            $data['count_lesson']            =  0;
+            $data['lesson_id']               =  0;
+            $data['quiz_id']                 =  0;
+            $this->db->insert('progress_course', $data);
         }
         $page_data['online_course_id']    = $param1;
         $page_data['page_name']           = 'watch';
         $page_data['page_title']          = getEduAppGTLang('watch');
         $this->load->view('backend/index', $page_data);
     }
-    
+
     /*function takeAttendance()
     {
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
@@ -310,7 +295,7 @@ class Student extends EduAppGT
             redirect(base_url().'student/denied', 'refresh');   
         }
     }*/
-    
+
     function gamification($task = "", $document_id = "")
     {
         $this->isStudent();
@@ -319,22 +304,21 @@ class Student extends EduAppGT
         $data['page_title']             = getEduAppGTLang('gamification');
         $this->load->view('backend/index', $data);
     }
-    
-    
-    
+
+
+
     function exportPDF($onlineExamId)
     {
-        if($this->crud->calculate_average($onlineExamId, $this->session->userdata('login_user_id')) == 1){
-            $this->crud->getCertificatePDF($onlineExamId);   
-        }else{
-            redirect(base_url().'student/panel/', 'refresh');
+        if ($this->crud->calculate_average($onlineExamId, $this->session->userdata('login_user_id')) == 1) {
+            $this->crud->getCertificatePDF($onlineExamId);
+        } else {
+            redirect(base_url() . 'student/panel/', 'refresh');
         }
     }
-    
+
     function whiteboards($param1 = '', $param2 = '')
     {
-        if ($this->session->userdata('student_login') != 1)
-        {
+        if ($this->session->userdata('student_login') != 1) {
             redirect(base_url(), 'refresh');
         }
         $page_data['data']  = $param1;
@@ -342,17 +326,16 @@ class Student extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('whiteboards');
         $this->load->view('backend/index', $page_data);
     }
-    
+
     function view_whiteboard($param1 = '', $param2 = '')
     {
-        if ($this->session->userdata('student_login') != 1)
-        {
+        if ($this->session->userdata('student_login') != 1) {
             redirect(base_url(), 'refresh');
         }
         $page_data['data']  = $param2;
         $page_data['board_id']  = $param1;
         $page_data['page_title'] = getEduAppGTLang('view_whiteboard');
-        $this->load->view('backend/student/view_whiteboard' , $page_data);
+        $this->load->view('backend/student/view_whiteboard', $page_data);
     }
 
     //Live classes function.
@@ -364,7 +347,7 @@ class Student extends EduAppGT
         $data['page_title']             = getEduAppGTLang('live');
         $this->load->view('backend/index', $data);
     }
-    
+
     //Update delivery function.
     function homework_edit($param1 = "", $param2 = "")
     {
@@ -374,7 +357,7 @@ class Student extends EduAppGT
         $data['page_title']        = getEduAppGTLang('edit_delivery');
         $this->load->view('backend/index', $data);
     }
-    
+
     //Enter to Live Class function.
     function liveClass($param1 = '', $param2 = '')
     {
@@ -382,13 +365,13 @@ class Student extends EduAppGT
         $live_id  = base64_decode($param1);
         $url = $this->db->get_where('live', array('live_id' => $live_id))->row()->siteUrl;
         $this->crud->saveLiveAttendance($live_id);
-        if($liveType == 2){
-            header('Location: '.$url.'');
-        }   else{
-            redirect(base_url() . 'student/live/'.base64_encode($live_id), 'refresh');
+        if ($liveType == 2) {
+            header('Location: ' . $url . '');
+        } else {
+            redirect(base_url() . 'student/live/' . base64_encode($live_id), 'refresh');
         }
     }
-    
+
     //Student progress function.
     function progress($task = "", $document_id = "")
     {
@@ -397,7 +380,7 @@ class Student extends EduAppGT
         $data['page_title']             = getEduAppGTLang('progress');
         $this->load->view('backend/index', $data);
     }
-    
+
     //Live Class Function.
     function live($task = "", $document_id = "")
     {
@@ -407,44 +390,43 @@ class Student extends EduAppGT
         $data['page_name']              = 'live';
         $page_data['zoom_id']                = $task;
         $data['page_title']             = getEduAppGTLang('live');
-        $this->load->view('backend/student/live' , $page_data);
+        $this->load->view('backend/student/live', $page_data);
     }
-    
+
     //Create teacher report function.
-    function listado_de_reportes($param1 = '', $param2 = '', $param3 = '') 
+    function listado_de_reportes($param1 = '', $param2 = '', $param3 = '')
     {
         $this->isStudent();
-        if ($param1 == 'create')
-        {
+        if ($param1 == 'create') {
             $this->crud->createTeacherReport();
-            $this->session->set_flashdata('flash_message' , getEduAppGTLang('successfully_added'));
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
             redirect(base_url() . 'student/send_report/', 'refresh');
         }
     }
-    
+
     //Marks print view function.
-    function marks_print_view($student_id , $exam_id = '') 
+    function marks_print_view($student_id, $exam_id = '')
     {
         $this->isStudent();
         $ex = explode('-', base64_decode($student_id));
-        $class_id     = $this->db->get_where('enroll' , array('student_id' => $this->session->userdata('login_user_id'), 'year' => $this->db->get_where('settings' , array('type' => 'running_year'))->row()->description))->row()->class_id;
+        $class_id     = $this->db->get_where('enroll', array('student_id' => $this->session->userdata('login_user_id'), 'year' => $this->db->get_where('settings', array('type' => 'running_year'))->row()->description))->row()->class_id;
 
         $page_data['student_id'] =   $student_id;
         $page_data['class_id']   =   $class_id;
         $page_data['exam_id']    =   $exam_id;
         $this->load->view('backend/student/marks_print_view', $page_data);
     }
-    
+
     //Submit online exam function.
     function submit_online_exam($online_exam_id = "")
     {
         $this->isStudent();
         $this->academic->submitExam($online_exam_id);
-        redirect(base_url() . 'student/online_exams/'.$this->input->post('datainfo').'/', 'refresh');
+        redirect(base_url() . 'student/online_exams/' . $this->input->post('datainfo') . '/', 'refresh');
     }
-    
+
     //View online exam result function.
-    function online_exam_result($param1 = '', $param2 = '') 
+    function online_exam_result($param1 = '', $param2 = '')
     {
         $this->isStudent();
         //Online exam validator
@@ -455,28 +437,27 @@ class Student extends EduAppGT
         $classId      = $this->db->get_where('online_exam', array('online_exam_id' => $param1))->row()->class_id;
         $sectionId    = $this->db->get_where('online_exam', array('online_exam_id' => $param1))->row()->section_id;
         $subjectId    = $this->db->get_where('online_exam', array('online_exam_id' => $param1))->row()->subject_id;
-        $redirect = base64_encode($classId.'-'.$sectionId.'-'.$subjectId);
-        if($results == 3){
-            $addMinutes = 15;   
-        }elseif($results == 4){
+        $redirect = base64_encode($classId . '-' . $sectionId . '-' . $subjectId);
+        if ($results == 3) {
+            $addMinutes = 15;
+        } elseif ($results == 4) {
             $addMinutes = 30;
         }
         $current_time          = time();
-        $exam_start_time       = strtotime(date('Y-m-d', $exam_date).' '.$time_start);
-        $exam_end_time         = strtotime(date('Y-m-d', $exam_date).' '.$time_end);
-        
+        $exam_start_time       = strtotime(date('Y-m-d', $exam_date) . ' ' . $time_start);
+        $exam_end_time         = strtotime(date('Y-m-d', $exam_date) . ' ' . $time_end);
+
         $startResult           = strtotime($time_end);
-        $endResult             = $addMinutes*60;
-        $newResult             = date("H:i",$startResult+$endResult).':00';
-        $exam_end_time_results = strtotime(date('Y-m-d', $exam_date).' '.$newResult);
-        
-        if($results == 0 || $results == 1){
-            $this->session->set_flashdata('flash_message' , getEduAppGTLang('ask_for_results'));
-            redirect(base_url() . 'student/online_exams/'.$redirect, 'refresh');
-        }
-        elseif($current_time < $exam_end_time && $current_time < $exam_end_time_results && $results != 2){
-            $this->session->set_flashdata('flash_message' , getEduAppGTLang('waiting_for_results'));
-            redirect(base_url() . 'student/online_exams/'.$redirect, 'refresh');
+        $endResult             = $addMinutes * 60;
+        $newResult             = date("H:i", $startResult + $endResult) . ':00';
+        $exam_end_time_results = strtotime(date('Y-m-d', $exam_date) . ' ' . $newResult);
+
+        if ($results == 0 || $results == 1) {
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('ask_for_results'));
+            redirect(base_url() . 'student/online_exams/' . $redirect, 'refresh');
+        } elseif ($current_time < $exam_end_time && $current_time < $exam_end_time_results && $results != 2) {
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('waiting_for_results'));
+            redirect(base_url() . 'student/online_exams/' . $redirect, 'refresh');
         }
         //Online exam validator.                                  
         $page_data['page_name'] = 'online_exam_result';
@@ -484,17 +465,15 @@ class Student extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('online_exam_results');
         $this->load->view('backend/index', $page_data);
     }
-    
+
     //Take online exam function.
-    function take_online_exam($param1  = '', $param2 = '') 
+    function take_online_exam($param1  = '', $param2 = '')
     {
         $this->isStudent();
-        if($param1 == 'start')
-        {
+        if ($param1 == 'start') {
             $password = md5($this->db->get_where('online_exam', array('code' => html_escape($this->input->post('rand'))))->row()->password);
             $user_password = md5($this->input->post('password'));
-            if($password == $user_password)
-            {
+            if ($password == $user_password) {
                 $online_exam_id = $this->db->get_where('online_exam', array('code' => html_escape($this->input->post('rand'))))->row()->online_exam_id;
                 $student_id = $this->session->userdata('login_user_id');
                 $check = array('student_id' => $student_id, 'online_exam_id' => $online_exam_id);
@@ -502,15 +481,14 @@ class Student extends EduAppGT
                 $this->crud->change_online_exam_status_to_attended_for_student($online_exam_id);
 
                 $status = $this->crud->check_availability_for_student($online_exam_id);
-                if ($status == 'submitted'){
+                if ($status == 'submitted') {
                     $page_data['page_name']  = 'page_not_found';
-                }
-                else{
+                } else {
                     $page_data['page_name']  = 'online_exam_take';
                 }
-            }else{
-                $this->session->set_flashdata('flash_message' , getEduAppGTLang('password_does_not_match'));
-                redirect(base_url() . 'student/examroom/'.$this->input->post('rand'), 'refresh');
+            } else {
+                $this->session->set_flashdata('flash_message', getEduAppGTLang('password_does_not_match'));
+                redirect(base_url() . 'student/examroom/' . $this->input->post('rand'), 'refresh');
             }
         }
         $page_data['page_title'] = getEduAppGTLang('online_exam');
@@ -518,28 +496,27 @@ class Student extends EduAppGT
         $page_data['exam_info'] = $this->db->get_where('online_exam', array('online_exam_id' => $online_exam_id));
         $this->load->view('backend/index', $page_data);
     }
-    
+
     //Index function.
     public function index()
     {
-        if ($this->session->userdata('student_login') != 1)
-        {
+        if ($this->session->userdata('student_login') != 1) {
             redirect(base_url(), 'refresh');
-        }else{
-            redirect(base_url().'student/panel/', 'refresh');
+        } else {
+            redirect(base_url() . 'student/panel/', 'refresh');
         }
     }
-    
+
     //Subject dashboard function
-    function subject_dashboard($data  = '') 
+    function subject_dashboard($data  = '')
     {
         $this->isStudent();
         $page_data['data'] = $data;
         $page_data['page_name']    = 'subject_dashboard';
         $page_data['page_title']   = getEduAppGTLang('subject_dashboard');
-        $this->load->view('backend/index',$page_data);
+        $this->load->view('backend/index', $page_data);
     }
-    
+
     //Birthdays function.
     function birthdays()
     {
@@ -548,14 +525,13 @@ class Student extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('birthdays');
         $this->load->view('backend/index', $page_data);
     }
-    
+
     //Calendar function.
     function calendar($param1 = '', $param2 = '')
     {
         $this->isStudent();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if(html_escape($_GET['id']) != "")
-        {
+        if (html_escape($_GET['id']) != "") {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
             $this->db->update('notification', $notify);
@@ -563,22 +539,19 @@ class Student extends EduAppGT
         $page_data['page_name']  = 'calendar';
         $page_data['page_title'] = getEduAppGTLang('calendar');
         $page_data['code']   = $code;
-        $this->load->view('backend/index', $page_data); 
+        $this->load->view('backend/index', $page_data);
     }
-    
+
     //Chat group function.
     function group($param1 = "group_message_home", $param2 = "")
     {
         $this->isStudent();
-        if ($param1 == 'group_message_read') 
-        {
+        if ($param1 == 'group_message_read') {
             $page_data['current_message_thread_code'] = $param2;
-        }
-        else if($param1 == 'send_reply')
-        {
+        } else if ($param1 == 'send_reply') {
             $this->crud->send_reply_group_message($param2);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('message_sent'));
-            redirect(base_url() . 'student/group/group_message_read/'.$param2, 'refresh');
+            redirect(base_url() . 'student/group/group_message_read/' . $param2, 'refresh');
         }
         $page_data['message_inner_page_name']   = $param1;
         $page_data['page_name']                 = 'group';
@@ -590,8 +563,7 @@ class Student extends EduAppGT
     function polls($param1 = '', $param2 = '')
     {
         $this->isStudent();
-        if($param1 == 'response')
-        {
+        if ($param1 == 'response') {
             $this->crud->pollReponse();
         }
     }
@@ -600,19 +572,18 @@ class Student extends EduAppGT
     function take($exam_code  = '')
     {
         $this->isStudent();
-        $page_data['questions'] = $this->db->get_where('questions' , array('exam_code' => $exam_code))->result_array();
-        if($this->db->get_where('student_question',array('exam_code'=>$exam_code,'student_id'=>$this->session->userdata('login_user_id')))->row()->answered == 'answered')
-        {
+        $page_data['questions'] = $this->db->get_where('questions', array('exam_code' => $exam_code))->result_array();
+        if ($this->db->get_where('student_question', array('exam_code' => $exam_code, 'student_id' => $this->session->userdata('login_user_id')))->row()->answered == 'answered') {
             redirect(base_url() . 'student/online_exams/', 'refresh');
-        } 
+        }
         $page_data['exam_code'] = $exam_code;
-        $page_data['page_name']   = 'take'; 
+        $page_data['page_name']   = 'take';
         $page_data['page_title']  = "";
         $this->load->view('backend/index', $page_data);
     }
 
     //Attendance report function.
-    function attendance_report($data = '',$month = '', $year = '') 
+    function attendance_report($data = '', $month = '', $year = '')
     {
         $this->isStudent();
         $page_data['month']        = $month;
@@ -620,11 +591,11 @@ class Student extends EduAppGT
         $page_data['year']         = $year;
         $page_data['page_name']    = 'attendance_report';
         $page_data['page_title']   = getEduAppGTLang('attendance_report');
-        $this->load->view('backend/index',$page_data);
+        $this->load->view('backend/index', $page_data);
     }
 
     //Exam room function.
-    function examroom($online_exam_code = "") 
+    function examroom($online_exam_code = "")
     {
         $this->isStudent();
         $online_exam_id = $this->db->get_where('online_exam', array('code' => $online_exam_code))->row()->online_exam_id;
@@ -636,35 +607,32 @@ class Student extends EduAppGT
         $taken = $this->db->where($check)->get('online_exam_result')->num_rows();
         $this->crud->change_online_exam_status_to_attended_for_student($online_exam_id);
         $status = $this->crud->check_availability_for_student($online_exam_id);
-        if ($status == 'submitted')
-        {
-            redirect(base_url() . 'student/online_exams/'.base64_encode($class_id.'-'.$section_id.'-'.$subject_id).'/', 'refresh');
-        }
-        else{
+        if ($status == 'submitted') {
+            redirect(base_url() . 'student/online_exams/' . base64_encode($class_id . '-' . $section_id . '-' . $subject_id) . '/', 'refresh');
+        } else {
             $page_data['page_name']    = 'examroom';
         }
         $page_data['code'] = $online_exam_code;
         $page_data['page_title']   = getEduAppGTLang('take_exam');
-        $this->load->view('backend/index',$page_data);
+        $this->load->view('backend/index', $page_data);
     }
 
     //Exam function.
-    function exam($code = "") 
-    { 
+    function exam($code = "")
+    {
         $this->isStudent();
-        $page_data['questions'] = $this->db->get_where('questions' , array('exam_code' => $code))->result_array();
-        if($this->db->get_where('student_question',array('exam_code'=>$code,'student_id'=>$this->session->userdata('login_user_id')))->row()->answered == 'answered')
-        {
+        $page_data['questions'] = $this->db->get_where('questions', array('exam_code' => $code))->result_array();
+        if ($this->db->get_where('student_question', array('exam_code' => $code, 'student_id' => $this->session->userdata('login_user_id')))->row()->answered == 'answered') {
             redirect(base_url() . 'student/online_exams/', 'refresh');
-        } 
-        $page_data['exam_code'] = $code; 
+        }
+        $page_data['exam_code'] = $code;
         $page_data['page_name']    = 'exam';
         $page_data['page_title']   = getEduAppGTLang('online_exam');
-        $this->load->view('backend/index',$page_data);
-     }
+        $this->load->view('backend/index', $page_data);
+    }
 
     //Exam results function.
-    function exam_results($code = '') 
+    function exam_results($code = '')
     {
         $this->isStudent();
         $page_data['exam_code'] = $code;
@@ -672,34 +640,33 @@ class Student extends EduAppGT
         $page_data['page_title']    = getEduAppGTLang('exam_results');
         $this->load->view('backend/index', $page_data);
     }
-    
+
     //Print marks function.
-    function print_marks() 
+    function print_marks()
     {
         $this->isStudent();
         $page_data['month']        = date('m');
         $page_data['page_name']    = 'print_marks';
         $page_data['page_title']   = "";
-        $this->load->view('backend/index',$page_data);
+        $this->load->view('backend/index', $page_data);
     }
 
     //Subject marks function.
-    function subject_marks($data  = '', $param2  = '') 
+    function subject_marks($data  = '', $param2  = '')
     {
         $this->isStudent();
-        if($param2 != ""){
+        if ($param2 != "") {
             $page = $param2;
-        }else{
+        } else {
             $info = base64_decode($data);
             $ex = explode('-', $info);
-            
+
             $query = $this->db->get_where('exam', array('section_id' => $ex[1], 'class_id' => $ex[0], 'subject_id' => $ex[2]))->first_row()->exam_id;
-            
+
             $page = $query;
         }
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if(html_escape($_GET['id']) != "")
-        {
+        if (html_escape($_GET['id']) != "") {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
             $this->db->update('notification', $notify);
@@ -708,76 +675,69 @@ class Student extends EduAppGT
         $page_data['data'] = $data;
         $page_data['page_name']    = 'subject_marks';
         $page_data['page_title']   =  getEduAppGTLang('subject_marks');
-        $this->load->view('backend/index',$page_data);
+        $this->load->view('backend/index', $page_data);
     }
 
     //View invoice function.
-    function view_invoice($id  = '') 
+    function view_invoice($id  = '')
     {
         $this->isStudent();
         $page_data['invoice_id'] = $id;
         $page_data['page_name']    = 'view_invoice';
         $page_data['page_title']   = getEduAppGTLang('invoice');
-        $this->load->view('backend/index',$page_data);
+        $this->load->view('backend/index', $page_data);
     }
 
     //View behavior report function.
-    function view_report($code  = '') 
+    function view_report($code  = '')
     {
         $this->isStudent();
         $page_data['code'] = $code;
         $page_data['page_name']    = 'view_report';
         $page_data['page_title']   = getEduAppGTLang('view_report');
-        $this->load->view('backend/index',$page_data);
+        $this->load->view('backend/index', $page_data);
     }
 
     //My Profile function.
-    function my_profile($param1 = '', $param2 = '') 
+    function my_profile($param1 = '', $param2 = '')
     {
         $this->isStudent();
-        if($param1 == 'remove_facebook')
-        {
+        if ($param1 == 'remove_facebook') {
             $this->user->removeFacebook();
-            $this->session->set_flashdata('flash_message' , getEduAppGTLang('facebook_delete'));
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('facebook_delete'));
             redirect(base_url() . 'student/my_profile/', 'refresh');
         }
-        if($param1 == '1')
-        {
-            $this->session->set_flashdata('error_message' , getEduAppGTLang('google_err'));
+        if ($param1 == '1') {
+            $this->session->set_flashdata('error_message', getEduAppGTLang('google_err'));
             redirect(base_url() . 'student/my_profile/', 'refresh');
         }
-        if($param1 == '3')
-        {
-            $this->session->set_flashdata('error_message' , getEduAppGTLang('facebook_err'));
+        if ($param1 == '3') {
+            $this->session->set_flashdata('error_message', getEduAppGTLang('facebook_err'));
             redirect(base_url() . 'student/my_profile/', 'refresh');
         }
-        if($param1 == '2')
-        {
-            $this->session->set_flashdata('flash_message' , getEduAppGTLang('google_true'));
+        if ($param1 == '2') {
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('google_true'));
             redirect(base_url() . 'student/my_profile/', 'refresh');
         }
-        if($param1 == '4')
-        {
-            $this->session->set_flashdata('flash_message' , getEduAppGTLang('facebook_true'));
+        if ($param1 == '4') {
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('facebook_true'));
             redirect(base_url() . 'student/my_profile/', 'refresh');
-        }  
-        if($param1 == 'remove_google')
-        {
+        }
+        if ($param1 == 'remove_google') {
             $this->user->removeGoogle();
-            $this->session->set_flashdata('flash_message' , getEduAppGTLang('google_delete'));
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('google_delete'));
             redirect(base_url() . 'student/my_profile/', 'refresh');
         }
-        if($param1 == 'update')
-        {
+        if ($param1 == 'update') {
             $this->user->updateCurrentStudent();
-            $this->session->set_flashdata('flash_message' , getEduAppGTLang('successfully_updated'));
-            redirect(base_url().'student/student_update/','refresh');
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
+            redirect(base_url() . 'student/student_update/', 'refresh');
         }
         $page_data['output']       = $this->crud->getGoogleURL();
         $page_data['page_name']    = 'my_profile';
         $page_data['page_title']   = getEduAppGTLang('profile');
-        $this->load->view('backend/index',$page_data);
-     }
+        $this->load->view('backend/index', $page_data);
+    }
 
     //Attendance report selectior.
     function attendance_report_selector()
@@ -786,7 +746,7 @@ class Student extends EduAppGT
         $data['year']       = $this->input->post('year');
         $data['month']      = $this->input->post('month');
         $data['data']       = $this->input->post('data');
-        redirect(base_url().'student/attendance_report/'.$data['data'].'/'.$data['month'].'/'.$data['year'],'refresh');
+        redirect(base_url() . 'student/attendance_report/' . $data['data'] . '/' . $data['month'] . '/' . $data['year'], 'refresh');
     }
 
     //Student dashboard function.
@@ -794,8 +754,7 @@ class Student extends EduAppGT
     {
         $this->isStudent();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if(html_escape($_GET['id']) != "")
-        {
+        if (html_escape($_GET['id']) != "") {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
             $this->db->update('notification', $notify);
@@ -804,7 +763,7 @@ class Student extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('dashboard');
         $this->load->view('backend/index', $page_data);
     }
-    
+
     //Teachers function.
     function teachers($param1 = '', $param2 = '', $param3 = '')
     {
@@ -813,39 +772,54 @@ class Student extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('teachers');
         $this->load->view('backend/index', $page_data);
     }
-    
+
     //Subject function.
     function subject($param1 = '', $param2 = '')
     {
         $this->isStudent();
         $student_profile         = $this->db->get_where('student', array('student_id' => $this->session->userdata('student_id')))->row();
-        $student_class_id        = $this->db->get_where('enroll' , array('student_id' => $student_profile->student_id,'year' => $this->db->get_where('settings' , array('type' => 'running_year'))->row()->description
-        ))->row()->class_id;
-        $page_data['subjects']   = $this->db->get_where('subject', array('class_id' => $student_class_id,'year' => $this->db->get_where('settings' , array('type' => 'running_year'))->row()->description))->result_array();
+        $getStudentClassId        = $this->db->get_where('enroll', array(
+            'student_id' => $student_profile->student_id,
+            'year' => $this->db->get_where('settings', array('type' => 'running_year'))->row()->description
+        ))->result();
+
+        $subjectData = array(); // Inisialisasi array kosong di luar looping
+        foreach ($getStudentClassId as $class) {
+            $classSubjects = $this->db->get_where('subject', array(
+                'class_id' => $class->class_id,
+                'section_id' => $class->section_id,
+                'year' => $this->db->get_where('settings', array('type' => 'running_year'))->row()->description
+            ))->result_array();
+
+            foreach ($classSubjects as $subject) {
+                array_push($subjectData, $subject); // Menambah setiap item ke array yang ada
+            }
+        }
+        $page_data['subjects']   = $subjectData;
         $page_data['page_name']  = 'subject';
         $page_data['page_title'] = getEduAppGTLang('subjects');
         $this->load->view('backend/index', $page_data);
     }
-    
+
     //My Marks function.
-    function my_marks($student_id = '') 
+    function my_marks($student_id = '')
     {
         $this->isStudent();
-        if($student_id == 'apply'){
-            redirect(base_url().'student/my_marks/'.$this->input->post('subject_id'),'refresh');
+        if ($student_id == 'apply') {
+            redirect(base_url() . 'student/my_marks/' . $this->input->post('subject_id'), 'refresh');
         }
         $page_data['page_name']  =   'my_marks';
         $page_data['subject_id']  =   $student_id;
         $page_data['page_title'] =   getEduAppGTLang('marks');
         $this->load->view('backend/index', $page_data);
     }
-    
+
     //Class routine function.
     function class_routine($param1 = '', $param2 = '', $param3 = '')
     {
         $this->isStudent();
         $student_profile         = $this->db->get_where('student', array('student_id' => $this->session->userdata('student_id')))->row();
-        $page_data['class_id']   = $this->db->get_where('enroll' , array('student_id' => $student_profile->student_id,'year' => $this->db->get_where('settings' , array('type' => 'running_year'))->row()->description))->row()->class_id;
+        $page_data['class_id']   = $this->db->get_where('enroll', array('student_id' => $student_profile->student_id, 'year' => $this->db->get_where('settings', array('type' => 'running_year'))->row()->description))->row()->class_id;
         $page_data['student_id'] = $student_profile->student_id;
         $page_data['page_name']  = 'class_routine';
         $page_data['page_title'] = getEduAppGTLang('class_routine');
@@ -867,22 +841,21 @@ class Student extends EduAppGT
     {
         $this->isStudent();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if(html_escape($_GET['id']) != "")
-        {
+        if (html_escape($_GET['id']) != "") {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
             $this->db->update('notification', $notify);
         }
         $info = base64_decode($student_id);
         $ex = explode('-', $info);
-        $page_data['exams']      = $this->crud->available_exams($this->session->userdata('login_user_id'),$ex[2]);
+        $page_data['exams']      = $this->crud->available_exams($this->session->userdata('login_user_id'), $ex[2]);
         $page_data['data']       = $student_id;
         $page_data['page_name']  = 'online_exams';
         $page_data['page_title'] = getEduAppGTLang('online_exams');
         $page_data['student_id'] = $student_id;
         $this->load->view('backend/index', $page_data);
     }
-    
+
     //Download book function.
     function descargar_libro($libro_code = '')
     {
@@ -898,12 +871,10 @@ class Student extends EduAppGT
     function invoice($param1 = '', $param2 = '', $param3 = '')
     {
         $this->isStudent();
-        if ($param1 == 'make_payment') 
-        {
+        if ($param1 == 'make_payment') {
             $this->payment->makePayPal();
         }
-        if ($param1 == 'paypal_cancel') 
-        {
+        if ($param1 == 'paypal_cancel') {
             redirect(base_url() . 'student/invoice/', 'refresh');
         }
         $student_profile         = $this->db->get_where('student', array('student_id'   => $this->session->userdata('student_id')))->row();
@@ -913,9 +884,9 @@ class Student extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('invoice');
         $this->load->view('backend/index', $page_data);
     }
-    
+
     //Student info function.
-    function student_info($student_id  = '', $param1='')
+    function student_info($student_id  = '', $param1 = '')
     {
         $this->isStudent();
         $page_data['output']     = $this->crud->getGoogleURL();
@@ -926,7 +897,7 @@ class Student extends EduAppGT
     }
 
     //Student update info function.
-    function student_update($student_id = '', $param1='')
+    function student_update($student_id = '', $param1 = '')
     {
         $this->isStudent();
         $page_data['page_name']  = 'student_update';
@@ -935,9 +906,9 @@ class Student extends EduAppGT
         $page_data['student_id'] =  $student_id;
         $this->load->view('backend/index', $page_data);
     }
-    
+
     //Manage notifications function.    
-    function notifications() 
+    function notifications()
     {
         $this->isStudent();
         $page_data['page_name']  =  'notifications';
@@ -946,7 +917,7 @@ class Student extends EduAppGT
     }
 
     //Send teacher report function.
-    function send_report() 
+    function send_report()
     {
         $this->isStudent();
         $page_data['page_name'] = 'send_report';
@@ -955,7 +926,7 @@ class Student extends EduAppGT
     }
 
     //Noticeboard function.
-    function noticeboard($param1 = '', $param2 = '') 
+    function noticeboard($param1 = '', $param2 = '')
     {
         $this->isStudent();
         $page_data['page_name'] = 'noticeboard';
@@ -964,30 +935,26 @@ class Student extends EduAppGT
     }
 
     //Chat message function.
-    function message($param1 = 'message_home', $param2 = '', $param3 = '') 
+    function message($param1 = 'message_home', $param2 = '', $param3 = '')
     {
         $this->isStudent();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if(html_escape($_GET['id']) != "")
-        {
+        if (html_escape($_GET['id']) != "") {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
             $this->db->update('notification', $notify);
         }
-        if ($param1 == 'send_new') 
-        {
-            $this->session->set_flashdata('flash_message' , getEduAppGTLang('message_sent'));
+        if ($param1 == 'send_new') {
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('message_sent'));
             $message_thread_code = $this->crud->send_new_private_message();
             redirect(base_url() . 'student/message/message_read/' . $message_thread_code, 'refresh');
         }
-        if ($param1 == 'send_reply') 
-        {
-            $this->session->set_flashdata('flash_message' , getEduAppGTLang('reply_sent'));
+        if ($param1 == 'send_reply') {
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('reply_sent'));
             $this->crud->send_reply_message($param2);
             redirect(base_url() . 'student/message/message_read/' . $param2, 'refresh');
         }
-        if ($param1 == 'message_read') 
-        {
+        if ($param1 == 'message_read') {
             $page_data['current_message_thread_code'] = $param2;
             $this->crud->mark_thread_messages_read($param2);
         }
@@ -997,14 +964,13 @@ class Student extends EduAppGT
         $page_data['page_title']                = getEduAppGTLang('private_message');
         $this->load->view('backend/index', $page_data);
     }
-    
+
     //Study material function
     function study_material($task = "", $document_id = "")
     {
         $this->isStudent();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if(html_escape($_GET['id']) != "")
-        {
+        if (html_escape($_GET['id']) != "") {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
             $this->db->update('notification', $notify);
@@ -1020,14 +986,12 @@ class Student extends EduAppGT
     {
         $this->isStudent();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if(html_escape($_GET['id']) != "")
-        {
+        if (html_escape($_GET['id']) != "") {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
             $this->db->update('notification', $notify);
         }
-        if ($param1 == "request")
-        {
+        if ($param1 == "request") {
             $this->academic->requestStudentBook();
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
             redirect(base_url() . 'student/library/' . $param2, 'refresh');
@@ -1038,52 +1002,46 @@ class Student extends EduAppGT
     }
 
     //Homework detials function.
-    function homeworkroom($param1 = '' , $param2 = '')
+    function homeworkroom($param1 = '', $param2 = '')
     {
         $this->isStudent();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if(html_escape($_GET['id']) != "")
-        {
+        if (html_escape($_GET['id']) != "") {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
             $this->db->update('notification', $notify);
         }
         $page_data['homework_code'] = $param1;
-        $page_data['page_name']   = 'homework_room'; 
+        $page_data['page_name']   = 'homework_room';
         $page_data['page_title']  = getEduAppGTLang('homework');
         $this->load->view('backend/index', $page_data);
     }
 
     //Send homework function.
-    function delivery($param1 = '', $param2 = '',$param3 = '')
+    function delivery($param1 = '', $param2 = '', $param3 = '')
     {
         $this->isStudent();
-        if($param1 == 'file')
-        {
+        if ($param1 == 'file') {
             $this->academic->sendFileHomework($param2);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
             redirect(base_url() . 'student/homeworkroom/' . $param2, 'refresh');
         }
-        if($param1 == 'text')
-        {
+        if ($param1 == 'text') {
             $this->academic->sendTextHomework($param2);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
             redirect(base_url() . 'student/homeworkroom/' . $param2, 'refresh');
         }
-        if($param1 == 'update_text')
-        {
+        if ($param1 == 'update_text') {
             $this->academic->updateTextHomework($param2);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
             redirect(base_url() . 'student/homeworkroom/' . $param3, 'refresh');
         }
-        if($param1 == 'update_file')
-        {
-            $this->academic->updateFileHomework($param2,$param3);
+        if ($param1 == 'update_file') {
+            $this->academic->updateFileHomework($param2, $param3);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
             redirect(base_url() . 'student/homeworkroom/' . $param3, 'refresh');
         }
-        if($param1 == 'delete')
-        {
+        if ($param1 == 'delete') {
             $this->academic->deleteFileHomework($param2);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_deleted'));
             redirect(base_url() . 'student/homeworkroom/' . $param3, 'refresh');
@@ -1091,45 +1049,41 @@ class Student extends EduAppGT
     }
 
     //Homework file function.
-    function homework_file($param1 = '', $param2 = '', $param3 = '') 
+    function homework_file($param1 = '', $param2 = '', $param3 = '')
     {
         $this->isStudent();
         $homework_code = $this->db->get_where('homework', array('homework_id'))->row()->homework_code;
-        if ($param1 == 'upload')
-        {
+        if ($param1 == 'upload') {
             $this->crud->upload_homework_file($param2);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
             redirect(base_url() . 'student/homeworkroom/file/' . $param2, 'refresh');
-        }
-        else if ($param1 == 'download')
-        {
+        } else if ($param1 == 'download') {
             $this->crud->download_homework_file($param2);
         }
     }
 
     //Forum function.
-    function forumroom($param1 = '' , $param2 = '')
+    function forumroom($param1 = '', $param2 = '')
     {
         $this->isStudent();
         $page_data['post_code'] = $param1;
-        $page_data['page_name']   = 'forum_room'; 
+        $page_data['page_name']   = 'forum_room';
         $page_data['page_title']  = getEduAppGTLang('forum');
         $this->load->view('backend/index', $page_data);
     }
 
     //Create report message function.
-    function create_report_message($code = '') 
+    function create_report_message($code = '')
     {
         $this->isStudent();
         $this->crud->createReportMessage();
-    }  
+    }
 
     //Delete notifications function.
-    function notification($param1 ='', $param2 = '')
+    function notification($param1 = '', $param2 = '')
     {
         $this->isStudent();
-        if($param1 == 'delete')
-        {
+        if ($param1 == 'delete') {
             $this->crud->deleteNotification($param2);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_deleted'));
             redirect(base_url() . 'student/notifications/', 'refresh');
@@ -1140,58 +1094,53 @@ class Student extends EduAppGT
     function forum_message($param1 = '', $param2 = '', $param3 = '')
     {
         $this->isStudent();
-        if ($param1 == 'add') 
-        {
-            $this->crud->create_post_message(html_escape($this->input->post('post_code'))); 
+        if ($param1 == 'add') {
+            $this->crud->create_post_message(html_escape($this->input->post('post_code')));
         }
     }
 
     //Forum page function.
-    function forum($param1 = '', $param2 = '', $student_id = '') 
+    function forum($param1 = '', $param2 = '', $student_id = '')
     {
         $this->isStudent();
-        if ($param1 == 'create') 
-        {
+        if ($param1 == 'create') {
             $post_code = $this->crud->create_post();
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
-            redirect(base_url() . 'student/forumroom/post/' . $post_code , 'refresh');
+            redirect(base_url() . 'student/forumroom/post/' . $post_code, 'refresh');
         }
         $page_data['page_name'] = 'forum';
         $page_data['page_title'] = getEduAppGTLang('forum');
         $page_data['data']   = $param1;
         $this->load->view('backend/index', $page_data);
     }
-    
+
     //Request permission function.
     function request($param1 = "", $param2 = "")
     {
         $this->isStudent();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if(html_escape($_GET['id']) != "")
-        {
+        if (html_escape($_GET['id']) != "") {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
             $this->db->update('notification', $notify);
         }
-        if ($param1 == "create")
-        {
+        if ($param1 == "create") {
             $this->crud->studentRequestPermission();
-            $this->session->set_flashdata('flash_message' , getEduAppGTLang('successfully_added'));
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
             redirect(base_url() . 'student/request/', 'refresh');
         }
         $data['page_name']  = 'request';
         $data['page_title'] = getEduAppGTLang('permissions');
         $this->load->view('backend/index', $data);
     }
-    
+
     //Check student session.
     function isStudent()
     {
-        if ($this->session->userdata('student_login') != 1)
-        {
+        if ($this->session->userdata('student_login') != 1) {
             redirect(base_url(), 'refresh');
         }
     }
-    
+
     //End of Student.php
 }
