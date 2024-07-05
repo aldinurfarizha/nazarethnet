@@ -89,7 +89,7 @@ foreach ($student_info as $row) :
                                                                         <?= $item->year ?>
                                                                     </td>
                                                                     <td>
-                                                                        <button class="btn btn-sm btn-primary" href="javascript:void(0);" onclick="showAjaxModal('http://localhost/nazarethnet/modal/popup/modal_teacher/10');"><i class="fa fa-edit"></i></button>
+                                                                        <button class="btn btn-sm btn-primary" href="javascript:void(0);" onclick="showAjaxModal('<?= base_url('modal/popup/modal_edit_class_section/' . $item->enroll_id) ?>');"><i class=" fa fa-edit"></i></button>
                                                                         <button class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this?')" href="http://localhost/nazarethnet/admin/teachers/delete/10"><i class="fa fa-times"></i></button>
                                                                     </td>
 

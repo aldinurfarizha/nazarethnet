@@ -2231,7 +2231,41 @@ class Admin extends EduAppGT
         $query = $this->db->get('enroll');
 
         if ($query->num_rows() > 0) {
-            $this->session->set_flashdata('flash_message_failed', "Failed! Duplicate Section and class");
+            $this->session->set_flashdata('flash_message_failed', "Failed! Duplicate Section Or class with same year");
+            redirect(base_url() . 'admin/student_profile_class_section/' . $student_id);
+        } else {
+            $data = array(
+                'student_id' => $student_id,
+                'class_id' => $class_id,
+                'section_id' => $section_id,
+                'year' => $running_year,
+                'roll' => $roll,
+                'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7)
+            );
+            $this->db->insert('enroll', $data);
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
+            redirect(base_url() . 'admin/student_profile_class_section/' . $student_id);
+        }
+    }
+    function edit_student_class_section()
+    {
+        $enroll_id = $this->input->post('enroll_id');
+        $class_id = $this->input->post('class_id');
+        $section_id = $this->input->post('section_id');
+        $roll = $this->input->post('roll');
+        $data = array(
+            'class_id' => $class_id,
+            'section_id' => $section_id,
+            'year' => $running_year,
+            'roll' => $roll,
+            'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7)
+        );
+        $this->db->where('enroll_id', $enroll_id);
+        $this->db->where('class_id', $class_id);
+        $this->db->where('section_id', $section_id);
+        $query = $this->db->get('enroll');
+        if ($query->num_rows() > 0) {
+            $this->session->set_flashdata('flash_message_failed', "Failed! Duplicate Section Or class with same year");
             redirect(base_url() . 'admin/student_profile_class_section/' . $student_id);
         } else {
             $data = array(

@@ -18,6 +18,17 @@ function getStudentClassAndSectionById($student_id)
         ->get();
     return $data->result();
 }
+function getEnrollById($enroll_id)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('enroll.*, class.name as class_name, section.name as section_name')
+        ->from('enroll')
+        ->join('class', 'class.class_id = enroll.class_id')
+        ->join('section', 'section.section_id = enroll.section_id')
+        ->where('enroll_id', $enroll_id)
+        ->get();
+    return $data->row();
+}
 function getStudentInfo($student_id)
 {
     $ci = &get_instance();
