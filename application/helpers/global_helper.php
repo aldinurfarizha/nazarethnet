@@ -18,6 +18,15 @@ function getStudentClassAndSectionById($student_id)
         ->get();
     return $data->result();
 }
+function getStudentInfo($student_id)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('student')
+        ->where('student_id', $student_id)
+        ->get();
+    return $data->row();
+}
 function getRunningYear()
 {
     $ci = &get_instance();

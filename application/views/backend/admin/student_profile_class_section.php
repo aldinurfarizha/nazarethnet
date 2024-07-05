@@ -54,7 +54,7 @@ foreach ($student_info as $row) :
                                         <div class="ui-block">
                                             <div class="ui-block-title">
                                                 <h6 class="title"><?php echo getEduAppGTLang('class_section'); ?>
-                                                    <button class="btn btn-success float-right" onclick="showAjaxModal('http://localhost/nazarethnet/modal/popup/modal_teacher/10');"><i class="fa fa-plus"></i> Add</button>
+                                                    <button class="btn btn-success float-right" onclick="showAjaxModal('<?= base_url('modal/popup/modal_add_class_section/' . $student_id) ?>');"><i class="fa fa-plus"></i> Add</button>
                                                 </h6>
                                             </div>
                                             <div class="ui-block-content">
@@ -65,6 +65,7 @@ foreach ($student_info as $row) :
                                                                 <th><?php echo getEduAppGTLang('no'); ?></th>
                                                                 <th><?php echo getEduAppGTLang('class'); ?></th>
                                                                 <th><?php echo getEduAppGTLang('section'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('year'); ?></th>
                                                                 <th><?php echo getEduAppGTLang('action'); ?></th>
                                                             </tr>
                                                         </thead>
@@ -83,6 +84,9 @@ foreach ($student_info as $row) :
                                                                     </td>
                                                                     <td>
                                                                         <?= $item->section_name ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?= $item->year ?>
                                                                     </td>
                                                                     <td>
                                                                         <button class="btn btn-sm btn-primary" href="javascript:void(0);" onclick="showAjaxModal('http://localhost/nazarethnet/modal/popup/modal_teacher/10');"><i class="fa fa-edit"></i></button>

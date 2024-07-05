@@ -2208,6 +2208,45 @@ class Admin extends EduAppGT
         $page_data['student_id'] =  $student_id;
         $this->load->view('backend/index', $page_data);
     }
+    //add class and section
+    function add_student_class_section()
+    {
+        $student_id = $this->input->post('student_id');
+        $class_id = $this->input->post('class_id');
+        $section_id = $this->input->post('section_id');
+        $roll = $this->input->post('roll');
+        $running_year = getRunningYear();
+        $data = array(
+            'student_id' => $student_id,
+            'class_id' => $class_id,
+            'section_id' => $section_id,
+            'year' => $running_year,
+            'roll' => $roll,
+            'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7)
+        );
+        $this->db->where('student_id', $student_id);
+        $this->db->where('class_id', $class_id);
+        $this->db->where('section_id', $section_id);
+        $this->db->where('year', $running_year);
+        $query = $this->db->get('enroll');
+
+        if ($query->num_rows() > 0) {
+            $this->session->set_flashdata('flash_message_failed', "Failed! Duplicate Section and class");
+            redirect(base_url() . 'admin/student_profile_class_section/' . $student_id);
+        } else {
+            $data = array(
+                'student_id' => $student_id,
+                'class_id' => $class_id,
+                'section_id' => $section_id,
+                'year' => $running_year,
+                'roll' => $roll,
+                'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7)
+            );
+            $this->db->insert('enroll', $data);
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
+            redirect(base_url() . 'admin/student_profile_class_section/' . $student_id);
+        }
+    }
 
     //Student marks function.
     function student_marks($student_id = '', $param1 = '')
