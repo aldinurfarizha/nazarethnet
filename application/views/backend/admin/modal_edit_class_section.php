@@ -13,6 +13,7 @@
         ?>
         <div class="row">
             <input type="hidden" name="enroll_id" value="<?php echo $param2; ?>">
+            <input type="hidden" name="student_id" value="<?=$enrollData->student_id; ?>">
             <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="form-group label-floating is-select">
                     <label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
@@ -50,7 +51,7 @@
                 </div>
             </div>
             <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                <button class="btn btn-rounded btn-success btn-lg" type="submit"><?php echo getEduAppGTLang('add'); ?></button>
+                <button class="btn btn-rounded btn-success btn-lg" type="submit"><?php echo getEduAppGTLang('update'); ?></button>
             </div>
         </div>
         <?php echo form_close(); ?>

@@ -2216,14 +2216,6 @@ class Admin extends EduAppGT
         $section_id = $this->input->post('section_id');
         $roll = $this->input->post('roll');
         $running_year = getRunningYear();
-        $data = array(
-            'student_id' => $student_id,
-            'class_id' => $class_id,
-            'section_id' => $section_id,
-            'year' => $running_year,
-            'roll' => $roll,
-            'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7)
-        );
         $this->db->where('student_id', $student_id);
         $this->db->where('class_id', $class_id);
         $this->db->where('section_id', $section_id);
@@ -2240,7 +2232,8 @@ class Admin extends EduAppGT
                 'section_id' => $section_id,
                 'year' => $running_year,
                 'roll' => $roll,
-                'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7)
+                'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7),
+                'date_added' => strtotime(date("Y-m-d H:i:s")),
             );
             $this->db->insert('enroll', $data);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
@@ -2253,34 +2246,40 @@ class Admin extends EduAppGT
         $class_id = $this->input->post('class_id');
         $section_id = $this->input->post('section_id');
         $roll = $this->input->post('roll');
-        $data = array(
-            'class_id' => $class_id,
-            'section_id' => $section_id,
-            'year' => $running_year,
-            'roll' => $roll,
-            'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7)
-        );
-        $this->db->where('enroll_id', $enroll_id);
+        $student_id = $this->input->post('student_id'); 
+        $running_year = getRunningYear(); 
+
         $this->db->where('class_id', $class_id);
         $this->db->where('section_id', $section_id);
+        $this->db->where('year', $running_year);
+        $this->db->where('student_id', $student_id);
         $query = $this->db->get('enroll');
+
         if ($query->num_rows() > 0) {
-            $this->session->set_flashdata('flash_message_failed', "Failed! Duplicate Section Or class with same year");
+            $this->session->set_flashdata('flash_message_failed', "Failed! Duplicate Section or class with the same year for this student");
             redirect(base_url() . 'admin/student_profile_class_section/' . $student_id);
         } else {
             $data = array(
-                'student_id' => $student_id,
                 'class_id' => $class_id,
                 'section_id' => $section_id,
-                'year' => $running_year,
                 'roll' => $roll,
-                'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7)
             );
-            $this->db->insert('enroll', $data);
-            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
+
+            $this->db->where('enroll_id', $enroll_id);
+            $this->db->update('enroll', $data);
+
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
             redirect(base_url() . 'admin/student_profile_class_section/' . $student_id);
         }
     }
+    function delete_student_class_section($enroll_id, $student_id)
+    {
+        $this->db->where('enroll_id', $enroll_id);
+        $this->db->delete('enroll');
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
+            redirect(base_url() . 'admin/student_profile_class_section/' . $student_id);
+    }
+
 
     //Student marks function.
     function student_marks($student_id = '', $param1 = '')

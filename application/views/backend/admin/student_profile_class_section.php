@@ -65,6 +65,7 @@ foreach ($student_info as $row) :
                                                                 <th><?php echo getEduAppGTLang('no'); ?></th>
                                                                 <th><?php echo getEduAppGTLang('class'); ?></th>
                                                                 <th><?php echo getEduAppGTLang('section'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('roll'); ?></th>
                                                                 <th><?php echo getEduAppGTLang('year'); ?></th>
                                                                 <th><?php echo getEduAppGTLang('action'); ?></th>
                                                             </tr>
@@ -86,15 +87,18 @@ foreach ($student_info as $row) :
                                                                         <?= $item->section_name ?>
                                                                     </td>
                                                                     <td>
+                                                                        <?= $item->roll ?>
+                                                                    </td>
+                                                                    <td>
                                                                         <?= $item->year ?>
                                                                     </td>
                                                                     <td>
                                                                         <button class="btn btn-sm btn-primary" href="javascript:void(0);" onclick="showAjaxModal('<?= base_url('modal/popup/modal_edit_class_section/' . $item->enroll_id) ?>');"><i class=" fa fa-edit"></i></button>
-                                                                        <button class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this?')" href="http://localhost/nazarethnet/admin/teachers/delete/10"><i class="fa fa-times"></i></button>
+                                                                        <a class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this?')" href="<?= base_url('admin/delete_student_class_section/' . $item->enroll_id.'/'.$item->student_id) ?>"><i class="fa fa-times"></i></a>
                                                                     </td>
 
                                                                 </tr>
-                                                            <?php endforeach; ?>
+                                                            <?php $no++; endforeach; ?>
                                                         </tbody>
                                                     </table>
                                                 </div>

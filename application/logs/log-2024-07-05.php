@@ -362,3 +362,336 @@ ERROR - 2024-07-05 04:25:35 --> Severity: Notice --> Trying to get property 'per
 ERROR - 2024-07-05 04:25:42 --> Severity: Notice --> Trying to get property 'permissions' of non-object C:\xampp\htdocs\nazarethnet\application\views\backend\admin\navigation.php 71
 ERROR - 2024-07-05 04:25:42 --> Severity: Notice --> Trying to get property 'permissions' of non-object C:\xampp\htdocs\nazarethnet\application\views\backend\admin\navigation.php 298
 ERROR - 2024-07-05 04:25:42 --> Severity: Notice --> Trying to get property 'permissions' of non-object C:\xampp\htdocs\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-07-05 09:12:10 --> Severity: Notice --> session_start(): A session had already been started - ignoring /Applications/MAMP/htdocs MAMP/nazarethnet/public/face/config.php 2
+ERROR - 2024-07-05 09:12:58 --> Severity: Notice --> session_start(): A session had already been started - ignoring /Applications/MAMP/htdocs MAMP/nazarethnet/public/face/config.php 2
+ERROR - 2024-07-05 09:13:22 --> Severity: Notice --> session_start(): A session had already been started - ignoring /Applications/MAMP/htdocs MAMP/nazarethnet/public/face/config.php 2
+ERROR - 2024-07-05 09:13:22 --> Severity: Notice --> session_start(): A session had already been started - ignoring /Applications/MAMP/htdocs MAMP/nazarethnet/public/face/config.php 2
+ERROR - 2024-07-05 09:13:29 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:13:29 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:13:29 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:13:29 --> Query error: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'eduappgt_app.message.message_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by - Invalid query: SELECT *
+FROM `message`
+WHERE `read_status` = 0
+AND `reciever` = 'admin-2'
+GROUP BY `message_thread_code`
+ERROR - 2024-07-05 09:15:39 --> Severity: Notice --> session_start(): A session had already been started - ignoring /Applications/MAMP/htdocs MAMP/nazarethnet/public/face/config.php 2
+ERROR - 2024-07-05 09:15:44 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:15:44 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:15:44 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:15:44 --> Query error: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'eduappgt_app.message.message_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by - Invalid query: SELECT *
+FROM `message`
+WHERE `read_status` = 0
+AND `reciever` = 'admin-2'
+GROUP BY `message_thread_code`
+ERROR - 2024-07-05 09:16:04 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:16:04 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:16:04 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:16:11 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:16:11 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:16:11 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:16:14 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:16:14 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:16:14 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:15 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:17 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:16:17 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:16:17 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:16:18 --> Severity: Notice --> Trying to get property 'first_name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/student_portal.php 108
+ERROR - 2024-07-05 09:16:18 --> Severity: Notice --> Trying to get property 'last_name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/student_portal.php 108
+ERROR - 2024-07-05 09:16:18 --> Severity: Notice --> Trying to get property 'route_name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/student_portal.php 132
+ERROR - 2024-07-05 09:16:22 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:16:22 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:16:22 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:16:22 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:22 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:22 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:22 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:23 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:23 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:23 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:23 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:23 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:23 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:23 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:23 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:23 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:23 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:23 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:23 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:23 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:23 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:30 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:16:30 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:16:30 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:16:33 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:16:33 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:16:33 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:16:33 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:33 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:33 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:33 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:33 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:33 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:33 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:34 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:34 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:34 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:34 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:34 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:34 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:34 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:34 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:34 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:34 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:34 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:38 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:16:38 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:16:38 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:16:38 --> Severity: Notice --> Trying to get property 'first_name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/student_portal.php 108
+ERROR - 2024-07-05 09:16:38 --> Severity: Notice --> Trying to get property 'last_name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/student_portal.php 108
+ERROR - 2024-07-05 09:16:38 --> Severity: Notice --> Trying to get property 'route_name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/student_portal.php 132
+ERROR - 2024-07-05 09:16:50 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:16:50 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:16:50 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:16:51 --> Severity: Notice --> Trying to get property 'first_name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/student_portal.php 108
+ERROR - 2024-07-05 09:16:51 --> Severity: Notice --> Trying to get property 'last_name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/student_portal.php 108
+ERROR - 2024-07-05 09:16:51 --> Severity: Notice --> Trying to get property 'route_name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/student_portal.php 132
+ERROR - 2024-07-05 09:16:54 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:16:54 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:16:54 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:16:55 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:16:55 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:16:55 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:16:56 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:17:15 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:17:16 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:17:16 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:17:16 --> Severity: Notice --> Trying to get property 'first_name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/student_portal.php 108
+ERROR - 2024-07-05 09:17:16 --> Severity: Notice --> Trying to get property 'last_name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/student_portal.php 108
+ERROR - 2024-07-05 09:17:16 --> Severity: Notice --> Trying to get property 'route_name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/student_portal.php 132
+ERROR - 2024-07-05 09:17:18 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:17:18 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:17:18 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:17:22 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:17:22 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:17:22 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 21:17:51 --> Severity: Warning --> mysqli::real_connect(): Error while reading greeting packet. PID=97914 /Applications/MAMP/htdocs MAMP/nazarethnet/system/database/drivers/mysqli/mysqli_driver.php 211
+ERROR - 2024-07-05 21:17:51 --> Severity: Warning --> mysqli::real_connect(): (HY000/2006): MySQL server has gone away /Applications/MAMP/htdocs MAMP/nazarethnet/system/database/drivers/mysqli/mysqli_driver.php 211
+ERROR - 2024-07-05 21:17:51 --> Unable to connect to the database
+ERROR - 2024-07-05 21:17:51 --> Severity: error --> Exception: Class 'EduAppGT' not found /Applications/MAMP/htdocs MAMP/nazarethnet/system/core/CodeIgniter.php 370
+ERROR - 2024-07-05 09:18:02 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:18:02 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:18:02 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:18:06 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:18:06 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:18:06 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:40:39 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:40:39 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:40:39 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:40:39 --> Query error: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'eduappgt_app.message.message_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by - Invalid query: SELECT *
+FROM `message`
+WHERE `read_status` = 0
+AND `reciever` = 'admin-2'
+GROUP BY `message_thread_code`
+ERROR - 2024-07-05 09:40:51 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:40:51 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:40:51 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:42:02 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:42:02 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:42:02 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:42:42 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:42:42 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:42:42 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:42:45 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:42:45 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:42:45 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:42:52 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:42:52 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:42:52 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:44:20 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:44:20 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:44:20 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:44:58 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:44:58 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:44:59 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:48:31 --> Severity: Notice --> session_start(): A session had already been started - ignoring /Applications/MAMP/htdocs MAMP/nazarethnet/public/face/config.php 2
+ERROR - 2024-07-05 09:48:43 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:48:43 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:48:43 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:49:28 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:49:28 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:49:28 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:36 --> Severity: Notice --> Trying to get property 'name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/students.php 109
+ERROR - 2024-07-05 09:49:39 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:49:39 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:49:39 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:49:40 --> Severity: Notice --> Trying to get property 'first_name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/student_portal.php 108
+ERROR - 2024-07-05 09:49:40 --> Severity: Notice --> Trying to get property 'last_name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/student_portal.php 108
+ERROR - 2024-07-05 09:49:40 --> Severity: Notice --> Trying to get property 'route_name' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/student_portal.php 132
+ERROR - 2024-07-05 09:49:43 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:49:43 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:49:43 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:49:48 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:49:48 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:49:48 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:49:58 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:49:58 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:49:58 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:52:21 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:52:21 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:52:21 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:52:22 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:52:22 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:52:22 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:52:31 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:52:31 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:52:31 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:53:45 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:53:45 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:53:45 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:53:54 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:53:54 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:53:54 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:54:00 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:54:00 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:54:00 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:54:53 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:54:53 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:54:53 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:55:00 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:55:00 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:55:01 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:55:40 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:55:40 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:55:40 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:56:17 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:56:17 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:56:17 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:56:19 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:56:19 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:56:19 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:56:34 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:56:34 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:56:34 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:56:37 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:56:37 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:56:37 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:56:47 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:56:47 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:56:48 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:56:50 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:56:50 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:56:50 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:56:55 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:56:55 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:56:55 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:58:03 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:58:03 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:58:04 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:58:07 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:58:07 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:58:07 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:58:10 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:58:10 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:58:10 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 09:58:14 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 09:58:14 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 09:58:14 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 10:02:03 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 10:02:03 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 10:02:03 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 10:02:17 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 10:02:17 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 10:02:17 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 10:03:38 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 10:03:38 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 10:03:38 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 10:03:44 --> Severity: Notice --> Undefined variable: student_id /Applications/MAMP/htdocs MAMP/nazarethnet/application/controllers/Admin.php 2281
+ERROR - 2024-07-05 10:03:44 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 10:03:44 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 10:03:44 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 10:04:07 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 10:04:07 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 10:04:07 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 10:04:08 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 10:04:08 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 10:04:08 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 10:05:24 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 10:05:24 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 10:05:24 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 10:05:28 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 10:05:28 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 10:05:28 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 10:06:18 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 10:06:18 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 10:06:18 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 10:06:25 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 10:06:25 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 10:06:25 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 10:06:25 --> Query error: Expression #1 of SELECT list is not in GROUP BY clause and contains nonaggregated column 'eduappgt_app.message.message_id' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by - Invalid query: SELECT *
+FROM `message`
+WHERE `read_status` = 0
+AND `reciever` = 'admin-2'
+GROUP BY `message_thread_code`
+ERROR - 2024-07-05 10:06:47 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 10:06:47 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 10:06:47 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 10:06:54 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 10:06:54 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 10:06:54 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-05 10:06:59 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-05 10:06:59 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-05 10:06:59 --> Severity: Notice --> Trying to get property 'permissions' of non-object /Applications/MAMP/htdocs MAMP/nazarethnet/application/views/backend/admin/navigation.php 549
