@@ -43,10 +43,7 @@ foreach ($student_info as $row) :
                                                         <div><?php echo getEduAppGTLang('member_since'); ?>:</div>
                                                         <div class="value"><?php echo $row['since']; ?>.</div>
                                                     </div>
-                                                    <div class="value-pair">
-                                                        <div><?php echo getEduAppGTLang('roll'); ?>:</div>
-                                                        <div class="value"><?php echo $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->roll; ?>.</div>
-                                                    </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -129,12 +126,6 @@ foreach ($student_info as $row) :
                                                 <div class="form-group label-floating">
                                                     <label class="control-label"><?php echo getEduAppGTLang('address'); ?></label>
                                                     <input class="form-control" name="address" value="<?php echo $row['address']; ?>" type="text">
-                                                </div>
-                                            </div>
-                                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                                <div class="form-group label-floating">
-                                                    <label class="control-label"><?php echo getEduAppGTLang('roll'); ?></label>
-                                                    <input class="form-control" name="roll" value="<?php echo $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->roll; ?>" type="text">
                                                 </div>
                                             </div>
                                             <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
