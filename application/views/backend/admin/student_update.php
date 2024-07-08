@@ -139,37 +139,6 @@ foreach ($student_info as $row) :
                                             </div>
                                             <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                                 <div class="form-group label-floating is-select">
-                                                    <label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
-                                                    <div class="select">
-                                                        <select name="class_id">
-                                                            <option value=""><?php echo getEduAppGTLang('select'); ?></option>
-                                                            <?php $classes = $this->db->get('class')->result_array();
-                                                            foreach ($classes as $class) :
-                                                            ?>
-                                                                <option value="<?php echo $class['class_id']; ?>" <?php if ($class['class_id'] == $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->class_id) echo "selected"; ?>><?php echo $class['name']; ?></option>
-                                                            <?php endforeach; ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                                <div class="form-group label-floating is-select">
-                                                    <label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
-                                                    <div class="select">
-                                                        <?php $class_id = $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->class_id; ?>
-                                                        <select name="section_id">
-                                                            <option value=""><?php echo getEduAppGTLang('select'); ?></option>
-                                                            <?php $sections = $this->db->get_where('section', array('class_id' => $class_id))->result_array();
-                                                            foreach ($sections as $section) :
-                                                            ?>
-                                                                <option value="<?php echo $section['section_id']; ?>" <?php if ($section['section_id'] == $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->section_id) echo "selected"; ?>><?php echo $section['name']; ?></option>
-                                                            <?php endforeach; ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                                                <div class="form-group label-floating is-select">
                                                     <label class="control-label"><?php echo getEduAppGTLang('parent'); ?></label>
                                                     <div class="select">
                                                         <select name="parent_id">
