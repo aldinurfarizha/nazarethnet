@@ -18,6 +18,18 @@ function getStudentClassAndSectionById($student_id)
         ->get();
     return $data->result();
 }
+function getStudentGroupClassById($student_id)
+{
+    $ci = &get_instance();
+    $runningYear = getRunningYear();
+    $data = $ci->db->select('enroll.*, class.name as class_name')
+        ->from('enroll')
+        ->join('class', 'class.class_id = enroll.class_id')
+        ->where(['enroll.student_id' => $student_id, 'enroll.year' => $runningYear])
+        ->group_by('enroll.class_id')
+        ->get();
+    return $data->result();
+}
 function getEnrollById($enroll_id)
 {
     $ci = &get_instance();
@@ -47,6 +59,34 @@ function getRunningYear()
         ->get();
     if ($data->num_rows() > 0) {
         return $data->row()->description;
+    } else {
+        return false;
+    }
+}
+
+function getSectionByClassIdandSectionId($classId, $sectionId)
+{
+    $ci = &get_instance();
+    $runningYear = getRunningYear();
+    $data = $ci->db->select('*')
+        ->from('subject')
+        ->where(['class_id' => $classId, 'section_id' => $sectionId, 'year' => $runningYear])
+        ->get();
+    if ($data->num_rows() > 0) {
+        return $data->result();
+    } else {
+        return false;
+    }
+}
+function getSubjectDetailBySubjectId($subjectId)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('subject')
+        ->where(['subject_id' => $subjectId])
+        ->get();
+    if ($data->num_rows() > 0) {
+        return $data->row();
     } else {
         return false;
     }

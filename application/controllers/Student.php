@@ -409,10 +409,9 @@ class Student extends EduAppGT
     {
         $this->isStudent();
         $ex = explode('-', base64_decode($student_id));
-        $class_id     = $this->db->get_where('enroll', array('student_id' => $this->session->userdata('login_user_id'), 'year' => $this->db->get_where('settings', array('type' => 'running_year'))->row()->description))->row()->class_id;
 
         $page_data['student_id'] =   $student_id;
-        $page_data['class_id']   =   $class_id;
+        $page_data['sc_student'] = getStudentClassAndSectionById($this->session->userdata('login_user_id'));
         $page_data['exam_id']    =   $exam_id;
         $this->load->view('backend/student/marks_print_view', $page_data);
     }
@@ -754,7 +753,7 @@ class Student extends EduAppGT
     {
         $this->isStudent();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if (html_escape($_GET['id']) != "") {
+        if (@html_escape($_GET['id']) != "") {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
             $this->db->update('notification', $notify);
@@ -778,24 +777,7 @@ class Student extends EduAppGT
     {
         $this->isStudent();
         $student_profile         = $this->db->get_where('student', array('student_id' => $this->session->userdata('student_id')))->row();
-        $getStudentClassId        = $this->db->get_where('enroll', array(
-            'student_id' => $student_profile->student_id,
-            'year' => $this->db->get_where('settings', array('type' => 'running_year'))->row()->description
-        ))->result();
-
-        $subjectData = array(); // Inisialisasi array kosong di luar looping
-        foreach ($getStudentClassId as $class) {
-            $classSubjects = $this->db->get_where('subject', array(
-                'class_id' => $class->class_id,
-                'section_id' => $class->section_id,
-                'year' => $this->db->get_where('settings', array('type' => 'running_year'))->row()->description
-            ))->result_array();
-
-            foreach ($classSubjects as $subject) {
-                array_push($subjectData, $subject); // Menambah setiap item ke array yang ada
-            }
-        }
-        $page_data['subjects']   = $subjectData;
+        $page_data['class_Section']   = getStudentClassAndSectionById($student_profile->student_id);
         $page_data['page_name']  = 'subject';
         $page_data['page_title'] = getEduAppGTLang('subjects');
         $this->load->view('backend/index', $page_data);

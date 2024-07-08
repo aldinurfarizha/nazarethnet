@@ -4,6 +4,9 @@ $fancy_number = $this->crud->count_unread_messages();
 $fancy_cl_id = $this->db->get_where('enroll', array('student_id' => $this->session->userdata('login_user_id')))->row()->class_id;
 $fancy_sec_id = $this->db->get_where('enroll', array('student_id' => $this->session->userdata('login_user_id')))->row()->section_id;
 $fancy_section_id = $this->db->get_where('enroll', array('student_id' => $this->session->userdata('login_user_id')))->row()->section_id;
+
+$allSectionAndClass = getStudentClassAndSectionById($this->session->userdata('login_user_id'));
+
 @$fc_info = base64_decode($data);
 $fc_ex = explode('-', $fc_info);
 ?>
@@ -24,21 +27,26 @@ $fc_ex = explode('-', $fc_info);
                 </div>
                 <div class="fancy-selector-options active">
                     <?php
-                    $fancy_subjects = $this->db->get_where('subject', array('class_id' => $fancy_cl_id, 'section_id' => $fancy_sec_id))->result_array();
-                    foreach ($fancy_subjects as $fancy_row2) :
+                    foreach ($allSectionAndClass as $allSC) :
+                        $fancy_cl_id = $allSC->class_id;
+                        $fancy_sec_id = $allSC->section_id;
+                        $fancy_section_id = $allSC->section_id;
+                        $fancy_subjects = $this->db->get_where('subject', array('class_id' => $fancy_cl_id, 'section_id' => $fancy_sec_id))->result_array();
+                        foreach ($fancy_subjects as $fancy_row2) :
                     ?>
-                        <a href="<?php echo base_url(); ?>student/subject_dashboard/<?php echo base64_encode($fancy_cl_id . '-' . $fancy_section_id . '-' . $fancy_row2['subject_id']); ?>/">
-                            <div class="fancy-selector-option">
-                                <div class="fs-img">
-                                    <img alt="" src="<?php echo base_url(); ?>public/uploads/subject_icon/<?php echo $fancy_row2['icon']; ?>">
-                                </div>
-                                <div class="fs-main-info">
-                                    <div class="fs-name">
-                                        <?php echo $fancy_row2['name']; ?>
+                            <a href="<?php echo base_url(); ?>student/subject_dashboard/<?php echo base64_encode($fancy_cl_id . '-' . $fancy_section_id . '-' . $fancy_row2['subject_id']); ?>/">
+                                <div class="fancy-selector-option">
+                                    <div class="fs-img">
+                                        <img alt="" src="<?php echo base_url(); ?>public/uploads/subject_icon/<?php echo $fancy_row2['icon']; ?>">
+                                    </div>
+                                    <div class="fs-main-info">
+                                        <div class="fs-name">
+                                            <?php echo $fancy_row2['name']; ?>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        <?php endforeach; ?>
                     <?php endforeach; ?>
                 </div>
             </div>
@@ -103,8 +111,8 @@ $fc_ex = explode('-', $fc_info);
                                     <div class="notification-event">
                                         <div>
                                             <a href="<?php echo base_url(); ?><?php echo $fancy_notify['url']; ?><?php if ($fancy_notify['status'] == 0) {
-                                                                                                                    echo "?id=" . $fancy_notify['id'];
-                                                                                                                } ?>" class="h6 notification-friend"> <?php echo $fancy_notify['notify']; ?></a>
+                                                                                                                        echo "?id=" . $fancy_notify['id'];
+                                                                                                                    } ?>" class="h6 notification-friend"> <?php echo $fancy_notify['notify']; ?></a>
                                         </div>
                                         <span class="notification-date"><time class="entry-date updated"><?php echo $fancy_notify['date']; ?> <?php echo getEduAppGTLang('at'); ?> <?php echo $fancy_notify['time']; ?></time></span>
                                     </div>
@@ -230,8 +238,8 @@ $fc_ex = explode('-', $fc_info);
                             <div class="notification-event">
                                 <div>
                                     <a href="<?php echo base_url(); ?><?php echo $fancy_notify['url']; ?><?php if ($fancy_notify['status'] == 0) {
-                                                                                                            echo "?id=" . $fancy_notify['id'];
-                                                                                                        } ?>" class="h6 notification-friend"> <?php echo $fancy_notify['notify']; ?></a>
+                                                                                                                echo "?id=" . $fancy_notify['id'];
+                                                                                                            } ?>" class="h6 notification-friend"> <?php echo $fancy_notify['notify']; ?></a>
                                 </div>
                                 <span class="notification-date"><time class="entry-date updated"><?php echo $fancy_notify['date']; ?> <?php echo getEduAppGTLang('at'); ?> <?php echo $fancy_notify['time']; ?></time></span>
                             </div>
