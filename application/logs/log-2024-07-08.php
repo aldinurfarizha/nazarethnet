@@ -4,3 +4,8 @@ ERROR - 2024-07-08 03:49:15 --> Severity: Warning --> mysqli::real_connect(): (H
  C:\xampp\htdocs\nazarethnet\system\database\drivers\mysqli\mysqli_driver.php 211
 ERROR - 2024-07-08 03:49:15 --> Unable to connect to the database
 ERROR - 2024-07-08 03:49:15 --> Severity: error --> Exception: Class 'EduAppGT' not found C:\xampp\htdocs\nazarethnet\system\core\CodeIgniter.php 370
+ERROR - 2024-07-08 02:05:30 --> 404 Page Not Found: Public/assets
+ERROR - 2024-07-08 02:10:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-08 02:10:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-08 02:10:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-08 02:10:17 --> 404 Page Not Found: Public/uploads
