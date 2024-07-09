@@ -44,10 +44,6 @@ foreach ($student_info as $row) :
                                                         <div><?php echo getEduAppGTLang('member_since'); ?>:</div>
                                                         <div class="value"><?php echo $row['since']; ?>.</div>
                                                     </div>
-                                                    <div class="value-pair">
-                                                        <div><?php echo getEduAppGTLang('roll'); ?>:</div>
-                                                        <div class="value"><?php echo $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->roll; ?>.</div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -94,11 +90,12 @@ foreach ($student_info as $row) :
                                                                     </td>
                                                                     <td>
                                                                         <button class="btn btn-sm btn-primary" href="javascript:void(0);" onclick="showAjaxModal('<?= base_url('modal/popup/modal_edit_class_section/' . $item->enroll_id) ?>');"><i class=" fa fa-edit"></i></button>
-                                                                        <a class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this?')" href="<?= base_url('admin/delete_student_class_section/' . $item->enroll_id.'/'.$item->student_id) ?>"><i class="fa fa-times"></i></a>
+                                                                        <a class="btn btn-sm btn-danger" onclick="return confirm('Do you want to delete this?')" href="<?= base_url('admin/delete_student_class_section/' . $item->enroll_id . '/' . $item->student_id) ?>"><i class="fa fa-times"></i></a>
                                                                     </td>
 
                                                                 </tr>
-                                                            <?php $no++; endforeach; ?>
+                                                            <?php $no++;
+                                                            endforeach; ?>
                                                         </tbody>
                                                     </table>
                                                 </div>

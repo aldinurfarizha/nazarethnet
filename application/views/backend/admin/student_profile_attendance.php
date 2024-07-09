@@ -47,10 +47,6 @@ foreach ($student_info as $row) :
                                                         <div><?php echo getEduAppGTLang('member_since'); ?>:</div>
                                                         <div class="value"><?php echo $row['since']; ?>.</div>
                                                     </div>
-                                                    <div class="value-pair">
-                                                        <div><?php echo getEduAppGTLang('roll'); ?>:</div>
-                                                        <div class="value"><?php echo $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->roll; ?>.</div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,11 +93,16 @@ foreach ($student_info as $row) :
                                                         <select name="subject_id" required="">
                                                             <option value=""><?php echo getEduAppGTLang('select'); ?></option>
                                                             <?php
-                                                            $subjects = $this->db->get_where('subject', array('class_id' => $class_id, 'section_id' => $section_id))->result_array();
-                                                            foreach ($subjects as $sbj) :
+                                                            foreach (getStudentClassAndSectionById($student_id) as $datar) {
+                                                                $class_id = $datar->class_id;
+                                                                $section_id = $datar->section_id;
+                                                                $subjects = $this->db->get_where('subject', array('class_id' => $class_id, 'section_id' => $section_id))->result_array();
+                                                                foreach ($subjects as $sbj) :
                                                             ?>
-                                                                <option value="<?php echo $sbj['subject_id']; ?>" <?php if ($subject_id == $sbj['subject_id']) echo 'selected'; ?>><?php echo $sbj['name']; ?></option>
-                                                            <?php endforeach; ?>
+                                                                    <option value="<?php echo $sbj['subject_id']; ?>" <?php if ($subject_id == $sbj['subject_id']) echo 'selected'; ?>><?php echo $sbj['name']; ?></option>
+
+                                                            <?php endforeach;
+                                                            } ?>
                                                         </select>
                                                     </div>
                                                 </div>

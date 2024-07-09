@@ -44,10 +44,6 @@ foreach ($student_info as $row) :
                                                         <div><?php echo getEduAppGTLang('member_since'); ?>:</div>
                                                         <div class="value"><?php echo $row['since']; ?>.</div>
                                                     </div>
-                                                    <div class="value-pair">
-                                                        <div><?php echo getEduAppGTLang('roll'); ?>:</div>
-                                                        <div class="value"><?php echo $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->roll; ?>.</div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

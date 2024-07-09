@@ -42,10 +42,6 @@ foreach ($student_info as $row) : ?>
 														<div><?php echo getEduAppGTLang('member_since'); ?>:</div>
 														<div class="value"><?php echo $row['since']; ?>.</div>
 													</div>
-													<div class="value-pair">
-														<div><?php echo getEduAppGTLang('roll'); ?>:</div>
-														<div class="value"><?php echo $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->roll; ?>.</div>
-													</div>
 												</div>
 											</div>
 										</div>
@@ -72,12 +68,6 @@ foreach ($student_info as $row) : ?>
 															<li>
 																<span class="title"><?php echo getEduAppGTLang('address'); ?>:</span>
 																<span class="text"><?php echo $row['address']; ?></span>
-															</li>
-															<li>
-																<span class="title"><?php echo getEduAppGTLang('section'); ?>:</span>
-																<?php
-																$section_id = $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->section_id; ?>
-																<span class="text"><?php echo $this->db->get_where('section', array('section_id' => $section_id))->row()->name; ?></span>
 															</li>
 															<li>
 																<span class="title"><?php echo getEduAppGTLang('classroom'); ?>:</span>
@@ -119,13 +109,6 @@ foreach ($student_info as $row) : ?>
 																<span class="title"><?php echo getEduAppGTLang('gender'); ?>:</span>
 																<span class="text"><?php if ($row['sex'] == 'M') echo getEduAppGTLang('male');
 																					else echo getEduAppGTLang('female'); ?></span>
-															</li>
-															<li>
-																<span class="title"><?php echo getEduAppGTLang('class'); ?>:</span>
-																<?php
-																$class_id = $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->class_id;
-																$section_id = $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->section_id; ?>
-																<span class="text"><?php echo $this->db->get_where('class', array('class_id' => $class_id))->row()->name; ?></span>
 															</li>
 															<li>
 																<span class="title"><?php echo getEduAppGTLang('transport'); ?>:</span>

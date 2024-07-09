@@ -2246,8 +2246,8 @@ class Admin extends EduAppGT
         $class_id = $this->input->post('class_id');
         $section_id = $this->input->post('section_id');
         $roll = $this->input->post('roll');
-        $student_id = $this->input->post('student_id'); 
-        $running_year = getRunningYear(); 
+        $student_id = $this->input->post('student_id');
+        $running_year = getRunningYear();
 
         $this->db->where('class_id', $class_id);
         $this->db->where('section_id', $section_id);
@@ -2277,7 +2277,7 @@ class Admin extends EduAppGT
         $this->db->where('enroll_id', $enroll_id);
         $this->db->delete('enroll');
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
-            redirect(base_url() . 'admin/student_profile_class_section/' . $student_id);
+        redirect(base_url() . 'admin/student_profile_class_section/' . $student_id);
     }
 
 

@@ -460,16 +460,26 @@ class User extends School
         $data['note']              = html_escape($this->input->post('note'));
         $this->db->insert('student', $data);
         $student_id = $this->db->insert_id();
-        $data4['student_id']       = $student_id;
-        $data4['enroll_code']      = substr(md5(rand(0, 1000000)), 0, 7);
-        $data4['class_id']         = $this->input->post('class_id');
-        if ($this->input->post('section_id') != '') {
-            $data4['section_id']   = $this->input->post('section_id');
+        $class_ids = $this->input->post('class_id');
+        $section_ids = $this->input->post('section_id');
+        $rolls = $this->input->post('roll');
+        if ($class_ids && $section_ids && $rolls) {
+            $data = [];
+            for ($i = 0; $i < count($class_ids); $i++) {
+                $data[] = [
+                    'student_id' => $student_id,
+                    'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7),
+                    'class_id' => $class_ids[$i],
+                    'section_id' => $section_ids[$i],
+                    'roll' => $rolls[$i],
+                    'date_added' => strtotime(date("Y-m-d H:i:s")),
+                    'year' => $this->runningYear,
+                ];
+            }
+            foreach ($data as $entry) {
+                $this->db->insert('enroll', $entry);
+            }
         }
-        $data4['roll']             = html_escape($this->input->post('roll'));
-        $data4['date_added']       = strtotime(date("Y-m-d H:i:s"));
-        $data4['year']             = $this->runningYear;
-        $this->db->insert('enroll', $data4);
         move_uploaded_file($_FILES['userfile']['tmp_name'], 'public/uploads/student_image/' . $md5 . str_replace(' ', '', $_FILES['userfile']['name']));
         return $student_id;
     }
