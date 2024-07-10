@@ -31,10 +31,22 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-6">
                 <div class="form-group label-floating">
                     <label class="control-label"><?php echo getEduAppGTLang('roll'); ?></label>
                     <input class="form-control" name="roll" type="text" required="">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group label-floating is-select">
+                    <label class="control-label">Status</label>
+                    <div class="select">
+                        <select name="is_active" id="is_active" required="">
+                            <option value="" selected="true"><?php echo getEduAppGTLang('select'); ?></option>
+                            <option value="1">Active</option>
+                            <option value="0">Disable</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="col col-lg-6 col-md-6 col-sm-12 col-12">

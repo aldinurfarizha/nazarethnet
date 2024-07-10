@@ -463,7 +463,8 @@ class User extends School
         $class_ids = $this->input->post('class_id');
         $section_ids = $this->input->post('section_id');
         $rolls = $this->input->post('roll');
-        if ($class_ids && $section_ids && $rolls) {
+        $is_actives = $this->input->post('is_active');
+        if ($class_ids && $section_ids && $rolls && $is_actives) {
             $data = [];
             for ($i = 0; $i < count($class_ids); $i++) {
                 $data[] = [
@@ -472,6 +473,7 @@ class User extends School
                     'class_id' => $class_ids[$i],
                     'section_id' => $section_ids[$i],
                     'roll' => $rolls[$i],
+                    'is_active' => $is_actives[$i],
                     'date_added' => strtotime(date("Y-m-d H:i:s")),
                     'year' => $this->runningYear,
                 ];

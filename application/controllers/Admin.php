@@ -2215,6 +2215,7 @@ class Admin extends EduAppGT
         $class_id = $this->input->post('class_id');
         $section_id = $this->input->post('section_id');
         $roll = $this->input->post('roll');
+        $is_active = $this->input->post('is_active');
         $running_year = getRunningYear();
         $this->db->where('student_id', $student_id);
         $this->db->where('class_id', $class_id);
@@ -2232,6 +2233,7 @@ class Admin extends EduAppGT
                 'section_id' => $section_id,
                 'year' => $running_year,
                 'roll' => $roll,
+                'is_active' => $is_active,
                 'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7),
                 'date_added' => strtotime(date("Y-m-d H:i:s")),
             );
@@ -2247,6 +2249,7 @@ class Admin extends EduAppGT
         $section_id = $this->input->post('section_id');
         $roll = $this->input->post('roll');
         $student_id = $this->input->post('student_id');
+        $is_active = $this->input->post('is_active');
         $running_year = getRunningYear();
 
         $this->db->where('class_id', $class_id);
@@ -2255,7 +2258,7 @@ class Admin extends EduAppGT
         $this->db->where('student_id', $student_id);
         $query = $this->db->get('enroll');
 
-        if ($query->num_rows() > 0) {
+        if ($query->row()->enroll_id != $enroll_id) {
             $this->session->set_flashdata('flash_message_failed', "Failed! Duplicate Section or class with the same year for this student");
             redirect(base_url() . 'admin/student_profile_class_section/' . $student_id);
         } else {
@@ -2263,6 +2266,7 @@ class Admin extends EduAppGT
                 'class_id' => $class_id,
                 'section_id' => $section_id,
                 'roll' => $roll,
+                'is_active' => $is_active
             );
 
             $this->db->where('enroll_id', $enroll_id);

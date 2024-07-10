@@ -13,7 +13,7 @@
         ?>
         <div class="row">
             <input type="hidden" name="enroll_id" value="<?php echo $param2; ?>">
-            <input type="hidden" name="student_id" value="<?=$enrollData->student_id; ?>">
+            <input type="hidden" name="student_id" value="<?= $enrollData->student_id; ?>">
             <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="form-group label-floating is-select">
                     <label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
@@ -44,10 +44,26 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-6">
                 <div class="form-group label-floating">
                     <label class="control-label"><?php echo getEduAppGTLang('roll'); ?></label>
                     <input class="form-control" name="roll" value="<?= $enrollData->roll ?>" type="text" required="">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group label-floating is-select">
+                    <label class="control-label">Status</label>
+                    <div class="select">
+                        <select name="is_active" id="is_active" required="">
+                            <?php if ($enrollData->is_active) { ?>
+                                <option value="1" selected="true">Active</option>
+                                <option value="0">Disable</option>
+                            <?php } else { ?>
+                                <option value="1">Active</option>
+                                <option value="0" selected="true">Disable</option>
+                            <?php } ?>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="col col-lg-6 col-md-6 col-sm-12 col-12">

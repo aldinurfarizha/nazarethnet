@@ -99,3 +99,5 @@ ERROR - 2024-07-09 01:49:38 --> Severity: Notice --> session_start(): A session 
 ERROR - 2024-07-09 01:49:42 --> Severity: Notice --> Trying to get property 'permissions' of non-object C:\xampp\htdocs\nazarethnet\application\views\backend\admin\navigation.php 71
 ERROR - 2024-07-09 01:49:42 --> Severity: Notice --> Trying to get property 'permissions' of non-object C:\xampp\htdocs\nazarethnet\application\views\backend\admin\navigation.php 298
 ERROR - 2024-07-09 01:49:42 --> Severity: Notice --> Trying to get property 'permissions' of non-object C:\xampp\htdocs\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-07-09 22:33:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-09 22:40:03 --> Severity: Warning --> mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() C:\xampp\htdocs\nazarethnet\system\libraries\Email.php 1903

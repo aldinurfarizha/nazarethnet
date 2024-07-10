@@ -124,7 +124,7 @@
     								</div>
     								<div class="step-content" id="stepContent2">
     									<div class="row" id="class_section">
-    										<div class="col-4">
+    										<div class="col-3">
     											<div class="form-group label-floating is-select">
     												<label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
     												<div class="select">
@@ -139,7 +139,7 @@
     												</div>
     											</div>
     										</div>
-    										<div class="col-4">
+    										<div class="col-3">
     											<div class="form-group label-floating is-select">
     												<label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
     												<div class="select">
@@ -149,10 +149,23 @@
     												</div>
     											</div>
     										</div>
-    										<div class="col-4">
+    										<div class="col-3">
     											<div class="form-group label-floating is-select">
     												<label class="control-label"><?php echo getEduAppGTLang('roll'); ?></label>
     												<input type="text" name="roll_temp" id="roll" class="form-control">
+    											</div>
+    										</div>
+    										<div class="col-3">
+    											<div class="form-group label-floating is-select">
+    												<label class="control-label">Status</label>
+    												<div class="select">
+    													<select name="is_active_temp" id="is_active">
+    														<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+    														<option value="1">Active</option>
+    														<option value="0">Disable</option>
+
+    													</select>
+    												</div>
     											</div>
     										</div>
     										<div class="col-12 text-right">
@@ -169,6 +182,7 @@
     														<th><?php echo getEduAppGTLang('class'); ?></th>
     														<th><?php echo getEduAppGTLang('section'); ?></th>
     														<th><?php echo getEduAppGTLang('roll'); ?></th>
+    														<th><?php echo getEduAppGTLang('status'); ?></th>
     														<th><?php echo getEduAppGTLang('actions'); ?></th>
     													</tr>
     												</thead>
@@ -382,9 +396,10 @@
     		const classId = document.getElementById('class_id').value;
     		const sectionId = document.getElementById('section_holder').value;
     		const roll = document.getElementById('roll').value;
+    		const is_active = document.getElementById('is_active').value;
 
 
-    		if (classId === '' || sectionId === '' || roll === '') {
+    		if (classId === '' || sectionId === '' || roll === '' || is_active === '') {
     			alert('Please fill all fields');
     			return;
     		}
@@ -398,18 +413,22 @@
 
     		const className = document.querySelector('#class_id option:checked').textContent;
     		const sectionName = document.querySelector('#section_holder option:checked').textContent;
+    		const isActiveName = document.querySelector('#is_active option:checked').textContent;
 
     		classSections.push({
     			classId,
     			className,
     			sectionId,
     			sectionName,
+    			isActiveName,
+    			is_active,
     			roll
     		});
 
     		document.getElementById('class_id').value = '';
     		document.getElementById('section_holder').value = '';
     		document.getElementById('roll').value = '';
+    		document.getElementById('is_active').value = '';
 
     		renderClassSectionTable();
     	}
@@ -425,6 +444,7 @@
             <td>${section.className}</td>
             <td>${section.sectionName}</td>
             <td>${section.roll}</td>
+			<td>${section.isActiveName}</td>
             <td><button class="btn btn-danger" onclick="removeClassSection(${index})">Delete</button></td>
         `;
 
@@ -465,6 +485,13 @@
     			rollInput.value = section.roll;
     			rollInput.classList.add('hidden-input');
     			form.appendChild(rollInput);
+
+    			const isActiveInput = document.createElement('input');
+    			isActiveInput.type = 'hidden';
+    			isActiveInput.name = `is_active[${index}]`;
+    			isActiveInput.value = section.is_active;
+    			isActiveInput.classList.add('hidden-input');
+    			form.appendChild(isActiveInput);
     		});
     	}
     </script>

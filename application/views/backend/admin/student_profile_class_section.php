@@ -63,12 +63,13 @@ foreach ($student_info as $row) :
                                                                 <th><?php echo getEduAppGTLang('section'); ?></th>
                                                                 <th><?php echo getEduAppGTLang('roll'); ?></th>
                                                                 <th><?php echo getEduAppGTLang('year'); ?></th>
+                                                                <th class="text-center"><?php echo getEduAppGTLang('status'); ?></th>
                                                                 <th><?php echo getEduAppGTLang('action'); ?></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <?php
-                                                            $datax = getStudentClassAndSectionById($student_id);
+                                                            $datax = getStudentClassAndSectionByIdAll($student_id);
                                                             $no = 1;
                                                             foreach ($datax as $item) :
                                                             ?>
@@ -87,6 +88,13 @@ foreach ($student_info as $row) :
                                                                     </td>
                                                                     <td>
                                                                         <?= $item->year ?>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <?php if ($item->is_active) { ?>
+                                                                            <div class="value badge badge-pill badge-success"><?= getEduAppGTLang('active'); ?></div>
+                                                                        <?php } else { ?>
+                                                                            <div class="value badge badge-pill badge-danger"><?= getEduAppGTLang('disable'); ?></div>
+                                                                        <?php } ?>
                                                                     </td>
                                                                     <td>
                                                                         <button class="btn btn-sm btn-primary" href="javascript:void(0);" onclick="showAjaxModal('<?= base_url('modal/popup/modal_edit_class_section/' . $item->enroll_id) ?>');"><i class=" fa fa-edit"></i></button>
