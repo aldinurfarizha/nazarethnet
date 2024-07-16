@@ -49,7 +49,7 @@
                                                                         <?php
                                                                         $class_id = $cs->class_id;
                                                                         $section_id = $cs->section_id;
-                                                                        foreach (getSectionByClassIdandSectionId($class_id, $section_id) as $data) : ?>
+                                                                        foreach (getSubjectByClassIdandSectionId($class_id, $section_id) as $data) : ?>
                                                                             <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                                                                 <div class="ui-block" data-mh="friend-groups-item">
                                                                                     <div class="friend-item friend-groups">

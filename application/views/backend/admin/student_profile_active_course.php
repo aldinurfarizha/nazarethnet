@@ -49,42 +49,59 @@ foreach ($student_info as $row) :
                                         </div>
                                         <div class="ui-block">
                                             <div class="ui-block-title">
-                                                <h6 class="title"><?php echo getEduAppGTLang('payments_and_invoices'); ?></h6>
+                                                <h6 class="title">Active Course
+                                                </h6>
                                             </div>
                                             <div class="ui-block-content">
                                                 <div class="table-responsive">
                                                     <table class="table table-padded">
                                                         <thead>
                                                             <tr>
-                                                                <th><?php echo getEduAppGTLang('status'); ?></th>
-                                                                <th><?php echo getEduAppGTLang('student'); ?></th>
-                                                                <th><?php echo getEduAppGTLang('title'); ?></th>
-                                                                <th><?php echo getEduAppGTLang('amount'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('no'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('subject'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('class'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('section'); ?></th>
+                                                                <th class="text-center"><?php echo getEduAppGTLang('status'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('action'); ?></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <?php
-                                                            $this->db->where('year', $running_year);
-                                                            $this->db->order_by('creation_timestamp', 'desc');
-                                                            $invoices = $this->db->get_where('invoice', array('student_id' => $row['student_id']))->result_array();
-                                                            foreach ($invoices as $row2) :
+                                                            $datax = getAvailabeSubject($student_id);
+                                                            $no = 1;
+                                                            foreach ($datax as $item) :
                                                             ?>
                                                                 <tr>
                                                                     <td>
-                                                                        <?php if ($row2['status'] == 'pending') : ?>
-                                                                            <span class="status-pill yellow"></span><span><?php echo getEduAppGTLang('pending'); ?></span>
-                                                                        <?php endif; ?>
-                                                                        <?php if ($row2['status'] == 'completed') : ?>
-                                                                            <span class="status-pill green"></span><span><?php echo getEduAppGTLang('paid'); ?></span>
-                                                                        <?php endif; ?>
+                                                                        <?= $no ?>
                                                                     </td>
-                                                                    <td class="cell-with-media">
-                                                                        <img alt="" src="<?php echo $this->crud->get_image_url('student', $row2['student_id']); ?>" class="height25"><span> <?php echo $this->crud->get_name('student', $row2['student_id']); ?></span>
+                                                                    <td>
+                                                                        <?= $item->name ?>
                                                                     </td>
-                                                                    <td><?php echo $row2['title']; ?></td>
-                                                                    <td><a class="badge badge-primary" href="javascript:void(0);"><?php echo $this->crud->getInfo('currency'); ?><?php echo $row2['amount']; ?></a></td>
+                                                                    <td>
+                                                                        <?= $item->class_name ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?= $item->section_name ?>
+                                                                    </td>
+                                                                    <td class="text-center">
+                                                                        <?php if (isActiveSubject($student_id,$item->subject_id)) { ?>
+                                                                            <div class="value badge badge-pill badge-success"><?= getEduAppGTLang('active'); ?></div>
+                                                                        <?php } else { ?>
+                                                                            <div class="value badge badge-pill badge-danger"><?= getEduAppGTLang('inactive'); ?></div>
+                                                                        <?php } ?>
+                                                                    </td>
+                                                                    <td>
+                                                                    <?php if (isActiveSubject($student_id,$item->subject_id)==false) { ?>
+                                                                            <a class="btn btn-sm btn-success" href="<?= base_url('admin/activate_subject_student/' . $student_id . '/' . $item->subject_id) ?>">Activate <i class="fa fa-check-circle"></i></a>
+                                                                        <?php } else { ?>
+                                                                            <a class="btn btn-sm btn-danger" href="<?= base_url('admin/deactive_subject_student/' . $student_id . '/' . $item->subject_id) ?>">Deactive <i class="fa fa-times-circle"></i></a>
+                                                                        <?php } ?>
+                                                                    </td>
+
                                                                 </tr>
-                                                            <?php endforeach; ?>
+                                                            <?php $no++;
+                                                            endforeach; ?>
                                                         </tbody>
                                                     </table>
                                                 </div>

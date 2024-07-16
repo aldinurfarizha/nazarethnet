@@ -2208,6 +2208,28 @@ class Admin extends EduAppGT
         $page_data['student_id'] =  $student_id;
         $this->load->view('backend/index', $page_data);
     }
+    function student_profile_active_course($student_id = '', $param1 = '')
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $page_data['page_name']  = 'student_profile_active_course';
+        $page_data['page_title'] =  getEduAppGTLang('student_portal');
+        $page_data['student_id'] =  $student_id;
+        $this->load->view('backend/index', $page_data);
+    }
+    function activate_subject_student($student_id,$subject_id)
+    {
+        activateStudentSubject($student_id,$subject_id);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
+        redirect(base_url() . 'admin/student_profile_active_course/' . $student_id);
+    }
+    function deactive_subject_student($student_id,$subject_id)
+    {
+        deactiveStudentSubject($student_id,$subject_id);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
+        redirect(base_url() . 'admin/student_profile_active_course/' . $student_id);
+    }
     //add class and section
     function add_student_class_section()
     {
