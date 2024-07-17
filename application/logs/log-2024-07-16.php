@@ -11,3 +11,113 @@ ERROR - 2024-07-16 09:04:58 --> 404 Page Not Found: Admin/student_profile_active
 ERROR - 2024-07-16 10:14:39 --> Query error: Duplicate entry '0' for key 'PRIMARY' - Invalid query: INSERT INTO `student_subject` (`student_id`, `subject_id`) VALUES ('3', '43')
 ERROR - 2024-07-16 22:19:07 --> 404 Page Not Found: Public/style
 ERROR - 2024-07-16 22:19:07 --> 404 Page Not Found: Public/style
+ERROR - 2024-07-16 23:28:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:28:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:28:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:28:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:40:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:40:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:40:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:40:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:44:22 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:44:22 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:44:22 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:44:22 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:44:51 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:44:51 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:44:51 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:44:51 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:45:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:45:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:45:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:45:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:45:31 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:45:41 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:45:49 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 138
+ERROR - 2024-07-16 23:45:49 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 138
+ERROR - 2024-07-16 23:45:49 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 138
+ERROR - 2024-07-16 23:50:54 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:02 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144
+ERROR - 2024-07-16 23:55:08 --> Severity: Warning --> A non-numeric value encountered C:\xampp\htdocs\nazarethnet\application\views\backend\admin\upload_marks.php 144

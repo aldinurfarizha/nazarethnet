@@ -148,6 +148,53 @@ foreach ($student_info as $row) :
 												</tbody>
 											</table>
 										</div>
+										<div class="col-md-12">
+											<h6 class="title">Active Course (Subject)</h6>
+											<div class="table-responsive">
+												<table class="table table-padded">
+													<thead>
+														<tr>
+															<th><?php echo getEduAppGTLang('no'); ?></th>
+															<th><?php echo getEduAppGTLang('subject'); ?></th>
+															<th><?php echo getEduAppGTLang('class'); ?></th>
+															<th><?php echo getEduAppGTLang('section'); ?></th>
+															<th class="text-center"><?php echo getEduAppGTLang('status'); ?></th>
+														</tr>
+													</thead>
+													<tbody>
+														<?php
+														$datax = getAvailabeSubject($row['student_id']);
+														$no = 1;
+														foreach ($datax as $item) :
+														?>
+															<tr>
+																<td>
+																	<?= $no ?>
+																</td>
+																<td>
+																	<?= $item->name ?>
+																</td>
+																<td>
+																	<?= $item->class_name ?>
+																</td>
+																<td>
+																	<?= $item->section_name ?>
+																</td>
+																<td class="text-center">
+																	<?php if (isActiveSubject($row['student_id'], $item->subject_id)) { ?>
+																		<div class="value badge badge-pill badge-success"><?= getEduAppGTLang('active'); ?></div>
+																	<?php } else { ?>
+																		<div class="value badge badge-pill badge-danger"><?= getEduAppGTLang('inactive'); ?></div>
+																	<?php } ?>
+																</td>
+
+															</tr>
+														<?php $no++;
+														endforeach; ?>
+													</tbody>
+												</table>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
