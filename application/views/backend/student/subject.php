@@ -49,31 +49,34 @@
                                                                         <?php
                                                                         $class_id = $cs->class_id;
                                                                         $section_id = $cs->section_id;
-                                                                        foreach (getSubjectByClassIdandSectionId($class_id, $section_id) as $data) : ?>
-                                                                            <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
-                                                                                <div class="ui-block" data-mh="friend-groups-item">
-                                                                                    <div class="friend-item friend-groups">
-                                                                                        <div class="friend-item-content">
-                                                                                            <div class="more">
-                                                                                                <i class="icon-feather-more-horizontal"></i>
-                                                                                                <ul class="more-dropdown">
-                                                                                                    <li><a href="<?php echo base_url(); ?>student/subject_dashboard/<?php echo base64_encode($class_id . "-" . $section_id . "-" . $data->subject_id); ?>/"><?php echo getEduAppGTLang('dashboard'); ?></a></li>
-                                                                                                </ul>
-                                                                                            </div>
-                                                                                            <div class="friend-avatar">
-                                                                                                <div class="author-thumb">
-                                                                                                    <img src="<?php echo base_url(); ?>public/uploads/subject_icon/<?php echo $data->icon; ?>" width="120px" class="sb" style="background-color:#<?php echo $data->color; ?>;">
+                                                                        foreach (getSubjectByClassIdandSectionId($class_id, $section_id) as $data) :
+                                                                            if (isActiveSubject($student_id, $data->subject_id)) {
+                                                                        ?>
+                                                                                <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                                                                                    <div class="ui-block" data-mh="friend-groups-item">
+                                                                                        <div class="friend-item friend-groups">
+                                                                                            <div class="friend-item-content">
+                                                                                                <div class="more">
+                                                                                                    <i class="icon-feather-more-horizontal"></i>
+                                                                                                    <ul class="more-dropdown">
+                                                                                                        <li><a href="<?php echo base_url(); ?>student/subject_dashboard/<?php echo base64_encode($class_id . "-" . $section_id . "-" . $data->subject_id); ?>/"><?php echo getEduAppGTLang('dashboard'); ?></a></li>
+                                                                                                    </ul>
                                                                                                 </div>
-                                                                                                <div class="author-content">
-                                                                                                    <a href="<?php echo base_url(); ?>student/subject_dashboard/<?php echo base64_encode($class_id . "-" . $section_id . "-" . $data->subject_id); ?>/" class="h5 author-name"><?php echo $data->name; ?></a><br><br>
-                                                                                                    <img src="<?php echo $this->crud->get_image_url('teacher', $data->teacher_id); ?>" class="img-teacher"><span> <?php echo $this->crud->get_name('teacher', $data->teacher_id); ?></span>
+                                                                                                <div class="friend-avatar">
+                                                                                                    <div class="author-thumb">
+                                                                                                        <img src="<?php echo base_url(); ?>public/uploads/subject_icon/<?php echo $data->icon; ?>" width="120px" class="sb" style="background-color:#<?php echo $data->color; ?>;">
+                                                                                                    </div>
+                                                                                                    <div class="author-content">
+                                                                                                        <a href="<?php echo base_url(); ?>student/subject_dashboard/<?php echo base64_encode($class_id . "-" . $section_id . "-" . $data->subject_id); ?>/" class="h5 author-name"><?php echo $data->name; ?></a><br><br>
+                                                                                                        <img src="<?php echo $this->crud->get_image_url('teacher', $data->teacher_id); ?>" class="img-teacher"><span> <?php echo $this->crud->get_name('teacher', $data->teacher_id); ?></span>
+                                                                                                    </div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </div>
-                                                                        <?php endforeach; ?>
+                                                                        <?php }
+                                                                        endforeach; ?>
                                                                     <?php endforeach; ?>
                                                                 </div>
                                                             </div>

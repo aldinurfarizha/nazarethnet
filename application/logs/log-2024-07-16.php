@@ -9,3 +9,5 @@ ERROR - 2024-07-16 08:55:23 --> Query error: Unknown column 'is_active' in 'fiel
 WHERE `enroll_id` = '3'
 ERROR - 2024-07-16 09:04:58 --> 404 Page Not Found: Admin/student_profile_active_course
 ERROR - 2024-07-16 10:14:39 --> Query error: Duplicate entry '0' for key 'PRIMARY' - Invalid query: INSERT INTO `student_subject` (`student_id`, `subject_id`) VALUES ('3', '43')
+ERROR - 2024-07-16 22:19:07 --> 404 Page Not Found: Public/style
+ERROR - 2024-07-16 22:19:07 --> 404 Page Not Found: Public/style

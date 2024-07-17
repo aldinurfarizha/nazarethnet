@@ -778,6 +778,7 @@ class Student extends EduAppGT
         $this->isStudent();
         $student_profile         = $this->db->get_where('student', array('student_id' => $this->session->userdata('student_id')))->row();
         $page_data['class_Section']   = getStudentClassAndSectionById($student_profile->student_id);
+        $page_data['student_id'] = $student_profile->student_id;
         $page_data['page_name']  = 'subject';
         $page_data['page_title'] = getEduAppGTLang('subjects');
         $this->load->view('backend/index', $page_data);
