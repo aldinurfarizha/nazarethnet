@@ -481,6 +481,7 @@ class User extends School
             foreach ($data as $entry) {
                 $this->db->insert('enroll', $entry);
             }
+            generateSubjectNewStudent($student_id);
         }
         move_uploaded_file($_FILES['userfile']['tmp_name'], 'public/uploads/student_image/' . $md5 . str_replace(' ', '', $_FILES['userfile']['name']));
         return $student_id;

@@ -105,26 +105,28 @@ function getSubjectDetailBySubjectId($subjectId)
         return false;
     }
 }
-function getAvailabeSubject($student_id){
-    $classSection=getStudentClassAndSectionById($student_id);
-    $temp=array();
-    foreach($classSection as $cs){
-        $subject=getSubjectByClassIdandSectionId($cs->class_id,$cs->section_id);
-        foreach($subject as $data){
+function getAvailabeSubject($student_id)
+{
+    $classSection = getStudentClassAndSectionById($student_id);
+    $temp = array();
+    foreach ($classSection as $cs) {
+        $subject = getSubjectByClassIdandSectionId($cs->class_id, $cs->section_id);
+        foreach ($subject as $data) {
             $temp[] = (object) $data;
         }
     }
     return $temp;
 }
-function isStudentEnrolled($student_id,$class_id,$section_id){
+function isStudentEnrolled($student_id, $class_id, $section_id)
+{
     $ci = &get_instance();
     $data = $ci->db->select('*')
         ->from('enroll')
         ->where([
             'class_id' => $class_id,
             'section_id' => $section_id,
-            'student_id'=>$student_id
-            ])
+            'student_id' => $student_id
+        ])
         ->get();
     if ($data->num_rows() > 0) {
         return true;
@@ -132,15 +134,16 @@ function isStudentEnrolled($student_id,$class_id,$section_id){
         return false;
     }
 }
-function isActiveSubject($student_id,$subject_id){
+function isActiveSubject($student_id, $subject_id)
+{
     $ci = &get_instance();
-    $subjectData=getSubjectDetailBySubjectId($subject_id);
-    if(isStudentEnrolled($student_id,$subjectData->class_id,$subjectData->section_id)==false){
+    $subjectData = getSubjectDetailBySubjectId($subject_id);
+    if (isStudentEnrolled($student_id, $subjectData->class_id, $subjectData->section_id) == false) {
         return false;
     }
     $data = $ci->db->select('*')
         ->from('student_subject')
-        ->where(['student_id' => $student_id, 'subject_id'=>$subject_id])
+        ->where(['student_id' => $student_id, 'subject_id' => $subject_id])
         ->get();
     if ($data->num_rows() > 0) {
         return true;
@@ -148,21 +151,105 @@ function isActiveSubject($student_id,$subject_id){
         return false;
     }
 }
-function activateStudentSubject($student_id,$subject_id){
+function activateStudentSubject($student_id, $subject_id)
+{
+    if (isActiveSubject($student_id, $subject_id)) {
+        return false;
+    }
     $ci = &get_instance();
-    $data=array(
-        'student_id'=>$student_id,
-        'subject_id'=>$subject_id
+    $data = array(
+        'student_id' => $student_id,
+        'subject_id' => $subject_id
     );
     $insert = $ci->db->insert('student_subject', $data);
-    return $insert;
+
+    return $insert ? true : false;
 }
-function deactiveStudentSubject($student_id,$subject_id){
+function deactiveStudentSubject($student_id, $subject_id)
+{
     $ci = &get_instance();
-    $where=array(
-        'student_id'=>$student_id,
-        'subject_id'=>$subject_id
+    $where = array(
+        'student_id' => $student_id,
+        'subject_id' => $subject_id
     );
     $delete = $ci->db->delete('student_subject', $where);
     return $delete;
+}
+function generateSubjectAllStudent()
+{
+    $success = 0;
+    $failed = 0;
+    $totalSubjectAdded = 0;
+    $runningYear = getRunningYear();
+    $ci = &get_instance();
+
+    $enrollData = $ci->db->select('*')
+        ->from('enroll')
+        ->where(['year' => $runningYear, 'is_active' => 1])
+        ->get();
+
+    if ($enrollData->num_rows() > 0) {
+        foreach ($enrollData->result() as $data) {
+            $student_id = $data->student_id;
+            $subjectData = getSubjectByClassIdandSectionId($data->class_id, $data->section_id);
+
+            if (!empty($subjectData)) {
+                foreach ($subjectData as $sbjd) {
+                    if (activateStudentSubject($student_id, $sbjd->subject_id)) {
+                        $success++;
+                    } else {
+                        $failed++;
+                    }
+                    $totalSubjectAdded++;
+                }
+            }
+        }
+    }
+
+    $result = array(
+        'SUCCESS' => $success,
+        'Failed' => $failed,
+        'total_subject_added' => $totalSubjectAdded
+    );
+
+    return $result;
+}
+function generateSubjectNewStudent($student_id)
+{
+    $success = 0;
+    $failed = 0;
+    $totalSubjectAdded = 0;
+    $runningYear = getRunningYear();
+    $ci = &get_instance();
+
+    $enrollData = $ci->db->select('*')
+        ->from('enroll')
+        ->where(['year' => $runningYear, 'is_active' => 1, 'student_id' => $student_id])
+        ->get();
+
+    if ($enrollData->num_rows() > 0) {
+        foreach ($enrollData->result() as $data) {
+            $student_id = $data->student_id;
+            $subjectData = getSubjectByClassIdandSectionId($data->class_id, $data->section_id);
+
+            if (!empty($subjectData)) {
+                foreach ($subjectData as $sbjd) {
+                    if (activateStudentSubject($student_id, $sbjd->subject_id)) {
+                        $success++;
+                    } else {
+                        $failed++;
+                    }
+                    $totalSubjectAdded++;
+                }
+            }
+        }
+    }
+
+    $result = array(
+        'SUCCESS' => $success,
+        'Failed' => $failed,
+        'total_subject_added' => $totalSubjectAdded
+    );
+
+    return $result;
 }

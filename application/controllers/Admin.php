@@ -2218,15 +2218,15 @@ class Admin extends EduAppGT
         $page_data['student_id'] =  $student_id;
         $this->load->view('backend/index', $page_data);
     }
-    function activate_subject_student($student_id,$subject_id)
+    function activate_subject_student($student_id, $subject_id)
     {
-        activateStudentSubject($student_id,$subject_id);
+        activateStudentSubject($student_id, $subject_id);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
         redirect(base_url() . 'admin/student_profile_active_course/' . $student_id);
     }
-    function deactive_subject_student($student_id,$subject_id)
+    function deactive_subject_student($student_id, $subject_id)
     {
-        deactiveStudentSubject($student_id,$subject_id);
+        deactiveStudentSubject($student_id, $subject_id);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
         redirect(base_url() . 'admin/student_profile_active_course/' . $student_id);
     }
@@ -4122,6 +4122,11 @@ class Admin extends EduAppGT
         $page_data['class_id']   =   $class_id;
         $page_data['exam_id']    =   $exam_id;
         $this->load->view('backend/admin/marks_print_view', $page_data);
+    }
+    function add_all_student_from_enroll_to_subject_by_class_and_section()
+    {
+        $data = generateSubjectAllStudent();
+        print_r($data);
     }
 
     //End of Admin.php content.
