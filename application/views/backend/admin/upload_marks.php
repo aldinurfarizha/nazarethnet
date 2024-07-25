@@ -141,7 +141,7 @@ foreach ($sub as $subs) :
                                                                         $nota_cap = $notas->result_array();
                                                                         foreach ($nota_cap as $nota) :
                                                                         ?>
-                                                                            <?php $total += $nota['nota']; ?>
+                                                                            <?php $total += (int)$nota['nota']; ?>
                                                                             <input type="number" value="<?php echo $nota['nota'] ?>" onkeyup="calcAverage(this)" min="0" name="mark_<?php echo $rows['student_id'] . '_' . $cap['mark_activity_id']; ?>" class="markInput" placeholder="0">
                                                                         <?php endforeach; ?>
                                                                     </td>

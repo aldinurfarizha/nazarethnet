@@ -42,7 +42,7 @@
                                                     <?php if($this->db->get_where('settings', array('type' => 'account_id'))->row()->description != ''):?>
                                                         <div class="text-center row">
                                                             <div class="col-sm-12">
-                                                                <img style="border-radius:50%;" src="<?php echo $this->drive_model->getImage($this->db->get_where('settings', array('type' => 'account_image'))->row()->description);?>" class="apiImg">
+                                                                <img style="border-radius:50%;" src="" class="apiImg">
                                                                 <p><br>
                                                                     <b><?php echo getEduAppGTLang('id');?>:</b> <?php echo $this->db->get_where('settings', array('type' => 'account_id'))->row()->description;?>
                                                                     <br>

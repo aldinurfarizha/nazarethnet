@@ -4128,6 +4128,9 @@ class Admin extends EduAppGT
         $data = generateSubjectAllStudent();
         print_r($data);
     }
-
+    function testing_fungsi($student_id, $subject_id){
+        $data=addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id);
+        print_r($data);
+    }
     //End of Admin.php content.
 }

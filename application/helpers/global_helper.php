@@ -253,3 +253,118 @@ function generateSubjectNewStudent($student_id)
 
     return $result;
 }
+function getAllExamBySubject($subjectId)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('exam')
+        ->where([
+            'subject_id'=>$subjectId
+        ])
+        ->get();
+    return $data->result();
+}
+function getAllMarkActivityByExam($examId)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('mark_activity')
+        ->where([
+            'exam_id'=>$examId,
+        ])
+        ->get();
+    return $data->result();
+}
+function isStudentExistMark($student_id,$examId)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('mark')
+        ->where([
+            'student_id' => $student_id,
+            'exam_id' => $examId,
+        ])
+        ->get();
+    if ($data->num_rows() > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function addStudentToMark($student_id, $subject_id, $class_id, $section_id,$exam_id)
+{
+    if(isStudentExistMark($student_id,$exam_id)){
+        return false;
+    }
+    $runningYear = getRunningYear();
+    $data=[
+        'student_id'=>$student_id,
+        'subject_id'=>$subject_id,
+        'class_id'=>$class_id,
+        'section_id'=>$section_id,
+        'exam_id'=>$exam_id,
+        'mark_obtained'=>0,
+        'comment'=>'',
+        'year'=>$runningYear,
+        'final'=>0,
+    ];
+    $ci = &get_instance();
+    $insert = $ci->db->insert('mark', $data);
+    return $insert ? true : false;
+}
+function isStudentExistNotaCapacidad($student_id,$markActivtyId)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('nota_capacidad')
+        ->where([
+            'student_id' => $student_id,
+            'mark_activity_id' => $markActivtyId,
+        ])
+        ->get();
+    if ($data->num_rows() > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function addStudentToNotacapacidad($student_id, $markActivtyId)
+{
+    if(isStudentExistNotaCapacidad($student_id,$markActivtyId)){
+        return false;
+    }
+    $data=[
+        'student_id'=>$student_id,
+        'mark_activity_id'=>$markActivtyId,
+        'nota'=>0
+    ];
+    $ci = &get_instance();
+    $insert = $ci->db->insert('nota_capacidad', $data);
+    return $insert ? true : false;
+}
+function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
+{
+    $markadded=0;
+    $notacapacidadadded=0;
+    foreach(getAllExamBySubject($subject_id) as $examSubject)
+    {
+        foreach(getAllMarkActivityByExam($examSubject->exam_id) as $markActivity)
+        {
+            $tomark=addStudentToMark($student_id,$markActivity->subject_id, $markActivity->class_id, $markActivity->section_id, $markActivity->exam_id);
+            if($tomark){
+                $markadded++;
+            }
+            $tocapcidad=addStudentToNotacapacidad($student_id, $markActivity->mark_activity_id);
+            if($tocapcidad){
+                $notacapacidadadded++;
+            }
+        }
+    }
+    $data=[
+        'mark'=>$markadded,
+        'notacapacided'=>$notacapacidadadded
+    ];
+    return $data;
+}
+
+

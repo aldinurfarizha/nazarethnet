@@ -41,7 +41,7 @@ class Authorizeapp extends EduAppGT
                 $optParams = array(
                     'fields' => 'user'
                 );
-                if(array_key_exists('error', $accessToken)){
+                if (is_array($accessToken) && array_key_exists('error', $accessToken)) {
                     echo implode(', ', $accessToken);
                     die;
                 }
