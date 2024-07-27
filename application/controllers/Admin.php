@@ -27,6 +27,13 @@ class Admin extends EduAppGT
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
         redirect(base_url() . 'admin/drive/', 'refresh');
     }
+    function generategdrive()
+    {
+        $this->drive_model->generateNewFolder();
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
+        redirect(base_url() . 'admin/drive/', 'refresh');
+    }
+    
 
     function upload_video($video_name)
     {

@@ -474,6 +474,26 @@ class Drive_model extends School
             }
         }
     }
+    function generateNewFolder()
+    {
+        
+            $api = $this->getDrive();
+            $file = $this->getDriveFile();
+            $file->setName($this->db->get_where('settings', array('type' => 'system_name'))->row()->description . ' - ' . $this->db->get_where('settings', array('type' => 'system_title'))->row()->description);
+            $file->setParents('root');
+            $file->setMimeType('application/vnd.google-apps.folder');
+            $reponse = $api->files->create($file);
+            if ($reponse->id != '') {
+                $data['description'] = $this->getFolder();
+                $this->db->where('type', 'school_folder');
+                $this->db->update('settings', $data);
+
+                $data2['description'] = $reponse->id;
+                $this->db->where('type', 'school_folderId');
+                $this->db->update('settings', $data2);
+            }
+        
+    }
 
     function getFolder()
     {

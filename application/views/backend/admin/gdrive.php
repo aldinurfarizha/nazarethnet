@@ -140,6 +140,7 @@
                                                         <div class="form-group">
                                                             <label class="control-label">GDrive Folder Status:</label><br>
                                                             <span class="badge badge-success">Gdrive Folder Available <i class="fa fa-check-circle"></i></span><br>
+                                                            <a href="#" onclick="showAjaxModal('<?= base_url('modal/popup/modal_having_problem/') ?>');">Having Problem?</a>
                                                         </div>
                                                     </div>
                                                 <?php endif; ?>
@@ -193,7 +194,6 @@
         </div>
     </div>
 </div>
-
 <script>
     'use strict';
 
