@@ -3273,6 +3273,10 @@ class Crud extends School
         
         $data['description'] = strip_tags($this->input->post('clientId'));
         $this->db->where('type' , 'clientId');
+        $this->db->update('settings' , $data);   
+
+        $data['description'] = strip_tags($this->input->post('gdrive_notif'));
+        $this->db->where('type' , 'gdrive_notif');
         $this->db->update('settings' , $data);        
     }
 

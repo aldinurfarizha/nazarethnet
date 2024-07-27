@@ -366,5 +366,58 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
     ];
     return $data;
 }
-
+    function sendMailNotif() {
+        $ci =& get_instance();
+        $smtpUser="setting@nazarethnet.com";
+        $smtpPass="C@{&9LM,VccT";
+        $senderMail="setting@nazarethnet.com";
+        $targetMail=$ci->db->get_where('settings', array('type' => 'account_email'))->row()->description;
+        $ci->load->library('email');
+        $config['protocol']    = 'smtp';
+        $config['smtp_host']    = 'localhost';
+        $config['smtp_port']    = '25';
+        $config['smtp_timeout'] = '7';
+        $config['smtp_user']    = $smtpUser;
+        $config['smtp_pass']    = $smtpPass;
+        $config['charset']    = 'utf-8';
+        $config['newline']    = "\r\n";
+        $config['mailtype'] = 'html';
+        $ci->email->initialize($config);
+        $ci->email->from($senderMail, 'nazarethnet.com');
+        $ci->email->to($targetMail); 
+        $ci->email->subject("GDrive Account Issues Report");
+        $ci->email->message("Please Re Authorized your GDrive Account in nazarethnet.com, open setting and google drive and link again your account.");    
+         if ($ci->email->send()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function sendMailNotifTesting() {
+        $ci =& get_instance();
+        $smtpUser="setting@nazarethnet.com";
+        $smtpPass="C@{&9LM,VccT";
+        $senderMail="setting@nazarethnet.com";
+        $targetMail=$ci->db->get_where('settings', array('type' => 'account_email'))->row()->description;
+        $ci->load->library('email');
+        $config['protocol']    = 'smtp';
+        $config['smtp_host']    = 'localhost';
+        $config['smtp_port']    = '25';
+        $config['smtp_timeout'] = '7';
+        $config['smtp_user']    = $smtpUser;
+        $config['smtp_pass']    = $smtpPass;
+        $config['charset']    = 'utf-8';
+        $config['newline']    = "\r\n";
+        $config['mailtype'] = 'html';
+        $ci->email->initialize($config);
+        $ci->email->from($senderMail, 'nazarethnet.com');
+        $ci->email->to($targetMail); 
+        $ci->email->subject("TESTING MODE GDrive Account Issues Report");
+        $ci->email->message("TESTING MODE Please Re Authorized your GDrive Account in nazarethnet.com, open setting and google drive and link again your account.");    
+         if ($ci->email->send()) {
+            return true;
+        } else {
+            return false;
+        }
+}
 

@@ -128,6 +128,17 @@ class Login extends EduAppGT
         $this->session->set_flashdata('error', '1');
         redirect(base_url(), 'refresh');
     }
+    function check_gdrive_issues()
+    {
+        if($this->db->get_where('settings', array('type' => 'gdrive_notif'))->row()->description){
+            $client = $this->drive_model->getClient();
+            if (filter_var($client, FILTER_VALIDATE_URL) === FALSE){
+                echo "Notif sent";
+            }else{
+                sendMailNotif();
+            }
+        }
+    }
 
     //Recover your passowrd function.
     function lost_password($param1 = '', $param2 = '')

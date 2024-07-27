@@ -4132,5 +4132,14 @@ class Admin extends EduAppGT
         $data=addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id);
         print_r($data);
     }
+    function testing_mail_notif(){
+        if(sendMailNotifTesting()){
+            $this->session->set_flashdata('flash_message', "E-mail notif testing sent.");
+            redirect(base_url() . 'admin/drive/', 'refresh');
+        }else{
+            $this->session->set_flashdata('flash_message_failed', "Failed! send E-mail Notif");
+            redirect(base_url() . 'admin/drive/', 'refresh');
+        }
+    }
     //End of Admin.php content.
 }

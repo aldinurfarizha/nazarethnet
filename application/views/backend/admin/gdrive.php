@@ -78,6 +78,26 @@
                                                     <span class="material-input"></span>
                                                 </div>
                                             </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group label-floating is-select">
+                                                        <label class="control-label">Notif Me when have google drive issues</label>
+                                                        <div class="select">
+                                                            <select name="gdrive_notif" required="">
+                                                            <?php 
+                                                            if($this->db->get_where('settings', array('type' => 'gdrive_notif'))->row()->description){?>
+                                                                <option value="1" selected="true">Yes</option>
+                                                                <option value="0">No</option>
+                                                            <?php }else{?>
+                                                                <option value="1">Yes</option>
+                                                                <option value="0"selected="true">No</option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <a href="<?=base_url('admin/testing_mail_notif')?>" class="btn btn-primary">Test Send Notif (<?php echo $this->db->get_where('settings', array('type' => 'account_email'))->row()->description; ?>) <i class="fa fa-paper-plane"></i></a>
+                                            </div>
                                             <?php if ($this->db->get_where('settings', array('type' => 'clientId'))->row()->description != '') : ?>
                                                 <?php
                                                 $client = $this->drive_model->getClient();
