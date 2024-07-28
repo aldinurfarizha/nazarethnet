@@ -59,3 +59,6 @@ ERROR - 2024-07-27 11:27:56 --> Severity: Warning --> Attempt to read property "
 ERROR - 2024-07-27 11:28:12 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
 ERROR - 2024-07-27 11:28:12 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
 ERROR - 2024-07-27 11:28:12 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-07-27 11:42:50 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-07-27 11:42:50 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-07-27 11:42:50 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
