@@ -2227,7 +2227,9 @@ class Admin extends EduAppGT
     }
     function activate_subject_student($student_id, $subject_id)
     {
-        activateStudentSubject($student_id, $subject_id);
+        if(activateStudentSubject($student_id, $subject_id)){
+            addStudentToMarkAndNotaCapacidadFromSubject($student_id, $subject_id);
+        }
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
         redirect(base_url() . 'admin/student_profile_active_course/' . $student_id);
     }

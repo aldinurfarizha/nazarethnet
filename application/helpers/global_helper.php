@@ -420,4 +420,41 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
             return false;
         }
 }
+    function getNotaCapcidadValue($markActivityId, $student_id) {
+        $ci = &get_instance();
+        $data = $ci->db->select('nota')
+            ->from('nota_capacidad')
+            ->where('mark_activity_id', $markActivityId)
+            ->where('student_id', $student_id)
+            ->get();
+        
+        $result = $data->row();
+
+        return $result ? (int) ($result->nota !== null ? $result->nota : 0) : 0;
+    }
+    function recalculateMarkObtainedAndFinal($student_id, $subject_id,$exam_id,$class_id,$section_id,$year)
+    {
+        $markObtained=0;
+        $final=0;
+        $row=0;
+        foreach(getAllMarkActivityByExam($exam_id) as $markActivity){
+            $nota=getNotaCapcidadValue($markActivity->mark_activity_id,$student_id);
+            $markObtained+=$nota;
+            $row++;
+        }
+        $final=$markObtained/$row;
+        $final=number_format($final,2,".",",");
+        $data=array(
+            'mark_obtained'=>$markObtained,
+            'final'=>$final
+        );
+        $ci = &get_instance();
+        $ci->db->where('student_id', $student_id);
+        $ci->db->where('subject_id', $subject_id);
+        $ci->db->where('exam_id', $exam_id);
+        $ci->db->where('class_id', $class_id);
+        $ci->db->where('section_id', $section_id);
+        $ci->db->where('year', $year);
+        $ci->db->update('mark', $data);
+    }
 

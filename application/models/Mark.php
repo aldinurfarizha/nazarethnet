@@ -196,6 +196,7 @@ class Mark extends School
             $this->db->where('section_id', $ex[1]);
             $this->db->where('year', $year);
             $this->db->update('mark', $data);
+            recalculateMarkObtainedAndFinal($row['student_id'], $ex[2], $exam_id,$ex[0], $ex[1], $year);
         }
     }
   
