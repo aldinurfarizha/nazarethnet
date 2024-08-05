@@ -457,4 +457,27 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
         $ci->db->where('year', $year);
         $ci->db->update('mark', $data);
     }
+    function refreshMarkColoum()
+    {
+    $ci = &get_instance();
+    $totalMark=0;
+    $totalNotaCapacidad=0;
+    $allSubject=$ci->db->query("SELECT * FROM subject")->result();
+    foreach($allSubject as $subject)
+    {
+        $allStudentBySubject=$ci->db->query("SELECT * from student_subject where subject_id=$subject->subject_id")->result();
+        foreach($allStudentBySubject as $student)
+        {
+            $data=addStudentToMarkAndNotaCapacidadFromSubject($student->student_id, $subject->subject_id);
+            $totalMark += $data['mark'];
+            $totalNotaCapacidad += $data['notacapacided'];
+        }
+
+    }
+    $result=array(
+        'total_mark'=>$totalMark,
+        'total_nota_capacidad'=>$totalNotaCapacidad
+    );
+    return $result;
+    }
 

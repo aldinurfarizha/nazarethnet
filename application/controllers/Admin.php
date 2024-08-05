@@ -4150,5 +4150,9 @@ class Admin extends EduAppGT
             redirect(base_url() . 'admin/drive/', 'refresh');
         }
     }
+    function testing_reset_mark_coloumn(){
+        $data= refreshMarkColoum();
+        print_r($data);
+    }
     //End of Admin.php content.
 }
