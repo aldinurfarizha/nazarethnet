@@ -14,6 +14,7 @@
 				                $query = base64_decode($search_key);
 				                $this->db->like('first_name' , str_replace("%20", " ", $query));
 				                $this->db->or_like('last_name' , str_replace("%20", " ", $query));
+								$this->db->or_like('username', str_replace("%20", " ", $query));
 					            $student_query = $this->db->get('student');
 					            if($student_query->num_rows() > 0):
 					            $students = $student_query->result_array();
@@ -25,7 +26,8 @@
 							            <img src="<?php echo $this->crud->get_image_url('student', $row['student_id']);?>" width="35px">
 						            </div>
 						            <div class="notification-event">
-							            <a href="<?php echo base_url();?>admin/student_portal/<?php echo $row['student_id'];?>/" class="h6 notification-friend"><?php echo $this->crud->get_name('student', $row['student_id']) ;?></a>.
+							            <a href="<?php echo base_url();?>admin/student_portal/<?php echo $row['student_id'];?>/" class="h6 notification-friend"><?php echo $this->crud->get_name('student', $row['student_id']) ;?></a> <br>
+										<small><?=$row['username']?></small>
 							            <span class="notification-date"><span class="badge badge-success"><?php $class_id = $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->class_id; echo $this->db->get_where('class', array('class_id' => $class_id))->row()->name;?></span></span>
 						            </div>
 					            </li>
