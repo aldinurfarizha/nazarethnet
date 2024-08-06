@@ -235,6 +235,7 @@ function generateSubjectNewStudent($student_id)
             if (!empty($subjectData)) {
                 foreach ($subjectData as $sbjd) {
                     if (activateStudentSubject($student_id, $sbjd->subject_id)) {
+                        addStudentToMarkAndNotaCapacidadFromSubject($student_id, $sbjd->subject_id);
                         $success++;
                     } else {
                         $failed++;
