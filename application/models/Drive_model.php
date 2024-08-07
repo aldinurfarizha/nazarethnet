@@ -625,6 +625,74 @@ class Drive_model extends School
         $authUrl = $client->createAuthUrl();
         return $authUrl;
     }
+    function refreshTokenManual()
+    {
+         $state = base_url() . 'admin/drive/';
+        try {
+            $client = new \Google_Client();
+            $client->getLibraryVersion();
+        } catch (\Exception $ex) {
+            return $ex;
+        }
+
+        // Set application name and credentials
+        $client->setApplicationName($this->db->get_where('settings', array('type' => 'system_name'))->row()->description);
+        $client->setClientId($this->db->get_where('settings', array('type' => 'clientId'))->row()->description);
+        $client->setClientSecret($this->db->get_where('settings', array('type' => 'ClientSecret'))->row()->description);
+        $client->setRedirectUri(base_url() . 'authorizeapp');
+        $client->setApprovalPrompt('force');
+        $client->setAccessType('offline'); // Ensure offline access to get refresh token
+        $client->setScopes([
+            'https://www.googleapis.com/auth/drive',
+            'https://www.googleapis.com/auth/userinfo.email',
+            'https://www.googleapis.com/auth/userinfo.profile',
+        ]);
+        $client->setState(strtr(base64_encode($state), '+/=', '-_~'));
+
+        // Get access token from the database
+        $accessToken = $this->db->get_where('settings', array('type' => 'access_token'))->row()->description;
+
+        if ($accessToken != '') {
+            try {
+                $client->setAccessToken($accessToken);
+            } catch (\Exception $ex) {
+                $authUrl = $client->createAuthUrl();
+                return $authUrl;
+            }
+        }
+        $refreshToken = $client->getRefreshToken();
+        $client->refreshToken($refreshToken);
+        //$newAccessToken = $client->getAccessToken();
+        //$client->setAccessToken($newAccessToken);
+        //$this->refreshToken($newAccessToken);
+        return $client;
+        die();
+        // Check if the access token is expired
+        if (false === $client->isAccessTokenExpired() && $accessToken != '') {
+            return $client;
+        } else if ($accessToken != '') {
+            // Refresh Access Token using the refresh token
+            $refreshToken = $client->getRefreshToken();
+            if ($refreshToken) {
+                try {
+                    $client->refreshToken($refreshToken);
+                    $accessToken = $client->getAccessToken();
+                    $client->setAccessToken($accessToken);
+                    // Update the access token in the database
+                    $this->refreshToken($accessToken);
+                    return $client;
+                } catch (\Exception $ex) {
+                    // If refresh token fails, generate auth URL
+                    $authUrl = $client->createAuthUrl();
+                    return $authUrl;
+                }
+            }
+        }
+
+        // If no access token or refresh token is available, create auth URL
+        $authUrl = $client->createAuthUrl();
+        return $authUrl;
+    }
 
     function getCode()
     {
