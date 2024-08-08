@@ -662,9 +662,9 @@ class Drive_model extends School
         }
         $refreshToken = $client->getRefreshToken();
         $client->refreshToken($refreshToken);
-        //$newAccessToken = $client->getAccessToken();
-        //$client->setAccessToken($newAccessToken);
-        //$this->refreshToken($newAccessToken);
+        $newAccessToken = $client->getAccessToken();
+        $client->setAccessToken($newAccessToken);
+        $this->refreshToken($newAccessToken);
         return $client;
         die();
         // Check if the access token is expired

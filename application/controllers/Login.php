@@ -133,9 +133,10 @@ class Login extends EduAppGT
         if($this->db->get_where('settings', array('type' => 'gdrive_notif'))->row()->description){
             $client = $this->drive_model->getClient();
             if (filter_var($client, FILTER_VALIDATE_URL) === FALSE){
-                echo "Notif sent";
+                echo "Still Working notif not send";
             }else{
                 sendMailNotif();
+                echo "Notif Send";
             }
         }
     }

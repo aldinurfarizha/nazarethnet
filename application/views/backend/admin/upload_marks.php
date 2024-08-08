@@ -67,6 +67,7 @@ foreach ($sub as $subs) :
                                         </div>
                                         <div class="pull-right">
                                             <a href="javascript:void(0);" data-toggle="modal" data-target="#crearcapacidad"><button type="button" class="btn btn-rounded btn-warning">Crear actividad</button></a>
+                                                <button class="btn btn-success btn-rounded" id="btn-trigger-update" type="button"><?php echo getEduAppGTLang('update'); ?></button>
                                         </div>
                                     </div>
                                     <div class="edu-posts cta-with-media">
@@ -142,7 +143,8 @@ foreach ($sub as $subs) :
                                                                         foreach ($nota_cap as $nota) :
                                                                         ?>
                                                                             <?php $total += (int)$nota['nota']; ?>
-                                                                            <input type="number" value="<?php echo $nota['nota'] ?>" onkeyup="calcAverage(this)" min="0" name="mark_<?php echo $rows['student_id'] . '_' . $cap['mark_activity_id']; ?>" class="markInput" placeholder="0">
+                                                                            <input type="number" onwheel="this.blur()" value="<?php 
+                                                                            if($nota['nota']=="0"){ echo "";}else{echo $nota['nota'];} ?>" onkeyup="calcAverage(this)" min="0" name="mark_<?php echo $rows['student_id'] . '_' . $cap['mark_activity_id']; ?>" class="markInput" placeholder="0">
                                                                         <?php endforeach; ?>
                                                                     </td>
                                                                 <?php endforeach; ?>
@@ -164,7 +166,7 @@ foreach ($sub as $subs) :
                                                 </tbody>
                                             </table>
                                             <div class="form-buttons-w text-center">
-                                                <button class="btn btn-success btn-rounded" type="submit"><?php echo getEduAppGTLang('update'); ?></button>
+                                                <button class="btn btn-success btn-rounded" id="btn-update-mark" type="submit"><?php echo getEduAppGTLang('update'); ?></button>
                                             </div>
                                             <?php echo form_close(); ?>
                                         </div>
@@ -220,5 +222,10 @@ foreach ($sub as $subs) :
 
             }
         });
+    });
+</script>
+<script>
+    document.getElementById('btn-trigger-update').addEventListener('click', function() {
+        document.getElementById('btn-update-mark').click();
     });
 </script>
