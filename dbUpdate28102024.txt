@@ -1,0 +1,12 @@
+INSERT INTO language (phrase, english, spanish, portuguese, hindi, french, serbian, arabic) VALUES
+('mon', 'Mon', 'Lun', 'Seg', 'सो', 'Lun', 'Pon', 'الإثنين'),
+('tue', 'Tue', 'Mar', 'Ter', 'मं', 'Mar', 'Uto', 'الثلاثاء'),
+('wed', 'Wed', 'Mié', 'Qua', 'बु', 'Mer', 'Sre', 'الأربعاء'),
+('thu', 'Thu', 'Jue', 'Qui', 'गु', 'Jeu', 'Čet', 'الخميس'),
+('fri', 'Fri', 'Vie', 'Sex', 'शु', 'Ven', 'Pet', 'الجمعة'),
+('sat', 'Sat', 'Sáb', 'Sáb', 'श', 'Sam', 'Sub', 'السبت'),
+('sun', 'Sun', 'Dom', 'Dom', 'र', 'Dim', 'Ned', 'الأحد');
+
+ALTER TABLE attendance
+ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+update attendance set updated_at='0000-00-00 00:00:00';
