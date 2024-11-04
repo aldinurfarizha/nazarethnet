@@ -1693,6 +1693,16 @@ class Teacher extends EduAppGT
         $page_data['page_title']   =  getEduAppGTLang('attendance');
         $this->load->view('backend/index', $page_data);
     }
+    function attendance_report($data = '' )
+    {
+        $this->isTeacher();
+        $page_data['page_name']    =  'attendance_report';
+        $page_data['data']         =  $data;
+        $page_data['year']         =  $this->input->post('year');
+        $page_data['month']        = $this->input->post('month');
+        $page_data['page_title']   =  getEduAppGTLang('attendance_report');
+        $this->load->view('backend/index', $page_data);
+    }
 
     //Attendance selector function.
     function attendance_selector()

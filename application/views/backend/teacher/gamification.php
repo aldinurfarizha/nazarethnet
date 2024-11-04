@@ -43,6 +43,12 @@ foreach($sub as $subs):
             <a class="navs-links" href="<?php echo base_url();?>teacher/meet/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0591_presentation_video_play_beamer"></i><span><?php echo getEduAppGTLang('live');?></span></a>
           </li>
           <li class="navs-item">
+              <a class="navs-links" href="<?php echo base_url();?>teacher/attendance/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i><span><?php echo getEduAppGTLang('attendance');?></span></a>
+          </li>
+          <li class="navs-item">
+              <a class="navs-links" href="<?php echo base_url(); ?>teacher/attendance_report/<?php echo $data; ?>/"><i class="picons-thin-icon-thin-0100_to_do_list_reminder_done"></i><span><?php echo getEduAppGTLang('attendance_report'); ?></span></a>
+          </li>
+          <li class="navs-item">
                 <a class="navs-links" href="<?php echo base_url();?>teacher/whiteboards/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0191_window_application_cursor"></i><span><?php echo getEduAppGTLang('whiteboards');?></span></a>
             </li>
           <li class="navs-item">

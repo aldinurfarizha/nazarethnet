@@ -135,6 +135,13 @@
                                                                             </label>
                                                                         </h6>
                                                                     </span>
+                                                                    <span class="radio">
+                                                                        <h6 data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('no_classs');?>">
+                                                                            <label>
+                                                                                <input type="radio" value="0" <?php if ($row['status'] == 0) echo 'checked'; ?> name="status_<?php echo $row['attendance_id']; ?>"><span class="circle"></span><span class="check"></span>
+                                                                            </label>
+                                                                        </h6>
+                                                                    </span>
                                                                 </td>
                                                             </tr>
                                                             <?php endforeach;?>

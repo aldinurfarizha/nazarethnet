@@ -10,3 +10,6 @@ INSERT INTO language (phrase, english, spanish, portuguese, hindi, french, serbi
 ALTER TABLE attendance
 ADD COLUMN updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 update attendance set updated_at='0000-00-00 00:00:00';
+
+INSERT INTO language (phrase, english, spanish, portuguese, hindi, french, serbian, arabic) VALUES
+('no_class', 'No Class', 'Sin Clase', 'No Class', 'No Class', 'No Class', 'No Class', 'No Class');

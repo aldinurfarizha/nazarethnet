@@ -3,8 +3,8 @@
     $fancy_number = $this->crud->count_unread_messages();
 ?>
     <header class="header" id="site-header">
-        <?php $fc_info = base64_decode($class_id);?>
-        <?php $fc_info_data = base64_decode($data); $fc_ex = explode("-", $fc_info_data);?>
+        <?php $fc_info = base64_decode(@$class_id);?>
+        <?php $fc_info_data = base64_decode(@$data); $fc_ex = explode("-", $fc_info_data);?>
         <?php if($page_name == 'manage_attendance' || $page_name == 'meet' ||  $page_name == 'subject_dashboard' || $page_name == 'upload_marks' || $page_name == 'online_exams' || $page_name == 'homework' || $page_name == 'forum' || $page_name == 'study_material' || $page_name == 'subject_marks'):?>
         <div class="page-title">
             <div class="fancy-selector-w">
@@ -31,7 +31,8 @@
                             </div>
                             <div class="fs-main-info">
                                 <div class="fs-name">
-                                    <?php echo $fancy_row2['name'];?> - (<?php echo $this->db->get_where('section', array('section_id' => $fc_ex[1]))->row()->name;?>)
+                                    <?php echo @
+                                    $fancy_row2['name'];?> - (<?php echo $this->db->get_where('section', array('section_id' => $fc_ex[1]))->row()->name;?>)
                                 </div>
                             </div>
                         </div>
@@ -44,7 +45,7 @@
         <div class="header-content-wrapper left-content">
             <?php echo form_open(base_url() . 'teacher/query' , array('class' => 'search-bar w-search notification-list friend-requests', 'onsubmit' => 'return validate() role="search"')); ?>
                 <div class="form-group with-button">
-                    <input class="form-control js-user-se arch" placeholder="<?php echo getEduAppGTLang('search_students');?>..." type="text" value="<?php echo base64_decode($search_key);?>" name="search_key" required>
+                    <input class="form-control js-user-se arch" placeholder="<?php echo getEduAppGTLang('search_students');?>..." type="text" value="<?php echo base64_decode(@$search_key);?>" name="search_key" required>
                     <button type="submit"><i class="picons-thin-icon-thin-0033_search_find_zoom"></i></button>
                 </div>
             <?php echo form_close();?>
