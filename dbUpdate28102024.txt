@@ -13,3 +13,11 @@ update attendance set updated_at='0000-00-00 00:00:00';
 
 INSERT INTO language (phrase, english, spanish, portuguese, hindi, french, serbian, arabic) VALUES
 ('no_class', 'No Class', 'Sin Clase', 'No Class', 'No Class', 'No Class', 'No Class', 'No Class');
+
+CREATE TABLE `custom_status` (
+    `custom_status_id` INT(11) NOT NULL AUTO_INCREMENT,
+    `teacher_id` INT(11) NOT NULL,
+    `status_name` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+    PRIMARY KEY (`custom_status_id`)
+) AUTO_INCREMENT=10;
+

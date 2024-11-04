@@ -12,12 +12,12 @@ for the courses they are involved in.
 ATTENDANCE: 
  
 ✅ 8. The attendance report should display the days of the week at the top (Monday, Tuesday,etc.). 
-9. There should be an option to mark days as holidays, make-up days, or for other matters,which 
+✅9. There should be an option to mark days as holidays, make-up days, or for other matters,which 
 should be reflected in the report. 
 ✅ 10. When the teacher records attendance, the time and date of the attendance entry must 
 beincluded in the report. 
 ✅ 11. There should be an option to indicate that there were no classes (e.g., “–-”). (jadi setiap load absen di dashboard akademi dia akan generate insert, so ini tinggal update saja)
 ✅ 12. Currently, only the administration can view attendance reports, but teachers should alsohave 
 access. 
-13. When a student is deactivated or removed, they should no longer appear in the 
+✅❌ 13. When a student is deactivated or removed, they should no longer appear in the 
 attendancerecords, and the removal should take effect immediately. 

@@ -481,4 +481,24 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
     );
     return $result;
     }
+    function getCustomStatusAttendanceByTeacherId($teacher_id)
+    {
+        $ci = &get_instance();
+        return $ci->db->query("SELECT * FROM custom_status where teacher_id=$teacher_id")->result();
+    }
+    function getStatusNameFromId($custom_status_id)
+    {
+        $ci = &get_instance();
+        $query = $ci->db->query("SELECT status_name FROM custom_status WHERE custom_status_id = $custom_status_id")->row();
+
+        return $query ? $query->status_name : 'N/A';
+    }
+    function getTeacherIdFromSubject($subject_id)
+    {
+        $ci = &get_instance();
+        $query = $ci->db->query("SELECT teacher_id FROM subject WHERE subject_id = $subject_id")->row();
+
+        return $query ? $query->teacher_id : '0';
+    }
+
 

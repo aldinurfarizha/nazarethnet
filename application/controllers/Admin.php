@@ -3513,6 +3513,17 @@ class Admin extends EduAppGT
         $page_data['page_title'] =  getEduAppGTLang('attendance');
         $this->load->view('backend/index', $page_data);
     }
+    function student_list($param1 = '', $param2 = '')
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $page_data['data']       = $param1;
+        $page_data['timestamp']  = $param2;
+        $page_data['page_name']  =  'student_list';
+        $page_data['page_title'] =  getEduAppGTLang('student_list');
+        $this->load->view('backend/index', $page_data);
+    }
 
     //Manage attendance function.
     function manage_attendance($class_id = '', $section_id = '', $timestamp = '')
@@ -4157,6 +4168,19 @@ class Admin extends EduAppGT
     function testing_refresh_token(){
         $getClient=$this->drive_model->refreshTokenManual();
         var_dump($getClient);
+    }
+    function add_custom_status_attendance()
+    {
+        $teacher_id = $this->input->post('teacher_id');
+        $status_name = $this->input->post('status_name');
+        $course=$this->input->post('course');
+        $data=array(
+            'teacher_id'=>$teacher_id,
+            'status_name'=>$status_name
+        );
+        $this->db->insert('custom_status', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
+        redirect(base_url() . 'admin/attendance/' . $course);
     }
     //End of Admin.php content.
 }

@@ -223,19 +223,19 @@
                                                                 <?php if ($status == 1) { ?>
                                                                     <div class="status-pilli green" data-title="<?php echo getEduAppGTLang('present'); ?>" data-toggle="tooltip"></div>
                                                                     <p><?= $takenTime ?></p>
-                                                                <?php  }
-                                                                if ($status == 2) { ?>
+                                                                <?php } elseif ($status == 2) { ?>
                                                                     <div class="status-pilli red" data-title="<?php echo getEduAppGTLang('absent'); ?>" data-toggle="tooltip"></div>
                                                                     <p><?= $takenTime ?></p>
-                                                                <?php  }
-                                                                if ($status == 3) { ?>
+                                                                <?php } elseif ($status == 3) { ?>
                                                                     <div class="status-pilli yellow" data-title="<?php echo getEduAppGTLang('late'); ?>" data-toggle="tooltip"></div>
                                                                     <p><?= $takenTime ?></p>
-                                                                <?php  }
-                                                                if ($status != 1 && $status != 2 && $status != 3) { ?>
+                                                                <?php } elseif ($status == 0) { ?>
                                                                     -
-                                                                <?php  }
-                                                                $status = 0; ?>
+                                                                <?php } else { ?>
+                                                                    <?php echo getStatusNameFromId($status).'<br>'.$takenTime; ?>
+                                                                <?php }
+                                                                $status=0;
+                                                                ?>
                                                             </td>
                                                         <?php } ?>
                                                     <?php endforeach; ?>

@@ -86,9 +86,15 @@
                                 <article class="hentry post thumb-full-width">                
                                     <div class="post__author author vcard inline-items">
                                         <img src="<?php echo base_url();?>public/uploads/<?php echo $this->crud->getInfo('logo');?>" class="no-border">                
-                                        <div class="author-date">
-                                            <a class="h6 post__author-name fn" href="javascript:void(0);"><?php echo getEduAppGTLang('manage_attendance');?> <small>(<?php echo date("m/d/Y", $timestamp);?>)</small>.</a>
-                                        </div>                
+                                        <div class="author-date d-flex justify-content-between">
+                                            <a class="h6 post__author-name fn" href="javascript:void(0);">
+                                                <?php echo getEduAppGTLang('manage_attendance');?> 
+                                                <small>(<?php echo date("m/d/Y", $timestamp);?>)</small>
+                                            </a>
+                                            <button class="btn btn-primary" onclick="showAjaxModal('<?= base_url('modal/popup/modal_add_custom_status_attendance/'.$data.'/'.getTeacherIdFromSubject($ex[2])) ?>');">
+                                            añadir otro estado <i class="fa fa-plus"></i>
+                                            </button>
+                                        </div>              
                                     </div>                
                                     <div class="edu-posts cta-with-media">
                                         <?php echo form_open(base_url() . 'teacher/attendance_update/' . $ex[0] . '/' . $ex[1] . '/' .$ex[2]. '/' . $timestamp); ?>
@@ -138,6 +144,22 @@
                                                                             </label>
                                                                         </h6>
                                                                     </span>
+                                                                    <span class="radio">
+                                                                        <h6 data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('no_classs');?>">
+                                                                            <label>
+                                                                                <input type="radio" value="0" <?php if ($row['status'] == 0) echo 'checked'; ?> name="status_<?php echo $row['attendance_id']; ?>"><span class="circle"></span><span class="check"></span>
+                                                                            </label>
+                                                                        </h6>
+                                                                    </span>
+                                                                    <?php foreach(getCustomStatusAttendanceByTeacherId(getTeacherIdFromSubject($ex[2])) as $status){?>
+                                                                        <span class="radio">
+                                                                        <h6 data-toggle="tooltip" data-placement="top" data-original-title="<?php echo $status->status_name;?>">
+                                                                            <label>
+                                                                                <input type="radio" value="<?=$status->custom_status_id?>" <?php if ($row['status'] == $status->custom_status_id) echo 'checked'; ?> name="status_<?php echo $row['attendance_id']; ?>"><span class="circle"></span><span class="check"></span>
+                                                                            </label>
+                                                                        </h6>
+                                                                    </span>
+                                                                    <?php } ?>
                                                                 </td>
                                                             </tr>
                                                             <?php endforeach;?>
