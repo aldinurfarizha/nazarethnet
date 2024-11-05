@@ -19,6 +19,9 @@
                             <a class="navs-links" href="<?php echo base_url(); ?>admin/marks_report/"><i class="picons-thin-icon-thin-0100_to_do_list_reminder_done"></i> <span><?php echo getEduAppGTLang('final_marks'); ?></span></a>
                         </li>
                         <li class="navs-item">
+                            <a class="navs-links" href="<?php echo base_url(); ?>admin/final_evaluation/"><i class="picons-thin-icon-thin-0389_gavel_hammer_law_judge_court"></i> <span>Evaluaciones Finales</span></a>
+                        </li>
+                        <li class="navs-item">
                             <a class="navs-links" href="<?php echo base_url(); ?>admin/tabulation_report/"><i class="picons-thin-icon-thin-0070_paper_role"></i> <span><?php echo getEduAppGTLang('tabulation_sheet'); ?></span></a>
                         </li>
                         <li class="navs-item">
@@ -207,17 +210,16 @@
                                                             $attendance = $this->db->get_where('attendance', array('subject_id' => $subject_id, 'section_id' => $section_id, 'class_id' => $class_id, 'year' => $running_year, 'timestamp' => $timestamps, 'student_id' => $row['student_id']))->result_array();
                                                             foreach ($attendance as $row1):
                                                                 $month_dummy = date('d', $row1['timestamp']);
-                                                                if ($i == $month_dummy){
+                                                                if ($i == $month_dummy) {
                                                                     $status = $row1['status'];
-                                                                    if($row1['updated_at'] == '0000-00-00 00:00:00'){
-                                                                        $takenTime='';
-                                                                    }else{
+                                                                    if ($row1['updated_at'] == '0000-00-00 00:00:00') {
+                                                                        $takenTime = '';
+                                                                    } else {
                                                                         $takenTime = $row1['updated_at'];
                                                                     }
-                                                                    
                                                                 }
 
-                                                                
+
                                                             endforeach; ?>
                                                             <td class="text-center">
                                                                 <?php if ($status == 1) { ?>
@@ -232,9 +234,9 @@
                                                                 <?php } elseif ($status == 0) { ?>
                                                                     -
                                                                 <?php } else { ?>
-                                                                    <?php echo getStatusNameFromId($status).'<br>'.$takenTime; ?>
+                                                                    <?php echo getStatusNameFromId($status) . '<br>' . $takenTime; ?>
                                                                 <?php }
-                                                                $status=0;
+                                                                $status = 0;
                                                                 ?>
                                                             </td>
                                                         <?php } ?>

@@ -4182,5 +4182,14 @@ class Admin extends EduAppGT
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
         redirect(base_url() . 'admin/attendance/' . $course);
     }
+    function final_evaluation($param1 = '', $param2 = '')
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(site_url('login'), 'refresh');
+        }
+        $page_data['page_name']  = 'final_evaluation';
+        $page_data['page_title'] = 'Evaluaciones Finales';
+        $this->load->view('backend/index', $page_data);
+    }
     //End of Admin.php content.
 }

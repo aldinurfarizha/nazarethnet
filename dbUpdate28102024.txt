@@ -21,3 +21,5 @@ CREATE TABLE `custom_status` (
     PRIMARY KEY (`custom_status_id`)
 ) AUTO_INCREMENT=10;
 
+ALTER TABLE `exam` ADD `is_final` INT(11) NOT NULL DEFAULT '0' AFTER `exam_id`; 
+
