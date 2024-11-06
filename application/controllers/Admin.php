@@ -3547,6 +3547,14 @@ class Admin extends EduAppGT
             echo '<option value="' . $row['section_id'] . '">' . $row['name'] . '</option>';
         }
     }
+    function get_exam($subject_id = '')
+    {
+        $exam = $this->db->get_where('exam', array('subject_id' => $subject_id,'is_final'=>0))->result_array();
+        foreach ($exam as $row) {
+            echo '<option value="' . $row['exam_id'] . '">' . $row['name'] . '</option>';
+        }
+    }
+    
 
     //Attendance report function.
     function attendance_report($param1 = '', $param2 = '', $param3 = '', $param4 = '', $param5 = '')
@@ -4182,7 +4190,7 @@ class Admin extends EduAppGT
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
         redirect(base_url() . 'admin/attendance/' . $course);
     }
-    function final_evaluation($param1 = '', $param2 = '')
+    function final_evaluation()
     {
         if ($this->session->userdata('admin_login') != 1) {
             redirect(site_url('login'), 'refresh');
@@ -4190,6 +4198,50 @@ class Admin extends EduAppGT
         $page_data['page_name']  = 'final_evaluation';
         $page_data['page_title'] = 'Evaluaciones Finales';
         $this->load->view('backend/index', $page_data);
+    }
+    function final_evaluation_weight($exam_id='')
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(site_url('login'), 'refresh');
+        }
+        $page_data['exam'] = $this->db->query("SELECT * FROM exam where exam_id=$exam_id")->row();
+        $page_data['page_name']  = 'final_evaluation_weight';
+        $page_data['page_title'] = 'Pesos de evaluación final';
+        $this->load->view('backend/index', $page_data);
+    }
+    function final_evaluation_add_exam()
+    {
+        $exam_id = $this->input->post('exam_id');
+        $data = array(
+            'is_final' => 1,
+        );
+        $this->db->where('exam_id', $exam_id);
+        $this->db->update('exam', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
+        redirect(base_url() . 'admin/final_evaluation/');
+    }
+    function final_evaluation_delete_exam($exam_id='')
+    {
+        $data = array(
+            'is_final' => 0,
+        );
+        $this->db->where('exam_id', $exam_id);
+        $this->db->update('exam', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_delete'));
+        redirect(base_url() . 'admin/final_evaluation/');
+    }
+    function final_evaluation_update_percent()
+    {
+        $mark_activity_id=$this->input->post('mark_activity_id');
+        $percent=$this->input->post('percent');
+        $exam_id=$this->input->post('exam_id');
+        $data=array(
+            'percent'=>$percent
+        );
+        $this->db->where('mark_activity_id', $mark_activity_id);
+        $this->db->update('mark_activity', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
+        redirect(base_url() . 'admin/final_evaluation_weight/'.$exam_id);
     }
     //End of Admin.php content.
 }

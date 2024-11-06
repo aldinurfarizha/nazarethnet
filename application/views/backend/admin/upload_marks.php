@@ -70,7 +70,7 @@ foreach ($sub as $subs) :
                                         </div>
                                         <div class="pull-right">
                                             <a href="javascript:void(0);" data-toggle="modal" data-target="#crearcapacidad"><button type="button" class="btn btn-rounded btn-warning">Crear actividad</button></a>
-                                                <button class="btn btn-success btn-rounded" id="btn-trigger-update" type="button"><?php echo getEduAppGTLang('update'); ?></button>
+                                            <button class="btn btn-success btn-rounded" id="btn-trigger-update" type="button"><?php echo getEduAppGTLang('update'); ?></button>
                                         </div>
                                     </div>
                                     <div class="edu-posts cta-with-media">
@@ -83,7 +83,16 @@ foreach ($sub as $subs) :
                                                     foreach ($examss as $exam) :
                                                         $var++;
                                                     ?>
-                                                        <li class='<?php if ($exam['exam_id'] == $exam_id) echo "act"; ?>'><a href="<?php echo base_url(); ?>admin/upload_marks/<?php echo $data . '/' . $exam['exam_id']; ?>/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i><?php echo $exam['name']; ?></a></li>
+                                                        <li class='<?php if ($exam['exam_id'] == $exam_id) echo "act"; ?>'>
+                                                            <a href="<?php echo base_url(); ?>admin/upload_marks/<?php echo $data . '/' . $exam['exam_id']; ?>/">
+                                                                <i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i>
+                                                                <?php echo $exam['name']; ?>
+                                                                <?php if ($exam['is_final']) { ?>
+                                                                    <span class="badge badge-secondary">Final</span>
+                                                                <?php } ?>
+                                                            </a>
+
+                                                        </li>
                                                     <?php endforeach; ?>
                                                 </ul>
                                             </div>
@@ -111,12 +120,17 @@ foreach ($sub as $subs) :
                                                                 <span class="full-width" style="display:inline-block;"><?php echo $cap['name']; ?></span>
                                                                 <a class="text-white" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_capacities/<?php echo $cap['mark_activity_id']; ?>/<?php echo $data . '/' . $exam_id . '/' . $order . '/'; ?>');" href="javascript:void(0);"><svg class="align-sub" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
                                                                         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844l2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565l6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
-                                                                    </svg></a>
+                                                                    </svg>
+                                                                    <a style="display:inline-block;margin-bottom:2px" class="btn btn-primary btn-sm"><?= $cap['percent'] ?></a>
+                                                                </a>
                                                                 <a class="text-white" href="<?php echo base_url() . 'admin/manage_marks/delete_capacity/' . $data . '/' . $exam_id . '/' . $order . '/' . $cap['mark_activity_id'] . '/'; ?>" onclick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>');"><svg class="align-sub" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
                                                                         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 11v6m-4-6v6M6 7v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7M4 7h16M7 7l2-4h6l2 4" />
                                                                     </svg></a>
                                                             </td>
                                                         <?php endforeach; ?>
+                                                        <td class="text-center" style="padding:5px">
+                                                            Evaluaciones Finales
+                                                        </td>
                                                         <td class="text-center" style="padding:5px">
                                                             Comentario
                                                         </td>
@@ -146,8 +160,12 @@ foreach ($sub as $subs) :
                                                                         foreach ($nota_cap as $nota) :
                                                                         ?>
                                                                             <?php $total += (int)$nota['nota']; ?>
-                                                                            <input type="number" onwheel="this.blur()" value="<?php 
-                                                                            if($nota['nota']=="0"){ echo "";}else{echo $nota['nota'];} ?>" onkeyup="calcAverage(this)" min="0" name="mark_<?php echo $rows['student_id'] . '_' . $cap['mark_activity_id']; ?>" class="markInput" placeholder="0">
+                                                                            <input type="number" onwheel="this.blur()" value="<?php
+                                                                                                                                if ($nota['nota'] == "0") {
+                                                                                                                                    echo "";
+                                                                                                                                } else {
+                                                                                                                                    echo $nota['nota'];
+                                                                                                                                } ?>" onkeyup="calcAverage(this)" min="0" name="mark_<?php echo $rows['student_id'] . '_' . $cap['mark_activity_id']; ?>" class="markInput" placeholder="0">
                                                                         <?php endforeach; ?>
                                                                     </td>
                                                                 <?php endforeach; ?>
@@ -161,6 +179,9 @@ foreach ($sub as $subs) :
                                                                     ?>
                                                                         <input type="text" class="commentInput" name="comment_<?php echo $rows['student_id']; ?>" value="<?php echo $com['comment']; ?>" placeholder="Comment...">
                                                                     <?php endforeach; ?>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="text" class="commentInput" placeholder="Comment...">
                                                                 </td>
                                                             </tr>
                                                     <?php }

@@ -22,4 +22,6 @@ CREATE TABLE `custom_status` (
 ) AUTO_INCREMENT=10;
 
 ALTER TABLE `exam` ADD `is_final` INT(11) NOT NULL DEFAULT '0' AFTER `exam_id`; 
+ALTER TABLE `mark_activity` ADD `percent` INT(11) NOT NULL DEFAULT '0' AFTER `exam_id`; 
+
 
