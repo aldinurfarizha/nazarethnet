@@ -43,19 +43,21 @@
                                         <tr>
                                             <th><?php echo getEduAppGTLang('name'); ?></th>
                                             <th><?php echo getEduAppGTLang('year'); ?></th>
-                                            <th><?php echo getEduAppGTLang('percent'); ?></th>
+                                            <th class="text-center"><?php echo getEduAppGTLang('percent'); ?></th>
                                             <th class="text-center"><?php echo getEduAppGTLang('action'); ?></th>
                                         </tr>
                                     </thead>
                                     <?php
                                     $exam_id = $exam->exam_id;
                                     $markActivity = $this->db->query("SELECT * FROM mark_activity where exam_id=$exam_id")->result();
+                                    $totalPercent = 0;
                                     foreach ($markActivity as $row):
+                                        $totalPercent += $row->percent;
                                     ?>
                                         <tr>
                                             <td><?= $row->name; ?></td>
                                             <td><?= $row->year; ?></td>
-                                            <td><?= $row->percent; ?></td>
+                                            <td class="text-center"><?= $row->percent . ' %' ?></td>
                                             <td class="row-actions">
                                                 <a class="grey" href="#" data-target="#update_percent" data-toggle="modal"
                                                     data-mark_activity_id="<?= $row->mark_activity_id; ?>"
@@ -66,6 +68,23 @@
                                         </tr>
                                     <?php endforeach; ?>
                                     </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="2">Total</td>
+                                            <td class="text-center">
+                                                <h4><?= $totalPercent . ' %' ?></h4>
+                                            </td>
+                                            <td class="text-center">
+                                                <?php if ($totalPercent == 100) { ?>
+                                                    <span class="badge badge-success">OK <i class="fa fa-check"></i></span>
+                                                <?php } else { ?>
+                                                    <span class="badge badge-warning">Por favor recalcule <i class="fa fa-times"></i></span>
+                                                <?php } ?>
+
+
+                                            </td>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>
@@ -85,7 +104,7 @@
                                             <div class="form-group is-select">
                                                 <label class="control-label"><?php echo getEduAppGTLang('percent'); ?></label>
                                                 <input type="hidden" name="mark_activity_id" value="">
-                                                <input type="hidden" name="exam_id" value="<?=$exam->exam_id?>">
+                                                <input type="hidden" name="exam_id" value="<?= $exam->exam_id ?>">
                                                 <input type="number" name="percent" value="" class="form-control">
                                             </div>
                                         </div>

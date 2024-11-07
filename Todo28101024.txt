@@ -1,5 +1,5 @@
 RATINGS: 
-1. There should be a final evaluation report that displays the average of each module. Thisreport 
+✅ 1. There should be a final evaluation report that displays the average of each module. Thisreport 
 should include the option to manually enter which evaluations will contribute to thefinal average, 
 with their respective weights. 
 2. If a student misses a class, the admin must have the option to block the practical grade orapply 
