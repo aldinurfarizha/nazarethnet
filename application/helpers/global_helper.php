@@ -518,5 +518,10 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
         $query = $ci->db->query("SELECT name from section where section_id=$section_id")->row();
         return $query ? $query->name : '-';
     }
+    function getClassByTeacher($teacher_id)
+    {
+        $ci = &get_instance();
+        return $ci->db->query("SELECT * FROM subject WHERE teacher_id = $teacher_id GROUP BY class_id")->result_array();
+    }
 
 

@@ -4,10 +4,10 @@ should include the option to manually enter which evaluations will contribute to
 with their respective weights. 
 2. If a student misses a class, the admin must have the option to block the practical grade orapply 
 other alternatives. 
-3. Only the admin has access to the full grade report, while teachers should only be able tosee the 
+✅3. Only the admin has access to the full grade report, while teachers should only be able tosee the 
 grades for the courses they are teaching. Teachers should also have the ability to viewtheir scores 
 for the courses they are involved in. 
-4. Students should have the option to continue viewing their grades. 
+✅4. Students should have the option to continue viewing their grades. 
  
 ATTENDANCE: 
  

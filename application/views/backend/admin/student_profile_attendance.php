@@ -93,16 +93,12 @@ foreach ($student_info as $row) :
                                                         <select name="subject_id" required="">
                                                             <option value=""><?php echo getEduAppGTLang('select'); ?></option>
                                                             <?php
-                                                            foreach (getStudentClassAndSectionById($student_id) as $datar) {
-                                                                $class_id = $datar->class_id;
-                                                                $section_id = $datar->section_id;
-                                                                $subjects = $this->db->get_where('subject', array('class_id' => $class_id, 'section_id' => $section_id))->result_array();
-                                                                foreach ($subjects as $sbj) :
+                                                            foreach (getAvailabeSubject($student_id) as $subject) {
+                                                               if(isActiveSubject($student_id, $subject->subject_id)){
                                                             ?>
-                                                                    <option value="<?php echo $sbj['subject_id']; ?>" <?php if ($subject_id == $sbj['subject_id']) echo 'selected'; ?>><?php echo $sbj['name']; ?></option>
+                                                                    <option value="<?php echo $subject->subject_id; ?>" <?php if ($subject_id == $subject->subject_id) echo 'selected'; ?>><?php echo $subject->name; ?></option>
 
-                                                            <?php endforeach;
-                                                            } ?>
+                                                            <?php }} ?>
                                                         </select>
                                                     </div>
                                                 </div>

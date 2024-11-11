@@ -20,14 +20,14 @@ $section_id = $this->db->get_where('enroll', array('student_id' => $this->sessio
 										<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 										<?php
 										$studentData = getStudentClassAndSectionById($this->session->userdata('login_user_id'));
+										
 										foreach ($studentData as $datax) {
-											$class_id = $datax->class_id;
-											$section_id = $datax->section_id;
-											$subjects = $this->db->get_where('subject', array('class_id' => $class_id, 'section_id' => $section_id))->result_array();
-											foreach ($subjects as $key) :
+											$datak=getAvailabeSubject($datax->student_id);
+											foreach ($datak as $key) :
+												if(isActiveSubject($datax->student_id, $key->subject_id)){
 										?>
-												<option value="<?php echo $key['subject_id']; ?>" <?php if ($subject_id == $key['subject_id']) echo "selected"; ?>><?php echo $key['name']; ?></option>
-										<?php endforeach;
+												<option value="<?php echo $key->subject_id; ?>" <?php if ($subject_id == $key->subject_id) echo "selected"; ?>><?php echo $key->name; ?></option>
+										<?php } endforeach;
 										}
 										?>
 									</select>

@@ -46,7 +46,7 @@
                                                                             <div class="select">
                                                                                 <select onchange="submit();" name="class_id" id="slct">
                                                                                     <option value=""><?php echo getEduAppGTLang('select');?></option>
-                                                                                    <?php $cl = $this->db->get('class')->result_array();
+                                                                                    <?php $cl = getClassByTeacher($this->session->userdata('login_user_id'));
                                                                                         foreach($cl as $row):
                                                                                     ?>
                                                                                     <option value="<?php echo $row['class_id'];?>" <?php if($class_id == $row['class_id']) echo 'selected';?>><?php echo $row['name'];?></option>

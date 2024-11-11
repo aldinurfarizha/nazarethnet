@@ -1451,7 +1451,11 @@ class Teacher extends EduAppGT
         $id = $this->input->post('class_id');
         if ($id == '')
         {
-            $id = $this->db->get('class')->first_row()->class_id;
+            $class=getClassByTeacher($this->session->userdata('login_user_id'));
+            foreach($class as $data){
+                $id=$data['class_id'];
+                break;
+            }
         }
         $page_data['page_name']   = 'students_area';
         $page_data['page_title']  = getEduAppGTLang('students');
