@@ -523,5 +523,40 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
         $ci = &get_instance();
         return $ci->db->query("SELECT * FROM subject WHERE teacher_id = $teacher_id GROUP BY class_id")->result_array();
     }
+    function isStudentDeactive($student_id)
+    {
+        $ci = &get_instance();
+        $data = $ci->db->select('*')
+        ->from('student')
+        ->where(['student_id' => $student_id, 'is_active' => 0])
+        ->get();
+        if ($data->num_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function isMarkBlocked($student_id, $subject_id)
+    {
+        $ci = &get_instance();
+        $data = $ci->db->select('*')
+        ->from('student_subject')
+        ->where(['student_id' => $student_id,'subject_id'=>$subject_id, 'is_block' => 1])
+        ->get();
+        if ($data->num_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function countMissingClass($student_id,$subject_id)
+    {
+        $ci = &get_instance();
+        $data = $ci->db->select('*')
+        ->from('attendance')
+        ->where(['student_id' => $student_id,'subject_id'=>$subject_id, 'status' => 2])
+        ->get();
+        return $data->num_rows();
+    }
 
 

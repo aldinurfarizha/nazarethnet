@@ -126,6 +126,29 @@ foreach ($student_info as $row) : ?>
 																<span class="title"><?php echo getEduAppGTLang('authorized_person_phone'); ?>:</span>
 																<span class="text"><?php echo $row['authorized_phone']; ?></span>
 															</li>
+															<li>
+																<span class="title"><?php echo getEduAppGTLang('status'); ?>:</span>
+																<span class="text"><?php 
+																if($row['is_active']){
+																	echo getEduAppGTLang('active');
+																}else{
+																	echo getEduAppGTLang('disable');
+																}
+																; ?></span>
+															</li>
+															<?php if($row['is_active']) { ?>
+																<a href="<?= base_url();?>admin/deactive_student_status/<?=$row['student_id']?>" 
+																class="btn btn-sm btn-danger" 
+																onclick="return confirm('¿Está seguro de que desea desactivar el estado de este estudiante?');">
+																<?=getEduAppGTLang('disable');?>
+																</a>
+															<?php } else { ?>
+																<a href="<?= base_url();?>admin/active_student_status/<?=$row['student_id']?>" 
+																class="btn btn-sm btn-success" 
+																onclick="return confirm('¿Está seguro de que desea activar el estado de este estudiante?');">
+																<?=getEduAppGTLang('active');?>
+																</a>
+															<?php } ?>
 														</ul>
 													</div>
 												</div>

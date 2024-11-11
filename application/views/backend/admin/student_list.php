@@ -60,12 +60,14 @@
             <div class="content-i">
                 <div class="content-box">
                     <div class="row">
+                        <h1>falta de clase</h1>
                         <div class="table-responsive">
                             <table class="table table-padded">
                                 <thead>
                                     <tr>
                                         <td>No.</td>
                                         <td><?=getEduAppGTLang('name');?></td>
+                                        <td>falta de clase</td>
                                         <td><?=getEduAppGTLang('status');?></td>
                                         <td><?=getEduAppGTLang('action');?></td>
                                     </tr>
@@ -74,23 +76,27 @@
                                 <?php $students   =   $this->db->get_where('enroll', array('class_id' => $ex[0], 'section_id' => $ex[1], 'year' => $running_year))->result_array();
                                 $no=1;
                                             foreach ($students as $row2) :
+                                                if(isStudentDeactive($row2['student_id'])){
+                                                    continue;
+                                                }
                                                 if (isActiveSubject($row2['student_id'], $ex[2])) {
                                             ?>
                                             <tr>
                                                 <td><?=$no?></td>
                                                 <td><?=$this->crud->get_name('student', $row2['student_id'])?></td>
+                                                <td><?=countMissingClass($row2['student_id'],$ex[2])?></td>
                                                 <td class="text-center">
-                                                    <?php if (isActiveSubject($row2['student_id'],$ex[2])) { ?>
-                                                        <div class="value badge badge-pill badge-success"><?= getEduAppGTLang('active'); ?></div>
+                                                    <?php if (isMarkBlocked($row2['student_id'],$ex[2])) { ?>
+                                                        <div class="value badge badge-pill badge-danger"><?= getEduAppGTLang('bloquear'); ?></div>
                                                     <?php } else { ?>
-                                                        <div class="value badge badge-pill badge-danger"><?= getEduAppGTLang('inactive'); ?></div>
+                                                        <div class="value badge badge-pill badge-success"><?= getEduAppGTLang('desatascar'); ?></div>
                                                     <?php } ?>
                                                 </td>
                                                 <td>
-                                                <?php if (isActiveSubject($row2['student_id'],$ex[2])==false) { ?>
-                                                    <a class="btn btn-sm btn-success" href="<?= base_url('admin/activate_subject_student_temporary/' . $student_id . '/' . $item->subject_id) ?>">Activate <i class="fa fa-check-circle"></i></a>
+                                                <?php if (isMarkBlocked($row2['student_id'],$ex[2])) { ?>
+                                                    <a class="btn btn-sm btn-success" href="<?= base_url('admin/unblock_mark/' . $row2['student_id'] . '/' . $ex[2].'/'.$data) ?>"> abrir el bloque de valor <i class="fa fa-check-circle"></i></a>
                                                 <?php } else { ?>
-                                                    <a class="btn btn-sm btn-danger" href="<?= base_url('admin/deactive_subject_student_temporary/' . $student_id . '/' . $item->subject_id) ?>">Deactive <i class="fa fa-times-circle"></i></a>
+                                                    <a class="btn btn-sm btn-danger" href="<?= base_url('admin/block_mark/' . $row2['student_id'] . '/' . $ex[2].'/'.$data) ?>">bloque de valor <i class="fa fa-times-circle"></i></a>
                                                 <?php } ?>
                                                 </td>
                                             </tr>

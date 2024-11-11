@@ -126,6 +126,9 @@ foreach ($sub as $subs) :
                                                     $studs = $this->mark->get_enroll_students($subs['subject_id'], $ex[0], $ex[1], $running_year, $order);
                                                     foreach ($studs as $rows) :
                                                         if (isActiveSubject($rows['student_id'], $subs['subject_id'])) {
+                                                            if(isMarkBlocked($rows['student_id'], $subs['subject_id'])){
+                                                                continue;
+                                                            }
                                                     ?>
                                                             <tr class="altRow">
                                                                 <td class="text-center col-sticky nums bg-white"><?php echo $rows['student_id']; ?></td>

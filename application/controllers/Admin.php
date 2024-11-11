@@ -4243,5 +4243,53 @@ class Admin extends EduAppGT
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
         redirect(base_url() . 'admin/final_evaluation_weight/'.$exam_id);
     }
+    function deactive_student_status($student_id)
+    {
+        $data=array(
+            'is_active'=>0
+        );
+        $this->db->where('student_id', $student_id);
+        $this->db->update('student', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
+        redirect(base_url() . 'admin/student_portal/'.$student_id);
+    }
+    function active_student_status($student_id)
+    {
+        $data=array(
+            'is_active'=>1
+        );
+        $this->db->where('student_id', $student_id);
+        $this->db->update('student', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
+        redirect(base_url() . 'admin/student_portal/'.$student_id);
+    }
+    function block_mark($student_id,$subject_id,$course)
+    {
+        $data=array(
+            'is_block'=>1
+        );
+        $where=array(
+            'student_id'=>$student_id,
+            'subject_id'=>$subject_id
+        );
+        $this->db->where($where);
+        $this->db->update('student_subject', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
+        redirect(base_url() . 'admin/student_list/'.$course);
+    }
+    function unblock_mark($student_id,$subject_id,$course)
+    {
+        $data=array(
+            'is_block'=>0
+        );
+        $where=array(
+            'student_id'=>$student_id,
+            'subject_id'=>$subject_id
+        );
+        $this->db->where($where);
+        $this->db->update('student_subject', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
+        redirect(base_url() . 'admin/student_list/'.$course);
+    }
     //End of Admin.php content.
 }
