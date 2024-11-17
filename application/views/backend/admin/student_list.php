@@ -87,7 +87,7 @@
                                                 <td><?=countMissingClass($row2['student_id'],$ex[2])?></td>
                                                 <td class="text-center">
                                                     <?php if (isMarkBlocked($row2['student_id'],$ex[2])) { ?>
-                                                        <div class="value badge badge-pill badge-danger"><?= getEduAppGTLang('bloquear'); ?></div>
+                                                        <div class="value badge badge-pill badge-danger"><?= getEduAppGTLang('bloquear'); ?></div> <br><small class="text-muted"><?=getMarkBlockedReason($row2['student_id'],$ex[2])?></small>
                                                     <?php } else { ?>
                                                         <div class="value badge badge-pill badge-success"><?= getEduAppGTLang('desatascar'); ?></div>
                                                     <?php } ?>
@@ -96,7 +96,7 @@
                                                 <?php if (isMarkBlocked($row2['student_id'],$ex[2])) { ?>
                                                     <a class="btn btn-sm btn-success" href="<?= base_url('admin/unblock_mark/' . $row2['student_id'] . '/' . $ex[2].'/'.$data) ?>"> abrir el bloque de valor <i class="fa fa-check-circle"></i></a>
                                                 <?php } else { ?>
-                                                    <a class="btn btn-sm btn-danger" href="<?= base_url('admin/block_mark/' . $row2['student_id'] . '/' . $ex[2].'/'.$data) ?>">bloque de valor <i class="fa fa-times-circle"></i></a>
+                                                    <button class="btn btn-sm btn-danger" onclick="showAjaxModal('<?= base_url('modal/popup/modal_block_mark/'.$data.'/'.$ex[2].'/'.$row2['student_id']) ?>');">bloque de valor</button>
                                                 <?php } ?>
                                                 </td>
                                             </tr>

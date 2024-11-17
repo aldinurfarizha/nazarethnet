@@ -549,6 +549,15 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
             return false;
         }
     }
+    function getMarkBlockedReason($student_id,$subject_id)
+    {
+        $ci = &get_instance();
+        $data = $ci->db->select('*')
+        ->from('student_subject')
+        ->where(['student_id' => $student_id,'subject_id'=>$subject_id,])
+        ->get()->row();
+        return $data ? $data->reason : '-';
+    }
     function countMissingClass($student_id,$subject_id)
     {
         $ci = &get_instance();

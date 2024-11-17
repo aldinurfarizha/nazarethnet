@@ -3,6 +3,7 @@ $running_year = $this->crud->getInfo('running_year');
 $info = base64_decode($data);
 $ex = explode('-', $info);
 $sub = $this->db->get_where('subject', array('subject_id' => $ex[2]))->result_array();
+$is_final = false;
 foreach ($sub as $subs) :
 ?>
     <div class="content-w">
@@ -82,8 +83,22 @@ foreach ($sub as $subs) :
                                                     $examss = $this->db->get_where('exam', array('class_id' => $ex[0], 'section_id' => $ex[1], 'subject_id' => $ex[2]))->result_array();
                                                     foreach ($examss as $exam) :
                                                         $var++;
+
                                                     ?>
-                                                        <li class='<?php if ($exam['exam_id'] == $exam_id) echo "act"; ?>'><a href="<?php echo base_url(); ?>teacher/upload_marks/<?php echo $data . '/' . $exam['exam_id']; ?>/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i><?php echo $exam['name']; ?></a></li>
+                                                        <li class='<?php if ($exam['exam_id'] == $exam_id) echo "act"; ?>'>
+                                                            <a href="<?php echo base_url(); ?>admin/upload_marks/<?php echo $data . '/' . $exam['exam_id']; ?>/">
+                                                                <i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i>
+                                                                <?php echo $exam['name']; ?>
+                                                                <?php if ($exam['is_final']) {
+                                                                    if ($exam['exam_id'] == $exam_id) {
+                                                                        $is_final = true;
+                                                                    }
+                                                                ?>
+                                                                    <span class="badge badge-secondary">Final</span>
+                                                                <?php } ?>
+                                                            </a>
+
+                                                        </li>
                                                     <?php endforeach; ?>
                                                 </ul>
                                             </div>
@@ -111,12 +126,21 @@ foreach ($sub as $subs) :
                                                                 <span class="full-width" style="display:inline-block;"><?php echo $cap['name']; ?></span>
                                                                 <a class="text-white" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_capacities/<?php echo $cap['mark_activity_id']; ?>/<?php echo $data . '/' . $exam_id . '/' . $order . '/'; ?>');" href="javascript:void(0);"><svg class="align-sub" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
                                                                         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844l2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565l6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
-                                                                    </svg></a>
+                                                                    </svg>
+                                                                    <?php if ($is_final) { ?>
+                                                                        <a style="display:inline-block;margin-bottom:2px" class="btn btn-primary btn-sm"><?= $cap['percent'] . ' %' ?></a>
+                                                                    <?php } ?>
+                                                                </a>
                                                                 <a class="text-white" href="<?php echo base_url() . 'teacher/manage_marks/delete_capacity/' . $data . '/' . $exam_id . '/' . $order . '/' . $cap['mark_activity_id'] . '/'; ?>" onclick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>');"><svg class="align-sub" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
                                                                         <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 11v6m-4-6v6M6 7v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7M4 7h16M7 7l2-4h6l2 4" />
                                                                     </svg></a>
                                                             </td>
                                                         <?php endforeach; ?>
+                                                        <?php if ($is_final) { ?>
+                                                            <td class="text-center" style="padding:5px">
+                                                                Evaluaciones Finales
+                                                            </td>
+                                                        <?php } ?>
                                                         <td class="text-center" style="padding:5px">
                                                             Comentario
                                                         </td>
@@ -125,20 +149,24 @@ foreach ($sub as $subs) :
                                                     <?php
                                                     $studs = $this->mark->get_enroll_students($subs['subject_id'], $ex[0], $ex[1], $running_year, $order);
                                                     foreach ($studs as $rows) :
+                                                            $block=false;
+                                                            $reason='';
                                                         if (isActiveSubject($rows['student_id'], $subs['subject_id'])) {
                                                             if(isMarkBlocked($rows['student_id'], $subs['subject_id'])){
-                                                                continue;
+                                                                $block=true;
+                                                                $reason=getMarkBlockedReason($rows['student_id'], $subs['subject_id']);
                                                             }
                                                     ?>
                                                             <tr class="altRow">
                                                                 <td class="text-center col-sticky nums bg-white"><?php echo $rows['student_id']; ?></td>
                                                                 <td class="col-sticky studs bg-white">
                                                                     <div class="studentContainer">
-                                                                        <a href="<?php echo base_url(); ?>teacher/student_portal/<?php echo $rows['student_id']; ?>"><img alt="" src="<?php echo $this->crud->get_image_url('student', $rows['student_id']); ?>" width="25px" style="border-radius: 10px;margin-right:5px;"> <?php echo $this->crud->get_name('student', $rows['student_id']); ?></a>
+                                                                        <a href="<?php echo base_url(); ?>teacher/student_portal/<?php echo $rows['student_id']; ?>"><img alt="" src="<?php echo $this->crud->get_image_url('student', $rows['student_id']); ?>" width="25px" style="border-radius: 10px;margin-right:5px;"> <?php echo $this->crud->get_name('student', $rows['student_id']); ?><?php if($block){?><span class="badge badge-danger"><i class="fa fa-danger"></i> <?=$reason?></span><?php } ?></a>
                                                                     </div>
                                                                 </td>
                                                                 <?php
                                                                 $total = 0;
+                                                                $finalEvaluaciones = 0;
                                                                 $capacidades = $this->db->order_by('mark_activity_id', 'ASC')->get_where('mark_activity', array('subject_id' => $subs['subject_id'], 'exam_id' => $exam_id, 'class_id' => $ex[0], 'section_id' => $ex[1], 'year' => $running_year))->result_array();
                                                                 foreach ($capacidades as $cap) :
                                                                 ?>
@@ -147,13 +175,19 @@ foreach ($sub as $subs) :
                                                                         $notas = $this->db->order_by('nota_capacidad_id', 'ASC')->get_where('nota_capacidad', array('mark_activity_id' => $cap['mark_activity_id'], 'student_id' => $rows['student_id']));
                                                                         $nota_cap = $notas->result_array();
                                                                         foreach ($nota_cap as $nota) :
+                                                                            $finalEvaluaciones += ((int)$nota['nota'] * $cap['percent'] / 100);
                                                                         ?>
-                                                                            <?php $total += $nota['nota']; ?>
-                                                                            <input type="number" onwheel="this.blur()" value="<?php 
+                                                                            <?php $total += (int)$nota['nota']; ?>
+                                                                            <input type="number" <?php if($block){?> class="bg-danger" readonly <?php } ?>  onwheel="this.blur()" value="<?php 
                                                                             if($nota['nota']=="0"){ echo "";}else{echo $nota['nota'];} ?>" onkeyup="calcAverage(this)" min="0" name="mark_<?php echo $rows['student_id'] . '_' . $cap['mark_activity_id']; ?>" class="markInput" placeholder="0">
                                                                         <?php endforeach; ?>
                                                                     </td>
                                                                 <?php endforeach; ?>
+                                                                <?php if($is_final){?>
+                                                                <td>
+                                                                    <input type="text" class="commentInput" value="<?= $finalEvaluaciones ?>" disabled>
+                                                                </td>
+                                                                <?php } ?>
                                                                 <td>
                                                                     <input type="hidden" id="final_avg_<?php echo $rows['student_id']; ?>" name="final_avg_<?php echo $rows['student_id']; ?>" value="<?php if (count($capacidades) > 0) echo number_format($total / count($capacidades), 2, ".", ",");
                                                                                                                                                                                                         else echo '0.00'; ?>">
@@ -162,7 +196,7 @@ foreach ($sub as $subs) :
                                                                     $comment = $this->db->order_by('mark_id', 'ASC')->get_where('mark', array('exam_id' => $exam_id, 'student_id' => $rows['student_id'], 'class_id' => $ex[0], 'section_id' => $ex[1], 'subject_id' => $ex[2], 'year' => $running_year))->result_array();
                                                                     foreach ($comment as $com) :
                                                                     ?>
-                                                                        <input type="text" class="commentInput" name="comment_<?php echo $rows['student_id']; ?>" value="<?php echo $com['comment']; ?>" placeholder="Comment...">
+                                                                        <input type="text" <?php if($block){?> class="bg-danger" readonly <?php } ?> class="commentInput" name="comment_<?php echo $rows['student_id']; ?>" value="<?php echo $com['comment']; ?>" placeholder="Comment...">
                                                                     <?php endforeach; ?>
                                                                 </td>
                                                             </tr>

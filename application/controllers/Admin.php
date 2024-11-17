@@ -4263,10 +4263,15 @@ class Admin extends EduAppGT
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
         redirect(base_url() . 'admin/student_portal/'.$student_id);
     }
-    function block_mark($student_id,$subject_id,$course)
+    function block_mark()
     {
+        $student_id=$this->input->post('student_id');
+        $subject_id=$this->input->post('subject_id');
+        $course=$this->input->post('course');
+        $reason=$this->input->post('reason');
         $data=array(
-            'is_block'=>1
+            'is_block'=>1,
+            'reason'=>$reason
         );
         $where=array(
             'student_id'=>$student_id,
@@ -4280,7 +4285,8 @@ class Admin extends EduAppGT
     function unblock_mark($student_id,$subject_id,$course)
     {
         $data=array(
-            'is_block'=>0
+            'is_block'=>0,
+            'reason'=>''
         );
         $where=array(
             'student_id'=>$student_id,

@@ -25,5 +25,6 @@ ALTER TABLE `exam` ADD `is_final` INT(11) NOT NULL DEFAULT '0' AFTER `exam_id`;
 ALTER TABLE `mark_activity` ADD `percent` INT(11) NOT NULL DEFAULT '0' AFTER `exam_id`; 
 ALTER TABLE `student` ADD `is_active` INT(11) NOT NULL DEFAULT '1' AFTER `year`; 
 ALTER TABLE `student_subject` ADD `is_block` INT(11) NOT NULL DEFAULT '0'; 
+ALTER TABLE `student_subject` ADD `reason` TEXT NOT NULL AFTER `is_block`;
 
 

@@ -149,16 +149,19 @@ foreach ($sub as $subs) :
                                                     <?php
                                                     $studs = $this->mark->get_enroll_students($subs['subject_id'], $ex[0], $ex[1], $running_year, $order);
                                                     foreach ($studs as $rows) :
+                                                            $block=false;
+                                                            $reason='';
                                                         if (isActiveSubject($rows['student_id'], $subs['subject_id'])) {
                                                             if(isMarkBlocked($rows['student_id'], $subs['subject_id'])){
-                                                                continue;
+                                                                $block=true;
+                                                                $reason=getMarkBlockedReason($rows['student_id'], $subs['subject_id']);
                                                             }
                                                     ?>
                                                             <tr class="altRow">
                                                                 <td class="text-center col-sticky nums bg-white"><?php echo $rows['student_id']; ?></td>
                                                                 <td class="col-sticky studs bg-white">
                                                                     <div class="studentContainer">
-                                                                        <a href="<?php echo base_url(); ?>admin/student_portal/<?php echo $rows['student_id']; ?>"><img alt="" src="<?php echo $this->crud->get_image_url('student', $rows['student_id']); ?>" width="25px" style="border-radius: 10px;margin-right:5px;"> <?php echo $this->crud->get_name('student', $rows['student_id']); ?></a>
+                                                                        <a href="<?php echo base_url(); ?>admin/student_portal/<?php echo $rows['student_id']; ?>"><img alt="" src="<?php echo $this->crud->get_image_url('student', $rows['student_id']); ?>" width="25px" style="border-radius: 10px;margin-right:5px;"> <?php echo $this->crud->get_name('student', $rows['student_id']); ?> <?php if($block){?><span class="badge badge-danger"><i class="fa fa-danger"></i> <?=$reason?></span><?php } ?></a>
                                                                     </div>
                                                                 </td>
                                                                 <?php
@@ -175,7 +178,7 @@ foreach ($sub as $subs) :
                                                                             $finalEvaluaciones += ((int)$nota['nota'] * $cap['percent'] / 100);
                                                                         ?>
                                                                             <?php $total += (int)$nota['nota']; ?>
-                                                                            <input type="number" onwheel="this.blur()" value="<?php
+                                                                            <input type="number" <?php if($block){?> class="bg-danger" readonly <?php } ?> onwheel="this.blur()" value="<?php
                                                                                                                                 if ($nota['nota'] == "0") {
                                                                                                                                     echo "";
                                                                                                                                 } else {
@@ -197,7 +200,7 @@ foreach ($sub as $subs) :
                                                                     $comment = $this->db->order_by('mark_id', 'ASC')->get_where('mark', array('exam_id' => $exam_id, 'student_id' => $rows['student_id'], 'class_id' => $ex[0], 'section_id' => $ex[1], 'subject_id' => $ex[2], 'year' => $running_year))->result_array();
                                                                     foreach ($comment as $com) :
                                                                     ?>
-                                                                        <input type="text" class="commentInput" name="comment_<?php echo $rows['student_id']; ?>" value="<?php echo $com['comment']; ?>" placeholder="Comment...">
+                                                                        <input type="text" <?php if($block){?> class="bg-danger" readonly <?php } ?> class="commentInput" name="comment_<?php echo $rows['student_id']; ?>" value="<?php echo $com['comment']; ?>" placeholder="Comment...">
                                                                     <?php endforeach; ?>
                                                                 </td>
 
