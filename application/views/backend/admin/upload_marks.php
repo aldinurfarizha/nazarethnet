@@ -157,7 +157,7 @@ foreach ($sub as $subs) :
                                                                 $reason=getMarkBlockedReason($rows['student_id'], $subs['subject_id']);
                                                             }
                                                     ?>
-                                                            <tr class="altRow">
+                                                            <tr class="altRow" >
                                                                 <td class="text-center col-sticky nums bg-white"><?php echo $rows['student_id']; ?></td>
                                                                 <td class="col-sticky studs bg-white">
                                                                     <div class="studentContainer">
@@ -170,20 +170,27 @@ foreach ($sub as $subs) :
                                                                 $capacidades = $this->db->order_by('mark_activity_id', 'ASC')->get_where('mark_activity', array('subject_id' => $subs['subject_id'], 'exam_id' => $exam_id, 'class_id' => $ex[0], 'section_id' => $ex[1], 'year' => $running_year))->result_array();
                                                                 foreach ($capacidades as $cap) :
                                                                 ?>
-                                                                    <td align="center">
+                                                                    <td align="center" style="text-align: center; vertical-align: middle; height: 100px;" style="border: 1px solid black;">
                                                                         <?php
                                                                         $notas = $this->db->order_by('nota_capacidad_id', 'ASC')->get_where('nota_capacidad', array('mark_activity_id' => $cap['mark_activity_id'], 'student_id' => $rows['student_id']));
+                                                                     
                                                                         $nota_cap = $notas->result_array();
                                                                         foreach ($nota_cap as $nota) :
                                                                             $finalEvaluaciones += ((int)$nota['nota'] * $cap['percent'] / 100);
                                                                         ?>
                                                                             <?php $total += (int)$nota['nota']; ?>
-                                                                            <input type="number" <?php if($block){?> class="bg-danger" readonly <?php } ?> onwheel="this.blur()" value="<?php
+                                                                            <input type="hidden" <?php if($block){?> class="bg-danger" readonly <?php } ?> onwheel="this.blur()" value="<?php
                                                                                                                                 if ($nota['nota'] == "0") {
                                                                                                                                     echo "";
                                                                                                                                 } else {
                                                                                                                                     echo $nota['nota'];
                                                                                                                                 } ?>" onkeyup="calcAverage(this)" min="0" name="mark_<?php echo $rows['student_id'] . '_' . $cap['mark_activity_id']; ?>" class="markInput" placeholder="0">
+                                                                            <?php if($nota['is_block']==0){?>
+                                                                                <button type="button" onclick="showAjaxModal('<?= base_url('modal/popup/modal_block_mark_new/'.$data.'/'.$nota['nota_capacidad_id'].'/'.$nota['is_block']) ?>');" class="btn btn-outline-success">Gratis</button>
+                                                                            <?php }else{ ?>
+                                                                                <button type="button" onclick="showAjaxModal('<?= base_url('modal/popup/modal_block_mark_new/'.$data.'/'.$nota['nota_capacidad_id'].'/'.$nota['is_block']) ?>');" class="btn btn-outline-danger">Bloqueado</button>
+                                                                                <p><?=$nota['reason']?></p>
+                                                                            <?php } ?>
                                                                         <?php endforeach; ?>
                                                                     </td>
                                                                 <?php endforeach; ?>

@@ -4297,5 +4297,31 @@ class Admin extends EduAppGT
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
         redirect(base_url() . 'admin/student_list/'.$course);
     }
+    function change_marks_status()
+    {
+        $nota_capacidad_id=$this->input->post('nota_capacidad_id');
+        $course=$this->input->post('course');
+        $is_block=$this->input->post('is_block');
+        $reason=$this->input->post('reason');
+        if($is_block==1){
+            $data=array(
+                'is_block'=>$is_block,
+                'reason'=>$reason
+            );
+        }else{
+            $data=array(
+                'is_block'=>$is_block,
+                'reason'=>''
+            );
+        }
+        
+        $where=array(
+            'nota_capacidad_id'=>$nota_capacidad_id
+        );
+        $this->db->where($where);
+        $this->db->update('nota_capacidad', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
+        redirect(base_url() . 'admin/upload_marks/'.$course);
+    }
     //End of Admin.php content.
 }

@@ -86,7 +86,7 @@ foreach ($sub as $subs) :
 
                                                     ?>
                                                         <li class='<?php if ($exam['exam_id'] == $exam_id) echo "act"; ?>'>
-                                                            <a href="<?php echo base_url(); ?>admin/upload_marks/<?php echo $data . '/' . $exam['exam_id']; ?>/">
+                                                            <a href="<?php echo base_url(); ?>teacher/upload_marks/<?php echo $data . '/' . $exam['exam_id']; ?>/">
                                                                 <i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i>
                                                                 <?php echo $exam['name']; ?>
                                                                 <?php if ($exam['is_final']) {
@@ -178,8 +178,15 @@ foreach ($sub as $subs) :
                                                                             $finalEvaluaciones += ((int)$nota['nota'] * $cap['percent'] / 100);
                                                                         ?>
                                                                             <?php $total += (int)$nota['nota']; ?>
-                                                                            <input type="number" <?php if($block){?> class="bg-danger" readonly <?php } ?>  onwheel="this.blur()" value="<?php 
+                                                                            <input type="number"
+                                                                            <?php if($nota['is_block']){?>
+                                                                                class="bg-danger" readonly
+                                                                            <?php } ?> 
+                                                                            <?php if($block){?> class="bg-danger" readonly <?php } ?>  onwheel="this.blur()" value="<?php 
                                                                             if($nota['nota']=="0"){ echo "";}else{echo $nota['nota'];} ?>" onkeyup="calcAverage(this)" min="0" name="mark_<?php echo $rows['student_id'] . '_' . $cap['mark_activity_id']; ?>" class="markInput" placeholder="0">
+                                                                            <?php if($nota['is_block']){?>
+                                                                                <small><?=$nota['reason']?></small>
+                                                                            <?php } ?> 
                                                                         <?php endforeach; ?>
                                                                     </td>
                                                                 <?php endforeach; ?>

@@ -27,4 +27,7 @@ ALTER TABLE `student` ADD `is_active` INT(11) NOT NULL DEFAULT '1' AFTER `year`;
 ALTER TABLE `student_subject` ADD `is_block` INT(11) NOT NULL DEFAULT '0'; 
 ALTER TABLE `student_subject` ADD `reason` TEXT NOT NULL AFTER `is_block`;
 
+ALTER TABLE `nota_capacidad` ADD `is_block` INT(11) NOT NULL DEFAULT '0'; 
+ALTER TABLE `nota_capacidad` ADD `reason` TEXT NOT NULL; 
+
 
