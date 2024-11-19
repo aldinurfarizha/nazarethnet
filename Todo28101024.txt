@@ -27,7 +27,7 @@ Extend Time
 
 ✅ 2.oh okay i will revise this.
 
-3.oh okay i will revise this.
+✅3.oh okay i will revise this.
 🟢 If it is okay, there is only one observation that with the student user the list of courses is repeated and that the grade is not the updated one that is with average
 
 4.oh okay i will revise this.

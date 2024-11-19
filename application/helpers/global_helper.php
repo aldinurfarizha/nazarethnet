@@ -567,5 +567,22 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
         ->get();
         return $data->num_rows();
     }
+    function isStudentFinishSubject($student_id, $subject_id)
+    {
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('student_subject')
+        ->where([
+            'student_id' => $student_id,
+            'subject_id' => $subject_id,
+            'is_finish'=>1
+        ])
+        ->get();
+    if ($data->num_rows() > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 

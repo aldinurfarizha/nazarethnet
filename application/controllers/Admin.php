@@ -4359,5 +4359,39 @@ class Admin extends EduAppGT
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
         redirect(base_url() . 'admin/blocked_mark/'.$course);
     }
+    function finish_student_subject($student_id,$subject_id)
+    {
+      
+        $where = array(
+            'student_id' => $student_id,
+            'subject_id' => $subject_id
+        );
+    
+
+        $data = array(
+            'is_finish' => 1
+        );
+        $this->db->where($where);
+        $this->db->update('student_subject', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
+        redirect(base_url() . 'admin/student_profile_active_course/' . $student_id);
+    }
+    function process_student_subject($student_id, $subject_id)
+    {
+
+        $where = array(
+            'student_id' => $student_id,
+            'subject_id' => $subject_id
+        );
+
+
+        $data = array(
+            'is_finish' => 0
+        );
+        $this->db->where($where);
+        $this->db->update('student_subject', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
+        redirect(base_url() . 'admin/student_profile_active_course/' . $student_id);
+    }
     //End of Admin.php content.
 }
