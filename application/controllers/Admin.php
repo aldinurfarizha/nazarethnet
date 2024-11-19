@@ -3438,6 +3438,42 @@ class Admin extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('upload_marks');
         $this->load->view('backend/index', $page_data);
     }
+    function blocked_mark($datainfo = '', $param2 = '', $param3 = '')
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        if ($param2 != "") {
+            $page = $param2;
+        } else {
+            $info = base64_decode($datainfo);
+            $ex = explode('-', $info);
+
+            $query = $this->db->get_where('exam', array('section_id' => $ex[1], 'class_id' => $ex[0], 'subject_id' => $ex[2]))->first_row()->exam_id;
+            if ($query > 0) {
+                $page = $query;
+            } else {
+                $insert['section_id'] = $ex[1];
+                $insert['class_id']   = $ex[0];
+                $insert['subject_id'] = $ex[2];
+                $insert['name']       = 'First exam';
+                $this->db->insert('exam', $insert);
+                $page = $this->db->insert_id();
+            }
+        }
+        if ($param3 != "") {
+            $order = $param3;
+        } else {
+            $order = 1;
+        }
+        $this->mark->uploadMarks($datainfo, $page, $order);
+        $page_data['exam_id'] = $page;
+        $page_data['data'] = $datainfo;
+        $page_data['order']         = $order;
+        $page_data['page_name']  =   'blocked_mark';
+        $page_data['page_title'] = getEduAppGTLang('blocked_mark');
+        $this->load->view('backend/index', $page_data);
+    }
 
     //Update marks function.
     function marks_update($exam_id = '', $class_id = '', $section_id = '', $subject_id = '')
@@ -4321,7 +4357,7 @@ class Admin extends EduAppGT
         $this->db->where($where);
         $this->db->update('nota_capacidad', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
-        redirect(base_url() . 'admin/upload_marks/'.$course);
+        redirect(base_url() . 'admin/blocked_mark/'.$course);
     }
     //End of Admin.php content.
 }

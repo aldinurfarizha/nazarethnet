@@ -38,10 +38,10 @@ foreach ($sub as $subs) :
                             <a class="navs-links" href="<?php echo base_url(); ?>admin/study_material/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0003_write_pencil_new_edit"></i><span><?php echo getEduAppGTLang('study_material'); ?></span></a>
                         </li>
                         <li class="navs-item">
-                            <a class="navs-links active" href="<?php echo base_url(); ?>admin/upload_marks/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0729_student_degree_science_university_school_graduate"></i><span><?php echo getEduAppGTLang('marks'); ?></span></a>
+                            <a class="navs-links" href="<?php echo base_url(); ?>admin/upload_marks/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0729_student_degree_science_university_school_graduate"></i><span><?php echo getEduAppGTLang('marks'); ?></span></a>
                         </li>
                         <li class="navs-item">
-                            <a class="navs-links" href="<?php echo base_url(); ?>admin/blocked_mark/<?php echo $data; ?>/"><i class="picons-thin-icon-thin-0389_gavel_hammer_law_judge_court"></i><span>Marcas Bloqueadas</span></a>
+                            <a class="navs-links active" href="<?php echo base_url(); ?>admin/blocked_mark/<?php echo $data; ?>/"><i class="picons-thin-icon-thin-0389_gavel_hammer_law_judge_court"></i><span>Marcas Bloqueadas</span></a>
                         </li>
                         <li class="navs-item">
                             <a class="navs-links" href="<?php echo base_url(); ?>admin/meet/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0591_presentation_video_play_beamer"></i><span><?php echo getEduAppGTLang('live'); ?></span></a>
@@ -70,11 +70,7 @@ foreach ($sub as $subs) :
                                     <div class="post__author author vcard inline-items">
                                         <img src="<?php echo base_url(); ?>public/uploads/<?php echo $this->crud->getInfo('logo'); ?>" class="no-border">
                                         <div class="author-date">
-                                            <a class="h6 post__author-name fn" href="javascript:void(0);"><?php echo getEduAppGTLang('upload_marks'); ?> <small>(<?php echo $this->db->get_where('exam', array('exam_id' => $exam_id))->row()->name; ?>)</small>.</a>
-                                        </div>
-                                        <div class="pull-right">
-                                            <a href="javascript:void(0);" data-toggle="modal" data-target="#crearcapacidad"><button type="button" class="btn btn-rounded btn-warning">Crear actividad</button></a>
-                                            <button class="btn btn-success btn-rounded" id="btn-trigger-update" type="button"><?php echo getEduAppGTLang('update'); ?></button>
+                                            <a class="h6 post__author-name fn" href="javascript:void(0);">Marcas Bloqueadas <small>(<?php echo $this->db->get_where('exam', array('exam_id' => $exam_id))->row()->name; ?>)</small>.</a>
                                         </div>
                                     </div>
                                     <div class="edu-posts cta-with-media">
@@ -127,16 +123,6 @@ foreach ($sub as $subs) :
                                                         <?php foreach ($capacidades as $cap) : ?>
                                                             <td class="text-center" style="padding:5px">
                                                                 <span class="full-width" style="display:inline-block;"><?php echo $cap['name']; ?></span>
-                                                                <a class="text-white" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_capacities/<?php echo $cap['mark_activity_id']; ?>/<?php echo $data . '/' . $exam_id . '/' . $order . '/'; ?>');" href="javascript:void(0);"><svg class="align-sub" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
-                                                                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844l2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565l6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
-                                                                    </svg>
-                                                                    <?php if ($is_final) { ?>
-                                                                        <a style="display:inline-block;margin-bottom:2px" class="btn btn-primary btn-sm"><?= $cap['percent'] . ' %' ?></a>
-                                                                    <?php } ?>
-                                                                </a>
-                                                                <a class="text-white" href="<?php echo base_url() . 'admin/manage_marks/delete_capacity/' . $data . '/' . $exam_id . '/' . $order . '/' . $cap['mark_activity_id'] . '/'; ?>" onclick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>');"><svg class="align-sub" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
-                                                                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 11v6m-4-6v6M6 7v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7M4 7h16M7 7l2-4h6l2 4" />
-                                                                    </svg></a>
                                                             </td>
                                                         <?php endforeach; ?>
                                                         <?php if ($is_final) { ?>
@@ -182,18 +168,17 @@ foreach ($sub as $subs) :
                                                                             $finalEvaluaciones += ((int)$nota['nota'] * $cap['percent'] / 100);
                                                                         ?>
                                                                             <?php $total += (int)$nota['nota']; ?>
-                                                                            <input type="number"
-                                                                                <?php if ($nota['is_block']) { ?>
-                                                                                class="bg-danger" readonly
-                                                                                <?php } ?>
-                                                                                <?php if ($block) { ?> class="bg-danger" readonly <?php } ?> onwheel="this.blur()" value="<?php
-                                                                                                                                                                        if ($nota['nota'] == "0") {
-                                                                                                                                                                            echo "";
-                                                                                                                                                                        } else {
-                                                                                                                                                                            echo $nota['nota'];
-                                                                                                                                                                        } ?>" onkeyup="calcAverage(this)" min="0" name="mark_<?php echo $rows['student_id'] . '_' . $cap['mark_activity_id']; ?>" class="markInput" placeholder="0">
-                                                                            <?php if ($nota['is_block']) { ?>
-                                                                                <small><?= $nota['reason'] ?></small>
+                                                                            <input type="hidden" <?php if ($block) { ?> class="bg-danger" readonly <?php } ?> onwheel="this.blur()" value="<?php
+                                                                                                                                                                                            if ($nota['nota'] == "0") {
+                                                                                                                                                                                                echo "";
+                                                                                                                                                                                            } else {
+                                                                                                                                                                                                echo $nota['nota'];
+                                                                                                                                                                                            } ?>" onkeyup="calcAverage(this)" min="0" name="mark_<?php echo $rows['student_id'] . '_' . $cap['mark_activity_id']; ?>" class="markInput" placeholder="0">
+                                                                            <?php if ($nota['is_block'] == 0) { ?>
+                                                                                <button type="button" onclick="showAjaxModal('<?= base_url('modal/popup/modal_block_mark_new/' . $data . '/' . $nota['nota_capacidad_id'] . '/' . $nota['is_block']) ?>');" class="btn btn-outline-success">Gratis</button>
+                                                                            <?php } else { ?>
+                                                                                <button type="button" onclick="showAjaxModal('<?= base_url('modal/popup/modal_block_mark_new/' . $data . '/' . $nota['nota_capacidad_id'] . '/' . $nota['is_block']) ?>');" class="btn btn-outline-danger">Bloqueado</button>
+                                                                                <br><small><?= $nota['reason'] ?></small>
                                                                             <?php } ?>
                                                                         <?php endforeach; ?>
                                                                     </td>
@@ -221,9 +206,6 @@ foreach ($sub as $subs) :
                                                 </tbody>
                                                 </tbody>
                                             </table>
-                                            <div class="form-buttons-w text-center">
-                                                <button class="btn btn-success btn-rounded" id="btn-update-mark" type="submit"><?php echo getEduAppGTLang('update'); ?></button>
-                                            </div>
                                             <?php echo form_close(); ?>
                                         </div>
                                     </div>

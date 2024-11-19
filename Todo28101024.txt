@@ -21,3 +21,22 @@ beincluded in the report.
 access. 
 ✅❌ 13. When a student is deactivated or removed, they should no longer appear in the 
 attendancerecords, and the removal should take effect immediately. 
+
+Extend Time
+1.Sorry, it seems like I need further understanding for this. To make me understand better, can you help me to make a complete example of grades with several student names and their final grades in an excel file?
+2.oh okay i will revise this.
+
+3.oh okay i will revise this.
+🟢 If it is okay, there is only one observation that with the student user the list of courses is repeated and that the grade is not the updated one that is with average
+
+4.oh okay i will revise this.
+🟢If the student has already finished taking the course and that course has been deactivated because they are no longer taking it, they should be able to continue seeing their grades.
+When I deactivate it, the student can no longer see their grades.
+
+9.oh okay i will revise this.
+🟢 If okay, there is the option to create and delete new states only with the administrator user
+The new status that was assigned does not appear on the student's attendance report.
+
+13.oh okay i will revise this.
+🟢 When the user is deactivated, they continue to be displayed in the attendance list.
+There is an attendance report that is not updated with the new attendance statuses that are created
