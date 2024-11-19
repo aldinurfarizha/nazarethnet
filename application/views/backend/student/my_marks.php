@@ -19,16 +19,13 @@ $section_id = $this->db->get_where('enroll', array('student_id' => $this->sessio
 									<select name="subject_id" required>
 										<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 										<?php
-										$studentData = getStudentClassAndSectionById($this->session->userdata('login_user_id'));
-										
-										foreach ($studentData as $datax) {
-											$datak=getAvailabeSubject($datax->student_id);
+											$datak=getAvailabeSubject($this->session->userdata('login_user_id'));
 											foreach ($datak as $key) :
-												if(isActiveSubject($datax->student_id, $key->subject_id)){
+												if(isActiveSubject($this->session->userdata('login_user_id'), $key->subject_id)){
 										?>
 												<option value="<?php echo $key->subject_id; ?>" <?php if ($subject_id == $key->subject_id) echo "selected"; ?>><?php echo $key->name; ?></option>
 										<?php } endforeach;
-										}
+										
 										?>
 									</select>
 								</div>
@@ -47,9 +44,8 @@ $section_id = $this->db->get_where('enroll', array('student_id' => $this->sessio
 						$detailSubject = getSubjectDetailBySubjectId($subject_id);
 						$class_id = $detailSubject->class_id;
 						$section_id = $detailSubject->section_id;
-						$student_info = $this->db->get_where('enroll', array('student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->result_array();
+						$student_info = $this->db->get_where('enroll', array('student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year,'is_active'=>1))->result_array();
 						$exams = $this->db->get_where('exam', array('class_id' => $class_id, 'section_id' => $section_id, 'subject_id' => $subject_id))->result_array();
-						foreach ($student_info as $row1) :
 							foreach ($exams as $row2) :
 						?>
 
@@ -71,9 +67,9 @@ $section_id = $this->db->get_where('enroll', array('student_id' => $this->sessio
 												</thead>
 												<tbody>
 													<?php
-													$subjects = $this->db->get_where('subject', array('class_id' => $row1['class_id'], 'section_id' => $row1['section_id']))->result_array();
+													$subjects = $this->db->get_where('subject', array('class_id' => $class_id, 'section_id' => $section_id))->result_array();
 													foreach ($subjects as $row3) :
-														$obtained_mark_query = $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $row2['exam_id'], 'class_id' => $row1['class_id'], 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year));
+														$obtained_mark_query = $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $row2['exam_id'], 'class_id' => $class_id, 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year));
 														if ($obtained_mark_query->num_rows() > 0) {
 															$marks = $obtained_mark_query->result_array();
 															foreach ($marks as $row4) :
@@ -83,10 +79,10 @@ $section_id = $this->db->get_where('enroll', array('student_id' => $this->sessio
 																	<td><?php echo $row3['name']; ?></td>
 																	<td><img alt="" src="<?php echo $this->crud->get_image_url('teacher', $row3['teacher_id']); ?>" width="25px" class="tbl-user"> <?php echo $this->crud->get_name('teacher', $row3['teacher_id']); ?></td>
 																	<td>
-																		<?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $row2['exam_id'], 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->mark_obtained; ?>
+																		<?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $row2['exam_id'], 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->final; ?>
 																	</td>
 																	<td><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $row2['exam_id'], 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->comment; ?></td>
-																	<?php $data = base64_encode($row1['class_id'] . "-" . $row1['section_id'] . "-" . $row3['subject_id']); ?>
+																	<?php $data = base64_encode($class_id . "-" . $section_id . "-" . $row3['subject_id']); ?>
 																	<td><a class="btn btn-rounded btn-sm btn-primary text-white" href="<?php echo base_url(); ?>student/subject_marks/<?php echo $data; ?>/<?php echo $row2['exam_id']; ?>"><?php echo getEduAppGTLang('view_all'); ?></a></td>
 																</tr>
 													<?php endforeach;
@@ -100,8 +96,7 @@ $section_id = $this->db->get_where('enroll', array('student_id' => $this->sessio
 										</div>
 									</div>
 								</div>
-						<?php endforeach;
-						endforeach; ?>
+						<?php endforeach; ?>
 					<?php endif; ?>
 				</div>
 			</div>

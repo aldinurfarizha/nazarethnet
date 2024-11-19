@@ -193,3 +193,375 @@ ERROR - 2024-11-19 00:23:31 --> Severity: Warning --> Attempt to read property "
 ERROR - 2024-11-19 00:23:31 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_profile.php 85
 ERROR - 2024-11-19 00:23:31 --> Severity: Warning --> Attempt to read property "name" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_profile.php 102
 ERROR - 2024-11-19 00:23:32 --> Severity: Warning --> Undefined variable $loginURL C:\wamp64\www\nazarethnet\application\views\backend\student\my_profile.php 264
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:17 --> Severity: Warning --> Undefined variable $studentData C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 35
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:32:46 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:33:10 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:34:03 --> Severity: Warning --> Attempt to read property "name" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_profile.php 77
+ERROR - 2024-11-19 00:34:03 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_profile.php 85
+ERROR - 2024-11-19 00:34:03 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_profile.php 85
+ERROR - 2024-11-19 00:34:03 --> Severity: Warning --> Attempt to read property "name" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_profile.php 102
+ERROR - 2024-11-19 00:34:04 --> Severity: Warning --> Undefined variable $loginURL C:\wamp64\www\nazarethnet\application\views\backend\student\my_profile.php 264
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Undefined variable $datax C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:35:09 --> Severity: Warning --> Attempt to read property "student_id" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_marks.php 24
+ERROR - 2024-11-19 00:36:05 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:05 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:05 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:05 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:10 --> Severity: Warning --> Undefined array key "wall_type" C:\wamp64\www\nazarethnet\application\views\backend\student\subject_dashboard.php 173
+ERROR - 2024-11-19 00:36:10 --> Severity: Warning --> Undefined array key "wall_type" C:\wamp64\www\nazarethnet\application\views\backend\student\subject_dashboard.php 374
+ERROR - 2024-11-19 00:36:10 --> Severity: Warning --> Undefined array key "wall_type" C:\wamp64\www\nazarethnet\application\views\backend\student\subject_dashboard.php 421
+ERROR - 2024-11-19 00:36:10 --> Severity: Warning --> Undefined array key "wall_type" C:\wamp64\www\nazarethnet\application\views\backend\student\subject_dashboard.php 471
+ERROR - 2024-11-19 00:36:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:13 --> Severity: Warning --> Undefined array key "id" C:\wamp64\www\nazarethnet\application\controllers\Student.php 668
+ERROR - 2024-11-19 00:36:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:33 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:33 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:33 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:33 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:33 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:36:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:04 --> Severity: Warning --> Undefined array key "id" C:\wamp64\www\nazarethnet\application\controllers\Student.php 668
+ERROR - 2024-11-19 00:37:07 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:07 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:07 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:07 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:07 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:07 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:07 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:07 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:07 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:07 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:07 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:07 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:15 --> Severity: Warning --> Undefined array key "id" C:\wamp64\www\nazarethnet\application\controllers\Student.php 668
+ERROR - 2024-11-19 00:37:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:19 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:22 --> Severity: Warning --> Undefined array key "id" C:\wamp64\www\nazarethnet\application\controllers\Student.php 668
+ERROR - 2024-11-19 00:37:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:37:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:43 --> Severity: Warning --> Undefined array key "id" C:\wamp64\www\nazarethnet\application\controllers\Student.php 668
+ERROR - 2024-11-19 00:48:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:48:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Undefined variable $class_id C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 7
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "name" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 7
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Undefined property: stdClass::$labtotal C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 00:49:21 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 00:51:23 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:51:24 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:51:24 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:51:24 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:51:24 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:51:24 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:52:27 --> Severity: Warning --> Undefined array key "id" C:\wamp64\www\nazarethnet\application\controllers\Student.php 668
+ERROR - 2024-11-19 00:52:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:52:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:52:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:52:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:52:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:52:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:52:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:52:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:52:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:52:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:52:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:52:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:52:48 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:52:48 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:52:48 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 00:57:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-11-19 00:57:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-11-19 00:57:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-11-19 00:57:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-11-19 00:57:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-11-19 00:57:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-11-19 00:57:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-11-19 00:57:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-11-19 00:57:07 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-11-19 00:57:07 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-11-19 00:57:07 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-11-19 00:57:07 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-11-19 01:00:50 --> Severity: Warning --> Undefined variable $class_id C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 7
+ERROR - 2024-11-19 01:00:50 --> Severity: Warning --> Attempt to read property "name" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 7
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Undefined property: stdClass::$labtotal C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:00:51 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Undefined variable $class_id C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 7
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "name" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 7
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Undefined property: stdClass::$labtotal C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:03:40 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:14:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:14:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:14:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:14:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:14:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:14:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:16:00 --> Severity: Warning --> Undefined variable $class_id C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 7
+ERROR - 2024-11-19 01:16:00 --> Severity: Warning --> Attempt to read property "name" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 7
+ERROR - 2024-11-19 01:16:00 --> Severity: Warning --> Undefined property: stdClass::$labtotal C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:16:00 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:16:00 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:16:00 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:16:00 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "labtotal" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 71
+ERROR - 2024-11-19 01:16:01 --> Severity: Warning --> Attempt to read property "comment" on null C:\wamp64\www\nazarethnet\application\views\backend\student\marks_print_view.php 72
+ERROR - 2024-11-19 01:17:24 --> Severity: Warning --> Undefined array key "id" C:\wamp64\www\nazarethnet\application\controllers\Student.php 668
+ERROR - 2024-11-19 01:17:28 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:17:28 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:17:28 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:17:28 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:17:28 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:17:28 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:17:28 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:17:28 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:17:28 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:17:28 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:17:28 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:17:28 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 01:17:28 --> 404 Page Not Found: Public/uploads
