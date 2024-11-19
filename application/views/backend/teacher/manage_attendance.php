@@ -91,9 +91,6 @@
                                                 <?php echo getEduAppGTLang('manage_attendance');?> 
                                                 <small>(<?php echo date("m/d/Y", $timestamp);?>)</small>
                                             </a>
-                                            <button class="btn btn-primary" onclick="showAjaxModal('<?= base_url('modal/popup/modal_add_custom_status_attendance/'.$data.'/'.getTeacherIdFromSubject($ex[2])) ?>');">
-                                            añadir otro estado <i class="fa fa-plus"></i>
-                                            </button>
                                         </div>              
                                     </div>                
                                     <div class="edu-posts cta-with-media">
