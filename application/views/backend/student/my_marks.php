@@ -19,7 +19,7 @@ $section_id = $this->db->get_where('enroll', array('student_id' => $this->sessio
 									<select name="subject_id" required>
 										<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 										<?php
-										$datak = getAvailabeSubject($this->session->userdata('login_user_id'));
+										$datak = getAvailabeSubjectAll($this->session->userdata('login_user_id'));
 										foreach ($datak as $key) :
 											if (isActiveSubject($this->session->userdata('login_user_id'), $key->subject_id)) {
 										?>

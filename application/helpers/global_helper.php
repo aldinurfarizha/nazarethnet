@@ -117,6 +117,18 @@ function getAvailabeSubject($student_id)
     }
     return $temp;
 }
+function getAvailabeSubjectAll($student_id)
+{
+    $classSection = getStudentClassAndSectionByIdAll($student_id);
+    $temp = array();
+    foreach ($classSection as $cs) {
+        $subject = getSubjectByClassIdandSectionId($cs->class_id, $cs->section_id);
+        foreach ($subject as $data) {
+            $temp[] = (object) $data;
+        }
+    }
+    return $temp;
+}
 function isStudentEnrolled($student_id, $class_id, $section_id)
 {
     $ci = &get_instance();
