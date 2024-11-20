@@ -1000,6 +1000,9 @@ foreach ($sub as $row) :
                     <ul class="widget w-friend-pages-added notification-list friend-requests">
                       <?php $students   =   $this->db->get_where('enroll', array('class_id' => $ex[0], 'section_id' => $ex[1], 'year' => $running_year))->result_array();
                       foreach ($students as $row2) :
+                        if (!isStudentActiveEnroll($row2['student_id'], $ex[0], $ex[1], $running_year)) {
+                          continue;
+                        }
                         if (isActiveSubject($row2['student_id'], $ex[2])) {
                       ?>
                           <li class="inline-items">

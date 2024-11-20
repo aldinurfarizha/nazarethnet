@@ -114,6 +114,9 @@
                                                             'subject_id' => $ex[2]
                                                         ))->result_array();
                                                         foreach ($attendance_of_students as $row):
+                                                        if (!isStudentActiveEnroll($row['student_id'], $ex[0], $ex[1], $running_year)) {
+                                                            continue;
+                                                        }
                                                     ?>
                                                             <tr>
                                                                 <td class="min-w-170">

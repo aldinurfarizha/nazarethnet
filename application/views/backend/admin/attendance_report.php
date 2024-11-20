@@ -200,9 +200,9 @@
                                                 <?php $data = array();
                                                 $students = $this->db->get_where('enroll', array('class_id' => $class_id, 'year' => $running_year, 'section_id' => $section_id))->result_array();
                                                 foreach ($students as $row):
-                                                if (isStudentFinishSubject($row['student_id'], $subject_id)) {
-                                                    continue;
-                                                }
+                                                    if (!isStudentActiveEnroll($row['student_id'], $class_id, $section_id, $running_year)) {
+                                                        continue;
+                                                    }
                                                 if(isStudentDeactive($row['student_id'])){
                                                     continue;
                                                 }

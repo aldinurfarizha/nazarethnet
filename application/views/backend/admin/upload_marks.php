@@ -152,7 +152,7 @@ foreach ($sub as $subs) :
                                                     <?php
                                                     $studs = $this->mark->get_enroll_students($subs['subject_id'], $ex[0], $ex[1], $running_year, $order);
                                                     foreach ($studs as $rows) :
-                                                        if(isStudentFinishSubject($rows['student_id'],$subs['subject_id'])){
+                                                        if (!isStudentActiveEnroll($rows['student_id'], $ex[0], $ex[1], $running_year)) {
                                                             continue;
                                                         }
                                                         $block = false;

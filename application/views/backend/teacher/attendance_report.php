@@ -172,7 +172,11 @@
                                             <tbody>
                                                 <?php $data = array();
                                                 $students = $this->db->get_where('enroll', array('class_id' => $class_id, 'year' => $running_year, 'section_id' => $section_id))->result_array();
-                                                foreach ($students as $row): ?>
+                                                foreach ($students as $row):
+                                                    if (!isStudentActiveEnroll($row['student_id'], $class_id, $section_id, $running_year)) {
+                                                        continue;
+                                                    }
+                                                ?>
                                                     <tr>
                                                         <td nowrap> <img alt="" src="<?php echo $this->crud->get_image_url('student', $row['student_id']); ?>" width="20px" class="tbl-st"> <?php echo $this->crud->get_name('student', $row['student_id']); ?> </td>
                                                         <?php

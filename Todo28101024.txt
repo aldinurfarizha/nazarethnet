@@ -39,3 +39,25 @@ The new status that was assigned does not appear on the student's attendance rep
 13.oh okay i will revise this.
 🟢 When the user is deactivated, they continue to be displayed in the attendance list.
 There is an attendance report that is not updated with the new attendance statuses that are created
+
+
+
+
+
+
+
+Student Portal
+
+															<?php if($row['is_active']) { ?>
+																<a href="<?= base_url();?>admin/deactive_student_status/<?=$row['student_id']?>" 
+																class="btn btn-sm btn-danger" 
+																onclick="return confirm('¿Está seguro de que desea desactivar el estado de este estudiante?');">
+																<?=getEduAppGTLang('disable');?>
+																</a>
+															<?php } else { ?>
+																<a href="<?= base_url();?>admin/active_student_status/<?=$row['student_id']?>" 
+																class="btn btn-sm btn-success" 
+																onclick="return confirm('¿Está seguro de que desea activar el estado de este estudiante?');">
+																<?=getEduAppGTLang('active');?>
+																</a>
+															<?php } ?>
