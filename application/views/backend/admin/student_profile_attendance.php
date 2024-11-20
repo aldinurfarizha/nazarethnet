@@ -94,11 +94,12 @@ foreach ($student_info as $row) :
                                                             <option value=""><?php echo getEduAppGTLang('select'); ?></option>
                                                             <?php
                                                             foreach (getAvailabeSubject($student_id) as $subject) {
-                                                               if(isActiveSubject($student_id, $subject->subject_id)){
+                                                                if (isActiveSubject($student_id, $subject->subject_id)) {
                                                             ?>
                                                                     <option value="<?php echo $subject->subject_id; ?>" <?php if ($subject_id == $subject->subject_id) echo 'selected'; ?>><?php echo $subject->name; ?></option>
 
-                                                            <?php }} ?>
+                                                            <?php }
+                                                            } ?>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -128,8 +129,10 @@ foreach ($student_info as $row) :
                                                         <?php
                                                         $days = cal_days_in_month(CAL_GREGORIAN, $month, $year);
                                                         for ($i = 1; $i <= $days; $i++) {
+                                                            $dateTimestamp = strtotime("$year-$month-$i");
+                                                            $dayName = date('D', $dateTimestamp);
                                                         ?>
-                                                            <th class="text-center"> <?php echo $i; ?> </th>
+                                                            <td class="text-center"><?php echo getEduAppGTLang($dayName) . ' ' . $i; ?></td>
                                                         <?php } ?>
                                                     </tr>
                                                 </thead>
@@ -142,20 +145,34 @@ foreach ($student_info as $row) :
                                                             $timestamp = strtotime($i . '-' . $month . '-' . $year);
                                                             $this->db->group_by('timestamp');
                                                             $attendance = $this->db->get_where('attendance', array('subject_id' => $subject_id, 'section_id' => $section_id, 'class_id' => $class_id, 'year' => $running_year, 'timestamp' => $timestamp, 'student_id' => $student_id))->result_array();
-                                                            foreach ($attendance as $row1) : $month_dummy = date('d', $row1['timestamp']);
-                                                                if ($i == $month_dummy) $status = $row1['status'];
+                                                            foreach ($attendance as $row1) :
+                                                                $month_dummy = date('d', $row1['timestamp']);
+                                                                if ($i == $month_dummy) {
+                                                                    $status = $row1['status'];
+                                                                    if ($row1['updated_at'] == '0000-00-00 00:00:00') {
+                                                                        $takenTime = '';
+                                                                    } else {
+                                                                        $takenTime = $row1['updated_at'];
+                                                                    }
+                                                                }
                                                             endforeach; ?>
                                                             <td class="text-center">
                                                                 <?php if ($status == 1) { ?>
                                                                     <div class="status-pilli green" data-title="<?php echo getEduAppGTLang('present'); ?>" data-toggle="tooltip"></div>
-                                                                <?php  }
-                                                                if ($status == 2) { ?>
+                                                                    <p><?= $takenTime ?></p>
+                                                                <?php } elseif ($status == 2) { ?>
                                                                     <div class="status-pilli red" data-title="<?php echo getEduAppGTLang('absent'); ?>" data-toggle="tooltip"></div>
-                                                                <?php  }
-                                                                if ($status == 3) { ?>
+                                                                    <p><?= $takenTime ?></p>
+                                                                <?php } elseif ($status == 3) { ?>
                                                                     <div class="status-pilli yellow" data-title="<?php echo getEduAppGTLang('late'); ?>" data-toggle="tooltip"></div>
-                                                                <?php  }
-                                                                $status = 0; ?>
+                                                                    <p><?= $takenTime ?></p>
+                                                                <?php } elseif ($status == 0) { ?>
+                                                                    -
+                                                                <?php } else { ?>
+                                                                    <?php echo getStatusNameFromId($status) . '<br>' . $takenTime; ?>
+                                                                <?php }
+                                                                $status = 0;
+                                                                ?>
                                                             </td>
                                                         <?php } ?>
                                                     </tr>

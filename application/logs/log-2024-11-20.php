@@ -1790,3 +1790,159 @@ ERROR - 2024-11-20 05:21:42 --> Severity: Warning --> Attempt to read property "
 ERROR - 2024-11-20 05:21:45 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
 ERROR - 2024-11-20 05:21:45 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
 ERROR - 2024-11-20 05:21:45 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-20 05:24:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:24:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:24:52 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-20 05:24:52 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-20 05:24:53 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-20 05:24:54 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-20 05:24:55 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-20 05:24:55 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-20 05:24:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:24:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:24:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:24:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:01 --> Severity: Warning --> Undefined array key "wall_type" C:\wamp64\www\nazarethnet\application\views\backend\student\subject_dashboard.php 173
+ERROR - 2024-11-20 05:25:01 --> Severity: Warning --> Undefined array key "wall_type" C:\wamp64\www\nazarethnet\application\views\backend\student\subject_dashboard.php 374
+ERROR - 2024-11-20 05:25:01 --> Severity: Warning --> Undefined array key "wall_type" C:\wamp64\www\nazarethnet\application\views\backend\student\subject_dashboard.php 421
+ERROR - 2024-11-20 05:25:01 --> Severity: Warning --> Undefined array key "wall_type" C:\wamp64\www\nazarethnet\application\views\backend\student\subject_dashboard.php 471
+ERROR - 2024-11-20 05:25:02 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:02 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:02 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:02 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:02 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:02 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:02 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:02 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:02 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:02 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:02 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:02 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-20 05:25:24 --> Severity: Warning --> Attempt to read property "name" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_profile.php 77
+ERROR - 2024-11-20 05:25:24 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_profile.php 85
+ERROR - 2024-11-20 05:25:24 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_profile.php 85
+ERROR - 2024-11-20 05:25:24 --> Severity: Warning --> Attempt to read property "name" on null C:\wamp64\www\nazarethnet\application\views\backend\student\my_profile.php 102
+ERROR - 2024-11-20 05:25:24 --> Severity: Warning --> Undefined variable $loginURL C:\wamp64\www\nazarethnet\application\views\backend\student\my_profile.php 264
+ERROR - 2024-11-20 05:25:38 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-20 05:25:38 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-20 05:25:39 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-20 05:25:41 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-20 05:25:42 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-20 05:25:42 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-20 05:25:48 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:48 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:48 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:48 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:48 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:48 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:49 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:50 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:51 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:52 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:25:53 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-11-20 05:26:05 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-20 05:26:05 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-20 05:26:05 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-20 05:26:06 --> Severity: Warning --> Attempt to read property "name" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\student_portal.php 74
+ERROR - 2024-11-20 05:26:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\student_portal.php 98
+ERROR - 2024-11-20 05:26:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\student_portal.php 98
+ERROR - 2024-11-20 05:26:06 --> Severity: Warning --> Attempt to read property "route_name" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\student_portal.php 115
+ERROR - 2024-11-20 05:26:10 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-20 05:26:10 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-20 05:26:11 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-20 05:26:16 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-20 05:26:16 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-20 05:26:17 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-20 05:29:41 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-20 05:29:41 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-20 05:29:41 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
