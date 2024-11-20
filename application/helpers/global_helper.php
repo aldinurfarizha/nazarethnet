@@ -584,5 +584,24 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
         return false;
     }
 }
+    function isStudentActiveEnroll($student_id,$class_id,$section_id,$year)
+    {
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('enroll')
+        ->where([
+            'student_id' => $student_id,
+            'section_id' => $section_id,
+            'year' => $year,
+            'student_id'=>$student_id,
+            'is_active'=>1
+        ])
+        ->get();
+    if ($data->num_rows() > 0) {
+        return true;
+    } else {
+        return false;
+    }
+    }
 
 

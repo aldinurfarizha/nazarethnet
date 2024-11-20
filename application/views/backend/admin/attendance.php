@@ -49,6 +49,9 @@ foreach ($sub as $subs):
                             <a class="navs-links active" href="<?php echo base_url(); ?>admin/attendance/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i><span><?php echo getEduAppGTLang('attendance'); ?></span></a>
                         </li>
                         <li class="navs-item">
+                            <a class="navs-links" href="<?php echo base_url(); ?>admin/student_list/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0704_users_profile_group_couple_man_woman"></i><span><?php echo getEduAppGTLang('student'); ?></span></a>
+                        </li>
+                        <li class="navs-item">
                             <a class="navs-links" href="<?php echo base_url(); ?>admin/whiteboards/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0191_window_application_cursor"></i><span><?php echo getEduAppGTLang('whiteboards'); ?></span></a>
                         </li>
                         <li class="navs-item">
@@ -95,9 +98,9 @@ foreach ($sub as $subs):
                                                     <?php echo getEduAppGTLang('manage_attendance'); ?>
                                                     <small>(<?php echo date("m/d/Y", $timestamp); ?>)</small>
                                                 </a>
-                                                <button class="btn btn-primary" onclick="showAjaxModal('<?= base_url('modal/popup/modal_add_custom_status_attendance/' . $data . '/' . getTeacherIdFromSubject($ex[2])) ?>');">
+                                                <a class="btn btn-primary" href="<?=base_url('admin/custom_attendance_status/'.$data)?>">
                                                     añadir otro estado <i class="fa fa-plus"></i>
-                                                </button>
+                                                </a>
                                             </div>
                                         </div>
                                         <div class="edu-posts cta-with-media">
@@ -121,6 +124,10 @@ foreach ($sub as $subs):
                                                             'subject_id' => $ex[2]
                                                         ))->result_array();
                                                         foreach ($attendance_of_students as $row):
+                                                            if(!isStudentActiveEnroll($row['student_id'])){
+                                                                continue;
+                                                            }
+                                                            
                                                         ?>
                                                             <tr>
                                                                 <td class="min-w-170">

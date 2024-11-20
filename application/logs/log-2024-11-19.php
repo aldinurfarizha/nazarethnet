@@ -1070,3 +1070,210 @@ ERROR - 2024-11-19 04:16:09 --> Severity: Warning --> Attempt to read property "
 ERROR - 2024-11-19 04:16:19 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
 ERROR - 2024-11-19 04:16:20 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
 ERROR - 2024-11-19 04:16:20 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 20:57:35 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 20:57:35 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 20:57:35 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 20:57:41 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 20:57:41 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 20:57:41 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 20:57:42 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-11-19 20:57:42 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-11-19 20:57:42 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-11-19 20:57:42 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-11-19 20:57:42 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-11-19 20:57:42 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-11-19 20:57:42 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-11-19 20:57:42 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-11-19 20:57:42 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-11-19 20:57:42 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-11-19 20:57:42 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-11-19 20:57:42 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-11-19 20:57:43 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-11-19 20:57:43 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-11-19 20:57:55 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 20:57:56 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 20:57:56 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 20:57:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 20:57:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 20:57:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 20:57:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 20:58:03 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 20:58:03 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 20:58:03 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 20:58:03 --> Severity: Warning --> Undefined variable $class_id C:\wamp64\www\nazarethnet\application\views\backend\admin\fancy.php 96
+ERROR - 2024-11-19 20:58:05 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 20:58:05 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 20:58:05 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 20:58:08 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 20:58:09 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 20:58:09 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 20:58:09 --> Severity: Warning --> Undefined variable $class_id C:\wamp64\www\nazarethnet\application\views\backend\admin\fancy.php 96
+ERROR - 2024-11-19 20:58:33 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 20:58:33 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 20:58:34 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 20:58:34 --> Severity: Warning --> Undefined variable $class_id C:\wamp64\www\nazarethnet\application\views\backend\admin\fancy.php 96
+ERROR - 2024-11-19 20:58:35 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 20:58:35 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 20:58:35 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 20:58:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 20:58:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 20:58:40 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 20:58:40 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 20:58:40 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 20:58:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 20:58:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 20:58:47 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 20:58:47 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 20:58:47 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 20:58:48 --> Severity: error --> Exception: date(): Argument #2 ($timestamp) must be of type ?int, string given C:\wamp64\www\nazarethnet\application\views\backend\admin\attendance.php 75
+ERROR - 2024-11-19 20:58:57 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 20:58:58 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 20:58:58 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 20:58:58 --> Severity: error --> Exception: date(): Argument #2 ($timestamp) must be of type ?int, string given C:\wamp64\www\nazarethnet\application\views\backend\admin\attendance.php 75
+ERROR - 2024-11-19 20:59:09 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 20:59:09 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 20:59:09 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 20:59:10 --> Severity: error --> Exception: date(): Argument #2 ($timestamp) must be of type ?int, string given C:\wamp64\www\nazarethnet\application\views\backend\admin\attendance.php 75
+ERROR - 2024-11-19 21:09:27 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:09:27 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:09:27 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:09:28 --> Severity: Warning --> Undefined variable $class_id C:\wamp64\www\nazarethnet\application\views\backend\admin\fancy.php 96
+ERROR - 2024-11-19 21:09:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:09:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:09:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:09:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:09:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:09:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:09:34 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:09:35 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:09:35 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:09:36 --> Query error: Unknown column 'is_active' in 'where clause' - Invalid query: SELECT *
+FROM `student`
+WHERE `student_id` = '40'
+AND `is_active` = 0
+ERROR - 2024-11-19 21:09:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:09:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:10:53 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:10:54 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:10:54 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:10:55 --> Severity: Warning --> Attempt to read property "phrase" on null C:\wamp64\www\nazarethnet\application\helpers\multi_language_helper.php 13
+ERROR - 2024-11-19 21:10:55 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:10:56 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:11:28 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:11:29 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:11:29 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:11:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:11:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:11:59 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:11:59 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:12:00 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:12:01 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:12:09 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:12:10 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:12:10 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:12:12 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:13:40 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:13:40 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:13:40 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:13:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:13:45 --> Severity: Warning --> Undefined variable $param1 C:\wamp64\www\nazarethnet\application\controllers\Admin.php 4401
+ERROR - 2024-11-19 21:13:45 --> Severity: Warning --> Attempt to read property "phrase" on null C:\wamp64\www\nazarethnet\application\helpers\multi_language_helper.php 13
+ERROR - 2024-11-19 21:13:45 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:13:46 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:13:46 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:13:46 --> Severity: Warning --> include(admin/custom_attenandce_status.php): Failed to open stream: No such file or directory C:\wamp64\www\nazarethnet\application\views\backend\index.php 42
+ERROR - 2024-11-19 21:13:46 --> Severity: Warning --> include(): Failed opening 'admin/custom_attenandce_status.php' for inclusion (include_path='.;C:\php\pear') C:\wamp64\www\nazarethnet\application\views\backend\index.php 42
+ERROR - 2024-11-19 21:14:12 --> Severity: Warning --> Undefined variable $param1 C:\wamp64\www\nazarethnet\application\controllers\Admin.php 4401
+ERROR - 2024-11-19 21:14:12 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:14:12 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:14:13 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:14:13 --> Severity: Warning --> include(admin/custom_attenandce_status.php): Failed to open stream: No such file or directory C:\wamp64\www\nazarethnet\application\views\backend\index.php 42
+ERROR - 2024-11-19 21:14:13 --> Severity: Warning --> include(): Failed opening 'admin/custom_attenandce_status.php' for inclusion (include_path='.;C:\php\pear') C:\wamp64\www\nazarethnet\application\views\backend\index.php 42
+ERROR - 2024-11-19 21:14:38 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:14:38 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:14:38 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:14:39 --> Severity: Warning --> include(admin/custom_attenandce_status.php): Failed to open stream: No such file or directory C:\wamp64\www\nazarethnet\application\views\backend\index.php 42
+ERROR - 2024-11-19 21:14:39 --> Severity: Warning --> include(): Failed opening 'admin/custom_attenandce_status.php' for inclusion (include_path='.;C:\php\pear') C:\wamp64\www\nazarethnet\application\views\backend\index.php 42
+ERROR - 2024-11-19 21:14:56 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:14:57 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:14:57 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:14:57 --> Severity: Warning --> include(admin/custom_attenandce_status.php): Failed to open stream: No such file or directory C:\wamp64\www\nazarethnet\application\views\backend\index.php 42
+ERROR - 2024-11-19 21:14:57 --> Severity: Warning --> include(): Failed opening 'admin/custom_attenandce_status.php' for inclusion (include_path='.;C:\php\pear') C:\wamp64\www\nazarethnet\application\views\backend\index.php 42
+ERROR - 2024-11-19 21:15:47 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:15:47 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:15:47 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:15:52 --> Severity: Warning --> Attempt to read property "phrase" on null C:\wamp64\www\nazarethnet\application\helpers\multi_language_helper.php 13
+ERROR - 2024-11-19 21:15:53 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:15:53 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:15:53 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:15:54 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:15:55 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:17:03 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:17:03 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:17:03 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:17:05 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:17:05 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:21:50 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:21:50 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:21:50 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:21:51 --> Severity: error --> Exception: Cannot use object of type stdClass as array C:\wamp64\www\nazarethnet\application\views\backend\admin\custom_attendance_status.php 80
+ERROR - 2024-11-19 21:21:51 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:22:30 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:22:31 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:22:31 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:22:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:22:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:24:06 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:24:07 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:24:07 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:24:10 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:24:11 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:24:11 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:24:12 --> Severity: Warning --> Undefined variable $exam_id C:\wamp64\www\nazarethnet\application\views\backend\admin\final_evaluation.php 146
+ERROR - 2024-11-19 21:25:30 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:25:30 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:25:30 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:25:34 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:25:35 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:25:35 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:25:37 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:25:38 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:25:38 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:25:41 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:25:41 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:25:42 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:25:52 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:25:52 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:25:52 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:26:04 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:26:05 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:26:05 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:26:27 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:26:27 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:26:27 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:26:28 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:26:29 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:26:33 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:26:33 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:26:33 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:26:35 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:26:37 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:26:37 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:26:37 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:26:38 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:27:25 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:27:25 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:27:26 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:27:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:27:37 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:27:37 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:27:38 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:27:38 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:28:48 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:28:48 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:28:48 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:28:49 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-19 21:29:00 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-11-19 21:29:00 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-11-19 21:29:01 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-11-19 21:29:01 --> Severity: Warning --> Undefined array key 2 C:\wamp64\www\nazarethnet\application\views\backend\admin\custom_attendance_status.php 5

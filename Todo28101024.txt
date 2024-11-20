@@ -25,8 +25,6 @@ attendancerecords, and the removal should take effect immediately.
 Extend Time
 1.Sorry, it seems like I need further understanding for this. To make me understand better, can you help me to make a complete example of grades with several student names and their final grades in an excel file?
 
-✅ 2.oh okay i will revise this.
-
 ✅3.oh okay i will revise this.
 🟢 If it is okay, there is only one observation that with the student user the list of courses is repeated and that the grade is not the updated one that is with average
 

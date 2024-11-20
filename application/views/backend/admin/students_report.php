@@ -123,7 +123,7 @@
 															<?php $parent_id = $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->parent_id; ?>
 															<td class="text-center"><?php echo $this->crud->get_name('parent', $parent_id); ?></td>
 															<td class="text-center">
-																<?php if ($this->db->get_where('student', array('student_id' => $row['student_id']))->row()->student_session == 1): ?>
+																<?php if (isStudentActiveEnroll($row['student_id'],$class_id,$section_id,$running_year)): ?>
 																	<div class="pt-btn">
 																		<a class="btn nc btn-success btn-sm btn-rounded">
 																			<font color="white"><?php echo getEduAppGTLang('active'); ?></font>

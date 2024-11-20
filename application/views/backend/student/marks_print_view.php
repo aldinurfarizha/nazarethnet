@@ -51,6 +51,7 @@
                                                 <th class="text-center"><?php echo getEduAppGTLang('subject'); ?></th>
                                                 <th class="text-center"><?php echo getEduAppGTLang('teacher'); ?></th>
                                                 <th class="text-center"><?php echo getEduAppGTLang('mark'); ?></th>
+                                                <th class="text-center">Prom</th>
                                                 <th class="text-center"><?php echo getEduAppGTLang('comment'); ?></th>
                                             </tr>
                                         </thead>
@@ -64,12 +65,16 @@
                                                     $marks = $mark->result_array();
                                                 }
                                                 foreach ($marks as $row4) :
+                                                    if (!isActiveSubject($this->session->userdata('login_user_id'), $row3['subject_id'])) {
+                                                        continue;
+                                                    }
                                             ?>
                                                     <tr>
                                                         <td><?php echo $row3['name']; ?></td>
                                                         <td><?php echo $this->crud->get_name('teacher', $row3['teacher_id']); ?></td>
-                                                        <td class="text-center"><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $ex[1], 'student_id' => $ex[0], 'year' => $running_year))->row()->labtotal; ?></td>
-                                                        <td class="text-center"><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $ex[1], 'student_id' => $ex[0], 'year' => $running_year))->row()->comment; ?></td>
+                                                        <td class="text-center"><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $ex[1], 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->mark_obtained; ?></td>
+                                                        <td class="text-center"><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $ex[1], 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->final; ?></td>
+                                                        <td class="text-center"><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $ex[1], 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->comment; ?></td>
                                                     </tr>
                                             <?php endforeach;
                                             endforeach; ?>

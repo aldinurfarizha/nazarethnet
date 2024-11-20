@@ -4224,7 +4224,27 @@ class Admin extends EduAppGT
         );
         $this->db->insert('custom_status', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
-        redirect(base_url() . 'admin/attendance/' . $course);
+        redirect(base_url() . 'admin/custom_attendance_status/' . $course);
+    }
+    function edit_custom_status_attendance()
+    {
+        $custom_status_id = $this->input->post('custom_status_id');
+        $status_name = $this->input->post('status_name');
+        $course = $this->input->post('course');
+        $data = array(
+            'status_name' => $status_name
+        );
+        $this->db->where('custom_status_id', $custom_status_id);
+        $this->db->update('custom_status', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
+        redirect(base_url() . 'admin/custom_attendance_status/' . $course);
+    }
+    function delete_custom_status_attendance($course,$custom_status_id)
+    {
+        $this->db->where('custom_status_id', $custom_status_id);
+        $this->db->delete('custom_status');
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_delete'));
+        redirect(base_url() . 'admin/custom_attendance_status/' . $course);
     }
     function final_evaluation()
     {
@@ -4393,5 +4413,16 @@ class Admin extends EduAppGT
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
         redirect(base_url() . 'admin/student_profile_active_course/' . $student_id);
     }
+    function custom_attendance_status($data)
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $page_data['data']       = $data;
+        $page_data['page_name']  =  'custom_attendance_status';
+        $page_data['page_title'] =  getEduAppGTLang('custom_attendance_status');
+        $this->load->view('backend/index', $page_data);
+    }
+    
     //End of Admin.php content.
 }
