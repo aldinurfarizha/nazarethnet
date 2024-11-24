@@ -32,4 +32,7 @@ ALTER TABLE `nota_capacidad` ADD `reason` TEXT NOT NULL;
 
 ALTER TABLE `student_subject` ADD `is_finish` INT(11) NOT NULL DEFAULT '0'; 
 
+ALTER TABLE `mark_activity` ADD `is_calculate_avg` INT(11) NOT NULL DEFAULT '0' AFTER `exam_id`; 
+ALTER TABLE `exam` ADD `is_count` INT(11) NOT NULL DEFAULT '0' AFTER `exam_id`; 
+
 

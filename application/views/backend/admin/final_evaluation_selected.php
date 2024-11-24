@@ -32,10 +32,7 @@
             <div class="content-i">
                 <div class="content-box">
                     <div class="element-wrapper">
-                        <h6 class="element-header">Pesos de evaluación final
-                            <p><?= $exam->name; ?></p>
-                            <p><?= getClassNameById($exam->class_id) . ' | ' . getSectionNameById($exam->section_id) . '|' . getSubjectNameById($exam->subject_id); ?> </p>
-                            <a class="btn btn-primary" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_add_is_average/<?php echo $exam->exam_id ?>');" href="javascript:void(0);">Relleno automático</a>
+                        <h6 class="element-header">Seleccione la prueba que se calculará en el informe final
                         </h6>
                         <div class="element-box-tp">
                             <div class="table-responsive">
@@ -43,80 +40,60 @@
                                     <thead>
                                         <tr>
                                             <th><?php echo getEduAppGTLang('name'); ?></th>
-                                            <th><?php echo getEduAppGTLang('year'); ?></th>
-                                            <th class="text-center"><?php echo getEduAppGTLang('percent'); ?></th>
                                             <th class="text-center"><?php echo getEduAppGTLang('status'); ?></th>
                                             <th class="text-center"><?php echo getEduAppGTLang('action'); ?></th>
                                         </tr>
                                     </thead>
                                     <?php
-                                    $exam_id = $exam->exam_id;
-                                    $markActivity = $this->db->query("SELECT * FROM mark_activity where exam_id=$exam_id")->result();
-                                    $totalPercent = 0;
-                                    foreach ($markActivity as $row):
+                                    foreach ($exam as $row):
                                         $totalPercent += $row->percent;
                                     ?>
                                         <tr>
                                             <td><?= $row->name; ?></td>
-                                            <td><?= $row->year; ?></td>
-                                            <td class="text-center"><?= $row->percent . ' %' ?></td>
                                             <td class="text-center">
-                                                <?php if($row->is_calculate_avg){?>
-                                                    <span class="badge badge-success"> Relleno automático</span>
-                                                    <a class="btn btn-success btn-sm" href="<?=base_url('admin/final_evaluation_selected/'.$exam_id)?>">Seleccionada <i class="fa fa-check"></i></a>
-                                                <?php } ?>
+                                                <?php if($row->is_count){?>
+                                                    <span class="badge badge-success">Calculado <i class="fa fa-check"></i></span>
+                                                <?php }else{ ?>
+                                                    <span class="badge badge-danger">No Contado <i class="fa fa-times"></i></span>
+                                                    <?php }?>
                                             </td>
                                             <td class="row-actions">
-                                                <a class="grey" href="#" data-target="#update_percent" data-toggle="modal"
-                                                    data-mark_activity_id="<?= $row->mark_activity_id; ?>"
-                                                    data-percent="<?= $row->percent; ?>">
+                                                <a class="grey" href="#" data-target="#update_status" data-toggle="modal"
+                                                    data-exam_id="<?= $row->exam_id; ?>"
+                                                    data-is_count="<?= $row->is_count; ?>">
                                                     <i class="os-icon picons-thin-icon-thin-0001_compose_write_pencil_new"></i>
                                                 </a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td colspan="2">Total</td>
-                                            <td class="text-center">
-                                                <h4><?= $totalPercent . ' %' ?></h4>
-                                            </td>
-                                            <td class="text-center">
-                                                <?php if ($totalPercent == 100) { ?>
-                                                    <span class="badge badge-success">OK <i class="fa fa-check"></i></span>
-                                                <?php } else { ?>
-                                                    <span class="badge badge-warning">Por favor recalcule <i class="fa fa-times"></i></span>
-                                                <?php } ?>
-
-
-                                            </td>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         </div>
                     </div>
 
-                    <div class="modal fade" id="update_percent" tabindex="-1" role="dialog" aria-labelledby="update_percent" aria-hidden="true">
+                    <div class="modal fade" id="update_status" tabindex="-1" role="dialog" aria-labelledby="update_status" aria-hidden="true">
                         <div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
                             <div class="modal-content">
-                                <?php echo form_open(base_url() . 'admin/final_evaluation_update_percent'); ?>
+                                <?php echo form_open(base_url() . 'admin/final_evaluation_selected_update'); ?>
                                 <a href="javascript:void(0);" class="close icon-close" data-dismiss="modal" aria-label="Close"></a>
                                 <div class="modal-header">
                                     <h6 class="title"><?php echo getEduAppGTLang('update'); ?></h6>
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
-                                        <div class="col-sm-12">
-                                            <div class="form-group is-select">
-                                                <label class="control-label"><?php echo getEduAppGTLang('percent'); ?></label>
-                                                <input type="hidden" name="mark_activity_id" value="">
-                                                <input type="hidden" name="exam_id" value="<?= $exam->exam_id ?>">
-                                                <input type="number" name="percent" value="" class="form-control">
-                                            </div>
+                                    <div class="col-12">
+                                    <input type="hidden" name="exam_id" value="">
+                          			<div class="form-group label-floating is-select">
+                                      <label class="control-label">Seleccione</label>
+                                        <div class="select">
+                                                <select name="is_count" id="">
+                                                    <option value="1">Calculado</option>
+                                                    <option value="0">No Contado</option>
+                                                </select>
                                         </div>
-
+                                    </div>
+                                </div>
                                     </div>
                                     <button type="submit" class="btn btn-rounded btn-success btn-lg full-width"><?php echo getEduAppGTLang('update'); ?></button>
                                 </div>
@@ -130,12 +107,13 @@
         </div>
     </div>
     <script>
-        document.querySelectorAll('[data-toggle="modal"]').forEach(function(button) {
-            button.addEventListener('click', function() {
-                var markActivityId = this.dataset.mark_activity_id;
-                var percent = this.dataset.percent;
-                document.querySelector('#update_percent input[name="mark_activity_id"]').value = markActivityId;
-                document.querySelector('#update_percent input[name="percent"]').value = percent;
-            });
+    document.querySelectorAll('[data-toggle="modal"]').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var examId = this.dataset.exam_id;
+            var isCount = this.dataset.is_count;
+            document.querySelector('#update_status input[name="exam_id"]').value = examId;
+            var selectElement = document.querySelector('#update_status select[name="is_count"]');
+            selectElement.value = isCount;
         });
-    </script>
+    });
+</script>

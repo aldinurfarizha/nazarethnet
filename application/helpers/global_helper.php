@@ -277,6 +277,18 @@ function getAllExamBySubject($subjectId)
         ->get();
     return $data->result();
 }
+function getAllExamBySubjectAndStudentid($subjectId,$studentId)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('exam')
+        ->where([
+            'subject_id'=>$subjectId,
+            'student_id'=>$studentId
+        ])
+        ->get();
+    return $data->result();
+}
 function getAllMarkActivityByExam($examId)
 {
     $ci = &get_instance();
@@ -288,6 +300,19 @@ function getAllMarkActivityByExam($examId)
         ->get();
     return $data->result();
 }
+function getAllMarkActivityIdBySubjectIdAndIsCalculate($subject_id)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('mark_activity')
+        ->where([
+            'is_calculate_avg'=>1,
+            'subject_id'=>$subject_id,
+        ])
+        ->get();
+    return $data->row();
+}
+
 function isStudentExistMark($student_id,$examId)
 {
     $ci = &get_instance();
@@ -614,6 +639,99 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
     } else {
         return false;
     }
+    }
+    function getFinalMark($student_id, $subject_id,$exam_id, $year)
+    {
+        $ci = &get_instance();
+        $avg = $ci->db->get_where('mark', array('subject_id' => $subject_id, 'exam_id' => $exam_id, 'student_id' => $student_id, 'year' => $year))->row()->final;
+        return $avg;
+    }
+    function getSubjectIdByExamId($exam_id)
+    {
+        $ci = &get_instance();
+        $avg = $ci->db->get_where('exam', array('exam_id' => $exam_id))->row()->subject_id;
+        return $avg;
+    }
+    function countAllFinalMark($student_id,$subject_id,$year)
+    {
+        $total=0;
+        $count=0;
+        $data=getAllExamBySubject($subject_id);
+        foreach($data as $datar)
+        {
+            if($datar->is_final==0 && $datar->is_count==1){
+                $total+=getFinalMark($student_id,$subject_id,$datar->exam_id,$year);
+                $count++;
+            }
+        }
+        $average=$total/$count;
+        return $average;
+    }
+    function countAllFinalMarkExplain($student_id,$subject_id,$year)
+    {
+        $total='';
+        $count=0;
+        $data=getAllExamBySubject($subject_id);
+        foreach($data as $datar)
+        {
+            if($datar->is_final==0 && $datar->is_count==1){
+                $total.=getFinalMark($student_id,$subject_id,$datar->exam_id,$year);
+                $total.='+';
+                $count++;
+            }
+        }
+        $average=$total.'/'.$count;
+        return $average;
+    }
+    function getEnrollActiveStudent($subject_id,$class_id,$section_id,$year)
+    {
+        $ci = &get_instance();
+         $data = $ci->db->query('SELECT s.student_id, e.roll FROM student AS s INNER JOIN enroll AS e ON s.student_id = e.student_id INNER JOIN subject AS su ON su.section_id = e.section_id WHERE su.subject_id = ' . $subject_id . ' AND e.class_id = ' . $class_id . ' AND e.section_id = ' . $section_id . ' AND e.year = ' . $year . ' AND e.is_active=1 ORDER BY s.first_name ASC')->result();
+        return $data;
+    }
+    function getNotasByMarkActivityId($markActivityId)
+    {
+        $ci = &get_instance();
+        $notas = $ci->db->order_by('nota_capacidad_id', 'ASC')->get_where('nota_capacidad', array('mark_activity_id' => $markActivityId));
+        return $notas->result();
+    }
+    function recalculateMarkProm($subject_id,$class_id,$section_id,$year)
+    {
+        $markActivity=getAllMarkActivityIdBySubjectIdAndIsCalculate($subject_id);
+        if($markActivity)
+        {
+            $notas=getNotasByMarkActivityId($markActivity->mark_activity_id);
+            foreach($notas as $row)
+            {
+                if (!isStudentActiveEnroll($row->student_id, $class_id, $section_id, $year)) {
+                        continue;
+                    }
+                if (!isActiveSubject($row->student_id,$subject_id)){
+                    continue;
+                }    
+                $newNota=countAllFinalMark($row->student_id,$subject_id,$year);
+                updateNotaCapacidadesById($row->student_id,$row->nota_capacidad_id,$newNota);
+            }
+        }
+    }
+    function updateNotaCapacidadesById($student_id,$nota_capacidad_id,$nota)
+    {
+        $data=array(
+            'nota'=>$nota
+        );
+        $ci = &get_instance();
+        $ci->db->where('student_id', $student_id);
+        $ci->db->where('nota_capacidad_id', $nota_capacidad_id);
+        $ci->db->update('nota_capacidad', $data);
+    }
+    function getExamDetail($exam_id)
+    {
+            $ci = &get_instance();
+            $data = $ci->db->query("SELECT exam.*, mark_activity.year as year
+            FROM exam
+            INNER JOIN mark_activity ON exam.exam_id = mark_activity.exam_id
+            WHERE exam.exam_id = $exam_id")->row();
+            return $data; 
     }
 
 

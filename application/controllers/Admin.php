@@ -4265,6 +4265,18 @@ class Admin extends EduAppGT
         $page_data['page_title'] = 'Pesos de evaluación final';
         $this->load->view('backend/index', $page_data);
     }
+    function final_evaluation_selected($exam_id='')
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(site_url('login'), 'refresh');
+        }
+        $subject_id=getSubjectIdByExamId($exam_id);
+        $page_data['exam_id']=$exam_id;
+        $page_data['exam'] = $this->db->query("SELECT * FROM exam where is_final=0 and subject_id=$subject_id")->result();
+        $page_data['page_name']  = 'final_evaluation_selected';
+        $page_data['page_title'] = 'Seleccionada';
+        $this->load->view('backend/index', $page_data);
+    }
     function final_evaluation_add_exam()
     {
         $exam_id = $this->input->post('exam_id');
@@ -4422,6 +4434,50 @@ class Admin extends EduAppGT
         $page_data['page_name']  =  'custom_attendance_status';
         $page_data['page_title'] =  getEduAppGTLang('custom_attendance_status');
         $this->load->view('backend/index', $page_data);
+    }
+    function update_is_calculate_avg()
+    {
+        $exam_id=$this->input->post('exam_id');
+        $mark_activity_id=$this->input->post('mark_activity_id');
+
+        $whereSetZero = array(
+            'exam_id' => $exam_id,
+        );
+
+        $data = array(
+            'is_calculate_avg' => 0
+        );
+        $this->db->where($whereSetZero);
+        $this->db->update('mark_activity', $data);
+
+        $where = array(
+            'exam_id' => $exam_id,
+            'mark_activity_id' => $mark_activity_id
+        );
+        $data = array(
+            'is_calculate_avg' => 1
+        );
+        $this->db->where($where);
+        $this->db->update('mark_activity', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
+        redirect(base_url() . 'admin/final_evaluation_weight/' . $exam_id);
+    }
+    function final_evaluation_selected_update()
+    {
+        $exam_id=$this->input->post('exam_id');
+        $is_count=$this->input->post('is_count');
+        $where=array(
+            'exam_id'=>$exam_id
+        );
+        $data=array(
+            'is_count'=>$is_count
+        );
+        $this->db->where($where);
+        $this->db->update('exam',$data);
+        $examDetail=getExamDetail($exam_id);
+        recalculateMarkProm($examDetail->subject_id,$examDetail->class_id,$examDetail->section_id,$examDetail->year);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
+        redirect(base_url() . 'admin/final_evaluation_selected/' . $exam_id);
     }
     
     //End of Admin.php content.

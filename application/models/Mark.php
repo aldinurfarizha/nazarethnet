@@ -198,6 +198,7 @@ class Mark extends School
             $this->db->update('mark', $data);
             recalculateMarkObtainedAndFinal($row['student_id'], $ex[2], $exam_id,$ex[0], $ex[1], $year);
         }
+        recalculateMarkProm($data['subject_id'],$data['class_id'],$data['section_id'],$year);
     }
   
 }
