@@ -85,7 +85,7 @@ foreach ($sub as $subs) :
 
                                                     ?>
                                                         <li class='<?php if ($exam['exam_id'] == $exam_id) echo "act"; ?>'>
-                                                            <a href="<?php echo base_url(); ?>admin/upload_marks/<?php echo $data . '/' . $exam['exam_id']; ?>/">
+                                                            <a href="<?php echo base_url(); ?>admin/blocked_mark/<?php echo $data . '/' . $exam['exam_id']; ?>/">
                                                                 <i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i>
                                                                 <?php echo $exam['name']; ?>
                                                                 <?php if ($exam['is_final']) {
@@ -175,9 +175,9 @@ foreach ($sub as $subs) :
                                                                                                                                                                                                 echo $nota['nota'];
                                                                                                                                                                                             } ?>" onkeyup="calcAverage(this)" min="0" name="mark_<?php echo $rows['student_id'] . '_' . $cap['mark_activity_id']; ?>" class="markInput" placeholder="0">
                                                                             <?php if ($nota['is_block'] == 0) { ?>
-                                                                                <button type="button" onclick="showAjaxModal('<?= base_url('modal/popup/modal_block_mark_new/' . $data . '/' . $nota['nota_capacidad_id'] . '/' . $nota['is_block']) ?>');" class="btn btn-outline-success">Gratis</button>
+                                                                                <button type="button" onclick="showAjaxModal('<?= base_url('modal/popup/modal_block_mark_new/' . $data . '/' . $nota['nota_capacidad_id'] . '/' . $nota['is_block'] . '/' . $exam_id) ?>');" class="btn btn-outline-success">Gratis</button>
                                                                             <?php } else { ?>
-                                                                                <button type="button" onclick="showAjaxModal('<?= base_url('modal/popup/modal_block_mark_new/' . $data . '/' . $nota['nota_capacidad_id'] . '/' . $nota['is_block']) ?>');" class="btn btn-outline-danger">Bloqueado</button>
+                                                                                <button type="button" onclick="showAjaxModal('<?= base_url('modal/popup/modal_block_mark_new/' . $data . '/' . $nota['nota_capacidad_id'] . '/' . $nota['is_block'] . '/' . $exam_id) ?>');" class="btn btn-outline-danger">Bloqueado</button>
                                                                                 <br><small><?= $nota['reason'] ?></small>
                                                                             <?php } ?>
                                                                         <?php endforeach; ?>

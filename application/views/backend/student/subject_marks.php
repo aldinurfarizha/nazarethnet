@@ -79,14 +79,14 @@ foreach ($sub as $rows):
                                                 $var++;
                                             ?>
                                                 <li class='<?php if ($exam['exam_id'] == $exam_id) echo "act"; ?>'><a href="<?php echo base_url(); ?>student/subject_marks/<?php echo $data . '/' . $exam['exam_id']; ?>/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i><?php echo $exam['name']; ?>
-                                                <?php if ($exam['is_final']) {
-                                                                    if ($exam['exam_id'] == $exam_id) {
-                                                                        $is_final = true;
-                                                                    }
-                                                                ?>
-                                                                    <span class="badge badge-secondary">Final</span>
-                                                                <?php } ?>
-                                            </a></li>
+                                                        <?php if ($exam['is_final']) {
+                                                            if ($exam['exam_id'] == $exam_id) {
+                                                                $is_final = true;
+                                                            }
+                                                        ?>
+                                                            <span class="badge badge-secondary">Final</span>
+                                                        <?php } ?>
+                                                    </a></li>
                                             <?php endforeach; ?>
                                         </ul>
                                     </div>
@@ -99,7 +99,8 @@ foreach ($sub as $rows):
                                                     <tr class="tblbg">
                                                         <th class="text-center"><?php echo getEduAppGTLang('activity'); ?></th>
                                                         <th class="text-center"><?php echo getEduAppGTLang('mark'); ?></th>
-                                                        
+                                                        <th class="text-center"><?php echo getEduAppGTLang('status'); ?></th>
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -112,19 +113,24 @@ foreach ($sub as $rows):
                                                         <tr>
                                                             <td>
                                                                 <?php echo $cap['name']; ?>
-                                                                <?php if($is_final){?>
-                                                                    (<?=$cap['percent']?>%)
+                                                                <?php if ($is_final) { ?>
+                                                                    (<?= $cap['percent'] ?>%)
                                                                 <?php } ?>
                                                             </td>
-                                                            <td>
+                                                            <td class="text-center">
                                                                 <?php
-                                                                $nota_cap = $this->db->order_by('nota_capacidad_id', 'ASC')->get_where('nota_capacidad', array('mark_activity_id' => $cap['mark_activity_id'], 'student_id' => $this->session->userdata('login_user_id')))->row()->nota;
+                                                                $nota_cap = $this->db->order_by('nota_capacidad_id', 'ASC')->get_where('nota_capacidad', array('mark_activity_id' => $cap['mark_activity_id'], 'student_id' => $this->session->userdata('login_user_id')))->row();
                                                                 ?>
-                                                                <?php if ($nota_cap <= $min) : ?>
-                                                                    <?php echo $nota_cap; ?>
+                                                                <?php if ($nota_cap->nota <= $min) : ?>
+                                                                    <?php echo $nota_cap->nota; ?>
                                                                 <?php else : ?>
-                                                                    <?php echo $nota_cap; ?>
+                                                                    <?php echo $nota_cap->nota; ?>
                                                                 <?php endif; ?>
+                                                            </td>
+                                                            <td class="text-center">
+                                                                <?php if ($nota_cap->is_block) {
+                                                                    echo "Bloquear - " . $nota_cap->reason;
+                                                                } ?>
                                                             </td>
                                                         </tr>
                                                     <?php endforeach; ?>
@@ -132,20 +138,22 @@ foreach ($sub as $rows):
                                                 <tfoot>
                                                     <tr>
                                                         <td><b>Total</b></td>
-                                                        <td><b><?php echo $this->db->get_where('mark', array('subject_id' => $rows['subject_id'], 'exam_id' =>  $exam_id, 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->mark_obtained; ?></b></td>
+                                                        <td class="text-center"><b><?php echo $this->db->get_where('mark', array('subject_id' => $rows['subject_id'], 'exam_id' =>  $exam_id, 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->mark_obtained; ?></b></td>
+                                                        <td></td>
                                                     </tr>
-                                                    <?php if($is_final){?>
-                                                    <tr>
-                                                        <td><b>EVALUACIONES FINALES</b></td>
-                                                        <td><b><?= getFinalMark($this->session->userdata('login_user_id'),$rows['subject_id'],$exam_id,$running_year) ?></b></td>
-                                                    </tr>
-                                                    <?php }else{?>
+                                                    <?php if ($is_final) { ?>
                                                         <tr>
-                                                        <td><b>Prom</b></td>
-                                                        <td><b><?php echo $this->db->get_where('mark', array('subject_id' => $rows['subject_id'], 'exam_id' =>  $exam_id, 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->final; ?></b></td>
-                                                    </tr>
+                                                            <td><b>EVALUACIONES FINALES</b></td>
+                                                            <td class="text-center"><b><?= getFinalMark($this->session->userdata('login_user_id'), $rows['subject_id'], $exam_id, $running_year) ?></b></td>
+                                                        </tr>
+                                                    <?php } else { ?>
+                                                        <tr>
+                                                            <td><b>Prom</b></td>
+                                                            <td class="text-center"><b><?php echo $this->db->get_where('mark', array('subject_id' => $rows['subject_id'], 'exam_id' =>  $exam_id, 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->final; ?></b></td>
+                                                            <td></td>
+                                                        </tr>
                                                     <?php } ?>
-                                                    
+
                                                 </tfoot>
                                             </table>
                                         </div>

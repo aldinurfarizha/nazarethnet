@@ -35,14 +35,17 @@ $fc_ex = explode('-', $fc_info);
                         foreach ($fancy_subjects as $fancy_row2) :
                     ?>
                             <a href="<?php echo base_url(); ?>student/subject_dashboard/<?php echo base64_encode($fancy_cl_id . '-' . $fancy_section_id . '-' . $fancy_row2['subject_id']); ?>/">
-                                <div class="fancy-selector-option">
+                                <div class="fancy-selector-option <?php if ($fancy_row2['subject_id'] == $fc_ex[2]) echo "active"; ?>">
                                     <div class="fs-img">
                                         <img alt="" src="<?php echo base_url(); ?>public/uploads/subject_icon/<?php echo $fancy_row2['icon']; ?>">
                                     </div>
                                     <div class="fs-main-info">
-                                        <div class="fs-name">
-                                            <?php echo $fancy_row2['name']; ?>
-                                        </div>
+                                        <?php echo $fancy_row2['name']; ?> <br>
+                                        <small>
+                                            <span class="badge badge-secondary text-sm">
+                                                <i class="fa fa-clock"></i> <?php echo $this->db->get_where('section', array('section_id' => $fancy_row2['section_id']))->row()->name; ?>
+                                            </span>
+                                        </small>
                                     </div>
                                 </div>
                             </a>

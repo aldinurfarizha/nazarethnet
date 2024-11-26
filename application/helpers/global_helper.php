@@ -665,6 +665,7 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
             }
         }
         $average=$total/$count;
+    $average = round($average, 2);
         return $average;
     }
     function countAllFinalMarkExplain($student_id,$subject_id,$year)
@@ -716,6 +717,7 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
     }
     function updateNotaCapacidadesById($student_id,$nota_capacidad_id,$nota)
     {
+        $nota = round($nota, 2);
         $data=array(
             'nota'=>$nota
         );
@@ -733,5 +735,11 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
             WHERE exam.exam_id = $exam_id")->row();
             return $data; 
     }
+function getStudentIdByParentId($parentId)
+{
+    $ci = &get_instance();
+    $student_id = $ci->db->get_where('student', array('parent_id' => $parentId))->row()->student_id;
+    return $student_id;
+}
 
 

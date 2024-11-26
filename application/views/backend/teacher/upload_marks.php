@@ -124,16 +124,11 @@ foreach ($sub as $subs) :
                                                         <?php foreach ($capacidades as $cap) : ?>
                                                             <td class="text-center" style="padding:5px">
                                                             <span class="full-width" style="display:inline-block;"><?php if($cap['is_calculate_avg']){echo '<i class="fa fa-balance-scale"></i>';}?> <?php echo $cap['name']; ?><?php if($cap['is_calculate_avg']){echo '<i class="fa fa-balance-scale"></i>';}?></span>
-                                                                <a class="text-white" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_capacities/<?php echo $cap['mark_activity_id']; ?>/<?php echo $data . '/' . $exam_id . '/' . $order . '/'; ?>');" href="javascript:void(0);"><svg class="align-sub" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
-                                                                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14.304 4.844l2.852 2.852M7 7H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-4.5m2.409-9.91a2.017 2.017 0 0 1 0 2.853l-6.844 6.844L8 14l.713-3.565l6.844-6.844a2.015 2.015 0 0 1 2.852 0Z" />
-                                                                    </svg>
+                                                              
                                                                     <?php if ($is_final) { ?>
                                                                         <a style="display:inline-block;margin-bottom:2px" class="btn btn-primary btn-sm"><?= $cap['percent'] . ' %' ?></a>
                                                                     <?php } ?>
-                                                                </a>
-                                                                <a class="text-white" href="<?php echo base_url() . 'teacher/manage_marks/delete_capacity/' . $data . '/' . $exam_id . '/' . $order . '/' . $cap['mark_activity_id'] . '/'; ?>" onclick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>');"><svg class="align-sub" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24">
-                                                                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 11v6m-4-6v6M6 7v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7M4 7h16M7 7l2-4h6l2 4" />
-                                                                    </svg></a>
+                                                                
                                                             </td>
                                                         <?php endforeach; ?>
                                                         <?php if ($is_final) { ?>

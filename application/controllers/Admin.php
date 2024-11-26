@@ -4371,6 +4371,7 @@ class Admin extends EduAppGT
         $course=$this->input->post('course');
         $is_block=$this->input->post('is_block');
         $reason=$this->input->post('reason');
+        $exam_id = $this->input->post('exam_id');
         if($is_block==1){
             $data=array(
                 'is_block'=>$is_block,
@@ -4389,7 +4390,7 @@ class Admin extends EduAppGT
         $this->db->where($where);
         $this->db->update('nota_capacidad', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
-        redirect(base_url() . 'admin/blocked_mark/'.$course);
+        redirect(base_url() . 'admin/blocked_mark/'.$course.'/'.$exam_id);
     }
     function finish_student_subject($student_id,$subject_id)
     {
