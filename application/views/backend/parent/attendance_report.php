@@ -96,54 +96,73 @@
 				                <?php echo form_close();?>       
 		                    </div> 
 		                    <?php if($month != ''):?>
-                            <div id="newsfeed-items-grid">      
-                                <div class="element-box lined-primary shadow">              
-                                    <div class="element-wrapper">
-                                        <div class="element-box-tp">
-                                            <h6 class="element-header"><?php echo getEduAppGTLang('attendance_report');?> <?php echo getEduAppGTLang('of');?> [<?php echo $this->db->get_where('subject', array('subject_id' => $ex[2]))->row()->name;?>]</h6>
-                                            <div class="table-responsive">
-                                                <table class="table table-sm table-lightborder">
-                                                    <thead>                    
-                                                        <tr class="text-center" height="50px">
-                                                            <th class="text-left"> <?php echo getEduAppGTLang('student');?></th>  
-                                                            <?php
+                                <div id="newsfeed-items-grid">
+                                    <div class="element-box lined-primary shadow">
+                                        <div class="element-wrapper">
+                                            <div class="element-box-tp">
+                                                <h6 class="element-header"><?php echo getEduAppGTLang('attendance_report'); ?> <?php echo getEduAppGTLang('of'); ?> [<?php echo $this->db->get_where('subject', array('subject_id' => $ex[2]))->row()->name; ?>]</h6>
+                                                <div class="table-responsive">
+                                                    <table class="table table-sm table-lightborder">
+                                                        <thead>
+                                                            <tr class="text-center" height="50px">
+                                                                <th class="tbl-student"> <?php echo getEduAppGTLang('student'); ?></th>
+                                                                <?php
                                                                 $days = cal_days_in_month(CAL_GREGORIAN, $month, $year);
                                                                 for ($i = 1; $i <= $days; $i++) {
-                                                            ?>                    
-                                                            <th class="text-center"> <?php echo $i; ?> </th>                    
-                                                            <?php } ?>
-                                                        </tr> 
-                                                    </thead>                  
-                                                    <tbody>                    
-                                                        <tr>                      
-                                                            <td><img alt="" src="<?php echo $this->crud->get_image_url('student', $student_id);?>" width="20px" class="tbl-st"> <?php echo $this->crud->get_name('student', $student_id); ?> </td>    
-                                                        <?php
-                                                            $status = 0;
-                                                            for ($i = 1; $i <= $days; $i++) {
-                                                            $timestamp = strtotime($i . '-' . $month . '-' . $year);
-                                                            $this->db->group_by('timestamp');
-                                                            $attendance = $this->db->get_where('attendance', array('section_id' => $ex[1], 'class_id' => $ex[0], 'subject_id' => $ex[2], 'year' => $year, 'timestamp' => $timestamp, 'student_id' => $student_id))->result_array();
-                                                            foreach ($attendance as $row1): $month_dummy = date('d', $row1['timestamp']);
-                                                            if ($i == $month_dummy) $status = $row1['status'];
-                                                            endforeach; ?>
-                                                            <td class="text-center">
-                                                            <?php if ($status == 1) { ?>
-                                                                <div class="status-pilli green" data-title="<?php echo getEduAppGTLang('present');?>" data-toggle="tooltip"></div>
-                                                            <?php  } if($status == 2)  { ?>
-                                                                <div class="status-pilli red" data-title="<?php echo getEduAppGTLang('absent');?>" data-toggle="tooltip"></div>
-                                                            <?php  } if($status == 3)  { ?>
-                                                                <div class="status-pilli yellow" data-title="<?php echo getEduAppGTLang('late');?>" data-toggle="tooltip"></div>
-                                                            <?php  } $status =0;?>
-                                                            </td>                      
-                                                            <?php } ?>
-                                                        </tr>                                      
-                                                    </tbody>                
-                                                </table>    
+                                                                    $dateTimestamp = strtotime("$year-$month-$i");
+                                                                    $dayName = date('D', $dateTimestamp);
+                                                                ?>
+                                                                    <td class="tbl-student"><?php echo getEduAppGTLang($dayName) . ' ' . $i; ?></td>
+                                                                <?php } ?>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><img alt="" src="<?php echo $this->crud->get_image_url($this->session->userdata('login_type'), $student_id); ?>" width="20px" class="tbl-st"> <?php echo $this->crud->get_name('student', $student_id); ?> </td>
+                                                                <?php
+                                                                $status = 0;
+                                                                for ($i = 1; $i <= $days; $i++) {
+                                                                    $timestamp = strtotime($i . '-' . $month . '-' . $year);
+                                                                    $this->db->group_by('timestamp');
+                                                                    $attendance = $this->db->get_where('attendance', array('section_id' => $ex[1], 'class_id' => $ex[0], 'subject_id' => $ex[2], 'year' => $year, 'timestamp' => $timestamp, 'student_id' => $student_id))->result_array();
+                                                                    foreach ($attendance as $row1):
+                                                                        $month_dummy = date('d', $row1['timestamp']);
+                                                                        if ($i == $month_dummy) {
+                                                                            $status = $row1['status'];
+                                                                            if ($row1['updated_at'] == '0000-00-00 00:00:00') {
+                                                                                $takenTime = '';
+                                                                            } else {
+                                                                                $takenTime = $row1['updated_at'];
+                                                                            }
+                                                                        }
+                                                                    endforeach; ?>
+                                                                    <td class="text-center">
+                                                                        <?php if ($status == 1) { ?>
+                                                                            <div class="status-pilli green" data-title="<?php echo getEduAppGTLang('present'); ?>" data-toggle="tooltip"></div>
+                                                                            <p><?= $takenTime ?></p>
+                                                                        <?php } elseif ($status == 2) { ?>
+                                                                            <div class="status-pilli red" data-title="<?php echo getEduAppGTLang('absent'); ?>" data-toggle="tooltip"></div>
+                                                                            <p><?= $takenTime ?></p>
+                                                                        <?php } elseif ($status == 3) { ?>
+                                                                            <div class="status-pilli yellow" data-title="<?php echo getEduAppGTLang('late'); ?>" data-toggle="tooltip"></div>
+                                                                            <p><?= $takenTime ?></p>
+                                                                        <?php } elseif ($status == 0) { ?>
+                                                                            -
+                                                                        <?php } else { ?>
+                                                                            <?php echo getStatusNameFromId($status) . '<br>' . $takenTime; ?>
+                                                                        <?php }
+                                                                        $status = 0;
+                                                                        ?>
+                                                                    </td>
+                                                                <?php } ?>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             <?php endif;?>
                         </main>
                     </div>

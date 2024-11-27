@@ -33,7 +33,9 @@ $fc_ex = explode('-', $fc_info);
                         $fancy_section_id = $allSC->section_id;
                         $fancy_subjects = $this->db->get_where('subject', array('class_id' => $fancy_cl_id, 'section_id' => $fancy_sec_id))->result_array();
                         foreach ($fancy_subjects as $fancy_row2) :
-                    ?>
+                            if(isActiveSubject($this->session->userdata('login_user_id'), $fancy_row2['subject_id'])){?>
+
+                            
                             <a href="<?php echo base_url(); ?>student/subject_dashboard/<?php echo base64_encode($fancy_cl_id . '-' . $fancy_section_id . '-' . $fancy_row2['subject_id']); ?>/">
                                 <div class="fancy-selector-option <?php if ($fancy_row2['subject_id'] == $fc_ex[2]) echo "active"; ?>">
                                     <div class="fs-img">
@@ -49,7 +51,7 @@ $fc_ex = explode('-', $fc_info);
                                     </div>
                                 </div>
                             </a>
-                        <?php endforeach; ?>
+                        <?php } endforeach; ?>
                     <?php endforeach; ?>
                 </div>
             </div>
