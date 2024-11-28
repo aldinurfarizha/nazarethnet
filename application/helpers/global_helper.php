@@ -646,6 +646,23 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
         $avg = $ci->db->get_where('mark', array('subject_id' => $subject_id, 'exam_id' => $exam_id, 'student_id' => $student_id, 'year' => $year))->row()->final;
         return $avg;
     }
+    function countEvaluacionesFinales($exam_id,$student_id)
+    {
+        $ci = &get_instance();
+        $examDetail = $ci->db->get_where('exam', array('exam_id' => $exam_id))->row();
+        if($examDetail->is_final==0){
+            return 0;
+        }
+        $finalValue=0;
+        $markActivity= $ci->db->get_where('mark_activity', array('exam_id' => $exam_id))->result();
+        foreach($markActivity as $markActivitys)
+        {
+            $percent=$markActivitys->percent;
+            $notas = $ci->db->order_by('nota_capacidad_id', 'ASC')->get_where('nota_capacidad', array('mark_activity_id' => $markActivitys->mark_activity_id, 'student_id' => $student_id))->row()->nota;
+            $finalValue+=(int)$notas*(int)$percent/100;
+        }
+        return $finalValue;
+    }
     function getSubjectIdByExamId($exam_id)
     {
         $ci = &get_instance();

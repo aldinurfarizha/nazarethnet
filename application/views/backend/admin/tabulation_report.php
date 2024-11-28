@@ -150,11 +150,20 @@
 											$average = 0;
 											$exams = $this->db->get_where('exam', array('class_id' => $class_id, 'section_id' => $section_id, 'subject_id' => $subject_id))->result_array();
 											foreach ($exams as $key):
-												$average += $this->db->get_where('mark', array('student_id' => $row['student_id'], 'year' => $running_year, 'exam_id' => $key['exam_id'], 'subject_id' => $subject_id))->row()->mark_obtained;
+												if($key['is_final']){
+													$average += countEvaluacionesFinales($key['exam_id'],$row['student_id']);
+												}else{
+													$average += $this->db->get_where('mark', array('student_id' => $row['student_id'], 'year' => $running_year, 'exam_id' => $key['exam_id'], 'subject_id' => $subject_id))->row()->final;
+												}
 											?>
-    											<td class="text-center"><?php echo $this->db->get_where('mark', array('student_id' => $row['student_id'], 'year' => $running_year, 'exam_id' => $key['exam_id'], 'subject_id' => $subject_id))->row()->mark_obtained; ?></td>
+											<?php if($key['is_final']){?>
+												<td class="text-center"><?php echo countEvaluacionesFinales($key['exam_id'], $row['student_id']); ?></td>
+											<?php }else{?>
+												<td class="text-center"><?php echo $this->db->get_where('mark', array('student_id' => $row['student_id'], 'year' => $running_year, 'exam_id' => $key['exam_id'], 'subject_id' => $subject_id))->row()->final; ?></td>
+												<?php } ?>
+    											
     										<?php endforeach; ?>
-    										<td class="text-center"><?php echo $average / count($exams); ?></td>
+    										<td class="text-center"><?php echo round($average / count($exams), 2); ?></td>
     									</tr>
     								<?php endforeach; ?>
     							</table>

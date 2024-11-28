@@ -233,6 +233,16 @@
             }
         });
     }
+    function get_exam_section(section_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_exam_section/' + section_id ,
+            success: function(response)
+            {
+                jQuery('#exam_holder').html(response);
+            }
+        });
+    }
 
     function get_class_sections2(class_id) 
     {

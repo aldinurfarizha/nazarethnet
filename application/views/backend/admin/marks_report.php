@@ -54,16 +54,16 @@ $min = $this->db->get_where('academic_settings', array('type' => 'minium_mark'))
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-3">
+					<div class="col-sm-2">
 						<div class="form-group is-select">
 							<label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
 							<div class="select">
 								<?php if ($section_id == ""): ?>
-									<select name="section_id" required id="section_holder" onchange="get_student(this.value)">
+									<select name="section_id" required id="section_holder" onchange="get_student(this.value); get_exam_section(this.value);">
 										<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 									</select>
 								<?php else: ?>
-									<select name="section_id" required id="section_holder" onchange="get_student(this.value)">
+									<select name="section_id" required id="section_holder" onchange="get_student(this.value); get_exam_section(this.value);">
 										<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 										<?php
 										$sections = $this->db->get_where('section', array('class_id' => $class_id))->result_array();
@@ -98,17 +98,35 @@ $min = $this->db->get_where('academic_settings', array('type' => 'minium_mark'))
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-2">
+					<div class="col-sm-3">
 						<div class="form-group is-select">
 							<label class="control-label"><?php echo getEduAppGTLang('semester'); ?></label>
 							<div class="select">
-								<select name="exam_id" required>
-									<option value=""><?php echo getEduAppGTLang('select'); ?></option>
-									<?php $exam = $this->db->get('exam')->result_array();
-									foreach ($exam as $row):
-									?>
-										<option value="<?php echo $row['exam_id']; ?>" <?php if ($exam_id == $row['exam_id']) echo "selected"; ?>><?php echo $row['name']; ?></option>
-									<?php endforeach; ?>
+								<select name="exam_id" required id="exam_holder">
+									<?php if ($exam_id) {
+										$this->db->select('exam.*, subject.name as subject_name');
+										$this->db->from('exam');
+										$this->db->join('subject', 'exam.subject_id = subject.subject_id', 'inner');
+										$this->db->where('exam.exam_id', $exam_id);
+										$selectedExam = $this->db->get()->row();
+										?>
+										<option value="<?=$exam_id?>" selected><?= $selectedExam->name . ' (' . $selectedExam->subject_name . ')'?></option>
+										<?php
+										$this->db->select('exam.*, subject.name as subject_name');
+										$this->db->from('exam');
+										$this->db->join('subject', 'exam.subject_id = subject.subject_id', 'inner');
+										$this->db->where('exam.section_id', $selectedExam->section_id);
+										$examData = $this->db->get()->result();
+										foreach($examData as $exa){
+											if($exa->exam_id==$exam_id){
+												continue;
+											}
+											?>
+										<option value="<?=$exa->exam_id?>"><?= $exa->name.' ('.$exa->subject_name.')'?> </option>
+										<?php } ?>
+									<?php } else { ?>
+										<option value="" selected><?php echo getEduAppGTLang('select'); ?></option>
+									<?php } ?>
 								</select>
 							</div>
 						</div>
@@ -154,6 +172,7 @@ $min = $this->db->get_where('academic_settings', array('type' => 'minium_mark'))
 											<th class="text-center"><?php echo getEduAppGTLang('subject'); ?></th>
 											<th class="text-center"><?php echo getEduAppGTLang('teacher'); ?></th>
 											<th class="text-center"><?php echo getEduAppGTLang('mark'); ?></th>
+											<th class="text-center"><?php echo getEduAppGTLang('prom'); ?></th>
 											<th class="text-center"><?php echo getEduAppGTLang('comment'); ?></th>
 										</tr>
 									</thead>
@@ -172,6 +191,9 @@ $min = $this->db->get_where('academic_settings', array('type' => 'minium_mark'))
 														<td><?php echo $row3['name']; ?></td>
 														<td><?php echo $this->crud->get_name('teacher', $row3['teacher_id']); ?></td>
 														<td class="text-center"><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $exam_id, 'student_id' => $student_id, 'year' => $running_year))->row()->mark_obtained; ?></td>
+														<td>
+															<?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $exam_id, 'student_id' => $student_id, 'year' => $running_year))->row()->final; ?>
+														</td>
 														<td class="text-center"><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $exam_id, 'student_id' => $student_id, 'year' => $running_year))->row()->comment; ?></td>
 													</tr>
 										<?php endforeach;

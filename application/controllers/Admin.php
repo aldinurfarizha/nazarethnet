@@ -3590,6 +3590,17 @@ class Admin extends EduAppGT
             echo '<option value="' . $row['exam_id'] . '">' . $row['name'] . '</option>';
         }
     }
+    function get_exam_section($section_id = '')
+    {
+        $this->db->select('exam.*, subject.name as subject_name');
+        $this->db->from('exam');
+        $this->db->join('subject', 'exam.subject_id = subject.subject_id', 'inner');
+        $this->db->where('exam.section_id', $section_id);
+        $exam = $this->db->get()->result_array();
+        foreach ($exam as $row) {
+            echo '<option value="' . $row['exam_id'] . '">' . $row['name'].' ('.$row['subject_name'].')' . '</option>';
+        }
+    }
     
 
     //Attendance report function.
