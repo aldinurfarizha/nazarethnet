@@ -33,6 +33,8 @@
                 <div class="content-box">
                     <div class="element-wrapper">
                         <h6 class="element-header">Seleccione la prueba que se calculará en el informe final
+                            <br>
+                            <?=$mark_activity->name?>
                         </h6>
                         <div class="element-box-tp">
                             <div class="table-responsive">
@@ -46,12 +48,16 @@
                                     </thead>
                                     <?php
                                     foreach ($exam as $row):
-                                        $totalPercent += $row->percent;
+                                        $isCounted=0;
+                                        if(isExamCounted($row->exam_id, $mark_activity->mark_activity_id))
+                                        {
+                                            $isCounted=1;
+                                        }
                                     ?>
                                         <tr>
                                             <td><?= $row->name; ?></td>
                                             <td class="text-center">
-                                                <?php if($row->is_count){?>
+                                                <?php if($isCounted){?>
                                                     <span class="badge badge-success">Calculado <i class="fa fa-check"></i></span>
                                                 <?php }else{ ?>
                                                     <span class="badge badge-danger">No Contado <i class="fa fa-times"></i></span>
@@ -60,7 +66,8 @@
                                             <td class="row-actions">
                                                 <a class="grey" href="#" data-target="#update_status" data-toggle="modal"
                                                     data-exam_id="<?= $row->exam_id; ?>"
-                                                    data-is_count="<?= $row->is_count; ?>">
+                                                    data-mark_activity_id="<?=$mark_activity->mark_activity_id?>"
+                                                    data-is_count="<?= $isCounted; ?>">
                                                     <i class="os-icon picons-thin-icon-thin-0001_compose_write_pencil_new"></i>
                                                 </a>
                                             </td>
@@ -84,6 +91,7 @@
                                     <div class="row">
                                     <div class="col-12">
                                     <input type="hidden" name="exam_id" value="">
+                                    <input type="hidden" name="mark_activity_id" value="">
                           			<div class="form-group label-floating is-select">
                                       <label class="control-label">Seleccione</label>
                                         <div class="select">
@@ -111,7 +119,9 @@
         button.addEventListener('click', function() {
             var examId = this.dataset.exam_id;
             var isCount = this.dataset.is_count;
+            var markActivityId=this.dataset.mark_activity_id;
             document.querySelector('#update_status input[name="exam_id"]').value = examId;
+            document.querySelector('#update_status input[name="mark_activity_id"]').value = markActivityId;
             var selectElement = document.querySelector('#update_status select[name="is_count"]');
             selectElement.value = isCount;
         });

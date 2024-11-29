@@ -36,3 +36,12 @@ ALTER TABLE `mark_activity` ADD `is_calculate_avg` INT(11) NOT NULL DEFAULT '0' 
 ALTER TABLE `exam` ADD `is_count` INT(11) NOT NULL DEFAULT '0' AFTER `exam_id`; 
 
 
+CREATE TABLE auto_fill_exam (
+    auto_fill_exam_id INT(11) NOT NULL AUTO_INCREMENT,
+    exam_id INT(11) NOT NULL,
+    mark_activity_id INT(11) NOT NULL,
+    PRIMARY KEY (auto_fill_exam_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+

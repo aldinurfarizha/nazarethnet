@@ -33,10 +33,14 @@ $explode_data = explode("-", $decode_data);
                                         $sectionID = $this->db->get_where('enroll', array('student_id' => $explode_data[1], 'year' => $running_year))->row()->section_id;
                                         $capacidades = $this->db->order_by('mark_activity_id', 'ASC')->get_where('mark_activity', array('class_id' => $classID, 'subject_id' => $explode_data[2], 'year' => $running_year, 'exam_id' => $explode_data[0]))->result_array();
                                         foreach ($capacidades as $cap) :
+                                            $examDetail=getExamDetail($explode_data[0]);
                                         ?>
                                             <tr>
                                                 <td>
-                                                    <?php echo $cap['name']; ?>
+                                                <?php echo $cap['name']; ?>
+                                                                <?php if ($examDetail->is_final) { ?>
+                                                                    (<?= $cap['percent'] ?>%)
+                                                                <?php } ?>
                                                 </td>
                                                 <td>
                                                     <?php
@@ -57,8 +61,16 @@ $explode_data = explode("-", $decode_data);
                                             <td><b><?php echo $this->db->get_where('mark', array('subject_id' => $explode_data[2], 'exam_id' =>  $explode_data[0], 'student_id' => $explode_data[1], 'year' => $running_year))->row()->mark_obtained; ?></b></td>
                                         </tr>
                                         <tr>
+                                            <?php if($examDetail->is_final)
+                                            {?>
+                                                 <td><b>EVALUACIONES FINALES</b></td>
+                                                 <td><b><?= countEvaluacionesFinales($examDetail->exam_id, $explode_data[1])?></b></td>
+                                            <?php }else
+                                            {?>
                                             <td><b>Prom</b></td>
                                             <td><b><?php echo $this->db->get_where('mark', array('subject_id' => $explode_data[2], 'exam_id' =>  $explode_data[0], 'student_id' => $explode_data[1], 'year' => $running_year))->row()->final; ?></b></td>
+                                            <?php } ?>
+                                            
                                         </tr>
                                     </tfoot>
                                 </table>

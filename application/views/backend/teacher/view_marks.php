@@ -75,7 +75,7 @@ foreach (getAvailabeSubject($student_id) as $row):
                                                             if ($obtained_mark_query->num_rows() > 0) {
                                                                 $marks = $obtained_mark_query->result_array();
                                                                 foreach ($marks as $row4):
-
+                                                                    $examDetail=getExamDetail($row2['exam_id']);
                                                         ?>
                                                                     <tr>
                                                                         <td><?php echo $row3['name']; ?></td>
@@ -85,14 +85,21 @@ foreach (getAvailabeSubject($student_id) as $row):
                                                                         </td>
                                                                         <td>
                                                                             <?php
-                                                                            $avg = $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $row2['exam_id'], 'student_id' => $student_id, 'year' => $running_year))->row()->final;
+                                                                            if($examDetail->is_final)
+                                                                            {
+                                                                                echo countEvaluacionesFinales($examDetail->exam_id,  $student_id);
+                                                                            }else
+                                                                            {
+                                                                                $avg = $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $row2['exam_id'], 'student_id' => $student_id, 'year' => $running_year))->row()->final;
                                                                             if ($avg < $min || $avg == 0):
                                                                             ?>
                                                                                 <span class="badge badge-danger text-white"><?php echo $avg; ?></span>
                                                                             <?php endif; ?>
                                                                             <?php if ($avg >= $min): ?>
                                                                                 <span class="badge badge-success text-white"><?php echo $avg; ?></span>
-                                                                            <?php endif; ?>
+                                                                            <?php endif; 
+                                                                            }
+                                                                            ?>
                                                                         </td>
                                                                         <td><?php echo $grade = $this->crud->get_grade($avg); ?></td>
                                                                         <td><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $row2['exam_id'], 'student_id' => $student_id, 'year' => $running_year))->row()->comment; ?></td>

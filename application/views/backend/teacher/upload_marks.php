@@ -192,7 +192,7 @@ foreach ($sub as $subs) :
                                                                                                                                                                         } else {
                                                                                                                                                                             echo $nota['nota'];
                                                                                                                                                                         } ?>" onkeyup="calcAverage(this)" min="0" name="mark_<?php echo $rows['student_id'] . '_' . $cap['mark_activity_id']; ?>" class="markInput text-center" placeholder="0">
-                                                                                <div class="status-pilli blue" data-title="<?=countAllFinalMarkExplain($rows['student_id'],$subs['subject_id'],$running_year)?>" data-toggle="tooltip" data-original-title="" title=""></div>
+                                                                                <div class="status-pilli blue" data-title="<?=countAllFinalMarkExplainAutoFillExam($rows['student_id'],$subs['subject_id'],$running_year,$cap['mark_activity_id'])?>" data-toggle="tooltip" data-original-title="" title=""></div>
                                                                             <?php }else{?>
                                                                                 <input type="number"
                                                                                 <?php if ($nota['is_block']) { ?>

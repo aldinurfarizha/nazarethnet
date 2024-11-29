@@ -75,7 +75,7 @@ $section_id = $this->db->get_where('enroll', array('student_id' => $this->sessio
 													if ($obtained_mark_query->num_rows() > 0) {
 														$marks = $obtained_mark_query->result_array();
 														foreach ($marks as $row4) :
-
+															$examDetail=getExamDetail($row2['exam_id']);
 												?>
 															<tr>
 																<td><?php echo $row3['name']; ?></td>
@@ -84,7 +84,16 @@ $section_id = $this->db->get_where('enroll', array('student_id' => $this->sessio
 																	<?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $row2['exam_id'], 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->mark_obtained; ?>
 																</td>
 																<td>
-																	<?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $row2['exam_id'], 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->final; ?>
+																	<?php 
+																	if($examDetail->is_final)
+																	{
+																		echo countEvaluacionesFinales($examDetail->exam_id,  $this->session->userdata('login_user_id'));
+																	}
+																	else
+																	{
+																		echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $row2['exam_id'], 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->final;
+																	}
+																	 ?>
 																</td>
 																<td><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $row2['exam_id'], 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->comment; ?></td>
 																<?php $data = base64_encode($class_id . "-" . $section_id . "-" . $row3['subject_id']); ?>

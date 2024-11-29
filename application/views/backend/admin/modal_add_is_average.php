@@ -5,7 +5,7 @@
     <div class="ui-block-content">
         <?php echo form_open(base_url() . 'admin/update_is_calculate_avg', array('enctype' => 'multipart/form-data')); ?>
         <?php
-        $markActivity = $this->db->query("SELECT * FROM mark_activity where exam_id=$param2")->result();?>
+        $markActivity = $this->db->query("SELECT * FROM mark_activity where exam_id=$param2 and is_calculate_avg=0")->result();?>
         <div class="row">
             <input type="hidden" name="exam_id" value="<?php echo $param2; ?>">
             <div class="col-12">

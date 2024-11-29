@@ -409,9 +409,8 @@ class Student extends EduAppGT
     {
         $this->isStudent();
         $ex = explode('-', base64_decode($student_id));
-
         $page_data['student_id'] =   $student_id;
-        $page_data['sc_student'] = getStudentClassAndSectionById($this->session->userdata('login_user_id'));
+        $page_data['sc_student'] = getExamDetail($ex[1]);
         $page_data['exam_id']    =   $exam_id;
         $this->load->view('backend/student/marks_print_view', $page_data);
     }

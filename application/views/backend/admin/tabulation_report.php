@@ -127,7 +127,6 @@
 										?>
     										<th class="text-center"><?php echo $row['name']; ?></th>
     									<?php endforeach; ?>
-    									<th class="text-center"><?php echo getEduAppGTLang('average'); ?></th>
     								</tr>
     								<?php
 									$n = 1;
@@ -163,7 +162,6 @@
 												<?php } ?>
     											
     										<?php endforeach; ?>
-    										<td class="text-center"><?php echo round($average / count($exams), 2); ?></td>
     									</tr>
     								<?php endforeach; ?>
     							</table>

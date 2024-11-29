@@ -277,6 +277,17 @@ function getAllExamBySubject($subjectId)
         ->get();
     return $data->result();
 }
+function getAllExamByMarkActivityIdFromAutoFillExam($mark_activity_id)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('auto_fill_exam')
+        ->where([
+            'mark_activity_id'=>$mark_activity_id
+        ])
+        ->get();
+    return $data->result();
+}
 function getAllExamBySubjectAndStudentid($subjectId,$studentId)
 {
     $ci = &get_instance();
@@ -310,7 +321,7 @@ function getAllMarkActivityIdBySubjectIdAndIsCalculate($subject_id)
             'subject_id'=>$subject_id,
         ])
         ->get();
-    return $data->row();
+    return $data->result();
 }
 
 function isStudentExistMark($student_id,$examId)
@@ -685,6 +696,20 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
     $average = round($average, 2);
         return $average;
     }
+    function countAllFinalMarkAutoFillExam($student_id,$subject_id,$year,$mark_activity_id)
+    {
+        $total=0;
+        $count=0;
+        $data=getAllExamByMarkActivityIdFromAutoFillExam($mark_activity_id);
+        foreach($data as $datar)
+        {
+                $total+=getFinalMark($student_id,$subject_id,$datar->exam_id,$year);
+                $count++;
+        }
+        $average=$total/$count;
+    $average = round($average, 2);
+        return $average;
+    }
     function countAllFinalMarkExplain($student_id,$subject_id,$year)
     {
         $total='';
@@ -697,6 +722,20 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
                 $total.='+';
                 $count++;
             }
+        }
+        $average=$total.'/'.$count;
+        return $average;
+    }
+    function countAllFinalMarkExplainAutoFillExam($student_id,$subject_id,$year,$mark_activity_id)
+    {
+        $total='';
+        $count=0;
+        $data=getAllExamByMarkActivityIdFromAutoFillExam($mark_activity_id);
+        foreach($data as $datar)
+        {
+                $total.=getFinalMark($student_id,$subject_id,$datar->exam_id,$year);
+                $total.='+';
+                $count++;
         }
         $average=$total.'/'.$count;
         return $average;
@@ -715,9 +754,8 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
     }
     function recalculateMarkProm($subject_id,$class_id,$section_id,$year)
     {
-        $markActivity=getAllMarkActivityIdBySubjectIdAndIsCalculate($subject_id);
-        if($markActivity)
-        {
+        $markActivitys=getAllMarkActivityIdBySubjectIdAndIsCalculate($subject_id);
+        foreach($markActivitys as $markActivity){
             $notas=getNotasByMarkActivityId($markActivity->mark_activity_id);
             foreach($notas as $row)
             {
@@ -727,7 +765,7 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
                 if (!isActiveSubject($row->student_id,$subject_id)){
                     continue;
                 }    
-                $newNota=countAllFinalMark($row->student_id,$subject_id,$year);
+                $newNota=countAllFinalMarkAutoFillExam($row->student_id,$subject_id,$year,$markActivity->mark_activity_id);
                 updateNotaCapacidadesById($row->student_id,$row->nota_capacidad_id,$newNota);
             }
         }
@@ -752,11 +790,41 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
             WHERE exam.exam_id = $exam_id")->row();
             return $data; 
     }
+    function getMarkDetail($mark_activity_id)
+    {
+            $ci = &get_instance();
+            $data = $ci->db->query("SELECT * FROM mark_activity where mark_activity_id = $mark_activity_id")->row();
+            return $data; 
+    }
+    function isExamCounted($exam_id,$mark_activity_id)
+    {
+        $ci = &get_instance();
+        $data = $ci->db->select('*')
+        ->from('auto_fill_exam')
+        ->where([
+            'exam_id' => $exam_id,
+            'mark_activity_id' => $mark_activity_id,
+        ])
+        ->get();
+    if ($data->num_rows() > 0) {
+        return true;
+    } else {
+        return false;
+    }
+    }
 function getStudentIdByParentId($parentId)
 {
     $ci = &get_instance();
     $student_id = $ci->db->get_where('student', array('parent_id' => $parentId))->row()->student_id;
     return $student_id;
+}
+function insertLogger($text)
+{
+    $ci = &get_instance();
+    $data=array(
+        'deskripsi'=>$text
+    );
+    $ci->db->insert('logger', $data);
 }
 
 

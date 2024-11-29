@@ -45,7 +45,8 @@
                                             <th><?php echo getEduAppGTLang('name'); ?></th>
                                             <th><?php echo getEduAppGTLang('year'); ?></th>
                                             <th class="text-center"><?php echo getEduAppGTLang('percent'); ?></th>
-                                            <th class="text-center"><?php echo getEduAppGTLang('status'); ?></th>
+                                            <th class="text-center">Autocompletar</th>
+                                            <th class="text-center">Configuración de Autocompletar</th>
                                             <th class="text-center"><?php echo getEduAppGTLang('action'); ?></th>
                                         </tr>
                                     </thead>
@@ -62,8 +63,19 @@
                                             <td class="text-center"><?= $row->percent . ' %' ?></td>
                                             <td class="text-center">
                                                 <?php if($row->is_calculate_avg){?>
-                                                    <span class="badge badge-success"> Relleno automático</span>
-                                                    <a class="btn btn-success btn-sm" href="<?=base_url('admin/final_evaluation_selected/'.$exam_id)?>">Seleccionada <i class="fa fa-check"></i></a>
+                                                    <span class="badge badge-success"><?php echo getEduAppGTLang('active'); ?></span>
+                                                <?php }else{?>
+                                                    <span class="badge badge-warning"><?php echo getEduAppGTLang('inactive'); ?></span>
+                                                <?php } ?>
+                                            </td>
+                                            <td class="text-center">
+                                            <?php if($row->is_calculate_avg){?>
+                                                    <a class="btn btn-secondary btn-sm" href="<?=base_url('admin/final_evaluation_selected/'.$exam_id.'/'.$row->mark_activity_id)?>">Acuerdo <i class="fa fa-cog"></i></a>
+                                                    <a class="btn btn-sm btn-danger" 
+                                                        href="<?=base_url('admin/disable_calculate_avg/'.$exam_id.'/'.$row->mark_activity_id)?>" 
+                                                        onclick="return confirm('Está seguro de que desea desactivar esto?')">
+                                                        <?php echo getEduAppGTLang('disable'); ?> <i class="fa fa-times"></i>
+                                                    </a>
                                                 <?php } ?>
                                             </td>
                                             <td class="row-actions">

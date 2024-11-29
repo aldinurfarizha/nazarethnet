@@ -137,7 +137,7 @@ foreach ($sub as $rows):
                                                     <?php if ($is_final) { ?>
                                                         <tr>
                                                             <td><b>EVALUACIONES FINALES</b></td>
-                                                            <td class="text-center"><b><?= getFinalMark($student_id, $rows['subject_id'], $exam_id, $running_year) ?></b></td>
+                                                            <td class="text-center"><b><?= countEvaluacionesFinales($exam_id, $student_id)?></b></td>
                                                         </tr>
                                                     <?php } else { ?>
                                                         <tr>

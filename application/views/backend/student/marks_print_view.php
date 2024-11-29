@@ -11,10 +11,10 @@
     $system_email       =   $this->crud->getInfo('system_email');
     $running_year       =   $this->crud->getInfo('running_year');
     $phone              =   $this->crud->getInfo('phone');
-    foreach ($sc_student as $sc) :
-        $class_name = $sc->class_name;
-        $section_id = $sc->section_id;
-        $class_id = $sc->class_id;
+    $class_name = $sc_student->class_name;
+    $section_id = $sc_student->section_id;
+    $class_id = $sc_student->class_id;
+    $exam_id=$sc_student->exam_id;
     ?>
         <div class="content-w">
             <div class="content-i">
@@ -58,7 +58,7 @@
                                         <tbody>
                                             <?php
                                             $exams = $this->crud->get_exams();
-                                            $subjects = $this->db->get_where('subject', array('class_id' => $class_id, 'section_id' => $section_id))->result_array();
+                                            $subjects = $this->db->get_where('exam', array('exam_id' => $exam_id ))->result_array();
                                             foreach ($subjects as $row3) :
                                                 $mark = $this->db->get_where('mark', array('student_id' => $this->session->userdata('login_user_id'), 'subject_id' => $row3['subject_id'], 'class_id' => $class_id, 'exam_id' => $ex[1], 'year' => $running_year));
                                                 if ($mark->num_rows() > 0) {
@@ -68,12 +68,23 @@
                                                     if (!isActiveSubject($this->session->userdata('login_user_id'), $row3['subject_id'])) {
                                                         continue;
                                                     }
+                                                    $examDetail=getExamDetail($exam_id);
                                             ?>
                                                     <tr>
                                                         <td><?php echo $row3['name']; ?></td>
                                                         <td><?php echo $this->crud->get_name('teacher', $row3['teacher_id']); ?></td>
                                                         <td class="text-center"><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $ex[1], 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->mark_obtained; ?></td>
-                                                        <td class="text-center"><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $ex[1], 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->final; ?></td>
+                                                        <td class="text-center">
+                                                            <?php
+                                                            if($examDetail->is_final)
+                                                            {
+                                                                echo countEvaluacionesFinales($examDetail->exam_id,  $this->session->userdata('login_user_id'));
+                                                            }
+                                                            else{
+                                                                echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $ex[1], 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->final; 
+                                                            }
+
+                                                            ?></td>
                                                         <td class="text-center"><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $ex[1], 'student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->comment; ?></td>
                                                     </tr>
                                             <?php endforeach;
@@ -95,6 +106,4 @@
                 </div>
             </div>
         </div>
-        <hr>
-    <?php endforeach; ?>
     <button class="btn btn-info btn-rounded" onclick="Print('print_area')"><?php echo getEduAppGTLang('print'); ?></button>
