@@ -134,6 +134,12 @@
 									$f = 0;
 									$students = $this->db->get_where('enroll', array('class_id' => $class_id, 'section_id' => $section_id, 'year' => $running_year))->result_array();
 									foreach ($students as $row):
+										if(isStudentFinishSubject($row['student_id'], $subject_id)){
+											continue;
+										}
+										if (!isActiveSubject($row['student_id'], $subject_id)) {
+											continue;
+										   }
 										if ($this->db->get_where('student', array('student_id' => $row['student_id']))->row()->sex == 'M') {
 											$m += 1;
 										} else {

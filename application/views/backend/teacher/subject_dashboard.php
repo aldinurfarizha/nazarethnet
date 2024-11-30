@@ -1003,6 +1003,9 @@ foreach ($sub as $row) :
                         if (!isStudentActiveEnroll($row2['student_id'], $ex[0], $ex[1], $running_year)) {
                           continue;
                         }
+                        if(isStudentFinishSubject($row2['student_id'], $ex[2])){
+                          continue;
+                        }
                         if (isActiveSubject($row2['student_id'], $ex[2])) {
                       ?>
                           <li class="inline-items">

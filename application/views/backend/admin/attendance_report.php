@@ -206,6 +206,13 @@
                                                 if(isStudentDeactive($row['student_id'])){
                                                     continue;
                                                 }
+                                                if(isStudentFinishSubject($row['student_id'], $subject_id)){
+                                                    continue;
+                                                }
+                                                if (!isActiveSubject($row['student_id'], $subject_id)) {
+                                                    continue;
+                                                    }
+
                                                 ?>
                                                 
                                                     <tr>

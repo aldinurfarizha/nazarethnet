@@ -826,5 +826,17 @@ function insertLogger($text)
     );
     $ci->db->insert('logger', $data);
 }
+function getFirstExamId($subject_id)
+{
+    $ci = &get_instance(); // Mengambil instance CI
+    $data = $ci->db->select('exam_id') // Hanya mengambil kolom yang diperlukan
+                   ->from('exam')
+                   ->where('subject_id', $subject_id)
+                   ->limit(1) // Membatasi hasil menjadi satu baris
+                   ->get();
+
+    return ($data->num_rows() > 0) ? $data->row()->exam_id : '';
+}
+
 
 

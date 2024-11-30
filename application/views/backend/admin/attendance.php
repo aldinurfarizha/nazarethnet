@@ -127,7 +127,12 @@ foreach ($sub as $subs):
                                                             if(!isStudentActiveEnroll($row['student_id'],$ex[0],$ex[1],$running_year)){
                                                                 continue;
                                                             }
-                                                            
+                                                            if(isStudentFinishSubject($row['student_id'], $ex[2])){
+                                                                continue;
+                                                            }
+                                                            if (!isActiveSubject($row['student_id'], $ex[2])) {
+                                                                continue;
+                                                                }
                                                         ?>
                                                             <tr>
                                                                 <td class="min-w-170">

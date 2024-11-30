@@ -159,9 +159,15 @@ foreach ($sub as $subs) :
                                                         if (!isStudentActiveEnroll($rows['student_id'], $ex[0], $ex[1], $running_year)) {
                                                             continue;
                                                         }
+                                                        if(isStudentFinishSubject($rows['student_id'], $subs['subject_id'])){
+                                                            continue;
+                                                        }
+                                                        if (!isActiveSubject($rows['student_id'], $subs['subject_id'])) {
+                                                         continue;
+                                                        }
                                                         $block = false;
                                                         $reason = '';
-                                                        if (isActiveSubject($rows['student_id'], $subs['subject_id'])) {
+                                                      
                                                             if (isMarkBlocked($rows['student_id'], $subs['subject_id'])) {
                                                                 $block = true;
                                                                 $reason = getMarkBlockedReason($rows['student_id'], $subs['subject_id']);
@@ -242,7 +248,7 @@ foreach ($sub as $subs) :
                                                                 </td>
 
                                                             </tr>
-                                                    <?php }
+                                                    <?php 
                                                     endforeach; ?>
                                                 </tbody>
                                                 </tbody>

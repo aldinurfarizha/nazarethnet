@@ -176,6 +176,12 @@
                                                     if (!isStudentActiveEnroll($row['student_id'], $class_id, $section_id, $running_year)) {
                                                         continue;
                                                     }
+                                                    if(isStudentFinishSubject($row['student_id'], $subject_id)){
+                                                        continue;
+                                                    }
+                                                    if (!isActiveSubject($row['student_id'], $subject_id)) {
+                                                        continue;
+                                                        }
                                                 ?>
                                                     <tr>
                                                         <td nowrap> <img alt="" src="<?php echo $this->crud->get_image_url('student', $row['student_id']); ?>" width="20px" class="tbl-st"> <?php echo $this->crud->get_name('student', $row['student_id']); ?> </td>

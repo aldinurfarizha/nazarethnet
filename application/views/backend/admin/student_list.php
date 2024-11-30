@@ -82,6 +82,9 @@
                                                 if(isStudentDeactive($row2['student_id'])){
                                                     continue;
                                                 }
+                                                if(isStudentFinishSubject($row2['student_id'], $ex[2])){
+                                                    continue;
+                                                }
                                                 if (isActiveSubject($row2['student_id'], $ex[2])) {
                                             ?>
                                             <tr>

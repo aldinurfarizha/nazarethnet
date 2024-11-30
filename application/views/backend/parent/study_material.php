@@ -4,6 +4,10 @@
     $ex = explode('-', $info);
     $sub = $this->db->get_where('subject', array('subject_id' => $ex[2]))->result_array();
     foreach($sub as $rows):
+        $finish=0;
+        if(isStudentFinishSubject($ex[3], $ex[2])){
+            $finish=1;
+        }
 ?>
     <div class="content-w">
         <div class="conty">
@@ -23,7 +27,18 @@
             <div class="os-tabs-w menu-shad">
                 <div class="os-tabs-controls">
                     <ul class="navs navs-tabs upper">
+                    <?php if($finish){?>
                         <li class="navs-item">
+                            <a class="navs-links active" href="<?php echo base_url();?>parents/study_material/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0003_write_pencil_new_edit"></i><span><?php echo getEduAppGTLang('study_material');?></span></a>
+                        </li>
+                        <li class="navs-item">
+                            <a class="navs-links" href="<?php echo base_url();?>parents/subject_marks/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0729_student_degree_science_university_school_graduate"></i><span><?php echo getEduAppGTLang('marks');?></span></a>
+                        </li>
+                        <li class="navs-item">
+                            <a class="navs-links" href="<?php echo base_url();?>parents/attendance_report/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i><span><?php echo getEduAppGTLang('attendance');?></span></a>
+                        </li>
+                        <?php }else{?>
+                            <li class="navs-item">
                             <a class="navs-links" href="<?php echo base_url();?>parents/subject_dashboard/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0482_gauge_dashboard_empty"></i><span><?php echo getEduAppGTLang('dashboard');?></span></a>
                         </li>
                         <li class="navs-item">
@@ -47,6 +62,8 @@
                         <li class="navs-item">
                             <a class="navs-links" href="<?php echo base_url();?>parents/gamification/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0659_medal_first_place_winner_award_prize_achievement"></i><span><?php echo getEduAppGTLang('gamification');?></span></a>
                         </li>
+                        <?php } ?>
+                       
                     </ul>
                 </div>
             </div>  

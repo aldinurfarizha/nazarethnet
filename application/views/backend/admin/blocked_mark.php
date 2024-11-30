@@ -140,6 +140,16 @@ foreach ($sub as $subs) :
                                                     foreach ($studs as $rows) :
                                                         $block = false;
                                                         $reason = '';
+                                                        if (!isStudentActiveEnroll($rows['student_id'], $ex[0], $ex[1], $running_year)) {
+                                                            continue;
+                                                        }
+                                                        if(isStudentFinishSubject($rows['student_id'], $subs['subject_id'])){
+                                                            continue;
+                                                        }
+                                                        if (!isActiveSubject($rows['student_id'], $subs['subject_id'])) {
+                                                            continue;
+                                                           }
+                                                        
                                                         if (isActiveSubject($rows['student_id'], $subs['subject_id'])) {
                                                             if (isMarkBlocked($rows['student_id'], $subs['subject_id'])) {
                                                                 $block = true;

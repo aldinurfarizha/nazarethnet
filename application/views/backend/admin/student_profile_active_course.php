@@ -62,6 +62,7 @@ foreach ($student_info as $row) :
                                                                 <th><?php echo getEduAppGTLang('class'); ?></th>
                                                                 <th><?php echo getEduAppGTLang('section'); ?></th>
                                                                 <th class="text-center"><?php echo getEduAppGTLang('status'); ?></th>
+                                                                <th>Finalizar</th>
                                                                 <th><?php echo getEduAppGTLang('action'); ?></th>
                                                             </tr>
                                                         </thead>
@@ -91,16 +92,33 @@ foreach ($student_info as $row) :
                                                                             <div class="value badge badge-pill badge-danger"><?= getEduAppGTLang('inactive'); ?></div>
                                                                         <?php } ?>
                                                                     </td>
+                                                                    <td class="text-center">
+                                                                        <?php if (isActiveSubject($student_id, $item->subject_id)) { ?>
+                                                                            <?php if (isStudentFinishSubject($student_id, $item->subject_id)) { ?>
+                                                                                <div class="value badge badge-pill badge-success"><?= getEduAppGTLang('finish'); ?></div>
+                                                                            <?php } else { ?>
+                                                                                <div class="value badge badge-pill badge-primary"><?= getEduAppGTLang('process'); ?></div>
+                                                                            <?php } ?>
+                                                                        <?php } else { ?>
+                                                                            --
+                                                                        <?php } ?>
+
+                                                                    </td>
                                                                     <td>
                                                                         <div class="more">
                                                                             <i class="icon-options"></i>
                                                                             <ul class="more-dropdown">
                                                                                 <?php if (isActiveSubject($student_id, $item->subject_id) == false) { ?>
                                                                                     <a style="color: black;" href="<?= base_url('admin/activate_subject_student/' . $student_id . '/' . $item->subject_id) ?>">Activate <i class="fa fa-check-circle"></i></a>
-                                                                                <?php } else { ?>
-                                                                                    
+                                                                                <?php } else { 
+                                                                                    if(isStudentFinishSubject($student_id, $item->subject_id)==false){?>
                                                                                     <a style="color: black;" href="<?= base_url('admin/deactive_subject_student/' . $student_id . '/' . $item->subject_id) ?>">Deactive <i class="fa fa-times-circle"></i></a>
-                                                                                   
+                                                                                    <?php }?>
+                                                                                    <?php if (isStudentFinishSubject($student_id, $item->subject_id) == false) { ?>
+                                                                                        <a style="color: black;" href="<?= base_url('admin/finish_student_subject/' . $student_id . '/' . $item->subject_id) ?>">Finalizar</a>
+                                                                                    <?php } else { ?>
+                                                                                        <a style="color: black;" href="<?= base_url('admin/process_student_subject/' . $student_id . '/' . $item->subject_id) ?>">Proceso</a>
+                                                                                    <?php } ?>
                                                                                 <?php } ?>
                                                                             </ul>
                                                                         </div>

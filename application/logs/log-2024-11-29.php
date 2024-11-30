@@ -4358,3 +4358,1642 @@ ERROR - 2024-11-29 05:30:15 --> 404 Page Not Found: Public/uploads
 ERROR - 2024-11-29 05:30:16 --> 404 Page Not Found: Public/uploads
 ERROR - 2024-11-29 05:30:16 --> 404 Page Not Found: Public/uploads
 ERROR - 2024-11-29 05:30:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:31:36 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:31:36 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:31:36 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:31:39 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:31:39 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:31:39 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:36:08 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:36:08 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:36:08 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:36:23 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:36:23 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:36:23 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:36:23 --> Severity: Warning --> Undefined variable $exam_name /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 165
+ERROR - 2024-11-29 22:36:23 --> Severity: Warning --> Undefined variable $class_name /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 166
+ERROR - 2024-11-29 22:36:23 --> Severity: Warning --> Attempt to read property "phrase" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/multi_language_helper.php 13
+ERROR - 2024-11-29 22:36:23 --> Severity: Warning --> Undefined variable $system_email /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 210
+ERROR - 2024-11-29 22:36:23 --> Severity: Warning --> Undefined variable $phone /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 210
+ERROR - 2024-11-29 22:36:32 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:36:32 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:36:32 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:36:32 --> Severity: Warning --> Undefined variable $exam_name /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 165
+ERROR - 2024-11-29 22:36:32 --> Severity: Warning --> Undefined variable $class_name /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 166
+ERROR - 2024-11-29 22:36:32 --> Severity: Warning --> Undefined variable $system_email /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 210
+ERROR - 2024-11-29 22:36:32 --> Severity: Warning --> Undefined variable $phone /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 210
+ERROR - 2024-11-29 22:39:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:39:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:39:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:39:00 --> Severity: Warning --> Undefined variable $exam_name /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 165
+ERROR - 2024-11-29 22:39:00 --> Severity: Warning --> Undefined variable $class_name /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 166
+ERROR - 2024-11-29 22:39:00 --> Severity: Warning --> Undefined variable $system_email /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 218
+ERROR - 2024-11-29 22:39:00 --> Severity: Warning --> Undefined variable $phone /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 218
+ERROR - 2024-11-29 22:39:33 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:39:34 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:39:34 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:39:34 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 22:39:35 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:39:35 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:39:35 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:39:40 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:39:40 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:39:40 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:39:40 --> Severity: Warning --> Undefined variable $exam_name /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 165
+ERROR - 2024-11-29 22:39:40 --> Severity: Warning --> Undefined variable $class_name /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 166
+ERROR - 2024-11-29 22:39:40 --> Severity: Warning --> Undefined variable $system_email /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 218
+ERROR - 2024-11-29 22:39:40 --> Severity: Warning --> Undefined variable $phone /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 218
+ERROR - 2024-11-29 22:39:44 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:39:44 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:39:44 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:39:55 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:39:55 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:39:55 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:39:57 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:39:57 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:39:57 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:39:59 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:39:59 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:39:59 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:00 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 22:40:05 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:40:05 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:40:05 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:40:06 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/student_portal.php 74
+ERROR - 2024-11-29 22:40:06 --> Severity: Warning --> Attempt to read property "route_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/student_portal.php 115
+ERROR - 2024-11-29 22:40:08 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:40:08 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:40:08 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:44:13 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:44:13 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:44:13 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:44:13 --> Query error: Unknown column 'is_finish' in 'where clause' - Invalid query: SELECT *
+FROM `student_subject`
+WHERE `student_id` = '206'
+AND `subject_id` = '84'
+AND `is_finish` = 1
+ERROR - 2024-11-29 22:44:38 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:44:38 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:44:38 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:44:38 --> Severity: Warning --> Attempt to read property "phrase" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/multi_language_helper.php 13
+ERROR - 2024-11-29 22:44:45 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:44:45 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:44:45 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:44:45 --> Severity: Warning --> Attempt to read property "phrase" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/multi_language_helper.php 13
+ERROR - 2024-11-29 22:44:53 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:44:53 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:44:53 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:45:43 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:45:43 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:45:43 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:45:52 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:46:01 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:46:01 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:46:01 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:46:01 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:46:01 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:46:01 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:46:03 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:46:03 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:46:03 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:46:03 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 22:46:03 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:46:03 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:46:03 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:46:05 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:46:05 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:46:05 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:46:05 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 22:46:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:46:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:46:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:47:09 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:47:09 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:47:09 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:47:09 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 22:47:10 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:47:10 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:47:10 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:47:29 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:47:29 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:47:29 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:47:29 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 22:47:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:47:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:47:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:48:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:48:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:48:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:48:01 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:48:26 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:48:26 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:48:26 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:48:27 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:48:30 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:48:30 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:48:30 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:48:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:48:45 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:48:45 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:48:45 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:48:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Undefined variable $rows /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Trying to access array offset on value of type null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Undefined variable $rows /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Trying to access array offset on value of type null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Undefined variable $rows /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Trying to access array offset on value of type null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Undefined variable $rows /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Trying to access array offset on value of type null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Undefined variable $rows /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Trying to access array offset on value of type null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Undefined variable $rows /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Trying to access array offset on value of type null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Undefined variable $rows /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Trying to access array offset on value of type null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Undefined variable $rows /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Trying to access array offset on value of type null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Undefined variable $rows /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Trying to access array offset on value of type null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Undefined variable $rows /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Trying to access array offset on value of type null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Undefined variable $rows /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Trying to access array offset on value of type null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Undefined variable $rows /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Trying to access array offset on value of type null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Undefined variable $rows /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Trying to access array offset on value of type null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Undefined variable $rows /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Trying to access array offset on value of type null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Undefined variable $rows /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> Severity: Warning --> Trying to access array offset on value of type null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/attendance.php 130
+ERROR - 2024-11-29 22:49:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:49:52 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:49:52 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:49:52 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:49:52 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:49:56 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:49:56 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:49:56 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:49:56 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:50:33 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:50:33 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:50:33 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:50:33 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:50:36 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:50:36 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:50:36 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:50:36 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 22:50:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:50:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:50:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:51:19 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:51:19 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:51:19 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:51:19 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 22:51:19 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:51:19 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:51:19 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:51:31 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:51:31 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:51:31 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:51:31 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 22:51:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:51:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:51:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:51:55 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:51:55 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:51:55 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:52:14 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:52:14 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:52:14 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:52:27 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:52:27 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:52:27 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:52:28 --> Severity: Warning --> Undefined variable $exam_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/final_evaluation.php 146
+ERROR - 2024-11-29 22:52:32 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:52:32 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:52:32 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:52:36 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:52:36 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:52:36 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:52:42 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:53:23 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:53:23 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:53:23 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:53:32 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:53:32 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:53:32 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:53:35 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:53:35 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:54:17 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:54:17 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:54:17 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:54:19 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 22:54:19 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 22:54:47 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:54:47 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:54:47 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:55:06 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:55:06 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:55:06 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:55:06 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 22:55:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:55:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:55:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:55:52 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:55:52 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:55:52 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:55:52 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:55:57 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:55:57 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:55:57 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:55:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:56:11 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:56:11 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:56:11 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:56:11 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 22:56:12 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:56:12 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:56:12 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:56:49 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:56:49 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:56:49 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:56:49 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 22:56:50 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:56:50 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:56:50 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:57:35 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:57:35 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:57:35 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:57:35 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 22:57:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:57:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:57:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:57:41 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:57:41 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:57:41 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:57:41 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 22:57:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:57:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:57:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:59:18 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:59:18 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:59:18 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:59:18 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 22:59:19 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:59:19 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:59:19 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 22:59:34 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:59:34 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:59:34 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 22:59:34 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/student_portal.php 74
+ERROR - 2024-11-29 22:59:34 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/student_portal.php 98
+ERROR - 2024-11-29 22:59:34 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/student_portal.php 98
+ERROR - 2024-11-29 22:59:34 --> Severity: Warning --> Attempt to read property "route_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/student_portal.php 115
+ERROR - 2024-11-29 22:59:38 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 22:59:38 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 22:59:38 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:01:03 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:01:03 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:01:03 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:01:03 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 23:01:04 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:01:04 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:01:04 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:01:19 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:01:19 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:01:19 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:01:19 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 23:01:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:01:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:01:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:02:33 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:02:33 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:02:33 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:02:33 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 23:02:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:02:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:02:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:02:44 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:02:44 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:02:44 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:02:44 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 23:02:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:02:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:02:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:02:48 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:02:48 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:02:48 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:02:49 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:02:58 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:02:58 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:02:58 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:02:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:03:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:03:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:03:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:03:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:04:16 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:04:16 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:04:16 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:04:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:04:20 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:04:20 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:04:20 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:04:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:04:41 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:04:41 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:04:41 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:04:41 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:04:43 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:04:43 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:04:43 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:04:43 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:04:51 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:04:51 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:04:51 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:04:51 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:04:53 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:04:53 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:04:53 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:04:53 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 23:04:53 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:04:53 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:04:53 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:05:44 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:05:44 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:05:44 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:05:46 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 23:05:46 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 23:05:54 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:05:54 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:05:54 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:05:54 --> Severity: Warning --> Undefined variable $exam_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/final_evaluation.php 146
+ERROR - 2024-11-29 23:05:55 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:05:55 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:05:55 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 23:06:03 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 23:06:06 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:06:06 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:06:06 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:06:20 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:06:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:06:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:06:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:06:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:06:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:06:30 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/marks_print_view.php 7
+ERROR - 2024-11-29 23:06:30 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/marks_print_view.php 7
+ERROR - 2024-11-29 23:06:30 --> Severity: Warning --> Undefined property: stdClass::$class_name /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/marks_print_view.php 14
+ERROR - 2024-11-29 23:06:30 --> Severity: Warning --> Undefined array key "teacher_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/marks_print_view.php 75
+ERROR - 2024-11-29 23:06:30 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 23:06:30 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 23:06:37 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:06:37 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:06:37 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:06:37 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:06:41 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 173
+ERROR - 2024-11-29 23:06:41 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 374
+ERROR - 2024-11-29 23:06:41 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 421
+ERROR - 2024-11-29 23:06:41 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 471
+ERROR - 2024-11-29 23:06:41 --> Severity: Warning --> imagepng(/Applications/XAMPP/xamppfiles/htdocs/nazarethnet/public/uploads/attendance/qr_MjA2ODQ=.png): Failed to open stream: Permission denied /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/libraries/qrcode/qrimage.php 46
+ERROR - 2024-11-29 23:06:41 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:06:41 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:06:41 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:06:41 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:06:59 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 173
+ERROR - 2024-11-29 23:06:59 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 374
+ERROR - 2024-11-29 23:06:59 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 421
+ERROR - 2024-11-29 23:06:59 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 471
+ERROR - 2024-11-29 23:06:59 --> Severity: Warning --> imagepng(/Applications/XAMPP/xamppfiles/htdocs/nazarethnet/public/uploads/attendance/qr_MjA2ODQ=.png): Failed to open stream: Permission denied /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/libraries/qrcode/qrimage.php 46
+ERROR - 2024-11-29 23:06:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:06:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:06:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:06:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:07:57 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 173
+ERROR - 2024-11-29 23:07:57 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 374
+ERROR - 2024-11-29 23:07:57 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 421
+ERROR - 2024-11-29 23:07:57 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 471
+ERROR - 2024-11-29 23:07:57 --> Severity: Warning --> imagepng(/Applications/XAMPP/xamppfiles/htdocs/nazarethnet/public/uploads/attendance/qr_MjA2ODQ=.png): Failed to open stream: Permission denied /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/libraries/qrcode/qrimage.php 46
+ERROR - 2024-11-29 23:07:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:07:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:07:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:07:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:08:14 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:08:14 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:08:14 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2878
+ERROR - 2024-11-29 23:08:15 --> Severity: Warning --> Attempt to read property "last_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2879
+ERROR - 2024-11-29 23:08:18 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:08:18 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:08:18 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:08:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:08:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:08:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:08:20 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:08:20 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:08:20 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:08:20 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 23:08:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:08:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:08:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:08:41 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 173
+ERROR - 2024-11-29 23:08:41 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 374
+ERROR - 2024-11-29 23:08:41 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 421
+ERROR - 2024-11-29 23:08:41 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 471
+ERROR - 2024-11-29 23:08:41 --> Severity: Warning --> imagepng(/Applications/XAMPP/xamppfiles/htdocs/nazarethnet/public/uploads/attendance/qr_MjA2ODQ=.png): Failed to open stream: Permission denied /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/libraries/qrcode/qrimage.php 46
+ERROR - 2024-11-29 23:08:41 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:08:41 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:08:41 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:08:41 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:09:47 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 173
+ERROR - 2024-11-29 23:09:47 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 374
+ERROR - 2024-11-29 23:09:47 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 421
+ERROR - 2024-11-29 23:09:47 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 471
+ERROR - 2024-11-29 23:09:47 --> Severity: Warning --> imagepng(/Applications/XAMPP/xamppfiles/htdocs/nazarethnet/public/uploads/attendance/qr_MjA2ODQ=.png): Failed to open stream: Permission denied /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/libraries/qrcode/qrimage.php 46
+ERROR - 2024-11-29 23:09:48 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:09:48 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:09:48 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:09:48 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:10:12 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 173
+ERROR - 2024-11-29 23:10:12 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 374
+ERROR - 2024-11-29 23:10:12 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 421
+ERROR - 2024-11-29 23:10:12 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 471
+ERROR - 2024-11-29 23:10:12 --> Severity: Warning --> imagepng(/Applications/XAMPP/xamppfiles/htdocs/nazarethnet/public/uploads/attendance/qr_MjA2ODQ=.png): Failed to open stream: Permission denied /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/libraries/qrcode/qrimage.php 46
+ERROR - 2024-11-29 23:10:12 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:10:12 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:10:12 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:10:12 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:10:31 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:10:31 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:10:31 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:10:31 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 23:10:31 --> Severity: Warning --> Undefined variable $student /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/subject_dashboard.php 849
+ERROR - 2024-11-29 23:10:31 --> Severity: error --> Exception: count(): Argument #1 ($value) must be of type Countable|array, null given /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/subject_dashboard.php 849
+ERROR - 2024-11-29 23:10:31 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:10:31 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:10:31 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:10:46 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:10:46 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:10:46 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:10:46 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 23:10:46 --> Severity: Warning --> Undefined variable $student /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/subject_dashboard.php 849
+ERROR - 2024-11-29 23:10:46 --> Severity: error --> Exception: count(): Argument #1 ($value) must be of type Countable|array, null given /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/subject_dashboard.php 849
+ERROR - 2024-11-29 23:10:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:10:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:10:46 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:10:53 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:10:53 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:10:53 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:10:53 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 23:10:53 --> Severity: Warning --> Undefined variable $student /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/subject_dashboard.php 849
+ERROR - 2024-11-29 23:10:53 --> Severity: error --> Exception: count(): Argument #1 ($value) must be of type Countable|array, null given /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/subject_dashboard.php 849
+ERROR - 2024-11-29 23:10:53 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:10:53 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:10:53 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:11:06 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 173
+ERROR - 2024-11-29 23:11:06 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 374
+ERROR - 2024-11-29 23:11:06 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 421
+ERROR - 2024-11-29 23:11:06 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 471
+ERROR - 2024-11-29 23:11:06 --> Severity: Warning --> imagepng(/Applications/XAMPP/xamppfiles/htdocs/nazarethnet/public/uploads/attendance/qr_MjA2ODQ=.png): Failed to open stream: Permission denied /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/libraries/qrcode/qrimage.php 46
+ERROR - 2024-11-29 23:11:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:11:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:11:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:11:06 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:11:08 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:11:08 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:11:08 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:11:08 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/fancy.php 96
+ERROR - 2024-11-29 23:11:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:11:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:11:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:12:05 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Teacher.php 1018
+ERROR - 2024-11-29 23:12:07 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Teacher.php 1033
+ERROR - 2024-11-29 23:12:07 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/grados.php 28
+ERROR - 2024-11-29 23:12:07 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/grados.php 28
+ERROR - 2024-11-29 23:12:07 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/grados.php 28
+ERROR - 2024-11-29 23:12:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:12:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:12:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:12:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:12:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:12:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:12:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:12:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:12:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:14:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:14:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:14:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:14:10 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:14:10 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:14:10 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:14:12 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:14:12 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:14:12 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:15:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:15:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:15:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:15:50 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:15:56 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:16:54 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:17:10 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:17:10 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:17:10 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:14 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/students_area.php 139
+ERROR - 2024-11-29 23:17:31 --> Severity: Warning --> Undefined property: stdClass::$roll /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/view_marks.php 37
+ERROR - 2024-11-29 23:17:33 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/fancy.php 17
+ERROR - 2024-11-29 23:17:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:17:38 --> Severity: Warning --> Undefined property: stdClass::$roll /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/teacher/view_marks.php 37
+ERROR - 2024-11-29 23:18:01 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:18:01 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:18:01 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:18:02 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:18:02 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:18:02 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:18:12 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:18:12 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:18:12 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:18:59 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:18:59 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:18:59 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:19:10 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:19:10 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:19:10 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:19:27 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:19:27 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:19:27 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:19:28 --> Severity: Warning --> Undefined variable $exam_name /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 165
+ERROR - 2024-11-29 23:19:28 --> Severity: Warning --> Undefined variable $class_name /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 166
+ERROR - 2024-11-29 23:19:28 --> Severity: Warning --> Undefined variable $system_email /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 218
+ERROR - 2024-11-29 23:19:28 --> Severity: Warning --> Undefined variable $phone /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/marks_report.php 218
+ERROR - 2024-11-29 23:20:14 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:14 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:14 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:14 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:30 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 173
+ERROR - 2024-11-29 23:20:30 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 374
+ERROR - 2024-11-29 23:20:30 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 421
+ERROR - 2024-11-29 23:20:30 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 471
+ERROR - 2024-11-29 23:20:30 --> Severity: Warning --> imagepng(/Applications/XAMPP/xamppfiles/htdocs/nazarethnet/public/uploads/attendance/qr_MjA2ODQ=.png): Failed to open stream: Permission denied /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/libraries/qrcode/qrimage.php 46
+ERROR - 2024-11-29 23:20:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:34 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:20:35 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:35 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:35 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:35 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:36 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:48 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:48 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:48 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:20:48 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:21:04 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 173
+ERROR - 2024-11-29 23:21:04 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 374
+ERROR - 2024-11-29 23:21:04 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 421
+ERROR - 2024-11-29 23:21:04 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 471
+ERROR - 2024-11-29 23:21:04 --> Severity: Warning --> imagepng(/Applications/XAMPP/xamppfiles/htdocs/nazarethnet/public/uploads/attendance/qr_MjA2ODQ=.png): Failed to open stream: Permission denied /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/libraries/qrcode/qrimage.php 46
+ERROR - 2024-11-29 23:21:04 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:21:04 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:21:04 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:21:04 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:21:20 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:21:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:21:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:21:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:21:20 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:21:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:21:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:21:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:21:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:21:58 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 173
+ERROR - 2024-11-29 23:21:58 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 374
+ERROR - 2024-11-29 23:21:58 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 421
+ERROR - 2024-11-29 23:21:58 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 471
+ERROR - 2024-11-29 23:21:58 --> Severity: Warning --> imagepng(/Applications/XAMPP/xamppfiles/htdocs/nazarethnet/public/uploads/attendance/qr_MjA2ODQ=.png): Failed to open stream: Permission denied /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/libraries/qrcode/qrimage.php 46
+ERROR - 2024-11-29 23:21:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:21:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:21:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:21:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:22:10 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 532
+ERROR - 2024-11-29 23:22:10 --> Severity: Warning --> Undefined variable $code /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 539
+ERROR - 2024-11-29 23:22:12 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 1104
+ERROR - 2024-11-29 23:22:13 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 971
+ERROR - 2024-11-29 23:22:14 --> Severity: Warning --> Undefined variable $hrs_fin /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/class_routine.php 86
+ERROR - 2024-11-29 23:22:14 --> Severity: Warning --> Undefined variable $break_1 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/class_routine.php 91
+ERROR - 2024-11-29 23:22:15 --> Severity: Warning --> Undefined variable $break_1 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/class_routine.php 91
+ERROR - 2024-11-29 23:22:15 --> 404 Page Not Found: Uploads/e0be4208a38304de945062dba9b202adlogopeque%C3%B1ito-02.jpg
+ERROR - 2024-11-29 23:22:19 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:22:19 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:22:19 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:22:19 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:22:21 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:22:21 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:22:21 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:22:21 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:26:52 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:26:52 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:26:52 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:26:52 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:27:06 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:27:06 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:27:07 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:27:08 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:27:08 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:27:08 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:27:09 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:27:09 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:27:09 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:27:09 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:09 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:09 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:09 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:09 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:09 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:09 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:09 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:09 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:09 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:09 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:10 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/students.php 152
+ERROR - 2024-11-29 23:27:13 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:27:13 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:27:13 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:27:13 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/student_portal.php 74
+ERROR - 2024-11-29 23:27:13 --> Severity: Warning --> Attempt to read property "route_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/student_portal.php 115
+ERROR - 2024-11-29 23:27:15 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
+ERROR - 2024-11-29 23:27:15 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
+ERROR - 2024-11-29 23:27:15 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
+ERROR - 2024-11-29 23:27:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:27:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:27:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:27:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:27:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:27:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:27:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:27:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:28:04 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:28:04 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:28:04 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:28:04 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:28:11 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 173
+ERROR - 2024-11-29 23:28:11 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 374
+ERROR - 2024-11-29 23:28:11 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 421
+ERROR - 2024-11-29 23:28:11 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 471
+ERROR - 2024-11-29 23:28:11 --> Severity: Warning --> imagepng(/Applications/XAMPP/xamppfiles/htdocs/nazarethnet/public/uploads/attendance/qr_MjA2ODQ=.png): Failed to open stream: Permission denied /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/libraries/qrcode/qrimage.php 46
+ERROR - 2024-11-29 23:28:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:28:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:28:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:28:11 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:28:23 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:28:23 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:28:23 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:28:23 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:28:23 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:29:21 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 173
+ERROR - 2024-11-29 23:29:21 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 374
+ERROR - 2024-11-29 23:29:21 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 421
+ERROR - 2024-11-29 23:29:21 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 471
+ERROR - 2024-11-29 23:29:21 --> Severity: Warning --> imagepng(/Applications/XAMPP/xamppfiles/htdocs/nazarethnet/public/uploads/attendance/qr_MjA2ODQ=.png): Failed to open stream: Permission denied /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/libraries/qrcode/qrimage.php 46
+ERROR - 2024-11-29 23:29:23 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:29:23 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:29:23 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:29:23 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:29:26 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:29:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:29:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:29:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:29:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:30:29 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:30:29 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:30:29 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:30:29 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:30:29 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:30:38 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:30:38 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:30:38 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:30:38 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:30:40 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:30:41 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:30:41 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:30:41 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:30:41 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:30:56 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:30:56 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:30:56 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:30:56 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:31:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:31:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:31:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:31:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:31:01 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:31:02 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:31:02 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:31:02 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:31:02 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:32:15 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:32:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:32:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:32:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:32:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:32:17 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 173
+ERROR - 2024-11-29 23:32:17 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 374
+ERROR - 2024-11-29 23:32:17 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 421
+ERROR - 2024-11-29 23:32:17 --> Severity: Warning --> Undefined array key "wall_type" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/subject_dashboard.php 471
+ERROR - 2024-11-29 23:32:17 --> Severity: Warning --> imagepng(/Applications/XAMPP/xamppfiles/htdocs/nazarethnet/public/uploads/attendance/qr_MjA2ODQ=.png): Failed to open stream: Permission denied /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/libraries/qrcode/qrimage.php 46
+ERROR - 2024-11-29 23:32:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:32:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:32:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:32:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:32:18 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:34:49 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:34:49 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:49 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:49 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:49 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:49 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:53 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 955
+ERROR - 2024-11-29 23:34:53 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:53 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:53 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:53 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:55 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:34:56 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:56 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:56 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:56 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:34:59 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:35:10 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 955
+ERROR - 2024-11-29 23:35:10 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:35:10 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:35:10 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:35:10 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:36:45 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 955
+ERROR - 2024-11-29 23:36:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:36:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:36:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:36:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:36:47 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:36:47 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:36:47 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:36:47 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:36:47 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:37:04 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:37:04 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:37:04 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:37:04 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:12 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:12 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:12 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:12 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:13 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:38:14 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:14 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:14 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:14 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:14 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 955
+ERROR - 2024-11-29 23:38:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:15 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:38:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:17 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:38:18 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 955
+ERROR - 2024-11-29 23:38:18 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:38:20 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:38:21 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 955
+ERROR - 2024-11-29 23:38:22 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:38:23 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:38:23 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:23 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:23 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:23 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:24 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:38:25 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:25 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:25 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:25 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:25 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Student.php 667
+ERROR - 2024-11-29 23:38:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:38:26 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:40:13 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 77
+ERROR - 2024-11-29 23:40:13 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 102
+ERROR - 2024-11-29 23:40:13 --> Severity: Warning --> Undefined variable $loginURL /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 264
+ERROR - 2024-11-29 23:42:28 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 77
+ERROR - 2024-11-29 23:42:28 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 102
+ERROR - 2024-11-29 23:42:28 --> Severity: Warning --> Undefined variable $loginURL /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 272
+ERROR - 2024-11-29 23:43:33 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 77
+ERROR - 2024-11-29 23:43:33 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 102
+ERROR - 2024-11-29 23:43:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 192
+ERROR - 2024-11-29 23:43:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 192
+ERROR - 2024-11-29 23:43:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 192
+ERROR - 2024-11-29 23:43:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 192
+ERROR - 2024-11-29 23:43:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 192
+ERROR - 2024-11-29 23:43:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 192
+ERROR - 2024-11-29 23:43:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 192
+ERROR - 2024-11-29 23:43:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 192
+ERROR - 2024-11-29 23:43:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 192
+ERROR - 2024-11-29 23:43:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 192
+ERROR - 2024-11-29 23:43:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 192
+ERROR - 2024-11-29 23:43:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 192
+ERROR - 2024-11-29 23:43:33 --> Severity: Warning --> Undefined variable $loginURL /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 276
+ERROR - 2024-11-29 23:43:57 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 77
+ERROR - 2024-11-29 23:43:57 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 102
+ERROR - 2024-11-29 23:43:57 --> Severity: Warning --> Undefined variable $loginURL /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 276
+ERROR - 2024-11-29 23:44:16 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 77
+ERROR - 2024-11-29 23:44:16 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 102
+ERROR - 2024-11-29 23:44:16 --> Severity: Warning --> Undefined variable $loginURL /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 276
+ERROR - 2024-11-29 23:44:57 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 77
+ERROR - 2024-11-29 23:44:57 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 102
+ERROR - 2024-11-29 23:44:57 --> Severity: Warning --> Undefined variable $loginURL /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 276
+ERROR - 2024-11-29 23:45:02 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 77
+ERROR - 2024-11-29 23:45:02 --> Severity: Warning --> Attempt to read property "name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 102
+ERROR - 2024-11-29 23:45:02 --> Severity: Warning --> Undefined variable $loginURL /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/student/my_profile.php 276
+ERROR - 2024-11-29 23:45:59 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Parents.php 345
+ERROR - 2024-11-29 23:45:59 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:45:59 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:45:59 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:45:59 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:45:59 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:45:59 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:45:59 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:46:21 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:46:21 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:46:21 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:46:21 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:46:21 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:46:21 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:46:21 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:46:21 --> Severity: Warning --> Attempt to read property "is_final" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/marks.php 104
+ERROR - 2024-11-29 23:46:21 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/marks.php 53
+ERROR - 2024-11-29 23:46:21 --> Severity: Warning --> Attempt to read property "roll" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/marks.php 53
+ERROR - 2024-11-29 23:46:21 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/marks.php 65
+ERROR - 2024-11-29 23:46:23 --> Severity: Warning --> Attempt to read property "is_final" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/marks.php 104
+ERROR - 2024-11-29 23:46:32 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:46:32 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:46:32 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:46:32 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:46:32 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:46:32 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:46:32 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:46:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:32 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:34 --> Severity: Warning --> Attempt to read property "file_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_dashboard.php 297
+ERROR - 2024-11-29 23:46:34 --> Severity: Warning --> Attempt to read property "file_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_dashboard.php 300
+ERROR - 2024-11-29 23:46:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:37 --> Severity: Warning --> Attempt to read property "mark_obtained" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 135
+ERROR - 2024-11-29 23:46:37 --> Severity: Warning --> Attempt to read property "final" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 145
+ERROR - 2024-11-29 23:46:37 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:37 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:37 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:38 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:39 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:39 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:39 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:40 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:42 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 118
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "nota" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 119
+ERROR - 2024-11-29 23:46:43 --> Severity: Warning --> Attempt to read property "is_block" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 125
+ERROR - 2024-11-29 23:46:43 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:43 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:46:43 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:18 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/attendance_report.php 7
+ERROR - 2024-11-29 23:47:18 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/attendance_report.php 7
+ERROR - 2024-11-29 23:47:18 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/attendance_report.php 8
+ERROR - 2024-11-29 23:47:18 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/attendance_report.php 8
+ERROR - 2024-11-29 23:47:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:19 --> Severity: Warning --> Attempt to read property "mark_obtained" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 135
+ERROR - 2024-11-29 23:47:19 --> Severity: Warning --> Attempt to read property "final" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 145
+ERROR - 2024-11-29 23:47:19 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:19 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:19 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:21 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/attendance_report.php 7
+ERROR - 2024-11-29 23:47:21 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/attendance_report.php 7
+ERROR - 2024-11-29 23:47:21 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/attendance_report.php 8
+ERROR - 2024-11-29 23:47:21 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/attendance_report.php 8
+ERROR - 2024-11-29 23:47:21 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:24 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/attendance_report.php 7
+ERROR - 2024-11-29 23:47:24 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/attendance_report.php 7
+ERROR - 2024-11-29 23:47:24 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/attendance_report.php 8
+ERROR - 2024-11-29 23:47:24 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/attendance_report.php 8
+ERROR - 2024-11-29 23:47:24 --> Severity: Warning --> Attempt to read property "image" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2886
+ERROR - 2024-11-29 23:47:24 --> Severity: Warning --> Attempt to read property "first_name" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2887
+ERROR - 2024-11-29 23:47:24 --> Severity: Warning --> Uninitialized string offset 0 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/models/Crud.php 2891
+ERROR - 2024-11-29 23:47:24 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:24 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:30 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:47:30 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:47:30 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:47:30 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:47:30 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:47:30 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:47:30 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:47:30 --> Severity: Warning --> Attempt to read property "is_final" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/marks.php 104
+ERROR - 2024-11-29 23:47:30 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/marks.php 53
+ERROR - 2024-11-29 23:47:30 --> Severity: Warning --> Attempt to read property "roll" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/marks.php 53
+ERROR - 2024-11-29 23:47:30 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/marks.php 65
+ERROR - 2024-11-29 23:47:32 --> Severity: Warning --> Attempt to read property "is_final" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/marks.php 104
+ERROR - 2024-11-29 23:47:40 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:47:40 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:47:40 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:47:40 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:47:40 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:47:40 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:47:40 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:47:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:47:40 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:51:46 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:51:46 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:51:46 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:51:46 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:51:46 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:51:46 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:51:46 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:51:46 --> Query error: Unknown column 'subject_id' in 'order clause' - Invalid query: SELECT *
+FROM `settings`
+WHERE `type` = 'running_year'
+ORDER BY `subject_id` DESC
+ERROR - 2024-11-29 23:53:18 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:53:18 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:53:18 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:53:18 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:53:18 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:53:18 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:53:18 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:34 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:37 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:53:37 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:53:37 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:53:37 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:53:37 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:53:37 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:53:37 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:53:39 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:39 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:39 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:53:41 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:53:41 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:53:41 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:53:41 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:53:41 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:53:41 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:53:41 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:55:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:55:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:55:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:56:02 --> Severity: Warning --> Attempt to read property "mark_obtained" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 135
+ERROR - 2024-11-29 23:56:03 --> Severity: Warning --> Attempt to read property "final" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subject_marks.php 145
+ERROR - 2024-11-29 23:56:03 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:56:03 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:56:03 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:57:53 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:57:54 --> Severity: Warning --> Attempt to read property "is_final" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/marks.php 104
+ERROR - 2024-11-29 23:57:54 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/marks.php 53
+ERROR - 2024-11-29 23:57:54 --> Severity: Warning --> Attempt to read property "roll" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/marks.php 53
+ERROR - 2024-11-29 23:57:54 --> Severity: Warning --> Undefined array key "student_id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/marks.php 65
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "is_final" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/marks.php 104
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "subject_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "class_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:57:56 --> Severity: Warning --> Attempt to read property "section_id" on bool /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/helpers/global_helper.php 153
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:32 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:33 --> Severity: Warning --> Undefined variable $student_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/subjects.php 72
+ERROR - 2024-11-29 23:58:45 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:58:45 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:58:45 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:58:45 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:58:45 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:58:45 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:58:45 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:58:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:58:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:58:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:58:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:59:17 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:59:17 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:59:17 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:59:17 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:59:17 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:59:17 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:59:17 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:59:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:59:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:59:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:59:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:59:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:59:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:59:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:59:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:59:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:59:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:59:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:59:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:59:57 --> Severity: Warning --> Undefined variable $data /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 3
+ERROR - 2024-11-29 23:59:57 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:59:57 --> Severity: Warning --> Attempt to read property "class_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 4
+ERROR - 2024-11-29 23:59:57 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:59:57 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 5
+ERROR - 2024-11-29 23:59:57 --> Severity: Warning --> Undefined array key 3 /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:59:57 --> Severity: Warning --> Attempt to read property "section_id" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/parent/fancy.php 6
+ERROR - 2024-11-29 23:59:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:59:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:59:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2024-11-29 23:59:57 --> 404 Page Not Found: Public/uploads

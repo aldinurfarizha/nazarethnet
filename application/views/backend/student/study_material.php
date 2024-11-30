@@ -4,6 +4,10 @@
     $ex = explode('-', $info);
     $sub = $this->db->get_where('subject', array('subject_id' => $ex[2]))->result_array();
     foreach($sub as $rows):
+        $finish=0;
+        if(isStudentFinishSubject($this->session->userdata('login_user_id'), $ex[2])){
+            $finish=1;
+        }
 ?>
     <div class="content-w">
         <div class="conty">
@@ -23,36 +27,48 @@
             <div class="os-tabs-w menu-shad">
                 <div class="os-tabs-controls">
                     <ul class="navs navs-tabs upper">
+                    <?php if($finish){?>
                         <li class="navs-item">
-                            <a class="navs-links" href="<?php echo base_url();?>student/subject_dashboard/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0482_gauge_dashboard_empty"></i><span><?php echo getEduAppGTLang('dashboard');?></span></a>
+                            <a class="navs-links active" href="<?php echo base_url(); ?>student/study_material/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0003_write_pencil_new_edit"></i><span><?php echo getEduAppGTLang('study_material'); ?></span></a>
                         </li>
                         <li class="navs-item">
-                            <a class="navs-links" href="<?php echo base_url();?>student/online_exams/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0207_list_checkbox_todo_done"></i><span><?php echo getEduAppGTLang('online_exams');?></span></a>
+                            <a class="navs-links" href="<?php echo base_url(); ?>student/subject_marks/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0729_student_degree_science_university_school_graduate"></i><span><?php echo getEduAppGTLang('marks'); ?></span></a>
                         </li>
                         <li class="navs-item">
-                            <a class="navs-links" href="<?php echo base_url();?>student/homework/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0004_pencil_ruler_drawing"></i><span><?php echo getEduAppGTLang('homework');?></span></a>
+                            <a class="navs-links" href="<?php echo base_url(); ?>student/attendance_report/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i><span><?php echo getEduAppGTLang('attendance'); ?></span></a>
+                        </li>
+                        <?php }else{?>
+                            <li class="navs-item">
+                            <a class="navs-links" href="<?php echo base_url(); ?>student/subject_dashboard/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0482_gauge_dashboard_empty"></i><span><?php echo getEduAppGTLang('dashboard'); ?></span></a>
                         </li>
                         <li class="navs-item">
-                            <a class="navs-links" href="<?php echo base_url();?>student/forum/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0281_chat_message_discussion_bubble_reply_conversation"></i><span><?php echo getEduAppGTLang('forum');?></span></a>
+                            <a class="navs-links" href="<?php echo base_url(); ?>student/online_exams/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0207_list_checkbox_todo_done"></i><span><?php echo getEduAppGTLang('online_exams'); ?></span></a>
                         </li>
                         <li class="navs-item">
-                            <a class="navs-links active" href="<?php echo base_url();?>student/study_material/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0003_write_pencil_new_edit"></i><span><?php echo getEduAppGTLang('study_material');?></span></a>
+                            <a class="navs-links" href="<?php echo base_url(); ?>student/homework/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0004_pencil_ruler_drawing"></i><span><?php echo getEduAppGTLang('homework'); ?></span></a>
                         </li>
                         <li class="navs-item">
-                            <a class="navs-links" href="<?php echo base_url();?>student/subject_marks/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0729_student_degree_science_university_school_graduate"></i><span><?php echo getEduAppGTLang('marks');?></span></a>
+                            <a class="navs-links" href="<?php echo base_url(); ?>student/forum/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0281_chat_message_discussion_bubble_reply_conversation"></i><span><?php echo getEduAppGTLang('forum'); ?></span></a>
                         </li>
                         <li class="navs-item">
-                            <a class="navs-links" href="<?php echo base_url();?>student/meet/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0591_presentation_video_play_beamer"></i><span><?php echo getEduAppGTLang('live');?></span></a>
+                            <a class="navs-links active" href="<?php echo base_url(); ?>student/study_material/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0003_write_pencil_new_edit"></i><span><?php echo getEduAppGTLang('study_material'); ?></span></a>
                         </li>
                         <li class="navs-item">
-                            <a class="navs-links" href="<?php echo base_url();?>student/attendance_report/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i><span><?php echo getEduAppGTLang('attendance');?></span></a>
+                            <a class="navs-links" href="<?php echo base_url(); ?>student/subject_marks/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0729_student_degree_science_university_school_graduate"></i><span><?php echo getEduAppGTLang('marks'); ?></span></a>
                         </li>
                         <li class="navs-item">
-                            <a class="navs-links" href="<?php echo base_url();?>student/whiteboards/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0191_window_application_cursor"></i><span><?php echo getEduAppGTLang('whiteboards');?></span></a>
+                            <a class="navs-links" href="<?php echo base_url(); ?>student/meet/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0591_presentation_video_play_beamer"></i><span><?php echo getEduAppGTLang('live'); ?></span></a>
                         </li>
                         <li class="navs-item">
-                            <a class="navs-links" href="<?php echo base_url();?>student/gamification/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0659_medal_first_place_winner_award_prize_achievement"></i><span><?php echo getEduAppGTLang('gamification');?></span></a>
+                            <a class="navs-links" href="<?php echo base_url(); ?>student/attendance_report/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i><span><?php echo getEduAppGTLang('attendance'); ?></span></a>
                         </li>
+                        <li class="navs-item">
+                            <a class="navs-links" href="<?php echo base_url(); ?>student/whiteboards/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0191_window_application_cursor"></i><span><?php echo getEduAppGTLang('whiteboards'); ?></span></a>
+                        </li>
+                        <li class="navs-item">
+                            <a class="navs-links" href="<?php echo base_url(); ?>student/gamification/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0659_medal_first_place_winner_award_prize_achievement"></i><span><?php echo getEduAppGTLang('gamification'); ?></span></a>
+                        </li>
+                        <?php } ?>
                     </ul>
                 </div>
             </div>

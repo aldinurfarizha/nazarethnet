@@ -159,6 +159,7 @@ foreach ($student_info as $row) :
 															<th><?php echo getEduAppGTLang('class'); ?></th>
 															<th><?php echo getEduAppGTLang('section'); ?></th>
 															<th class="text-center"><?php echo getEduAppGTLang('status'); ?></th>
+															<th class="text-center">Estado de aprendizaje</th>
 														</tr>
 													</thead>
 													<tbody>
@@ -187,7 +188,18 @@ foreach ($student_info as $row) :
 																		<div class="value badge badge-pill badge-danger"><?= getEduAppGTLang('inactive'); ?></div>
 																	<?php } ?>
 																</td>
+																<td class="text-center">
+                                                                        <?php if (isActiveSubject($row['student_id'], $item->subject_id)) { ?>
+                                                                            <?php if (isStudentFinishSubject($row['student_id'], $item->subject_id)) { ?>
+                                                                                <div class="value badge badge-pill badge-success">Finalizado</div>
+                                                                            <?php } else { ?>
+                                                                                <div class="value badge badge-pill badge-primary">Proceso</div>
+                                                                            <?php } ?>
+                                                                        <?php } else { ?>
+                                                                            --
+                                                                        <?php } ?>
 
+                                                                    </td>
 															</tr>
 														<?php $no++;
 														endforeach; ?>

@@ -185,14 +185,22 @@ $min = $this->db->get_where('academic_settings', array('type' => 'minium_mark'))
 											if ($mark->num_rows() > 0) {
 												$marks = $mark->result_array();
 												foreach ($marks as $row4):
-
+													$examDetail=getExamDetail($exam_id);
 										?>
 													<tr>
 														<td><?php echo $row3['name']; ?></td>
 														<td><?php echo $this->crud->get_name('teacher', $row3['teacher_id']); ?></td>
 														<td class="text-center"><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $exam_id, 'student_id' => $student_id, 'year' => $running_year))->row()->mark_obtained; ?></td>
 														<td>
-															<?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $exam_id, 'student_id' => $student_id, 'year' => $running_year))->row()->final; ?>
+															<?php if($examDetail->is_final)
+															{
+																echo countEvaluacionesFinales($examDetail->exam_id,  $student_id);
+															}
+															else
+															{
+																echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $exam_id, 'student_id' => $student_id, 'year' => $running_year))->row()->final;
+															}
+															  ?>
 														</td>
 														<td class="text-center"><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $exam_id, 'student_id' => $student_id, 'year' => $running_year))->row()->comment; ?></td>
 													</tr>

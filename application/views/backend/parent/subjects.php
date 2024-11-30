@@ -63,9 +63,17 @@
 	 		                                                <div class="tab-pane <?php if($active == 1) echo 'active';?>" id="<?php echo $row3['username'];?>">
                                                                 <div class="row">
                                                                 <?php 
-                                                                    $this->db->order_by('subject_id', 'desc');
-                                                                    $subjects = $this->db->get_where('subject', array('class_id' => $class_id, 'section_id' => $section_id))->result_array();
+                                                                $classAndSection=getStudentClassAndSectionById($row3['student_id']);
+                                                                foreach($classAndSection as $cs):
+                                                                    $subjects = getSubjectByClassIdandSectionId($cs->class_id, $cs->section_id);
                                                                     foreach($subjects as $row2):
+                                                                        $finish=0;
+                                                                            if(isStudentFinishSubject($row3['student_id'], $row2->subject_id)){
+                                                                                $finish=1;
+                                                                            }
+                                                                            if (!isActiveSubject($row3['student_id'], $row2->subject_id)) {
+                                                                                continue;
+                                                                            }
                                                                 ?>
                                                                     <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                                                         <div class="ui-block" data-mh="friend-groups-item">        
@@ -74,23 +82,36 @@
                                                                                     <div class="more">
                                                                                         <i class="icon-feather-more-horizontal"></i>
                                                                                         <ul class="more-dropdown">
-                                                                                            <li><a href="<?php echo base_url();?>parents/subject_dashboard/<?php echo base64_encode($class_id."-".$section_id."-".$row2['subject_id']);?>/"><?php echo getEduAppGTLang('dashoard');?></a></li>
+                                                                                        <?php if($finish){
+                                                                                            ?>
+                                                                                                <li><a href="<?php echo base_url();?>parents/subject_marks/<?php echo base64_encode($class_id."-".$section_id."-".$row2->subject_id);?>/"><?php echo getEduAppGTLang('dashoard');?></a></li>
+                                                                                            <?php }else{?>
+                                                                                                <li><a href="<?php echo base_url();?>parents/subject_dashboard/<?php echo base64_encode($class_id."-".$section_id."-".$row2->subject_id);?>/"><?php echo getEduAppGTLang('dashoard');?></a></li>
+                                                                                                <?php } ?>
+                                                                                          
                                                                                         </ul>
                                                                                     </div>
                                                                                     <div class="friend-avatar">
                                                                                         <div class="author-thumb">
-                                                                                            <img src="<?php echo base_url();?>public/uploads/subject_icon/<?php echo $row2['icon'];?>" width="120px" class="sb" style="background-color:#<?php echo $row2['color'];?>;">
+                                                                                            <img src="<?php echo base_url();?>public/uploads/subject_icon/<?php echo $row2->icon;?>" width="120px" class="sb" style="background-color:#<?php echo $row2->color;?>;">
                                                                                         </div>
                                                                                         <div class="author-content">
-                                                                                            <a href="<?php echo base_url();?>parents/subject_dashboard/<?php echo base64_encode($class_id."-".$section_id."-".$row2['subject_id'].'-'.$row3['student_id']);?>/" class="h5 author-name"><?php echo $row2['name'];?></a><br><br>
-                                                                                            <img src="<?php echo $this->crud->get_image_url('teacher', $row2['teacher_id']);?>" class="img-teacher"><span>  <?php echo $this->crud->get_name('teacher', $row2['teacher_id']);?></span>
+                                                                                        <?php
+                                                                                            if($finish){?>
+                                                                                            <span class="badge badge-success">Finalizado <i class="fa fa-check"></i></span>
+                                                                                            <br>
+                                                                                            <a href="<?php echo base_url();?>parents/subject_marks/<?php echo base64_encode($class_id."-".$section_id."-".$row2->subject_id.'-'.$row3['student_id']);?>/" class="h5 author-name"><?php echo $row2->name;?></a><br><br>
+                                                                                            <?php }else{?>
+                                                                                                <a href="<?php echo base_url();?>parents/subject_dashboard/<?php echo base64_encode($class_id."-".$section_id."-".$row2->subject_id.'-'.$row3['student_id']);?>/" class="h5 author-name"><?php echo $row2->name;?></a><br><br>
+                                                                                            <?php } ?>
+                                                                                            <img src="<?php echo $this->crud->get_image_url('teacher', $row2->teacher_id);?>" class="img-teacher"><span>  <?php echo $this->crud->get_name('teacher', $row2->teacher_id);?></span>
                                                                                         </div>                          
                                                                                     </div>                        
                                                                                 </div>
                                                                             </div>        
                                                                         </div>
                                                                     </div>
-                                                                    <?php endforeach;?>
+                                                                    <?php endforeach; endforeach;?>
                                                                 </div>
                                                             </div>
                                                         <?php endforeach;?>

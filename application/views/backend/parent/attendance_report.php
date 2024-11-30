@@ -7,6 +7,10 @@
     $class_id = $this->db->get_where('enroll' , array('student_id' => $student_id , 'year' => $running_year))->row()->class_id;
 	$section_id = $this->db->get_where('enroll' , array('student_id' => $student_id , 'year' => $running_year))->row()->section_id; 
 	$student_id = $ex[3];
+    $finish=0;
+    if(isStudentFinishSubject($student_id, $ex[2])){
+        $finish=1;
+    }
 ?>
     <div class="content-w">
         <div class="conty">
@@ -26,7 +30,18 @@
             <div class="os-tabs-w menu-shad">
                 <div class="os-tabs-controls">
                     <ul class="navs navs-tabs upper">
+                    <?php if($finish){?>
                         <li class="navs-item">
+                            <a class="navs-links" href="<?php echo base_url();?>parents/study_material/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0003_write_pencil_new_edit"></i><span><?php echo getEduAppGTLang('study_material');?></span></a>
+                        </li>
+                        <li class="navs-item">
+                            <a class="navs-links" href="<?php echo base_url();?>parents/subject_marks/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0729_student_degree_science_university_school_graduate"></i><span><?php echo getEduAppGTLang('marks');?></span></a>
+                        </li>
+                        <li class="navs-item">
+                            <a class="navs-links active" href="<?php echo base_url();?>parents/attendance_report/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i><span><?php echo getEduAppGTLang('attendance');?></span></a>
+                        </li>
+                        <?php }else{?>
+                            <li class="navs-item">
                             <a class="navs-links" href="<?php echo base_url();?>parents/subject_dashboard/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0482_gauge_dashboard_empty"></i><span><?php echo getEduAppGTLang('dashboard');?></span></a>
                         </li>
                         <li class="navs-item">
@@ -47,6 +62,8 @@
                         <li class="navs-item">
                             <a class="navs-links active" href="<?php echo base_url();?>parents/attendance_report/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i><span><?php echo getEduAppGTLang('attendance');?></span></a>
                         </li>
+                        <?php } ?>
+                       
                     </ul>
                 </div>
             </div>
