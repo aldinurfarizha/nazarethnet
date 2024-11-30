@@ -706,9 +706,12 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
                 $total+=getFinalMark($student_id,$subject_id,$datar->exam_id,$year);
                 $count++;
         }
-        $average=$total/$count;
-    $average = round($average, 2);
-        return $average;
+        if ($count === 0) {
+            $average = 0;
+        } else {
+            $average = $total / $count;
+            $average = round($average, 2);
+        }
     }
     function countAllFinalMarkExplain($student_id,$subject_id,$year)
     {
@@ -772,10 +775,16 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
     }
     function updateNotaCapacidadesById($student_id,$nota_capacidad_id,$nota)
     {
-        $nota = round($nota, 2);
-        $data=array(
-            'nota'=>$nota
+        if (!is_numeric($nota) || is_nan($nota)) {
+            $nota = 0; // Atur ke nilai default
+        } else {
+            $nota = round($nota, 2); // Bulatkan nilai jika valid
+        }
+    
+        $data = array(
+            'nota' => $nota
         );
+    
         $ci = &get_instance();
         $ci->db->where('student_id', $student_id);
         $ci->db->where('nota_capacidad_id', $nota_capacidad_id);
