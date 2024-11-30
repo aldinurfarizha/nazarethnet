@@ -4468,7 +4468,7 @@ class Admin extends EduAppGT
     function disable_calculate_avg($exam_id,$mark_activity_id)
     {
         $whereSetZero = array(
-            'exam_id' => $exam_id,
+            'mark_activity_id' => $mark_activity_id,
         );
 
         $data = array(
