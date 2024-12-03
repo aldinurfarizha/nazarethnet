@@ -32,7 +32,11 @@
             <div class="content-i">
                 <div class="content-box">
                     <div class="element-wrapper">
-                        <h6 class="element-header">Pesos de evaluación final
+                        <h6 class="element-header">
+                            <div class="back backbutton">
+                                <a title="Return" href="<?=base_url('admin/final_evaluation/')?>"><i class="picons-thin-icon-thin-0131_arrow_back_undo"></i></a>
+                            </div>
+                            Pesos de evaluación final
                             <p><?= $exam->name; ?></p>
                             <p><?= getClassNameById($exam->class_id) . ' | ' . getSectionNameById($exam->section_id) . '|' . getSubjectNameById($exam->subject_id); ?> </p>
                             <a class="btn btn-primary" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_add_is_average/<?php echo $exam->exam_id ?>');" href="javascript:void(0);">Relleno automático</a>
@@ -62,17 +66,17 @@
                                             <td><?= $row->year; ?></td>
                                             <td class="text-center"><?= $row->percent . ' %' ?></td>
                                             <td class="text-center">
-                                                <?php if($row->is_calculate_avg){?>
+                                                <?php if ($row->is_calculate_avg) { ?>
                                                     <span class="badge badge-success"><?php echo getEduAppGTLang('active'); ?></span>
-                                                <?php }else{?>
+                                                <?php } else { ?>
                                                     <span class="badge badge-warning"><?php echo getEduAppGTLang('inactive'); ?></span>
                                                 <?php } ?>
                                             </td>
                                             <td class="text-center">
-                                            <?php if($row->is_calculate_avg){?>
-                                                    <a class="btn btn-secondary btn-sm" href="<?=base_url('admin/final_evaluation_selected/'.$exam_id.'/'.$row->mark_activity_id)?>">Acuerdo <i class="fa fa-cog"></i></a>
-                                                    <a class="btn btn-sm btn-danger" 
-                                                        href="<?=base_url('admin/disable_calculate_avg/'.$exam_id.'/'.$row->mark_activity_id)?>" 
+                                                <?php if ($row->is_calculate_avg) { ?>
+                                                    <a class="btn btn-secondary btn-sm" href="<?= base_url('admin/final_evaluation_selected/' . $exam_id . '/' . $row->mark_activity_id) ?>">Acuerdo <i class="fa fa-cog"></i></a>
+                                                    <a class="btn btn-sm btn-danger"
+                                                        href="<?= base_url('admin/disable_calculate_avg/' . $exam_id . '/' . $row->mark_activity_id) ?>"
                                                         onclick="return confirm('Está seguro de que desea desactivar esto?')">
                                                         <?php echo getEduAppGTLang('disable'); ?> <i class="fa fa-times"></i>
                                                     </a>

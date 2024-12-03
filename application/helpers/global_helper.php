@@ -712,6 +712,7 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
             $average = $total / $count;
             $average = round($average, 2);
         }
+        return $average;
     }
     function countAllFinalMarkExplain($student_id,$subject_id,$year)
     {

@@ -32,9 +32,13 @@
             <div class="content-i">
                 <div class="content-box">
                     <div class="element-wrapper">
-                        <h6 class="element-header">Seleccione la prueba que se calculará en el informe final
+                        <h6 class="element-header">
+                            <div class="back backbutton">
+                                <a title="Return" href="<?= base_url('admin/final_evaluation_weight/'.$exam_id) ?>"><i class="picons-thin-icon-thin-0131_arrow_back_undo"></i></a>
+                            </div>
+                            Seleccione la prueba que se calculará en el informe final
                             <br>
-                            <?=$mark_activity->name?>
+                            <?= $mark_activity->name ?>
                         </h6>
                         <div class="element-box-tp">
                             <div class="table-responsive">
@@ -48,25 +52,24 @@
                                     </thead>
                                     <?php
                                     foreach ($exam as $row):
-                                        $isCounted=0;
-                                        if(isExamCounted($row->exam_id, $mark_activity->mark_activity_id))
-                                        {
-                                            $isCounted=1;
+                                        $isCounted = 0;
+                                        if (isExamCounted($row->exam_id, $mark_activity->mark_activity_id)) {
+                                            $isCounted = 1;
                                         }
                                     ?>
                                         <tr>
                                             <td><?= $row->name; ?></td>
                                             <td class="text-center">
-                                                <?php if($isCounted){?>
+                                                <?php if ($isCounted) { ?>
                                                     <span class="badge badge-success">Calculado <i class="fa fa-check"></i></span>
-                                                <?php }else{ ?>
+                                                <?php } else { ?>
                                                     <span class="badge badge-danger">No Contado <i class="fa fa-times"></i></span>
-                                                    <?php }?>
+                                                <?php } ?>
                                             </td>
                                             <td class="row-actions">
                                                 <a class="grey" href="#" data-target="#update_status" data-toggle="modal"
                                                     data-exam_id="<?= $row->exam_id; ?>"
-                                                    data-mark_activity_id="<?=$mark_activity->mark_activity_id?>"
+                                                    data-mark_activity_id="<?= $mark_activity->mark_activity_id ?>"
                                                     data-is_count="<?= $isCounted; ?>">
                                                     <i class="os-icon picons-thin-icon-thin-0001_compose_write_pencil_new"></i>
                                                 </a>
@@ -89,19 +92,19 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
-                                    <div class="col-12">
-                                    <input type="hidden" name="exam_id" value="">
-                                    <input type="hidden" name="mark_activity_id" value="">
-                          			<div class="form-group label-floating is-select">
-                                      <label class="control-label">Seleccione</label>
-                                        <div class="select">
-                                                <select name="is_count" id="">
-                                                    <option value="1">Calculado</option>
-                                                    <option value="0">No Contado</option>
-                                                </select>
+                                        <div class="col-12">
+                                            <input type="hidden" name="exam_id" value="">
+                                            <input type="hidden" name="mark_activity_id" value="">
+                                            <div class="form-group label-floating is-select">
+                                                <label class="control-label">Seleccione</label>
+                                                <div class="select">
+                                                    <select name="is_count" id="">
+                                                        <option value="1">Calculado</option>
+                                                        <option value="0">No Contado</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
                                     </div>
                                     <button type="submit" class="btn btn-rounded btn-success btn-lg full-width"><?php echo getEduAppGTLang('update'); ?></button>
                                 </div>
@@ -115,15 +118,15 @@
         </div>
     </div>
     <script>
-    document.querySelectorAll('[data-toggle="modal"]').forEach(function(button) {
-        button.addEventListener('click', function() {
-            var examId = this.dataset.exam_id;
-            var isCount = this.dataset.is_count;
-            var markActivityId=this.dataset.mark_activity_id;
-            document.querySelector('#update_status input[name="exam_id"]').value = examId;
-            document.querySelector('#update_status input[name="mark_activity_id"]').value = markActivityId;
-            var selectElement = document.querySelector('#update_status select[name="is_count"]');
-            selectElement.value = isCount;
+        document.querySelectorAll('[data-toggle="modal"]').forEach(function(button) {
+            button.addEventListener('click', function() {
+                var examId = this.dataset.exam_id;
+                var isCount = this.dataset.is_count;
+                var markActivityId = this.dataset.mark_activity_id;
+                document.querySelector('#update_status input[name="exam_id"]').value = examId;
+                document.querySelector('#update_status input[name="mark_activity_id"]').value = markActivityId;
+                var selectElement = document.querySelector('#update_status select[name="is_count"]');
+                selectElement.value = isCount;
+            });
         });
-    });
-</script>
+    </script>
