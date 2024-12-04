@@ -847,6 +847,32 @@ function getFirstExamId($subject_id)
 
     return ($data->num_rows() > 0) ? $data->row()->exam_id : '';
 }
+function getActiveStudentBySubjectId($subject_id,$class_id,$section_id,$year)
+{
+    $ci = &get_instance();
+
+ 
+    $data = $ci->db->select('student_subject.*, student.*') 
+    ->from('student_subject') 
+    ->join('student', 'student_subject.student_id = student.student_id') 
+    ->where('student_subject.subject_id', $subject_id)
+    ->where('student_subject.is_finish', 0) 
+    ->get();
+
+    $onlyActiveStudent = []; 
+    foreach($data->result() as $datax){
+    if(!isStudentActiveEnroll($datax->student_id,$class_id,$section_id,$year)){
+            continue;
+        };
+        $onlyActiveStudent[] = $datax;
+    }
+    return $onlyActiveStudent;
+}
+function getRoll($student_id,$class_id,$section_id,$runningYear){
+    $ci = &get_instance();
+    $roll = $ci->db->get_where('enroll', array('student_id' => $student_id,'class_id'=>$class_id,'section_id'=>$section_id))->row()->roll;
+    return $roll;
+}
 
 
 

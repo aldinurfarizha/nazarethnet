@@ -37,7 +37,7 @@
 					<div class="content-box">
 						<?php echo form_open(base_url() . 'admin/students_report/', array('class' => 'form m-b')); ?>
 						<div class="row top-rd">
-							<div class="col-sm-5">
+							<div class="col-sm-3">
 								<div class="form-group label-floating is-select">
 									<label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
 									<div class="select">
@@ -53,16 +53,16 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-5">
+							<div class="col-sm-3">
 								<div class="form-group label-floating is-select">
 									<label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
 									<div class="select">
 										<?php if ($section_id == ""): ?>
-											<select name="section_id" required id="section_holder">
+											<select name="section_id" required id="section_holder" onchange="get_class_subjects(this.value)">
 												<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 											</select>
 										<?php else: ?>
-											<select name="section_id" required id="section_holder">
+											<select name="section_id" required id="section_holder" onchange="get_class_subjects(this.value)">
 												<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 												<?php
 												$sections = $this->db->get_where('section', array('class_id' => $class_id))->result_array();
@@ -75,22 +75,42 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-2">
+							<div class="col-sm-3">
+								<div class="form-group label-floating is-select">
+									<label class="control-label"><?php echo getEduAppGTLang('subject'); ?></label>
+									<div class="select">
+										<?php if ($subject_id == ""): ?>
+											<select name="subject_id" required id="subject_holder">
+												<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+											</select>
+										<?php else: ?>
+											<select name="subject_id" required id="subject_holder">
+												<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+												<?php
+												$subjects = $this->db->get_where('subject', array('class_id' => $class_id, 'section_id' => $section_id))->result_array();
+												foreach ($subjects as $key):
+												?>
+													<option value="<?php echo $key['subject_id']; ?>" <?php if ($subject_id == $key['subject_id']) echo "selected"; ?>><?php echo $key['name']; ?></option>
+												<?php endforeach; ?>
+											</select>
+										<?php endif; ?>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3">
 								<div class="form-group">
 									<button class="btn btn-success btn-upper top-20" type="submit"><span><?php echo getEduAppGTLang('get_report'); ?></span></button>
 								</div>
 							</div>
 						</div>
 						<?php echo form_close(); ?>
-						<?php if ($class_id != "" && $section_id != ""): ?>
+						<?php if ($class_id != "" && $section_id != ""&& $subject_id != ""):
+							$studentList = getActiveStudentBySubjectId($subject_id,$class_id,$section_id,$running_year);
+							?>
 							<div class="row">
 								<div class="text-center col-sm-12"><br>
 									<h4><?php echo $this->db->get_where('class', array('class_id' => $class_id))->row()->name; ?> - <?php echo getEduAppGTLang('section'); ?>: <?php echo $this->db->get_where('section', array('section_id' => $section_id))->row()->name; ?></h4>
-									<p><b><?php echo getEduAppGTLang('teacher'); ?>:</b> <?php echo $this->crud->get_name('teacher', $this->db->get_where('class', array('class_id' => $class_id))->row()->teacher_id); ?><br><b><?php $this->db->where('year', $running_year);
-																																																								$this->db->where('class_id', $class_id);
-																																																								$this->db->where('section_id', $section_id);
-																																																								echo $this->db->count_all_results('enroll'); ?></b> <?php echo getEduAppGTLang('students'); ?> | <b><?php $this->db->where('class_id', $class_id);
-																																																																																																																		echo $this->db->count_all_results('subject'); ?></b> <?php echo getEduAppGTLang('subjects'); ?>.<br><b><?php echo getEduAppGTLang('running_year'); ?>:</b> <?php echo $running_year; ?></p>
+									<p><b><?php echo getEduAppGTLang('teacher'); ?>:</b> <?php echo $this->crud->get_name('teacher', $this->db->get_where('class', array('class_id' => $class_id))->row()->teacher_id); ?><br><b><?php  echo count($studentList); ?></b> <?php echo getEduAppGTLang('students'); ?> | <b><?= getSubjectDetailBySubjectId($subject_id)->name?></b> <?php echo getEduAppGTLang('subjects'); ?>.<br><b><?php echo getEduAppGTLang('running_year'); ?>:</b> <?php echo $running_year; ?></p>
 								</div>
 								<hr>
 								<div class="col-sm-3 brd">
@@ -114,16 +134,16 @@
 													</tr>
 												</thead>
 												<tbody>
-													<?php $students = $this->db->get_where('enroll', array('class_id' => $class_id, 'section_id' => $section_id, 'year' => $running_year))->result_array();
-													foreach ($students as $row):
+													<?php 
+													foreach ($studentList as $row):
 													?>
 														<tr>
-															<td><img src="<?php echo $this->crud->get_image_url('student', $row['student_id']); ?>" width="25px" class="tbl-user"> <?php echo $this->crud->get_name('student', $row['student_id']); ?></td>
-															<td class="text-center"><?php echo $row['roll']; ?></td>
-															<?php $parent_id = $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->parent_id; ?>
+															<td><img src="<?php echo $this->crud->get_image_url('student', $row->student_id); ?>" width="25px" class="tbl-user"> <?php echo $this->crud->get_name('student', $row->student_id); ?></td>
+															<td class="text-center"><?php echo getRoll($row->student_id,$class_id,$section_id,$running_year) ?></td>
+															<?php $parent_id = $this->db->get_where('student', array('student_id' => $row->student_id))->row()->parent_id; ?>
 															<td class="text-center"><?php echo $this->crud->get_name('parent', $parent_id); ?></td>
 															<td class="text-center">
-																<?php if (isStudentActiveEnroll($row['student_id'],$class_id,$section_id,$running_year)): ?>
+																<?php if (isStudentActiveEnroll($row->student_id, $class_id, $section_id, $running_year)): ?>
 																	<div class="pt-btn">
 																		<a class="btn nc btn-success btn-sm btn-rounded">
 																			<font color="white"><?php echo getEduAppGTLang('active'); ?></font>
@@ -132,16 +152,16 @@
 																<?php else: ?>
 																	<div class="pt-btn">
 																		<a class="btn nc btn-danger btn-sm btn-rounded">
-																			<font color="white"><?php echo getEduAppGTLang('inactive'); ?></font>
+																			<font color="white"><?php echo getEduAppGTLang('inactive').'-'.getEduAppGTLang('enroll'); ?></font>
 																		</a>
 																	</div>
 																<?php endif; ?>
 															</td>
 															<td class="text-center">
-																<?php if ($this->db->get_where('student', array('student_id' => $row['student_id']))->row()->sex == 'F'): ?>
-																	<span class="btn btn-sm btn-purple"> <?php echo $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->sex; ?></span>
+																<?php if ($this->db->get_where('student', array('student_id' => $row->student_id))->row()->sex == 'F'): ?>
+																	<span class="btn btn-sm btn-purple"> <?php echo $this->db->get_where('student', array('student_id' => $row->student_id))->row()->sex; ?></span>
 																<?php else: ?>
-																	<span class="btn btn-sm btn-primary"> <?php echo $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->sex; ?></span>
+																	<span class="btn btn-sm btn-primary"> <?php echo $this->db->get_where('student', array('student_id' => $row->student_id))->row()->sex; ?></span>
 																<?php endif; ?>
 															</td>
 														</tr>
@@ -160,9 +180,8 @@
 		<?php
 		$male = 0;
 		$female = 0;
-		$students = $this->db->get_where('enroll', array('class_id' => $class_id, 'section_id' => $section_id, 'year' => $running_year))->result_array();
-		foreach ($students as $row) {
-			if ($this->db->get_where('student', array('student_id' => $row['student_id']))->row()->sex == "F") {
+		foreach ($studentList as $row) {
+			if ($this->db->get_where('student', array('student_id' => $row->student_id))->row()->sex == "F") {
 				$female += 1;
 			} else {
 				$male += 1;

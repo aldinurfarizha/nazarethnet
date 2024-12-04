@@ -1379,6 +1379,7 @@ class Admin extends EduAppGT
         }
         $page_data['class_id']   = html_escape($this->input->post('class_id'));
         $page_data['section_id']   = html_escape($this->input->post('section_id'));
+        $page_data['subject_id']   = html_escape($this->input->post('subject_id'));
         $page_data['page_name']   = 'students_report';
         $page_data['page_title']  = getEduAppGTLang('students_report');
         $this->load->view('backend/index', $page_data);
@@ -1393,6 +1394,7 @@ class Admin extends EduAppGT
         $page_data['page_name']   = 'general_reports';
         $page_data['class_id']   = html_escape($this->input->post('class_id'));
         $page_data['section_id']   = html_escape($this->input->post('section_id'));
+        $page_data['subject_id']   = html_escape($this->input->post('subject_id'));
         $page_data['page_title']  = getEduAppGTLang('general_reports');
         $this->load->view('backend/index', $page_data);
     }
@@ -4483,6 +4485,7 @@ class Admin extends EduAppGT
     {
         $exam_id=$this->input->post('exam_id');
         $is_count=$this->input->post('is_count');
+        $exam_id_final=$this->input->post('exam_id_final');
         $mark_activity_id=$this->input->post('mark_activity_id');
 
         if($is_count==1)
@@ -4503,7 +4506,7 @@ class Admin extends EduAppGT
         $examDetail=getExamDetail($exam_id);
         recalculateMarkProm($examDetail->subject_id,$examDetail->class_id,$examDetail->section_id,$examDetail->year);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
-        redirect(base_url() . 'admin/final_evaluation_selected/' . $exam_id.'/'.$mark_activity_id);
+        redirect(base_url() . 'admin/final_evaluation_selected/' . $exam_id_final.'/'.$mark_activity_id);
     }
     
     //End of Admin.php content.

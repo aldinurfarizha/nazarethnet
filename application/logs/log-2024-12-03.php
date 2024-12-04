@@ -299,3 +299,368 @@ ERROR - 2024-12-03 01:45:18 --> Severity: Warning --> Attempt to read property "
 ERROR - 2024-12-03 01:45:18 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
 ERROR - 2024-12-03 01:45:18 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
 ERROR - 2024-12-03 01:45:18 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:31:39 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:31:40 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:31:40 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:31:48 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:31:48 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:31:49 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:31:50 --> Severity: Warning --> Undefined variable $studentList C:\wamp64\www\nazarethnet\application\views\backend\admin\general_reports.php 177
+ERROR - 2024-12-03 22:31:50 --> Severity: Warning --> foreach() argument must be of type array|object, null given C:\wamp64\www\nazarethnet\application\views\backend\admin\general_reports.php 177
+ERROR - 2024-12-03 22:31:54 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:31:55 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:31:55 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:31:56 --> Severity: Warning --> Undefined variable $studentList C:\wamp64\www\nazarethnet\application\views\backend\admin\students_report.php 183
+ERROR - 2024-12-03 22:31:56 --> Severity: Warning --> foreach() argument must be of type array|object, null given C:\wamp64\www\nazarethnet\application\views\backend\admin\students_report.php 183
+ERROR - 2024-12-03 22:32:04 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:32:05 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:32:05 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:32:06 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:32:25 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:32:25 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:32:26 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:32:32 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:32:32 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:32:32 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:32:40 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:40 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:40 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:40 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:40 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:41 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:41 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:41 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:41 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:41 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:41 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:41 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:41 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:41 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:41 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:41 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:41 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:41 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:41 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:41 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:41 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:42 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:42 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:42 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:42 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:42 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:42 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:42 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:42 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:42 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:42 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:42 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:42 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:42 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:42 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:42 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:43 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:43 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:43 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:43 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:43 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:43 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:43 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:43 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:43 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:43 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:43 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:43 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:43 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:43 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:43 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:43 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:44 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:44 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:44 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:44 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:44 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:44 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:44 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:44 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:44 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:44 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:44 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:44 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:44 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:44 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:44 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:45 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:45 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:45 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:45 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:45 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:45 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:45 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:45 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:45 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:45 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:45 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:45 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:45 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:45 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:45 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:45 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:46 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:46 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:46 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:46 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:46 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:46 --> Severity: Warning --> Undefined array key "student_id" C:\wamp64\www\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2024-12-03 22:32:53 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:32:53 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:32:54 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:32:54 --> Severity: Warning --> Attempt to read property "name" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\student_portal.php 74
+ERROR - 2024-12-03 22:32:54 --> Severity: Warning --> Attempt to read property "route_name" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\student_portal.php 115
+ERROR - 2024-12-03 22:32:59 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:32:59 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:33:00 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:33:03 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:33:04 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:33:04 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:33:11 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:33:11 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:33:12 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:33:18 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:33:19 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:33:19 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:20 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:33 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:33:33 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:33:34 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:33:35 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:33:43 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:33:44 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:33:44 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:49:55 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:49:55 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:49:56 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:49:57 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:50:35 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:50:36 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:50:36 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:50:37 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:50:37 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:50:38 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:12 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:52:13 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:52:13 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:14 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:46 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:52:46 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:52:47 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "roll" on null C:\wamp64\www\nazarethnet\application\helpers\global_helper.php 871
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "roll" on null C:\wamp64\www\nazarethnet\application\helpers\global_helper.php 871
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:52:48 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:53:13 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 22:53:14 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 22:53:14 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 22:53:15 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:53:15 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "first_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2878
+ERROR - 2024-12-03 22:53:16 --> Severity: Warning --> Attempt to read property "last_name" on null C:\wamp64\www\nazarethnet\application\models\Crud.php 2879
+ERROR - 2024-12-03 23:22:40 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 23:22:41 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 23:22:41 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 23:22:48 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 23:22:49 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 23:22:49 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 23:22:50 --> Severity: Warning --> Undefined variable $studentList C:\wamp64\www\nazarethnet\application\views\backend\admin\general_reports.php 177
+ERROR - 2024-12-03 23:22:50 --> Severity: Warning --> foreach() argument must be of type array|object, null given C:\wamp64\www\nazarethnet\application\views\backend\admin\general_reports.php 177
+ERROR - 2024-12-03 23:22:56 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 23:22:57 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 23:22:57 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 23:22:58 --> Severity: Warning --> Undefined variable $exam_id C:\wamp64\www\nazarethnet\application\views\backend\admin\final_evaluation.php 146
+ERROR - 2024-12-03 23:23:03 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 23:23:03 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 23:23:04 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549
+ERROR - 2024-12-03 23:23:07 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 71
+ERROR - 2024-12-03 23:23:08 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 298
+ERROR - 2024-12-03 23:23:08 --> Severity: Warning --> Attempt to read property "permissions" on null C:\wamp64\www\nazarethnet\application\views\backend\admin\navigation.php 549

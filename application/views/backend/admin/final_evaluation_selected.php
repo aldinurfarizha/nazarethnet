@@ -34,7 +34,7 @@
                     <div class="element-wrapper">
                         <h6 class="element-header">
                             <div class="back backbutton">
-                                <a title="Return" href="<?= base_url('admin/final_evaluation_weight/'.$exam_id) ?>"><i class="picons-thin-icon-thin-0131_arrow_back_undo"></i></a>
+                                <a title="Return" href="<?= base_url('admin/final_evaluation_weight/' . $exam_id) ?>"><i class="picons-thin-icon-thin-0131_arrow_back_undo"></i></a>
                             </div>
                             Seleccione la prueba que se calculará en el informe final
                             <br>
@@ -70,6 +70,7 @@
                                                 <a class="grey" href="#" data-target="#update_status" data-toggle="modal"
                                                     data-exam_id="<?= $row->exam_id; ?>"
                                                     data-mark_activity_id="<?= $mark_activity->mark_activity_id ?>"
+                                                    data-exam_id_final="<?= $exam_id ?>"
                                                     data-is_count="<?= $isCounted; ?>">
                                                     <i class="os-icon picons-thin-icon-thin-0001_compose_write_pencil_new"></i>
                                                 </a>
@@ -95,6 +96,7 @@
                                         <div class="col-12">
                                             <input type="hidden" name="exam_id" value="">
                                             <input type="hidden" name="mark_activity_id" value="">
+                                            <input type="hidden" name="exam_id_final" value="">
                                             <div class="form-group label-floating is-select">
                                                 <label class="control-label">Seleccione</label>
                                                 <div class="select">
@@ -123,8 +125,10 @@
                 var examId = this.dataset.exam_id;
                 var isCount = this.dataset.is_count;
                 var markActivityId = this.dataset.mark_activity_id;
+                var examIdFinal = this.dataset.exam_id_final;
                 document.querySelector('#update_status input[name="exam_id"]').value = examId;
                 document.querySelector('#update_status input[name="mark_activity_id"]').value = markActivityId;
+                document.querySelector('#update_status input[name="exam_id_final"]').value = examIdFinal;
                 var selectElement = document.querySelector('#update_status select[name="is_count"]');
                 selectElement.value = isCount;
             });
