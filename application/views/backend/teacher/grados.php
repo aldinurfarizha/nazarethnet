@@ -9,6 +9,9 @@
                         $this->db->group_by('class_id');
                         $classes = $this->db->get_where('subject', array('teacher_id' => $this->session->userdata('login_user_id')))->result_array();
                         foreach($classes as $cl):
+                            if(!isClassExist($cl['class_id'])){
+                                continue;
+                            }
                     ?>
                     <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="ui-block" data-mh="friend-groups-item">        

@@ -873,6 +873,22 @@ function getRoll($student_id,$class_id,$section_id,$runningYear){
     $roll = $ci->db->get_where('enroll', array('student_id' => $student_id,'class_id'=>$class_id,'section_id'=>$section_id))->row()->roll;
     return $roll;
 }
+function isClassExist($class_id)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+    ->from('class')
+    ->where([
+        'class_id' => $class_id,
+    ])
+        ->get();
+    if ($data->num_rows() > 0) {
+        return true;
+    } else {
+        return false;
+    }
+    
+}
 
 
 
