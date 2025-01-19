@@ -109,7 +109,25 @@
                                             </div>
                                         </div>
                                     </div>
-		                            <input type="hidden" name="year" value="<?php echo $running_year;?>">
+		                            <div class="col-sm-2">
+                                        <div class="form-group label-floating is-select">
+                                            <label class="control-label"><?php echo getEduAppGTLang('year'); ?></label>
+                                            <div class="select">
+                                            <select name="year" required>
+                                                <?php
+                                                $current_year = date('Y');
+                                                $start_year = 2024;
+                                                for ($i = $start_year; $i <= $current_year; $i++):
+                                                    $selected = (!isset($year) && $i == $current_year) || (isset($year) && $year == $i) ? 'selected' : '';
+                                                ?>
+                                                    <option value="<?php echo $i; ?>" <?php echo $selected; ?>>
+                                                        <?php echo $i; ?>
+                                                    </option>
+                                                <?php endfor; ?>
+                                            </select>
+                                            </div>
+                                        </div>
+                                    </div>
 		                            <div class="col-sm-2">
 		                                <div class="form-group"> <button class="btn btn-success top-10" type="submit"><span><?php echo getEduAppGTLang('view');?></span></button></div>
 		                            </div>
