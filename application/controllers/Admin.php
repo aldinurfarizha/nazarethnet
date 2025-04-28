@@ -4275,7 +4275,7 @@ class Admin extends EduAppGT
         }
         $page_data['exam'] = $this->db->query("SELECT * FROM exam where exam_id=$exam_id")->row();
         $page_data['page_name']  = 'final_evaluation_weight';
-        $page_data['page_title'] = 'Pesos de evaluaciÃ³n final';
+        $page_data['page_title'] = 'Pesos de evaluaci¨®n final';
         $this->load->view('backend/index', $page_data);
     }
     function final_evaluation_selected($exam_id,$mark_activity_id)
@@ -4481,7 +4481,7 @@ class Admin extends EduAppGT
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
         redirect(base_url() . 'admin/final_evaluation_weight/' . $exam_id);
     }
-    function final_evaluation_selected_update()
+     function final_evaluation_selected_update()
     {
         $exam_id=$this->input->post('exam_id');
         $is_count=$this->input->post('is_count');

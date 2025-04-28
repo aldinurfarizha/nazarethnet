@@ -9,7 +9,7 @@
                         $this->db->group_by('class_id');
                         $classes = $this->db->get_where('subject', array('teacher_id' => $this->session->userdata('login_user_id')))->result_array();
                         foreach($classes as $cl):
-                            if(!isClassExist($cl['class_id'])){
+                             if(!isClassExist($cl['class_id'])){
                                 continue;
                             }
                     ?>

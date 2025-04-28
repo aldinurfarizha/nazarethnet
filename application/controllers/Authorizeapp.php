@@ -25,7 +25,7 @@ class Authorizeapp extends EduAppGT
                 $client->setApplicationName($this->db->get_where('settings', array('type' => 'system_name'))->row()->description);
         	    $client->setClientId($this->db->get_where('settings', array('type' => 'clientId'))->row()->description);
                 $client->setClientSecret($this->db->get_where('settings', array('type' => 'ClientSecret'))->row()->description);
-                $client->setRedirectUri(base_url().'authorizeapp');
+                $client->setRedirectUri('https://nazarethnet.com/authorizeapp');
                 $client->setAccessType('online');           
                 $client->authenticate($_GET['code']);
                 $accessToken = $client->getAccessToken();

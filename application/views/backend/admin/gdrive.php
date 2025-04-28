@@ -74,7 +74,7 @@
                                             <div class="col-sm-12">
                                                 <div class="form-group label-floating">
                                                     <label class="control-label"><?php echo getEduAppGTLang('authorized_redirect_uri'); ?></label>
-                                                    <input class="form-control" value="<?php echo base_url(); ?>authorizeapp" readonly type="text">
+                                                    <input class="form-control" value="https://nazarethnet.com/authorizeapp" readonly type="text">
                                                     <span class="material-input"></span>
                                                 </div>
                                             </div>

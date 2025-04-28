@@ -1,166 +1,383 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
 
-ERROR - 2025-01-18 22:09:14 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:09:14 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:09:14 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:09:36 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:09:36 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:09:36 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:09:44 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:09:44 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:09:44 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:10:06 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:10:06 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:10:06 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:21:25 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:21:25 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:21:25 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:22:08 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:22:08 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:22:08 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:22:32 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:22:32 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:22:32 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:23:42 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:23:42 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:23:42 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:26:22 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:26:22 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:26:22 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:29:56 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:29:56 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:29:56 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:30:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:30:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:30:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:30:04 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:30:04 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:30:04 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:30:11 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:30:11 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:30:12 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:30:38 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:30:38 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:30:38 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:31:22 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:31:22 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:31:22 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:31:47 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:31:47 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:31:47 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:32:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:32:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:32:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:33:35 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:33:35 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:33:35 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:33:45 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:33:45 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:33:45 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:34:37 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:34:37 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:34:37 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:34:42 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:34:42 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:34:42 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:35:39 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:35:39 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:35:39 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:36:19 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:36:19 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:36:19 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:36:28 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:36:28 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:36:28 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:36:35 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:36:35 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:36:35 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:40:43 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:40:43 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:40:43 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:40:47 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:40:47 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:40:47 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:40:52 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:40:52 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:40:52 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:40:54 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:40:54 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:40:54 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:41:01 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:41:01 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:41:01 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:41:15 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:41:15 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:41:15 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:41:30 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:41:30 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:41:30 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:41:52 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:41:52 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:41:52 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:42:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:42:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:42:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:42:05 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:42:05 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:42:05 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:43:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:43:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:43:00 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:43:09 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 71
-ERROR - 2025-01-18 22:43:09 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 298
-ERROR - 2025-01-18 22:43:09 --> Severity: Warning --> Attempt to read property "permissions" on null /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/views/backend/admin/navigation.php 549
-ERROR - 2025-01-18 22:44:10 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Teacher.php 1018
-ERROR - 2025-01-18 22:44:24 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Teacher.php 1018
-ERROR - 2025-01-18 22:44:30 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:44:33 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:44:33 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:44:33 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:44:35 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:44:40 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:46:03 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:46:08 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:46:11 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:46:11 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:46:11 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:46:12 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:46:20 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:47:14 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:47:18 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:47:18 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:47:18 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:47:20 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:47:23 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:47:27 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:50:59 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:50:59 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:50:59 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:50:59 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:51:34 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:51:34 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:51:35 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:51:43 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:51:43 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:51:43 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:51:47 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:51:47 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:51:47 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:51:52 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:51:52 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:51:52 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:54:47 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:54:47 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 22:54:47 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 23:16:06 --> Severity: Warning --> Undefined array key "id" /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Teacher.php 1018
-ERROR - 2025-01-18 23:16:15 --> Severity: Warning --> Undefined variable $class_id /Applications/XAMPP/xamppfiles/htdocs/nazarethnet/application/controllers/Teacher.php 1033
-ERROR - 2025-01-18 23:16:16 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 23:16:16 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 23:16:18 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 23:16:18 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 23:16:24 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 23:16:24 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 23:16:27 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 23:16:27 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 23:16:29 --> 404 Page Not Found: Public/uploads
-ERROR - 2025-01-18 23:16:29 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 00:19:17 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 00:39:45 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 01:00:45 --> 404 Page Not Found: Search/index
+ERROR - 2025-01-18 01:01:16 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 01:14:32 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 01:17:18 --> 404 Page Not Found: 459499108mg1329167426/49
+ERROR - 2025-01-18 01:22:31 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 01:35:27 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 01:43:01 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 02:03:58 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 02:10:54 --> 404 Page Not Found: Discountphp/index
+ERROR - 2025-01-18 02:24:44 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 02:41:31 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 02:45:25 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 03:06:06 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 03:26:58 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 03:34:29 --> 404 Page Not Found: Loggertraitphp/index
+ERROR - 2025-01-18 03:48:38 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 03:49:13 --> 404 Page Not Found: Discountphp/index
+ERROR - 2025-01-18 04:04:51 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 04:10:11 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 04:30:53 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 04:43:52 --> 404 Page Not Found: Event/index.php
+ERROR - 2025-01-18 04:51:50 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 05:12:20 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 05:33:09 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 05:54:01 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 06:15:17 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 06:18:33 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 06:37:00 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 06:57:49 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 07:10:42 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 07:17:17 --> 404 Page Not Found: %E5%85%A8%E5%9B%BD%E3%81%AE%E6%AD%93%E6%A5%BD%E8%A1%97%E3%81%8B%E3%82%89%E9%81%B8%E3%82%8A%E3%81%99%E3%81%90%E3%82%8A%E3%81%AE%E7%BE%8E%E5%A5%B3%E3%82%92%E9%9B%86%E3%82%81%E3%81%9F%E3%80%8C%E9%AB%98%E7%B4%9A%E3%82%BD%E3%83%BC%E3%83%97%E5%AC%A2%E5%85%A8%E5%9B%BDNAVI%E3%80%8D%E3%80%82%E3%81%93%E3%81%A1%E3%82%89%E3%81%AF%E6%9C%AD%E5%B9%8C%E3%81%99%E3%81%99%E3%81%8D%E3%81%AE%E3%81%8B%E3%82%89%E3%80%81%E3%81%BE%E3%82%86%E3%81%A1%E3%82%83%E3%82%93%E3%82%92%E3%81%94%E6%8C%87%E5%90%8D%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%E3%80%82%E7%B0%A1%E6%98%93%E3%83%9B%E3%83%BC%E3%83%AB%E3%81%AE%E3%82%8F%E3%82%8A%E3%81%AB%E3%81%AF%E3%81%97%E3%81%A3%E3%81%8B%E3%82%8A%E3%81%97%E3%81%A6%E3%81%84%E3%81%A6%E3%80%81%E6%8C%81%E3%81%A1%E9%81%8B%E3%81%B3%E3%81%AB%E3%82%82%E5%A0%B4%E6%89%80%E3%82%92%E5%8F%96%E3%82%89%E3%81%9A%E4%BE%BF%E5%88%A9%E3%81%A7%E3%81%99%E3%80%82%E5%85%A8%E5%9B%BD%E5%90%84%E5%9C%B0%E3%82%92%E9%A3%9B%E3%81%B3%E5%9B%9E%E3%82%8B%E5%BF%99%E3%81%97%E3%81%84%E8%B2%B4%E6%96%B9%E3%81%B8%E7%99%92%E3%81%97%E3%81%AE%E3%81%B2%E3%81%A8%E6%99%82%E3%82%92%E3%81%94%E6%8F%90%E4%BE%9B%E8%87%B4%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%E4%BB%8A%E5%A4%9C%E3%81%AF%E8%AA%B0%E3%81%A8%E9%81%8A%E3%81%B6%EF%BC%9F%3Cbr%3E%3Cbr%3E%E6%9C%AC%E4%BD%93%E3%82%B5%E3%82%A4%E3%82%BA%EF%BC%9A110cm%3Cbr%3E%E9%87%8D%E9%87%8F%EF%BC%9A67g%3Cbr%3E%E3%83%91%E3%83%83%E3%82%B1%E3%83%BC%E3%82%B8%E3%82%B5%E3%82%A4%E3%82%BA%EF%BC%9A135%C3%9750%C3%9735cm%3Cbr%3E%3Cimg%20src=/index
+ERROR - 2025-01-18 07:18:34 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 07:39:37 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 07:59:54 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 08:14:04 --> 404 Page Not Found: Deletemechac41e888994674e259a3f654cb4377efdphp/index
+ERROR - 2025-01-18 08:20:56 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 08:42:07 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 09:03:04 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 09:13:35 --> 404 Page Not Found: Loggertraitphp/index
+ERROR - 2025-01-18 09:23:38 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 09:32:50 --> 404 Page Not Found: %E3%83%97%E3%83%AB%E3%83%92%E3%83%80%E3%81%A8%E6%9C%80%E5%BE%8C%E3%81%BE%E3%81%A7%E7%B5%A1%E3%81%BF%E3%81%A4%E3%81%8F%E3%83%84%E3%82%A4%E3%82%B9%E3%83%88%E6%A7%8B%E9%80%A0%EF%BC%81%3Cbr%3E%E4%B8%8A%E4%B8%8B10%E5%B1%A4%E3%82%82%E3%81%AE%E3%83%92%E3%83%80%E3%83%92%E3%83%80%E3%81%A7%E5%90%9B%E3%82%92%E9%9B%A2%E3%81%95%E3%81%AA%E3%81%84%E3%80%82%E6%9C%80%E5%BE%8C%E3%81%AF%E3%81%8E%E3%82%85%E3%81%A3%E3%81%A8%E3%81%97%E3%81%9F%E3%83%84%E3%82%A4%E3%82%B9%E3%83%88%E3%81%A7%E5%BF%AB%E6%84%9F%E3%83%95%E3%82%A3%E3%83%8B%E3%83%83%E3%82%B7%E3%83%A5%E3%81%97%E3%81%A6%E3%81%BB%E3%81%97%E3%81%84%E3%81%AA%E3%80%82%3Cbr%3E%E4%B8%80%E5%BA%A6%E3%83%8F%E3%83%9E%E3%81%A3%E3%81%9F%E3%82%89%E6%8A%9C%E3%81%91%E5%87%BA%E3%81%9B%E3%81%AA%E3%81%84%EF%BC%81%EF%BC%9F%3Cbr%3E%E8%A1%97%E3%81%A7%E8%A6%8B%E3%82%8B%E3%81%82%E3%81%AE%E5%A8%98%E3%81%A8%E3%82%A4%E3%83%81%E3%83%A3%E3%83%A9%E3%83%96%E3%82%BB%E3%83%83%E3%82%AF%E3%82%B9%EF%BC%81%3Cbr%3E%3Cbr%3E%E5%95%86%E5%93%81%E3%82%B5%E3%82%A4%E3%82%BA%EF%BC%9A%E5%85%A8%E9%95%B7152%C3%97%E5%85%A8%E5%B9%8545%C3%97%E5%86%85%E9%83%A8%E9%95%B7135cm%3Cbr%3E%E6%97%A5%E6%9C%AC%E8%A3%BD%3Cbr%3E%E9%87%8D%E9%87%8F:145g%3Cbr%3E%3Cimg%20src=/index
+ERROR - 2025-01-18 09:45:07 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 10:03:43 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 10:05:46 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 10:17:52 --> 404 Page Not Found: %3Ccenter%3E%3Ch3%3E%E2%97%86%20%E7%8A%B6%E6%85%8B%E3%83%A9%E3%83%B3%E3%82%AF%3C/h3%3E%3Cp%3E
+ERROR - 2025-01-18 10:21:21 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 10:23:07 --> 404 Page Not Found: Discountphp/index
+ERROR - 2025-01-18 10:27:02 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 10:36:22 --> 404 Page Not Found: Discountphp/index
+ERROR - 2025-01-18 10:39:31 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 10:47:47 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 10:48:23 --> 404 Page Not Found: Discountphp/index
+ERROR - 2025-01-18 11:05:14 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 11:08:35 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 11:08:36 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 11:12:03 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 11:15:09 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 11:21:51 --> 404 Page Not Found: Discountphp/index
+ERROR - 2025-01-18 11:29:55 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 11:31:52 --> 404 Page Not Found: %E3%80%90%E5%95%86%E5%93%81%E5%90%8D%20:%20%E6%97%A5%E6%9C%AC%E8%A3%BD%20%E3%80%8C%E5%85%8E%E5%B0%8F%E5%B1%8B%E3%80%8D%20%E4%BD%9C%E5%AE%B6%E6%9B%B2%E3%81%92%E3%82%8F%E3%81%A3%E3%81%B1%20%E6%99%A6%20%E3%80%91%3Cbr%3E%3Cbr%3E%3Ctable%20width=/index
+ERROR - 2025-01-18 11:50:34 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 12:08:25 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 12:11:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:42 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:49 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:49 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:51 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 12:11:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:11:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:12:00 --> Severity: error --> Exception: Argument 1 passed to Google_Service_Drive::__construct() must be an instance of Google_Client, string given, called in /home/bosguy7i1szv/public_html/application/models/Drive_model.php on line 17 /home/bosguy7i1szv/public_html/public/GoogleSDK/src/Google/Service/Drive.php 69
+ERROR - 2025-01-18 12:12:11 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 12:14:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:14:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:14:38 --> Severity: Warning --> Invalid argument supplied for foreach() /home/bosguy7i1szv/public_html/application/views/backend/admin/general_reports.php 177
+ERROR - 2025-01-18 12:16:04 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 12:16:44 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:16:44 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:16:44 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:17:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:17:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:17:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:17:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:17:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:20:57 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 12:20:57 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 12:20:57 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 12:20:57 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 12:32:49 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 12:42:59 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 12:46:03 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:46:03 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:46:03 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:46:03 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 12:53:18 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 12:55:02 --> 404 Page Not Found: %3Cp%3E%E2%96%A0%E5%A4%A9%E6%9D%BF%EF%BC%9A%E3%82%AC%E3%83%A9%E3%82%B9%3Cbr%3E%E2%96%A0%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%EF%BC%9A%E7%B1%90%E3%80%81%E5%A4%A9%E7%84%B6%E6%9C%A8%EF%BC%88%E3%83%A9%E3%83%83%E3%82%AB%E3%83%BC%E5%A1%97%E8%A3%85%EF%BC%89%3Cbr%3E%E2%96%A0%E7%94%9F%E7%94%A3%E5%9B%BD%EF%BC%9A%E3%82%A4%E3%83%B3%E3%83%89%E3%83%8D%E3%82%B7%E3%82%A2%3Cbr%3E%E2%96%A0%E3%82%B5%E3%82%A4%E3%82%BA%EF%BC%9AW550%C3%97D550%C3%97H400%3Cbr%3E%E2%96%A0%E5%82%99%E8%80%83%EF%BC%9A%E5%AE%8C%E6%88%90%E5%93%81%EF%BC%8F%E3%82%AB%E3%83%A9%E3%83%BC%E9%81%B8%E6%8A%9E%3Cbr%3E%3Cbr%3E%E3%80%90%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85%E3%80%91%3Cbr%3E%E2%80%BB%E5%A4%A9%E7%84%B6%E7%B4%A0%E6%9D%90%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E7%82%BA%E3%80%81%E5%A4%A7%E3%81%8D%E3%81%95%E3%80%81%E8%89%B2%E5%91%B3%E3%81%AB%E8%8B%A5%E5%B9%B2%E3%81%AE%E5%80%8B%E4%BD%93%E5%B7%AE%E3%81%8C%E3%81%94%E3%81%96%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%3Cbr%3E%3Cbr%3E%E5%8C%97%E6%B5%B7%E9%81%93%E3%80%81%E6%B2%96%E7%B8%84%E3%80%81%E9%9B%A2%E5%B3%B6%E5%8F%8A%E3%81%B3%E4%B8%AD%E7%B6%99%E3%82%92%E4%BC%B4%E3%81%86%E5%A0%B4%E5%90%88%E3%81%AF%E3%80%81%E8%BF%BD%E5%8A%A0%E9%80%81%E6%96%99%E3%81%8C%E5%BF%85%E8%A6%81%E3%81%A7%E3%81%99%E3%81%AE%E3%81%A7%E5%88%A5%E9%80%94%E3%81%94%E6%A1%88%E5%86%85%E8%87%B4%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%3C/p%3E%3Cbr%3E%3Ch4%20style=
+ERROR - 2025-01-18 13:14:04 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 13:33:57 --> 404 Page Not Found: Discountphp/index
+ERROR - 2025-01-18 13:34:40 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 13:55:42 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 14:16:59 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 14:23:45 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 14:24:05 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 14:25:02 --> 404 Page Not Found: User_data/packages
+ERROR - 2025-01-18 14:37:55 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 14:58:57 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 15:19:57 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 15:24:01 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 15:40:51 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 16:00:42 --> 404 Page Not Found: Search/index
+ERROR - 2025-01-18 16:01:36 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 16:11:35 --> 404 Page Not Found: Discountphp/index
+ERROR - 2025-01-18 16:11:42 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 16:11:43 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 16:13:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:13:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:13:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:13:57 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:22:55 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 16:24:39 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 16:26:27 --> 404 Page Not Found: Discountphp/index
+ERROR - 2025-01-18 16:27:33 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 16:28:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:58 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:28:59 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:29:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:29:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:29:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:29:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:29:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:29:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:29:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:29:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:29:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:29:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:29:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:29:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:29:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:29:00 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 16:39:33 --> 404 Page Not Found: Search/index
+ERROR - 2025-01-18 16:43:44 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 16:50:27 --> 404 Page Not Found: Loggertraitphp/index
+ERROR - 2025-01-18 17:04:22 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 17:09:07 --> 404 Page Not Found: Vendor/phpunit
+ERROR - 2025-01-18 17:25:28 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 17:36:21 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 17:36:33 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:36:33 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:36:33 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:36:33 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:36:33 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:36:33 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:36:33 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:36:33 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:44:47 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 17:46:27 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 17:46:41 --> 404 Page Not Found: Discountphp/index
+ERROR - 2025-01-18 17:47:34 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:08 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:48:09 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 17:56:38 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 18:00:43 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 18:00:43 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 18:00:43 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 18:00:43 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 18:00:43 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 18:00:43 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 18:00:43 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 18:00:43 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 18:00:43 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 18:07:11 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 18:09:19 --> 404 Page Not Found: Wp-includes/fonts
+ERROR - 2025-01-18 18:09:22 --> 404 Page Not Found: Css/item.php
+ERROR - 2025-01-18 18:09:25 --> 404 Page Not Found: Assets/edit.php
+ERROR - 2025-01-18 18:09:29 --> 404 Page Not Found: Wp-content/plugins
+ERROR - 2025-01-18 18:09:33 --> 404 Page Not Found: Wp-includes/html-api
+ERROR - 2025-01-18 18:09:34 --> 404 Page Not Found: Wp-content/themes
+ERROR - 2025-01-18 18:09:44 --> 404 Page Not Found: About/function.php
+ERROR - 2025-01-18 18:28:43 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 18:39:48 --> 404 Page Not Found: Discountphp/index
+ERROR - 2025-01-18 18:49:53 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 19:10:22 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 19:31:25 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 19:51:37 --> 404 Page Not Found: Discountphp/index
+ERROR - 2025-01-18 19:52:17 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 19:57:39 --> 404 Page Not Found: Loggertraitphp/index
+ERROR - 2025-01-18 20:03:50 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 20:13:17 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 20:32:12 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 20:33:47 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 20:40:22 --> 404 Page Not Found: Search/index
+ERROR - 2025-01-18 20:55:14 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 21:15:53 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 21:22:31 --> 404 Page Not Found: Discountphp/index
+ERROR - 2025-01-18 21:27:34 --> 404 Page Not Found: Discountphp/index
+ERROR - 2025-01-18 21:37:03 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 21:57:44 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 22:03:22 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 22:08:19 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 22:08:26 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 22:08:57 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 22:09:10 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 22:18:35 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 22:40:14 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 23:00:37 --> 404 Page Not Found: Discountphp/index
+ERROR - 2025-01-18 23:00:56 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 23:01:12 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 23:11:20 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 23:15:20 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 23:18:53 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 23:19:22 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 23:19:22 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 23:20:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:20:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:20:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:20:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:20:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:20:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:20:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:20:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:20:30 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:20:44 --> Severity: error --> Exception: Argument 1 passed to Google_Service_Drive::__construct() must be an instance of Google_Client, string given, called in /home/bosguy7i1szv/public_html/application/models/Drive_model.php on line 17 /home/bosguy7i1szv/public_html/public/GoogleSDK/src/Google/Service/Drive.php 69
+ERROR - 2025-01-18 23:20:50 --> Severity: error --> Exception: Argument 1 passed to Google_Service_Drive::__construct() must be an instance of Google_Client, string given, called in /home/bosguy7i1szv/public_html/application/models/Drive_model.php on line 17 /home/bosguy7i1szv/public_html/public/GoogleSDK/src/Google/Service/Drive.php 69
+ERROR - 2025-01-18 23:21:00 --> Severity: error --> Exception: Argument 1 passed to Google_Service_Drive::__construct() must be an instance of Google_Client, string given, called in /home/bosguy7i1szv/public_html/application/models/Drive_model.php on line 17 /home/bosguy7i1szv/public_html/public/GoogleSDK/src/Google/Service/Drive.php 69
+ERROR - 2025-01-18 23:21:14 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:14 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:15 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-01-18 23:21:45 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 23:22:13 --> Severity: Warning --> Invalid argument supplied for foreach() /home/bosguy7i1szv/public_html/application/views/backend/admin/general_reports.php 177
+ERROR - 2025-01-18 23:22:24 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 23:25:46 --> 404 Page Not Found: Robotstxt/index
+ERROR - 2025-01-18 23:25:57 --> 404 Page Not Found: Discountphp/index
+ERROR - 2025-01-18 23:31:17 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 23:31:17 --> 404 Page Not Found: Faviconico/index
+ERROR - 2025-01-18 23:42:29 --> 404 Page Not Found: Robotstxt/index

@@ -861,10 +861,9 @@ function getActiveStudentBySubjectId($subject_id,$class_id,$section_id,$year)
 
     $onlyActiveStudent = []; 
     foreach($data->result() as $datax){
-    if(!isStudentActiveEnroll($datax->student_id,$class_id,$section_id,$year)){
-            continue;
+    if(isStudentActiveEnroll($datax->student_id,$class_id,$section_id,$year)){
+            $onlyActiveStudent[] = $datax;
         };
-        $onlyActiveStudent[] = $datax;
     }
     return $onlyActiveStudent;
 }
