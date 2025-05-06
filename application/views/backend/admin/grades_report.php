@@ -136,7 +136,7 @@
 								<div class="row">
 									<div class="text-center col-sm-12"><br>
 										<h5><?php echo $this->db->get_where('class', array('class_id' => $class_id))->row()->name; ?> <br> <?php echo $this->db->get_where('section', array('section_id' => $section_id))->row()->name; ?> <br> <?php echo $this->db->get_where('subject', array('subject_id' => $subject_id))->row()->name; ?> <br><?php echo $this->db->get_where('exam', array('exam_id' => $exam_id))->row()->name; ?></h5>
-
+										<a href="<?php echo base_url(); ?>admin/grades_report_excel/<?=$class_id . '/' . $section_id . '/' . $subject_id . '/' . $exam_id?>" class="btn btn-success"> <?php echo getEduAppGTLang('excel'); ?> <i class="fa fa-download"></i></a>
 									</div>
 									<hr>
 									<div class="col-7 text-left">
@@ -203,12 +203,21 @@
 																'student_id'       => $student_id
 															])
 															->row();
-
 														$nota = isset($nota_row->nota) ? $nota_row->nota : '-';
 														$finalEvaluaciones += ((int)$nota_row->nota * $row2['percent'] / 100);
 														$updated_at = isset($nota_row->updated_at) ? $nota_row->updated_at : '-';
 														?>
-														<td class="text-center"><?= htmlspecialchars($nota) ?> <br><?=$updated_at?></td>
+														<td class="text-center">
+															<div class="fw-bold fs-6 mb-1">
+																<span class="badge bg-primary"><?= htmlspecialchars($nota) ?></span>
+															</div>
+															<div class="text-muted small mb-1">
+																<span class="badge bg-secondary"><?= $updated_at ?></span>
+															</div>
+															<div class="text-secondary small">
+																<span class="badge bg-info"><?= getHistoryNotaCapacidad($nota_row->nota_capacidad_id) ?></span>
+															</div>
+														</td>
 													<?php endforeach; ?>
 													<?php if ($is_final) { ?>
 														<td>

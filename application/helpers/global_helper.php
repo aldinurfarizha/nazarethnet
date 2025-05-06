@@ -888,6 +888,32 @@ function isClassExist($class_id)
     }
     
 }
+function writeNotaCapacidadHistory($nota_capacidad_id,$value)
+{
+    $ci = &get_instance();
+    $exitingNotaCapacidadValueHistory=$ci->db->query("SELECT * FROM nota_capacidad_history where nota_capacidad_id=$nota_capacidad_id ORDER BY nota_capacidad_history_id DESC")->row()->value;
+    if($exitingNotaCapacidadValueHistory==$value){
+        return;
+    }
+    $exitingNotaCapacidadValue=$ci->db->query("SELECT * FROM nota_capacidad where nota_capacidad_id=$nota_capacidad_id")->row()->nota;
+    if($exitingNotaCapacidadValue==$value){
+        return;
+    }
+    $data = array(
+        'nota_capacidad_id' => $nota_capacidad_id,
+        'value' => $value
+    );
+    $ci->db->insert('nota_capacidad_history', $data);
+}
+function getHistoryNotaCapacidad($nota_capacidad_id) {
+    $ci = &get_instance();
+    $query = $ci->db->query("SELECT value FROM nota_capacidad_history WHERE nota_capacidad_id = $nota_capacidad_id ORDER BY nota_capacidad_history_id ASC");
+    $result = $query->result_array();
+
+    $values = array_column($result, 'value');
+    return implode(',', $values);
+}
+
 
 
 

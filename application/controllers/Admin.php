@@ -3651,6 +3651,14 @@ class Admin extends EduAppGT
         $page_data['page_title']  = getEduAppGTLang('grades_report');
         $this->load->view('backend/index', $page_data);
     }
+    function grades_report_excel($param1 = '', $param2 = '', $param3 = '', $param4 = '', $param5 = '')
+    {
+        $page_data['class_id']    = $param1;
+        $page_data['section_id']  = $param2;
+        $page_data['subject_id']  = $param3;
+        $page_data['exam_id']       = $param4;
+        $this->load->view('backend/admin/grades_report_excel', $page_data);
+    }
 
     //Get Students by SectionId
     function get_class_studentss($section_id = '')
