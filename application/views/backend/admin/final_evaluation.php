@@ -15,6 +15,9 @@
                             <a class="navs-links" href="<?php echo base_url(); ?>admin/attendance_report/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i> <span><?php echo getEduAppGTLang('attendance'); ?></span></a>
                         </li>
                         <li class="navs-item">
+                            <a class="navs-links" href="<?php echo base_url(); ?>admin/grades_report/"><i class="picons-thin-icon-thin-0101_notes_text_notebook"></i> <span><?php echo getEduAppGTLang('grades_report'); ?></span></a>
+                        </li>
+                        <li class="navs-item">
                             <a class="navs-links" href="<?php echo base_url(); ?>admin/marks_report/"><i class="picons-thin-icon-thin-0100_to_do_list_reminder_done"></i> <span><?php echo getEduAppGTLang('final_marks'); ?></span></a>
                         </li>
                         <li class="navs-item">
@@ -55,9 +58,9 @@
                                     ?>
                                         <tr>
                                             <td><?php echo $row['name']; ?></td>
-                                            <td><?=getClassNameById($class_id)?></td>
-                                            <td><?=getSectionNameById($section_id)?></td>
-                                            <td><?=getSubjectNameById($subject_id)?></td>
+                                            <td><?= getClassNameById($class_id) ?></td>
+                                            <td><?= getSectionNameById($section_id) ?></td>
+                                            <td><?= getSubjectNameById($subject_id) ?></td>
                                             <td class="row-actions">
                                                 <a class="grey" onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>')" href="<?php echo base_url(); ?>admin/final_evaluation_delete_exam/<?php echo $row['exam_id']; ?>"><i class="os-icon picons-thin-icon-thin-0056_bin_trash_recycle_delete_garbage_empty"></i></a>
                                                 <a href="<?php echo base_url(); ?>admin/final_evaluation_weight/<?php echo $row['exam_id']; ?>" class="grey"><i class="picons-thin-icon-thin-0133_arrow_right_next px20"></i></a>

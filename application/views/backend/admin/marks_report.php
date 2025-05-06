@@ -19,6 +19,9 @@ $min = $this->db->get_where('academic_settings', array('type' => 'minium_mark'))
 						<a class="navs-links" href="<?php echo base_url(); ?>admin/attendance_report/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i> <span><?php echo getEduAppGTLang('attendance'); ?></span></a>
 					</li>
 					<li class="navs-item">
+						<a class="navs-links <?php if ($page_name == 'grades_report') echo "active"; ?>" href="<?php echo base_url(); ?>admin/grades_report/"><i class="picons-thin-icon-thin-0101_notes_text_notebook"></i> <span><?php echo getEduAppGTLang('grades_report'); ?></span></a>
+					</li>
+					<li class="navs-item">
 						<a class="navs-links <?php if ($page_name == 'marks_report') echo "active"; ?>" href="<?php echo base_url(); ?>admin/marks_report/"><i class="picons-thin-icon-thin-0100_to_do_list_reminder_done"></i> <span><?php echo getEduAppGTLang('final_marks'); ?></span></a>
 					</li>
 					<li class="navs-item">
@@ -109,20 +112,20 @@ $min = $this->db->get_where('academic_settings', array('type' => 'minium_mark'))
 										$this->db->join('subject', 'exam.subject_id = subject.subject_id', 'inner');
 										$this->db->where('exam.exam_id', $exam_id);
 										$selectedExam = $this->db->get()->row();
-										?>
-										<option value="<?=$exam_id?>" selected><?= $selectedExam->name . ' (' . $selectedExam->subject_name . ')'?></option>
+									?>
+										<option value="<?= $exam_id ?>" selected><?= $selectedExam->name . ' (' . $selectedExam->subject_name . ')' ?></option>
 										<?php
 										$this->db->select('exam.*, subject.name as subject_name');
 										$this->db->from('exam');
 										$this->db->join('subject', 'exam.subject_id = subject.subject_id', 'inner');
 										$this->db->where('exam.section_id', $selectedExam->section_id);
 										$examData = $this->db->get()->result();
-										foreach($examData as $exa){
-											if($exa->exam_id==$exam_id){
+										foreach ($examData as $exa) {
+											if ($exa->exam_id == $exam_id) {
 												continue;
 											}
-											?>
-										<option value="<?=$exa->exam_id?>"><?= $exa->name.' ('.$exa->subject_name.')'?> </option>
+										?>
+											<option value="<?= $exa->exam_id ?>"><?= $exa->name . ' (' . $exa->subject_name . ')' ?> </option>
 										<?php } ?>
 									<?php } else { ?>
 										<option value="" selected><?php echo getEduAppGTLang('select'); ?></option>
@@ -185,22 +188,19 @@ $min = $this->db->get_where('academic_settings', array('type' => 'minium_mark'))
 											if ($mark->num_rows() > 0) {
 												$marks = $mark->result_array();
 												foreach ($marks as $row4):
-													$examDetail=getExamDetail($exam_id);
+													$examDetail = getExamDetail($exam_id);
 										?>
 													<tr>
 														<td><?php echo $row3['name']; ?></td>
 														<td><?php echo $this->crud->get_name('teacher', $row3['teacher_id']); ?></td>
 														<td class="text-center"><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $exam_id, 'student_id' => $student_id, 'year' => $running_year))->row()->mark_obtained; ?></td>
 														<td>
-															<?php if($examDetail->is_final)
-															{
+															<?php if ($examDetail->is_final) {
 																echo countEvaluacionesFinales($examDetail->exam_id,  $student_id);
-															}
-															else
-															{
+															} else {
 																echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $exam_id, 'student_id' => $student_id, 'year' => $running_year))->row()->final;
 															}
-															  ?>
+															?>
 														</td>
 														<td class="text-center"><?php echo $this->db->get_where('mark', array('subject_id' => $row3['subject_id'], 'exam_id' => $exam_id, 'student_id' => $student_id, 'year' => $running_year))->row()->comment; ?></td>
 													</tr>

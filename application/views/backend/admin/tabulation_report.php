@@ -16,6 +16,9 @@
     						<a class="navs-links" href="<?php echo base_url(); ?>admin/attendance_report/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i> <span><?php echo getEduAppGTLang('attendance'); ?></span></a>
     					</li>
     					<li class="navs-item">
+    						<a class="navs-links" href="<?php echo base_url(); ?>admin/grades_report/"><i class="picons-thin-icon-thin-0101_notes_text_notebook"></i> <span><?php echo getEduAppGTLang('grades_report'); ?></span></a>
+    					</li>
+    					<li class="navs-item">
     						<a class="navs-links" href="<?php echo base_url(); ?>admin/marks_report/"><i class="picons-thin-icon-thin-0100_to_do_list_reminder_done"></i> <span><?php echo getEduAppGTLang('final_marks'); ?></span></a>
     					</li>
     					<li class="navs-item">
@@ -134,12 +137,12 @@
 									$f = 0;
 									$students = $this->db->get_where('enroll', array('class_id' => $class_id, 'section_id' => $section_id, 'year' => $running_year))->result_array();
 									foreach ($students as $row):
-										if(isStudentFinishSubject($row['student_id'], $subject_id)){
+										if (isStudentFinishSubject($row['student_id'], $subject_id)) {
 											continue;
 										}
 										if (!isActiveSubject($row['student_id'], $subject_id)) {
 											continue;
-										   }
+										}
 										if ($this->db->get_where('student', array('student_id' => $row['student_id']))->row()->sex == 'M') {
 											$m += 1;
 										} else {
@@ -155,18 +158,18 @@
 											$average = 0;
 											$exams = $this->db->get_where('exam', array('class_id' => $class_id, 'section_id' => $section_id, 'subject_id' => $subject_id))->result_array();
 											foreach ($exams as $key):
-												if($key['is_final']){
-													$average += countEvaluacionesFinales($key['exam_id'],$row['student_id']);
-												}else{
+												if ($key['is_final']) {
+													$average += countEvaluacionesFinales($key['exam_id'], $row['student_id']);
+												} else {
 													$average += $this->db->get_where('mark', array('student_id' => $row['student_id'], 'year' => $running_year, 'exam_id' => $key['exam_id'], 'subject_id' => $subject_id))->row()->final;
 												}
 											?>
-											<?php if($key['is_final']){?>
-												<td class="text-center"><?php echo countEvaluacionesFinales($key['exam_id'], $row['student_id']); ?></td>
-											<?php }else{?>
-												<td class="text-center"><?php echo $this->db->get_where('mark', array('student_id' => $row['student_id'], 'year' => $running_year, 'exam_id' => $key['exam_id'], 'subject_id' => $subject_id))->row()->final; ?></td>
-												<?php } ?>
-    											
+    											<?php if ($key['is_final']) { ?>
+    												<td class="text-center"><?php echo countEvaluacionesFinales($key['exam_id'], $row['student_id']); ?></td>
+    											<?php } else { ?>
+    												<td class="text-center"><?php echo $this->db->get_where('mark', array('student_id' => $row['student_id'], 'year' => $running_year, 'exam_id' => $key['exam_id'], 'subject_id' => $subject_id))->row()->final; ?></td>
+    											<?php } ?>
+
     										<?php endforeach; ?>
     									</tr>
     								<?php endforeach; ?>

@@ -16,6 +16,9 @@
 						<a class="navs-links" href="<?php echo base_url(); ?>admin/attendance_report/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i> <span><?php echo getEduAppGTLang('attendance'); ?></span></a>
 					</li>
 					<li class="navs-item">
+						<a class="navs-links" href="<?php echo base_url(); ?>admin/grades_report/"><i class="picons-thin-icon-thin-0101_notes_text_notebook"></i> <span><?php echo getEduAppGTLang('grades_report'); ?></span></a>
+					</li>
+					<li class="navs-item">
 						<a class="navs-links" href="<?php echo base_url(); ?>admin/marks_report/"><i class="picons-thin-icon-thin-0100_to_do_list_reminder_done"></i> <span><?php echo getEduAppGTLang('final_marks'); ?></span></a>
 					</li>
 					<li class="navs-item">
@@ -104,13 +107,13 @@
 							</div>
 						</div>
 						<?php echo form_close(); ?>
-						<?php if ($class_id != "" && $section_id != ""&& $subject_id != ""):
-							$studentList = getActiveStudentBySubjectId($subject_id,$class_id,$section_id,$running_year);
-							?>
+						<?php if ($class_id != "" && $section_id != "" && $subject_id != ""):
+							$studentList = getActiveStudentBySubjectId($subject_id, $class_id, $section_id, $running_year);
+						?>
 							<div class="row">
 								<div class="text-center col-sm-12"><br>
 									<h4><?php echo $this->db->get_where('class', array('class_id' => $class_id))->row()->name; ?> - <?php echo getEduAppGTLang('section'); ?>: <?php echo $this->db->get_where('section', array('section_id' => $section_id))->row()->name; ?></h4>
-									<p><b><?php echo getEduAppGTLang('teacher'); ?>:</b> <?php echo $this->crud->get_name('teacher', $this->db->get_where('class', array('class_id' => $class_id))->row()->teacher_id); ?><br><b><?php  echo count($studentList); ?></b> <?php echo getEduAppGTLang('students'); ?> | <b><?= getSubjectDetailBySubjectId($subject_id)->name?></b> <?php echo getEduAppGTLang('subjects'); ?>.<br><b><?php echo getEduAppGTLang('running_year'); ?>:</b> <?php echo $running_year; ?></p>
+									<p><b><?php echo getEduAppGTLang('teacher'); ?>:</b> <?php echo $this->crud->get_name('teacher', $this->db->get_where('class', array('class_id' => $class_id))->row()->teacher_id); ?><br><b><?php echo count($studentList); ?></b> <?php echo getEduAppGTLang('students'); ?> | <b><?= getSubjectDetailBySubjectId($subject_id)->name ?></b> <?php echo getEduAppGTLang('subjects'); ?>.<br><b><?php echo getEduAppGTLang('running_year'); ?>:</b> <?php echo $running_year; ?></p>
 								</div>
 								<hr>
 								<div class="col-sm-3 brd">
@@ -134,12 +137,12 @@
 													</tr>
 												</thead>
 												<tbody>
-													<?php 
+													<?php
 													foreach ($studentList as $row):
 													?>
 														<tr>
 															<td><img src="<?php echo $this->crud->get_image_url('student', $row->student_id); ?>" width="25px" class="tbl-user"> <?php echo $this->crud->get_name('student', $row->student_id); ?></td>
-															<td class="text-center"><?php echo getRoll($row->student_id,$class_id,$section_id,$running_year) ?></td>
+															<td class="text-center"><?php echo getRoll($row->student_id, $class_id, $section_id, $running_year) ?></td>
 															<?php $parent_id = $this->db->get_where('student', array('student_id' => $row->student_id))->row()->parent_id; ?>
 															<td class="text-center"><?php echo $this->crud->get_name('parent', $parent_id); ?></td>
 															<td class="text-center">
@@ -152,7 +155,7 @@
 																<?php else: ?>
 																	<div class="pt-btn">
 																		<a class="btn nc btn-danger btn-sm btn-rounded">
-																			<font color="white"><?php echo getEduAppGTLang('inactive').'-'.getEduAppGTLang('enroll'); ?></font>
+																			<font color="white"><?php echo getEduAppGTLang('inactive') . '-' . getEduAppGTLang('enroll'); ?></font>
 																		</a>
 																	</div>
 																<?php endif; ?>
