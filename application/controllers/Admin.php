@@ -4057,6 +4057,66 @@ class Admin extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('system_settings');
         $this->load->view('backend/index', $page_data);
     }
+    function certificate()
+    {
+        if($this->db->get_where('certificate_image', array('id' => '1'))->row()->image){
+            $image=$this->db->get_where('certificate_image', array('id' => '1'))->row()->image;
+        }else{
+            $image="default.png";
+        }
+        $page_data['image']=$image;
+        $page_data['page_name']  = 'certificate';
+        $page_data['page_title'] = getEduAppGTLang('certificate');
+        $this->load->view('backend/index', $page_data);
+    }
+    public function change_certificate_image()
+{
+    if (!empty($_FILES['certificate_image']['name'])) {
+
+        $check = getimagesize($_FILES["certificate_image"]["tmp_name"]);
+
+        // Validasi ukuran HARUS 1920 x 1080
+        if ($check[0] != 1920 || $check[1] != 1080) {
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('image_must_1920x1080'));
+            redirect(base_url('admin/certificate'));
+            return;
+        }
+
+        // Lokasi folder upload
+        $upload_dir = 'public/certificates/';
+        if (!is_dir($upload_dir)) {
+            mkdir($upload_dir, 0755, true);
+        }
+
+        // Generate nama file acak
+        $ext = pathinfo($_FILES["certificate_image"]["name"], PATHINFO_EXTENSION);
+        $new_filename = uniqid('cert_', true) . '.' . $ext;
+
+        // Path akhir file
+        $target_file = $upload_dir . $new_filename;
+
+        // Pindahkan file
+        if (move_uploaded_file($_FILES["certificate_image"]["tmp_name"], $target_file)) {
+            // Update database
+            $this->db->where('id', 1);
+            $this->db->update('certificate_image', [
+                'image' => $new_filename,
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
+        } else {
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_upload_image'));
+        }
+
+    } else {
+        $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('no_image_selected'));
+    }
+
+    redirect(base_url('admin/certificate'));
+}
+
+
 
     //Frontend function.
     function frontend($param1 = '', $param2 = '', $param3 = '')

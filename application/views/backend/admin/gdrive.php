@@ -26,6 +26,9 @@
                     <li class="navs-item">
                         <a class="navs-links active" href="<?php echo base_url(); ?>admin/drive/"><i class="picons-thin-icon-thin-0119_folder_open_full_documents"></i><span><?php echo getEduAppGTLang('google_drive'); ?></span></a>
                     </li>
+                    <li class="navs-item">
+                            <a class="navs-links" href="<?php echo base_url();?>admin/certificate/"><i class="picons-thin-icon-thin-0656_medal_award_rating_prize_achievement"></i><span><?php echo getEduAppGTLang('certificates');?></span></a>
+                        </li>
                 </ul>
             </div>
         </div><br>
