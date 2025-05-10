@@ -2588,15 +2588,19 @@ class Crud extends School
     }
 
     function count_unread_messages() 
-    {
-        $unread_message_counter = 0;
-        $current_user = $this->session->userdata('login_type') . '-' . $this->session->userdata('login_user_id');
-        $this->db->group_by('message_thread_code');
-        $this->db->where('read_status', 0);
-        $this->db->where('reciever', $current_user);
-        $unread_message_counter = $this->db->get('message')->num_rows();
-        return $unread_message_counter;
-    }
+{
+    $current_user = $this->session->userdata('login_type') . '-' . $this->session->userdata('login_user_id');
+    
+    $this->db->select('COUNT(DISTINCT message_thread_code) AS unread_count');
+    $this->db->where('read_status', 0);
+    $this->db->where('reciever', $current_user);
+    
+    $query = $this->db->get('message');
+    $result = $query->row();
+    
+    return $result ? $result->unread_count : 0;
+}
+
     
     function create_post_message($post_code = '') 
     {
