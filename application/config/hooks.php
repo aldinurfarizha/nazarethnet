@@ -12,3 +12,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $hook['post_controller_constructor'][] = array('function' => 'redirect_ssl', 'filename' => 'ssl.php', 'filepath' => 'hooks');
 $hook['post_controller_constructor'][] = array('function' => 'checker', 'filename' => 'check.php', 'filepath' => 'hooks');
+$hook['post_controller_constructor'][] = array(
+    'class'    => '',
+    'function' => 'set_sql_mode',
+    'filename' => 'SetSqlMode.php',
+    'filepath' => 'hooks'
+);
