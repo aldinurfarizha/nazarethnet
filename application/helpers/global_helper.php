@@ -6,6 +6,15 @@ function print_json($data)
 {
     echo json_encode($data, JSON_PRETTY_PRINT);
 }
+function generateRandomString($length = 10) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[random_int(0, strlen($characters) - 1)];
+    }
+    return $randomString;
+}
+
 function getStudentClassAndSectionById($student_id)
 {
     $ci = &get_instance();

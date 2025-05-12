@@ -93,7 +93,6 @@
         </div>
     <?php endif; ?>
     <?php if ($page_name == 'meet' || $page_name == 'subject_dashboard' || $page_name == 'upload_marks' || $page_name == 'online_exams' || $page_name == 'homework' || $page_name == 'forum' || $page_name == 'study_material' || $page_name == 'subject_marks'): ?>
-        <?php $fc_info = base64_decode($class_id); ?>
         <?php $fc_info_data = base64_decode($data);
         $fc_ex = explode("-", $fc_info_data); ?>
         <div class="page-title">

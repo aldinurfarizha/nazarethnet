@@ -3152,18 +3152,26 @@ class Admin extends EduAppGT
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
+
         if ($this->db->get_where('settings', array('type' => 'account_id'))->row()->description != '') {
             $explode = explode('-', base64_decode($data));
             $haveFolder = $this->db->get_where('subject', array('subject_id' => $explode[2]))->row()->drive_folder;
+
             if ($haveFolder == '') {
-                $this->drive_model->createSubjectFolder($explode[2]);
+                try {
+                    $this->drive_model->createSubjectFolder($explode[2]);
+                } catch (\Throwable $e) {
+                    $this->session->set_flashdata('flash_message_failed', 'failed automatic creae folder in GDrive. This subject doesnt have folder in GDrive ');
+                }
             }
         }
-        $page_data['data'] = $data;
+
+        $page_data['data']         = $data;
         $page_data['page_name']    = 'subject_dashboard';
         $page_data['page_title']   = getEduAppGTLang('subject_dashboard');
         $this->load->view('backend/index', $page_data);
     }
+
 
     //Manage subjects function.
     function courses($param1 = '', $param2 = '', $param3 = '')
@@ -3192,6 +3200,11 @@ class Admin extends EduAppGT
             $this->academic->deleteCourse($param2);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_deleted'));
             redirect(base_url() . 'admin/cursos/', 'refresh');
+        }
+        if ($param1 == 'duplicate') {
+            $this->academic->duplicateCourse();
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_duplicated'));
+            redirect(base_url() . 'admin/cursos/' . base64_encode($param2) . "/", 'refresh');
         }
     }
 
