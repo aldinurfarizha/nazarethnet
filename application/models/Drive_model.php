@@ -14,9 +14,15 @@ class Drive_model extends School
     function getDrive()
     {
         $client = $this->getClient();
+
+        if (!($client instanceof \Google_Client)) {
+            throw new \Exception('Google Client is not available. Reason: ' . (is_string($client) ? 'Auth URL returned instead of client' : 'Unexpected error.'));
+        }
+
         $drive_service = new \Google_Service_Drive($client);
         return $drive_service;
     }
+
 
     function magicDownloadLink($webContentLink)
     {
@@ -87,6 +93,12 @@ class Drive_model extends School
 
     public function createSubjectFolder($subjectID)
     {
+        try {
+            $drive_service = $this->getDrive();
+        } catch (\Exception $e) {
+            $this->session->set_flashdata('flash_message_failed', 'failed automatic creae folder in GDrive. This subject doesnt have folder in GDrive ');
+            return false;
+        }
         $year = $this->db->get_where('settings', array('type' => 'running_year'))->row()->description;
         $parent = $this->db->get_where('settings', array('type' => 'school_folderId'))->row()->description;
         $classID  = $this->db->get_where('subject', array('subject_id' => $subjectID))->row()->class_id;
@@ -227,6 +239,12 @@ class Drive_model extends School
 
     function uploadStudyMaterial($subjectId)
     {
+        try {
+            $drive_service = $this->getDrive();
+        } catch (\Exception $e) {
+            $this->session->set_flashdata('flash_message_failed', 'failed automatic creae folder in GDrive. This subject doesnt have folder in GDrive ');
+            return false;
+        }
         $parent = $this->db->get_where('subject', array('subject_id' => $subjectId))->row()->study_material;
         if ($parent != '') {
             $folder = $parent;

@@ -578,7 +578,7 @@
                         </a>
                     </li>
                 <?php endif; ?>
-                <?php if ($this->db->get_where('account_role', array('type' => 'online_courses'))->row()->permissions == 1 || $admin_type == 1): ?>
+                <?php if (@$this->db->get_where('account_role', array('type' => 'online_courses'))->row()->permissions == 1 || $admin_type == 1): ?>
                     <li>
                         <a href="<?php echo base_url(); ?>admin/online_courses/">
                             <div class="left-menu-icon">

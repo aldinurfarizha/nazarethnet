@@ -6,14 +6,24 @@ function print_json($data)
 {
     echo json_encode($data, JSON_PRETTY_PRINT);
 }
-function generateRandomString($length = 10) {
+function generateRandomString($length = 10)
+{
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
     $randomString = '';
+
     for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[random_int(0, strlen($characters) - 1)];
+        if (function_exists('random_int')) {
+            $index = random_int(0, $charactersLength - 1);
+        } else {
+            $index = mt_rand(0, $charactersLength - 1);
+        }
+        $randomString .= $characters[$index];
     }
+
     return $randomString;
 }
+
 
 function getStudentClassAndSectionById($student_id)
 {

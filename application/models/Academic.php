@@ -599,9 +599,58 @@ class Academic extends School
         }
 
         //fill forums section
-        
+        $forums_reference=$this->db->get_where('forum', array('subject_id' => "$reference_subject_id"))->result();
+        if($forums_reference){
+            foreach($forums_reference as $forums_references){
+                $this->db->insert('forum', array(
+                    'teacher_id' => $forums_references->teacher_id,
+                    'subject_id' => $new_subject->subject_id,
+                    'class_id' => $new_subject->class_id,
+                    'timestamp' => $forums_references->timestamp,
+                    'title' => $forums_references->title,
+                    'description' => $forums_references->description,
+                    'post_code' => generateRandomString(7),
+                    'file_name' => $forums_references->file_name,
+                    'section_id' => $new_subject->section_id,
+                    'post_status' => $forums_references->post_status,
+                    'type' => $forums_references->type,
+                    'wall_type' => $forums_references->wall_type,
+                    'publish_date' => $forums_references->publish_date,
+                    'upload_date' => $forums_references->upload_date,
+                    'exp' => $forums_references->exp,
+                    'sync_status' => $forums_references->sync_status,
+                    'attachment_name' => $forums_references->attachment_name,
+                    
+                ));
+            }
+        }
 
         //fill study materials section
+        $study_material_reference=$this->db->get_where('document', array('subject_id' => "$reference_subject_id"))->result();
+        if($study_material_reference){
+            foreach($study_material_reference as $study_material_references){
+                $this->db->insert('document', array(
+                    'title' => $study_material_references->title,
+                    'description' => $study_material_references->description,
+                    'file_name' => $study_material_references->file_name,
+                    'file_type' => $study_material_references->file_type,
+                    'class_id' => $new_subject->class_id,
+                    'teacher_id' => $new_subject->teacher_id,
+                    'timestamp' => $study_material_references->timestamp,
+                    'subject_id' => $new_subject->subject_id,
+                    'type' => $study_material_references->type,
+                    'year' => $new_subject->year,
+                    'filesize' => $study_material_references->filesize,
+                    'wall_type' => $study_material_references->wall_type,
+                    'publish_date' => $study_material_references->publish_date,
+                    'upload_date' => $study_material_references->upload_date,
+                    'section_id' => $new_subject->section_id,
+                    'sync_status' => $study_material_references->sync_status,
+                    'attachment_name' => $study_material_references->attachment_name,
+                    'drive_id' => $study_material_references->drive_id,
+                ));
+            }
+        }
 
 
     }
