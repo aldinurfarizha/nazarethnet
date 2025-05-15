@@ -3560,6 +3560,15 @@ class Admin extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('venues_and_conferences');
         $this->load->view('backend/index', $page_data);
     }
+    function import_data()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $page_data['page_name']  = 'import_data';
+        $page_data['page_title'] = getEduAppGTLang('import_data');
+        $this->load->view('backend/index', $page_data);
+    }
 
     //Manage attendance function.
     function attendance($param1 = '', $param2 = '')

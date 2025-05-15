@@ -4616,3 +4616,211 @@ ERROR - 2025-05-14 19:31:45 --> 404 Page Not Found: Public/uploads
 ERROR - 2025-05-14 19:31:45 --> 404 Page Not Found: Public/uploads
 ERROR - 2025-05-14 19:31:45 --> 404 Page Not Found: Public/uploads
 ERROR - 2025-05-14 19:31:45 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:35:44 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:38:32 --> Severity: Notice --> Undefined variable: studentList C:\xampp\htdocs\nazarethnet\application\views\backend\admin\general_reports.php 180
+ERROR - 2025-05-14 19:38:32 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\nazarethnet\application\views\backend\admin\general_reports.php 180
+ERROR - 2025-05-14 19:38:38 --> Severity: Notice --> Undefined variable: studentList C:\xampp\htdocs\nazarethnet\application\views\backend\admin\general_reports.php 180
+ERROR - 2025-05-14 19:38:38 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\nazarethnet\application\views\backend\admin\general_reports.php 180
+ERROR - 2025-05-14 19:39:31 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2882
+ERROR - 2025-05-14 19:39:31 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2883
+ERROR - 2025-05-14 19:39:31 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2890
+ERROR - 2025-05-14 19:39:31 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2891
+ERROR - 2025-05-14 19:39:31 --> Severity: Notice --> Uninitialized string offset: 0 C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2895
+ERROR - 2025-05-14 19:39:31 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2882
+ERROR - 2025-05-14 19:39:31 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2883
+ERROR - 2025-05-14 19:39:32 --> Severity: Notice --> Undefined variable: studentList C:\xampp\htdocs\nazarethnet\application\views\backend\admin\general_reports.php 180
+ERROR - 2025-05-14 19:39:32 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\nazarethnet\application\views\backend\admin\general_reports.php 180
+ERROR - 2025-05-14 19:40:15 --> Query error: Table 'nazarethnet.certificate_image' doesn't exist - Invalid query: SELECT *
+FROM `certificate_image`
+WHERE `id` = '1'
+ERROR - 2025-05-14 19:40:23 --> Severity: Notice --> Undefined variable: studentList C:\xampp\htdocs\nazarethnet\application\views\backend\admin\general_reports.php 180
+ERROR - 2025-05-14 19:40:23 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\nazarethnet\application\views\backend\admin\general_reports.php 180
+ERROR - 2025-05-14 19:42:21 --> Severity: Notice --> Undefined variable: studentList C:\xampp\htdocs\nazarethnet\application\views\backend\admin\general_reports.php 183
+ERROR - 2025-05-14 19:42:21 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\nazarethnet\application\views\backend\admin\general_reports.php 183
+ERROR - 2025-05-14 19:43:26 --> Severity: Notice --> Undefined variable: studentList C:\xampp\htdocs\nazarethnet\application\views\backend\admin\general_reports.php 186
+ERROR - 2025-05-14 19:43:26 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\nazarethnet\application\views\backend\admin\general_reports.php 186
+ERROR - 2025-05-14 19:44:52 --> Severity: Notice --> Undefined variable: studentList C:\xampp\htdocs\nazarethnet\application\views\backend\admin\general_reports.php 186
+ERROR - 2025-05-14 19:44:52 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\nazarethnet\application\views\backend\admin\general_reports.php 186
+ERROR - 2025-05-14 19:45:00 --> Severity: Notice --> Undefined variable: studentList C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students_report.php 186
+ERROR - 2025-05-14 19:45:00 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students_report.php 186
+ERROR - 2025-05-14 19:46:37 --> Severity: Notice --> Undefined variable: exam_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\final_evaluation.php 155
+ERROR - 2025-05-14 19:46:44 --> 404 Page Not Found: Admin/import_data
+ERROR - 2025-05-14 19:47:33 --> Severity: Notice --> Undefined variable: studentList C:\xampp\htdocs\nazarethnet\application\views\backend\admin\general_reports.php 186
+ERROR - 2025-05-14 19:47:33 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\nazarethnet\application\views\backend\admin\general_reports.php 186
+ERROR - 2025-05-14 19:48:14 --> Severity: Notice --> Undefined variable: studentList C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students_report.php 192
+ERROR - 2025-05-14 19:48:14 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students_report.php 192
+ERROR - 2025-05-14 19:48:20 --> Severity: Notice --> Undefined variable: exam_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\final_evaluation.php 155
+ERROR - 2025-05-14 19:48:30 --> 404 Page Not Found: Admin/import_data
+ERROR - 2025-05-14 19:53:10 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2882
+ERROR - 2025-05-14 19:53:10 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2883
+ERROR - 2025-05-14 19:53:10 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2882
+ERROR - 2025-05-14 19:53:10 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2883
+ERROR - 2025-05-14 19:53:10 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2882
+ERROR - 2025-05-14 19:53:10 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2883
+ERROR - 2025-05-14 19:53:10 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2882
+ERROR - 2025-05-14 19:53:10 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2883
+ERROR - 2025-05-14 19:53:10 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2882
+ERROR - 2025-05-14 19:53:10 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2883
+ERROR - 2025-05-14 19:53:10 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2882
+ERROR - 2025-05-14 19:53:10 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2883
+ERROR - 2025-05-14 19:53:10 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2882
+ERROR - 2025-05-14 19:53:10 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\models\Crud.php 2883
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:16 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:17 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:53:18 --> 404 Page Not Found: Public/uploads
+ERROR - 2025-05-14 19:58:25 --> 404 Page Not Found: Admin/import_data
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:15 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:16 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:17 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:17 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:17 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:17 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:17 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:17 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:17 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:17 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:17 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:17 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:17 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:17 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:17 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:17 --> Severity: Notice --> Undefined index: student_id C:\xampp\htdocs\nazarethnet\application\views\backend\admin\students.php 152
+ERROR - 2025-05-14 20:17:22 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\views\backend\admin\student_portal.php 74
+ERROR - 2025-05-14 20:17:22 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\views\backend\admin\student_portal.php 98
+ERROR - 2025-05-14 20:17:22 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\views\backend\admin\student_portal.php 98
+ERROR - 2025-05-14 20:17:22 --> Severity: Notice --> Trying to get property of non-object C:\xampp\htdocs\nazarethnet\application\views\backend\admin\student_portal.php 115
