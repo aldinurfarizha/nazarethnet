@@ -507,150 +507,168 @@ class Academic extends School
         
         $this->load->helper('string');
         //fill mark section (Grades)
-        $exam_reference=$this->db->get_where('exam', array('subject_id' => "$reference_subject_id"))->result();
-        if($exam_reference){
-            foreach($exam_reference as $exam_references){
-                $this->db->insert('exam', array('name' => $exam_references->name, 'subject_id' => $new_subject_id, 'class_id' => $new_subject->class_id, 'section_id' => $new_subject->section_id));
-                $new_exam_id = $this->db->insert_id();
-                $mark_activity_reference=$this->db->get_where('mark_activity', array('exam_id' => "$exam_references->exam_id"))->result();
-                if($mark_activity_reference){
-                    foreach($mark_activity_reference as $mark_activity_references){
-                        $this->db->insert('mark_activity', array(
-                            'name' => $mark_activity_references->name,
-                            'exam_id' => $new_exam_id,
-                            'promedio' => $mark_activity_references->promedio,
-                            'class_id' => $new_subject->class_id,
-                            'section_id' => $new_subject->section_id,
-                            'subject_id' => $new_subject_id,
-                            'year' => $new_subject->year,
-                            'is_calculate_avg'=>$mark_activity_references->is_calculate_avg,
-                            'percent'=>$mark_activity_references->percent,
-                            'reason'=>$mark_activity_references->reason,
-                        ));
+       if($this->input->post('duplicate_grades'))
+       {
+            $exam_reference = $this->db->get_where('exam', array('subject_id' => "$reference_subject_id"))->result();
+            if ($exam_reference) {
+                foreach ($exam_reference as $exam_references) {
+                    $this->db->insert('exam', array('name' => $exam_references->name, 'subject_id' => $new_subject_id, 'class_id' => $new_subject->class_id, 'section_id' => $new_subject->section_id));
+                    $new_exam_id = $this->db->insert_id();
+                    $mark_activity_reference = $this->db->get_where('mark_activity', array('exam_id' => "$exam_references->exam_id"))->result();
+                    if ($mark_activity_reference) {
+                        foreach ($mark_activity_reference as $mark_activity_references) {
+                            $this->db->insert('mark_activity', array(
+                                'name' => $mark_activity_references->name,
+                                'exam_id' => $new_exam_id,
+                                'promedio' => $mark_activity_references->promedio,
+                                'class_id' => $new_subject->class_id,
+                                'section_id' => $new_subject->section_id,
+                                'subject_id' => $new_subject_id,
+                                'year' => $new_subject->year,
+                                'is_calculate_avg' => $mark_activity_references->is_calculate_avg,
+                                'percent' => $mark_activity_references->percent,
+                                'reason' => $mark_activity_references->reason,
+                            ));
+                        }
                     }
                 }
-
             }
-        }
+       }
 
         //fill online exam section
-        $online_exam_reference=$this->db->get_where('online_exam', array('subject_id' => "$reference_subject_id"))->result();
-        if($online_exam_reference){
-            foreach($online_exam_reference as $online_exam_references){
-                $this->db->insert('online_exam', array(
-                    'code' =>generateRandomString(7),
-                    'subject_id' => $new_subject_id,
-                    'class_id' => $new_subject->class_id,
-                    'section_id' => $new_subject->section_id,
-                    'running_year' => $new_subject->year,
-                    'exam_date' => $online_exam_references->exam_date,
-                    'time_start' => $online_exam_references->time_start,
-                    'time_end' => $online_exam_references->time_end,
-                    'duration' => $online_exam_references->duration,
-                    'minimum_percentage' => $online_exam_references->minimum_percentage,
-                    'instruction' => $online_exam_references->instruction,
-                    'status' => $online_exam_references->status,
-                    'wall_type'=>$online_exam_references->wall_type,
-                    'publish_date'=>$online_exam_references->publish_date,
-                    'uploader_type'=>$online_exam_references->uploader_type,
-                    'uploader_id'=>$online_exam_references->uploader_id,
-                    'upload_date'=>$online_exam_references->upload_date,
-                    'exp'=>$online_exam_references->exp,
-                    'password'=>$online_exam_references->password,
-                    'results'=>$online_exam_references->results,
-                    'show_random'=>$online_exam_references->show_random,
-                    'certificate'=>$online_exam_references->certificate,
-                ));
+        if ($this->input->post('duplicate_exam'))
+        {
+            $online_exam_reference = $this->db->get_where('online_exam', array('subject_id' => "$reference_subject_id"))->result();
+            if ($online_exam_reference) {
+                foreach ($online_exam_reference as $online_exam_references) {
+                    $this->db->insert('online_exam', array(
+                        'code' => generateRandomString(7),
+                        'subject_id' => $new_subject_id,
+                        'class_id' => $new_subject->class_id,
+                        'section_id' => $new_subject->section_id,
+                        'running_year' => $new_subject->year,
+                        'exam_date' => $online_exam_references->exam_date,
+                        'time_start' => $online_exam_references->time_start,
+                        'time_end' => $online_exam_references->time_end,
+                        'duration' => $online_exam_references->duration,
+                        'minimum_percentage' => $online_exam_references->minimum_percentage,
+                        'instruction' => $online_exam_references->instruction,
+                        'status' => $online_exam_references->status,
+                        'wall_type' => $online_exam_references->wall_type,
+                        'publish_date' => $online_exam_references->publish_date,
+                        'uploader_type' => $online_exam_references->uploader_type,
+                        'uploader_id' => $online_exam_references->uploader_id,
+                        'upload_date' => $online_exam_references->upload_date,
+                        'exp' => $online_exam_references->exp,
+                        'password' => $online_exam_references->password,
+                        'results' => $online_exam_references->results,
+                        'show_random' => $online_exam_references->show_random,
+                        'certificate' => $online_exam_references->certificate,
+                    ));
+                }
             }
         }
+
 
         //fill home work section
-        $homework_reference=$this->db->get_where('homework', array('subject_id' => "$reference_subject_id"))->result();
-        if($homework_reference){
-            foreach($homework_reference as $homework_references){
-                $new_homework_code=generateRandomString(7);
-                $this->db->insert('homework', array(
-                    'homework_code' =>$new_homework_code,
-                    'title' => $homework_references->title,
-                    'description' => $homework_references->description,
-                    'class_id' => $new_subject->class_id,
-                    'subject_id' => $new_subject->subject_id,
-                    'uploader_id' => $homework_references->uploader_id,
-                    'time_end' => $homework_references->time_end,
-                    'section_id' => $new_subject->section_id,
-                    'uploader_type' => $homework_references->uploader_type,
-                    'file_name' => $homework_references->file_name,
-                    'date_end' => $homework_references->date_end,
-                    'type' => $homework_references->type,
-                    'user' => $homework_references->user,
-                    'status' => $homework_references->status,
-                    'year' => $new_subject->year,
-                    'filesize' => $homework_references->filesize,
-                    'wall_type'=>$homework_references->wall_type,
-                    'publish_date'=>$homework_references->publish_date,
-                    'upload_date'=>$homework_references->upload_date,
-                    'media_type'=>$homework_references->media_type,
-                    'exp'=>$homework_references->exp,
-                    'sync_status'=>$homework_references->sync_status,
-                    'attachment_name'=>$homework_references->attachment_name,
+        if ($this->input->post('duplicate_home_work'))
+        {
+            $homework_reference = $this->db->get_where('homework', array('subject_id' => "$reference_subject_id"))->result();
+            if ($homework_reference) {
+                foreach ($homework_reference as $homework_references) {
+                    $new_homework_code = generateRandomString(7);
+                    $this->db->insert('homework', array(
+                        'homework_code' => $new_homework_code,
+                        'title' => $homework_references->title,
+                        'description' => $homework_references->description,
+                        'class_id' => $new_subject->class_id,
+                        'subject_id' => $new_subject->subject_id,
+                        'uploader_id' => $homework_references->uploader_id,
+                        'time_end' => $homework_references->time_end,
+                        'section_id' => $new_subject->section_id,
+                        'uploader_type' => $homework_references->uploader_type,
+                        'file_name' => $homework_references->file_name,
+                        'date_end' => $homework_references->date_end,
+                        'type' => $homework_references->type,
+                        'user' => $homework_references->user,
+                        'status' => $homework_references->status,
+                        'year' => $new_subject->year,
+                        'filesize' => $homework_references->filesize,
+                        'wall_type' => $homework_references->wall_type,
+                        'publish_date' => $homework_references->publish_date,
+                        'upload_date' => $homework_references->upload_date,
+                        'media_type' => $homework_references->media_type,
+                        'exp' => $homework_references->exp,
+                        'sync_status' => $homework_references->sync_status,
+                        'attachment_name' => $homework_references->attachment_name,
 
-                ));
+                    ));
+                }
             }
         }
+
 
         //fill forums section
-        $forums_reference=$this->db->get_where('forum', array('subject_id' => "$reference_subject_id"))->result();
-        if($forums_reference){
-            foreach($forums_reference as $forums_references){
-                $this->db->insert('forum', array(
-                    'teacher_id' => $forums_references->teacher_id,
-                    'subject_id' => $new_subject->subject_id,
-                    'class_id' => $new_subject->class_id,
-                    'timestamp' => $forums_references->timestamp,
-                    'title' => $forums_references->title,
-                    'description' => $forums_references->description,
-                    'post_code' => generateRandomString(7),
-                    'file_name' => $forums_references->file_name,
-                    'section_id' => $new_subject->section_id,
-                    'post_status' => $forums_references->post_status,
-                    'type' => $forums_references->type,
-                    'wall_type' => $forums_references->wall_type,
-                    'publish_date' => $forums_references->publish_date,
-                    'upload_date' => $forums_references->upload_date,
-                    'exp' => $forums_references->exp,
-                    'sync_status' => $forums_references->sync_status,
-                    'attachment_name' => $forums_references->attachment_name,
-                    
-                ));
+        if ($this->input->post('duplicate_forum'))
+        {
+            $forums_reference = $this->db->get_where('forum', array('subject_id' => "$reference_subject_id"))->result();
+            if ($forums_reference) {
+                foreach ($forums_reference as $forums_references) {
+                    $this->db->insert('forum', array(
+                        'teacher_id' => $forums_references->teacher_id,
+                        'subject_id' => $new_subject->subject_id,
+                        'class_id' => $new_subject->class_id,
+                        'timestamp' => $forums_references->timestamp,
+                        'title' => $forums_references->title,
+                        'description' => $forums_references->description,
+                        'post_code' => generateRandomString(7),
+                        'file_name' => $forums_references->file_name,
+                        'section_id' => $new_subject->section_id,
+                        'post_status' => $forums_references->post_status,
+                        'type' => $forums_references->type,
+                        'wall_type' => $forums_references->wall_type,
+                        'publish_date' => $forums_references->publish_date,
+                        'upload_date' => $forums_references->upload_date,
+                        'exp' => $forums_references->exp,
+                        'sync_status' => $forums_references->sync_status,
+                        'attachment_name' => $forums_references->attachment_name,
+
+                    ));
+                }
             }
         }
 
+
         //fill study materials section
-        $study_material_reference=$this->db->get_where('document', array('subject_id' => "$reference_subject_id"))->result();
-        if($study_material_reference){
-            foreach($study_material_reference as $study_material_references){
-                $this->db->insert('document', array(
-                    'title' => $study_material_references->title,
-                    'description' => $study_material_references->description,
-                    'file_name' => $study_material_references->file_name,
-                    'file_type' => $study_material_references->file_type,
-                    'class_id' => $new_subject->class_id,
-                    'teacher_id' => $new_subject->teacher_id,
-                    'timestamp' => $study_material_references->timestamp,
-                    'subject_id' => $new_subject->subject_id,
-                    'type' => $study_material_references->type,
-                    'year' => $new_subject->year,
-                    'filesize' => $study_material_references->filesize,
-                    'wall_type' => $study_material_references->wall_type,
-                    'publish_date' => $study_material_references->publish_date,
-                    'upload_date' => $study_material_references->upload_date,
-                    'section_id' => $new_subject->section_id,
-                    'sync_status' => $study_material_references->sync_status,
-                    'attachment_name' => $study_material_references->attachment_name,
-                    'drive_id' => $study_material_references->drive_id,
-                ));
+        if ($this->input->post('duplicate_study_material'))
+        {
+            $study_material_reference = $this->db->get_where('document', array('subject_id' => "$reference_subject_id"))->result();
+            if ($study_material_reference) {
+                foreach ($study_material_reference as $study_material_references) {
+                    $this->db->insert('document', array(
+                        'title' => $study_material_references->title,
+                        'description' => $study_material_references->description,
+                        'file_name' => $study_material_references->file_name,
+                        'file_type' => $study_material_references->file_type,
+                        'class_id' => $new_subject->class_id,
+                        'teacher_id' => $new_subject->teacher_id,
+                        'timestamp' => $study_material_references->timestamp,
+                        'subject_id' => $new_subject->subject_id,
+                        'type' => $study_material_references->type,
+                        'year' => $new_subject->year,
+                        'filesize' => $study_material_references->filesize,
+                        'wall_type' => $study_material_references->wall_type,
+                        'publish_date' => $study_material_references->publish_date,
+                        'upload_date' => $study_material_references->upload_date,
+                        'section_id' => $new_subject->section_id,
+                        'sync_status' => $study_material_references->sync_status,
+                        'attachment_name' => $study_material_references->attachment_name,
+                        'drive_id' => $study_material_references->drive_id,
+                    ));
+                }
             }
         }
+        
 
 
     }
