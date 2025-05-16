@@ -3551,13 +3551,13 @@ class Admin extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('class_routine');
         $this->load->view('backend/index', $page_data);
     }
-     function venues_and_conferences()
+     function branch_and_shifts()
     {
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
-        $page_data['page_name']  = 'venues_and_conferences';
-        $page_data['page_title'] = getEduAppGTLang('venues_and_conferences');
+        $page_data['page_name']  = 'branch_and_shifts';
+        $page_data['page_title'] = getEduAppGTLang('branch_and_shifts');
         $this->load->view('backend/index', $page_data);
     }
     function import_data()
@@ -4418,21 +4418,21 @@ class Admin extends EduAppGT
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
         redirect(base_url() . 'admin/final_evaluation/');
     }
-    function conferences_add()
+    function shifts_add()
     {
-        $venues_id = $this->input->post('venues_id');
+        $branch_id = $this->input->post('branch_id');
         $name = $this->input->post('name');
         $status = $this->input->post('status');
         $data = array(
-            'venues_id' => $venues_id,
+            'branch_id' => $branch_id,
             'name' => $name,
             'status'=> $status
         );
-        $this->db->insert('conferences', $data);
+        $this->db->insert('shifts', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
-        redirect(base_url() . 'admin/venues_and_conferences/');
+        redirect(base_url() . 'admin/branch_and_shifts/');
     }
-    function venues_add()
+    function branch_add()
     {
         $name = $this->input->post('name');
         $telephone = $this->input->post('telephone');
@@ -4446,18 +4446,18 @@ class Admin extends EduAppGT
             'latitude' => $latitude,
             'longitude' => $longitude
         );
-        $this->db->insert('venues', $data);
+        $this->db->insert('branch', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
-        redirect(base_url() . 'admin/venues_and_conferences/');
+        redirect(base_url() . 'admin/branch_and_shifts/');
     }
-    function venues_edit()
+    function branch_edit()
     {
         $name = $this->input->post('name');
         $telephone = $this->input->post('telephone');
         $direction = $this->input->post('direction');
         $latitude = $this->input->post('latitude');
         $longitude = $this->input->post('longitude');
-        $venues_id = $this->input->post('venues_id');
+        $branch_id = $this->input->post('branch_id');
         $data = array(
             'name' => $name,
             'telephone' => $telephone,
@@ -4465,47 +4465,47 @@ class Admin extends EduAppGT
             'latitude' => $latitude,
             'longitude' => $longitude
         );
-        $this->db->where('venues_id', $venues_id);
-        $this->db->update('venues', $data);
+        $this->db->where('branch_id', $branch_id);
+        $this->db->update('branch', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
-        redirect(base_url() . 'admin/venues_and_conferences/' . $exam_id);
+        redirect(base_url() . 'admin/branch_and_shifts/' . $exam_id);
     }
-    function venues_delete($venues_id)
+    function branch_delete($branch_id)
     {
-        $conferencesData=$this->db->get_where('conferences', array('venues_id' => $venues_id))->row();
-        if($conferencesData){
+        $shiftsData=$this->db->get_where('shifts', array('branch_id' => $branch_id))->row();
+        if($shiftsData){
             $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('venue_cannot_be_deleted_because_it_is_already_in_use_in_conference'));
-            redirect(base_url() . 'admin/venues_and_conferences/' . $exam_id);
+            redirect(base_url() . 'admin/branch_and_shifts/' );
             return;
             die();
         }
-        $this->db->where('venues_id', $venues_id);
-        $this->db->delete('venues');
+        $this->db->where('branch_id', $branch_id);
+        $this->db->delete('branch');
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_delete'));
-        redirect(base_url() . 'admin/venues_and_conferences/' . $exam_id);
+        redirect(base_url() . 'admin/branch_and_shifts/');
     }
-    function conferences_edit()
+    function shifts_edit()
     {
-        $venues_id = $this->input->post('venues_id');
+        $branch_id = $this->input->post('branch_id');
         $name = $this->input->post('name');
         $status = $this->input->post('status');
-        $conferences_id= $this->input->post('conferences_id');
+        $shifts_id= $this->input->post('shifts_id');
         $data = array(
-            'venues_id' => $venues_id,
+            'branch_id' => $branch_id,
             'name' => $name,
             'status' => $status,
         );
-        $this->db->where('conferences_id', $conferences_id);
-        $this->db->update('conferences', $data);
+        $this->db->where('shifts_id', $shifts_id);
+        $this->db->update('shifts', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
-        redirect(base_url() . 'admin/venues_and_conferences/' . $exam_id);
+        redirect(base_url() . 'admin/branch_and_shifts/');
     }
-    function conferences_delete($conferences_id)
+    function shifts_delete($shifts_id)
     {
-        $this->db->where('conferences_id', $conferences_id);
-        $this->db->delete('conferences');
+        $this->db->where('shifts_id', $shifts_id);
+        $this->db->delete('shifts');
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_delete'));
-        redirect(base_url() . 'admin/venues_and_conferences/' . $exam_id);
+        redirect(base_url() . 'admin/branch_and_shifts/');
     }
     function final_evaluation_delete_exam($exam_id='')
     {

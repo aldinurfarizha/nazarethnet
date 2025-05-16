@@ -30,15 +30,15 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
           <div class="ui-block-content">
             <div class="steps-w">
               <div class="step-triggers">
-                <a class="step-trigger active" href="#venues"><?php echo getEduAppGTLang('venues'); ?></a>
-                <a class="step-trigger" href="#conferences"><?php echo getEduAppGTLang('conferences'); ?></a>
+                <a class="step-trigger active" href="#venues"><?php echo getEduAppGTLang('branch'); ?></a>
+                <a class="step-trigger" href="#conferences"><?php echo getEduAppGTLang('shifts'); ?></a>
               </div>
               <div class="step-contents">
                 <div class="step-content active" id="venues">
                   <div class="row">
                     <div class="col-md-12 mb-3 text-right">
                       <button class="btn btn-primary" type="button" data-target="#add_venues" data-toggle="modal">
-                        <i class="fa fa-plus"></i> <?= getEduAppGTLang('add') . ' ' . getEduAppGTLang('venues'); ?>
+                        <i class="fa fa-plus"></i> <?= getEduAppGTLang('add') . ' ' . getEduAppGTLang('branch'); ?>
                       </button>
                     </div>
                     <div class="col-md-12">
@@ -53,8 +53,8 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
                             </tr>
                           </thead>
                           <?php
-                          $venues = $this->db->query('SELECT * FROM venues')->result_array();
-                          foreach ($venues as $row):
+                          $branch = $this->db->query('SELECT * FROM branch')->result_array();
+                          foreach ($branch as $row):
                           ?>
                             <tr>
                               <td><?php echo $row['name']; ?></td>
@@ -63,7 +63,7 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
                               <td class="row-actions">
                                 <a href="javascript:void(0);"
                                   class="btn-edit-venues grey"
-                                  data-id="<?= $row['venues_id']; ?>"
+                                  data-id="<?= $row['branch_id']; ?>"
                                   data-name="<?= $row['name']; ?>"
                                   data-telephone="<?= $row['telephone']; ?>"
                                   data-longitude="<?= $row['longitude']; ?>"
@@ -71,8 +71,7 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
                                   data-direction="<?= $row['direction']; ?>">
                                   <i class="picons-thin-icon-thin-0002_write_pencil_new_edit"></i>
                                 </a>
-
-                                <a class="grey" onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>')" href="<?php echo base_url(); ?>admin/venues_delete/<?php echo $row['venues_id']; ?>"><i class="os-icon picons-thin-icon-thin-0056_bin_trash_recycle_delete_garbage_empty"></i></a>
+                                <a class="grey" onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>')" href="<?php echo base_url(); ?>admin/branch_delete/<?php echo $row['branch_id']; ?>"><i class="os-icon picons-thin-icon-thin-0056_bin_trash_recycle_delete_garbage_empty"></i></a>
                               </td>
                             </tr>
                           <?php endforeach; ?>
@@ -86,7 +85,7 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
                   <div class="row">
                     <div class="col-md-12 mb-3 text-right">
                       <button class="btn btn-primary" type="button" data-target="#add_conferences" data-toggle="modal">
-                        <i class="fa fa-plus"></i> <?= getEduAppGTLang('add') . ' ' . getEduAppGTLang('conferences'); ?>
+                        <i class="fa fa-plus"></i> <?= getEduAppGTLang('add') . ' ' . getEduAppGTLang('shifts'); ?>
                       </button>
                     </div>
                     <div class="col-md-12">
@@ -94,32 +93,32 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
                         <table class="table table-padded">
                           <thead>
                             <tr>
-                              <th><?php echo getEduAppGTLang('venues'); ?></th>
-                              <th><?php echo getEduAppGTLang('conferences'); ?></th>
+                              <th><?php echo getEduAppGTLang('branche'); ?></th>
+                              <th><?php echo getEduAppGTLang('shifts'); ?></th>
                               <th><?php echo getEduAppGTLang('status'); ?></th>
                               <th class="text-center"><?php echo getEduAppGTLang('action'); ?></th>
                             </tr>
                           </thead>
                           <?php
-                          $conferences = $this->db->query('SELECT conferences.name as conferences_name,status,conferences_id,venues.* FROM conferences inner join venues on venues.venues_id=conferences.venues_id')->result_array();
-                          foreach ($conferences as $row):
+                          $shifts = $this->db->query('SELECT shifts.name as shifts_name,shifts.shifts_id,status,branch.branch_id,branch.* FROM shifts inner join branch on shifts.branch_id = branch.branch_id')->result_array();
+                          foreach ($shifts as $row):
                           ?>
                             <tr>
                               <td><?php echo $row['name']; ?></td>
-                              <td><?php echo $row['conferences_name']; ?></td>
+                              <td><?php echo $row['shifts_name']; ?></td>
                               <td><?php echo getEduAppGTLang($row['status']); ?></td>
                               <td class="row-actions">
                                 <a href="javascript:void(0);"
                                   class="grey btn-edit-conference"
-                                  data-id="<?= $row['conferences_id']; ?>"
-                                  data-name="<?= $row['conferences_name']; ?>"
-                                  data-venue="<?= $row['venues_id']; ?>"
+                                  data-id="<?= $row['shifts_id']; ?>"
+                                  data-name="<?= $row['shifts_name']; ?>"
+                                  data-branch="<?= $row['branch_id']; ?>"
                                   data-status="<?= $row['status']; ?>">
                                   <i class="picons-thin-icon-thin-0002_write_pencil_new_edit"></i>
                                   <i class="picons-thin-icon-thin-0002_write_pencil px20"></i>
                                 </a>
 
-                                <a class="grey" onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>')" href="<?php echo base_url(); ?>admin/conferences_delete/<?php echo $row['conferences_id']; ?>"><i class="os-icon picons-thin-icon-thin-0056_bin_trash_recycle_delete_garbage_empty"></i></a>
+                                <a class="grey" onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>')" href="<?php echo base_url(); ?>admin/shifts_delete/<?php echo $row['shifts_id']; ?>"><i class="os-icon picons-thin-icon-thin-0056_bin_trash_recycle_delete_garbage_empty"></i></a>
                               </td>
                             </tr>
                           <?php endforeach; ?>
@@ -142,23 +141,23 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
 <div class="modal fade" id="add_conferences" tabindex="-1" role="dialog" aria-labelledby="add_conferences" aria-hidden="true">
   <div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
     <div class="modal-content">
-      <?php echo form_open(base_url() . 'admin/conferences_add'); ?>
+      <?php echo form_open(base_url() . 'admin/shifts_add'); ?>
       <a href="javascript:void(0);" class="close icon-close" data-dismiss="modal" aria-label="Close"></a>
       <div class="modal-header">
-        <h6 class="title"><?php echo getEduAppGTLang('add') . ' ' . getEduAppGTLang('conferences'); ?></h6>
+        <h6 class="title"><?php echo getEduAppGTLang('add') . ' ' . getEduAppGTLang('shifts'); ?></h6>
       </div>
       <div class="modal-body">
         <div class="row">
           <div class="col-sm-12">
             <div class="form-group is-select">
-              <label class="control-label"><?php echo getEduAppGTLang('venues'); ?></label>
+              <label class="control-label"><?php echo getEduAppGTLang('shifts'); ?></label>
               <div class="select">
-                <select name="venues_id" required>
+                <select name="branch_id" required>
                   <option value=""><?php echo getEduAppGTLang('select'); ?></option>
                   <?php
-                  $venues = $this->db->get('venues')->result_array();
-                  foreach ($venues as $row): ?>
-                    <option value="<?php echo $row['venues_id']; ?>"><?php echo $row['name']; ?></option>
+                  $branches = $this->db->get('branch')->result_array();
+                  foreach ($branches as $row): ?>
+                    <option value="<?php echo $row['branch_id']; ?>"><?php echo $row['name']; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -186,10 +185,10 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
 <div class="modal fade" id="add_venues" tabindex="-1" role="dialog" aria-labelledby="add_venues" aria-hidden="true">
   <div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
     <div class="modal-content">
-      <?php echo form_open(base_url() . 'admin/venues_add'); ?>
+      <?php echo form_open(base_url() . 'admin/branch_add'); ?>
       <a href="javascript:void(0);" class="close icon-close" data-dismiss="modal" aria-label="Close"></a>
       <div class="modal-header">
-        <h6 class="title"><?php echo getEduAppGTLang('add') . ' ' . getEduAppGTLang('venues'); ?></h6>
+        <h6 class="title"><?php echo getEduAppGTLang('add') . ' ' . getEduAppGTLang('branches'); ?></h6>
       </div>
       <div class="modal-body">
         <div class="row">
@@ -230,20 +229,20 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
 <div class="modal fade" id="edit_conferences" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
     <div class="modal-content">
-      <?php echo form_open(base_url() . 'admin/conferences_edit'); ?>
+      <?php echo form_open(base_url() . 'admin/shifts_edit'); ?>
       <a href="javascript:void(0);" class="close icon-close" data-dismiss="modal" aria-label="Close"></a>
       <div class="modal-header">
-        <h6 class="title"><?php echo getEduAppGTLang('edit') . ' ' . getEduAppGTLang('conferences'); ?></h6>
+        <h6 class="title"><?php echo getEduAppGTLang('edit') . ' ' . getEduAppGTLang('shifts'); ?></h6>
       </div>
       <div class="modal-body">
-        <input type="hidden" name="conferences_id" id="edit_conference_id">
+        <input type="hidden" name="shifts_id" id="edit_shifts_id">
         <div class="form-group is-select">
-          <label><?php echo getEduAppGTLang('venues'); ?></label>
+          <label><?php echo getEduAppGTLang('branch_id'); ?></label>
           <div class="select">
-            <select name="venues_id" id="edit_venue" required>
+            <select name="branch_id" id="edit_branch" required>
               <option value=""><?php echo getEduAppGTLang('select'); ?></option>
-              <?php foreach ($venues as $v): ?>
-                <option value="<?= $v['venues_id']; ?>"><?= $v['name']; ?></option>
+              <?php foreach ($branch as $v): ?>
+                <option value="<?= $v['branch_id']; ?>"><?= $v['name']; ?></option>
               <?php endforeach; ?>
             </select>
           </div>
@@ -267,16 +266,16 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
 <div class="modal fade" id="edit_venues" tabindex="-1" role="dialog" aria-labelledby="edit_venues" aria-hidden="true">
   <div class="modal-dialog window-popup create-friend-group create-friend-group-1" role="document">
     <div class="modal-content">
-      <?php echo form_open(base_url() . 'admin/venues_edit'); ?>
-      <input type="hidden" name="venues_id" id="edit_venues_id">
+      <?php echo form_open(base_url() . 'admin/branch_edit'); ?>
+      <input type="hidden" name="branch_id" id="edit_branch_id">
       <a href="javascript:void(0);" class="close icon-close" data-dismiss="modal" aria-label="Close"></a>
       <div class="modal-header">
-        <h6 class="title"><?php echo getEduAppGTLang('edit') . ' ' . getEduAppGTLang('venues'); ?></h6>
+        <h6 class="title"><?php echo getEduAppGTLang('edit') . ' ' . getEduAppGTLang('branch'); ?></h6>
       </div>
       <div class="modal-body">
         <div class="form-group">
           <label><?php echo getEduAppGTLang('name'); ?></label>
-          <input class="form-control" type="text" name="name" id="edit_name_venues" required>
+          <input class="form-control" type="text" name="name" id="edit_name_branch" required>
         </div>
         <div class="form-group">
           <label><?php echo getEduAppGTLang('telephone'); ?></label>
@@ -308,12 +307,12 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
     $('.btn-edit-conference').click(function() {
       let id = $(this).data('id');
       let name = $(this).data('name');
-      let venue = $(this).data('venue');
+      let branch = $(this).data('branch');
       let status = $(this).data('status');
 
-      $('#edit_conference_id').val(id);
+      $('#edit_shifts_id').val(id);
       $('#edit_name').val(name);
-      $('#edit_venue').val(venue);
+      $('#edit_branch').val(branch);
       $('#edit_status').val(status);
 
       $('#edit_conferences').modal('show');
@@ -326,8 +325,8 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
       let latitude = $(this).data('latitude');
       let direction = $(this).data('direction');
 
-      $('#edit_venues_id').val(id);
-      $('#edit_name_venues').val(name);
+      $('#edit_branch_id').val(id);
+      $('#edit_name_branch').val(name);
       $('#edit_telephone').val(telephone);
       $('#edit_longitude').val(longitude);
       $('#edit_latitude').val(latitude);
