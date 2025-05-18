@@ -2274,6 +2274,7 @@ class Admin extends EduAppGT
                 'date_added' => strtotime(date("Y-m-d H:i:s")),
             );
             $this->db->insert('enroll', $data);
+            generateSubjectNewStudent($student_id);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
             redirect(base_url() . 'admin/student_profile_class_section/' . $student_id);
         }
@@ -3572,6 +3573,17 @@ class Admin extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('import_data');
         $this->load->view('backend/index', $page_data);
     }
+    function import($type)
+    {
+        if($type == 'student'){
+            if($this->user->importStudent()){
+                $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
+            }else{
+                $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_add'));
+            }
+            redirect(base_url() . 'admin/import_data/', 'refresh');
+        }
+    }
 
     //Manage attendance function.
     function attendance($param1 = '', $param2 = '')
@@ -3624,6 +3636,13 @@ class Admin extends EduAppGT
         $sections = $this->db->get_where('shifts', array('branch_id' => $branch_id,'status'=>'ACTIVE'))->result_array();
         foreach ($sections as $row) {
             echo '<option value="' . $row['shifts_id'] . '">' . $row['name'] . '</option>';
+        }
+    }
+    function get_class($branch_id = '')
+    {
+        $sections = $this->db->get_where('class', array('branch_id' => $branch_id))->result_array();
+        foreach ($sections as $row) {
+            echo '<option value="' . $row['class_id'] . '">' . $row['name'] . '</option>';
         }
     }
     function get_exam($subject_id = '')

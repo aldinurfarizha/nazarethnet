@@ -39,9 +39,17 @@
                                     <select name="branch_id">
                                         <option value=""><?php echo getEduAppGTLang('select');?></option>
                                         <?php 
-                                            foreach(getActiveBranch() as $branch):
+                                        if(isSuperAdmin()){
+                                                        $branch = $this->db->where(['status'=>'ACTIVE'])->get('branch')->result_array();
+                                                    }else{
+                                                        $branch = $this->db->where([
+                                                            'branch_id'=>getMyBranchId()->branch_id,
+                                                            'status'=>'ACTIVE'
+                                                        ])->get('branch')->result_array();
+                                                    }
+                                            foreach($branch as $branchs):
                                         ?>
-                                        <option value="<?php echo $branch->branch_id;?>" <?php if($row['branch_id'] == $branch->branch_id) echo 'selected';?>><?php echo $branch->name;?></option>
+                                        <option value="<?php echo $branchs['branch_id'];?>" <?php if($row['branch_id'] == $branchs['branch_id']) echo 'selected';?>><?php echo $branchs['name'];?></option>
                                         <?php endforeach;?>         
                                     </select>
                                 </div>

@@ -10,6 +10,7 @@ class User extends School
         $this->load->database();
         $this->runningYear = $this->db->get_where('settings', array('type' => 'running_year'))->row()->description;
         $this->load->library('excel');
+        $this->load->library('phpspreadsheet');
     }
 
     public function getAccountantInfo()
@@ -558,6 +559,104 @@ class User extends School
             }
         }
     }
+    public function importStudent()
+{
+    // Load PhpSpreadsheet via library custom
+    $this->load->library('phpspreadsheet');
+
+    $path = $_FILES["upload_student"]["tmp_name"];
+
+    try {
+        $spreadsheet = \PhpOffice\PhpSpreadsheet\IOFactory::load($path);
+    } catch (\PhpOffice\PhpSpreadsheet\Reader\Exception $e) {
+        log_message('error', 'Gagal load file Excel: ' . $e->getMessage());
+        return false;
+    }
+
+    $this->db->trans_begin();
+
+    try {
+        $worksheet = $spreadsheet->getActiveSheet();
+        $highestRow = $worksheet->getHighestRow();
+
+        for ($row = 2; $row <= $highestRow; $row++) {
+            $data['first_name']         = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+            $data['last_name']          = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+            $data['birthday']           = $worksheet->getCellByColumnAndRow(3, $row)->getFormattedValue();
+            $data['sex']                = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+            $data['address']            = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+            $data['phone']              = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+            $data['email']              = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
+            $data['password']           = sha1($worksheet->getCellByColumnAndRow(8, $row)->getValue());
+            $data['username']           = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
+            $data['parent_id']          = 0;
+            $data['dormitory_id']       = 0;
+            $data['transport_id']       = 0;
+            $data['student_session']    = 1;
+            $data['date']               = null;
+            $data['board']              = 0;
+            $data['fb_token']           = null;
+            $data['fb_id']              = null;
+            $data['fb_photo']           = null;
+            $data['fb_name']            = null;
+            $data['g_oauth']            = null;
+            $data['g_fname']            = null;
+            $data['femail']             = null;
+            $data['g_lname']            = null;
+            $data['g_picture']          = null;
+            $data['link']               = null;
+            $data['g_email']            = null;
+            $data['solvencia']          = 1;
+            $data['class_id']           = 0;
+            $data['image']              = null;
+            $data['since']              = date('Y-m-d');
+            $data['diseases']           = '';
+            $data['allergies']          = '';
+            $data['doctor']             = '';
+            $data['doctor_phone']       = '';
+            $data['authorized_person']  = '';
+            $data['authorized_phone']   = '';
+            $data['note']               = '';
+            $data['year']               = getRunningYear();
+            $data['is_active']          = 1;
+            $data['branch_id']          = $this->input->post('branch_id');
+            $data['shifts_id']          = $this->input->post('shifts_id');
+
+            if (!empty($data['first_name'])) {
+                $insert = $this->db->insert('student', $data);
+                if (!$insert) {
+                    throw new Exception("Gagal menyimpan baris ke-$row");
+                }
+                $student_id = $this->db->insert_id();
+                $class_id = $this->input->post('class_id');
+                $section_id = $this->input->post('section_id');
+                $roll = $this->input->post('roll');
+
+                $enroll = [
+                    'student_id' => $student_id,
+                    'class_id' => $class_id,
+                    'section_id' => $section_id,
+                    'year' => getRunningYear(),
+                    'roll' => $roll,
+                    'is_active' => 1,
+                    'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7),
+                    'date_added' => strtotime(date("Y-m-d H:i:s")),
+                ];
+                $this->db->insert('enroll', $enroll);
+                generateSubjectNewStudent($student_id);
+            }
+        }
+
+        $this->db->trans_commit();
+        return true;
+
+    } catch (Exception $e) {
+        $this->db->trans_rollback();
+        log_message('error', 'Import Gagal: ' . $e->getMessage());
+        return false;
+    }
+}
+
 
     public function updateStudent($studentId)
     {

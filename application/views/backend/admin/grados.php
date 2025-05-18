@@ -97,9 +97,17 @@
                                             <select name="branch_id" required="">
                                                 <option value=""><?php echo getEduAppGTLang('select');?></option>
                                                 <?php
-                                                    foreach(getActiveBranch() as $row):
+                                                 if(isSuperAdmin()){
+                                                        $branch = $this->db->where(['status'=>'ACTIVE'])->get('branch')->result_array();
+                                                    }else{
+                                                        $branch = $this->db->where([
+                                                            'branch_id'=>getMyBranchId()->branch_id,
+                                                            'status'=>'ACTIVE'
+                                                        ])->get('branch')->result_array();
+                                                    }
+                                                    foreach($branch as $row):
                                                 ?>
-                                                <option value="<?php echo $row->branch_id;?>"><?php echo $row->name;?></option>
+                                                <option value="<?php echo $row['branch_id'];?>"><?php echo $row['name'];?></option>
                                             <?php endforeach;?>
                                             </select>
                                         </div>

@@ -24,6 +24,16 @@
             }
         });
     }
+    function get_class(branch_id)
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class/' + branch_id ,
+            success: function(response)
+            {
+                jQuery('#class_holder').html(response);
+            }
+        });
+    }
    
    $(document).ready(function(){         
         var query;          
