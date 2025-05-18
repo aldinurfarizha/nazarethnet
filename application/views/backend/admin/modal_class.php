@@ -26,7 +26,22 @@
                                             $teachers = $this->db->get('teacher')->result_array(); 
                                             foreach($teachers as $teacher):
                                         ?>
-                                        <option value="<?php echo $teacher['teacher_id'];?>" <?php if($row['teacher_id'] == $teacher['teacher_id']) echo 'selected';?>><?php echo $teacher['first_name']." ".$teacher['last_name'];?></option>
+                                        <option value="<?php echo $teacher->name;?>" <?php if($row['teacher_id'] == $teacher['teacher_id']) echo 'selected';?>><?php echo $teacher['first_name']." ".$teacher['last_name'];?></option>
+                                        <?php endforeach;?>         
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="form-group label-floating is-select">
+                                <label class="control-label"><?php echo getEduAppGTLang('branch');?></label>
+                                <div class="select">
+                                    <select name="branch_id">
+                                        <option value=""><?php echo getEduAppGTLang('select');?></option>
+                                        <?php 
+                                            foreach(getActiveBranch() as $branch):
+                                        ?>
+                                        <option value="<?php echo $branch->branch_id;?>" <?php if($row['branch_id'] == $branch->branch_id) echo 'selected';?>><?php echo $branch->name;?></option>
                                         <?php endforeach;?>         
                                     </select>
                                 </div>

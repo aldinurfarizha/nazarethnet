@@ -209,14 +209,17 @@
                         </a>
                     </li>
                 <?php endif; ?>
-                <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): ?>
-                    <li <?php if ($page_name == 'branch_and_shifts'): ?>class="currentItem" <?php endif; ?>>
+                <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): 
+                    if(isSuperAdmin()===true){?>
+                        <li <?php if ($page_name == 'branch_and_shifts'): ?>class="currentItem" <?php endif; ?>>
                         <a href="<?php echo base_url(); ?>admin/branch_and_shifts/" data-toggle="tooltip" data-placement="right" data-original-title="<?php echo getEduAppGTLang('branch_and_shifts'); ?>">
                             <div class="p-1 left-menu-icon">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                         </a>
                     </li>
+                    <?php } ?>
+                    
                 <?php endif; ?>
                 <!-- Settings Access -->
                 <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): ?>
@@ -466,7 +469,8 @@
                         </a>
                     </li>
                 <?php endif; ?>
-                <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): ?>
+                <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): 
+                    if(isSuperAdmin()){?>
                     <li>
                         <a href="<?php echo base_url(); ?>admin/branch_and_shifts/">
                             <div class="left-menu-icon p-1">
@@ -475,6 +479,7 @@
                             <span class="left-menu-title"><?php echo getEduAppGTLang('branch_and_shifts'); ?></span>
                         </a>
                     </li>
+                    <?php } ?>
                 <?php endif; ?>
                 <!-- Settings Access -->
                 <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): ?>
@@ -728,8 +733,9 @@
                         </a>
                     </li>
                 <?php endif; ?>
-                <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): ?>
-                    <li>
+                <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): 
+                    if(isSuperAdmin()){?>
+                        <li>
                         <a href="<?php echo base_url(); ?>admin/branch_and_shifts/">
                             <div class="left-menu-icon">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -737,6 +743,7 @@
                             <span class="left-menu-title"><?php echo getEduAppGTLang('branch_and_shifts'); ?></span>
                         </a>
                     </li>
+                    <?php } ?>
                 <?php endif; ?>
                 <!-- Settings Access -->
                 <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): ?>

@@ -716,6 +716,7 @@ class Academic extends School
     {
         $data['name']         = html_escape($this->input->post('name'));
         $data['teacher_id']   = $this->input->post('teacher_id');
+        $data['branch_id']    = $this->input->post('branch_id');
         $this->db->insert('class', $data);
         $class_id = $this->db->insert_id();
         $data2['class_id']    =   $class_id;
@@ -727,6 +728,7 @@ class Academic extends School
     {
         $data['name']         = html_escape($this->input->post('name'));
         $data['teacher_id']   = $this->input->post('teacher_id');
+        $data['branch_id']    = $this->input->post('branch_id');
         $this->db->where('class_id', $classId);
         $this->db->update('class', $data);
     }

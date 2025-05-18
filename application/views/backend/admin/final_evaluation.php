@@ -58,6 +58,12 @@
                                     <?php
                                     $grades = $this->db->query('SELECT * FROM exam where is_final=1')->result_array();
                                     foreach ($grades as $row):
+                                        if(isSuperAdmin()===false){
+                                            $classDetail=$this->db->get_where('class',array('class_id'=>$row['class_id']))->row();
+                                            if($classDetail->branch_id != getMyBranchId()->branch_id){
+                                                continue;
+                                            }
+                                        }
                                         $class_id = $row['class_id'];
                                         $section_id = $row['section_id'];
                                         $subject_id = $row['subject_id'];

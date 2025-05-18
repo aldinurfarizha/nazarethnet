@@ -14,6 +14,16 @@
             }
         });
    }
+   function get_shifts(branch_id)
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_shifts/' + branch_id ,
+            success: function(response)
+            {
+                jQuery('#shifts_holder').html(response);
+            }
+        });
+    }
    
    $(document).ready(function(){         
         var query;          

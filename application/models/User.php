@@ -166,6 +166,7 @@ class User extends School
         $data['address']      = html_escape($this->input->post('address'));
         $data['since']        = $this->crud->getDateFormat();
         $data['owner_status'] = html_escape($this->input->post('owner_status'));
+        $data['branch_id']    = html_escape($this->input->post('branch_id'));
         $this->db->insert('admin', $data);
         move_uploaded_file($_FILES['userfile']['tmp_name'], 'public/uploads/admin_image/' . $md5 . str_replace(' ', '', $_FILES['userfile']['name']));
     }
@@ -199,6 +200,11 @@ class User extends School
             $data['idcard']     = $this->input->post('idcard');
         }
         $data['owner_status'] = $this->input->post('owner_status');
+        if($this->input->post('owner_status')==2) {
+            $data['branch_id'] = $this->input->post('branch_id');
+        }else{
+            $data['branch_id'] = null;
+        }
         $this->db->where('admin_id', $adminId);
         $this->db->update('admin', $data);
         move_uploaded_file($_FILES['userfile']['tmp_name'], 'public/uploads/admin_image/' . $md5 . str_replace(' ', '', $_FILES['userfile']['name']));
@@ -575,6 +581,8 @@ class User extends School
         $data['doctor_phone']      = html_escape($this->input->post('doctor_phone'));
         $data['authorized_person'] = html_escape($this->input->post('auth_person'));
         $data['authorized_phone']  = html_escape($this->input->post('auth_phone'));
+        $data['branch_id']         = html_escape($this->input->post('branch_id'));
+        $data['shifts_id']          = html_escape($this->input->post('shifts_id'));
         $data['note']    = html_escape($this->input->post('note'));
         if ($_FILES['userfile']['size'] > 0) {
             $data['image']         = $md5 . str_replace(' ', '', $_FILES['userfile']['name']);

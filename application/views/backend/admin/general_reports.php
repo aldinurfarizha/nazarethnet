@@ -54,7 +54,12 @@
 											<select name="class_id" required="" onchange="get_sections(this.value)">
 												<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 												<?php
-												$classes = $this->db->get('class')->result_array();
+												if(isSuperAdmin()){
+													$classes = $this->db->get('class')->result_array();
+												}else{
+													$classes = $this->db->where('branch_id',getMyBranchId()->branch_id)->get('class')->result_array();
+												}
+												
 												foreach ($classes as $row):
 												?>
 													<option value="<?php echo $row['class_id']; ?>" <?php if ($class_id == $row['class_id']) echo "selected"; ?>><?php echo $row['name']; ?></option>
@@ -75,7 +80,7 @@
 												<select name="section_id" required id="section_holder" onchange="get_class_subjects(this.value);">
 													<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 													<?php
-													$sections = $this->db->get_where('section', array('class_id' => $class_id))->result_array();
+														$sections = $this->db->get_where('section', array('class_id' => $class_id))->result_array();
 													foreach ($sections as $key):
 													?>
 														<option value="<?php echo $key['section_id']; ?>" <?php if ($section_id == $key['section_id']) echo "selected"; ?>><?php echo $key['name']; ?></option>

@@ -1589,6 +1589,9 @@ class Admin extends EduAppGT
     //Manage Admins function.
     function admins($param1 = '', $param2 = '')
     {
+        if(isSuperAdmin()===false){
+            redirect(base_url('admin/panel'), 'refresh');
+        }
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
@@ -3616,6 +3619,13 @@ class Admin extends EduAppGT
             echo '<option value="' . $row['section_id'] . '">' . $row['name'] . '</option>';
         }
     }
+    function get_shifts($branch_id = '')
+    {
+        $sections = $this->db->get_where('shifts', array('branch_id' => $branch_id,'status'=>'ACTIVE'))->result_array();
+        foreach ($sections as $row) {
+            echo '<option value="' . $row['shifts_id'] . '">' . $row['name'] . '</option>';
+        }
+    }
     function get_exam($subject_id = '')
     {
         $exam = $this->db->get_where('exam', array('subject_id' => $subject_id,'is_final'=>0))->result_array();
@@ -4439,12 +4449,14 @@ class Admin extends EduAppGT
         $direction = $this->input->post('direction');
         $latitude = $this->input->post('latitude');
         $longitude = $this->input->post('longitude');
+        $status = $this->input->post('status');
         $data = array(
             'name' => $name,
             'telephone' => $telephone,
             'direction' => $direction,
             'latitude' => $latitude,
-            'longitude' => $longitude
+            'longitude' => $longitude,
+            'status' => $status
         );
         $this->db->insert('branch', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
@@ -4458,12 +4470,14 @@ class Admin extends EduAppGT
         $latitude = $this->input->post('latitude');
         $longitude = $this->input->post('longitude');
         $branch_id = $this->input->post('branch_id');
+        $status = $this->input->post('status');
         $data = array(
             'name' => $name,
             'telephone' => $telephone,
             'direction' => $direction,
             'latitude' => $latitude,
-            'longitude' => $longitude
+            'longitude' => $longitude,
+            'status' => $status
         );
         $this->db->where('branch_id', $branch_id);
         $this->db->update('branch', $data);
@@ -4474,7 +4488,7 @@ class Admin extends EduAppGT
     {
         $shiftsData=$this->db->get_where('shifts', array('branch_id' => $branch_id))->row();
         if($shiftsData){
-            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('venue_cannot_be_deleted_because_it_is_already_in_use_in_conference'));
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('branch_cannot_be_deleted_because_it_is_already_in_use_in_shifts'));
             redirect(base_url() . 'admin/branch_and_shifts/' );
             return;
             die();

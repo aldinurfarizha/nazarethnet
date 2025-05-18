@@ -66,8 +66,8 @@
                                                                                 <b><i class="picons-thin-icon-thin-0701_user_profile_avatar_man_male"></i></b>  <?php if($row['owner_status'] == 1):?>
                                                                                     <span class="badge badge-success px10"><?php echo getEduAppGTLang('super_admin');?></span>
                                                                                 <?php else:?>
-                                                                                    <span class="badge badge-primary px10"><?php echo getEduAppGTLang('admin');?></span>
-                                                                                <?php endif;?></p>
+                                                                                    <span class="badge badge-primary px10"><?php echo getEduAppGTLang('admin');?> - <?=getDetailBranch($row['branch_id'])->name?></span>
+                                                                                <?php endif;?>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -185,18 +185,34 @@
                                         </span>
                                     </div>
                                 </div>                  
+                                <!-- Pilihan account_type -->
                                 <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                     <div class="form-group label-floating is-select">
                                         <label class="control-label"><?php echo getEduAppGTLang('account_type');?></label>
                                         <div class="select">
-                                            <select name="owner_status" required="">
+                                            <select name="owner_status" id="ownerStatus" required="">
                                                 <option value=""><?php echo getEduAppGTLang('select');?></option>
                                                 <option value="1"><?php echo getEduAppGTLang('super_admin');?></option>
                                                 <option value="2"><?php echo getEduAppGTLang('admin');?></option>
                                             </select>
                                         </div>
                                     </div>
-                                </div>                          
+                                </div>
+
+                                <!-- Pilihan branch -->
+                                <div class="col col-lg-6 col-md-6 col-sm-12 col-12" id="branchContainer">
+                                    <div class="form-group label-floating is-select">
+                                        <label class="control-label"><?php echo getEduAppGTLang('branch');?></label>
+                                        <div class="select">
+                                            <select name="branch_id" required="">
+                                                <option value=""><?php echo getEduAppGTLang('select');?></option>
+                                                <?php foreach(getActiveBranch() as $branch):?>
+                                                    <option value="<?php echo $branch->branch_id;?>"><?php echo $branch->name;?></option>
+                                                <?php endforeach;?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                     <button class="btn btn-rounded btn-success btn-lg full-width" id="sub_accountant" type="submit"><?php echo getEduAppGTLang('save');?></button>
                                 </div>
@@ -207,3 +223,17 @@
             </div>
         </div>
     </div>
+    <script>
+    $(document).ready(function(){
+        $('#branchContainer').hide();
+
+        $('#ownerStatus').on('change', function() {
+            var selected = $(this).val();
+            if (selected === '2') { // Admin
+                $('#branchContainer').show();
+            } else {
+                $('#branchContainer').hide();
+            }
+        });
+    });
+</script>

@@ -223,6 +223,16 @@
             }
         });
     }
+    function get_shifts(branch_id)
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_shifts/' + branch_id ,
+            success: function(response)
+            {
+                jQuery('#shifts_holder').html(response);
+            }
+        });
+    }
     function get_exam(subject_id) 
     {
         $.ajax({

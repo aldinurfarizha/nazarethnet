@@ -28,68 +28,104 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
       <div class="conty">
         <div class="ui-block">
           <div class="ui-block-content">
-            <div class="steps-w">
-              <div class="step-triggers">
-                <a class="step-trigger active" href="#venues"><?php echo getEduAppGTLang('branch'); ?></a>
-                <a class="step-trigger" href="#conferences"><?php echo getEduAppGTLang('shifts'); ?></a>
-              </div>
-              <div class="step-contents">
-                <div class="step-content active" id="venues">
-                  <div class="row">
-                    <div class="col-md-12 mb-3 text-right">
-                      <button class="btn btn-primary" type="button" data-target="#add_venues" data-toggle="modal">
-                        <i class="fa fa-plus"></i> <?= getEduAppGTLang('add') . ' ' . getEduAppGTLang('branch'); ?>
-                      </button>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="table-responsive">
-                        <table class="table table-padded">
-                          <thead>
-                            <tr>
-                              <th><?php echo getEduAppGTLang('name'); ?></th>
-                              <th><?php echo getEduAppGTLang('telephone'); ?></th>
-                              <th><?php echo getEduAppGTLang('direction'); ?></th>
-                              <th class="text-center"><?php echo getEduAppGTLang('action'); ?></th>
-                            </tr>
-                          </thead>
-                          <?php
-                          $branch = $this->db->query('SELECT * FROM branch')->result_array();
-                          foreach ($branch as $row):
-                          ?>
-                            <tr>
-                              <td><?php echo $row['name']; ?></td>
-                              <td><?php echo $row['telephone']; ?></td>
-                              <td><?php echo $row['direction']; ?></td>
-                              <td class="row-actions">
-                                <a href="javascript:void(0);"
-                                  class="btn-edit-venues grey"
-                                  data-id="<?= $row['branch_id']; ?>"
-                                  data-name="<?= $row['name']; ?>"
-                                  data-telephone="<?= $row['telephone']; ?>"
-                                  data-longitude="<?= $row['longitude']; ?>"
-                                  data-latitude="<?= $row['latitude']; ?>"
-                                  data-direction="<?= $row['direction']; ?>">
-                                  <i class="picons-thin-icon-thin-0002_write_pencil_new_edit"></i>
-                                </a>
-                                <a class="grey" onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>')" href="<?php echo base_url(); ?>admin/branch_delete/<?php echo $row['branch_id']; ?>"><i class="os-icon picons-thin-icon-thin-0056_bin_trash_recycle_delete_garbage_empty"></i></a>
-                              </td>
-                            </tr>
-                          <?php endforeach; ?>
-                          </tbody>
-                        </table>
+          <div class="content-box">
+    				<h5 class="form-header"><?php echo getEduAppGTLang('branch_and_shifts'); ?></h5>
+    				<hr>
+    				<div class="row bg-white">
+    					<div class="col-sm-12">
+    						<div class="container-fluid">
+    							<div class="row w-100">
+    								<div class="os-tabs-w w-100">
+    									<div class="os-tabs-controls w-100">
+    										<ul class="navs navs-tabs upper d-flex justify-content-between w-100" style="gap: 10px;">
+    											<li class="navs-item">
+    												<a class="navs-links active" data-toggle="tab" href="#branch"><?php echo getEduAppGTLang('branch'); ?></a>
+    											</li>
+    											<li class="navs-item">
+    												<a class="navs-links" data-toggle="tab" href="#shifts"><?php echo getEduAppGTLang('shifts'); ?></a>
+    											</li>
+    											<li class="navs-item">
+    												<a class="navs-links" data-toggle="tab" href="#student"><?php echo getEduAppGTLang('student'); ?> <span class="badge badge-danger">
+                              <?= $this->db->where(['branch_id'=>null,'is_active'=>1])->count_all_results('student'); ?>
+                            </span></a>
+    											</li>
+                          <li class="navs-item">
+    												<a class="navs-links" data-toggle="tab" href="#class"><?php echo getEduAppGTLang('class'); ?> <span class="badge badge-danger">
+                              <?= $this->db->where(['branch_id'=>null])->count_all_results('class'); ?>
+                            </span></a>
+    											</li>
+                          
+    										</ul>
+    									</div>
+    								</div>
+    							</div>
+    							<div class="container-fluid">
+    								<div class="tab-content">
+
+    									<!-- STUDENT TAB -->
+    									<div class="tab-pane active" id="branch">
+    										<div class="row">
+                              <div class="col-md-12 mb-3">
+                              <button class="btn btn-primary" type="button" data-target="#add_venues" data-toggle="modal">
+                                <i class="fa fa-plus"></i> <?= getEduAppGTLang('add') . ' ' . getEduAppGTLang('branch'); ?>
+                              </button>
+                              </div>
+                              <hr>
+                                <div class="table-responsive">
+                                  <table class="table table-padded">
+                                    <thead>
+                                      <tr>
+                                        <th><?php echo getEduAppGTLang('name'); ?></th>
+                                        <th><?php echo getEduAppGTLang('telephone'); ?></th>
+                                        <th><?php echo getEduAppGTLang('direction'); ?></th>
+                                        <th><?php echo getEduAppGTLang('status'); ?></th>
+                                        <th class="text-center"><?php echo getEduAppGTLang('action'); ?></th>
+                                      </tr>
+                                    </thead>
+                                    </tbody>
+                                    <?php
+                                    $branch = $this->db->query('SELECT * FROM branch')->result_array();
+                                    foreach ($branch as $row):
+                                    ?>
+                                      <tr>
+                                        <td><?php echo $row['name']; ?></td>
+                                        <td><?php echo $row['telephone']; ?></td>
+                                        <td><?php echo $row['direction']; ?></td>
+                                        <td><?php echo getEduAppGTLang($row['status']); ?></td>
+                                        <td class="row-actions">
+                                          <a href="javascript:void(0);"
+                                            class="btn-edit-venues grey"
+                                            data-id="<?= $row['branch_id']; ?>"
+                                            data-name="<?= $row['name']; ?>"
+                                            data-telephone="<?= $row['telephone']; ?>"
+                                            data-longitude="<?= $row['longitude']; ?>"
+                                            data-latitude="<?= $row['latitude']; ?>"
+                                            data-status="<?= $row['status']; ?>"
+                                            data-direction="<?= $row['direction']; ?>">
+                                            
+                                            <i class="picons-thin-icon-thin-0002_write_pencil_new_edit"></i>
+                                          </a>
+                                          <a class="grey" onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>')" href="<?php echo base_url(); ?>admin/branch_delete/<?php echo $row['branch_id']; ?>"><i class="os-icon picons-thin-icon-thin-0056_bin_trash_recycle_delete_garbage_empty"></i></a>
+                                        </td>
+                                      </tr>
+                                    <?php endforeach; ?>
+                                    </tbody>
+                                  </table>
                       </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="step-content" id="conferences">
-                  <div class="row">
-                    <div class="col-md-12 mb-3 text-right">
+    													
+    										</div>
+    									</div>
+
+    									<!-- Shifts TAB -->
+    									<div class="tab-pane" id="shifts">
+    										<div class="row">
+                          <hr>
+											<div class="col-md-12 mb-3">
                       <button class="btn btn-primary" type="button" data-target="#add_conferences" data-toggle="modal">
                         <i class="fa fa-plus"></i> <?= getEduAppGTLang('add') . ' ' . getEduAppGTLang('shifts'); ?>
                       </button>
                     </div>
-                    <div class="col-md-12">
-                      <div class="table-responsive">
+                        <div class="table-responsive">
                         <table class="table table-padded">
                           <thead>
                             <tr>
@@ -99,8 +135,9 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
                               <th class="text-center"><?php echo getEduAppGTLang('action'); ?></th>
                             </tr>
                           </thead>
+                          <tbody>
                           <?php
-                          $shifts = $this->db->query('SELECT shifts.name as shifts_name,shifts.shifts_id,status,branch.branch_id,branch.* FROM shifts inner join branch on shifts.branch_id = branch.branch_id')->result_array();
+                          $shifts = $this->db->query('SELECT shifts.name as shifts_name,shifts.shifts_id,shifts.status,branch.branch_id,branch.* FROM shifts inner join branch on shifts.branch_id = branch.branch_id')->result_array();
                           foreach ($shifts as $row):
                           ?>
                             <tr>
@@ -125,11 +162,79 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
                           </tbody>
                         </table>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    										</div>
+    									</div>
+
+    									<!-- STUDENT TAB -->
+    									<div class="tab-pane" id="student">
+    										<div class="row">
+                        <span class="badge badge-warning">This page will show all students who are not assigned to any branch</span>
+                      <div class="table-responsive">
+                        <table class="table table-padded">
+                          <thead>
+                            <tr>
+                              <th><?php echo getEduAppGTLang('number'); ?></th>
+                              <th><?php echo getEduAppGTLang('name'); ?></th>
+                              <th class="text-center"><?php echo getEduAppGTLang('action'); ?></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          <?php
+                          $students = $this->db->query('SELECT * FROM student where branch_id is null and is_active=1')->result_array();
+                          $no=1;
+                          foreach ($students as $row):
+                          ?>
+                            <tr>
+                              <td><?= $no;?></td>
+                              <td><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
+                              <td class="row-actions">
+                                <a href="<?=base_url('admin/student_update/'.$row['student_id'])?>" class="btn btn-primary" target="_blank"><i class="fa fa-sync"></i> <?php echo getEduAppGTLang('assign'); ?></a>
+                            </tr>
+                          <?php $no++; endforeach; ?>
+                          </tbody>
+                        </table>
+                      </div>
+    										</div>
+    									</div>
+
+                      <div class="tab-pane" id="class">
+    										<div class="row">
+                        <span class="badge badge-warning">This page will show all class who are not assigned to any branch</span>
+                      <div class="table-responsive">
+                        <table class="table table-padded">
+                          <thead>
+                            <tr>
+                              <th><?php echo getEduAppGTLang('number'); ?></th>
+                              <th><?php echo getEduAppGTLang('name'); ?></th>
+                              <th class="text-center"><?php echo getEduAppGTLang('action'); ?></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          <?php
+                          $class = $this->db->query('SELECT * FROM class where branch_id is null')->result_array();
+                          $no=1;
+                          foreach ($class as $row):
+                          ?>
+                            <tr>
+                              <td><?= $no;?></td>
+                              <td><?php echo $row['name']; ?></td>
+                              <td class="row-actions">
+                                <a href="<?=base_url('admin/grados/')?>" class="btn btn-primary" target="_blank"><i class="fa fa-sync"></i> <?php echo getEduAppGTLang('assign'); ?></a>
+                            </tr>
+                          <?php $no++; endforeach; ?>
+                          </tbody>
+                        </table>
+                      </div>
+    										</div>
+    									</div>
+
+    								</div>
+    							</div>
+
+    						</div>
+    					</div>
+    				</div>
+    			</div>
           </div>
         </div>
       </div>
@@ -155,9 +260,8 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
                 <select name="branch_id" required>
                   <option value=""><?php echo getEduAppGTLang('select'); ?></option>
                   <?php
-                  $branches = $this->db->get('branch')->result_array();
-                  foreach ($branches as $row): ?>
-                    <option value="<?php echo $row['branch_id']; ?>"><?php echo $row['name']; ?></option>
+                  foreach (getActiveBranch() as $row): ?>
+                    <option value="<?php echo $row->branch_id; ?>"><?php echo $row->name; ?></option>
                   <?php endforeach; ?>
                 </select>
               </div>
@@ -215,6 +319,14 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
               <label><?php echo getEduAppGTLang('direction'); ?></label>
               <input class="form-control" type="text" name="direction" required>
             </div>
+            <label><?php echo getEduAppGTLang('status'); ?></label>
+          <div class="select">
+            <select name="status" required>
+              <option value="ACTIVE"><?php echo getEduAppGTLang('active'); ?></option>
+              <option value="INACTIVE"><?php echo getEduAppGTLang('inactive'); ?></option>
+            </select>
+          </div>
+        </div>
           </div>
         </div>
         <button type="submit" class="btn btn-rounded btn-success btn-lg full-width"><?php echo getEduAppGTLang('add'); ?></button>
@@ -293,6 +405,13 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
           <label><?php echo getEduAppGTLang('direction'); ?></label>
           <input class="form-control" type="text" name="direction" id="edit_direction" required>
         </div>
+        <label><?php echo getEduAppGTLang('status'); ?></label>
+          <div class="select">
+            <select name="status" id="edit_status_branch" required>
+              <option value="ACTIVE"><?php echo getEduAppGTLang('active'); ?></option>
+              <option value="INACTIVE"><?php echo getEduAppGTLang('inactive'); ?></option>
+            </select>
+          </div>
         <button type="submit" class="btn btn-rounded btn-success btn-lg full-width"><?php echo getEduAppGTLang('update'); ?></button>
       </div>
       <?php echo form_close(); ?>
@@ -324,6 +443,7 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
       let longitude = $(this).data('longitude');
       let latitude = $(this).data('latitude');
       let direction = $(this).data('direction');
+      let status = $(this).data('status');
 
       $('#edit_branch_id').val(id);
       $('#edit_name_branch').val(name);
@@ -331,6 +451,8 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
       $('#edit_longitude').val(longitude);
       $('#edit_latitude').val(latitude);
       $('#edit_direction').val(direction);
+      $('#edit_status_branch').val(status);
+
 
       $('#edit_venues').modal('show');
     });

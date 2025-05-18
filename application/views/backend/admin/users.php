@@ -90,7 +90,14 @@
                                                                                     </div>
                                                                                     <div class="author-content">
                                                                                         <a href="<?php echo base_url();?>admin/students/" class="h5 author-name"><?php echo getEduAppGTLang('students');?></a>
-                                                                                        <div class="country"><?php echo $this->db->count_all_results('student');?> <?php echo getEduAppGTLang('students');?></div>
+                                                                                        <div class="country"><?php 
+                                                                                        if(isSuperAdmin()){
+                                                                                            echo $this->db->count_all_results('student');?> <?php echo getEduAppGTLang('students');
+                                                                                        }else{
+                                                                                            echo $this->db->where('branch_id',getMyBranchId()->branch_id)->count_all_results('student');?> <?php echo getEduAppGTLang('students');
+                                                                                        }
+                                                                                        ?>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
