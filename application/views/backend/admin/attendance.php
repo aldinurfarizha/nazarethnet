@@ -52,6 +52,9 @@ foreach ($sub as $subs):
                             <a class="navs-links" href="<?php echo base_url(); ?>admin/student_list/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0704_users_profile_group_couple_man_woman"></i><span><?php echo getEduAppGTLang('student'); ?></span></a>
                         </li>
                         <li class="navs-item">
+                            <a class="navs-links" href="<?php echo base_url(); ?>admin/certificate_list/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0012_notebook_paper_certificate"></i><span><?php echo getEduAppGTLang('certificate'); ?></span></a>
+                        </li>
+                        <li class="navs-item">
                             <a class="navs-links" href="<?php echo base_url(); ?>admin/whiteboards/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0191_window_application_cursor"></i><span><?php echo getEduAppGTLang('whiteboards'); ?></span></a>
                         </li>
                         <li class="navs-item">
@@ -98,7 +101,7 @@ foreach ($sub as $subs):
                                                     <?php echo getEduAppGTLang('manage_attendance'); ?>
                                                     <small>(<?php echo date("m/d/Y", $timestamp); ?>)</small>
                                                 </a>
-                                                <a class="btn btn-primary" href="<?=base_url('admin/custom_attendance_status/'.$data)?>">
+                                                <a class="btn btn-primary" href="<?= base_url('admin/custom_attendance_status/' . $data) ?>">
                                                     añadir otro estado <i class="fa fa-plus"></i>
                                                 </a>
                                             </div>
@@ -124,15 +127,15 @@ foreach ($sub as $subs):
                                                             'subject_id' => $ex[2]
                                                         ))->result_array();
                                                         foreach ($attendance_of_students as $row):
-                                                            if(!isStudentActiveEnroll($row['student_id'],$ex[0],$ex[1],$running_year)){
+                                                            if (!isStudentActiveEnroll($row['student_id'], $ex[0], $ex[1], $running_year)) {
                                                                 continue;
                                                             }
-                                                            if(isStudentFinishSubject($row['student_id'], $ex[2])){
+                                                            if (isStudentFinishSubject($row['student_id'], $ex[2])) {
                                                                 continue;
                                                             }
                                                             if (!isActiveSubject($row['student_id'], $ex[2])) {
                                                                 continue;
-                                                                }
+                                                            }
                                                         ?>
                                                             <tr>
                                                                 <td class="min-w-170">

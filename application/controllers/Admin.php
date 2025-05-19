@@ -1589,6 +1589,9 @@ class Admin extends EduAppGT
     //Manage Admins function.
     function admins($param1 = '', $param2 = '')
     {
+        if(isSuperAdmin()===false){
+            redirect(base_url('admin/panel'), 'refresh');
+        }
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
@@ -2271,6 +2274,7 @@ class Admin extends EduAppGT
                 'date_added' => strtotime(date("Y-m-d H:i:s")),
             );
             $this->db->insert('enroll', $data);
+            generateSubjectNewStudent($student_id);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
             redirect(base_url() . 'admin/student_profile_class_section/' . $student_id);
         }
@@ -3152,18 +3156,26 @@ class Admin extends EduAppGT
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
+
         if ($this->db->get_where('settings', array('type' => 'account_id'))->row()->description != '') {
             $explode = explode('-', base64_decode($data));
             $haveFolder = $this->db->get_where('subject', array('subject_id' => $explode[2]))->row()->drive_folder;
+
             if ($haveFolder == '') {
-                $this->drive_model->createSubjectFolder($explode[2]);
+                try {
+                    $this->drive_model->createSubjectFolder($explode[2]);
+                } catch (\Throwable $e) {
+                    $this->session->set_flashdata('flash_message_failed', 'failed automatic creae folder in GDrive. This subject doesnt have folder in GDrive ');
+                }
             }
         }
-        $page_data['data'] = $data;
+
+        $page_data['data']         = $data;
         $page_data['page_name']    = 'subject_dashboard';
         $page_data['page_title']   = getEduAppGTLang('subject_dashboard');
         $this->load->view('backend/index', $page_data);
     }
+
 
     //Manage subjects function.
     function courses($param1 = '', $param2 = '', $param3 = '')
@@ -3192,6 +3204,11 @@ class Admin extends EduAppGT
             $this->academic->deleteCourse($param2);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_deleted'));
             redirect(base_url() . 'admin/cursos/', 'refresh');
+        }
+        if ($param1 == 'duplicate') {
+            $this->academic->duplicateCourse();
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_duplicated'));
+            redirect(base_url() . 'admin/cursos/' . base64_encode($param2) . "/", 'refresh');
         }
     }
 
@@ -3538,14 +3555,38 @@ class Admin extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('class_routine');
         $this->load->view('backend/index', $page_data);
     }
-     function venues_and_conferences()
+     function branch_and_shifts()
     {
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
-        $page_data['page_name']  = 'venues_and_conferences';
-        $page_data['page_title'] = getEduAppGTLang('venues_and_conferences');
+        $page_data['page_name']  = 'branch_and_shifts';
+        $page_data['page_title'] = getEduAppGTLang('branch_and_shifts');
         $this->load->view('backend/index', $page_data);
+    }
+    function import_data($param1=null,$param2=null)
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        if($param1 == 'failed'){
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_add').' '. urldecode($param2));
+        }
+        $page_data['page_name']  = 'import_data';
+        $page_data['page_title'] = getEduAppGTLang('import_data');
+        $this->load->view('backend/index', $page_data);
+    }
+    function import($type)
+    {
+        if($type == 'student'){
+            $response = $this->user->importStudent();
+            if ($response['status'] === true) {
+                $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
+                redirect(base_url() . 'admin/import_data/');
+            } else {
+                redirect(base_url() . 'admin/import_data/failed/'.$response['message']);
+            }
+        }
     }
 
     //Manage attendance function.
@@ -3571,6 +3612,17 @@ class Admin extends EduAppGT
         $page_data['page_title'] =  getEduAppGTLang('student_list');
         $this->load->view('backend/index', $page_data);
     }
+    function certificate_list($param1 = '', $param2 = '')
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $page_data['data']       = $param1;
+        $page_data['timestamp']  = $param2;
+        $page_data['page_name']  =  'certificate_list';
+        $page_data['page_title'] =  getEduAppGTLang('certificate_list');
+        $this->load->view('backend/index', $page_data);
+    }
 
     //Manage attendance function.
     function manage_attendance($class_id = '', $section_id = '', $timestamp = '')
@@ -3592,6 +3644,20 @@ class Admin extends EduAppGT
         $sections = $this->db->get_where('section', array('class_id' => $class_id))->result_array();
         foreach ($sections as $row) {
             echo '<option value="' . $row['section_id'] . '">' . $row['name'] . '</option>';
+        }
+    }
+    function get_shifts($branch_id = '')
+    {
+        $sections = $this->db->get_where('shifts', array('branch_id' => $branch_id,'status'=>'ACTIVE'))->result_array();
+        foreach ($sections as $row) {
+            echo '<option value="' . $row['shifts_id'] . '">' . $row['name'] . '</option>';
+        }
+    }
+    function get_class($branch_id = '')
+    {
+        $sections = $this->db->get_where('class', array('branch_id' => $branch_id))->result_array();
+        foreach ($sections as $row) {
+            echo '<option value="' . $row['class_id'] . '">' . $row['name'] . '</option>';
         }
     }
     function get_exam($subject_id = '')
@@ -4396,94 +4462,98 @@ class Admin extends EduAppGT
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
         redirect(base_url() . 'admin/final_evaluation/');
     }
-    function conferences_add()
+    function shifts_add()
     {
-        $venues_id = $this->input->post('venues_id');
+        $branch_id = $this->input->post('branch_id');
         $name = $this->input->post('name');
         $status = $this->input->post('status');
         $data = array(
-            'venues_id' => $venues_id,
+            'branch_id' => $branch_id,
             'name' => $name,
             'status'=> $status
         );
-        $this->db->insert('conferences', $data);
+        $this->db->insert('shifts', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
-        redirect(base_url() . 'admin/venues_and_conferences/');
+        redirect(base_url() . 'admin/branch_and_shifts/');
     }
-    function venues_add()
+    function branch_add()
     {
         $name = $this->input->post('name');
         $telephone = $this->input->post('telephone');
         $direction = $this->input->post('direction');
         $latitude = $this->input->post('latitude');
         $longitude = $this->input->post('longitude');
+        $status = $this->input->post('status');
         $data = array(
             'name' => $name,
             'telephone' => $telephone,
             'direction' => $direction,
             'latitude' => $latitude,
-            'longitude' => $longitude
+            'longitude' => $longitude,
+            'status' => $status
         );
-        $this->db->insert('venues', $data);
+        $this->db->insert('branch', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
-        redirect(base_url() . 'admin/venues_and_conferences/');
+        redirect(base_url() . 'admin/branch_and_shifts/');
     }
-    function venues_edit()
+    function branch_edit()
     {
         $name = $this->input->post('name');
         $telephone = $this->input->post('telephone');
         $direction = $this->input->post('direction');
         $latitude = $this->input->post('latitude');
         $longitude = $this->input->post('longitude');
-        $venues_id = $this->input->post('venues_id');
+        $branch_id = $this->input->post('branch_id');
+        $status = $this->input->post('status');
         $data = array(
             'name' => $name,
             'telephone' => $telephone,
             'direction' => $direction,
             'latitude' => $latitude,
-            'longitude' => $longitude
+            'longitude' => $longitude,
+            'status' => $status
         );
-        $this->db->where('venues_id', $venues_id);
-        $this->db->update('venues', $data);
+        $this->db->where('branch_id', $branch_id);
+        $this->db->update('branch', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
-        redirect(base_url() . 'admin/venues_and_conferences/' . $exam_id);
+        redirect(base_url() . 'admin/branch_and_shifts/' . $exam_id);
     }
-    function venues_delete($venues_id)
+    function branch_delete($branch_id)
     {
-        $conferencesData=$this->db->get_where('conferences', array('venues_id' => $venues_id))->row();
-        if($conferencesData){
-            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('venue_cannot_be_deleted_because_it_is_already_in_use_in_conference'));
-            redirect(base_url() . 'admin/venues_and_conferences/' . $exam_id);
+        $shiftsData=$this->db->get_where('shifts', array('branch_id' => $branch_id))->row();
+        if($shiftsData){
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('branch_cannot_be_deleted_because_it_is_already_in_use_in_shifts'));
+            redirect(base_url() . 'admin/branch_and_shifts/' );
             return;
             die();
         }
-        $this->db->where('venues_id', $venues_id);
-        $this->db->delete('venues');
+        $this->db->where('branch_id', $branch_id);
+        $this->db->delete('branch');
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_delete'));
-        redirect(base_url() . 'admin/venues_and_conferences/' . $exam_id);
+        redirect(base_url() . 'admin/branch_and_shifts/');
     }
-    function conferences_edit()
+    function shifts_edit()
     {
-        $venues_id = $this->input->post('venues_id');
+        $branch_id = $this->input->post('branch_id');
         $name = $this->input->post('name');
         $status = $this->input->post('status');
-        $conferences_id= $this->input->post('conferences_id');
+        $shifts_id= $this->input->post('shifts_id');
         $data = array(
-            'venues_id' => $venues_id,
+            'branch_id' => $branch_id,
             'name' => $name,
             'status' => $status,
         );
-        $this->db->where('conferences_id', $conferences_id);
-        $this->db->update('conferences', $data);
+        $this->db->where('shifts_id', $shifts_id);
+        $this->db->update('shifts', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
-        redirect(base_url() . 'admin/venues_and_conferences/' . $exam_id);
+        redirect(base_url() . 'admin/branch_and_shifts/');
     }
-    function conferences_delete($conferences_id)
+    function shifts_delete($shifts_id)
     {
-        $this->db->where('conferences_id', $conferences_id);
-        $this->db->delete('conferences');
+        $this->db->where('shifts_id', $shifts_id);
+        $this->db->delete('shifts');
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_delete'));
-        redirect(base_url() . 'admin/venues_and_conferences/' . $exam_id);
+        redirect(base_url() . 'admin/branch_and_shifts/');
     }
     function final_evaluation_delete_exam($exam_id='')
     {

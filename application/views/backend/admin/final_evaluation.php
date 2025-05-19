@@ -29,6 +29,12 @@
                         <li class="navs-item">
                             <a class="navs-links" href="<?php echo base_url(); ?>admin/accounting_report/"><i class="picons-thin-icon-thin-0406_money_dollar_euro_currency_exchange_cash"></i> <span><?php echo getEduAppGTLang('accounting'); ?></span></a>
                         </li>
+                        <li class="navs-item">
+                            <a class="navs-links" href="<?php echo base_url(); ?>admin/import_data/"><i class="picons-thin-icon-thin-0126_cloud_upload_backup"></i> <span><?php echo getEduAppGTLang('import_data'); ?></span></a>
+                        </li>
+                        <li class="navs-item">
+                            <a class="navs-links" href="<?php echo base_url(); ?>admin/export_data/"><i class="picons-thin-icon-thin-0122_download_file_computer_drive"></i> <span><?php echo getEduAppGTLang('export_data'); ?></span></a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -52,6 +58,12 @@
                                     <?php
                                     $grades = $this->db->query('SELECT * FROM exam where is_final=1')->result_array();
                                     foreach ($grades as $row):
+                                        if(isSuperAdmin()===false){
+                                            $classDetail=$this->db->get_where('class',array('class_id'=>$row['class_id']))->row();
+                                            if($classDetail->branch_id != getMyBranchId()->branch_id){
+                                                continue;
+                                            }
+                                        }
                                         $class_id = $row['class_id'];
                                         $section_id = $row['section_id'];
                                         $subject_id = $row['subject_id'];

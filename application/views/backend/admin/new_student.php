@@ -95,7 +95,7 @@
     												</div>
     											</div>
     										</div>
-    										<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+    										<div class="col col-lg-12 col-md-6 col-sm-12 col-12">
     											<div class="form-group label-floating is-select">
     												<label class="control-label"><?php echo getEduAppGTLang('classroom'); ?></label>
     												<div class="select">
@@ -111,6 +111,31 @@
     												</div>
     											</div>
     										</div>
+											<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+												<div class="form-group label-floating is-select">
+													<label class="control-label"><?php echo getEduAppGTLang('branch'); ?></label>
+													<div class="select">
+														<select name="branch_id" required="" onchange="get_shifts(this.value)">
+															<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+															<?php
+															foreach (getActiveBranch() as $row): ?>
+																<option value="<?php echo $row->branch_id; ?>"><?php echo $row->name; ?></option>
+															<?php endforeach; ?>
+														</select>
+													</div>
+												</div>
+											</div>
+											<hr>
+											<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+												<div class="form-group label-floating is-select">
+													<label class="control-label"><?php echo getEduAppGTLang('shifts'); ?></label>
+													<div class="select">
+													<select name="shifts_id" required id="shifts_holder">
+														<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+													</select>
+													</div>
+												</div>
+											</div>
     										<div class="col col-lg-12 col-md-12 col-sm-12 col-12">
     											<div class="form-group">
     												<label class="control-label"><?php echo getEduAppGTLang('photo'); ?></label>

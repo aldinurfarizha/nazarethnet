@@ -10,7 +10,7 @@ if ( ! function_exists('getEduAppGTLang'))
 			$current_language	=	'english';
 			$CI->session->set_userdata('current_language' , $current_language);
 		}
-		$check_phrase	=	$CI->db->get_where('language' , array('phrase' => $phrase))->row()->phrase;
+		@$check_phrase	=	$CI->db->get_where('language' , array('phrase' => $phrase))->row()->phrase;
 		if (strtolower($check_phrase) != strtolower($phrase))
 		$CI->db->insert('language' , array('phrase' => strtolower($phrase)));
 		$query	=	$CI->db->get_where('language' , array('phrase' => $phrase));

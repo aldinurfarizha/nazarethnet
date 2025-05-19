@@ -20,7 +20,13 @@
 					            $students = $student_query->result_array();
                             ?>
 				            <ul class="notification-list">
-				               <?php  foreach($students as $row):?>
+				               <?php  foreach($students as $row):
+								if(isSuperAdmin()==false){
+									if($row['branch_id'] != getMyBranchId()->branch_id){
+									continue;
+								}
+								}
+								?>
 					           <li>
 						            <div class="author-thumb">
 							            <img src="<?php echo $this->crud->get_image_url('student', $row['student_id']);?>" width="35px">
@@ -29,6 +35,7 @@
 							            <a href="<?php echo base_url();?>admin/student_portal/<?php echo $row['student_id'];?>/" class="h6 notification-friend"><?php echo $this->crud->get_name('student', $row['student_id']) ;?></a> <br>
 										<small><?=$row['username']?></small>
 							            <span class="notification-date"><span class="badge badge-success"><?php $class_id = $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->class_id; echo $this->db->get_where('class', array('class_id' => $class_id))->row()->name;?></span></span>
+										<span class="badge badge-primary px10"><?=getDetailBranch($row['branch_id'])->name.' - '.getDetailShifts($row['shifts_id'])->name?></span>
 						            </div>
 					            </li>
 				            <?php endforeach;?>

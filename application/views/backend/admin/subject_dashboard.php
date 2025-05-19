@@ -52,6 +52,9 @@ foreach ($sub as $row) :
                             <a class="navs-links" href="<?php echo base_url(); ?>admin/student_list/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0704_users_profile_group_couple_man_woman"></i><span><?php echo getEduAppGTLang('student'); ?></span></a>
                         </li>
                         <li class="navs-item">
+                            <a class="navs-links" href="<?php echo base_url(); ?>admin/certificate_list/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0012_notebook_paper_certificate"></i><span><?php echo getEduAppGTLang('certificate'); ?></span></a>
+                        </li>
+                        <li class="navs-item">
                             <a class="navs-links" href="<?php echo base_url(); ?>admin/whiteboards/<?php echo $data; ?>/"><i class="os-icon picons-thin-icon-thin-0191_window_application_cursor"></i><span><?php echo getEduAppGTLang('whiteboards'); ?></span></a>
                         </li>
                         <li class="navs-item">
@@ -847,10 +850,10 @@ foreach ($sub as $row) :
                                         <ul class="widget w-friend-pages-added notification-list friend-requests">
                                             <?php $students   =   $this->db->get_where('enroll', array('class_id' => $ex[0], 'section_id' => $ex[1], 'year' => $running_year))->result_array();
                                             foreach ($students as $row2) :
-                                                if(!isStudentActiveEnroll($row2['student_id'], $ex[0], $ex[1], $running_year)){
+                                                if (!isStudentActiveEnroll($row2['student_id'], $ex[0], $ex[1], $running_year)) {
                                                     continue;
                                                 }
-                                                if(isStudentFinishSubject($row2['student_id'], $ex[2])){
+                                                if (isStudentFinishSubject($row2['student_id'], $ex[2])) {
                                                     continue;
                                                 }
                                                 if (isActiveSubject($row2['student_id'], $ex[2])) {

@@ -30,6 +30,12 @@
     					<li class="navs-item">
     						<a class="navs-links" href="<?php echo base_url(); ?>admin/accounting_report/"><i class="picons-thin-icon-thin-0406_money_dollar_euro_currency_exchange_cash"></i> <span><?php echo getEduAppGTLang('accounting'); ?></span></a>
     					</li>
+    					<li class="navs-item">
+    						<a class="navs-links" href="<?php echo base_url(); ?>admin/import_data/"><i class="picons-thin-icon-thin-0122_download_file_computer_drive"></i> <span><?php echo getEduAppGTLang('import_data'); ?></span></a>
+    					</li>
+    					<li class="navs-item">
+    						<a class="navs-links" href="<?php echo base_url(); ?>admin/export_data/"><i class="picons-thin-icon-thin-0126_cloud_upload_backup"></i> <span><?php echo getEduAppGTLang('export_data'); ?></span></a>
+    					</li>
     				</ul>
     			</div>
     		</div>
@@ -46,7 +52,11 @@
     								<select name="class_id" required="" onchange="get_sections(this.value);">
     									<option value=""><?php echo getEduAppGTLang('select'); ?></option>
     									<?php
-										$class = $this->db->get('class')->result_array();
+										if(isSuperAdmin()){
+													$class = $this->db->get('class')->result_array();
+												}else{
+													$class = $this->db->where('branch_id',getMyBranchId()->branch_id)->get('class')->result_array();
+												}
 										foreach ($class as $row): ?>
     										<option value="<?php echo $row['class_id']; ?>" <?php if ($class_id == $row['class_id']) echo "selected"; ?>><?php echo $row['name']; ?></option>
     									<?php endforeach; ?>

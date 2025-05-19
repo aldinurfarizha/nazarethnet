@@ -6,6 +6,25 @@ function print_json($data)
 {
     echo json_encode($data, JSON_PRETTY_PRINT);
 }
+function generateRandomString($length = 10)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+
+    for ($i = 0; $i < $length; $i++) {
+        if (function_exists('random_int')) {
+            $index = random_int(0, $charactersLength - 1);
+        } else {
+            $index = mt_rand(0, $charactersLength - 1);
+        }
+        $randomString .= $characters[$index];
+    }
+
+    return $randomString;
+}
+
+
 function getStudentClassAndSectionById($student_id)
 {
     $ci = &get_instance();
@@ -913,6 +932,50 @@ function getHistoryNotaCapacidad($nota_capacidad_id) {
     $values = array_column($result, 'value');
     return implode(',', $values);
 }
+function getActiveBranch(){
+    $ci = &get_instance();
+    $branch = $ci->db->get_where('branch', array('status' => "ACTIVE"))->result();
+    return $branch;
+}
+function getDetailBranch($branch_id)
+{
+    $ci = &get_instance();
+    $branch = $ci->db->get_where('branch', array('branch_id' => $branch_id))->row();
+    return $branch;
+}
+function getDetailShifts($shifts_id)
+{
+    $ci = &get_instance();
+    $shifts = $ci->db->get_where('shifts', array('shifts_id' => $shifts_id))->row();
+    return $shifts;
+}
+function isSuperAdmin() {
+    $ci = &get_instance(); // Ambil instance CodeIgniter
+    $ci->load->database(); // Pastikan database sudah diload
+    $ci->load->library('session'); // Pastikan session diload
+
+    $admin_id = $ci->session->userdata('login_user_id'); // Ganti sesuai nama sesi ID yang digunakan
+
+    if (!$admin_id) return false;
+
+    $admin = $ci->db->get_where('admin', ['admin_id' => $admin_id, 'owner_status' => 1])->row();
+
+    return $admin ? true : false;
+}
+function getMyBranchId(){
+    $ci = &get_instance(); // Ambil instance CodeIgniter
+    $ci->load->database(); // Pastikan database sudah diload
+    $ci->load->library('session'); // Pastikan session diload
+
+    $admin_id = $ci->session->userdata('login_user_id'); // Ganti sesuai nama sesi ID yang digunakan
+
+    if (!$admin_id) return false;
+
+    $admin = $ci->db->get_where('admin', ['admin_id' => $admin_id])->row();
+
+    return $admin;
+}
+
 
 
 

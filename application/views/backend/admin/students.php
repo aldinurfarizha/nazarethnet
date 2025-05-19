@@ -53,7 +53,13 @@
 																	<div class="select">
 																		<select onchange="submit();" name="class_id" id="slct">
 																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
-																			<?php $cl = $this->db->get('class')->result_array();
+																			<?php 
+																			if(isSuperAdmin()){
+																				$cl = $this->db->get('class')->result_array();
+																			}
+																			else{
+																				$cl = $this->db->where('branch_id',getMyBranchId()->branch_id)->get('class')->result_array();
+																			}
 																			foreach ($cl as $row):
 																			?>
 																				<option value="<?php echo $row['class_id']; ?>" <?php if ($class_id == $row['class_id']) echo 'selected'; ?>><?php echo $row['name']; ?></option>
@@ -89,7 +95,15 @@
 																<div class="row" id="results">
 																	<?php if ($students = $this->db->get_where('enroll', array('class_id' => $class_id, 'year' => $running_year))->num_rows() > 0): ?>
 																		<?php $students = $this->db->get_where('enroll', array('class_id' => $class_id, 'year' => $running_year))->result_array();
-																		foreach ($students as $row): ?>
+																		foreach ($students as $row):
+																			$student_branch_id = $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->branch_id; 
+																			$student_shifts = $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->shifts_id; 
+																		if(isSuperAdmin()==false){
+																			if($student_branch_id != getMyBranchId()->branch_id){
+																			continue;
+																		}
+																		}
+																		?>
 																			<div class="col-xl-4 col-md-6 results">
 																				<div class="card-box widget-user ui-block list">
 																					<div class="more pull-right">
@@ -108,7 +122,8 @@
 																							</a>
 																							<p class="text-muted m-b-5 font-13"><b><i class="picons-thin-icon-thin-0291_phone_mobile_contact"></i></b> <?php echo $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->phone; ?><br>
 																								<b><i class="picons-thin-icon-thin-0321_email_mail_post_at"></i></b> <?php echo $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->email; ?><br>
-																								<b><i class="picons-thin-icon-thin-0729_student_degree_science_university_school_graduate"></i></b> <span class="badge badge-primary px10"><?php echo $this->db->get_where('class', array('class_id' => $row['class_id']))->row()->name; ?> - <?php echo $this->db->get_where('section', array('section_id' => $row['section_id']))->row()->name; ?></span>
+																								<b><i class="picons-thin-icon-thin-0729_student_degree_science_university_school_graduate"></i></b> <span class="badge badge-primary px10"><?php echo $this->db->get_where('class', array('class_id' => $row['class_id']))->row()->name; ?> - <?php echo $this->db->get_where('section', array('section_id' => $row['section_id']))->row()->name; ?></span><br>
+																								<b><i class="fas fa-map-marker-alt"></i></b> <span class="badge badge-primary px10"><?=getDetailBranch($student_branch_id)->name.' - '.getDetailShifts($student_shifts)->name?></span>
 																							</p>
 																						</div>
 																					</div>
@@ -130,7 +145,15 @@
 																		<div class="row">
 																			<?php if ($students = $this->db->get_where('enroll', array('class_id' => $class_id, 'section_id' => $row['section_id'], 'year' => $running_year))->num_rows() > 0): ?>
 																				<?php $students = $this->db->get_where('enroll', array('class_id' => $class_id, 'section_id' => $row['section_id'], 'year' => $running_year))->result_array();
-																				foreach ($students as $row2): ?>
+																				foreach ($students as $row2): 
+																				$student_branch_id = $this->db->get_where('student', array('student_id' => $row2['student_id']))->row()->branch_id; 
+																					$student_shifts = $this->db->get_where('student', array('student_id' => $row2['student_id']))->row()->shifts_id; 
+																						if(isSuperAdmin()==false){
+																						if($student_branch_id != getMyBranchId()->branch_id){
+																						continue;
+																					}
+																					}
+																				?>
 																					<div class="col-xl-4 col-md-6">
 																						<div class="card-box widget-user ui-block list">
 																							<div class="more pull-right">
@@ -152,6 +175,8 @@
 																										<?php if (!isStudentActiveEnroll($row['student_id'], $class_id, $row['section_id'], $running_year)) { ?>
 																											<span class="badge badge-danger px10"> Inactive</span>
 																										<?php } ?>
+																										<br>
+																										<b><i class="fas fa-map-marker-alt"></i></b> <span class="badge badge-primary px10"><?=getDetailBranch($student_branch_id)->name.' - '.getDetailShifts($student_shifts)->name?></span>
 																									</p>
 																								</div>
 																							</div>

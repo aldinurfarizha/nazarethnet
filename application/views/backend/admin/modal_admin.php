@@ -56,11 +56,30 @@
                                 <select name="owner_status" id="slct">
                                     <option value="">Seleccionar</option>
                                     <option value="1" <?php if($row['owner_status'] == 1) echo 'selected';?>><?php echo getEduAppGTLang('suer_admin');?></option>
-                                    <option value="0" <?php if($row['owner_status'] == 2) echo "selected";?>><?php echo getEduAppGTLang('admin');?></option>
+                                    <option value="2" <?php if($row['owner_status'] == 2) echo "selected";?>><?php echo getEduAppGTLang('admin');?></option>
                                 </select>
                             </div>
                         </div>
                     </div> 
+                    <div class="col col-lg-6 col-md-6 col-sm-12 col-12" id="branchContainerEdit">
+                        <div class="form-group label-floating is-select">
+                            <label class="control-label"><?php echo getEduAppGTLang('branch');?></label>
+                            <div class="select">
+                                <select name="branch_id" required="">
+                                    <option value=""><?php echo getEduAppGTLang('select');?></option>
+                                    <?php foreach(getActiveBranch() as $branch):
+                                        if($row['branch_id'] == $branch->branch_id){
+                                            $selected = 'selected';
+                                        }else{
+                                            $selected = '';
+                                        }
+                                        ?>
+                                        <option value="<?php echo $branch->branch_id;?>" <?=$selected?>><?php echo $branch->name;?></option>
+                                    <?php endforeach;?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="form-group label-floating">
                             <label class="control-label"><?php echo getEduAppGTLang('phone');?></label>
@@ -99,3 +118,18 @@
         </div>
     </div>
     <?php endforeach;?>
+    <script>
+    $(document).ready(function(){
+        if($('#slct').val() == 1){
+            $('#branchContainerEdit').hide();
+        }
+        $('#slct').on('change', function() {
+            var selected = $(this).val();
+            if (selected === '2') { // Admin
+                $('#branchContainerEdit').show();
+            } else {
+                $('#branchContainerEdit').hide();
+            }
+        });
+    });
+</script>

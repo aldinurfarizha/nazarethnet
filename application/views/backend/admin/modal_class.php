@@ -26,7 +26,30 @@
                                             $teachers = $this->db->get('teacher')->result_array(); 
                                             foreach($teachers as $teacher):
                                         ?>
-                                        <option value="<?php echo $teacher['teacher_id'];?>" <?php if($row['teacher_id'] == $teacher['teacher_id']) echo 'selected';?>><?php echo $teacher['first_name']." ".$teacher['last_name'];?></option>
+                                        <option value="<?php echo $teacher->name;?>" <?php if($row['teacher_id'] == $teacher['teacher_id']) echo 'selected';?>><?php echo $teacher['first_name']." ".$teacher['last_name'];?></option>
+                                        <?php endforeach;?>         
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="form-group label-floating is-select">
+                                <label class="control-label"><?php echo getEduAppGTLang('branch');?></label>
+                                <div class="select">
+                                    <select name="branch_id">
+                                        <option value=""><?php echo getEduAppGTLang('select');?></option>
+                                        <?php 
+                                        if(isSuperAdmin()){
+                                                        $branch = $this->db->where(['status'=>'ACTIVE'])->get('branch')->result_array();
+                                                    }else{
+                                                        $branch = $this->db->where([
+                                                            'branch_id'=>getMyBranchId()->branch_id,
+                                                            'status'=>'ACTIVE'
+                                                        ])->get('branch')->result_array();
+                                                    }
+                                            foreach($branch as $branchs):
+                                        ?>
+                                        <option value="<?php echo $branchs['branch_id'];?>" <?php if($row['branch_id'] == $branchs['branch_id']) echo 'selected';?>><?php echo $branchs['name'];?></option>
                                         <?php endforeach;?>         
                                     </select>
                                 </div>

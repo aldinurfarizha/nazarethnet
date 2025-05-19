@@ -30,6 +30,12 @@
 					<li class="navs-item">
 						<a class="navs-links" href="<?php echo base_url(); ?>admin/accounting_report/"><i class="picons-thin-icon-thin-0406_money_dollar_euro_currency_exchange_cash"></i> <span><?php echo getEduAppGTLang('accounting'); ?></span></a>
 					</li>
+					<li class="navs-item">
+						<a class="navs-links" href="<?php echo base_url(); ?>admin/import_data/"><i class="picons-thin-icon-thin-0126_cloud_upload_backup"></i> <span><?php echo getEduAppGTLang('import_data'); ?></span></a>
+					</li>
+					<li class="navs-item">
+						<a class="navs-links" href="<?php echo base_url(); ?>admin/export_data/"><i class="picons-thin-icon-thin-0122_download_file_computer_drive"></i> <span><?php echo getEduAppGTLang('export_data'); ?></span></a>
+					</li>
 				</ul>
 			</div>
 		</div>
@@ -48,7 +54,11 @@
 											<select name="class_id" required="" onchange="get_sections(this.value)">
 												<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 												<?php
-												$class = $this->db->get('class')->result_array();
+												 if(isSuperAdmin()){
+													$class = $this->db->get('class')->result_array();
+												}else{
+													$class = $this->db->where('branch_id',getMyBranchId()->branch_id)->get('class')->result_array();
+												}
 												foreach ($class as $row): ?>
 													<option value="<?php echo $row['class_id']; ?>" <?php if ($class_id == $row['class_id']) echo "selected"; ?>><?php echo $row['name']; ?></option>
 												<?php endforeach; ?>
@@ -136,7 +146,7 @@
 								<div class="row">
 									<div class="text-center col-sm-12"><br>
 										<h5><?php echo $this->db->get_where('class', array('class_id' => $class_id))->row()->name; ?> <br> <?php echo $this->db->get_where('section', array('section_id' => $section_id))->row()->name; ?> <br> <?php echo $this->db->get_where('subject', array('subject_id' => $subject_id))->row()->name; ?> <br><?php echo $this->db->get_where('exam', array('exam_id' => $exam_id))->row()->name; ?></h5>
-										<a href="<?php echo base_url(); ?>admin/grades_report_excel/<?=$class_id . '/' . $section_id . '/' . $subject_id . '/' . $exam_id?>" class="btn btn-success"> <?php echo getEduAppGTLang('excel'); ?> <i class="fa fa-download"></i></a>
+										<a href="<?php echo base_url(); ?>admin/grades_report_excel/<?= $class_id . '/' . $section_id . '/' . $subject_id . '/' . $exam_id ?>" class="btn btn-success"> <?php echo getEduAppGTLang('excel'); ?> <i class="fa fa-download"></i></a>
 									</div>
 									<hr>
 									<div class="col-7 text-left">

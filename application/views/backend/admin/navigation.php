@@ -209,14 +209,17 @@
                         </a>
                     </li>
                 <?php endif; ?>
-                <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): ?>
-                    <li <?php if ($page_name == 'venues_and_conferences'): ?>class="currentItem" <?php endif; ?>>
-                        <a href="<?php echo base_url(); ?>admin/venues_and_conferences/" data-toggle="tooltip" data-placement="right" data-original-title="<?php echo getEduAppGTLang('venues_and_conferences'); ?>">
+                <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): 
+                    if(isSuperAdmin()===true){?>
+                        <li <?php if ($page_name == 'branch_and_shifts'): ?>class="currentItem" <?php endif; ?>>
+                        <a href="<?php echo base_url(); ?>admin/branch_and_shifts/" data-toggle="tooltip" data-placement="right" data-original-title="<?php echo getEduAppGTLang('branch_and_shifts'); ?>">
                             <div class="p-1 left-menu-icon">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                         </a>
                     </li>
+                    <?php } ?>
+                    
                 <?php endif; ?>
                 <!-- Settings Access -->
                 <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): ?>
@@ -466,15 +469,17 @@
                         </a>
                     </li>
                 <?php endif; ?>
-                <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): ?>
+                <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): 
+                    if(isSuperAdmin()){?>
                     <li>
-                        <a href="<?php echo base_url(); ?>admin/venues_and_conferences/">
+                        <a href="<?php echo base_url(); ?>admin/branch_and_shifts/">
                             <div class="left-menu-icon p-1">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <span class="left-menu-title"><?php echo getEduAppGTLang('venues_and_conferences'); ?></span>
+                            <span class="left-menu-title"><?php echo getEduAppGTLang('branch_and_shifts'); ?></span>
                         </a>
                     </li>
+                    <?php } ?>
                 <?php endif; ?>
                 <!-- Settings Access -->
                 <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): ?>
@@ -578,7 +583,7 @@
                         </a>
                     </li>
                 <?php endif; ?>
-                <?php if ($this->db->get_where('account_role', array('type' => 'online_courses'))->row()->permissions == 1 || $admin_type == 1): ?>
+                <?php if (@$this->db->get_where('account_role', array('type' => 'online_courses'))->row()->permissions == 1 || $admin_type == 1): ?>
                     <li>
                         <a href="<?php echo base_url(); ?>admin/online_courses/">
                             <div class="left-menu-icon">
@@ -728,15 +733,17 @@
                         </a>
                     </li>
                 <?php endif; ?>
-                <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): ?>
-                    <li>
-                        <a href="<?php echo base_url(); ?>admin/venues_and_conferences/">
+                <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): 
+                    if(isSuperAdmin()){?>
+                        <li>
+                        <a href="<?php echo base_url(); ?>admin/branch_and_shifts/">
                             <div class="left-menu-icon">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <span class="left-menu-title"><?php echo getEduAppGTLang('venues_and_conferences'); ?></span>
+                            <span class="left-menu-title"><?php echo getEduAppGTLang('branch_and_shifts'); ?></span>
                         </a>
                     </li>
+                    <?php } ?>
                 <?php endif; ?>
                 <!-- Settings Access -->
                 <?php if ($this->db->get_where('account_role', array('type' => 'settings'))->row()->permissions == 1 || $admin_type == 1): ?>

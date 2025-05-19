@@ -91,6 +91,7 @@
                                                                                         <ul class="more-dropdown">
                                                                                             <li><a href="<?php echo base_url();?>admin/subject_dashboard/<?php echo base64_encode($row2['class_id']."-".$row['section_id']."-".$row2['subject_id']);?>/"><?php echo getEduAppGTLang('dashboard');?></a></li>
                                                                                             <li><a href="javascript:void(0);" onclick="showAjaxModal('<?php echo base_url();?>modal/popup/modal_subject/<?php echo $row2['subject_id'];?>');"><?php echo getEduAppGTLang('edit');?></a></li>
+                                                                                            <li><a href="javascript:void(0);" onclick="showAjaxModal('<?php echo base_url();?>modal/popup/modal_subject_duplicate/<?php echo $row2['subject_id'];?>');"><?php echo getEduAppGTLang('duplicate');?></a></li>
                                                                                             <li><a onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete');?>')" href="<?php echo base_url();?>admin/courses/delete/<?php echo $row2['subject_id'];?>"><?php echo getEduAppGTLang('delete');?></a></li>
                                                                                         </ul>
                                                                                     </div>

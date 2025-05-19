@@ -17,7 +17,12 @@
                                 </div>
                             </div>
                         </div>
-                        <?php $classes = $this->db->get('class')->result_array();
+                        <?php 
+                        if(isSuperAdmin()){
+                            $classes = $this->db->get('class')->result_array();
+                        }else{
+                            $classes = $this->db->where('branch_id',getMyBranchId()->branch_id)->get('class')->result_array();
+                        }
 			                foreach($classes as $class):
 		                ?>
                         <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -40,6 +45,7 @@
                                             <div class="author-content">
                                                 <a href="<?php echo base_url();?>admin/cursos/<?php echo base64_encode($class['class_id']);?>/" class="h5 author-name"><?php echo $class['name'];?></a>
                                                 <div class="country"><b><?php echo getEduAppGTLang('teacher');?>:</b> <?php if($class['teacher_id']) echo $this->crud->get_name('teacher', $class['teacher_id']);?>.</div>
+                                                <div class="country"><b><?php echo getEduAppGTLang('branch');?>:</b> <?php if($class['branch_id']) echo getDetailBranch($class['branch_id'])->name?>.</div>
                                                 <div class="country"><b><?php echo getEduAppGTLang('sections');?>:</b> <?php $sections = $this->db->get_where('section', array('class_id' => $class['class_id']))->result_array(); foreach($sections as $sec):?> <?php if(count($sections) > 1) echo $sec['name']." "."|"; else echo $sec['name'].'.';?><?php endforeach;?></div>
                                             </div>
                                         </div>        
@@ -79,6 +85,29 @@
                                                     foreach($teachers as $row):
                                                 ?>
                                                 <option value="<?php echo $row['teacher_id'];?>"><?php echo $row['first_name']." ".$row['last_name'];?></option>
+                                            <?php endforeach;?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="form-group label-floating is-select">
+                                        <label class="control-label"><?php echo getEduAppGTLang('branch');?></label>
+                                        <div class="select">
+                                            <select name="branch_id" required="">
+                                                <option value=""><?php echo getEduAppGTLang('select');?></option>
+                                                <?php
+                                                 if(isSuperAdmin()){
+                                                        $branch = $this->db->where(['status'=>'ACTIVE'])->get('branch')->result_array();
+                                                    }else{
+                                                        $branch = $this->db->where([
+                                                            'branch_id'=>getMyBranchId()->branch_id,
+                                                            'status'=>'ACTIVE'
+                                                        ])->get('branch')->result_array();
+                                                    }
+                                                    foreach($branch as $row):
+                                                ?>
+                                                <option value="<?php echo $row['branch_id'];?>"><?php echo $row['name'];?></option>
                                             <?php endforeach;?>
                                             </select>
                                         </div>
