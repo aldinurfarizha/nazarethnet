@@ -72,6 +72,15 @@ function getEnrollById($enroll_id)
         ->get();
     return $data->row();
 }
+function getStudentSubject($student_id, $subject_id)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('student_subject')
+        ->where(['student_id' => $student_id, 'subject_id' => $subject_id])
+        ->get();
+    return $data->row();
+}
 function getStudentInfo($student_id)
 {
     $ci = &get_instance();

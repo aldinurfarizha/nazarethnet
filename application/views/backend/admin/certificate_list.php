@@ -76,8 +76,8 @@ foreach ($sub as $subs):
                                                     <tr>
                                                         <td>No.</td>
                                                         <td><?= getEduAppGTLang('name'); ?></td>
-                                                        <td>falta de clase</td>
-                                                        <td><?= getEduAppGTLang('status'); ?></td>
+                                                        <td class="text-center"><?= getEduAppGTLang('course_status'); ?></td>
+                                                        <td class="text-center"><?= getEduAppGTLang('qr_code'); ?></td>
                                                         <td><?= getEduAppGTLang('action'); ?></td>
                                                     </tr>
                                                 </thead>
@@ -91,21 +91,22 @@ foreach ($sub as $subs):
                                                         if (isStudentDeactive($row2['student_id'])) {
                                                             continue;
                                                         }
-                                                        if (isStudentFinishSubject($row2['student_id'], $ex[2])) {
-                                                            continue;
-                                                        }
                                                         if (isActiveSubject($row2['student_id'], $ex[2])) {
+                                                            $studentData=getStudentInfo($row2['student_id']);
+                                                            $studentSubject=getStudentSubject($row2['student_id'], $ex[2]);
                                                     ?>
                                                             <tr>
                                                                 <td><?= $no ?></td>
                                                                 <td><?= $this->crud->get_name('student', $row2['student_id']) ?></td>
-                                                                <td><?= countMissingClass($row2['student_id'], $ex[2]) ?></td>
+                                                                <td class="text-center"><?php 
+                                                                    if (isStudentFinishSubject($row2['student_id'], $ex[2])) {?>
+                                                                        <div class="value badge badge-pill badge-success"><?= getEduAppGTLang('finished'); ?></div>
+                                                                        <?php }else{?>
+                                                                        <div class="value badge badge-pill badge-warning"><?= getEduAppGTLang('in_progress'); ?></div>
+                                                                        <?php } ?>
+                                                                </td>
                                                                 <td class="text-center">
-                                                                    <?php if (isMarkBlocked($row2['student_id'], $ex[2])) { ?>
-                                                                        <div class="value badge badge-pill badge-danger"><?= getEduAppGTLang('bloquear'); ?></div> <br><small class="text-muted"><?= getMarkBlockedReason($row2['student_id'], $ex[2]) ?></small>
-                                                                    <?php } else { ?>
-                                                                        <div class="value badge badge-pill badge-success"><?= getEduAppGTLang('desatascar'); ?></div>
-                                                                    <?php } ?>
+                                                                    <?= $studentSubject->cert_code ?>
                                                                 </td>
                                                                 <td>
                                                                     <?php if (isMarkBlocked($row2['student_id'], $ex[2])) { ?>
