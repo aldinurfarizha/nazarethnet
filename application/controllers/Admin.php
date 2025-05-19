@@ -3564,10 +3564,13 @@ class Admin extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('branch_and_shifts');
         $this->load->view('backend/index', $page_data);
     }
-    function import_data()
+    function import_data($param1=null,$param2=null)
     {
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
+        }
+        if($param1 == 'failed'){
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_add').' '. urldecode($param2));
         }
         $page_data['page_name']  = 'import_data';
         $page_data['page_title'] = getEduAppGTLang('import_data');
@@ -3576,12 +3579,13 @@ class Admin extends EduAppGT
     function import($type)
     {
         if($type == 'student'){
-            if($this->user->importStudent()){
+            $response = $this->user->importStudent();
+            if ($response['status'] === true) {
                 $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
-            }else{
-                $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_add'));
+                redirect(base_url() . 'admin/import_data/');
+            } else {
+                redirect(base_url() . 'admin/import_data/failed/'.$response['message']);
             }
-            redirect(base_url() . 'admin/import_data/', 'refresh');
         }
     }
 
