@@ -1,0 +1,2 @@
+ALTER TABLE student_subject
+ADD COLUMN cert_code VARCHAR(10) NULL DEFAULT NULL;

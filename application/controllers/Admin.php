@@ -3612,6 +3612,17 @@ class Admin extends EduAppGT
         $page_data['page_title'] =  getEduAppGTLang('student_list');
         $this->load->view('backend/index', $page_data);
     }
+    function certificate_list($param1 = '', $param2 = '')
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $page_data['data']       = $param1;
+        $page_data['timestamp']  = $param2;
+        $page_data['page_name']  =  'certificate_list';
+        $page_data['page_title'] =  getEduAppGTLang('certificate_list');
+        $this->load->view('backend/index', $page_data);
+    }
 
     //Manage attendance function.
     function manage_attendance($class_id = '', $section_id = '', $timestamp = '')
