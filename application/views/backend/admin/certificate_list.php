@@ -77,7 +77,7 @@ foreach ($sub as $subs):
                                                         <td>No.</td>
                                                         <td><?= getEduAppGTLang('name'); ?></td>
                                                         <td class="text-center"><?= getEduAppGTLang('course_status'); ?></td>
-                                                        <td class="text-center"><?= getEduAppGTLang('qr_code'); ?></td>
+                                                        <td class="text-center"><?= getEduAppGTLang('certificate_code'); ?></td>
                                                         <td><?= getEduAppGTLang('action'); ?></td>
                                                     </tr>
                                                 </thead>
@@ -92,27 +92,27 @@ foreach ($sub as $subs):
                                                             continue;
                                                         }
                                                         if (isActiveSubject($row2['student_id'], $ex[2])) {
-                                                            $studentData=getStudentInfo($row2['student_id']);
-                                                            $studentSubject=getStudentSubject($row2['student_id'], $ex[2]);
+                                                            $studentData = getStudentInfo($row2['student_id']);
+                                                            $studentSubject = getStudentSubject($row2['student_id'], $ex[2]);
                                                     ?>
                                                             <tr>
                                                                 <td><?= $no ?></td>
                                                                 <td><?= $this->crud->get_name('student', $row2['student_id']) ?></td>
-                                                                <td class="text-center"><?php 
-                                                                    if (isStudentFinishSubject($row2['student_id'], $ex[2])) {?>
+                                                                <td class="text-center"><?php
+                                                                                        if (isStudentFinishSubject($row2['student_id'], $ex[2])) { ?>
                                                                         <div class="value badge badge-pill badge-success"><?= getEduAppGTLang('finished'); ?></div>
-                                                                        <?php }else{?>
+                                                                    <?php } else { ?>
                                                                         <div class="value badge badge-pill badge-warning"><?= getEduAppGTLang('in_progress'); ?></div>
-                                                                        <?php } ?>
+                                                                    <?php } ?>
                                                                 </td>
                                                                 <td class="text-center">
                                                                     <?= $studentSubject->cert_code ?>
                                                                 </td>
                                                                 <td>
-                                                                    <?php if (isMarkBlocked($row2['student_id'], $ex[2])) { ?>
-                                                                        <a class="btn btn-sm btn-success" href="<?= base_url('admin/unblock_mark/' . $row2['student_id'] . '/' . $ex[2] . '/' . $data) ?>"> abrir el bloque de valor <i class="fa fa-check-circle"></i></a>
+                                                                    <?php if ($studentSubject->cert_code) { ?>
+                                                                        <a class="btn btn-sm btn-success" target="_blank" href="<?= base_url('admin/download_certificate/' . $studentSubject->cert_code) ?>"> <?= getEduAppGTLang('download_certificate'); ?> <i class="fa fa-file-pdf"></i></a>
                                                                     <?php } else { ?>
-                                                                        <button class="btn btn-sm btn-danger" onclick="showAjaxModal('<?= base_url('modal/popup/modal_block_mark/' . $data . '/' . $ex[2] . '/' . $row2['student_id']) ?>');">bloque de valor</button>
+                                                                        <button class="btn btn-sm btn-danger" onclick="showAjaxModal('<?= base_url('modal/popup/modal_confirm_certificate/' . $data . '/' . $ex[2] . '/' . $row2['student_id']) ?>');"><?= getEduAppGTLang('generate_certificate'); ?></button>
                                                                     <?php } ?>
                                                                 </td>
                                                             </tr>

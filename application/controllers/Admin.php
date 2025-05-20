@@ -1125,6 +1125,13 @@ class Admin extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('download_file');
         $this->load->view('backend/index', $page_data);
     }
+    function download_certificate($certCode)
+    {
+        $this->load->library('pdf');
+        $html = '<h1>Hello World</h1>';
+        $this->pdf->WriteHTML($html);
+        $this->pdf->Output('Certificate.pdf', 'I');
+    }
 
     //Enter to live class function.
     function live($param1 = '', $param2 = '')
@@ -3622,6 +3629,50 @@ class Admin extends EduAppGT
         $page_data['page_name']  =  'certificate_list';
         $page_data['page_title'] =  getEduAppGTLang('certificate_list');
         $this->load->view('backend/index', $page_data);
+    }
+    function generate_certificate()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $student_id = $this->input->post('student_id');
+        $subject_id = $this->input->post('subject_id');
+        $course= $this->input->post('course');
+        $certCode=generateRandomString(10);
+        do {
+            $certCode = generateRandomString(10);
+        } while (!isCertCodeCanUse($certCode));
+        $this->load->library('ciqrcode');
+
+        $qr_folder = FCPATH . "public/uploads/certificateqr/";
+        $qr_filename = $certCode . ".png";
+
+        if (!file_exists($qr_folder)) {
+            mkdir($qr_folder, 0755, true);
+        }
+        $params['data'] = base_url() . 'verification/course_certificate/' . $certCode;
+        $params['level'] = 'H';
+        $params['size'] = 20;
+        $params['savename'] = $qr_folder . $qr_filename;
+
+        // Generate QR Code
+        $this->ciqrcode->generate($params);
+
+        $data = [
+            'cert_code' => $certCode,
+            'cert_generated_at' => date('Y-m-d H:i:s'),
+            'is_finish'=> 1,
+        ];
+
+        $this->db->where('student_id', $student_id);
+        $this->db->where('subject_id', $subject_id);
+        $this->db->update('student_subject', $data);
+        if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
+        } else {
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_update'));
+        }
+        redirect(base_url() . 'admin/certificate_list/'.$course,'refresh');
     }
 
     //Manage attendance function.

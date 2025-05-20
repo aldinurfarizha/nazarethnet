@@ -8,7 +8,7 @@ function print_json($data)
 }
 function generateRandomString($length = 10)
 {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
 
@@ -22,6 +22,19 @@ function generateRandomString($length = 10)
     }
 
     return $randomString;
+}
+function isCertCodeCanUse($certCode)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('student_subject')
+        ->where('cert_code', $certCode)
+        ->get();
+    if ($data->num_rows() > 0) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 
