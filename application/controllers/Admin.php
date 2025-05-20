@@ -1127,10 +1127,12 @@ class Admin extends EduAppGT
     }
     function download_certificate($certCode)
     {
-        $this->load->library('pdf');
-        $html = '<h1>Hello World</h1>';
-        $this->pdf->WriteHTML($html);
-        $this->pdf->Output('Certificate.pdf', 'I');
+        $this->load->library('pdf_generator');
+
+        $html = "<h2>Contoh PDF</h2><p>PDF ini dibuat menggunakan mPDF dan CodeIgniter 3.</p>";
+
+        // Langsung tampil di browser
+        $this->pdf_generator->generate($html, 'contoh.pdf', 'I');
     }
 
     //Enter to live class function.
