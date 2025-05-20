@@ -49,13 +49,14 @@
                                                                         <?php
                                                                         $class_id = $cs->class_id;
                                                                         $section_id = $cs->section_id;
-                                                                      
+
                                                                         foreach (getSubjectByClassIdandSectionId($class_id, $section_id) as $data) :
-                                                                            $finish=0;
-                                                                            if(isStudentFinishSubject($student_id, $data->subject_id)){
-                                                                                $finish=1;
+                                                                            $finish = 0;
+                                                                            if (isStudentFinishSubject($student_id, $data->subject_id)) {
+                                                                                $finish = 1;
                                                                             }
                                                                             if (isActiveSubject($student_id, $data->subject_id)) {
+                                                                                $studentSubject = getStudentSubject($student_id, $data->subject_id);
                                                                         ?>
                                                                                 <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
                                                                                     <div class="ui-block" data-mh="friend-groups-item">
@@ -65,13 +66,14 @@
                                                                                                     <i class="icon-feather-more-horizontal"></i>
                                                                                                     <ul class="more-dropdown">
                                                                                                         <li>
-                                                                                                            <?php if($finish){
-                                                                                                                ?>
+                                                                                                            <?php if ($finish) {
+                                                                                                            ?>
                                                                                                                 <a href="<?php echo base_url(); ?>student/subject_marks/<?php echo base64_encode($class_id . "-" . $section_id . "-" . $data->subject_id); ?>/"><?php echo getEduAppGTLang('dashboard'); ?></a>
-                                                                                                            <?php } else{?>
+
+                                                                                                            <?php } else { ?>
                                                                                                                 <a href="<?php echo base_url(); ?>student/subject_dashboard/<?php echo base64_encode($class_id . "-" . $section_id . "-" . $data->subject_id); ?>/"><?php echo getEduAppGTLang('dashboard'); ?></a>
                                                                                                             <?php } ?>
-                                                                                                            
+
                                                                                                         </li>
                                                                                                     </ul>
                                                                                                 </div>
@@ -81,14 +83,14 @@
                                                                                                     </div>
                                                                                                     <div class="author-content">
                                                                                                         <?php
-                                                                                                        if($finish){?>
-                                                                                                        <span class="badge badge-success">Finalizado <i class="fa fa-check"></i></span>
-                                                                                                        <br>
-                                                                                                        <a href="<?php echo base_url(); ?>student/subject_marks/<?php echo base64_encode($class_id . "-" . $section_id . "-" . $data->subject_id); ?>/" class="h5 author-name"><?php echo $data->name; ?></a><br><br>
-                                                                                                        <?php }else{?>
+                                                                                                        if ($finish) { ?>
+                                                                                                            <span class="badge badge-success">Finalizado <i class="fa fa-check"></i></span> - <a class="btn btn-primary btn-sm" href="<?= base_url('certificate/download/' . $studentSubject->cert_code) ?>" target="_blank"><?php echo getEduAppGTLang('certificate'); ?> <i class="fa fa-file-pdf"></i></a>
+                                                                                                            <br>
+                                                                                                            <a href="<?php echo base_url(); ?>student/subject_marks/<?php echo base64_encode($class_id . "-" . $section_id . "-" . $data->subject_id); ?>/" class="h5 author-name"><?php echo $data->name; ?></a><br><br>
+                                                                                                        <?php } else { ?>
                                                                                                             <a href="<?php echo base_url(); ?>student/subject_dashboard/<?php echo base64_encode($class_id . "-" . $section_id . "-" . $data->subject_id); ?>/" class="h5 author-name"><?php echo $data->name; ?></a><br><br>
                                                                                                         <?php } ?>
-                                                                                                        
+
                                                                                                         <img src="<?php echo $this->crud->get_image_url('teacher', $data->teacher_id); ?>" class="img-teacher"><span> <?php echo $this->crud->get_name('teacher', $data->teacher_id); ?></span>
                                                                                                     </div>
                                                                                                 </div>

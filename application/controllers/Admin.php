@@ -1125,15 +1125,6 @@ class Admin extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('download_file');
         $this->load->view('backend/index', $page_data);
     }
-    function download_certificate($certCode)
-    {
-        $this->load->library('pdf_generator');
-
-        $html = "<h2>Contoh PDF</h2><p>PDF ini dibuat menggunakan mPDF dan CodeIgniter 3.</p>";
-
-        // Langsung tampil di browser
-        $this->pdf_generator->generate($html, 'contoh.pdf', 'I');
-    }
 
     //Enter to live class function.
     function live($param1 = '', $param2 = '')
@@ -4194,9 +4185,9 @@ class Admin extends EduAppGT
 
         $check = getimagesize($_FILES["certificate_image"]["tmp_name"]);
 
-        // Validasi ukuran HARUS 1920 x 1080
-        if ($check[0] != 1920 || $check[1] != 1080) {
-            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('image_must_1920x1080'));
+        // Validasi ukuran HARUS 1122 x 794
+        if ($check[0] != 1122 || $check[1] != 794) {
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('image_must_1122_x_794'));
             redirect(base_url('admin/certificate'));
             return;
         }
