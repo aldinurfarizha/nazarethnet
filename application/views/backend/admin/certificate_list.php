@@ -110,7 +110,7 @@ foreach ($sub as $subs):
                                                                 </td>
                                                                 <td>
                                                                     <?php if ($studentSubject->cert_code) { ?>
-                                                                        <a class="btn btn-sm btn-success" target="_blank" href="<?= base_url('admin/download_certificate/' . $studentSubject->cert_code) ?>"> <?= getEduAppGTLang('download_certificate'); ?> <i class="fa fa-file-pdf"></i></a>
+                                                                        <a class="btn btn-sm btn-success" target="_blank" href="<?= base_url('certificate/download/' . $studentSubject->cert_code) ?>"> <?= getEduAppGTLang('download_certificate'); ?> <i class="fa fa-file-pdf"></i></a>
                                                                     <?php } else { ?>
                                                                         <button class="btn btn-sm btn-danger" onclick="showAjaxModal('<?= base_url('modal/popup/modal_confirm_certificate/' . $data . '/' . $ex[2] . '/' . $row2['student_id']) ?>');"><?= getEduAppGTLang('generate_certificate'); ?></button>
                                                                     <?php } ?>

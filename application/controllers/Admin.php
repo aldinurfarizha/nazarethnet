@@ -4345,9 +4345,17 @@ class Admin extends EduAppGT
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
-        $page_data['page_name']  = 'grados';
-        $page_data['page_title'] = getEduAppGTLang('classes');
-        $this->load->view('backend/index', $page_data);
+        if($param1){
+            $page_data['selected_branch'] = $param1;
+            $page_data['page_name']  = 'grados';
+            $page_data['page_title'] = getEduAppGTLang('classes');
+            $this->load->view('backend/index', $page_data);
+        }else{
+            $page_data['page_name']  = 'select_branch';
+            $page_data['page_title'] = getEduAppGTLang('select_branch');
+            $this->load->view('backend/index', $page_data);
+        }
+      
     }
 
     //Subjects function.
