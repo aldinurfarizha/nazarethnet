@@ -3564,17 +3564,166 @@ class Admin extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('branch_and_shifts');
         $this->load->view('backend/index', $page_data);
     }
-    function import_data($param1=null,$param2=null)
+    function transfer_data($param1=null,$param2=null)
     {
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
         if($param1 == 'failed'){
-            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_add').' '. urldecode($param2));
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_transfer').' '. urldecode($param2));
         }
-        $page_data['page_name']  = 'import_data';
-        $page_data['page_title'] = getEduAppGTLang('import_data');
+        $page_data['page_name']  = 'transfer_data';
+        $page_data['page_title'] = getEduAppGTLang('transfer_data');
         $this->load->view('backend/index', $page_data);
+    }
+    // function transfer_data_action()
+    // {
+    //     if ($this->session->userdata('admin_login') != 1) {
+    //         redirect(base_url(), 'refresh');
+    //     }
+    //     $subject_id_source= $this->input->post('subject_id_source');
+    //     $subject_id_target= $this->input->post('subject_id_target');
+    //     if($subject_id_source == $subject_id_target){
+    //         redirect(base_url() . 'admin/transfer_data/failed/'.getEduAppGTLang('source_and_target_subjects_are_same'));
+    //     }
+    //     $response = $this->academic->transferSubject($subject_id_source,$subject_id_target);
+    //     if ($response['status'] === true) {
+    //         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_transfer'));
+    //         redirect(base_url() . 'admin/transfer_data/');
+    //     } else {
+    //         redirect(base_url() . 'admin/transfer_data/failed/' . $response['message']);
+    //     }
+    // }
+    function transfer_data_action($subject_id_source, $subject_id_target)
+    {
+        $exam= true;
+        $activity= true;
+        $grade = true;
+        $attendance = true;
+        $subject_source = getSubjectDetailBySubjectId($subject_id_source);
+       
+        $exam_source = getAllExamBySubject($subject_id_source);
+
+        $subject_target = getSubjectDetailBySubjectId($subject_id_target);
+        
+        if($exam){
+            if ($exam_source) {
+                foreach ($exam_source as $exam_sources) {
+                    $this->db->insert('exam', array('name' => $exam_sources->name, 'subject_id' => $subject_id_target, 'class_id' => $subject_target->class_id, 'section_id' => $subject_target->section_id));
+                    $new_exam_id = $this->db->insert_id();
+
+
+                    if($activity){
+                        $mark_activity_source = $this->db->get_where('mark_activity', array('exam_id' => $exam_sources->exam_id))->result();
+                        if ($mark_activity_source) {
+                            foreach ($mark_activity_source as $mark_activity_sources) {
+                                $this->db->insert('mark_activity', array(
+                                    'name' => $mark_activity_sources->name,
+                                    'exam_id' => $new_exam_id,
+                                    'promedio' => $mark_activity_sources->promedio,
+                                    'class_id' => $subject_target->class_id,
+                                    'section_id' => $subject_target->section_id,
+                                    'subject_id' => $subject_target_id,
+                                    'year' => $subject_target->year,
+                                    'is_calculate_avg' => $mark_activity_sources->is_calculate_avg,
+                                    'percent' => $mark_activity_sources->percent,
+                                    'reason' => $mark_activity_sources->reason,
+                                ));
+                                $new_mark_activity_id = $this->db->insert_id();
+
+
+                                if($grade){
+                                    $student_subject_target = getStudentBySubjectId($subject_id_target);
+                                    
+                                    //insert new student to subject
+                                    foreach($student_subject_target as $students){
+                                        //cek enroll
+                                        $isStudentEnrolled=isStudentEnrolled($students, $subject_target->class_id, $subject_target->section_id);
+                                        if($isStudentEnrolled==false){
+                                            $data=[
+                                                'student_id' => $students,
+                                                'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7),
+                                                'class_id' => $subject_target->class_id,
+                                                'section_id' => $subject_target->section_id,
+                                                'roll' => getRollByClassAndSection($subject_target->class_id, $subject_target->section_id)->roll,
+                                                'is_active' => 1,
+                                                'date_added' => strtotime(date("Y-m-d H:i:s")),
+                                                'year' =>getRunningYear(),
+                                            ];
+                                            $this->db->insert('enroll', $data);
+                                        }
+                                        //cek subject
+                                        $isStudentSubjectEnrolled= isStudentEnrolledToSubject($students, $subject_id_target);
+                                        if($isStudentSubjectEnrolled==false){
+                                            $data=[
+                                                'student_id' => $students,
+                                                'subject_id' => $subject_id_target,
+                                                'class_id' => $subject_target->class_id,
+                                                'section_id' => $subject_target->section_id,
+                                                'year' =>getRunningYear(),
+                                            ];
+                                            $this->db->insert('student_subject', $data);
+                                        }
+                                        addStudentToSubject($students,$subject_id_target);
+                                        addStudentToMark($students,$subject_id_target,$subject_target->class_id,$subject_target->section_id,$new_exam_id);
+                                        addStudentToNotacapacidad($students,$new_mark_activity_id);
+                                        //masukan nilai mark lama ke mark subject baru
+                                        transferMarkOldToMarkNew($students, $exam_sources->exam_id, $new_exam_id, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+                                        transferNotaCapacidadOldTonotaCapacidadNew($students, $mark_activity_sources->mark_activity_id, $new_mark_activity_id);
+                                    }
+                                    $student_subject_source = getStudentBySubjectId($subject_id_source);
+                                    foreach($student_subject_source as $studentExiting){
+                                        addStudentToMark($students, $subject_id_target, $subject_target->class_id, $subject_target->section_id, $new_exam_id);
+                                        addStudentToNotacapacidad($students, $new_mark_activity_id);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if($attendance){
+            $student_subject_target = getStudentBySubjectId($subject_id_target);
+            foreach($student_subject_target as $students){
+                //cek enroll
+                $isStudentEnrolled=isStudentEnrolled($students, $subject_target->class_id, $subject_target->section_id);
+                if($isStudentEnrolled==false){
+                    $data=[
+                        'student_id' => $students,
+                        'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7),
+                        'class_id' => $subject_target->class_id,
+                        'section_id' => $subject_target->section_id,
+                        'roll' => getRollByClassAndSection($subject_target->class_id, $subject_target->section_id)->roll,
+                        'is_active' => 1,
+                        'date_added' => strtotime(date("Y-m-d H:i:s")),
+                        'year' =>getRunningYear(),
+                    ];
+                    $this->db->insert('enroll', $data);
+                }
+                //cek subject
+                $isStudentSubjectEnrolled= isStudentEnrolledToSubject($students, $subject_id_target);
+                if($isStudentSubjectEnrolled==false){
+                    $data=[
+                        'student_id' => $students,
+                        'subject_id' => $subject_id_target,
+                        'class_id' => $subject_target->class_id,
+                        'section_id' => $subject_target->section_id,
+                        'year' =>getRunningYear(),
+                    ];
+                    $this->db->insert('student_subject', $data);
+                }
+                addStudentToSubject($students, $subject_id_target);
+                addStudentToMark($students, $subject_id_target, $subject_target->class_id, $subject_target->section_id, $new_exam_id);
+                addStudentToNotacapacidad($students, $new_mark_activity_id);
+                
+                transferOldAttendanceToNew($students, $subject_id_source, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+            }
+        }
+
+
+
+       
     }
     function import($type)
     {
@@ -4575,6 +4724,12 @@ class Admin extends EduAppGT
         $shiftsData=$this->db->get_where('shifts', array('branch_id' => $branch_id))->row();
         if($shiftsData){
             $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('branch_cannot_be_deleted_because_it_is_already_in_use_in_shifts'));
+            redirect(base_url() . 'admin/branch_and_shifts/' );
+            return;
+            die();
+        }
+        if($this->db->get_where('class', array('branch_id' => $branch_id))->num_rows() > 0) {
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('branch_cannot_be_deleted_because_it_is_already_in_use_in_classes'));
             redirect(base_url() . 'admin/branch_and_shifts/' );
             return;
             die();

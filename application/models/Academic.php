@@ -672,6 +672,11 @@ class Academic extends School
 
 
     }
+    public function transferSubject($subject_id_source, $subject_id_target)
+    {
+        //getting base date source subject
+        $subject_source = $this->db->get_where('subject', array('subject_id' => $subject_id_source))->row();
+    }
     
     public function updateCourseActivity($courseId)
     {

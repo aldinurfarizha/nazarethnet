@@ -94,6 +94,33 @@ function getStudentSubject($student_id, $subject_id)
         ->get();
     return $data->row();
 }
+function getStudentBySubjectId($subject_id)
+{
+    $ci = &get_instance();
+    $subjectData = getSubjectDetailBySubjectId($subject_id);
+    $student = $ci->db->select('student.student_id')
+        ->from('student_subject')
+        ->join('student', 'student.student_id = student_subject.student_id')
+        ->where(['student_subject.subject_id' => $subject_id])
+        ->get();
+    $student=$student->result();
+    $student_id = array();
+    foreach($student as $data){
+        if (!isStudentActiveEnroll($data->student_id, $subjectData->class_id, $subjectData->section_id, getRunningYear())) {
+            continue;
+        }
+        if (isStudentDeactive($data->student_id)) {
+            continue;
+        }
+        if (isStudentFinishSubject($data->student_id, $subject_id)) {
+            continue;
+        }
+        if (isActiveSubject($data->student_id, $subject_id)) {
+            $student_id[] = $data->student_id;
+        }
+    }
+    return $student_id;
+}
 function getStudentInfo($student_id)
 {
     $ci = &get_instance();
@@ -186,6 +213,15 @@ function isStudentEnrolled($student_id, $class_id, $section_id)
     } else {
         return false;
     }
+}
+function getRollByClassAndSection($class_id, $section_id)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('roll')
+        ->from('enroll')
+        ->where(['class_id' => $class_id, 'section_id' => $section_id])
+        ->get();
+    return $data->row();
 }
 function isActiveSubject($student_id, $subject_id)
 {
@@ -997,8 +1033,117 @@ function getMyBranchId(){
 
     return $admin;
 }
+function isStudentEnrolledToSubject($student_id, $subject_id)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('student_subject')
+        ->where(['student_id' => $student_id, 'subject_id' => $subject_id])
+        ->get();
+    if ($data->num_rows() > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function addStudentToSubject($student_id, $subject_id)
+{
+    if (isStudentEnrolledToSubject($student_id, $subject_id)) {
+        return false;
+    }
+    $ci = &get_instance();
+    $data = array(
+        'student_id' => $student_id,
+        'subject_id' => $subject_id
+    );
+    $insert = $ci->db->insert('student_subject', $data);
 
+    return $insert ? true : false;
+}
+function transferMarkOldToMarkNew($student_id, $oldExamId, $newExamId, $targetSubjectId, $targetClassId, $targetSectionId)
+{
+    $ci = &get_instance();
 
+    // Ambil data dari ujian lama
+    $data = $ci->db->select('*')
+        ->from('mark')
+        ->where([
+            'student_id' => $student_id,
+            'exam_id' => $oldExamId
+        ])
+        ->get();
 
+    if ($data->num_rows() > 0) {
+        foreach ($data->result() as $row) {
+            // Cek apakah data target sudah ada
+            $target = $ci->db->select('mark_id')
+                ->from('mark')
+                ->where([
+                    'student_id' => $student_id,
+                    'subject_id' => $targetSubjectId,
+                    'class_id' => $targetClassId,
+                    'section_id' => $targetSectionId,
+                    'exam_id' => $newExamId
+                ])
+                ->get()
+                ->row();
 
+            if ($target) {
+                // Update jika ditemukan
+                $updateData = array(
+                    'mark_obtained' => $row->mark_obtained,
+                    'comment'       => $row->comment,
+                    'year'          => $row->year,
+                    'final'         => $row->final
+                );
 
+                $ci->db->where('mark_id', $target->mark_id);
+                $ci->db->update('mark', $updateData);
+            }
+        }
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function transferNotaCapacidadOldTonotaCapacidadNew($student_id, $oldMarkActivityId, $newMarkActivityId)
+{
+    $ci = &get_instance();
+
+    // Ambil data lama berdasarkan mark_activity_id yang lama
+    $data = $ci->db->select('*')
+        ->from('nota_capacidad')
+        ->where([
+            'student_id' => $student_id,
+            'mark_activity_id' => $oldMarkActivityId
+        ])
+        ->get();
+
+    if ($data->num_rows() > 0) {
+        foreach ($data->result() as $row) {
+            // Cari apakah data target sudah ada
+            $target = $ci->db->select('nota_capacidad_id') // Ganti dengan nama primary key tabel nota_capacidad
+                ->from('nota_capacidad')
+                ->where([
+                    'student_id' => $student_id,
+                    'mark_activity_id' => $newMarkActivityId
+                ])
+                ->get()
+                ->row();
+
+            if ($target) {
+                // Update jika data sudah ada
+                $updateData = array(
+                    'nota' => $row->nota
+                );
+
+                $ci->db->where('nota_capacidad_id', $target->id); // Ganti 'id' dengan nama primary key tabel kamu
+                $ci->db->update('nota_capacidad', $updateData);
+            }
+        }
+        return true;
+    } else {
+        return false;
+    }
+}

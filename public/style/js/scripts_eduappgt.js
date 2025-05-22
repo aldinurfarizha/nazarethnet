@@ -212,6 +212,16 @@
             }
         });
     }
+    function get_class_subjects2(section_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_subject/' + section_id ,
+            success: function(response)
+            {
+                jQuery('#subject_holder2').html(response);
+            }
+        });
+    }
     
     function get_sections(class_id) 
     {
@@ -220,6 +230,16 @@
             success: function(response)
             {
                 jQuery('#section_holder').html(response);
+            }
+        });
+    }
+    function get_sections2(class_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_section/' + class_id ,
+            success: function(response)
+            {
+                jQuery('#section_holder2').html(response);
             }
         });
     }
@@ -233,6 +253,16 @@
             }
         });
     }
+    function get_shifts2(branch_id)
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_shifts/' + branch_id ,
+            success: function(response)
+            {
+                jQuery('#shifts_holder2').html(response);
+            }
+        });
+    }
     function get_class(branch_id)
     {
         $.ajax({
@@ -240,6 +270,16 @@
             success: function(response)
             {
                 jQuery('#class_holder').html(response);
+            }
+        });
+    }
+    function get_class2(branch_id)
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class/' + branch_id ,
+            success: function(response)
+            {
+                jQuery('#class_holder2').html(response);
             }
         });
     }

@@ -18,7 +18,11 @@
                             </div>
                         </div>
                         <?php 
-                        $classes = $this->db->where('branch_id',$selected_branch)->get('class')->result_array();
+                        if($selected_branch =='all'){
+                            $classes = $this->db->get('class')->result_array();
+                        }else{
+                            $classes = $this->db->where('branch_id', $selected_branch)->get('class')->result_array();
+                        }
 			                foreach($classes as $class):
 		                ?>
                         <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">

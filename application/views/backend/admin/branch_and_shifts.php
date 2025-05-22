@@ -219,7 +219,7 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
                               <td><?= $no;?></td>
                               <td><?php echo $row['name']; ?></td>
                               <td class="row-actions">
-                                <a href="<?=base_url('admin/grados/')?>" class="btn btn-primary" target="_blank"><i class="fa fa-sync"></i> <?php echo getEduAppGTLang('assign'); ?></a>
+                                <a href="<?=base_url('admin/grados/all')?>" class="btn btn-primary" target="_blank"><i class="fa fa-sync"></i> <?php echo getEduAppGTLang('assign'); ?></a>
                             </tr>
                           <?php $no++; endforeach; ?>
                           </tbody>

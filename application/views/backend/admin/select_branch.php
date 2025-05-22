@@ -20,8 +20,18 @@
                     if(isSuperAdmin()){
                         $branch = $this->db->where([
                             'status'=>'ACTIVE'
-                        ])->get('branch')->result_array();
-                    }else{
+                        ])->get('branch')->result_array();?>
+                        <div class="col-12 col-sm-6 col-lg-3 mb-3">
+                        <a href="<?=base_url('admin/grados/all')?>" class="text-decoration-none">
+                            <div class="card card-branch text-center shadow-lg border-0 rounded-4 p-4 hover-shadow transition h-100 d-flex align-items-center justify-content-center">
+                            <div>
+                                <i class="fas fa-building fa-3x text-primary mb-3"></i>
+                                <h5 class="fw-bold text-dark"><?=getEduAppGTLang('all_branches')?></h5>
+                            </div>
+                            </div>
+                        </a>
+                    </div>
+                    <?php }else{
                         $branch = $this->db->where([
                             'branch_id'=>getMyBranchId()->branch_id,
                             'status'=>'ACTIVE'
@@ -38,7 +48,7 @@
                             </div>
                             </div>
                         </a>
-                        </div>
+                    </div>
 
                     <?php endforeach;?>
                 </div>
