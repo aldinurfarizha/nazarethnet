@@ -3596,13 +3596,15 @@ class Admin extends EduAppGT
     // }
     function transfer_data_action($subject_id_source, $subject_id_target)
     {
+        $this->output->enable_profiler(TRUE);
+
         $exam= true;
         $activity= true;
         $grade = true;
         $attendance = true;
         $subject_source = getSubjectDetailBySubjectId($subject_id_source);
        
-        $exam_source = getAllExamBySubject($subject_id_source);
+        $exam_source = getAllExamBySubjectDetail($subject_id_source,$subject_source->class_id,$subject_source->section_id);
 
         $subject_target = getSubjectDetailBySubjectId($subject_id_target);
         
@@ -3623,7 +3625,7 @@ class Admin extends EduAppGT
                                     'promedio' => $mark_activity_sources->promedio,
                                     'class_id' => $subject_target->class_id,
                                     'section_id' => $subject_target->section_id,
-                                    'subject_id' => $subject_target_id,
+                                    'subject_id' => $subject_id_target,
                                     'year' => $subject_target->year,
                                     'is_calculate_avg' => $mark_activity_sources->is_calculate_avg,
                                     'percent' => $mark_activity_sources->percent,
@@ -3633,10 +3635,10 @@ class Admin extends EduAppGT
 
 
                                 if($grade){
-                                    $student_subject_target = getStudentBySubjectId($subject_id_target);
+                                    $student_subject_source = getStudentBySubjectId($subject_id_source);
                                     
                                     //insert new student to subject
-                                    foreach($student_subject_target as $students){
+                                    foreach($student_subject_source as $students){
                                         //cek enroll
                                         $isStudentEnrolled=isStudentEnrolled($students, $subject_target->class_id, $subject_target->section_id);
                                         if($isStudentEnrolled==false){
@@ -3645,24 +3647,12 @@ class Admin extends EduAppGT
                                                 'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7),
                                                 'class_id' => $subject_target->class_id,
                                                 'section_id' => $subject_target->section_id,
-                                                'roll' => getRollByClassAndSection($subject_target->class_id, $subject_target->section_id)->roll,
+                                                'roll' => getRollByClassAndSection($subject_source->class_id, $subject_source->section_id)->roll,
                                                 'is_active' => 1,
                                                 'date_added' => strtotime(date("Y-m-d H:i:s")),
                                                 'year' =>getRunningYear(),
                                             ];
                                             $this->db->insert('enroll', $data);
-                                        }
-                                        //cek subject
-                                        $isStudentSubjectEnrolled= isStudentEnrolledToSubject($students, $subject_id_target);
-                                        if($isStudentSubjectEnrolled==false){
-                                            $data=[
-                                                'student_id' => $students,
-                                                'subject_id' => $subject_id_target,
-                                                'class_id' => $subject_target->class_id,
-                                                'section_id' => $subject_target->section_id,
-                                                'year' =>getRunningYear(),
-                                            ];
-                                            $this->db->insert('student_subject', $data);
                                         }
                                         addStudentToSubject($students,$subject_id_target);
                                         addStudentToMark($students,$subject_id_target,$subject_target->class_id,$subject_target->section_id,$new_exam_id);
@@ -3684,8 +3674,8 @@ class Admin extends EduAppGT
             }
         }
         if($attendance){
-            $student_subject_target = getStudentBySubjectId($subject_id_target);
-            foreach($student_subject_target as $students){
+            $student_subject_source = getStudentBySubjectId($subject_id_source);
+            foreach($student_subject_source as $students){
                 //cek enroll
                 $isStudentEnrolled=isStudentEnrolled($students, $subject_target->class_id, $subject_target->section_id);
                 if($isStudentEnrolled==false){
@@ -3694,29 +3684,17 @@ class Admin extends EduAppGT
                         'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7),
                         'class_id' => $subject_target->class_id,
                         'section_id' => $subject_target->section_id,
-                        'roll' => getRollByClassAndSection($subject_target->class_id, $subject_target->section_id)->roll,
+                        'roll' => getRollByClassAndSection($subject_source->class_id, $subject_source->section_id)->roll,
                         'is_active' => 1,
                         'date_added' => strtotime(date("Y-m-d H:i:s")),
                         'year' =>getRunningYear(),
                     ];
                     $this->db->insert('enroll', $data);
                 }
-                //cek subject
-                $isStudentSubjectEnrolled= isStudentEnrolledToSubject($students, $subject_id_target);
-                if($isStudentSubjectEnrolled==false){
-                    $data=[
-                        'student_id' => $students,
-                        'subject_id' => $subject_id_target,
-                        'class_id' => $subject_target->class_id,
-                        'section_id' => $subject_target->section_id,
-                        'year' =>getRunningYear(),
-                    ];
-                    $this->db->insert('student_subject', $data);
-                }
                 addStudentToSubject($students, $subject_id_target);
-                addStudentToMark($students, $subject_id_target, $subject_target->class_id, $subject_target->section_id, $new_exam_id);
-                addStudentToNotacapacidad($students, $new_mark_activity_id);
-                
+                addStudentToMarkIfNotExist($students, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+                addStudentToNotacapacidadIfNotExist($students, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+                //belum ada fitur cek dulu sebelum insert
                 transferOldAttendanceToNew($students, $subject_id_source, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
             }
         }

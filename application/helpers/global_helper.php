@@ -349,7 +349,20 @@ function getAllExamBySubject($subjectId)
     $data = $ci->db->select('*')
         ->from('exam')
         ->where([
-            'subject_id'=>$subjectId
+            'subject_id'=>$subjectId,
+        ])
+        ->get();
+    return $data->result();
+}
+function getAllExamBySubjectDetail($subjectId,$classId,$sectionId)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('exam')
+        ->where([
+            'subject_id'=>$subjectId,
+            'class_id'=>$classId,
+            'section_id'=>$sectionId
         ])
         ->get();
     return $data->result();
@@ -438,6 +451,31 @@ function addStudentToMark($student_id, $subject_id, $class_id, $section_id,$exam
     $insert = $ci->db->insert('mark', $data);
     return $insert ? true : false;
 }
+function addStudentToMarkIfNotExist($student_id, $subject_id, $class_id, $section_id)
+{
+    $exam =  getAllExamBySubjectDetail($subject_id,$class_id,$section_id);
+    foreach ($exam as $ex) {
+        $exam_id = $ex->exam_id;
+        if(isStudentExistMark($student_id,$exam_id)){
+        continue;
+        }
+        $runningYear = getRunningYear();
+        $data=[
+            'student_id'=>$student_id,
+            'subject_id'=>$subject_id,
+            'class_id'=>$class_id,
+            'section_id'=>$section_id,
+            'exam_id'=>$exam_id,
+            'mark_obtained'=>0,
+            'comment'=>'',
+            'year'=>$runningYear,
+            'final'=>0,
+        ];
+        $ci = &get_instance();
+        $ci->db->insert('mark', $data);
+    }
+    
+}
 function isStudentExistNotaCapacidad($student_id,$markActivtyId)
 {
     $ci = &get_instance();
@@ -467,6 +505,36 @@ function addStudentToNotacapacidad($student_id, $markActivtyId)
     $ci = &get_instance();
     $insert = $ci->db->insert('nota_capacidad', $data);
     return $insert ? true : false;
+}
+function addStudentToNotacapacidadIfNotExist($student_id, $subject_id, $class_id,$section_id)
+{
+    $ci = &get_instance();
+    $exam =  getAllExamBySubjectDetail($subject_id,$class_id,$section_id);
+    foreach($exam as $ex){
+        $exam_id = $ex->exam_id;
+        $markActivity = $ci->db->select('*')
+        ->from('mark_activity')
+        ->where([
+            'exam_id'=>$exam_id,
+            'subject_id'=>$subject_id,
+            'class_id'=>$class_id,
+            'section_id'=>$section_id
+        ])
+        ->get()->result();
+        foreach($markActivity as $mark){
+            $markActivtyId = $mark->mark_activity_id;
+            if(isStudentExistNotaCapacidad($student_id,$markActivtyId)){
+                continue;
+            }
+            $data=[
+                'student_id'=>$student_id,
+                'mark_activity_id'=>$markActivtyId,
+                'nota'=>0
+            ];
+            $ci = &get_instance();
+            $ci->db->insert('nota_capacidad', $data);
+        }
+    }
 }
 function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
 {
@@ -1138,7 +1206,7 @@ function transferNotaCapacidadOldTonotaCapacidadNew($student_id, $oldMarkActivit
                     'nota' => $row->nota
                 );
 
-                $ci->db->where('nota_capacidad_id', $target->id); // Ganti 'id' dengan nama primary key tabel kamu
+                $ci->db->where('nota_capacidad_id', $target->nota_capacidad_id); // Ganti 'id' dengan nama primary key tabel kamu
                 $ci->db->update('nota_capacidad', $updateData);
             }
         }
@@ -1147,3 +1215,37 @@ function transferNotaCapacidadOldTonotaCapacidadNew($student_id, $oldMarkActivit
         return false;
     }
 }
+function transferOldAttendanceToNew($students_id, $subject_id_source, $subject_id_target, $target_class_id, $target_section_id) 
+{
+    $ci = &get_instance();
+
+    $attendances = $ci->db->select('*')
+        ->from('attendance')
+        ->where([
+            'student_id'    => $students_id,
+            'subject_id'    => $subject_id_source,
+        ])
+        ->get();
+
+    if ($attendances->num_rows() > 0) {
+        foreach ($attendances->result() as $row) {
+            $insertData = array(
+                'timestamp'     => $row->timestamp,
+                'year'          => $row->year,
+                'class_id'      => $target_class_id,
+                'section_id'    => $target_section_id,
+                'student_id'    => $row->student_id,
+                'subject_id'    => $subject_id_target,
+                'status'        => $row->status,
+                'time'          => $row->time,
+                'updated_at'    => date('Y-m-d H:i:s')
+            );
+            $ci->db->insert('attendance', $insertData);
+        }
+        return true;
+    }
+
+    return false;
+}
+
+
