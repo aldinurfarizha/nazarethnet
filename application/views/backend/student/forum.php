@@ -75,10 +75,9 @@
                                                 </thead>
                                                 <tbody>
                                                 <?php
-	    		                                    $class_id = $this->db->get_where('enroll' , array('student_id' => $this->session->userdata('login_user_id') , 'year' => $running_year))->row()->class_id;
-	    		                                    $section_id = $this->db->get_where('enroll' , array('student_id' => $this->session->userdata('login_user_id') , 'year' => $running_year))->row()->section_id;
+	    		                                    $subjectDetail=getSubjectDetailBySubjectId($rows['subject_id']);
     			                                    $this->db->order_by('post_id', 'desc');
-    			                                    $post = $this->db->get_where('forum', array('class_id' => $class_id, 'section_id' => $section_id, 'post_status' => 1, 'subject_id' => $rows['subject_id']))->result_array();
+    			                                    $post = $this->db->get_where('forum', array('class_id' => $subjectDetail->class_id, 'section_id' => $subjectDetail->section_id, 'post_status' => 1, 'subject_id' => $rows['subject_id']))->result_array();
     			                                    foreach ($post as $row):
     		                                    ?>
                                                     <tr>

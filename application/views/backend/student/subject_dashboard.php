@@ -60,8 +60,9 @@ foreach ($sub as $row) :
                         <main class="col col-xl-6 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
                             <div id="newsfeed-items-grid">
                                 <?php
-                                $db = $this->db->query("SELECT description, publish_date, type, news_id FROM news WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1] 
-                                UNION SELECT question,publish_date,type,id FROM polls WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1] 
+                                $db = $this->db->query("
+                                      SELECT description, publish_date, type as wall_type, news_id FROM news WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1] 
+                                UNION SELECT question,publish_date,type as wall_type,id FROM polls WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1] 
                                 UNION SELECT homework_code, publish_date, wall_type, homework_id FROM homework WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1] 
                                 UNION SELECT timestamp, publish_date, wall_type, document_id FROM document WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1] 
                                 UNION SELECT code, publish_date, wall_type, online_exam_id FROM online_exam WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1] 
@@ -69,7 +70,7 @@ foreach ($sub as $row) :
                                 if ($db->num_rows() > 0) :
                                     foreach ($db->result_array() as $wall) :
                                 ?>
-                                        <?php if ($wall['type'] == 'news') : ?>
+                                        <?php if ($wall['wall_type'] == 'news') : ?>
                                             <div class="ui-block paddingtel">
                                                 <?php
                                                 $news_code = $this->db->get_where('news', array('news_id' => $wall['news_id']))->row()->news_code;
@@ -104,7 +105,7 @@ foreach ($sub as $row) :
                                                 </article>
                                             </div>
                                         <?php endif; ?>
-                                        <?php if ($wall['type'] == 'video') : ?>
+                                        <?php if ($wall['wall_type'] == 'video') : ?>
                                             <div class="ui-block paddingtel">
                                                 <?php
                                                 $news_code = $this->db->get_where('news', array('news_id' => $wall['news_id']))->row()->news_code;
@@ -137,7 +138,7 @@ foreach ($sub as $row) :
                                                 </article>
                                             </div>
                                         <?php endif; ?>
-                                        <?php if ($wall['type'] == 'vimeo') : ?>
+                                        <?php if ($wall['wall_type'] == 'vimeo') : ?>
                                             <div class="ui-block paddingtel">
                                                 <?php
                                                 $news_code = $this->db->get_where('news', array('news_id' => $wall['news_id']))->row()->news_code;
@@ -170,16 +171,16 @@ foreach ($sub as $row) :
                                                 </article>
                                             </div>
                                         <?php endif; ?>
-                                        <?php if ($wall['wall_type'] == 'homework' && $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->status == 1) : ?>
-                                            <?php $this->academic->setRead($wall['homework_id'], 'homework', $ex[2]); ?>
+                                        <?php if ($wall['wall_type'] == 'homework' && $this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->status == 1) : ?>
+                                            <?php $this->academic->setRead($wall['news_id'], 'homework', $ex[2]); ?>
                                             <div class="ui-block">
                                                 <article class="hentry post thumb-full-width">
                                                     <div class="post__author author vcard inline-items">
-                                                        <img src="<?php echo $this->crud->get_image_url($this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->uploader_type, $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->uploader_id); ?>">
+                                                        <img src="<?php echo $this->crud->get_image_url($this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->uploader_type, $this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->uploader_id); ?>">
                                                         <div class="author-date">
-                                                            <a class="h6 post__author-name fn" href="javascript:void(0);"><?php echo $this->crud->get_name($this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->uploader_type, $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->uploader_id); ?></a>
+                                                            <a class="h6 post__author-name fn" href="javascript:void(0);"><?php echo $this->crud->get_name($this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->uploader_type, $this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->uploader_id); ?></a>
                                                             <div class="post__date">
-                                                                <time class="published"><?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->upload_date; ?></time>
+                                                                <time class="published"><?php echo $this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->upload_date; ?></time>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -189,28 +190,28 @@ foreach ($sub as $row) :
                                                             <div class="grado">
                                                                 <?php echo $this->db->get_where('class', array('class_id' => $ex[0]))->row()->name; ?> "<?php echo $this->db->get_where('section', array('section_id' => $ex[1]))->row()->name; ?>"
                                                             </div>
-                                                            <h3 class="cta-header"><?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->title; ?></h3>
+                                                            <h3 class="cta-header"><?php echo $this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->title; ?></h3>
                                                             <div class="descripcion">
-                                                                <?php echo html_entity_decode($this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->description); ?>
+                                                                <?php echo html_entity_decode($this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->description); ?>
                                                                 <br>
-                                                                <?php if ($this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->media_type == 1) : ?>
-                                                                    <video src="<?php echo base_url(); ?>public/uploads/homework/video/<?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->homework_code; ?>.mp4" controls type="video/mp4" style="width: auto; max-width:100%;"></video>
-                                                                <?php elseif ($this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->media_type == 2) : ?>
+                                                                <?php if ($this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->media_type == 1) : ?>
+                                                                    <video src="<?php echo base_url(); ?>public/uploads/homework/video/<?php echo $this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->homework_code; ?>.mp4" controls type="video/mp4" style="width: auto; max-width:100%;"></video>
+                                                                <?php elseif ($this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->media_type == 2) : ?>
                                                                     <audio controls type="video/mp3">
-                                                                        <source src="<?php echo base_url(); ?>public/uploads/homework/audio/<?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->homework_code; ?>.mp3" type="audio/mpeg">
+                                                                        <source src="<?php echo base_url(); ?>public/uploads/homework/audio/<?php echo $this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->homework_code; ?>.mp3" type="audio/mpeg">
                                                                     </audio>
                                                                 <?php endif; ?>
                                                             </div>
-                                                            <?php if ($this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->file_name != "") : ?>
+                                                            <?php if ($this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->file_name != "") : ?>
                                                                 <div class="table-responsive">
                                                                     <table class="table table-down">
                                                                         <tbody>
                                                                             <tr class="trdhs">
                                                                                 <td class="text-left cell-with-media">
-                                                                                    <a href="<?php echo base_url() . 'student/viewFile/' . $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->file_name; ?>"><i class="picons-thin-icon-thin-0111_folder_files_documents px16 text-white"></i> <span><?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->file_name; ?></span><span class="smaller">(<?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->filesize; ?>)</span></a>
+                                                                                    <a href="<?php echo base_url() . 'student/viewFile/' . $this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->file_name; ?>"><i class="picons-thin-icon-thin-0111_folder_files_documents px16 text-white"></i> <span><?php echo $this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->file_name; ?></span><span class="smaller">(<?php echo $this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->filesize; ?>)</span></a>
                                                                                 </td>
                                                                                 <td class="text-center bolder">
-                                                                                    <a href="<?php echo base_url() . 'student/viewFile/' . $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->file_name; ?>"> <span><i class="picons-thin-icon-thin-0121_download_file"></i></span> </a>
+                                                                                    <a href="<?php echo base_url() . 'student/viewFile/' . $this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->file_name; ?>"> <span><i class="picons-thin-icon-thin-0121_download_file"></i></span> </a>
                                                                                 </td>
                                                                             </tr>
                                                                         </tbody>
@@ -218,9 +219,9 @@ foreach ($sub as $row) :
                                                                 </div>
                                                             <?php endif; ?>
                                                             <div class="deadtime">
-                                                                <span><?php echo getEduAppGTLang('date'); ?>:</span><i class="picons-thin-icon-thin-0027_stopwatch_timer_running_time"></i><?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->date_end; ?> @ <?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->time_end; ?>
+                                                                <span><?php echo getEduAppGTLang('date'); ?>:</span><i class="picons-thin-icon-thin-0027_stopwatch_timer_running_time"></i><?php echo $this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->date_end; ?> @ <?php echo $this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->time_end; ?>
                                                             </div>
-                                                            <a href="<?php echo base_url(); ?>student/homeworkroom/<?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->homework_code; ?>/"><button class="btn btn-rounded btn-posts"><i class="picons-thin-icon-thin-0100_to_do_list_reminder_done"></i> <?php echo getEduAppGTLang('view_homework'); ?></button></a>
+                                                            <a href="<?php echo base_url(); ?>student/homeworkroom/<?php echo $this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->homework_code; ?>/"><button class="btn btn-rounded btn-posts"><i class="picons-thin-icon-thin-0100_to_do_list_reminder_done"></i> <?php echo getEduAppGTLang('view_homework'); ?></button></a>
                                                         </div>
                                                     </div>
                                                     <div class="control-block-button post-control-button">
@@ -232,7 +233,7 @@ foreach ($sub as $row) :
                                                 </article>
                                             </div>
                                         <?php endif; ?>
-                                        <?php if ($wall['type'] == 'polls') : ?>
+                                        <?php if ($wall['wall_type'] == 'polls') : ?>
                                             <?php echo form_open(base_url() . 'student/polls/response/', array('enctype' => 'multipart/form-data')); ?>
                                             <?php
                                             $usrdb = $this->db->get_where('polls', array('id' => $wall['news_id']))->row()->user;
@@ -371,16 +372,16 @@ foreach ($sub as $row) :
                                             <?php endif; ?>
                                             <?php echo form_close(); ?>
                                         <?php endif; ?>
-                                        <?php if ($wall['wall_type'] == 'exam' && $this->db->get_where('online_exam', array('online_exam_id' => $wall['homework_id']))->row()->status != 'pending') : ?>
-                                            <?php $this->academic->setRead($wall['homework_id'], 'exam', $ex[2]); ?>
+                                        <?php if ($wall['wall_type'] == 'exam' && $this->db->get_where('online_exam', array('online_exam_id' => $wall['news_id']))->row()->status != 'pending') : ?>
+                                            <?php $this->academic->setRead($wall['news_id'], 'exam', $ex[2]); ?>
                                             <div class="ui-block">
                                                 <article class="hentry post thumb-full-width">
                                                     <div class="post__author author vcard inline-items">
-                                                        <img src="<?php echo $this->crud->get_image_url($this->db->get_where('online_exam', array('online_exam_id' => $wall['homework_id']))->row()->uploader_type, $this->db->get_where('online_exam', array('online_exam_id' => $wall['homework_id']))->row()->uploader_id); ?>">
+                                                        <img src="<?php echo $this->crud->get_image_url($this->db->get_where('online_exam', array('online_exam_id' => $wall['news_id']))->row()->uploader_type, $this->db->get_where('online_exam', array('online_exam_id' => $wall['news_id']))->row()->uploader_id); ?>">
                                                         <div class="author-date">
-                                                            <a class="h6 post__author-name fn" href="javascript:void(0);"><?php echo $this->crud->get_name($this->db->get_where('online_exam', array('online_exam_id' => $wall['homework_id']))->row()->uploader_type, $this->db->get_where('online_exam', array('online_exam_id' => $wall['homework_id']))->row()->uploader_id); ?></a>
+                                                            <a class="h6 post__author-name fn" href="javascript:void(0);"><?php echo $this->crud->get_name($this->db->get_where('online_exam', array('online_exam_id' => $wall['news_id']))->row()->uploader_type, $this->db->get_where('online_exam', array('online_exam_id' => $wall['news_id']))->row()->uploader_id); ?></a>
                                                             <div class="post__date">
-                                                                <time class="published"><?php echo $this->db->get_where('online_exam', array('online_exam_id' => $wall['homework_id']))->row()->upload_date; ?></time>
+                                                                <time class="published"><?php echo $this->db->get_where('online_exam', array('online_exam_id' => $wall['news_id']))->row()->upload_date; ?></time>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -392,18 +393,18 @@ foreach ($sub as $row) :
                                                             <div class="grado">
                                                                 <?php echo $this->db->get_where('class', array('class_id' => $ex[0]))->row()->name; ?> "<?php echo $this->db->get_where('section', array('section_id' => $ex[1]))->row()->name; ?>"
                                                             </div>
-                                                            <h3 class="cta-header"><?php echo $this->db->get_where('online_exam', array('online_exam_id' => $wall['homework_id']))->row()->title; ?></h3>
+                                                            <h3 class="cta-header"><?php echo $this->db->get_where('online_exam', array('online_exam_id' => $wall['news_id']))->row()->title; ?></h3>
                                                             <div class="descripcion">
-                                                                <?php echo html_entity_decode($this->db->get_where('online_exam', array('online_exam_id' => $wall['homework_id']))->row()->instruction); ?>
+                                                                <?php echo html_entity_decode($this->db->get_where('online_exam', array('online_exam_id' => $wall['news_id']))->row()->instruction); ?>
                                                             </div>
                                                             <div class="deadtime">
-                                                                <span><?php echo getEduAppGTLang('date'); ?>:</span><i class="picons-thin-icon-thin-0027_stopwatch_timer_running_time"></i><?php echo date('M d, Y', $this->db->get_where('online_exam', array('online_exam_id' => $wall['homework_id']))->row()->exam_date); ?>
+                                                                <span><?php echo getEduAppGTLang('date'); ?>:</span><i class="picons-thin-icon-thin-0027_stopwatch_timer_running_time"></i><?php echo date('M d, Y', $this->db->get_where('online_exam', array('online_exam_id' => $wall['news_id']))->row()->exam_date); ?>
                                                             </div>
                                                             <div class="deadtime">
-                                                                <span><?php echo getEduAppGTLang('hour'); ?>:</span><i class="picons-thin-icon-thin-0027_stopwatch_timer_running_time"></i><?php echo $this->db->get_where('online_exam', array('online_exam_id' => $wall['homework_id']))->row()->time_start . " - " . $this->db->get_where('online_exam', array('online_exam_id' => $wall['homework_id']))->row()->time_end; ?>
+                                                                <span><?php echo getEduAppGTLang('hour'); ?>:</span><i class="picons-thin-icon-thin-0027_stopwatch_timer_running_time"></i><?php echo $this->db->get_where('online_exam', array('online_exam_id' => $wall['news_id']))->row()->time_start . " - " . $this->db->get_where('online_exam', array('online_exam_id' => $wall['news_id']))->row()->time_end; ?>
                                                             </div>
                                                             <div class="deadtime">
-                                                                <span><?php echo getEduAppGTLang('duration'); ?>:</span><i class="picons-thin-icon-thin-0026_time_watch_clock"></i><?php $minutes = number_format($this->db->get_where('online_exam', array('online_exam_id' => $wall['homework_id']))->row()->duration / 60, 0);
+                                                                <span><?php echo getEduAppGTLang('duration'); ?>:</span><i class="picons-thin-icon-thin-0026_time_watch_clock"></i><?php $minutes = number_format($this->db->get_where('online_exam', array('online_exam_id' => $wall['news_id']))->row()->duration / 60, 0);
                                                                                                                                                                                     echo $minutes; ?> mins.
                                                             </div>
                                                             <a href="<?php echo base_url(); ?>student/online_exams/<?php echo $data; ?>/"><button class="btn btn-rounded btn-posts verde"><i class="picons-thin-icon-thin-0014_notebook_paper_todo"></i> <?php echo getEduAppGTLang('go_to_exams'); ?></button></a>
@@ -419,15 +420,15 @@ foreach ($sub as $row) :
                                             </div>
                                         <?php endif; ?>
                                         <?php if ($wall['wall_type'] == 'material') : ?>
-                                            <?php $this->academic->setRead($wall['homework_id'], 'material', $ex[2]); ?>
+                                            <?php $this->academic->setRead($wall['news_id'], 'material', $ex[2]); ?>
                                             <div class="ui-block">
                                                 <article class="hentry post thumb-full-width">
                                                     <div class="post__author author vcard inline-items">
-                                                        <img src="<?php echo $this->crud->get_image_url($this->db->get_where('document', array('document_id' => $wall['homework_id']))->row()->type, $this->db->get_where('document', array('document_id' => $wall['homework_id']))->row()->teacher_id); ?>">
+                                                        <img src="<?php echo $this->crud->get_image_url($this->db->get_where('document', array('document_id' => $wall['news_id']))->row()->type, $this->db->get_where('document', array('document_id' => $wall['news_id']))->row()->teacher_id); ?>">
                                                         <div class="author-date">
-                                                            <a class="h6 post__author-name fn" href="javascript:void(0);"><?php echo $this->crud->get_name($this->db->get_where('document', array('document_id' => $wall['homework_id']))->row()->type, $this->db->get_where('document', array('document_id' => $wall['homework_id']))->row()->teacher_id); ?></a>
+                                                            <a class="h6 post__author-name fn" href="javascript:void(0);"><?php echo $this->crud->get_name($this->db->get_where('document', array('document_id' => $wall['news_id']))->row()->type, $this->db->get_where('document', array('document_id' => $wall['news_id']))->row()->teacher_id); ?></a>
                                                             <div class="post__date">
-                                                                <time class="published"><?php echo $this->db->get_where('document', array('document_id' => $wall['homework_id']))->row()->upload_date; ?></time>
+                                                                <time class="published"><?php echo $this->db->get_where('document', array('document_id' => $wall['news_id']))->row()->upload_date; ?></time>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -441,17 +442,17 @@ foreach ($sub as $row) :
                                                             </div>
                                                             <h3 class="cta-header"><?php echo getEduAppGTLang('study_material'); ?></h3>
                                                             <div class="descripcion">
-                                                                <?php echo html_entity_decode($this->db->get_where('document', array('document_id' => $wall['homework_id']))->row()->description); ?>
+                                                                <?php echo html_entity_decode($this->db->get_where('document', array('document_id' => $wall['news_id']))->row()->description); ?>
                                                             </div>
                                                             <div class="table-responsive">
                                                                 <table class="table table-down">
                                                                     <tbody>
                                                                         <tr class="trdhs">
                                                                             <td class="text-left cell-with-media">
-                                                                                <a href="<?php echo base_url() . 'student/viewFile/' . $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->file_name; ?>"><i class="picons-thin-icon-thin-0111_folder_files_documents px16 text-white"></i> <span><?php echo $this->db->get_where('document', array('document_id' => $wall['homework_id']))->row()->file_name; ?></span><span class="smaller">(<?php echo $this->db->get_where('document', array('document_id' => $wall['homework_id']))->row()->filesize; ?>)</span></a>
+                                                                                <a href="<?php echo base_url() . 'student/viewFile/' . @$this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->file_name; ?>"><i class="picons-thin-icon-thin-0111_folder_files_documents px16 text-white"></i> <span><?php echo $this->db->get_where('document', array('document_id' => $wall['news_id']))->row()->file_name; ?></span><span class="smaller">(<?php echo $this->db->get_where('document', array('document_id' => $wall['news_id']))->row()->filesize; ?>)</span></a>
                                                                             </td>
                                                                             <td class="text-center bolder">
-                                                                                <a href="<?php echo base_url() . 'student/viewFile/' . $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->file_name; ?>"> <span><i class="picons-thin-icon-thin-0121_download_file"></i></span> </a>
+                                                                                <a href="<?php echo base_url() . 'student/viewFile/' . @$this->db->get_where('homework', array('homework_id' => $wall['news_id']))->row()->file_name; ?>"> <span><i class="picons-thin-icon-thin-0121_download_file"></i></span> </a>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -468,16 +469,16 @@ foreach ($sub as $row) :
                                                 </article>
                                             </div>
                                         <?php endif; ?>
-                                        <?php if ($wall['wall_type'] == 'forum' && $this->db->get_where('forum', array('post_id' => $wall['homework_id']))->row()->post_status == 1) : ?>
-                                            <?php $this->academic->setRead($wall['homework_id'], 'forum', $ex[2]); ?>
+                                        <?php if ($wall['wall_type'] == 'forum' && $this->db->get_where('forum', array('post_id' => $wall['news_id']))->row()->post_status == 1) : ?>
+                                            <?php $this->academic->setRead($wall['news_id'], 'forum', $ex[2]); ?>
                                             <div class="ui-block">
                                                 <article class="hentry post thumb-full-width">
                                                     <div class="post__author author vcard inline-items">
-                                                        <img src="<?php echo $this->crud->get_image_url($this->db->get_where('forum', array('post_id' => $wall['homework_id']))->row()->type, $this->db->get_where('forum', array('post_id' => $wall['homework_id']))->row()->teacher_id); ?>">
+                                                        <img src="<?php echo $this->crud->get_image_url($this->db->get_where('forum', array('post_id' => $wall['news_id']))->row()->type, $this->db->get_where('forum', array('post_id' => $wall['news_id']))->row()->teacher_id); ?>">
                                                         <div class="author-date">
-                                                            <a class="h6 post__author-name fn" href="javascript:void(0);"><?php echo $this->crud->get_name($this->db->get_where('forum', array('post_id' => $wall['homework_id']))->row()->type, $this->db->get_where('forum', array('post_id' => $wall['homework_id']))->row()->teacher_id); ?></a>
+                                                            <a class="h6 post__author-name fn" href="javascript:void(0);"><?php echo $this->crud->get_name($this->db->get_where('forum', array('post_id' => $wall['news_id']))->row()->type, $this->db->get_where('forum', array('post_id' => $wall['news_id']))->row()->teacher_id); ?></a>
                                                             <div class="post__date">
-                                                                <time class="published"><?php echo $this->db->get_where('forum', array('post_id' => $wall['homework_id']))->row()->upload_date; ?></time>
+                                                                <time class="published"><?php echo $this->db->get_where('forum', array('post_id' => $wall['news_id']))->row()->upload_date; ?></time>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -489,11 +490,11 @@ foreach ($sub as $row) :
                                                             <div class="grado">
                                                                 <?php echo $this->db->get_where('class', array('class_id' => $ex[0]))->row()->name; ?> "<?php echo $this->db->get_where('section', array('section_id' => $ex[1]))->row()->name; ?>"
                                                             </div>
-                                                            <h3 class="cta-header"><?php echo $this->db->get_where('forum', array('post_id' => $wall['homework_id']))->row()->title; ?></h3>
+                                                            <h3 class="cta-header"><?php echo $this->db->get_where('forum', array('post_id' => $wall['news_id']))->row()->title; ?></h3>
                                                             <div class="descripcion">
-                                                                <?php echo html_entity_decode($this->db->get_where('forum', array('post_id' => $wall['homework_id']))->row()->description); ?>
+                                                                <?php echo html_entity_decode($this->db->get_where('forum', array('post_id' => $wall['news_id']))->row()->description); ?>
                                                             </div>
-                                                            <a href="<?php echo base_url(); ?>student/forumroom/<?php echo $this->db->get_where('forum', array('post_id' => $wall['homework_id']))->row()->post_code; ?>/"><button class="btn btn-rounded btn-posts"><i class="picons-thin-icon-thin-0014_notebook_paper_todo"></i> <?php echo getEduAppGTLang('view_forum'); ?></button></a>
+                                                            <a href="<?php echo base_url(); ?>student/forumroom/<?php echo $this->db->get_where('forum', array('post_id' => $wall['news_id']))->row()->post_code; ?>/"><button class="btn btn-rounded btn-posts"><i class="picons-thin-icon-thin-0014_notebook_paper_todo"></i> <?php echo getEduAppGTLang('view_forum'); ?></button></a>
                                                         </div>
                                                     </div>
                                                     <div class="control-block-button post-control-button">

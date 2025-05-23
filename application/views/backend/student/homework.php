@@ -76,10 +76,9 @@
                                                 <tbody>
                                                     <?php
                                 			            $counter = 1;
-                            			                $class_id = $this->db->get_where('enroll' , array('student_id' => $this->session->userdata('login_user_id') , 'year' => $running_year))->row()->class_id;
-                            			                $section_id = $this->db->get_where('enroll' , array('student_id' => $this->session->userdata('login_user_id') , 'year' => $running_year))->row()->section_id;
+                            			                $subjectDetail=getSubjectDetailBySubjectId($ex[2]);
                             			                $this->db->order_by('homework_id', 'desc');
-                            			                $homeworks = $this->db->get_where('homework', array('class_id' => $class_id, 'status' => 1, 'section_id' => $section_id, 'subject_id' => $ex[2]))->result_array();
+                            			                $homeworks = $this->db->get_where('homework', array('class_id' => $subjectDetail->class_id, 'status' => 1, 'section_id' => $subjectDetail->section_id, 'subject_id' => $ex[2]))->result_array();
                             			                foreach ($homeworks as $row):
                                 	                ?>
                                                     <tr>

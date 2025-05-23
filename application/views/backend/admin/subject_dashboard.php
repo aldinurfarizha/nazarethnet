@@ -551,10 +551,10 @@ foreach ($sub as $row) :
                                                                     <tbody>
                                                                         <tr class="trdhs">
                                                                             <td class="text-left cell-with-media">
-                                                                                <a href="<?php echo base_url() . 'admin/viewFile/' . $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->file_name; ?>"><i class="picons-thin-icon-thin-0111_folder_files_documents px16 text-white"></i> <span><?php echo $this->db->get_where('document', array('document_id' => $wall['homework_id']))->row()->file_name; ?></span><span class="smaller">(<?php echo $this->db->get_where('document', array('document_id' => $wall['homework_id']))->row()->filesize; ?>)</span></a>
+                                                                                <a href="<?php echo base_url() . 'admin/viewFile/' . @$this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->file_name; ?>"><i class="picons-thin-icon-thin-0111_folder_files_documents px16 text-white"></i> <span><?php echo $this->db->get_where('document', array('document_id' => $wall['homework_id']))->row()->file_name; ?></span><span class="smaller">(<?php echo $this->db->get_where('document', array('document_id' => $wall['homework_id']))->row()->filesize; ?>)</span></a>
                                                                             </td>
                                                                             <td class="text-center bolder">
-                                                                                <a href="<?php echo base_url() . 'admin/viewFile/' . $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->file_name; ?>"> <span><i class="picons-thin-icon-thin-0121_download_file"></i></span> </a>
+                                                                                <a href="<?php echo base_url() . 'admin/viewFile/' . @$this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->file_name; ?>"> <span><i class="picons-thin-icon-thin-0121_download_file"></i></span> </a>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -878,7 +878,7 @@ foreach ($sub as $row) :
                         <input type="file" class="form-control" id="attachments" name="attachments[]" multiple
                             accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,video/*,image/*">
                     </div>
-                    <button type="submit" class="btn btn-rounded btn-success btn-lg full-width"><?php echo getEduAppGTLang('add'); ?></button>
+                    <button type="submit" class="btn btn-rounded btn-success btn-lg full-width"><?php echo getEduAppGTLang('post'); ?></button>
                 </div>
                 <?php echo form_close(); ?>
             </div>

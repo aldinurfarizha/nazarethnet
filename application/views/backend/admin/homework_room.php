@@ -1,6 +1,6 @@
 <?php 
     $running_year = $this->crud->getInfo('running_year');
-    $info = base64_decode($data);
+    $info = base64_decode(@$data);
     $ex = explode('-', $info);
     $current_homework = $this->db->get_where('homework' , array('homework_code' => $homework_code))->result_array();
     foreach ($current_homework as $row):
