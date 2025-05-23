@@ -42,7 +42,7 @@
     				<div class="content-box">
     					<div class="ui-block">
     						<div class="ui-block-content">
-    							<?php echo form_open(base_url() . 'admin/transfer_data_action', array('class' => 'form m-b')); ?>
+    							<?php echo form_open(base_url() . 'admin/transfer_data_action', array('class' => 'form m-b', 'id' => 'transferForm')); ?>
     							<div class="steps-w">
     								<div class="step-triggers">
     									<a class="step-trigger active" href="#stepContent1"><?php echo getEduAppGTLang('source'); ?></a>
@@ -59,7 +59,7 @@
     												<div class="form-group label-floating is-select">
     													<label class="control-label"><?php echo getEduAppGTLang('branch'); ?></label>
     													<div class="select">
-    														<select name="branch_id" required="" onchange="get_shifts(this.value); get_class(this.value);">
+    														<select name="branch_id_source" onchange="get_shifts(this.value); get_class(this.value);">
     															<option value=""><?php echo getEduAppGTLang('select'); ?></option>
     															<?php
 																if (isSuperAdmin()) {
@@ -80,7 +80,7 @@
     												<div class="form-group label-floating is-select">
     													<label class="control-label"><?php echo getEduAppGTLang('shifts'); ?></label>
     													<div class="select">
-    														<select name="shifts_id" required id="shifts_holder">
+    														<select name="shifts_id_source" id="shifts_holder">
     															<option value=""><?php echo getEduAppGTLang('select'); ?></option>
     														</select>
     													</div>
@@ -90,7 +90,7 @@
     												<div class="form-group label-floating is-select">
     													<label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
     													<div class="select">
-    														<select name="class_id" id="class_holder" required="" onchange="get_sections(this.value)">
+    														<select name="class_id_source" id="class_holder" onchange="get_sections(this.value)">
     															<option value=""><?php echo getEduAppGTLang('select'); ?></option>
     														</select>
     													</div>
@@ -100,7 +100,7 @@
     												<div class="form-group label-floating is-select">
     													<label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
     													<div class="select">
-    														<select name="section_id" required id="section_holder" onchange="get_class_subjects(this.value);">
+    														<select name="section_id_source" id="section_holder" onchange="get_class_subjects(this.value);">
     															<option value=""><?php echo getEduAppGTLang('select'); ?></option>
     														</select>
     													</div>
@@ -110,7 +110,7 @@
     												<div class="form-group label-floating is-select">
     													<label class="control-label"><?php echo getEduAppGTLang('subject'); ?></label>
     													<div class="select">
-    														<select name="subject_id_source" required id="subject_holder">
+    														<select name="subject_id_source" id="subject_holder">
     															<option value=""><?php echo getEduAppGTLang('select'); ?></option>
     														</select>
     													</div>
@@ -131,7 +131,7 @@
     												<div class="form-group label-floating is-select">
     													<label class="control-label"><?php echo getEduAppGTLang('branch'); ?></label>
     													<div class="select">
-    														<select name="branch_id" required="" onchange="get_shifts2(this.value); get_class2(this.value);">
+    														<select name="branch_id_target" onchange="get_shifts2(this.value); get_class2(this.value);">
     															<option value=""><?php echo getEduAppGTLang('select'); ?></option>
     															<?php
 																if (isSuperAdmin()) {
@@ -152,7 +152,7 @@
     												<div class="form-group label-floating is-select">
     													<label class="control-label"><?php echo getEduAppGTLang('shifts'); ?></label>
     													<div class="select">
-    														<select name="shifts_id" required id="shifts_holder2">
+    														<select name="shifts_id_target" id="shifts_holder2">
     															<option value=""><?php echo getEduAppGTLang('select'); ?></option>
     														</select>
     													</div>
@@ -162,7 +162,7 @@
     												<div class="form-group label-floating is-select">
     													<label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
     													<div class="select">
-    														<select name="class_id" id="class_holder2" required="" onchange="get_sections2(this.value)">
+    														<select name="class_id_target" id="class_holder2" onchange="get_sections2(this.value)">
     															<option value=""><?php echo getEduAppGTLang('select'); ?></option>
     														</select>
     													</div>
@@ -172,7 +172,7 @@
     												<div class="form-group label-floating is-select">
     													<label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
     													<div class="select">
-    														<select name="section_id" required id="section_holder2" onchange="get_class_subjects2(this.value);">
+    														<select name="section_id_target" id="section_holder2" onchange="get_class_subjects2(this.value);">
     															<option value=""><?php echo getEduAppGTLang('select'); ?></option>
     														</select>
     													</div>
@@ -182,7 +182,7 @@
     												<div class="form-group label-floating is-select">
     													<label class="control-label"><?php echo getEduAppGTLang('subject'); ?></label>
     													<div class="select">
-    														<select name="subject_id_target" required id="subject_holder2">
+    														<select name="subject_id_target" id="subject_holder2">
     															<option value=""><?php echo getEduAppGTLang('select'); ?></option>
     														</select>
     													</div>
@@ -242,7 +242,7 @@
     											</div>
     										</div>
     										<div class="form-buttons-w text-right">
-    											<button class="btn btn-rounded btn-success btn-lg" type="submit"><?php echo getEduAppGTLang('transfer'); ?></button>
+    											<button class="btn btn-rounded btn-success btn-lg" id="transferBtn" type="submit"><?php echo getEduAppGTLang('transfer'); ?></button>
     										</div>
     									</div>
     								</div>
@@ -254,6 +254,120 @@
     				</div>
     			</div>
     		</div>
+    		<script>
+    			document.getElementById('transferBtn').addEventListener('click', function(event) {
+    				// prevent default submit
+    				event.preventDefault();
+    				const btn = this;
+    				// Ambil nilai source
+    				const branchSource = document.querySelector('select[name="branch_id_source"]').value.trim();
+    				const shiftsSource = document.querySelector('select[name="shifts_id_source"]').value.trim();
+    				const classSource = document.querySelector('select[name="class_id_source"]').value.trim();
+    				const sectionSource = document.querySelector('select[name="section_id_source"]').value.trim();
+    				const subjectSource = document.querySelector('select[name="subject_id_source"]').value.trim();
+
+    				// Ambil nilai target
+    				const branchTarget = document.querySelector('select[name="branch_id_target"]').value.trim();
+    				const shiftsTarget = document.querySelector('select[name="shifts_id_target"]').value.trim();
+    				const classTarget = document.querySelector('select[name="class_id_target"]').value.trim();
+    				const sectionTarget = document.querySelector('select[name="section_id_target"]').value.trim();
+    				const subjectTarget = document.querySelector('select[name="subject_id_target"]').value.trim();
+
+    				// Validasi source
+    				if (!branchSource) {
+    					alert("<?php echo getEduAppGTLang('please_select_branch_source'); ?>");
+    					return false;
+    				}
+    				if (!shiftsSource) {
+    					alert("<?php echo getEduAppGTLang('please_select_shifts_source'); ?>");
+    					return false;
+    				}
+    				if (!classSource) {
+    					alert("<?php echo getEduAppGTLang('please_select_class_source'); ?>");
+    					return false;
+    				}
+    				if (!sectionSource) {
+    					alert("<?php echo getEduAppGTLang('please_select_section_source'); ?>");
+    					return false;
+    				}
+    				if (!subjectSource) {
+    					alert("<?php echo getEduAppGTLang('please_select_subject_source'); ?>");
+    					return false;
+    				}
+
+    				// Validasi target
+    				if (!branchTarget) {
+    					alert("<?php echo getEduAppGTLang('please_select_branch_target'); ?>");
+    					return false;
+    				}
+    				if (!shiftsTarget) {
+    					alert("<?php echo getEduAppGTLang('please_select_shifts_target'); ?>");
+    					return false;
+    				}
+    				if (!classTarget) {
+    					alert("<?php echo getEduAppGTLang('please_select_class_target'); ?>");
+    					return false;
+    				}
+    				if (!sectionTarget) {
+    					alert("<?php echo getEduAppGTLang('please_select_section_target'); ?>");
+    					return false;
+    				}
+    				if (!subjectTarget) {
+    					alert("<?php echo getEduAppGTLang('please_select_subject_target'); ?>");
+    					return false;
+    				}
+
+					if(subjectSource == subjectTarget){
+						alert("<?php echo getEduAppGTLang('source_and_target_subject_must_be_different'); ?>");
+						return false;
+					}
+    				const checkboxes = ['exam', 'activity', 'grade', 'attendance'];
+    				const isAnyChecked = checkboxes.some(name => {
+    					const checkbox = document.querySelector(`input[name="${name}"]`);
+    					return checkbox && checkbox.checked;
+    				});
+
+    				if (!isAnyChecked) {
+    					alert("<?php echo getEduAppGTLang('please_check_at_least_one_transfer_option'); ?>");
+    					return false;
+    				}
+
+    				btn.disabled = true;
+    				btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+					
+    				document.getElementById('transferForm').submit();
+    			});
+    		</script>
+
+    		<script>
+    			$(document).ready(function() {
+    				function toggleDependencies() {
+    					const examChecked = $('input[name="exam"]').is(':checked');
+    					const activityCheckbox = $('input[name="activity"]');
+    					const gradeCheckbox = $('input[name="grade"]');
+
+    					activityCheckbox.prop('disabled', !examChecked);
+    					if (!examChecked) {
+    						activityCheckbox.prop('checked', false);
+    					}
+
+    					const activityChecked = activityCheckbox.is(':checked');
+    					gradeCheckbox.prop('disabled', !activityChecked);
+    					if (!activityChecked) {
+    						gradeCheckbox.prop('checked', false);
+    					}
+    				}
+
+    				// Inisialisasi
+    				toggleDependencies();
+
+    				// Event listener saat checkbox berubah
+    				$('input[name="exam"], input[name="activity"]').on('change', function() {
+    					toggleDependencies();
+    				});
+    			});
+    		</script>
+
     		<script>
     			const select = document.getElementById('class_holder');
 
@@ -278,7 +392,7 @@
     				for (let i = 0; i < options.length; i++) {
     					if (options[i].value !== '') {
     						select2.value = options[i].value;
-    						get_sections(options[i].value);
+    						get_sections2(options[i].value);
     						break;
     					}
     				}

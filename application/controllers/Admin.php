@@ -3594,14 +3594,15 @@ class Admin extends EduAppGT
     //         redirect(base_url() . 'admin/transfer_data/failed/' . $response['message']);
     //     }
     // }
-    function transfer_data_action($subject_id_source, $subject_id_target)
+    function transfer_data_action()
     {
         $this->output->enable_profiler(TRUE);
-
-        $exam= true;
-        $activity= true;
-        $grade = true;
-        $attendance = true;
+        $subject_id_source = $this->input->post('subject_id_source');
+        $subject_id_target = $this->input->post('subject_id_target');
+        $exam= $this->input->post('exam');
+        $activity= $this->input->post('activity');
+        $grade= $this->input->post('grade');
+        $attendance= $this->input->post('attendance');
         $subject_source = getSubjectDetailBySubjectId($subject_id_source);
        
         $exam_source = getAllExamBySubjectDetail($subject_id_source,$subject_source->class_id,$subject_source->section_id);
@@ -3629,7 +3630,6 @@ class Admin extends EduAppGT
                                     'year' => $subject_target->year,
                                     'is_calculate_avg' => $mark_activity_sources->is_calculate_avg,
                                     'percent' => $mark_activity_sources->percent,
-                                    'reason' => $mark_activity_sources->reason,
                                 ));
                                 $new_mark_activity_id = $this->db->insert_id();
 
@@ -3698,10 +3698,8 @@ class Admin extends EduAppGT
                 transferOldAttendanceToNew($students, $subject_id_source, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
             }
         }
-
-
-
-       
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_transfer'));
+        return redirect(base_url() . 'admin/transfer_data/');
     }
     function import($type)
     {
