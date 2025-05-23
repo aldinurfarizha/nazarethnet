@@ -1769,22 +1769,32 @@ class Crud extends School
     
     function check_availability_for_student($online_exam_id)
     {
-        $result = $this->db->get_where('online_exam_result', array('online_exam_id' => $online_exam_id, 'student_id' => $this->session->userdata('login_user_id')))->row_array();
-        return $result['status'];
+        $student_id = $this->session->userdata('login_user_id');
+        $result = $this->db->get_where('online_exam_result', [
+            'online_exam_id' => $online_exam_id,
+            'student_id' => $student_id
+        ])->row_array();
+    
+        return isset($result['status']) ? $result['status'] : null;
     }
+    
     
     function parent_check_availability_for_student($online_exam_id, $student_id)
     {
-        $result = $this->db->get_where('online_exam_result', array('online_exam_id' => $online_exam_id, 'student_id' => $student_id))->row_array();
-        return $result['status'];
+        $result = $this->db->get_where('online_exam_result', [
+            'online_exam_id' => $online_exam_id,
+            'student_id' => $student_id
+        ])->row_array();
+
+        return isset($result['status']) ? $result['status'] : null;
     }
-    
+
+
     function available_exams($student_id,$subject_id) 
     {
         $running_year = $this->db->get_where('settings' , array('type' => 'running_year'))->row()->description;
-        $class_id = $this->db->get_where('enroll', array('student_id' => $student_id))->row()->class_id;
-        $section_id = $this->db->get_where('enroll', array('student_id' => $student_id))->row()->section_id;
-        $match = array('running_year' => $running_year, 'class_id' => $class_id, 'section_id' => $section_id,'subject_id' => $subject_id, 'status' => 'published');
+        $subjectData=getSubjectDetailBySubjectId($subject_id);
+        $match = array('running_year' => $running_year, 'class_id' => $subjectData->class_id, 'section_id' => $subjectData->section_id,'subject_id' => $subject_id, 'status' => 'published');
         $this->db->order_by("online_exam_id", "dsc");
         $exams = $this->db->where($match)->get('online_exam')->result_array();
         return $exams;

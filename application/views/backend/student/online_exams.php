@@ -74,11 +74,13 @@
                                                 <tbody>
                                                 <?php
                                                     foreach ($exams as $row):
+                                                        $addMinutes = 0;
                                                     if($row['results'] == 3){
                                                         $addMinutes = 15;   
                                                     }elseif($row['results'] == 4){
                                                         $addMinutes = 30;
                                                     }
+                                                    
                     	                            $current_time          = time();
                     	                            $exam_start_time       = strtotime(date('Y-m-d', $row['exam_date']).' '.$row['time_start']);
                     	                            $exam_end_time         = strtotime(date('Y-m-d', $row['exam_date']).' '.$row['time_end']);

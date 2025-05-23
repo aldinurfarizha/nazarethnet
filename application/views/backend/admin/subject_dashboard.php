@@ -3,8 +3,22 @@ $running_year = $this->crud->getInfo('running_year');
 $info = base64_decode($data);
 $ex = explode('-', $info);
 $sub = $this->db->get_where('subject', array('subject_id' => $ex[2]))->result_array();
+
 foreach ($sub as $row) :
 ?>
+    <style>
+        .custom-modal-responsive {
+            width: 90%;
+            max-width: 90%;
+        }
+
+        @media (min-width: 768px) {
+            .custom-modal-responsive {
+                width: 50%;
+                max-width: 50%;
+            }
+        }
+    </style>
     <div class="content-w">
         <div class="conty">
             <?php include 'fancy.php'; ?>
@@ -72,119 +86,58 @@ foreach ($sub as $row) :
                                 <div class="news-feed-form">
                                     <div class="tab-content">
 
-                                        <div class="edu-wall-content ng-scope" id="new_post">
-                                            <div class="tab-pane active show">
-                                                <?php echo form_open(base_url() . 'admin/news/create/' . $data . '/', array('enctype' => 'multipart/form-data')); ?>
-                                                <div class="author-thumb" style="padding-right:15px;">
+                                        <style>
+                                            #logoPreview {
+                                                border-radius: 10px;
+                                                border: 2px solid #eee;
+                                                padding: 5px;
+                                                margin: 15px 0;
+                                                display: none;
+                                                max-width: 100%;
+                                                height: auto;
+                                            }
+                                        </style>
 
+                                        <div class="edu-wall-content container" id="new_post" style="background: #f9f9fb; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+                                            <div class="row align-items-center p-3">
+                                                <!-- Gambar -->
+                                                <div class="col-auto pr-0">
                                                     <a href="javascript:void(0)" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_photo/complete/<?php echo base64_encode($this->crud->get_image_url('admin', $this->session->userdata('login_user_id'))); ?>');">
-                                                        <img src="<?php echo $this->crud->get_image_url('admin', $this->session->userdata('login_user_id')); ?>" style="width:45px;">
+                                                        <img src="<?php echo $this->crud->get_image_url('admin', $this->session->userdata('login_user_id')); ?>" alt="Profile" style="width:50px; height:50px; border-radius:50%; object-fit:cover; border: 2px solid #e5e5e5;">
                                                     </a>
                                                 </div>
-                                                <div class="form-group with-icon label-floating is-empty" style="padding-left:10px;">
-                                                    <textarea onkeyup="textAreaAdjust(this)" style="overflow:hidden" class="form-control" placeholder="<?php echo getEduAppGTLang('hi'); ?> <?php echo $this->db->get_where('admin', array('admin_id' => $this->session->userdata('login_user_id')))->row()->first_name; ?> <?php echo getEduAppGTLang('what_publish'); ?>" name="description" required=""></textarea>
-                                                    <span class="material-input"></span>
+
+                                                <!-- Nama dan status -->
+                                                <div class="col">
+                                                    <h6 class="mb-1" style="font-weight:600; color:#333;"><?php echo $this->crud->get_name('admin', $this->session->userdata('login_user_id')); ?></h6>
+                                                    <small class="text-muted">Ready to post something?</small>
                                                 </div>
-                                                <div class="form-group" style="margin-bottom:-15px;">
-                                                    <input type="file" name="userfile" onchange="imagePreview()" id="userfile" class="inputfile inputfile-3" style="display:none" accept="image/x-png,image/gif,image/jpeg">
-                                                    <label style="font-size:15px;" for="userfile"><i class="os-icon picons-thin-icon-thin-0042_attachment"></i> <span><?php echo getEduAppGTLang('upload_image'); ?>...</span></label>
+
+                                                <!-- Tombol sejajar -->
+                                                <div class="col-auto">
+                                                    <button class="btn btn-success btn-rounded" type="button" data-toggle="modal" data-target="#add_conferences" style="padding: 8px 20px; font-weight: 500; transition: 0.3s;">
+                                                        <i class="fa fa-pencil-alt mr-1"></i> <?= getEduAppGTLang('create_post'); ?>
+                                                    </button>
                                                 </div>
-                                                <center><img id="logoPreview" src="" width="40%" style="display:none;border-radius:5%;border:2px solid #eee;padding:5px" /></center>
-                                                <div class="add-options-message btm-post edupostfoot edu-wall-actions" style="padding:10px 5px;">
-                                                    <a href="javascript:void(0);" class="options-message" onclick="post()" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('news'); ?>">
-                                                        <i class="os-icon picons-thin-icon-thin-0032_flag"></i>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="options-message" onclick="poll()" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('polls'); ?>">
-                                                        <i class="os-icon picons-thin-icon-thin-0385_graph_pie_chart_statistics"></i>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="options-message" onclick="video()" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('youtube_video'); ?>">
-                                                        <i class="os-icon picons-thin-icon-thin-0593_video_play_youtube"></i>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="options-message" onclick="vimeo()" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('vimeo_video'); ?>">
-                                                        <i class="ti-vimeo-alt"></i>
-                                                    </a>
-                                                    <button class="btn btn-rounded btn-success" style="float:right"><i class="picons-thin-icon-thin-0317_send_post_paper_plane" style="font-size:12px"></i> <?php echo getEduAppGTLang('publish'); ?></button>
-                                                </div>
-                                                <?php echo form_close(); ?>
+                                            </div>
+
+                                            <!-- Logo Preview -->
+                                            <div class="text-center">
+                                                <img id="logoPreview" src="" alt="Preview" style="display:none; max-width:100%; border-radius:10px; border:2px solid #eee; padding:5px; margin:15px 0;" />
                                             </div>
                                         </div>
+
+
+
+
+
+
                                         <script>
                                             function textAreaAdjust(o) {
                                                 o.style.height = "1px";
                                                 o.style.height = (25 + o.scrollHeight) + "px";
                                             }
                                         </script>
-                                        <div class="edu-wall-content ng-scope" id="new_video" style="display: none;">
-                                            <div class="tab-pane show">
-                                                <?php echo form_open(base_url() . 'admin/news/create_video/' . $data . '/', array('enctype' => 'multipart/form-data')); ?>
-                                                <input type="hidden" name="embed" id="embed">
-                                                <div class="author-thumb" style="padding-right:15px;">
-                                                    <a href="javascript:void(0)" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_photo/complete/<?php echo base64_encode($this->crud->get_image_url('admin', $this->session->userdata('login_user_id'))); ?>');">
-                                                        <img src="<?php echo $this->crud->get_image_url('admin', $this->session->userdata('login_user_id')); ?>" style="width:45px;">
-                                                    </a>
-                                                </div>
-                                                <div class="form-group with-icon label-floating is-empty" style="padding-left:10px;">
-                                                    <textarea onkeyup="textAreaAdjust(this)" style="overflow:hidden" class="form-control" placeholder="<?php echo getEduAppGTLang('hi'); ?> <?php echo $this->db->get_where('admin', array('admin_id' => $this->session->userdata('login_user_id')))->row()->first_name; ?> <?php echo getEduAppGTLang('what_publish'); ?>" name="description" required=""></textarea>
-                                                    <span class="material-input"></span>
-                                                </div>
-                                                <div class="form-group" style="margin-bottom:-15px;">
-                                                    <input type="text" name="url" id="url" class="form-control" placeholder="YouTube URL" onchange="set_video()">
-                                                </div><br>
-                                                <pre style="text-align:center;display:none;" id="myCode"></pre>
-                                                <div class="add-options-message btm-post edupostfoot edu-wall-actions" style="padding:10px 5px;">
-                                                    <a href="javascript:void(0);" class="options-message" onclick="post()" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('news'); ?>">
-                                                        <i class="os-icon picons-thin-icon-thin-0032_flag"></i>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="options-message" onclick="poll()" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('polls'); ?>">
-                                                        <i class="os-icon picons-thin-icon-thin-0385_graph_pie_chart_statistics"></i>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="options-message" onclick="video()" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('youtube_video'); ?>">
-                                                        <i class="os-icon picons-thin-icon-thin-0593_video_play_youtube"></i>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="options-message" onclick="vimeo()" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('vimeo_video'); ?>">
-                                                        <i class="ti-vimeo-alt"></i>
-                                                    </a>
-                                                    <button class="btn btn-rounded btn-success" style="float:right"><i class="picons-thin-icon-thin-0317_send_post_paper_plane" style="font-size:12px"></i> <?php echo getEduAppGTLang('publish'); ?></button>
-                                                </div>
-                                                <?php echo form_close(); ?>
-                                            </div>
-                                        </div>
-                                        <div class="edu-wall-content ng-scope" id="new_vimeo" style="display: none;">
-                                            <div class="tab-pane show">
-                                                <?php echo form_open(base_url() . 'admin/news/create_vimeo/' . $data . '/', array('enctype' => 'multipart/form-data')); ?>
-                                                <input type="hidden" name="embedvimeo" id="embedvimeo">
-                                                <div class="author-thumb" style="padding-right:15px;">
-                                                    <a href="javascript:void(0)" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_photo/complete/<?php echo base64_encode($this->crud->get_image_url('admin', $this->session->userdata('login_user_id'))); ?>');">
-                                                        <img src="<?php echo $this->crud->get_image_url('admin', $this->session->userdata('login_user_id')); ?>" style="width:45px;">
-                                                    </a>
-                                                </div>
-                                                <div class="form-group with-icon label-floating is-empty" style="padding-left:10px;">
-                                                    <textarea onkeyup="textAreaAdjust(this)" style="overflow:hidden" class="form-control" placeholder="<?php echo getEduAppGTLang('hi'); ?> <?php echo $this->db->get_where('admin', array('admin_id' => $this->session->userdata('login_user_id')))->row()->first_name; ?> <?php echo getEduAppGTLang('what_publish'); ?>" name="description" required=""></textarea>
-                                                    <span class="material-input"></span>
-                                                </div>
-                                                <div class="form-group" style="margin-bottom:-15px;">
-                                                    <input type="text" name="urlvimeo" id="urlvimeo" class="form-control" placeholder="Vimeo URL" onchange="set_videoVimeo()">
-                                                </div><br>
-                                                <pre style="text-align:center;display:none;" id="myCodeVimeo"></pre>
-
-                                                <div class="add-options-message btm-post edupostfoot edu-wall-actions" style="padding:10px 5px;">
-                                                    <a href="javascript:void(0);" class="options-message" onclick="post()" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('news'); ?>">
-                                                        <i class="os-icon picons-thin-icon-thin-0032_flag"></i>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="options-message" onclick="poll()" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('polls'); ?>">
-                                                        <i class="os-icon picons-thin-icon-thin-0385_graph_pie_chart_statistics"></i>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="options-message" onclick="video()" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('youtube_video'); ?>">
-                                                        <i class="os-icon picons-thin-icon-thin-0593_video_play_youtube"></i>
-                                                    </a>
-                                                    <a href="javascript:void(0);" class="options-message" onclick="vimeo()" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('vimeo_video'); ?>">
-                                                        <i class="ti-vimeo-alt"></i>
-                                                    </a>
-                                                    <button class="btn btn-rounded btn-success" style="float:right"><i class="picons-thin-icon-thin-0317_send_post_paper_plane" style="font-size:12px"></i> <?php echo getEduAppGTLang('publish'); ?></button>
-                                                </div>
-                                                <?php echo form_close(); ?>
-                                            </div>
-                                        </div>
                                         <div class="edu-wall-content ng-scope" id="new_poll" style="display: none;">
                                             <?php echo form_open(base_url() . 'admin/polls/create/' . $data . '/', array('enctype' => 'multipart/form-data')); ?>
                                             <div class="tab-pane active show"><br>
@@ -882,6 +835,55 @@ foreach ($sub as $row) :
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="add_conferences" tabindex="-1" role="dialog" aria-labelledby="add_conferences" aria-hidden="true">
+        <div class="modal-dialog custom-modal-responsive" role="document">
+            <div class="modal-content">
+                <?php echo form_open(base_url() . 'admin/shifts_add'); ?>
+                <a href="javascript:void(0);" class="close icon-close" data-dismiss="modal" aria-label="Close"></a>
+                <div class="modal-header">
+                    <h6 class="title"><?php echo getEduAppGTLang('add') . ' ' . getEduAppGTLang('shifts'); ?></h6>
+                </div>
+                <div class="modal-body">
+                    <div class="description-toggle mb-3">
+                        <div class="description-toggle-content">
+                            <div class="h6"><?php echo getEduAppGTLang('can_comment'); ?></div>
+                            <p><?php echo getEduAppGTLang('all_people_can_coment_to_this_posting'); ?></p>
+                        </div>
+                        <div class="togglebutton">
+                            <label><input type="checkbox" checked name="can_comment"></label>
+                        </div>
+                    </div>
+
+                    <!-- Toggle Reactions -->
+                    <div class="description-toggle mb-3">
+                        <div class="description-toggle-content">
+                            <div class="h6">Allow Reactions</div>
+                            <p>People can react using emojis to this post</p>
+                        </div>
+                        <div class="togglebutton">
+                            <label><input type="checkbox" checked name="can_react"></label>
+                        </div>
+                    </div>
+
+                    <!-- Rich Text Editor -->
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Post Content</label>
+                        <textarea id="summernote" name="content"></textarea>
+                    </div>
+
+                    <!-- File Upload -->
+                    <div class="mb-3">
+                        <label for="attachments" class="form-label">Attach Files</label>
+                        <input type="file" class="form-control" id="attachments" name="attachments[]" multiple
+                            accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,video/*,image/*">
+                    </div>
+                    <button type="submit" class="btn btn-rounded btn-success btn-lg full-width"><?php echo getEduAppGTLang('add'); ?></button>
+                </div>
+                <?php echo form_close(); ?>
+            </div>
+        </div>
+    </div>
 
 
     <script>
@@ -993,5 +995,27 @@ foreach ($sub as $row) :
         } else {
             alert("Try using Chrome, Firefox or WebKit");
         }
+    </script>
+    <!-- Summernote (Rich Text Editor) -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                placeholder: 'Write your content here...',
+                tabsize: 2,
+                height: 250,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear', 'fontsize', 'fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'picture', 'video', 'emoji']],
+                    ['view', ['fullscreen', 'codeview']]
+                ]
+            });
+        });
     </script>
 <?php endforeach; ?>
