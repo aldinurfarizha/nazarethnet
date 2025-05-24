@@ -200,12 +200,12 @@ foreach ($sub as $row) :
 
                             <div id="newsfeed-items-grid">
                                 <?php
-                                $db = $this->db->query("SELECT description, publish_date, wall_type, homework_id FROM homework WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1] 
-                                UNION SELECT description, publish_date, type, news_id FROM news WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1]  
-                                UNION SELECT timestamp, publish_date, wall_type, post_id FROM forum WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1]
-                                UNION SELECT question,publish_date,type,id FROM polls WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1] 
-                                UNION SELECT description, publish_date, wall_type, document_id FROM document WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1] 
-                                UNION SELECT title, publish_date, wall_type, online_exam_id FROM online_exam WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1] 
+                                $db = $this->db->query("SELECT can_comment, can_reaction, post_file, post_file_type, post_content, description, publish_date, wall_type, homework_id FROM homework WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1] 
+                                UNION SELECT can_comment, can_reaction, post_file, post_file_type, post_content, description, publish_date, type, news_id FROM news WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1]  
+                                UNION SELECT can_comment, can_reaction, post_file, post_file_type, post_content, timestamp, publish_date, wall_type, post_id FROM forum WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1]
+                                UNION SELECT can_comment, can_reaction, post_file, post_file_type, post_content, question,publish_date,type,id FROM polls WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1] 
+                                UNION SELECT can_comment, can_reaction, post_file, post_file_type, post_content, description, publish_date, wall_type, document_id FROM document WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1] 
+                                UNION SELECT can_comment, can_reaction, post_file, post_file_type, post_content, title, publish_date, wall_type, online_exam_id FROM online_exam WHERE class_id = $ex[0] AND subject_id = $ex[2] AND section_id = $ex[1] 
                                  ORDER BY publish_date DESC;");
                                 if ($db->num_rows() > 0) :
                                     foreach ($db->result_array() as $wall) :
@@ -221,7 +221,6 @@ foreach ($sub as $row) :
                                                         <a href="javascript:void(0)" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_photo/complete/<?php echo base64_encode($this->crud->get_image_url($user, $admin_id)); ?>');">
                                                             <img src="<?php echo $this->crud->get_image_url($user, $admin_id); ?>">
                                                         </a>
-
                                                         <div class="author-date">
                                                             <a class="h6 post__author-name fn" href="javascript:void(0);"><?php echo $this->crud->get_name('admin', $admin_id); ?></a>
                                                             <div class="post__date">
@@ -237,7 +236,7 @@ foreach ($sub as $row) :
                                                         </div>
                                                     </div>
                                                     <hr>
-                                                    <p><?php echo $this->crud->check_text($wall['description']); ?></p>
+                                                    <p><?php echo $wall['post_content']; ?></p>
                                                     <?php if (file_exists('uploads/news_images/' . $news_code . '.jpg')) : ?>
                                                         <div class="post-thumb">
                                                             <a href="javascript:void(0)" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_photo/news_images/<?php echo $news_code . '.jpg'; ?>');">
