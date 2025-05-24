@@ -100,28 +100,21 @@ foreach ($sub as $row) :
 
                                         <div class="edu-wall-content container" id="new_post" style="background: #f9f9fb; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
                                             <div class="row align-items-center p-3">
-                                                <!-- Gambar -->
                                                 <div class="col-auto pr-0">
                                                     <a href="javascript:void(0)" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_photo/complete/<?php echo base64_encode($this->crud->get_image_url('admin', $this->session->userdata('login_user_id'))); ?>');">
                                                         <img src="<?php echo $this->crud->get_image_url('admin', $this->session->userdata('login_user_id')); ?>" alt="Profile" style="width:50px; height:50px; border-radius:50%; object-fit:cover; border: 2px solid #e5e5e5;">
                                                     </a>
                                                 </div>
-
-                                                <!-- Nama dan status -->
                                                 <div class="col">
                                                     <h6 class="mb-1" style="font-weight:600; color:#333;"><?php echo $this->crud->get_name('admin', $this->session->userdata('login_user_id')); ?></h6>
                                                     <small class="text-muted">Ready to post something?</small>
                                                 </div>
-
-                                                <!-- Tombol sejajar -->
                                                 <div class="col-auto">
                                                     <button class="btn btn-success btn-rounded" type="button" data-toggle="modal" data-target="#add_conferences" style="padding: 8px 20px; font-weight: 500; transition: 0.3s;">
                                                         <i class="fa fa-pencil-alt mr-1"></i> <?= getEduAppGTLang('create_post'); ?>
                                                     </button>
                                                 </div>
                                             </div>
-
-                                            <!-- Logo Preview -->
                                             <div class="text-center">
                                                 <img id="logoPreview" src="" alt="Preview" style="display:none; max-width:100%; border-radius:10px; border:2px solid #eee; padding:5px; margin:15px 0;" />
                                             </div>
@@ -839,10 +832,10 @@ foreach ($sub as $row) :
     <div class="modal fade" id="add_conferences" tabindex="-1" role="dialog" aria-labelledby="add_conferences" aria-hidden="true">
         <div class="modal-dialog custom-modal-responsive" role="document">
             <div class="modal-content">
-                <?php echo form_open(base_url() . 'admin/shifts_add'); ?>
+                <?php echo form_open(base_url() . 'admin/news/create/' . $data . '/', array('enctype' => 'multipart/form-data')); ?>
                 <a href="javascript:void(0);" class="close icon-close" data-dismiss="modal" aria-label="Close"></a>
                 <div class="modal-header">
-                    <h6 class="title"><?php echo getEduAppGTLang('add') . ' ' . getEduAppGTLang('shifts'); ?></h6>
+                    <h6 class="title"><?php echo getEduAppGTLang('add') . ' ' . getEduAppGTLang('post'); ?></h6>
                 </div>
                 <div class="modal-body">
                     <div class="description-toggle mb-3">
@@ -854,29 +847,24 @@ foreach ($sub as $row) :
                             <label><input type="checkbox" checked name="can_comment"></label>
                         </div>
                     </div>
-
-                    <!-- Toggle Reactions -->
                     <div class="description-toggle mb-3">
                         <div class="description-toggle-content">
                             <div class="h6">Allow Reactions</div>
                             <p>People can react using emojis to this post</p>
                         </div>
                         <div class="togglebutton">
-                            <label><input type="checkbox" checked name="can_react"></label>
+                            <label><input type="checkbox" checked name="can_reaction"></label>
                         </div>
                     </div>
-
-                    <!-- Rich Text Editor -->
                     <div class="mb-3">
                         <label for="content" class="form-label">Post Content</label>
-                        <textarea id="summernote" name="content"></textarea>
+                        <textarea id="summernote" name="post_content"></textarea>
                     </div>
-
-                    <!-- File Upload -->
                     <div class="mb-3">
-                        <label for="attachments" class="form-label">Attach Files</label>
-                        <input type="file" class="form-control" id="attachments" name="attachments[]" multiple
+                        <label for="attachments" class="form-label"><?php echo getEduAppGTLang('file'); ?></label>
+                        <input type="file" class="form-control" id="post_file" name="post_file"
                             accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,video/*,image/*">
+                            <small><?php echo getEduAppGTLang('accepted_file_photos_videos_documents_pdf_excel_powerpoint'); ?></small>
                     </div>
                     <button type="submit" class="btn btn-rounded btn-success btn-lg full-width"><?php echo getEduAppGTLang('post'); ?></button>
                 </div>
