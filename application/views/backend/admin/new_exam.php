@@ -1,3 +1,11 @@
+    <style>
+        .emoji-insert {
+            margin-right: 8px;
+            font-size: 20px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
     <div class="content-w">
         <div class="conty">
         <?php $dat = base64_decode($data);
@@ -137,6 +145,14 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-sm-4"><br>
+                                            <div class="form-group">
+                                                <label class="control-label"><?php echo getEduAppGTLang('file');?></label>
+                                                <div class="input-group">
+                                                    <input type="file" class="form-control" name="post_file">
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-sm-4">
                                             <div class="description-toggle">
                                                 <div class="description-toggle-content">
@@ -150,9 +166,15 @@
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label class="col-form-label" for=""><?php echo getEduAppGTLang('description');?></label>
-                                                <textarea class="form-control" name="instruction" id="ckeditorEmail"></textarea>
+                                                <textarea class="form-control" name="instruction" id="summernote"></textarea>
+                                                <?php foreach(getAllReaction() as $reactionIcon){ ?>
+                                                    <a href="#" class="emoji-insert" data-emoji="<?=$reactionIcon->reaction_type?>">
+                                                        <?=$reactionIcon->reaction_type?>
+                                                    </a>
+                                                <?php } ?>
                                             </div>
                                         </div>
+                                        
                                         <input type="hidden" value="<?php echo $ex[0];?>" name="class_id">
                                         <input type="hidden" value="<?php echo $ex[1];?>" name="section_id">
                                         <input type="hidden" value="<?php echo $ex[2];?>" name="subject_id">
@@ -170,3 +192,30 @@
             </div>
         </div>
     </div>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                placeholder: 'Write your content here...',
+                tabsize: 2,
+                height: 250,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear', 'fontsize', 'fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'picture', 'video', 'emoji']],
+                    ['view', ['fullscreen', 'codeview']]
+                ]
+            });
+            $('.emoji-insert').on('click', function(e) {
+                e.preventDefault();
+
+                var emoji = $(this).data('emoji');
+                $('#summernote').summernote('insertText', emoji);
+            });
+
+        });
+    </script>

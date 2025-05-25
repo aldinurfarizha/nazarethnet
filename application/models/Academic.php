@@ -416,6 +416,26 @@ class Academic extends School
             $data['time_end']         = $this->input->post('time_end').':00';
         }
         $data['duration']           = strtotime(date('Y-m-d', $data['exam_date']).' '.$data['time_end']) - strtotime(date('Y-m-d', $data['exam_date']).' '.$data['time_start']);
+        $data['post_content']       = $this->input->post('instruction');
+        $data['can_comment']        = 0;
+        $data['can_reaction']       = 0;
+        if (isset($_FILES['post_file']) && $_FILES['post_file']['error'] == UPLOAD_ERR_OK) {
+            $upload_dir = 'public/exam/';
+            if (!is_dir($upload_dir)) {
+                if (!mkdir($upload_dir, 0755, true)) {
+                    die("Failed to create folder: " . $upload_dir);
+                }
+            }
+
+            $ext = pathinfo($_FILES["post_file"]["name"], PATHINFO_EXTENSION);
+            $new_filename = uniqid('exam', true) . '.' . $ext;
+            $target_file = $upload_dir . $new_filename;
+
+            if (move_uploaded_file($_FILES["post_file"]["tmp_name"], $target_file)) {
+                $data['post_file'] = $new_filename;
+                $data['post_file_type'] = $ext;
+            }
+        }
 
         $this->db->where('online_exam_id', $this->input->post('online_exam_id'));
         $this->db->update('online_exam', $data);
@@ -445,6 +465,26 @@ class Academic extends School
         $data['time_end']           = html_escape($this->input->post('time_end').":00");
         $data['duration']           = strtotime(date('Y-m-d', $data['exam_date']).' '.$data['time_end']) - strtotime(date('Y-m-d', $data['exam_date']).' '.$data['time_start']);
         $data['running_year']       = $this->runningYear;
+        $data['post_content']       = $this->input->post('instruction');
+        $data['can_comment']        = 0;
+        $data['can_reaction']       = 0;
+        if (isset($_FILES['post_file']) && $_FILES['post_file']['error'] == UPLOAD_ERR_OK) {
+            $upload_dir = 'public/exam/';
+            if (!is_dir($upload_dir)) {
+                if (!mkdir($upload_dir, 0755, true)) {
+                    die("Failed to create folder: " . $upload_dir);
+                }
+            }
+
+            $ext = pathinfo($_FILES["post_file"]["name"], PATHINFO_EXTENSION);
+            $new_filename = uniqid('exam', true) . '.' . $ext;
+            $target_file = $upload_dir . $new_filename;
+
+            if (move_uploaded_file($_FILES["post_file"]["tmp_name"], $target_file)) {
+                $data['post_file'] = $new_filename;
+                $data['post_file_type'] = $ext;
+            }
+        }
         $this->crud->send_exam_notify();
         $this->db->insert('online_exam', $data);
     }
