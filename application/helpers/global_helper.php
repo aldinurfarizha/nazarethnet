@@ -1247,5 +1247,294 @@ function transferOldAttendanceToNew($students_id, $subject_id_source, $subject_i
 
     return false;
 }
+function getAllReaction()
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('reaction')
+        ->get();
+    return $data->result();
+}
+function insertAllReaction()
+{
+    $reaction = [
+        ['reaction_type' => '👍'],
+        ['reaction_type' => '❤️'],
+        ['reaction_type' => '😂'],
+        ['reaction_type' => '😮'],
+        ['reaction_type' => '😢'],
+        ['reaction_type' => '😡'],
+        ['reaction_type' => '👏'],
+        ['reaction_type' => '🔥'],
+        ['reaction_type' => '🎉'],
+        ['reaction_type' => '💯'],
+    ];
+
+    $ci = &get_instance();
+    $ci->db->insert_batch('reaction', $reaction);
+}
+function countReaction($id, $table_name)
+{
+    $ci = &get_instance();
+
+    $table_id_fields = [
+        'news_reactions'     => 'news_id',
+        'document_reactions' => 'document_id',
+        'forum_reactions'    => 'forum_id',
+        'homework_reactions' => 'homework_id'
+    ];
+
+    if (!array_key_exists($table_name, $table_id_fields)) {
+        return [];
+    }
+
+    $id_field = $table_id_fields[$table_name];
+
+    $ci->db->select('r.reaction_id, r.reaction_type, COUNT(nr.reaction_id) as total');
+    $ci->db->from("$table_name nr");
+    $ci->db->join('reaction r', 'r.reaction_id = nr.reaction_id');
+    $ci->db->where("nr.$id_field", $id);
+    $ci->db->group_by('nr.reaction_id');
+    $ci->db->order_by('total', 'DESC');
+    $query = $ci->db->get();
+
+    return $query->result();
+}
+function getComments($content_id,$table_name)
+{
+    $ci = &get_instance();
+
+    // Mapping nama tabel ke field ID yang sesuai
+    $table_id_fields = [
+        'news_comments'     => 'news_id',
+        'document_comments' => 'document_id',
+        'forum_comments'    => 'forum_id',
+        'homework_comments' => 'homework_id'
+    ];
+
+    if (!array_key_exists($table_name, $table_id_fields)) {
+        return [];
+    }
+
+    $id_field = $table_id_fields[$table_name];
+
+    $ci->db->from($table_name);
+    $ci->db->where($id_field, $content_id);
+    $ci->db->order_by('created_at', 'ASC');
+    $comments = $ci->db->get()->result_array();
+
+    $results = [];
+
+    foreach ($comments as $comment) {
+        $comment_id = $comment[$table_name . '_id'];
+        $student_id = $comment['student_id'];
+        $admin_id   = $comment['admin_id'];
+        $teacher_id = isset($comment['teacher_id']) ? $comment['teacher_id'] : 0;
+
+        $name = '';
+        $role = '';
+        
+        if ($student_id && $student_id != 0) {
+            $ci->db->where('student_id', $student_id);
+            $user = $ci->db->get('student')->row();
+            $name = $user ? $user->first_name : '';
+            $role = 'student';
+        } elseif ($teacher_id && $teacher_id != 0) {
+            $ci->db->where('teacher_id', $teacher_id);
+            $user = $ci->db->get('teacher')->row();
+            $name = $user ? $user->first_name : '';
+            $role = 'teacher';
+        } elseif ($admin_id && $admin_id != 0) {
+            $ci->db->where('admin_id', $admin_id);
+            $user = $ci->db->get('admin')->row();
+            $name = $user ? $user->first_name : '';
+            $role = 'admin';
+        }
+
+        $results[] = [
+            'comments_id' => $comment_id,
+            'comments'    => $comment['comments'],
+            'student_id'  => $student_id,
+            'teacher_id'  => $teacher_id,
+            'admin_id'    => $admin_id,
+            'first_name'  => $name,
+            'role'        => $role,
+            'created_at'  => $comment['created_at']
+        ];
+    }
+
+    return $results;
+}
+if (!function_exists('getUserIcon')) {
+    function getUserIcon($student_id, $teacher_id, $admin_id)
+    {
+        if (!empty($student_id) && $student_id != 0) {
+            return '<i class="picons-thin-icon-thin-0704_users_profile_group_couple_man_woman text-secondary" title="Student"></i> ';
+        } elseif (!empty($teacher_id) && $teacher_id != 0) {
+            return '<i class="picons-thin-icon-thin-0729_student_degree_science_university_school_graduate text-primary" title="Teacher"></i> ';
+            
+        } elseif (!empty($admin_id) && $admin_id != 0) {
+            return '<i class="os-icon picons-thin-icon-thin-0047_home_flat text-success" title="Admin"></i> ';
+            
+        } else {
+            return ''; // atau bisa juga return default icon
+        }
+    }
+}
+if (!function_exists('hasReacted')) {
+    function hasReacted($table, $content_id, $id_user)
+    {
+        $ci = &get_instance();
+
+        $table_id_fields = [
+            'news_reactions'     => 'news_id',
+            'document_reactions' => 'document_id',
+            'forum_reactions'    => 'forum_id',
+            'homework_reactions' => 'homework_id',
+        ];
+        if (!isset($table_id_fields[$table])) {
+            return false; 
+        }
+
+        $content_id_field = $table_id_fields[$table];
+        $ci->db->from($table);
+        $ci->db->where($content_id_field, $content_id);
+        $login_type = $ci->session->userdata('login_type');
+        switch ($login_type) {
+            case 'student':
+                $ci->db->where('student_id',$id_user);
+                break;
+            case 'teacher':
+                $ci->db->where('teacher_id', $id_user);
+                break;
+            case 'admin':
+                $ci->db->where('admin_id', $id_user);
+                break;
+            default:
+                return false;
+        }
+
+        return $ci->db->count_all_results() > 0;
+    }
+}
+function give_reaction($content_id, $reaction_id, $table)
+    {
+        $ci = &get_instance();
+
+        $table_id_fields = [
+            'news_reactions'     => 'news_id',
+            'document_reactions' => 'document_id',
+            'forum_reactions'    => 'forum_id',
+            'homework_reactions' => 'homework_id',
+        ];
+
+        if (!isset($table_id_fields[$table])) {
+            return false;
+        }
+
+        $content_field = $table_id_fields[$table];
+        $user_id   = $ci->session->userdata('login_user_id');
+        $user_type = $ci->session->userdata('login_type');
+        $user_field = "{$user_type}_id";
+
+        if (!in_array($user_field, ['admin_id', 'teacher_id', 'student_id'])) {
+            return false;
+        }
+        $dataInsert = [
+            $content_field   => $content_id,
+            'reaction_id'    => $reaction_id,
+            'student_id'     => 0,
+            'teacher_id'     => 0,
+            'admin_id'       => 0,
+            'created_at'     => date('Y-m-d H:i:s'),
+        ];
+
+        $dataInsert[$user_field] = $user_id;
+        $ci->db->where($content_field, $content_id);
+        $ci->db->where($user_field, $user_id);
+        $query = $ci->db->get($table);
+
+        if ($query->num_rows() > 0) {
+            // Update
+            $ci->db->where($content_field, $content_id);
+            $ci->db->where($user_field, $user_id);
+            return $ci->db->update($table, [
+                'reaction_id' => $reaction_id,
+                'created_at'  => date('Y-m-d H:i:s')
+            ]);
+        } else {
+            // Insert
+            return $ci->db->insert($table, $dataInsert);
+        }
+    }
+    function post_comment($content_id, $comment_text, $table)
+    {
+        $ci = &get_instance();
+
+        $table_id_fields = [
+            'news_comments'     => 'news_id',
+            'document_comments' => 'document_id',
+            'forum_comments'    => 'forum_id',
+            'homework_comments' => 'homework_id',
+        ];
+
+        if (!isset($table_id_fields[$table])) return false;
+
+        $content_field = $table_id_fields[$table];
+        $user_id   = $ci->session->userdata('login_user_id');
+        $user_type = $ci->session->userdata('login_type');
+        $user_field = "{$user_type}_id";
+
+        if (!in_array($user_field, ['admin_id', 'teacher_id', 'student_id'])) return false;
+
+        $data = [
+            $content_field   => $content_id,
+            'comments'        => $comment_text,
+            'student_id'     => 0,
+            'teacher_id'     => 0,
+            'admin_id'       => 0,
+            'created_at'     => date('Y-m-d H:i:s'),
+        ];
+        $data[$user_field] = $user_id;
+
+        return $ci->db->insert($table, $data);
+    }
+    function timeElapsed($datetime, $full = false) {
+        $now = new DateTime;
+        $ago = new DateTime($datetime);
+        $diff = $now->diff($ago);
+
+        $diff->w = floor($diff->d / 7); // optional: weeks
+        $diff->d -= $diff->w * 7;
+
+        $string = [
+            'y' => 'year',
+            'm' => 'month',
+            'w' => 'week',
+            'd' => 'day',
+            'h' => 'hour',
+            'i' => 'minute',
+            's' => 'second',
+        ];
+        
+        foreach ($string as $k => &$v) {
+            if ($diff->$k) {
+                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+            } else {
+                unset($string[$k]);
+            }
+        }
+
+        if (!$full) $string = array_slice($string, 0, 1);
+        return $string ? implode(', ', $string) . ' ago' : 'just now';
+    }
+
+
+
+
+
+
+
+
 
 

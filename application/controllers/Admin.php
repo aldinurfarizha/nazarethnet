@@ -4944,6 +4944,74 @@ class Admin extends EduAppGT
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
         redirect(base_url() . 'admin/final_evaluation_selected/' . $exam_id_final.'/'.$mark_activity_id);
     }
-    
+     function give_reaction($data, $id, $reaction_id, $table,$redirect)
+        {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+          if (give_reaction($id, $reaction_id, $table)) {
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_reacted'));
+        } else {
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_give_reaction'));
+        }
+
+        redirect(base_url() . 'admin/'.$redirect.'/' . $data, 'refresh');
+        }
+    function give_comment($data, $id, $table,$redirect)
+    {
+        $comment = $this->input->post('comment');
+        if (!$comment) {
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('comment_cannot_be_empty'));
+            redirect(base_url() . 'admin/'.$redirect.'/'. $data, 'refresh');
+        }
+
+        $result = post_comment($id, $comment,$table);
+
+        if ($result) {
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added_comment'));
+        } else {
+            $this->session->set_flashdata('flash_message_failed',getEduAppGTLang('failed_to_add_comment'));
+        }
+
+        redirect(base_url() . 'admin/'.$redirect.'/'. $data, 'refresh');
+    }
+    function update_news($data)
+    {
+    $news_id      = $this->input->post('news_id');
+    $can_comment  = $this->input->post('can_comment') ? 1 : 0;
+    $can_react    = $this->input->post('can_reaction') ? 1 : 0;
+    $post_content = $this->input->post('post_content');
+
+    $dataToUpdate = array(
+        'can_comment'   => $can_comment,
+        'can_reaction'  => $can_react,
+        'post_content'  => $post_content
+    );
+
+    if (isset($_FILES['post_file']) && $_FILES['post_file']['error'] == UPLOAD_ERR_OK) {
+        $upload_dir = 'public/news/';
+        if (!is_dir($upload_dir)) {
+            if (!mkdir($upload_dir, 0755, true)) {
+                die("Failed to create folder: " . $upload_dir);
+            }
+        }
+
+        $ext = pathinfo($_FILES["post_file"]["name"], PATHINFO_EXTENSION);
+        $new_filename = uniqid('news', true) . '.' . $ext;
+        $target_file = $upload_dir . $new_filename;
+
+        if (move_uploaded_file($_FILES["post_file"]["tmp_name"], $target_file)) {
+            $dataToUpdate['post_file'] = $new_filename;
+            $dataToUpdate['post_file_type'] = $ext;
+        }
+    }
+
+    $this->db->where('news_id', $news_id);
+    $this->db->update('news', $dataToUpdate);
+
+    $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
+    redirect(base_url('admin/subject_dashboard/' . $data), 'refresh');
+    }
+
     //End of Admin.php content.
 }

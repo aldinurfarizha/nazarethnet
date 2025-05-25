@@ -1142,10 +1142,16 @@ class Crud extends School
     
     function delete_news($param2)
     {
-        unlink('public/uploads/news_images/'.$param2. ".jpg");
-        $id = $this->db->get_where('news', array('news_code' => $param2))->row()->news_id;
-        $this->db->where('news_code' , $param2);
+        $newsDetail = $this->db->get_where('news', array('news_code' => $param2))->row();
+
+        $this->db->where('news_code', $param2);
         $this->db->delete('news');
+
+        $this->db->where('news_id', $newsDetail->news_id);
+        $this->db->delete('news_reactions');
+
+        $this->db->where('news_id', $newsDetail->news_id);
+        $this->db->delete('news_comments');
     }
     
     function updateSettings()
@@ -3017,8 +3023,8 @@ class Crud extends School
         $data['section_id']     = $ex[1];
         $data['subject_id']     = $ex[2];
         $data['post_content']   = $this->input->post('post_content');
-        $data['can_comment']    = $this->input->post('can_comment');
-        $data['can_reaction']   = $this->input->post('can_reaction');
+        $data['can_reaction'] = $this->input->post('can_reaction') ? 1 : 0;
+        $data['can_comment']  = $this->input->post('can_comment') ? 1 : 0;
 
         // Cek apakah ada file yang diupload
         if (isset($_FILES['post_file']) && $_FILES['post_file']['error'] == UPLOAD_ERR_OK) {
