@@ -142,19 +142,6 @@ CREATE TABLE IF NOT EXISTS `reaction` (
     PRIMARY KEY (`reaction_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-
-INSERT INTO `reaction` (`reaction_type`) VALUES
-('👍'),
-('❤️'),
-('😂'),
-('😮'),
-('😢'),
-('😡'),
-('👏'),
-('🔥'),
-('🎉'),
-('💯'); 
-
 ALTER TABLE `news` DROP COLUMN `post_content`;
 ALTER TABLE `news` ADD COLUMN `post_content` LONGTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL;
 

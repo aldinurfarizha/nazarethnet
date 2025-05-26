@@ -4563,6 +4563,14 @@ class Admin extends EduAppGT
         $getClient=$this->drive_model->refreshTokenManual();
         var_dump($getClient);
     }
+    function add_default_reaction()
+    {
+        if(insertAllReaction()){
+            echo "SUCCESS";
+        }else{
+            echo "ALREADY";
+        }
+    }
     function add_custom_status_attendance()
     {
         $teacher_id = $this->input->post('teacher_id');

@@ -1257,6 +1257,9 @@ function getAllReaction()
 }
 function insertAllReaction()
 {
+    if(sizeof(getAllReaction()) > 0){
+        return false;
+    }
     $reaction = [
         ['reaction_type' => '👍'],
         ['reaction_type' => '❤️'],
@@ -1272,6 +1275,7 @@ function insertAllReaction()
 
     $ci = &get_instance();
     $ci->db->insert_batch('reaction', $reaction);
+    return true;
 }
 function countReaction($id, $table_name)
 {
