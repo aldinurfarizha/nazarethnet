@@ -191,7 +191,7 @@ class Academic extends School
     public function createHomework()
     {
         $data['title']          = html_escape($this->input->post('title'));
-        $data['description']    = html_escape($this->input->post('description'));
+        $data['description']    = $this->input->post('description');
         $data['time_end']       = html_escape($this->input->post('time_end'));
         $data['date_end']       = html_escape($this->input->post('date_end'));
         $data['type']           = $this->input->post('type');
@@ -216,6 +216,9 @@ class Academic extends School
         //$data['homework_code']  = substr(md5(rand(100000000, 200000000)), 0, 10);
         $data['homework_code']  = $this->input->post('homework_code');
         $data['media_type']     = $this->input->post('media_type');
+        $data['can_reaction'] = $this->input->post('can_reaction') ? 1 : 0;
+        $data['can_comment']  = $this->input->post('can_comment') ? 1 : 0;
+        $data['post_content']   = $this->input->post('description');
         $this->db->insert('homework', $data);
         move_uploaded_file($_FILES["file_name"]["tmp_name"], "public/uploads/homework/" . $_FILES["file_name"]["name"]);
         //$this->crud->send_homework_notify();

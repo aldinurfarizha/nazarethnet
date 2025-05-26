@@ -18,109 +18,112 @@ foreach ($sub as $row) :
                 max-width: 50%;
             }
         }
+
         .emoji-insert {
             margin-right: 8px;
             font-size: 20px;
             text-decoration: none;
             cursor: pointer;
         }
-.post-comments-section {
-  padding: 5px 5px 5px;
-  font-family: Arial, sans-serif;
-}
 
-.reactions-summary {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 10px;
-  font-size: 16px;
-  color: #333;
-}
+        .post-comments-section {
+            padding: 5px 5px 5px;
+            font-family: Arial, sans-serif;
+        }
 
-.reaction-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-weight: bold;
-  user-select: none;
-  cursor: default;
-}
+        .reactions-summary {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #333;
+        }
 
-
-
-
-.comments-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0 15px;
-  max-height: 200px;
-  overflow-y: auto;
-  border-top: 1px solid #ddd;
-}
-
-.comments-list {
-        list-style: none;
-        padding-left: 0;
-        margin-top: 5px;
-    }
-
-    .comments-list li {
-        border-bottom: 1px solid #eee;
-    }
-
-    .comments-list strong {
-        display: block;
-        font-weight: bold;
-        color: #333;
-    }
-
-    .comments-list span {
-        display: block;
-        color: #555;
-    }
-    .comments-list small {
-        display: block;
-        font-size: 12px;
-        color: #888;
-        margin-top: 3px;
-    }
-.summernote-content {
-  all: initial; /* Reset semua style */
-  font-family: Arial, sans-serif; /* Atur kembali font */
-  font-size: 14px;
-  line-height: 1.6;
-  color: #333;
-}
-
-/* Izinkan kembali elemen umum */
-.summernote-content * {
-  all: unset;
-  display: revert;
-  box-sizing: border-box;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  color: inherit;
-}
-
-.summernote-content img {
-  max-width: 100%;
-  height: auto;
-}
-.summernote-content a {
-  color: blue;
-  text-decoration: underline;
-  cursor: pointer;
-}
-.summernote-content a:hover {
-  color: darkblue;
-}
+        .reaction-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: bold;
+            user-select: none;
+            cursor: default;
+        }
 
 
 
 
+        .comments-list {
+            list-style-type: none;
+            margin: 0;
+            padding: 0 15px;
+            max-height: 200px;
+            overflow-y: auto;
+            border-top: 1px solid #ddd;
+        }
 
+        .comments-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 5px;
+        }
+
+        .comments-list li {
+            border-bottom: 1px solid #eee;
+        }
+
+        .comments-list strong {
+            display: block;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .comments-list span {
+            display: block;
+            color: #555;
+        }
+
+        .comments-list small {
+            display: block;
+            font-size: 12px;
+            color: #888;
+            margin-top: 3px;
+        }
+
+        .summernote-content {
+            all: initial;
+            /* Reset semua style */
+            font-family: Arial, sans-serif;
+            /* Atur kembali font */
+            font-size: 14px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Izinkan kembali elemen umum */
+        .summernote-content * {
+            all: unset;
+            display: revert;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            color: inherit;
+        }
+
+        .summernote-content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .summernote-content a {
+            color: blue;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .summernote-content a:hover {
+            color: darkblue;
+        }
     </style>
     <meta charset="UTF-8">
     <div class="content-w">
@@ -316,12 +319,12 @@ foreach ($sub as $row) :
                                 ?>
                                         <?php if ($wall['wall_type'] === 'news') : ?>
                                             <?php
-                                                $news_id = $wall['homework_id'];
-                                                $news = $this->db->get_where('news', ['news_id' => $news_id])->row();
-                                                $news_code = $news->news_code;
-                                                $admin_id = 2;
-                                                $user_type = 'admin';
-                                                $comments = getComments($news_id, 'news_comments');
+                                            $news_id = $wall['homework_id'];
+                                            $news = $this->db->get_where('news', ['news_id' => $news_id])->row();
+                                            $news_code = $news->news_code;
+                                            $admin_id = 2;
+                                            $user_type = 'admin';
+                                            $comments = getComments($news_id, 'news_comments');
                                             ?>
                                             <div class="ui-block paddingtel">
                                                 <article class="hentry post has-post-thumbnail thumb-full-width">
@@ -350,8 +353,7 @@ foreach ($sub as $row) :
                                                                         data-comment="<?= $wall['can_comment'] ?>"
                                                                         data-reaction="<?= $wall['can_reaction'] ?>"
                                                                         data-toggle="modal"
-                                                                        data-target="#editPostModal"
-                                                                    >Edit Post</button>
+                                                                        data-target="#editPostModal">Edit Post</button>
                                                                 </li>
                                                                 <li>
                                                                     <a href="<?= base_url("admin/news/delete/$news_code/$data"); ?>" onclick="return confirm('<?= getEduAppGTLang('confirm_delete'); ?>')">
@@ -368,7 +370,7 @@ foreach ($sub as $row) :
                                                     <hr>
 
                                                     <?php if (!empty($wall['post_file'])) : ?>
-                                                        <a href="#"><?= getEduAppGTLang('download_attachment'); ?> (.zip) <i class="fa fa-paperclip"></i></a>
+                                                        <a href="<?= base_url('public/news/' . $wall['post_file']) ?>"><?= getEduAppGTLang('download_attachment'); ?> (.<?= $wall['post_file_type'] ?>) <i class="fa fa-paperclip"></i></a>
                                                         <hr>
                                                     <?php endif; ?>
 
@@ -406,30 +408,42 @@ foreach ($sub as $row) :
                                                     <!-- Comment Input -->
                                                     <?php if ($wall['can_comment']) : ?>
                                                         <?= form_open(base_url("admin/give_comment/$data/$news_id/news_comments/" . $this->uri->segment(2)), ['enctype' => 'multipart/form-data']); ?>
-                                                            <input type="text" name="comment" class="form-control" placeholder="<?= getEduAppGTLang('write_your_comment'); ?>">
-                                                            <div class="reaction-wrapper mb-2">
-                                                                <div class="d-flex justify-content-between align-items-center">
-                                                                    <div class="d-flex gap-2">
-                                                                        <button class="btn btn-primary"><?= getEduAppGTLang('send'); ?> <i class="fa fa-paper-plane"></i></button>
-                                                                    </div>
-                                                                    <?php if (!$hasReacted = hasReacted('news_reactions', $news_id, $this->session->userdata('login_user_id'))) : ?>
-                                                                        <?php if ($wall['can_reaction']) : ?>
-                                                                            <button type="button" class="btn btn-primary toggle-reaction"><?= getEduAppGTLang('reaction'); ?> <i class="fa fa-smile"></i></button>
-                                                                        <?php endif; ?>
-                                                                    <?php endif; ?>
+                                                        <input type="text" name="comment" class="form-control" placeholder="<?= getEduAppGTLang('write_your_comment'); ?>">
+                                                        <div class="reaction-wrapper mb-2">
+                                                            <div class="d-flex justify-content-between align-items-start">
+                                                                <!-- Tombol SEND -->
+                                                                <div>
+                                                                    <button class="btn btn-primary">
+                                                                        <?= getEduAppGTLang('send'); ?> <i class="fa fa-paper-plane"></i>
+                                                                    </button>
                                                                 </div>
+
+                                                                <!-- Tombol REACTION & Daftar Reaction -->
+                                                                <?php if (!$hasReacted = hasReacted('news_reactions', $news_id, $this->session->userdata('login_user_id'))) : ?>
+                                                                    <?php if ($wall['can_reaction']) : ?>
+                                                                        <div class="text-end" style="min-width: 120px;">
+                                                                            <button type="button" class="btn btn-primary toggle-reaction mb-2">
+                                                                                <?= getEduAppGTLang('reaction'); ?> <i class="fa fa-smile"></i>
+                                                                            </button>
+
+                                                                            <div class="reaction-list" style="display: none;">
+                                                                                <?php foreach (getAllReaction() as $reactionIcon) : ?>
+                                                                                    <a href="<?= base_url("admin/give_reaction/$data/$news_id/{$reactionIcon->reaction_id}/news_reactions/" . $this->uri->segment(2)) ?>"
+                                                                                        class="btn btn-outline-secondary me-1 mb-1">
+                                                                                        <?= $reactionIcon->reaction_type ?>
+                                                                                    </a>
+                                                                                <?php endforeach; ?>
+                                                                            </div>
+                                                                        </div>
+                                                                    <?php endif; ?>
+                                                                <?php endif; ?>
                                                             </div>
+                                                        </div>
+
                                                         <?= form_close(); ?>
                                                     <?php endif; ?>
 
-                                                    <!-- Reaction List -->
-                                                    <div class="reaction-list mt-2" style="display: none;">
-                                                        <?php foreach (getAllReaction() as $reactionIcon) : ?>
-                                                            <a href="<?= base_url("admin/give_reaction/$data/$news_id/{$reactionIcon->reaction_id}/news_reactions/" . $this->uri->segment(2)) ?>">
-                                                                <?= $reactionIcon->reaction_type ?>
-                                                            </a>
-                                                        <?php endforeach; ?>
-                                                    </div>
+
 
                                                     <!-- Footer Icon -->
                                                     <div class="control-block-button post-control-button">
@@ -964,9 +978,9 @@ foreach ($sub as $row) :
                     <div class="mb-3">
                         <label for="content" class="form-label">Post Content</label>
                         <textarea id="summernote" name="post_content"></textarea>
-                        <?php foreach(getAllReaction() as $reactionIcon){ ?>
-                            <a href="#" class="emoji-insert" data-emoji="<?=$reactionIcon->reaction_type?>">
-                                <?=$reactionIcon->reaction_type?>
+                        <?php foreach (getAllReaction() as $reactionIcon) { ?>
+                            <a href="#" class="emoji-insert" data-emoji="<?= $reactionIcon->reaction_type ?>">
+                                <?= $reactionIcon->reaction_type ?>
                             </a>
                         <?php } ?>
 
@@ -975,7 +989,7 @@ foreach ($sub as $row) :
                         <label for="attachments" class="form-label"><?php echo getEduAppGTLang('file'); ?></label>
                         <input type="file" class="form-control" id="post_file" name="post_file"
                             accept=".jpg,.jpeg,.png,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,video/*,image/*">
-                            <small><?php echo getEduAppGTLang('accepted_file_photos_videos_documents_pdf_excel_powerpoint'); ?></small>
+                        <small><?php echo getEduAppGTLang('accepted_file_photos_videos_documents_pdf_excel_powerpoint'); ?></small>
                     </div>
                     <button type="submit" class="btn btn-rounded btn-success btn-lg full-width"><?php echo getEduAppGTLang('post'); ?></button>
                 </div>
@@ -984,61 +998,60 @@ foreach ($sub as $row) :
         </div>
     </div>
 
-<!-- Modal Edit Post -->
-<div class="modal fade" id="editPostModal" tabindex="-1" role="dialog" aria-labelledby="editPostModalLabel" aria-hidden="true">
-    <div class="modal-dialog custom-modal-responsive" role="document">
-        <div class="modal-content">
-            <form action="<?= base_url('admin/update_news/'.$data) ?>" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="news_id" id="edit_post_id">
-                <div class="modal-header">
-                    <h6 class="modal-title" id="editPostModalLabel">Edit Post</h6>
-                    <button type="button" class="close icon-close" data-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-
-                    <div class="description-toggle mb-3">
-                        <div class="description-toggle-content">
-                            <div class="h6">Can Comment</div>
-                            <p>All people can comment to this post</p>
-                        </div>
-                        <div class="togglebutton">
-                            <label><input type="checkbox" id="edit_can_comment" name="can_comment" value="1"></label>
-                        </div>
+    <!-- Modal Edit Post -->
+    <div class="modal fade" id="editPostModal" tabindex="-1" role="dialog" aria-labelledby="editPostModalLabel" aria-hidden="true">
+        <div class="modal-dialog custom-modal-responsive" role="document">
+            <div class="modal-content">
+                <form action="<?= base_url('admin/update_news/' . $data) ?>" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="news_id" id="edit_post_id">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="editPostModalLabel">Edit Post</h6>
+                        <button type="button" class="close icon-close" data-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
 
-                    <div class="description-toggle mb-3">
-                        <div class="description-toggle-content">
-                            <div class="h6">Allow Reactions</div>
-                            <p>People can react using emojis to this post</p>
+                        <div class="description-toggle mb-3">
+                            <div class="description-toggle-content">
+                                <div class="h6"><?php echo getEduAppGTLang('can_comment'); ?></div>
+                                <p><?php echo getEduAppGTLang('all_people_can_comment_on_this_post'); ?></p>
+                            </div>
+                            <div class="togglebutton">
+                                <label><input type="checkbox" id="edit_can_comment" name="can_comment" value="1"></label>
+                            </div>
                         </div>
-                        <div class="togglebutton">
-                            <label><input type="checkbox" id="edit_can_reaction" name="can_reaction" value="1"></label>
+
+                        <div class="description-toggle mb-3">
+                            <div class="description-toggle-content">
+                                <div class="h6"><?php echo getEduAppGTLang('can_reaction'); ?></div>
+                                <p><?php echo getEduAppGTLang('people_can_react_on_this_post'); ?></p>
+                            </div>
+                            <div class="togglebutton">
+                                <label><input type="checkbox" id="edit_can_reaction" name="can_reaction" value="1"></label>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="mb-3">
-                        <label for="edit_post_content" class="form-label">Post Content</label>
-                        <textarea id="edit_post_content" name="post_content"></textarea>
-                        <?php foreach(getAllReaction() as $reactionIcon){ ?>
-                            <a href="#" class="emoji-insert-edit" data-emoji="<?=$reactionIcon->reaction_type?>">
-                                <?=$reactionIcon->reaction_type?>
-                            </a>
-                        <?php } ?>
-                    </div>
+                        <div class="mb-3">
+                            <label for="edit_post_content" class="form-label">Post Content</label>
+                            <textarea id="edit_post_content" name="post_content"></textarea>
+                            <?php foreach (getAllReaction() as $reactionIcon) { ?>
+                                <a href="#" class="emoji-insert-edit" data-emoji="<?= $reactionIcon->reaction_type ?>">
+                                    <?= $reactionIcon->reaction_type ?>
+                                </a>
+                            <?php } ?>
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="edit_post_file" class="form-label">File</label>
-                        <input type="file" class="form-control" name="post_file" id="edit_post_file">
-                        <small><?= getEduAppGTLang('accepted_file_photos_videos_documents_pdf_excel_powerpoint'); ?></small>
-                        <small><?= getEduAppGTLang('fill_if_want_to_update'); ?></small>
+                        <div class="mb-3">
+                            <label for="edit_post_file" class="form-label">File</label>
+                            <input type="file" class="form-control" name="post_file" id="edit_post_file">
+                            <small><?= getEduAppGTLang('accepted_file_photos_videos_documents_pdf_excel_powerpoint'); ?></small>
+                            <small><?= getEduAppGTLang('fill_if_want_to_update'); ?></small>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-rounded btn-lg full-width">Update</button>
                     </div>
-
-                    <button type="submit" class="btn btn-success btn-rounded btn-lg full-width">Update</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
 
     <script>
@@ -1181,77 +1194,79 @@ foreach ($sub as $row) :
         });
     </script>
     <script>
-document.addEventListener('DOMContentLoaded', function () {
-    const toggleButtons = document.querySelectorAll('.btn-toggle-comments');
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButtons = document.querySelectorAll('.btn-toggle-comments');
 
-    toggleButtons.forEach(function (btn) {
-        btn.addEventListener('click', function (e) {
-            e.preventDefault();
+            toggleButtons.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
 
-            // Ambil elemen .post-comments-section setelah tombol ini
-            const postSection = btn.closest('.d-flex').nextElementSibling;
-            const commentList = postSection.querySelector('.comments-list');
+                    // Ambil elemen .post-comments-section setelah tombol ini
+                    const postSection = btn.closest('.d-flex').nextElementSibling;
+                    const commentList = postSection.querySelector('.comments-list');
 
-            const isVisible = commentList.style.display === 'block';
+                    const isVisible = commentList.style.display === 'block';
 
-            commentList.style.display = isVisible ? 'none' : 'block';
-            btn.innerHTML = isVisible
-                ? 'Show Comments <span class="arrow">▼</span>'
-                : 'Hide Comments <span class="arrow">▲</span>';
+                    commentList.style.display = isVisible ? 'none' : 'block';
+                    btn.innerHTML = isVisible ?
+                        'Show Comments <span class="arrow">▼</span>' :
+                        'Hide Comments <span class="arrow">▲</span>';
+                });
+            });
+            document.querySelectorAll('.toggle-reaction').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const wrapper = this.closest('.reaction-wrapper');
+                    const reactionList = wrapper.querySelector('.reaction-list');
+                    if (reactionList) {
+                        reactionList.style.display = reactionList.style.display === 'none' ? 'block' : 'none';
+                    }
+                });
+            });
         });
-    });
-});
-document.querySelectorAll('.toggle-reaction').forEach(function(button) {
-    button.addEventListener('click', function() {
-      const wrapper = this.closest('.reaction-wrapper');
-      const reactionList = wrapper.querySelector('.reaction-list');
-      reactionList.style.display = reactionList.style.display === 'none' ? 'block' : 'none';
-    });
-  });
-</script>
+    </script>
 
-<script>
-    $(document).ready(function () {
-        // Init Summernote untuk edit
-        $('#edit_post_content').summernote({
-            placeholder: 'Write your content here...',
-            tabsize: 2,
-            height: 250,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'italic', 'underline', 'clear', 'fontsize', 'fontname']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['insert', ['link', 'picture', 'video', 'emoji']],
-                ['view', ['fullscreen', 'codeview']]
-            ]
-        });
+    <script>
+        $(document).ready(function() {
+            // Init Summernote untuk edit
+            $('#edit_post_content').summernote({
+                placeholder: 'Write your content here...',
+                tabsize: 2,
+                height: 250,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear', 'fontsize', 'fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'picture', 'video', 'emoji']],
+                    ['view', ['fullscreen', 'codeview']]
+                ]
+            });
             $('.emoji-insert-edit').on('click', function(e) {
                 e.preventDefault();
 
                 var emoji = $(this).data('emoji');
                 $('#edit_post_content').summernote('insertText', emoji);
             });
-        // Ketika tombol edit diklik
-        function decodeHtml(html) {
-            var txt = document.createElement("textarea");
-            txt.innerHTML = html;
-            return txt.value;
-        }
-        $('.edit-post-btn').on('click', function () {
-            let content = $(this).data('content');
-            let post_id = $(this).data('id');
-            let comment = $(this).data('comment');
-            let reaction = $(this).data('reaction');
+            // Ketika tombol edit diklik
+            function decodeHtml(html) {
+                var txt = document.createElement("textarea");
+                txt.innerHTML = html;
+                return txt.value;
+            }
+            $('.edit-post-btn').on('click', function() {
+                let content = $(this).data('content');
+                let post_id = $(this).data('id');
+                let comment = $(this).data('comment');
+                let reaction = $(this).data('reaction');
 
-            $('#edit_post_id').val(post_id);
-            $('#edit_post_content').summernote('code', decodeHtml(content)); 
+                $('#edit_post_id').val(post_id);
+                $('#edit_post_content').summernote('code', decodeHtml(content));
 
-            $('#edit_can_comment').prop('checked', comment == 1);
-            $('#edit_can_reaction').prop('checked', reaction == 1);
+                $('#edit_can_comment').prop('checked', comment == 1);
+                $('#edit_can_reaction').prop('checked', reaction == 1);
+            });
         });
-    });
-</script>
+    </script>
 
-    
+
 <?php endforeach; ?>
