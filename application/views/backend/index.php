@@ -18,6 +18,7 @@
     <link href="<?php echo base_url();?>public/style/cms/css/main.css" media="all" rel="stylesheet">
     <script src="<?php echo base_url();?>public/style/jquery.min.js"></script>
     <script src="<?php echo base_url();?>public/style/js/sweetalert2.all.min.js"></script> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
     <?php include 'topcss.php';?>	
     <script>
         'use strict';

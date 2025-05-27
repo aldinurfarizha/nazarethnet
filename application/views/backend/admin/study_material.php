@@ -1,3 +1,40 @@
+<style>
+    .summernote-content {
+        all: initial;
+        /* Reset semua style */
+        font-family: Arial, sans-serif;
+        /* Atur kembali font */
+        font-size: 14px;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    /* Izinkan kembali elemen umum */
+    .summernote-content * {
+        all: unset;
+        display: revert;
+        box-sizing: border-box;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+    }
+
+    .summernote-content img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .summernote-content a {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .summernote-content a:hover {
+        color: darkblue;
+    }
+</style>
 <?php
 $running_year = $this->crud->getInfo('running_year');
 $info = base64_decode($data);
@@ -89,9 +126,9 @@ foreach ($sub as $row):
                                                     foreach ($study_material_info as $row):
                                                     ?>
                                                         <tr>
-                                                            <td><?php echo $row['description'] ?></td>
+                                                            <td><div class="summernote-content"><?= $row['post_content']; ?></div></td>
                                                             <td class="text-left cell-with-media ">
-                                                                <a href="<?php echo base_url() . 'admin/viewFile/' . $row['file_name']; ?>" class="grey">
+                                                                <a href="<?php echo base_url() . 'public/material/' . $row['post_file']; ?>" class="grey">
                                                                     <?php if ($row['file_type'] == 'PDF'): ?>
                                                                         <i class="picons-thin-icon-thin-0077_document_file_pdf_adobe_acrobat grey px20"></i>
                                                                     <?php endif; ?>
@@ -109,10 +146,10 @@ foreach ($sub as $row):
                                                                     <?php endif; ?>
                                                                     <?php if ($row['file_type'] == 'Other'): ?>
                                                                         <i class="picons-thin-icon-thin-0111_folder_files_documents grey px20"></i>
-                                                                    <?php endif; ?><span><?php echo $row['file_name']; ?></span><span class="smaller">(<?php echo $row['filesize']; ?>)</span></a>
+                                                                    <?php endif; ?><span><?php echo $row['post_file']; ?></span><span class="smaller">(<?php echo $row['post_file_type']; ?>)</span></a>
                                                             </td>
                                                             <td class="text-center bolder">
-                                                                <a target="_blank" href="<?php echo base_url() . 'admin/viewFile/' . $row['file_name']; ?>" class="grey"> <span><i class="picons-thin-icon-thin-0121_download_file"></i></span> </a>
+                                                                <a target="_blank" href="<?php echo base_url() . 'public/material/' . $row['post_file']; ?>" class="grey"> <span><i class="picons-thin-icon-thin-0121_download_file"></i></span> </a>
                                                                 <a class="grey" onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>')" href="<?php echo base_url(); ?>admin/study_material/delete/<?php echo $row['document_id'] ?>/<?php echo $data; ?>"><i class="picons-thin-icon-thin-0056_bin_trash_recycle_delete_garbage_empty"></i></a>
                                                             </td>
                                                         </tr>
@@ -144,10 +181,37 @@ foreach ($sub as $row):
                             <input type="hidden" value="<?php echo $ex[0]; ?>" name="class_id" />
                             <input type="hidden" value="<?php echo $ex[1]; ?>" name="section_id" />
                             <input type="hidden" value="<?php echo $ex[2]; ?>" name="subject_id" />
+                             <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="description-toggle mb-3">
+                                        <div class="description-toggle-content">
+                                            <div class="h6"><?php echo getEduAppGTLang('can_comment'); ?></div>
+                                            <p><?php echo getEduAppGTLang('all_people_can_comment_on_this_post'); ?></p>
+                                        </div>
+                                        <div class="togglebutton">
+                                            <label><input type="checkbox" id="can_comment" name="can_comment" value="1"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="description-toggle mb-3">
+                                        <div class="description-toggle-content">
+                                            <div class="h6"><?php echo getEduAppGTLang('can_reaction'); ?></div>
+                                            <p><?php echo getEduAppGTLang('people_can_react_on_this_post'); ?></p>
+                                        </div>
+                                        <div class="togglebutton">
+                                            <label><input type="checkbox" id="can_reaction" name="can_reaction" value="1"></label>
+                                        </div>
+                                    </div>
+                                </div>
                             <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="form-group">
                                     <label class="control-label"><?php echo getEduAppGTLang('description'); ?></label>
-                                    <textarea class="form-control" rows="5" name="description"></textarea>
+                                    <textarea class="form-control" id="summernote" name="description"></textarea>
+                                    <?php foreach (getAllReaction() as $reactionIcon) { ?>
+                                            <a href="#" class="emoji-insert" data-emoji="<?= $reactionIcon->reaction_type ?>">
+                                                <?= $reactionIcon->reaction_type ?>
+                                            </a>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
@@ -183,3 +247,30 @@ foreach ($sub as $row):
         </div>
     </div>
 <?php endforeach; ?>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            placeholder: 'Write your content here...',
+            tabsize: 2,
+            height: 250,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear', 'fontsize', 'fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture', 'video', 'emoji']],
+                ['view', ['fullscreen', 'codeview']]
+            ]
+        });
+        $('.emoji-insert').on('click', function(e) {
+            e.preventDefault();
+
+            var emoji = $(this).data('emoji');
+            $('#summernote').summernote('insertText', emoji);
+        });
+
+    });
+</script>

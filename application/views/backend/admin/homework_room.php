@@ -98,6 +98,7 @@
         color: darkblue;
     }
 </style>
+
 <?php
 $running_year = $this->crud->getInfo('running_year');
 $info = base64_decode(@$data);
@@ -105,7 +106,7 @@ $ex = explode('-', $info);
 $current_homework = $this->db->get_where('homework', array('homework_code' => $homework_code))->result_array();
 foreach ($current_homework as $row):
     $homework_id= $row['homework_id'];
-    $comments = getComments($row['homework_id'], 'homework_comment');
+    $comments = getComments($row['homework_id'], 'homework_comments');
 
 ?>
 
@@ -202,7 +203,37 @@ foreach ($current_homework as $row):
                                                 <i class="picons-thin-icon-thin-0004_pencil_ruler_drawing"></i>
                                             </a>
                                         </div>
-                                        <div class="d-flex justify-content-between align-items-center">
+                                       
+                                        <?php
+                                        $checkData = $this->academic->getRead($row['homework_id'], 'homework', $row['subject_id']);
+                                        if (count($checkData) > 0):
+                                        ?>
+                                            <div class="post-additional-info inline-items">
+                                                <ul class="friends-harmonic">
+                                                    <?php foreach ($checkData as $readed): ?>
+                                                        <li>
+                                                            <a href="javascript:void(0);">
+                                                                <img loading="lazy" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_students/<?php echo $row['homework_id'] . '/' . $row['subject_id'] . '/homework'; ?>');" title="<?php echo $this->crud->get_name('student', $readed['student_id']); ?>" src="<?php echo $this->crud->get_image_url('student', $readed['student_id']); ?>" alt="<?php echo $this->crud->get_name('student', $readed['student_id']); ?>" width="28" height="28">
+                                                            </a>
+                                                        </li>
+                                                    <?php endforeach; ?>
+                                                </ul>
+                                                <div class="names-people-likes">
+                                                    <?php if (count($checkData) > 5): ?>
+                                                        <?php echo getEduAppGTLang('and'); ?> <?php echo count($checkData) - 5; ?> <?php echo getEduAppGTLang('other_people_viewed_this_post'); ?>.
+                                                    <?php else: ?>
+                                                        <?php echo getEduAppGTLang('have_seen_this_post'); ?>
+                                                    <?php endif; ?>
+                                                </div>
+                                                <div class="comments-shared">
+                                                    <a href="javascript:void(0);" class="post-add-icon inline-items"></a>
+                                                    <a href="javascript:void(0);" class="post-add-icon inline-items"></a>
+                                                </div>
+                                            </div>
+                                        <?php else: ?>
+                                            <br><br><br>
+                                        <?php endif; ?>
+                                         <div class="d-flex justify-content-between align-items-center">
                                             <div class="d-flex gap-2">
                                                 <?php if ($row['can_reaction']) : ?>
                                                     <?php foreach (countReaction($row['homework_id'], 'homework_reactions') as $reaction) : ?>
@@ -232,19 +263,22 @@ foreach ($current_homework as $row):
                                             </ul>
                                         </div>
                                         <?php if ($row['can_comment']) : ?>
-                                            <?= form_open(base_url("admin/give_comment/$homework_id/homework_comments/" . $this->uri->segment(2)), ['enctype' => 'multipart/form-data']); ?>
+                                            <form id="commentForm">
+                                            <input type="hidden" name="id" value="<?= $homework_id; ?>">
+                                            <input type="hidden" name="table" value="homework_comments">
                                             <input type="text" name="comment" class="form-control" placeholder="<?= getEduAppGTLang('write_your_comment'); ?>">
                                             <div class="reaction-wrapper mb-2">
                                                 <div class="d-flex justify-content-between align-items-start">
                                                     <!-- Tombol SEND -->
                                                     <div>
-                                                        <button class="btn btn-primary">
-                                                            <?= getEduAppGTLang('send'); ?> <i class="fa fa-paper-plane"></i>
+                                                        <button type="submit" class="btn btn-primary" id="submitComment">
+                                                            <span id="btnText"><?= getEduAppGTLang('send'); ?> <i class="fa fa-paper-plane"></i></span>
+                                                            <span id="btnLoading" class="d-none"><i class="fa fa-spinner fa-spin"></i> Loading...</span>
                                                         </button>
                                                     </div>
 
                                                     <!-- Tombol REACTION & Daftar Reaction -->
-                                                    <?php if (!$hasReacted = hasReacted('homework_reaction', $homework_id, $this->session->userdata('login_user_id'))) : ?>
+                                                    <?php if (!$hasReacted = hasReacted('homework_reactions', $homework_id, $this->session->userdata('login_user_id'))) : ?>
                                                         <?php if ($row['can_reaction']) : ?>
                                                             <div class="text-end" style="min-width: 120px;">
                                                                 <button type="button" class="btn btn-primary toggle-reaction mb-2">
@@ -253,48 +287,22 @@ foreach ($current_homework as $row):
 
                                                                 <div class="reaction-list" style="display: none;">
                                                                     <?php foreach (getAllReaction() as $reactionIcon) : ?>
-                                                                        <a href="<?= base_url("admin/give_reaction/$homework_id/{$reactionIcon->reaction_id}/homework_reaction/" . $this->uri->segment(2)) ?>"
-                                                                            class="btn btn-outline-secondary me-1 mb-1">
+                                                                        <button type="button"
+                                                                            class="btn btn-outline-secondary me-1 mb-1 btn-reaction"
+                                                                            data-content-id="<?= $homework_id ?>"
+                                                                            data-reaction-id="<?= $reactionIcon->reaction_id ?>"
+                                                                            data-table="homework_reactions">
                                                                             <?= $reactionIcon->reaction_type ?>
-                                                                        </a>
+                                                                        </button>
                                                                     <?php endforeach; ?>
                                                                 </div>
+
                                                             </div>
                                                         <?php endif; ?>
                                                     <?php endif; ?>
                                                 </div>
                                             </div>
-
-                                            <?= form_close(); ?>
-                                        <?php endif; ?>
-                                        <?php
-                                        $checkData = $this->academic->getRead($row['homework_id'], 'homework', $row['subject_id']);
-                                        if (count($checkData) > 0):
-                                        ?>
-                                            <div class="post-additional-info inline-items">
-                                                <ul class="friends-harmonic">
-                                                    <?php foreach ($checkData as $readed): ?>
-                                                        <li>
-                                                            <a href="javascript:void(0);">
-                                                                <img loading="lazy" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_students/<?php echo $row['homework_id'] . '/' . $row['subject_id'] . '/homework'; ?>');" title="<?php echo $this->crud->get_name('student', $readed['student_id']); ?>" src="<?php echo $this->crud->get_image_url('student', $readed['student_id']); ?>" alt="<?php echo $this->crud->get_name('student', $readed['student_id']); ?>" width="28" height="28">
-                                                            </a>
-                                                        </li>
-                                                    <?php endforeach; ?>
-                                                </ul>
-                                                <div class="names-people-likes">
-                                                    <?php if (count($checkData) > 5): ?>
-                                                        <?php echo getEduAppGTLang('and'); ?> <?php echo count($checkData) - 5; ?> <?php echo getEduAppGTLang('other_people_viewed_this_post'); ?>.
-                                                    <?php else: ?>
-                                                        <?php echo getEduAppGTLang('have_seen_this_post'); ?>
-                                                    <?php endif; ?>
-                                                </div>
-                                                <div class="comments-shared">
-                                                    <a href="javascript:void(0);" class="post-add-icon inline-items"></a>
-                                                    <a href="javascript:void(0);" class="post-add-icon inline-items"></a>
-                                                </div>
-                                            </div>
-                                        <?php else: ?>
-                                            <br><br><br>
+                                        </form>
                                         <?php endif; ?>
                                     </article>
                                 </div>
@@ -358,7 +366,17 @@ foreach ($current_homework as $row):
                                         </div>
                                         <ul class="widget w-friend-pages-added notification-list friend-requests">
                                             <?php $students   =   $this->db->get_where('enroll', array('class_id' => $row['class_id'], 'section_id' => $row['section_id'], 'year' => $running_year))->result_array();
-                                            foreach ($students as $row2): ?>
+                                            foreach ($students as $row2):
+                                                if (!isStudentActiveEnroll($row2['student_id'], $row['class_id'], $row['section_id'], $running_year)) {
+                                                    continue;
+                                                }
+                                                if (isStudentFinishSubject($row2['student_id'], $row['subject_id'])) {
+                                                    continue;
+                                                }
+                                                if (!isActiveSubject($row2['student_id'], $row['subject_id'])) {
+                                                    continue;
+                                                }
+                                             ?>
                                                 <li class="inline-items">
                                                     <div class="author-thumb">
                                                         <img src="<?php echo $this->crud->get_image_url('student', $row2['student_id']); ?>" width="35px" alt="author">
@@ -380,3 +398,111 @@ foreach ($current_homework as $row):
         </div>
     </div>
 <?php endforeach; ?>
+<script>
+$(document).ready(function () {
+    $('.btn-reaction').on('click', function () {
+        const contentId = $(this).data('content-id');
+        const reactionId = $(this).data('reaction-id');
+        const table = $(this).data('table');
+
+        // Tampilkan loader
+        $('#reaction-loader').show();
+
+        $.ajax({
+            url: "<?= base_url('home/reaction') ?>",
+            type: "POST",
+            data: {
+                'content$content_id': contentId,
+                'reaction_id': reactionId,
+                'table': table
+            },
+            dataType: 'json',
+            success: function (response) {
+                $('#reaction-loader').hide();
+                if (response.status === 'success') {
+                    toastr.success(response.messages);
+                    setTimeout(function() {
+                        location.reload();
+                    }, 1500);
+                } else {
+                    toastr.error(response.messages || 'Give Reaction Failed.');
+                }
+            },
+            error: function () {
+                $('#reaction-loader').hide();
+                toastr.error('Terjadi kesalahan saat mengirim reaksi.');
+            }
+        });
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+    $('#commentForm').on('submit', function(e) {
+        e.preventDefault();
+
+        // Tombol loading aktif
+        $('#submitComment').prop('disabled', true);
+        $('#btnText').addClass('d-none');
+        $('#btnLoading').removeClass('d-none');
+
+        $.ajax({
+            url: "<?= base_url('home/comment'); ?>",
+            type: "POST",
+            data: $(this).serialize(),
+            dataType: "json",
+            success: function(response) {
+                if (response.status === 'Success') {
+                    toastr.success(response.messages);
+                    setTimeout(function() {
+                        location.reload();
+                    }, 1500);
+                } else {
+                    toastr.error(response.messages);
+                }
+            },
+            error: function(xhr) {
+                alert("Something wrong: " + xhr.responseText);
+            },
+            complete: function() {
+                // Kembalikan tombol ke normal
+                $('#submitComment').prop('disabled', false);
+                $('#btnText').removeClass('d-none');
+                $('#btnLoading').addClass('d-none');
+            }
+        });
+    });
+});
+</script>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButtons = document.querySelectorAll('.btn-toggle-comments');
+
+            toggleButtons.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Ambil elemen .post-comments-section setelah tombol ini
+                    const postSection = btn.closest('.d-flex').nextElementSibling;
+                    const commentList = postSection.querySelector('.comments-list');
+
+                    const isVisible = commentList.style.display === 'block';
+
+                    commentList.style.display = isVisible ? 'none' : 'block';
+                    btn.innerHTML = isVisible ?
+                        'Show Comments <span class="arrow">▼</span>' :
+                        'Hide Comments <span class="arrow">▲</span>';
+                });
+            });
+            document.querySelectorAll('.toggle-reaction').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const wrapper = this.closest('.reaction-wrapper');
+                    const reactionList = wrapper.querySelector('.reaction-list');
+                    if (reactionList) {
+                        reactionList.style.display = reactionList.style.display === 'none' ? 'block' : 'none';
+                    }
+                });
+            });
+        });
+    </script>

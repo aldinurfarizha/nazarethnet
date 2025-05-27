@@ -255,6 +255,9 @@ class Academic extends School
         $data['user']        = $this->session->userdata('login_type');
         $data['status']      = $this->input->post('status');
         $data['type']        = $this->input->post('type');
+        $data['can_reaction'] = $this->input->post('can_reaction') ? 1 : 0;
+        $data['can_comment']  = $this->input->post('can_comment') ? 1 : 0;
+        $data['post_content']   = $this->input->post('description');
         $this->db->where('homework_code', $homework_code);
         $this->db->update('homework', $data);
     }
@@ -300,7 +303,7 @@ class Academic extends School
     public function createForum()
     {
         $data['title']           = html_escape($this->input->post('title'));
-        $data['description']     = html_escape($this->input->post('description'));
+        $data['description']     = $this->input->post('description');
         $data['class_id']        = $this->input->post('class_id');
         $data['type']            = $this->session->userdata('login_type');
         $data['exp']            = $this->input->post('exp');
@@ -322,6 +325,9 @@ class Academic extends School
         $data['subject_id']      = $this->input->post('subject_id');
         $data['teacher_id']      = $this->session->userdata('login_user_id');
         $data['post_code']       = substr(md5(rand(100000000, 200000000)), 0, 10);
+        $data['can_reaction'] = $this->input->post('can_reaction') ? 1 : 0;
+        $data['can_comment']  = $this->input->post('can_comment') ? 1 : 0;
+        $data['post_content']   = $this->input->post('description');
         $this->db->insert('forum', $data);
         $this->crud->send_forum_notify();
         move_uploaded_file($_FILES["userfile"]["tmp_name"], "public/uploads/forum/" . $_FILES["userfile"]["name"]);
@@ -336,10 +342,13 @@ class Academic extends School
         }
         $data['exp']            = $this->input->post('exp');
         $data['title']           = html_escape($this->input->post('title'));
-        $data['description']     = html_escape($this->input->post('description'));
+        $data['description']     = $this->input->post('description');
         $data['type']            = $this->session->userdata('login_type');
         $data['timestamp']       = $this->crud->getDateFormat().' '.date("h:iA");
         $data['teacher_id']      = $this->session->userdata('login_user_id');
+        $data['can_reaction']   = $this->input->post('can_reaction') ? 1 : 0;
+        $data['can_comment']    = $this->input->post('can_comment') ? 1 : 0;
+        $data['post_content']   = $this->input->post('description');
         $this->db->where('post_code', $code);
         $this->db->update('forum', $data);
     }
@@ -349,7 +358,7 @@ class Academic extends School
         $data['type']              = $this->session->userdata('login_type');
         $data['timestamp']         = strtotime(date("Y-m-d H:i:s"));
         $data['title']             = html_escape($this->input->post('title'));
-        $data['description']       = html_escape($this->input->post('description'));
+        $data['description']       = $this->input->post('description');
         $data['upload_date']       = $this->crud->getDateFormat().' '.date('h:iA');
         $data['publish_date']      = date('Y-m-d H:i:s');
         $data['sync_status']       = 1;
@@ -366,8 +375,27 @@ class Academic extends School
         $data['subject_id']        = $this->input->post('subject_id');
         $data['section_id']        = $this->input->post('section_id');
         $data['teacher_id']        = $this->session->userdata('login_user_id');
+        $data['can_reaction']       = $this->input->post('can_reaction') ? 1 : 0;
+        $data['can_comment']        = $this->input->post('can_comment') ? 1 : 0;
+        $data['post_content']       = $this->input->post('description');
         $this->db->insert('document',$data);
-        move_uploaded_file($_FILES["file_name"]["tmp_name"], "public/uploads/document/" . str_replace(" ", "",$_FILES["file_name"]["name"]));
+        if (isset($_FILES['file_name']) && $_FILES['file_name']['error'] == UPLOAD_ERR_OK) {
+            $upload_dir = 'public/material/';
+            if (!is_dir($upload_dir)) {
+                if (!mkdir($upload_dir, 0755, true)) {
+                    die("Failed to create folder: " . $upload_dir);
+                }
+            }
+
+            $ext = pathinfo($_FILES["file_name"]["name"], PATHINFO_EXTENSION);
+            $new_filename = uniqid('exam', true) . '.' . $ext;
+            $target_file = $upload_dir . $new_filename;
+
+            if (move_uploaded_file($_FILES["file_name"]["tmp_name"], $target_file)) {
+                $data['post_file'] = $new_filename;
+                $data['post_file_type'] = $ext;
+            }
+        }
         
         $notify['notify'] = "<strong>".$this->crud->get_name($this->session->userdata('login_type'), $this->session->userdata('login_user_id'))."</strong> ". " ".getEduAppGTLang('study_material_notify');
         $students = $this->db->get_where('enroll', array('class_id' => $this->input->post('class_id'),'section_id' => $this->input->post('section_id'), 'year' => $this->runningYear))->result_array();

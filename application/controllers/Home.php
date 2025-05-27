@@ -108,7 +108,7 @@ class Home extends EduAppGT
             ->set_status_header(200)
             ->set_output(json_encode([
                 'status' => 'Success',
-                'messages' => 'Success saving comment'
+                'messages' => getEduAppGTLang('comment_sent')
             ]));
     }
     public function reaction()
