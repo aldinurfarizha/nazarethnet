@@ -450,7 +450,7 @@ $(document).ready(function () {
             },
             error: function () {
                 $('#reaction-loader').hide();
-                toastr.error('Terjadi kesalahan saat mengirim reaksi.');
+                toastr.error('Failed.');
             }
         });
     });

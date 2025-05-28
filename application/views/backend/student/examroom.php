@@ -76,7 +76,7 @@
 									<?php if($row['post_file']):?>
 										<tr>
 											<th><i class="picons-thin-icon-thin-0071_document_file_paper px30"></i></th>
-											<td><a href="<?php echo base_url(); ?>public/uploads/exam_file/<?php echo $row['post_file'];?>" class="btn btn-rounded btn-sm btn-primary text-white" target="_blank"><?php echo getEduAppGTLang('download_this_attachment');?></a></td>
+											<td><a href="<?php echo base_url(); ?>public/exam/<?php echo $row['post_file'];?>" class="btn btn-rounded btn-sm btn-primary text-white" target="_blank"><?php echo getEduAppGTLang('download_this_attachment');?></a></td>
 										</tr>
 									<?php endif;?>
 			                        <tr>

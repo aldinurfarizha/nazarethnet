@@ -1583,7 +1583,7 @@ $(document).ready(function() {
                 if (response.status === 'Success') {
                     toastr.success(response.messages);
                     setTimeout(function() {
-                        //location.reload();
+                        location.reload();
                     }, 1500);
                 } else {
                     toastr.error(response.messages);

@@ -1,3 +1,40 @@
+<style>
+    .summernote-content {
+        all: initial;
+        /* Reset semua style */
+        font-family: Arial, sans-serif;
+        /* Atur kembali font */
+        font-size: 14px;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    /* Izinkan kembali elemen umum */
+    .summernote-content * {
+        all: unset;
+        display: revert;
+        box-sizing: border-box;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+    }
+
+    .summernote-content img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .summernote-content a {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .summernote-content a:hover {
+        color: darkblue;
+    }
+</style>
 <?php 
     $running_year = $this->crud->getInfo('running_year'); 
     $info = base64_decode($data);
@@ -89,9 +126,9 @@
         		                                    foreach ($study_material_info as $row):
         	                                    ?>   
                                                     <tr>
-                                                        <td><?php echo $row['description']?></td>
+                                                        <td><div class="summernote-content"><?= $row['post_content']; ?></div></td>
                                                         <td class="text-left cell-with-media ">
-                                                            <a href="<?php echo base_url().'student/viewFile/'.$row['file_name']; ?>" class="grey">
+                                                            <a href="<?php echo base_url() . 'public/material/' . $row['post_file']; ?>" class="grey">
                                                                 <?php if($row['file_type'] == 'PDF'):?>
 							                                    <i class="picons-thin-icon-thin-0077_document_file_pdf_adobe_acrobat px20 grey"></i>
 						                                    <?php endif;?>
@@ -110,12 +147,11 @@
 						                                    <?php if($row['file_type'] == 'Other'):?>
     							                                <i class="picons-thin-icon-thin-0111_folder_files_documents px20 grey"></i>
 						                                    <?php endif;?>
-						                                        <span><?php echo $row['file_name'];?></span>
-						                                        <span class="smaller">(<?php echo $row['filesize'];?>)</span>
+						                                        <span><?php echo $row['post_file']; ?></span><span class="smaller">(<?php echo $row['post_file_type']; ?>)</span></a>
 						                                    </a>
                                                         </td>                     
                                                         <td class="text-center bolder">
-                                                            <a href="<?php echo base_url().'student/viewFile/'.$row['file_name']; ?>" class="grey"> <span><i class="picons-thin-icon-thin-0121_download_file"></i></span> </a>
+                                                            <a target="_blank" href="<?php echo base_url() . 'public/material/' . $row['post_file']; ?>" class="grey"> <span><i class="picons-thin-icon-thin-0121_download_file"></i></span> </a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach;?>
