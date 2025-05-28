@@ -180,19 +180,27 @@ foreach ($current_homework as $row):
                                                         </audio>
                                                     <?php endif; ?>
                                                 </div>
-                                                <?php if ($row['file_name'] != ""): ?>
-                                                    <div class="table-responsive">
-                                                        <table class="table table-down">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="text-left cell-with-media">
-                                                                        <a href="<?php echo base_url() . 'admin/viewFile/' . $row['file_name']; ?>"><img src="<?php echo base_url(); ?>public/uploads/folder.png" class="height25"><span><?php echo $row['file_name']; ?></span><span class="smaller">(<?php echo $row['filesize']; ?>)</span></a>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-                                                <?php endif; ?>
+                                                <?php if($row['post_file']){ ?>
+                                                                <div class="table-responsive">
+                                                                <table class="table table-down">
+                                                                    <tbody>
+                                                                        <tr class="trdhs">
+                                                                            <td class="text-left cell-with-media">
+                                                                                <?php if($row['post_file'] != '') { ?>
+                                                                                <a href="<?php echo base_url() . 'public/homework/' . $row['post_file']; ?>"><i class="picons-thin-icon-thin-0111_folder_files_documents px16 text-white"></i> <span><?php echo $row['post_file']; ?></span></a>
+                                                                                <?php } ?>
+                                                                                
+                                                                            </td>
+                                                                            <td class="text-center bolder">
+                                                                                <?php if($row['post_file'] != '') { ?>
+                                                                                <a href="<?php echo base_url() . 'public/homework/' . $row['post_file']; ?>"><i class="picons-thin-icon-thin-0121_download_file px16 text-white"></i></a>
+                                                                                <?php } ?>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                                <?php } ?>
                                                 <div class="deadtime">
                                                     <span><?php echo getEduAppGTLang('delivery_date'); ?>:</span><i class="picons-thin-icon-thin-0027_stopwatch_timer_running_time"></i><?php echo $row['date_end']; ?> @ <?php echo $row['time_end']; ?>
                                                 </div>
@@ -332,9 +340,24 @@ foreach ($current_homework as $row):
                                                     </tr>
                                                     <tr>
                                                         <th><?php echo getEduAppGTLang('total_students'); ?>:</th>
-                                                        <td><a class="btn nc btn-rounded btn-sm btn-secondary text-white"><?php $this->db->where('class_id', $row['class_id']);
-                                                                                                                            $this->db->where('section_id', $row['section_id']);
-                                                                                                                            echo $this->db->count_all_results('enroll'); ?></a></td>
+                                                        <td><a class="btn nc btn-rounded btn-sm btn-secondary text-white">
+                                                            <?php $students   =   $this->db->get_where('enroll', array('class_id' => $row['class_id'], 'section_id' => $row['section_id'], 'year' => $running_year))->result_array();
+                                                             $totalStudents=0;
+                                                                foreach ($students as $row2):
+                                                                    if (!isStudentActiveEnroll($row2['student_id'], $row['class_id'], $row['section_id'], $running_year)) {
+                                                                        continue;
+                                                                    }
+                                                                    if (isStudentFinishSubject($row2['student_id'], $row['subject_id'])) {
+                                                                        continue;
+                                                                    }
+                                                                    if (!isActiveSubject($row2['student_id'], $row['subject_id'])) {
+                                                                        continue;
+                                                                    }
+                                                                    $totalStudents++;
+                                                                endforeach;
+                                                                echo $totalStudents; ?>
+                                                            </a>
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <th><?php echo getEduAppGTLang('delivered'); ?>:</th>
@@ -348,12 +371,9 @@ foreach ($current_homework as $row):
                                                         <td>
                                                             <?php $this->db->where('class_id', $row['class_id']);
                                                             $this->db->where('section_id', $row['section_id']);
-                                                            $all = $this->db->count_all_results('enroll'); ?>
-                                                            <?php $this->db->where('class_id', $row['class_id']);
-                                                            $this->db->where('section_id', $row['section_id']);
                                                             $this->db->where('homework_code', $homework_code);
                                                             $deliveries = $this->db->count_all_results('deliveries'); ?>
-                                                            <a class="btn nc btn-rounded btn-sm btn-danger text-white"><?php echo $all - $deliveries; ?></a>
+                                                            <a class="btn nc btn-rounded btn-sm btn-danger text-white"><?php echo $totalStudents - $deliveries; ?></a>
                                                         </td>
                                                     </tr>
                                                 </table>

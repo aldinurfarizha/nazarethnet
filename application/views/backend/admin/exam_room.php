@@ -178,7 +178,7 @@
                                     </div>
                                     <div class="panel-body">   
                                         <?php if($online_exam_details['post_file']){?>
-                                            <a href="<?php echo base_url(); ?>public/uploads/exam_file/<?php echo $online_exam_details['post_file'];?>" class="btn btn-rounded btn-sm btn-primary text-white mb-3" target="_blank"><?php echo getEduAppGTLang('download_exiting_attachment');?></a>
+                                            <a href="<?php echo base_url(); ?>public/exam/<?php echo $online_exam_details['post_file'];?>" class="btn btn-rounded btn-sm btn-primary text-white mb-3" target="_blank"><?php echo getEduAppGTLang('download_exiting_attachment');?></a>
                                             <br>
                                             <?php }else{
                                                 echo getEduAppGTLang('no_attachment_found');

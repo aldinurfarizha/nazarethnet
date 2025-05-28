@@ -148,9 +148,27 @@
                                             <td class="posts">
                                                 <h3><?php echo $row['title'];?></h3>
                                                  <div class="summernote-content"><?= $row['post_content']; ?></div>
-                                                <?php if($row['file_name'] != ""):?>
-                                                    <?php echo getEduAppGTLang('file');?>: <a class="btn btn-rounded btn-sm btn-primary text-white" target="_blank" href="<?php echo base_url();?>admin/viewFile/<?php echo $row['file_name'];?>"><i class="os-icon picons-thin-icon-thin-0042_attachment"></i> <?php echo $row['attachment_name'];?></a>
-                                                <?php endif;?>
+                                                <?php if($row['post_file']){ ?>
+                                                                <div class="table-responsive">
+                                                                <table class="table table-down">
+                                                                    <tbody>
+                                                                        <tr class="trdhs">
+                                                                            <td class="text-left cell-with-media">
+                                                                                <?php if($row['post_file'] != '') { ?>
+                                                                                <a href="<?php echo base_url() . 'public/forum/' . $row['post_file']; ?>"><i class="picons-thin-icon-thin-0111_folder_files_documents px16 text-white"></i> <span><?php echo $row['post_file']; ?></span></a>
+                                                                                <?php } ?>
+                                                                                
+                                                                            </td>
+                                                                            <td class="text-center bolder">
+                                                                                <?php if($row['post_file'] != '') { ?>
+                                                                                <a href="<?php echo base_url() . 'public/forum/' . $row['post_file']; ?>"><i class="picons-thin-icon-thin-0121_download_file px16 text-white"></i></a>
+                                                                                <?php } ?>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                                <?php } ?>
                                             </td>
                                         </tr>
                                     </tbody>

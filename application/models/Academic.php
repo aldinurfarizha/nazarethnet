@@ -219,6 +219,23 @@ class Academic extends School
         $data['can_reaction'] = $this->input->post('can_reaction') ? 1 : 0;
         $data['can_comment']  = $this->input->post('can_comment') ? 1 : 0;
         $data['post_content']   = $this->input->post('description');
+        if (isset($_FILES['file_name']) && $_FILES['file_name']['error'] == UPLOAD_ERR_OK) {
+            $upload_dir = 'public/homework/';
+            if (!is_dir($upload_dir)) {
+                if (!mkdir($upload_dir, 0755, true)) {
+                    die("Failed to create folder: " . $upload_dir);
+                }
+            }
+
+            $ext = pathinfo($_FILES["file_name"]["name"], PATHINFO_EXTENSION);
+            $new_filename = uniqid('homework', true) . '.' . $ext;
+            $target_file = $upload_dir . $new_filename;
+
+            if (move_uploaded_file($_FILES["file_name"]["tmp_name"], $target_file)) {
+                $data['post_file'] = $new_filename;
+                $data['post_file_type'] = $ext;
+            }
+        }
         $this->db->insert('homework', $data);
         move_uploaded_file($_FILES["file_name"]["tmp_name"], "public/uploads/homework/" . $_FILES["file_name"]["name"]);
         //$this->crud->send_homework_notify();
@@ -309,15 +326,15 @@ class Academic extends School
         $data['exp']            = $this->input->post('exp');
         $data['sync_status']     = 1;
         $data['section_id']      = $this->input->post('section_id');
-        if($this->input->post('post_status') != "1"){
-            $data['post_status'] = 0;
-        }else{
-            $data['post_status'] = $this->input->post('post_status');   
-        }
-        if($_FILES['userfile']['size'] > 0 && $this->db->get_where('settings' , array('type' => 'account_id'))->row()->description != ''){
-            $data['attachment_name'] = $_FILES["userfile"]["name"];
-            $data['file_name']       = $this->drive_model->uploadForum($this->input->post('subject_id'));
-        }
+        // if($this->input->post('post_status') != "1"){
+        //     $data['post_status'] = 0;
+        // }else{
+        //     $data['post_status'] = $this->input->post('post_status');   
+        // }
+        // if($_FILES['userfile']['size'] > 0 && $this->db->get_where('settings' , array('type' => 'account_id'))->row()->description != ''){
+        //     $data['attachment_name'] = $_FILES["userfile"]["name"];
+        //     $data['file_name']       = $this->drive_model->uploadForum($this->input->post('subject_id'));
+        // }
         $data['publish_date']    = date('Y-m-d H:i:s');
         $data['upload_date']     = $this->crud->getDateFormat().' '.date('h:iA');
         $data['wall_type']       = "forum";
@@ -328,6 +345,23 @@ class Academic extends School
         $data['can_reaction'] = $this->input->post('can_reaction') ? 1 : 0;
         $data['can_comment']  = $this->input->post('can_comment') ? 1 : 0;
         $data['post_content']   = $this->input->post('description');
+        if (isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK) {
+            $upload_dir = 'public/forum/';
+            if (!is_dir($upload_dir)) {
+                if (!mkdir($upload_dir, 0755, true)) {
+                    die("Failed to create folder: " . $upload_dir);
+                }
+            }
+
+            $ext = pathinfo($_FILES["userfile"]["name"], PATHINFO_EXTENSION);
+            $new_filename = uniqid('forum', true) . '.' . $ext;
+            $target_file = $upload_dir . $new_filename;
+
+            if (move_uploaded_file($_FILES["userfile"]["tmp_name"], $target_file)) {
+                $data['post_file'] = $new_filename;
+                $data['post_file_type'] = $ext;
+            }
+        }
         $this->db->insert('forum', $data);
         $this->crud->send_forum_notify();
         move_uploaded_file($_FILES["userfile"]["tmp_name"], "public/uploads/forum/" . $_FILES["userfile"]["name"]);
@@ -362,12 +396,12 @@ class Academic extends School
         $data['upload_date']       = $this->crud->getDateFormat().' '.date('h:iA');
         $data['publish_date']      = date('Y-m-d H:i:s');
         $data['sync_status']       = 1;
-        if($_FILES['file_name']['size'] > 0 && $this->db->get_where('settings' , array('type' => 'account_id'))->row()->description != ''){
-            $data['file_name']         = $this->drive_model->uploadStudyMaterial($this->input->post('subject_id'));
-            $data['filesize']          = $this->crud->formatBytes($_FILES["file_name"]["size"]);
-            $data['attachment_name']   = $_FILES["file_name"]["name"];
-            $data['drive_id']          = $this->crud->formatBytes($_FILES["file_name"]["size"]);
-        }
+        // if($_FILES['file_name']['size'] > 0 && $this->db->get_where('settings' , array('type' => 'account_id'))->row()->description != ''){
+        //     $data['file_name']         = $this->drive_model->uploadStudyMaterial($this->input->post('subject_id'));
+        //     $data['filesize']          = $this->crud->formatBytes($_FILES["file_name"]["size"]);
+        //     $data['attachment_name']   = $_FILES["file_name"]["name"];
+        //     $data['drive_id']          = $this->crud->formatBytes($_FILES["file_name"]["size"]);
+        // }
         $data['filesize']          = $this->crud->formatBytes($_FILES["file_name"]["size"]);
         $data['wall_type']         = 'material';
         $data['file_type']         = $this->input->post('file_type');
@@ -378,7 +412,6 @@ class Academic extends School
         $data['can_reaction']       = $this->input->post('can_reaction') ? 1 : 0;
         $data['can_comment']        = $this->input->post('can_comment') ? 1 : 0;
         $data['post_content']       = $this->input->post('description');
-        $this->db->insert('document',$data);
         if (isset($_FILES['file_name']) && $_FILES['file_name']['error'] == UPLOAD_ERR_OK) {
             $upload_dir = 'public/material/';
             if (!is_dir($upload_dir)) {
@@ -388,7 +421,7 @@ class Academic extends School
             }
 
             $ext = pathinfo($_FILES["file_name"]["name"], PATHINFO_EXTENSION);
-            $new_filename = uniqid('exam', true) . '.' . $ext;
+            $new_filename = uniqid('material', true) . '.' . $ext;
             $target_file = $upload_dir . $new_filename;
 
             if (move_uploaded_file($_FILES["file_name"]["tmp_name"], $target_file)) {
@@ -396,6 +429,8 @@ class Academic extends School
                 $data['post_file_type'] = $ext;
             }
         }
+        $this->db->insert('document',$data);
+        
         
         $notify['notify'] = "<strong>".$this->crud->get_name($this->session->userdata('login_type'), $this->session->userdata('login_user_id'))."</strong> ". " ".getEduAppGTLang('study_material_notify');
         $students = $this->db->get_where('enroll', array('class_id' => $this->input->post('class_id'),'section_id' => $this->input->post('section_id'), 'year' => $this->runningYear))->result_array();

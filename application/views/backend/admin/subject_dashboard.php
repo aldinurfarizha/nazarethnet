@@ -325,6 +325,7 @@ foreach ($sub as $row) :
                                             $admin_id = 2;
                                             $user_type = 'admin';
                                             $comments = getComments($news_id, 'news_comments');
+                                            $post_id = $news_id;
                                             ?>
                                             <div class="ui-block paddingtel">
                                                 <article class="hentry post has-post-thumbnail thumb-full-width">
@@ -374,74 +375,79 @@ foreach ($sub as $row) :
                                                         <hr>
                                                     <?php endif; ?>
 
-                                                    <!-- Reaction & Comment Section -->
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div class="d-flex gap-2">
-                                                            <?php if ($wall['can_reaction']) : ?>
-                                                                <?php foreach (countReaction($news_id, 'news_reactions') as $reaction) : ?>
-                                                                    <span class="reaction-item"><?= $reaction->reaction_type . ' ' . $reaction->total; ?></span>
-                                                                <?php endforeach; ?>
-                                                            <?php endif; ?>
-                                                        </div>
+                                                    <div class="col-md-12">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex gap-2">
+                                                <?php if ($wall['can_reaction']) : ?>
+                                                    <?php foreach (countReaction($post_id, 'news_reactions') as $reaction) : ?>
+                                                        <span class="reaction-item"><?= $reaction->reaction_type . ' ' . $reaction->total; ?></span>
+                                                    <?php endforeach; ?>
+                                                <?php endif; ?>
+                                            </div>
 
-                                                        <?php if ($wall['can_comment']) : ?>
-                                                            <a href="#" class="btn-toggle-comments">
-                                                                <?= getEduAppGTLang('show_comments'); ?> (<?= count($comments); ?>)
-                                                                <span class="arrow">▼</span>
-                                                            </a>
-                                                        <?php endif; ?>
+                                            <?php if ($wall['can_comment']) : ?>
+                                                <a href="#" class="btn-toggle-comments">
+                                                    <?= getEduAppGTLang('show_comments'); ?> (<?= count($comments); ?>)
+                                                    <span class="arrow">▼</span>
+                                                </a>
+                                            <?php endif; ?>
+                                    </div>
+
+                                        <!-- Comments -->
+                                        <div class="post-comments-section">
+                                            <ul class="comments-list" style="display:none;">
+                                                <?php foreach ($comments as $comment) : ?>
+                                                    <li>
+                                                        <strong><?= getUserIcon($comment['student_id'], $comment['teacher_id'], $comment['admin_id']) ?><?= $comment['first_name']; ?></strong>
+                                                        <span><?= $comment['comments']; ?></span>
+                                                        <small><?= timeElapsed($comment['created_at']); ?></small>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                        <?php if ($wall['can_comment']) : ?>
+                                            <form class="commentForm">
+                                            <input type="hidden" name="id" value="<?= $post_id; ?>">
+                                            <input type="hidden" name="table" value="news_comments">
+                                            <input type="text" name="comment" class="form-control" placeholder="<?= getEduAppGTLang('write_your_comment'); ?>">
+                                            <div class="reaction-wrapper mb-2">
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <!-- Tombol SEND -->
+                                                    <div>
+                                                        <button type="submit" class="btn btn-primary submit-comment">
+                                                            <span id="btnText"><?= getEduAppGTLang('send'); ?> <i class="fa fa-paper-plane"></i></span>
+                                                            <span id="btnLoading" class="d-none"><i class="fa fa-spinner fa-spin"></i> Loading...</span>
+                                                        </button>
                                                     </div>
 
-                                                    <!-- Comments -->
-                                                    <div class="post-comments-section">
-                                                        <ul class="comments-list" style="display:none;">
-                                                            <?php foreach ($comments as $comment) : ?>
-                                                                <li>
-                                                                    <strong><?= getUserIcon($comment['student_id'], $comment['teacher_id'], $comment['admin_id']) ?><?= $comment['first_name']; ?></strong>
-                                                                    <span><?= $comment['comments']; ?></span>
-                                                                    <small><?= timeElapsed($comment['created_at']); ?></small>
-                                                                </li>
-                                                            <?php endforeach; ?>
-                                                        </ul>
-                                                    </div>
+                                                    <!-- Tombol REACTION & Daftar Reaction -->
+                                                    <?php if (!$hasReacted = hasReacted('news_reactions', $post_id, $this->session->userdata('login_user_id'))) : ?>
+                                                        <?php if ($wall['can_reaction']) : ?>
+                                                            <div class="text-end" style="min-width: 120px;">
+                                                                <button type="button" class="btn btn-primary toggle-reaction mb-2">
+                                                                    <?= getEduAppGTLang('reaction'); ?> <i class="fa fa-smile"></i>
+                                                                </button>
 
-                                                    <!-- Comment Input -->
-                                                    <?php if ($wall['can_comment']) : ?>
-                                                        <?= form_open(base_url("admin/give_comment/$data/$news_id/news_comments/" . $this->uri->segment(2)), ['enctype' => 'multipart/form-data']); ?>
-                                                        <input type="text" name="comment" class="form-control" placeholder="<?= getEduAppGTLang('write_your_comment'); ?>">
-                                                        <div class="reaction-wrapper mb-2">
-                                                            <div class="d-flex justify-content-between align-items-start">
-                                                                <!-- Tombol SEND -->
-                                                                <div>
-                                                                    <button class="btn btn-primary">
-                                                                        <?= getEduAppGTLang('send'); ?> <i class="fa fa-paper-plane"></i>
-                                                                    </button>
+                                                                <div class="reaction-list" style="display: none;">
+                                                                    <?php foreach (getAllReaction() as $reactionIcon) : ?>
+                                                                        <button type="button"
+                                                                            class="btn btn-outline-secondary me-1 mb-1 btn-reaction"
+                                                                            data-content-id="<?= $post_id ?>"
+                                                                            data-reaction-id="<?= $reactionIcon->reaction_id ?>"
+                                                                            data-table="news_reactions">
+                                                                            <?= $reactionIcon->reaction_type ?>
+                                                                        </button>
+                                                                    <?php endforeach; ?>
                                                                 </div>
 
-                                                                <!-- Tombol REACTION & Daftar Reaction -->
-                                                                <?php if (!$hasReacted = hasReacted('news_reactions', $news_id, $this->session->userdata('login_user_id'))) : ?>
-                                                                    <?php if ($wall['can_reaction']) : ?>
-                                                                        <div class="text-end" style="min-width: 120px;">
-                                                                            <button type="button" class="btn btn-primary toggle-reaction mb-2">
-                                                                                <?= getEduAppGTLang('reaction'); ?> <i class="fa fa-smile"></i>
-                                                                            </button>
-
-                                                                            <div class="reaction-list" style="display: none;">
-                                                                                <?php foreach (getAllReaction() as $reactionIcon) : ?>
-                                                                                    <a href="<?= base_url("admin/give_reaction/$data/$news_id/{$reactionIcon->reaction_id}/news_reactions/" . $this->uri->segment(2)) ?>"
-                                                                                        class="btn btn-outline-secondary me-1 mb-1">
-                                                                                        <?= $reactionIcon->reaction_type ?>
-                                                                                    </a>
-                                                                                <?php endforeach; ?>
-                                                                            </div>
-                                                                        </div>
-                                                                    <?php endif; ?>
-                                                                <?php endif; ?>
                                                             </div>
-                                                        </div>
-
-                                                        <?= form_close(); ?>
+                                                        <?php endif; ?>
                                                     <?php endif; ?>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <?php endif; ?>
+                                </div>
 
 
 
@@ -454,7 +460,10 @@ foreach ($sub as $row) :
                                                 </article>
                                             </div>
                                         <?php endif; ?>
-                                        <?php if ($wall['wall_type'] == 'homework') : ?>
+                                        <?php if ($wall['wall_type'] == 'homework') : 
+                                            $post_id= $wall['homework_id'];
+                                            $comments = getComments($post_id, 'homework_comments');
+                                            ?>
                                             <div class="ui-block">
                                                 <article class="hentry post thumb-full-width">
                                                     <div class="post__author author vcard inline-items">
@@ -473,15 +482,14 @@ foreach ($sub as $row) :
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="edu-posts cta-with-media verde">
                                                         <div class="cta-content">
                                                             <div class="highlight-header morado"><?php echo $row['name']; ?></div>
                                                             <div class="grado">
                                                                 <?php echo $this->db->get_where('class', array('class_id' => $ex[0]))->row()->name; ?> "<?php echo $this->db->get_where('section', array('section_id' => $ex[1]))->row()->name; ?>"
                                                             </div>
                                                             <h3 class="cta-header"><?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->title; ?></h3>
+                                                            <div class="summernote-content"><?= $wall['post_content']; ?></div>
                                                             <div class="descripcion">
-                                                                <?php echo html_entity_decode($this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->description); ?>
                                                                 <?php if ($this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->media_type == 1) : ?>
                                                                     <hr>
                                                                     <video src="<?php echo base_url(); ?>public/uploads/homework/video/<?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->homework_code; ?>.mp4" controls type="video/mp4" style="width: auto; max-width:100%;"></video>
@@ -492,28 +500,105 @@ foreach ($sub as $row) :
                                                                     </audio>
                                                                 <?php endif; ?>
                                                             </div>
-                                                            <?php if ($this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->file_name != "") : ?>
+                                                            <?php if($wall['post_file']){ ?>
                                                                 <div class="table-responsive">
-                                                                    <table class="table table-down">
-                                                                        <tbody>
-                                                                            <tr class="trdhs">
-                                                                                <td class="text-left cell-with-media">
-                                                                                    <a href="<?php echo base_url() . 'admin/viewFile/' . $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->file_name; ?>"><i class="picons-thin-icon-thin-0111_folder_files_documents px16 text-white"></i> <span><?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->file_name; ?></span><span class="smaller">(<?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->filesize; ?>)</span></a>
-                                                                                </td>
-                                                                                <td class="text-center bolder">
-                                                                                    <a href="<?php echo base_url() . 'admin/viewFile/' . $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->file_name; ?>"> <span><i class="picons-thin-icon-thin-0121_download_file"></i></span> </a>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            <?php endif; ?>
+                                                                <table class="table table-down">
+                                                                    <tbody>
+                                                                        <tr class="trdhs">
+                                                                            <td class="text-left cell-with-media">
+                                                                                <?php if($wall['post_file'] != '') { ?>
+                                                                                <a href="<?php echo base_url() . 'public/homework/' . $wall['post_file']; ?>"><i class="picons-thin-icon-thin-0111_folder_files_documents px16 text-white"></i> <span><?php echo $wall['post_file']; ?></span></a>
+                                                                                <?php } ?>
+                                                                                
+                                                                            </td>
+                                                                            <td class="text-center bolder">
+                                                                                <?php if($wall['post_file'] != '') { ?>
+                                                                                <a href="<?php echo base_url() . 'public/homework/' . $wall['post_file']; ?>"><i class="picons-thin-icon-thin-0121_download_file px16 text-white"></i></a>
+                                                                                <?php } ?>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                                <?php } ?>
                                                             <div class="deadtime">
                                                                 <span><?php echo getEduAppGTLang('date'); ?>:</span><i class="picons-thin-icon-thin-0027_stopwatch_timer_running_time"></i><?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->date_end; ?> @ <?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->time_end; ?>
                                                             </div>
                                                             <a href="<?php echo base_url(); ?>admin/homeworkroom/<?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->homework_code; ?>/"><button class="btn btn-rounded btn-posts"><i class="picons-thin-icon-thin-0100_to_do_list_reminder_done"></i> <?php echo getEduAppGTLang('view_homework'); ?></button></a>
                                                         </div>
+                                                    <div class="col-md-12">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex gap-2">
+                                                <?php if ($wall['can_reaction']) : ?>
+                                                    <?php foreach (countReaction($post_id, 'homework_reactions') as $reaction) : ?>
+                                                        <span class="reaction-item"><?= $reaction->reaction_type . ' ' . $reaction->total; ?></span>
+                                                    <?php endforeach; ?>
+                                                <?php endif; ?>
+                                            </div>
+
+                                            <?php if ($wall['can_comment']) : ?>
+                                                <a href="#" class="btn-toggle-comments">
+                                                    <?= getEduAppGTLang('show_comments'); ?> (<?= count($comments); ?>)
+                                                    <span class="arrow">▼</span>
+                                                </a>
+                                            <?php endif; ?>
+                                    </div>
+
+                                        <!-- Comments -->
+                                        <div class="post-comments-section">
+                                            <ul class="comments-list" style="display:none;">
+                                                <?php foreach ($comments as $comment) : ?>
+                                                    <li>
+                                                        <strong><?= getUserIcon($comment['student_id'], $comment['teacher_id'], $comment['admin_id']) ?><?= $comment['first_name']; ?></strong>
+                                                        <span><?= $comment['comments']; ?></span>
+                                                        <small><?= timeElapsed($comment['created_at']); ?></small>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                        <?php if ($wall['can_comment']) : ?>
+                                            <form class="commentForm">
+                                            <input type="hidden" name="id" value="<?= $post_id; ?>">
+                                            <input type="hidden" name="table" value="homework_comments">
+                                            <input type="text" name="comment" class="form-control" placeholder="<?= getEduAppGTLang('write_your_comment'); ?>">
+                                            <div class="reaction-wrapper mb-2">
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <!-- Tombol SEND -->
+                                                    <div>
+                                                        <button type="submit" class="btn btn-primary submit-comment">
+                                                            <span id="btnText"><?= getEduAppGTLang('send'); ?> <i class="fa fa-paper-plane"></i></span>
+                                                            <span id="btnLoading" class="d-none"><i class="fa fa-spinner fa-spin"></i> Loading...</span>
+                                                        </button>
                                                     </div>
+
+                                                    <!-- Tombol REACTION & Daftar Reaction -->
+                                                    <?php if (!$hasReacted = hasReacted('homework_reactions', $post_id, $this->session->userdata('login_user_id'))) : ?>
+                                                        <?php if ($wall['can_reaction']) : ?>
+                                                            <div class="text-end" style="min-width: 120px;">
+                                                                <button type="button" class="btn btn-primary toggle-reaction mb-2">
+                                                                    <?= getEduAppGTLang('reaction'); ?> <i class="fa fa-smile"></i>
+                                                                </button>
+
+                                                                <div class="reaction-list" style="display: none;">
+                                                                    <?php foreach (getAllReaction() as $reactionIcon) : ?>
+                                                                        <button type="button"
+                                                                            class="btn btn-outline-secondary me-1 mb-1 btn-reaction"
+                                                                            data-content-id="<?= $post_id ?>"
+                                                                            data-reaction-id="<?= $reactionIcon->reaction_id ?>"
+                                                                            data-table="homework_reactions">
+                                                                            <?= $reactionIcon->reaction_type ?>
+                                                                        </button>
+                                                                    <?php endforeach; ?>
+                                                                </div>
+
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <?php endif; ?>
+                                </div>
                                                     <div class="control-block-button post-control-button">
                                                         <a href="javascript:void(0);" class="btn btn-control featured-post grbg22" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('homework'); ?>">
                                                             <i class="picons-thin-icon-thin-0004_pencil_ruler_drawing"></i>
@@ -630,7 +715,10 @@ foreach ($sub as $row) :
                                                 </article>
                                             </div>
                                         <?php endif; ?>
-                                        <?php if ($wall['wall_type'] == 'material') : ?>
+                                        <?php if ($wall['wall_type'] == 'material') : 
+                                            $post_id= $wall['homework_id'];
+                                            $comments = getComments($post_id, 'document_comments');
+                                            ?>
                                             <div class="ui-block">
                                                 <article class="hentry post thumb-full-width">
                                                     <div class="post__author author vcard inline-items">
@@ -648,32 +736,110 @@ foreach ($sub as $row) :
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="edu-posts cta-with-media verde">
                                                         <div class="cta-content">
                                                             <div class="highlight-header morado"><?php echo $row['name']; ?></div>
                                                             <div class="grado">
                                                                 <?php echo $this->db->get_where('class', array('class_id' => $ex[0]))->row()->name; ?> "<?php echo $this->db->get_where('section', array('section_id' => $ex[1]))->row()->name; ?>"
                                                             </div>
                                                             <h3 class="cta-header"><?php echo getEduAppGTLang('study_material'); ?></h3>
-                                                            <div class="descripcion">
-                                                                <?php echo html_entity_decode($this->db->get_where('document', array('document_id' => $wall['homework_id']))->row()->description); ?>
-                                                            </div>
-                                                            <div class="table-responsive">
+                                                            
+                                                                <div class="summernote-content"><?= $wall['post_content']; ?></div>
+                                                          
+                                                            <?php if($wall['post_file']){ ?>
+                                                                <div class="table-responsive">
                                                                 <table class="table table-down">
                                                                     <tbody>
                                                                         <tr class="trdhs">
                                                                             <td class="text-left cell-with-media">
-                                                                                <a href="<?php echo base_url() . 'admin/viewFile/' . @$this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->file_name; ?>"><i class="picons-thin-icon-thin-0111_folder_files_documents px16 text-white"></i> <span><?php echo $this->db->get_where('document', array('document_id' => $wall['homework_id']))->row()->file_name; ?></span><span class="smaller">(<?php echo $this->db->get_where('document', array('document_id' => $wall['homework_id']))->row()->filesize; ?>)</span></a>
+                                                                                <?php if($wall['post_file'] != '') { ?>
+                                                                                <a href="<?php echo base_url() . 'public/material/' . $wall['post_file']; ?>"><i class="picons-thin-icon-thin-0111_folder_files_documents px16 text-white"></i> <span><?php echo $wall['post_file']; ?></span></a>
+                                                                                <?php } ?>
+                                                                                
                                                                             </td>
                                                                             <td class="text-center bolder">
-                                                                                <a href="<?php echo base_url() . 'admin/viewFile/' . @$this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->file_name; ?>"> <span><i class="picons-thin-icon-thin-0121_download_file"></i></span> </a>
+                                                                                <?php if($wall['post_file'] != '') { ?>
+                                                                                <a href="<?php echo base_url() . 'public/material/' . $wall['post_file']; ?>"><i class="picons-thin-icon-thin-0121_download_file px16 text-white"></i></a>
+                                                                                <?php } ?>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
                                                             </div>
+                                                                <?php } ?>
                                                         </div>
+                                                    <div class="col-md-12">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex gap-2">
+                                                <?php if ($wall['can_reaction']) : ?>
+                                                    <?php foreach (countReaction($post_id, 'document_reactions') as $reaction) : ?>
+                                                        <span class="reaction-item"><?= $reaction->reaction_type . ' ' . $reaction->total; ?></span>
+                                                    <?php endforeach; ?>
+                                                <?php endif; ?>
+                                            </div>
+
+                                            <?php if ($wall['can_comment']) : ?>
+                                                <a href="#" class="btn-toggle-comments">
+                                                    <?= getEduAppGTLang('show_comments'); ?> (<?= count($comments); ?>)
+                                                    <span class="arrow">▼</span>
+                                                </a>
+                                            <?php endif; ?>
+                                    </div>
+
+                                        <!-- Comments -->
+                                        <div class="post-comments-section">
+                                            <ul class="comments-list" style="display:none;">
+                                                <?php foreach ($comments as $comment) : ?>
+                                                    <li>
+                                                        <strong><?= getUserIcon($comment['student_id'], $comment['teacher_id'], $comment['admin_id']) ?><?= $comment['first_name']; ?></strong>
+                                                        <span><?= $comment['comments']; ?></span>
+                                                        <small><?= timeElapsed($comment['created_at']); ?></small>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                        <?php if ($wall['can_comment']) : ?>
+                                            <form class="commentForm">
+                                            <input type="hidden" name="id" value="<?= $post_id; ?>">
+                                            <input type="hidden" name="table" value="document_comments">
+                                            <input type="text" name="comment" class="form-control" placeholder="<?= getEduAppGTLang('write_your_comment'); ?>">
+                                            <div class="reaction-wrapper mb-2">
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <!-- Tombol SEND -->
+                                                    <div>
+                                                        <button type="submit" class="btn btn-primary submit-comment">
+                                                            <span id="btnText"><?= getEduAppGTLang('send'); ?> <i class="fa fa-paper-plane"></i></span>
+                                                            <span id="btnLoading" class="d-none"><i class="fa fa-spinner fa-spin"></i> Loading...</span>
+                                                        </button>
                                                     </div>
+
+                                                    <!-- Tombol REACTION & Daftar Reaction -->
+                                                    <?php if (!$hasReacted = hasReacted('document_reactions', $post_id, $this->session->userdata('login_user_id'))) : ?>
+                                                        <?php if ($wall['can_reaction']) : ?>
+                                                            <div class="text-end" style="min-width: 120px;">
+                                                                <button type="button" class="btn btn-primary toggle-reaction mb-2">
+                                                                    <?= getEduAppGTLang('reaction'); ?> <i class="fa fa-smile"></i>
+                                                                </button>
+
+                                                                <div class="reaction-list" style="display: none;">
+                                                                    <?php foreach (getAllReaction() as $reactionIcon) : ?>
+                                                                        <button type="button"
+                                                                            class="btn btn-outline-secondary me-1 mb-1 btn-reaction"
+                                                                            data-content-id="<?= $post_id ?>"
+                                                                            data-reaction-id="<?= $reactionIcon->reaction_id ?>"
+                                                                            data-table="document_reactions">
+                                                                            <?= $reactionIcon->reaction_type ?>
+                                                                        </button>
+                                                                    <?php endforeach; ?>
+                                                                </div>
+
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <?php endif; ?>
+                                </div>
                                                     <div class="control-block-button post-control-button">
                                                         <a href="javascript:void(0);" class="mdl-header btn btn-control text-white" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('study_material'); ?>">
                                                             <i class="picons-thin-icon-thin-0003_write_pencil_new_edit"></i>
@@ -711,7 +877,10 @@ foreach ($sub as $row) :
                                                 </article>
                                             </div>
                                         <?php endif; ?>
-                                        <?php if ($wall['wall_type'] == 'forum') : ?>
+                                        <?php if ($wall['wall_type'] == 'forum') : 
+                                            $post_id= $wall['homework_id'];
+                                            $comments = getComments($post_id, 'forum_comments');
+                                            ?>
                                             <div class="ui-block">
                                                 <article class="hentry post thumb-full-width">
                                                     <div class="post__author author vcard inline-items">
@@ -730,19 +899,108 @@ foreach ($sub as $row) :
                                                             </ul>
                                                         </div>
                                                     </div>
-                                                    <div class="edu-posts cta-with-media verde">
                                                         <div class="cta-content">
                                                             <div class="highlight-header yellow"><?php echo $row['name']; ?></div>
                                                             <div class="grado">
                                                                 <?php echo $this->db->get_where('class', array('class_id' => $ex[0]))->row()->name; ?> "<?php echo $this->db->get_where('section', array('section_id' => $ex[1]))->row()->name; ?>"
                                                             </div>
-                                                            <h3 class="cta-header"><?php echo $this->db->get_where('forum', array('post_id' => $wall['homework_id']))->row()->title; ?></h3>
-                                                            <div class="descripcion">
-                                                                <?php echo html_entity_decode($this->db->get_where('forum', array('post_id' => $wall['homework_id']))->row()->description); ?>
+                                                            <div class="summernote-content"><?= $wall['post_content']; ?></div>
+                                                            <?php if($wall['post_file']){?>
+                                                                <div class="table-responsive">
+                                                                <table class="table table-down">
+                                                                    <tbody>
+                                                                        <tr class="trdhs">
+                                                                            <td class="text-left cell-with-media">
+                                                                                <?php if($wall['post_file'] != '') { ?>
+                                                                                <a href="<?php echo base_url() . 'public/forum/' . $wall['post_file']; ?>"><i class="picons-thin-icon-thin-0111_folder_files_documents px16 text-white"></i> <span><?php echo $wall['post_file']; ?></span></a>
+                                                                                <?php } ?>
+                                                                                
+                                                                            </td>
+                                                                            <td class="text-center bolder">
+                                                                                <?php if($wall['post_file'] != '') { ?>
+                                                                                <a href="<?php echo base_url() . 'public/forum/' . $wall['post_file']; ?>"><i class="picons-thin-icon-thin-0121_download_file px16 text-white"></i></a>
+                                                                                <?php } ?>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
+                                                            <?php } ?>
                                                             <a href="<?php echo base_url(); ?>admin/forumroom/<?php echo $this->db->get_where('forum', array('post_id' => $wall['homework_id']))->row()->post_code; ?>/"><button class="btn btn-rounded btn-posts"><i class="picons-thin-icon-thin-0014_notebook_paper_todo"></i> <?php echo getEduAppGTLang('view_forum'); ?></button></a>
                                                         </div>
+                                                        <div class="col-md-12">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                            <div class="d-flex gap-2">
+                                                <?php if ($wall['can_reaction']) : ?>
+                                                    <?php foreach (countReaction($post_id, 'forum_reactions') as $reaction) : ?>
+                                                        <span class="reaction-item"><?= $reaction->reaction_type . ' ' . $reaction->total; ?></span>
+                                                    <?php endforeach; ?>
+                                                <?php endif; ?>
+                                            </div>
+
+                                            <?php if ($wall['can_comment']) : ?>
+                                                <a href="#" class="btn-toggle-comments">
+                                                    <?= getEduAppGTLang('show_comments'); ?> (<?= count($comments); ?>)
+                                                    <span class="arrow">▼</span>
+                                                </a>
+                                            <?php endif; ?>
+                                    </div>
+
+                                        <!-- Comments -->
+                                        <div class="post-comments-section">
+                                            <ul class="comments-list" style="display:none;">
+                                                <?php foreach ($comments as $comment) : ?>
+                                                    <li>
+                                                        <strong><?= getUserIcon($comment['student_id'], $comment['teacher_id'], $comment['admin_id']) ?><?= $comment['first_name']; ?></strong>
+                                                        <span><?= $comment['comments']; ?></span>
+                                                        <small><?= timeElapsed($comment['created_at']); ?></small>
+                                                    </li>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        </div>
+                                        <?php if ($wall['can_comment']) : ?>
+                                            <form class="commentForm">
+                                            <input type="hidden" name="id" value="<?= $post_id; ?>">
+                                            <input type="hidden" name="table" value="forum_comments">
+                                            <input type="text" name="comment" class="form-control" placeholder="<?= getEduAppGTLang('write_your_comment'); ?>">
+                                            <div class="reaction-wrapper mb-2">
+                                                <div class="d-flex justify-content-between align-items-start">
+                                                    <!-- Tombol SEND -->
+                                                    <div>
+                                                        <button type="submit" class="btn btn-primary submit-comment">
+                                                            <span id="btnText"><?= getEduAppGTLang('send'); ?> <i class="fa fa-paper-plane"></i></span>
+                                                            <span id="btnLoading" class="d-none"><i class="fa fa-spinner fa-spin"></i> Loading...</span>
+                                                        </button>
                                                     </div>
+
+                                                    <!-- Tombol REACTION & Daftar Reaction -->
+                                                    <?php if (!$hasReacted = hasReacted('forum_reactions', $post_id, $this->session->userdata('login_user_id'))) : ?>
+                                                        <?php if ($wall['can_reaction']) : ?>
+                                                            <div class="text-end" style="min-width: 120px;">
+                                                                <button type="button" class="btn btn-primary toggle-reaction mb-2">
+                                                                    <?= getEduAppGTLang('reaction'); ?> <i class="fa fa-smile"></i>
+                                                                </button>
+
+                                                                <div class="reaction-list" style="display: none;">
+                                                                    <?php foreach (getAllReaction() as $reactionIcon) : ?>
+                                                                        <button type="button"
+                                                                            class="btn btn-outline-secondary me-1 mb-1 btn-reaction"
+                                                                            data-content-id="<?= $post_id ?>"
+                                                                            data-reaction-id="<?= $reactionIcon->reaction_id ?>"
+                                                                            data-table="forum_reactions">
+                                                                            <?= $reactionIcon->reaction_type ?>
+                                                                        </button>
+                                                                    <?php endforeach; ?>
+                                                                </div>
+
+                                                            </div>
+                                                        <?php endif; ?>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <?php endif; ?>
+                                </div>
                                                     <div class="control-block-button post-control-button">
                                                         <a href="javascript:void(0);" class="btn btn-control crlt2" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('forum'); ?>">
                                                             <i class="picons-thin-icon-thin-0281_chat_message_discussion_bubble_reply_conversation"></i>
@@ -1267,6 +1525,83 @@ foreach ($sub as $row) :
             });
         });
     </script>
+        <script>
+$(document).ready(function () {
+    $('.btn-reaction').on('click', function () {
+        const contentId = $(this).data('content-id');
+        const reactionId = $(this).data('reaction-id');
+        const table = $(this).data('table');
+
+        // Tampilkan loader
+        $('#reaction-loader').show();
+
+        $.ajax({
+            url: "<?= base_url('home/reaction') ?>",
+            type: "POST",
+            data: {
+                'content$content_id': contentId,
+                'reaction_id': reactionId,
+                'table': table
+            },
+            dataType: 'json',
+            success: function (response) {
+                $('#reaction-loader').hide();
+                if (response.status === 'success') {
+                    toastr.success(response.messages);
+                    setTimeout(function() {
+                        location.reload();
+                    }, 1500);
+                } else {
+                    toastr.error(response.messages || 'Give Reaction Failed.');
+                }
+            },
+            error: function () {
+                $('#reaction-loader').hide();
+                toastr.error('Terjadi kesalahan saat mengirim reaksi.');
+            }
+        });
+    });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+    $(document).on('submit', '.commentForm', function (e) {
+        e.preventDefault();
+
+        // Tombol loading aktif
+        $('.submit-comment').prop('disabled', true);
+        $('#btnText').addClass('d-none');
+        $('#btnLoading').removeClass('d-none');
+
+        $.ajax({
+            url: "<?= base_url('home/comment'); ?>",
+            type: "POST",
+            data: $(this).serialize(),
+            dataType: "json",
+            success: function(response) {
+                if (response.status === 'Success') {
+                    toastr.success(response.messages);
+                    setTimeout(function() {
+                        //location.reload();
+                    }, 1500);
+                } else {
+                    toastr.error(response.messages);
+                }
+            },
+            error: function(xhr) {
+                alert("Something Wrong: " + xhr.responseText);
+            },
+            complete: function() {
+                // Kembalikan tombol ke normal
+                $('.submit-comment').prop('disabled', false);
+                $('#btnText').removeClass('d-none');
+                $('#btnLoading').addClass('d-none');
+            }
+        });
+    });
+});
+</script>
 
 
 <?php endforeach; ?>

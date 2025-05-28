@@ -138,9 +138,26 @@
 				                            <td><?php echo $this->crud->get_type_name_by_id('section',$row['section_id']);?></td>
 			                            </tr>
 			                            <tr>
-				                            <th><?php echo getEduAppGTLang('total_students');?>:</th>
-				                            <td><a class="btn nc btn-rounded btn-sm btn-secondary text-white"><?php $this->db->where('class_id', $row['class_id']); $this->db->where('section_id', $row['section_id']); echo $this->db->count_all_results('enroll');?></a></td>
-			                            </tr>
+                                                        <th><?php echo getEduAppGTLang('total_students'); ?>:</th>
+                                                        <td><a class="btn nc btn-rounded btn-sm btn-secondary text-white">
+                                                            <?php $students   =   $this->db->get_where('enroll', array('class_id' => $row['class_id'], 'section_id' => $row['section_id'], 'year' => $running_year))->result_array();
+                                                             $totalStudents=0;
+                                                                foreach ($students as $row2):
+                                                                    if (!isStudentActiveEnroll($row2['student_id'], $row['class_id'], $row['section_id'], $running_year)) {
+                                                                        continue;
+                                                                    }
+                                                                    if (isStudentFinishSubject($row2['student_id'], $row['subject_id'])) {
+                                                                        continue;
+                                                                    }
+                                                                    if (!isActiveSubject($row2['student_id'], $row['subject_id'])) {
+                                                                        continue;
+                                                                    }
+                                                                    $totalStudents++;
+                                                                endforeach;
+                                                                echo $totalStudents; ?>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
 			                            <tr>
 				                            <th><?php echo getEduAppGTLang('delivered');?>:</th>
 				                            <td><a class="btn nc btn-rounded btn-sm btn-success text-white"><?php $this->db->where('class_id', $row['class_id']); $this->db->where('section_id', $row['section_id']); $this->db->where('homework_code', $homework_code); echo $this->db->count_all_results('deliveries');?></a></td>
@@ -148,9 +165,8 @@
 			                            <tr>
 				                            <th><?php echo getEduAppGTLang('undeliverable');?>:</th>
 				                            <td>
-					                            <?php $this->db->where('class_id', $row['class_id']); $this->db->where('section_id', $row['section_id']); $all = $this->db->count_all_results('enroll');?>
 					                            <?php $this->db->where('class_id', $row['class_id']); $this->db->where('section_id', $row['section_id']); $this->db->where('homework_code', $homework_code); $deliveries = $this->db->count_all_results('deliveries');?>
-				                                <a class="btn nc btn-rounded btn-sm btn-danger text-white"><?php echo $all - $deliveries; ?></a>
+				                                <a class="btn nc btn-rounded btn-sm btn-danger text-white"><?php echo $totalStudents - $deliveries; ?></a>
 				                            </td>
 			                            </tr>
 		                            </table>
