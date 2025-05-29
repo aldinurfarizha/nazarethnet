@@ -201,12 +201,12 @@ foreach ($sub as $row) :
                                             $post_id = $news_id;?>
                                                 <article class="hentry post has-post-thumbnail thumb-full-width">
                                                     <div class="post__author author vcard inline-items">
-                                                        <a href="javascript:void(0)" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_photo/complete/<?php echo base64_encode($this->crud->get_image_url('admin', $admin_id)); ?>');">
-                                                            <img src="<?php echo $this->crud->get_image_url('admin', $admin_id); ?>">
+                                                        <a href="javascript:void(0)" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_photo/complete/<?php echo base64_encode($this->crud->get_image_url($news->user, $admin_id)); ?>');">
+                                                            <img src="<?php echo $this->crud->get_image_url($news->user, $admin_id); ?>">
                                                         </a>
 
                                                         <div class="author-date">
-                                                            <a class="h6 post__author-name fn" href="javascript:void(0);"><?php echo $this->crud->get_name('admin', $admin_id); ?></a>
+                                                            <a class="h6 post__author-name fn" href="javascript:void(0);"><?php echo $this->crud->get_name($news->user, $admin_id); ?></a>
                                                             <div class="post__date">
                                                                 <time class="published" style="color: #0084ff;"><?php echo $this->db->get_where('settings', array('type' => 'system_title'))->row()->description; ?></time>
                                                             </div>

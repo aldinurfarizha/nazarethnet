@@ -42,11 +42,11 @@
                     </ul>
                 </div>
             </div>
-            <div class="content-i">
+           <div class="content-i">
                 <div class="content-box">
                     <div class="col-lg-12">   
                         <div class="back hidden-sm-down backbutton">   
-                            <a href="<?php echo base_url();?>teacher/online_exams/<?php echo $data;?>/"><i class="picons-thin-icon-thin-0131_arrow_back_undo"></i></a>  
+                            <a href="<?php echo base_url();?>admin/online_exams/<?php echo $data;?>/"><i class="picons-thin-icon-thin-0131_arrow_back_undo"></i></a>  
                         </div>  
                         <div class="element-wrapper"> 
                             <div class="element-box lined-primary shadow">
@@ -60,7 +60,7 @@
                                             <div class="form-group">
                                                 <label class="col-form-label" for=""><?php echo getEduAppGTLang('title');?></label>
                                                 <div class="input-group">
-                                                    <input type="text" class="form-control" name="exam_title" required="">
+                                                    <input type="text" class="form-control" name="exam_title">
                                                 </div>
                                             </div>
                                         </div>
@@ -69,21 +69,21 @@
                                                 <label class="col-form-label" for=""><?php echo getEduAppGTLang('date');?></label>
                                                 <div class="input-group">
                                                     <input type='text' class="datepicker-here" data-position="top left" data-language='en' name="exam_date" data-multiple-dates-separator="/"/>
-                                                </div>    
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                                        	<div class="form-group label-floating">
-                                        	    <label class="control-label"><?php echo getEduAppGTLang('points_exp');?></label>
-                                        	    <input class="form-control" name="exp" type="text">
-                                        	    <small><?php echo getEduAppGTLang('if_is_enabled_in_rules');?></small>
+                                    	    <div class="form-group label-floating">
+                                    	        <label class="control-label"><?php echo getEduAppGTLang('points_exp');?></label>
+                                    	        <input class="form-control" name="exp" type="text">
+                                    	        <small><?php echo getEduAppGTLang('if_is_enabled_in_rules');?></small>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label class="col-form-label" for=""><?php echo getEduAppGTLang('start_time');?></label>
                                                 <div class="input-group clockpicker" data-align="top" data-autoclose="true">
-                                                    <input type="text" required="" name="time_start" class="form-control">
+                                                    <input type="text" required="" name="time_start" class="form-control" value="00:00">
                                                 </div>
                                             </div>
                                         </div>
@@ -91,13 +91,13 @@
                                             <div class="form-group">
                                                 <label class="col-form-label" for=""><?php echo getEduAppGTLang('end_time');?></label>
                                                 <div class="input-group clockpicker" data-align="top" data-autoclose="true">
-                                                    <input type="text" required="" name="time_end" class="form-control">
+                                                    <input type="text" required="" name="time_end" class="form-control" value="00:00">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label class="col-form-label" for=""><?php echo getEduAppGTLang('percentage_required');?></label>
+                                                <label class="col-form-label" for=""><?php echo getEduAppGTLang('minimum_percentage');?></label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control" name="minimum_percentage">
                                                 </div>
@@ -138,6 +138,14 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-sm-4"><br>
+                                            <div class="form-group">
+                                                <label class="control-label"><?php echo getEduAppGTLang('file');?></label>
+                                                <div class="input-group">
+                                                    <input type="file" class="form-control" name="post_file">
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-sm-4">
                                             <div class="description-toggle">
                                                 <div class="description-toggle-content">
@@ -151,9 +159,15 @@
                                         <div class="col-sm-12">
                                             <div class="form-group">
                                                 <label class="col-form-label" for=""><?php echo getEduAppGTLang('description');?></label>
-                                                <textarea class="form-control" name="instruction" id="ckeditorEmail"></textarea>
+                                                <textarea class="form-control" name="instruction" id="summernote"></textarea>
+                                                <?php foreach(getAllReaction() as $reactionIcon){ ?>
+                                                    <a href="#" class="emoji-insert" data-emoji="<?=$reactionIcon->reaction_type?>">
+                                                        <?=$reactionIcon->reaction_type?>
+                                                    </a>
+                                                <?php } ?>
                                             </div>
                                         </div>
+                                        
                                         <input type="hidden" value="<?php echo $ex[0];?>" name="class_id">
                                         <input type="hidden" value="<?php echo $ex[1];?>" name="section_id">
                                         <input type="hidden" value="<?php echo $ex[2];?>" name="subject_id">
@@ -171,3 +185,30 @@
             </div>
         </div>
     </div>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                placeholder: 'Write your content here...',
+                tabsize: 2,
+                height: 250,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear', 'fontsize', 'fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'picture', 'video', 'emoji']],
+                    ['view', ['fullscreen', 'codeview']]
+                ]
+            });
+            $('.emoji-insert').on('click', function(e) {
+                e.preventDefault();
+
+                var emoji = $(this).data('emoji');
+                $('#summernote').summernote('insertText', emoji);
+            });
+
+        });
+    </script>

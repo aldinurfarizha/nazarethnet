@@ -26,7 +26,7 @@
             </div>
             <div class="content-i">
                 <div class="content-box">
-                    <div class="row">
+                    <div class="row">     
                         <div class="col-sm-8">
                             <div class="pipeline white lined-primary">
                                 <div class="pipeline-header">
@@ -43,11 +43,22 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php foreach ($students_array as $row):?>
+                                        <?php foreach ($students_array as $row):
+                                            if (!isStudentActiveEnroll($row['student_id'], $row['class_id'], $row['section_id'], $running_year)) {
+                                                                        continue;
+                                                                    }
+                                                                    if (isStudentFinishSubject($row['student_id'],$online_exam_details['subject_id'])) {
+                                                                        continue;
+                                                                    }
+                                                                    if (!isActiveSubject($row['student_id'],$online_exam_details['subject_id'])) {
+                                                                        continue;
+                                                                    }
+                                            ?>
                                             <tr>
                                                 <td><?php $student_details = $this->crud->get_student_info_by_id($row['student_id']); echo $student_details['first_name']." ".$student_details['last_name']; ?></td>
-                                                <td><?php $query = $this->db->get_where('online_exam_result', array('online_exam_id' => $online_exam_id, 'student_id' => $row['student_id']));
-                                                    if ($query->num_rows() > 0){
+                                                <td>
+                                                    <?php $query = $this->db->get_where('online_exam_result', array('online_exam_id' => $online_exam_id, 'student_id' => $row['student_id']));
+                                                        if ($query->num_rows() > 0){
                                                         $query_result = $query->row_array();
                                                         echo $query_result['obtained_mark'];
                                                     }
@@ -61,13 +72,13 @@
                                                         echo getEduAppGTLang($query_result['result']);
                                                     }
                                                     else {
-                                                        echo "<span class='badge badge-danger'>".getEduAppGTLang('failed')."</span>";
+                                                        echo "<span class='badge badge-danger'>". getEduAppGTLang('fail')."</span>";
                                                     }
                                                     ?>
                                                 </td>
-                                                <td><?php  if ($query->num_rows() > 0){?><a href="<?php echo base_url();?>teacher/online_exam_result/<?php echo $online_exam_id;?>/<?php echo $row['student_id'];?>/" class="btn btn-success btn-sm btn-rounded"><?php echo getEduAppGTLang('view_results');?></a><?php } else echo getEduAppGTLang('no_actions');?></td>
+                                                <td><?php  if ($query->num_rows() > 0){?><a href="<?php echo base_url();?>admin/online_exam_result/<?php echo $online_exam_id;?>/<?php echo $row['student_id'];?>/" class="btn btn-success btn-sm btn-rounded"><?php echo getEduAppGTLang('view_results');?></a><?php } else echo getEduAppGTLang('no_actions');?></td>
                                             </tr>
-                                        <?php endforeach; ?>
+                                        <?php endforeach; ?>    
                                         </tbody>
                                     </table>
                                 </div>
@@ -81,19 +92,19 @@
                                 <div class="table-responsive">
                                     <table class="table table-lightbor table-lightfont">
                                         <tr>
-                                            <th><?php echo getEduAppGTLang('start_time');?>:</th>
+                                            <th><?php echo getEduAppGTLang('date');?>:</th>
+                                            <td><?php echo date('d M, Y', $online_exam_details['exam_date']);?>.</td>
+                                        </tr>
+                                        <tr>
+                                            <th><?php echo getEduAppGTLang('start');?>:</th>
                                             <td><?php echo $online_exam_details['time_start'];?></td>
                                         </tr>
                                         <tr>
-                                            <th><?php echo getEduAppGTLang('end_time');?>: </th>
+                                            <th><?php echo getEduAppGTLang('end');?>: </th>
                                             <td><?php echo $online_exam_details['time_end'];?></td>
                                         </tr>
                                         <tr>
-                                            <th><?php echo getEduAppGTLang('duration');?>: </th>
-                                            <td><?php $minutes = number_format($online_exam_details['duration']/60,0); echo $minutes;?> <?php echo getEduAppGTLang('minutes');?>.</td>
-                                        </tr>
-                                        <tr>
-                                            <th><?php echo getEduAppGTLang('average_required');?>:</th>
+                                            <th><?php echo getEduAppGTLang('percentage_required');?>:</th>
                                             <td><a class="btn btn-rounded btn-sm btn-primary text-white"><?php echo $online_exam_details['minimum_percentage'];?>%</a></td>
                                         </tr>
                                     </table>
@@ -104,8 +115,19 @@
                                     <h5 class="pipeline-name"><?php echo getEduAppGTLang('students');?></h5>
                                 </div>
                                 <div class="users-list-w">
-                                <?php $students   =   $this->db->get_where('enroll' , array('class_id' => $online_exam_details['class_id'], 'section_id' => $online_exam_details['section_id'] , 'year' => $running_year))->result_array();
-                                    foreach($students as $row2):?>
+                                    <?php 
+                                        $students = $this->db->get_where('enroll' , array('class_id' => $online_exam_details['class_id'], 'section_id' => $online_exam_details['section_id'] , 'year' => $running_year))->result_array();
+                                        foreach($students as $row2):
+                                             if (!isStudentActiveEnroll($row2['student_id'], $row['class_id'], $row['section_id'], $running_year)) {
+                                                                        continue;
+                                                                    }
+                                                                    if (isStudentFinishSubject($row2['student_id'],($online_exam_details['subject_id']))) {
+                                                                        continue;
+                                                                    }
+                                                                    if (!isActiveSubject($row2['student_id'],($online_exam_details['subject_id']))) {
+                                                                        continue;
+                                                                    }
+                                    ?>
                                     <div class="user-w">
                                         <div class="user-avatar-w">
                                             <div class="user-avatar">
@@ -113,15 +135,13 @@
                                             </div>
                                         </div>
                                         <div class="user-name">
-                                            <h6 class="user-title">
-                                                <?php echo $this->db->get_where('student' , array('student_id' => $row2['student_id']))->row()->first_name." ".$this->db->get_where('student' , array('student_id' => $row2['student_id']))->row()->last_name; ?>
-                                            </h6>
+                                            <h6 class="user-title"><?php echo $this->db->get_where('student' , array('student_id' => $row2['student_id']))->row()->first_name." ".$this->db->get_where('student' , array('student_id' => $row2['student_id']))->row()->last_name; ?></h6>
                                             <div class="user-role">
                                                 <?php echo getEduAppGTLang('roll');?>: <strong><?php echo $this->db->get_where('enroll' , array('student_id' => $row2['student_id']))->row()->roll; ?></strong>
                                             </div>
                                         </div>
                                     </div>
-                                    <?php endforeach;?>
+                                <?php endforeach;?>
                                 </div>
                             </div>
                         </div>

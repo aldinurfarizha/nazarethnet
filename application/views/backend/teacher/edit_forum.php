@@ -28,10 +28,10 @@
                             <a class="navs-links" href="<?php echo base_url();?>teacher/upload_marks/"><i class="os-icon picons-thin-icon-thin-0729_student_degree_science_university_school_graduate"></i><span><?php echo getEduAppGTLang('marks');?></span></a>
                         </li>
                         <li class="navs-item">
-                            <a class="navs-links" href="<?php echo base_url();?>teacher/meet/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0591_presentation_video_play_beamer"></i><span><?php echo getEduAppGTLang('live');?></span></a>
+                            <a class="navs-links" href="<?php echo base_url();?>teacher/meet/<?php echo base64_encode($row2['class_id']."-".$row2['section_id']."-".$row2['subject_id']);?>/"><i class="os-icon picons-thin-icon-thin-0591_presentation_video_play_beamer"></i><span><?php echo getEduAppGTLang('live');?></span></a>
                         </li>
                         <li class="navs-item">
-                            <a class="navs-links" href="<?php echo base_url();?>teacher/attendance/<?php echo $data;?>/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i><span><?php echo getEduAppGTLang('attendance');?></span></a>
+                            <a class="navs-links" href="<?php echo base_url();?>teacher/attendance/<?php echo base64_encode($row2['class_id']."-".$row2['section_id']."-".$row2['subject_id']);?>/"><i class="os-icon picons-thin-icon-thin-0023_calendar_month_day_planner_events"></i><span><?php echo getEduAppGTLang('attendance');?></span></a>
                         </li>
                     </ul>
                 </div>
@@ -42,20 +42,30 @@
 	                    <div class="back hidden-sm-down backbutton">		
 	                        <a href="<?php echo base_url();?>teacher/forum/<?php echo base64_encode($row2['class_id']."-".$row2['section_id']."-".$row2['subject_id']);?>/"><i class="picons-thin-icon-thin-0131_arrow_back_undo"></i></a>	
 	                    </div>	
-                        <div class="element-wrapper">	
-	                        <div class="element-box lined-primary shadow">
-      	                        <div class="modal-header">
-                                    <h5 class="modal-title"><?php echo getEduAppGTLang('update_forum');?></h5>
-      	                        </div><br>
+	                    <div class="element-wrapper">	
+		                    <div class="element-box lined-primary shadow">
+          	                    <div class="modal-header">
+	                                <h5 class="modal-title"><?php echo getEduAppGTLang('update_forum');?></h5>
+          	                    </div><br>
                                 <?php echo form_open(base_url() . 'teacher/forum/update/'.$code, array('enctype' => 'multipart/form-data')); ?>
-		                            <div class="form-group">
-			                            <label for=""> <?php echo getEduAppGTLang('title');?></label><input class="form-control" name="title" required="" value="<?php echo $row2['title'];?>" type="text">
-		                            </div>
-		                            <input type="hidden" value="<?php echo $row['class_id'];?>" name="class_id">
-		                            <input type="hidden" value="<?php echo $row['subject_id'];?>" name="subject_id">
-		                            <input type="hidden" value="<?php echo $row['subject_id'];?>" name="subject_id">
-		                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-        		                        <div class="description-toggle">
+			                        <div class="form-group">
+				                        <label for=""> <?php echo getEduAppGTLang('title');?></label>
+				                        <input class="form-control" name="title" required="" value="<?php echo $row2['title'];?>" type="text">
+			                        </div>
+			                        <input type="hidden" value="<?php echo $row2['class_id'];?>" name="class_id">
+			                        <input type="hidden" value="<?php echo $row2['subject_id'];?>" name="subject_id">
+			                        <input type="hidden" value="<?php echo $row2['subject_id'];?>" name="subject_id">
+			                        <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                	    <div class="form-group label-floating">
+                                            <label class="control-label"><?php echo getEduAppGTLang('points_exp');?></label>
+                                            <div class="input-group">
+                                    		    <input type="text" name="exp" class="form-control" value="<?php echo $row2['exp'];?>">
+                                	        </div>
+                                	        <small><?php echo getEduAppGTLang('if_is_enabled_in_rules');?></small>
+                                        </div>
+                                    </div>
+			                        <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+            		                    <div class="description-toggle">
                                             <div class="description-toggle-content">
                                                 <div class="h6"><?php echo getEduAppGTLang('show_students');?></div>
                                                 <p><?php echo getEduAppGTLang('show_message');?></p>
@@ -65,11 +75,39 @@
                                             </div>
                                         </div>
                                     </div>
-		                            <div class="form-group">
-			                            <label> <?php echo getEduAppGTLang('description');?></label><textarea cols="80" id="ckeditor1" name="description" required="" rows="2"><?php echo $row2['description'];?></textarea>
-			                        </div>          
+                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="description-toggle mb-3">
+                                        <div class="description-toggle-content">
+                                            <div class="h6"><?php echo getEduAppGTLang('can_comment'); ?></div>
+                                            <p><?php echo getEduAppGTLang('all_people_can_comment_on_this_post'); ?></p>
+                                        </div>
+                                        <div class="togglebutton">
+                                            <label><input type="checkbox" id="edit_can_comment" name="can_comment" <?php if($row2['can_comment'] == 1) echo 'checked';?> value="1"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="description-toggle mb-3">
+                                        <div class="description-toggle-content">
+                                            <div class="h6"><?php echo getEduAppGTLang('can_reaction'); ?></div>
+                                            <p><?php echo getEduAppGTLang('people_can_react_on_this_post'); ?></p>
+                                        </div>
+                                        <div class="togglebutton">
+                                            <label><input type="checkbox" id="edit_can_reaction" name="can_reaction" <?php if($row2['can_reaction'] == 1) echo 'checked';?> value="1"></label>
+                                        </div>
+                                    </div>
+                                </div>
+			                        <div class="form-group">
+				                        <label> <?php echo getEduAppGTLang('description');?></label>
+				                        <textarea cols="80" id="summernote" name="description" required="" rows="2"><?php echo $row2['post_content'];?></textarea>
+                                        <?php foreach (getAllReaction() as $reactionIcon) { ?>
+                                            <a href="#" class="emoji-insert" data-emoji="<?= $reactionIcon->reaction_type ?>">
+                                                <?= $reactionIcon->reaction_type ?>
+                                            </a>
+                                        <?php } ?>
+				                    </div>          
           		                    <div class="modal-footer">
-                	                    <button class="btn btn-rounded btn-success" type="submit"> <?php echo getEduAppGTLang('update');?></button>
+	            	                    <button class="btn btn-rounded btn-success" type="submit"> <?php echo getEduAppGTLang('update');?></button>
           		                    </div>
           	                    <?php echo form_close();?>
 		                    </div>
@@ -80,3 +118,31 @@
         </div>
     </div>
 <?php endforeach;?>
+
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+	<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            placeholder: 'Write your content here...',
+            tabsize: 2,
+            height: 250,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear', 'fontsize', 'fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture', 'video', 'emoji']],
+                ['view', ['fullscreen', 'codeview']]
+            ]
+        });
+        $('.emoji-insert').on('click', function(e) {
+            e.preventDefault();
+
+            var emoji = $(this).data('emoji');
+            $('#summernote').summernote('insertText', emoji);
+        });
+
+    });
+</script>

@@ -59,50 +59,52 @@
                     </ul>
                 </div>
             </div>
-            <div class="content-i">
+<div class="content-i">
                 <div class="content-box">
                     <div class="row">
                         <main class="col col-xl-12 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-                            <div id="newsfeed-items-grid">                
+                            <div id="newsfeed-items-grid">
                                 <div class="element-wrapper">
                                     <div class="element-box-tp">
                                         <h6 class="element-header">
-                                            <?php echo getEduAppGTLang('forum');?>
-                                            <div class="element-content"><a href="#" data-target="#new_post" data-toggle="modal" class="text-white btn btn-control btn-grey-lighter btn-success"><i class="picons-thin-icon-thin-0001_compose_write_pencil_new"></i><div class="ripple-container"></div></a></div>
+                                            <?php echo getEduAppGTLang('forum'); ?>
+                                            <div class="element-content"><a href="javascript:void(0);" data-target="#new_post" data-toggle="modal" class="text-white btn btn-control btn-grey-lighter btn-success"><i class="picons-thin-icon-thin-0001_compose_write_pencil_new"></i>
+                                                    <div class="ripple-container"></div>
+                                                </a></div>
                                         </h6>
                                         <div class="table-responsive">
                                             <table class="table table-padded">
                                                 <thead>
                                                     <tr>
-                                                        <th><?php echo getEduAppGTLang('status');?></th>
-                                                        <th><?php echo getEduAppGTLang('title');?></th>
-                                                        <th><?php echo getEduAppGTLang('date');?></th>
-                                                        <th><?php echo getEduAppGTLang('options');?></th>
+                                                        <th><?php echo getEduAppGTLang('status'); ?></th>
+                                                        <th><?php echo getEduAppGTLang('title'); ?></th>
+                                                        <th><?php echo getEduAppGTLang('date'); ?></th>
+                                                        <th><?php echo getEduAppGTLang('options'); ?></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                <?php
-        		                                    $this->db->order_by('post_id', 'desc');
-        		                                    $post = $this->db->get_where('forum', array('class_id' => $ids[0], 'section_id' => $ids[1], 'subject_id' => $ids[2]))->result_array();
-        		                                    foreach ($post as $row):
-    		                                    ?>
-                                                    <tr>
-                                                        <td>
-                                                        <?php if($row['post_status'] == 0):?>
-                                                            <span class="status-pill red"></span><span><?php echo getEduAppGTLang('not_published');?></span>
-                                                        <?php else:?>
-                                                            <span class="status-pill green"></span> <span><?php echo getEduAppGTLang('published');?></span>
-                                                        <?php endif;?>
-                                                        </td>
-                                                        <td><?php echo $row['title']; ?></td>
-                                                        <td><span><?php echo $row['upload_date'];?></span></td>
-                                                        <td class="bolder">
-                                                            <a class="grey" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('edit');?>" href="<?php echo base_url();?>teacher/edit_forum/<?php echo $row['post_code'];?>"><i class="picons-thin-icon-thin-0001_compose_write_pencil_new"></i></a>
-					                                        <a class="grey" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('view_forum');?>" href="<?php echo base_url();?>teacher/forumroom/<?php echo $row['post_code'];?>"><i class="picons-thin-icon-thin-0043_eye_visibility_show_visible"></i></a>
-					                                        <a class="danger grey" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('delete');?>" onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete');?>')" href="<?php echo base_url(); ?>teacher/forum/delete/<?php echo $row['post_code']; ?>/<?php echo $data;?>/"><i class="picons-thin-icon-thin-0056_bin_trash_recycle_delete_garbage_empty"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <?php endforeach;?>
+                                                    <?php
+                                                    $this->db->order_by('post_id', 'desc');
+                                                    $post = $this->db->get_where('forum', array('class_id' => $ids[0], 'section_id' => $ids[1], 'subject_id' => $ids[2]))->result_array();
+                                                    foreach ($post as $row):
+                                                    ?>
+                                                        <tr>
+                                                            <td>
+                                                                <?php if ($row['post_status'] == 0): ?>
+                                                                    <span class="status-pill red"></span><span><?php echo getEduAppGTLang('not_published'); ?></span>
+                                                                <?php else: ?>
+                                                                    <span class="status-pill green"></span> <span><?php echo getEduAppGTLang('published'); ?></span>
+                                                                <?php endif; ?>
+                                                            </td>
+                                                            <td><?php echo $row['title']; ?></td>
+                                                            <td><span><?php echo $row['upload_date']; ?></span></td>
+                                                            <td class="bolder">
+                                                                <a class="grey" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('edit'); ?>" href="<?php echo base_url(); ?>teacher/edit_forum/<?php echo $row['post_code']; ?>"><i class="picons-thin-icon-thin-0001_compose_write_pencil_new"></i></a>
+                                                                <a class="grey" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('read_forum'); ?>" href="<?php echo base_url(); ?>teacher/forumroom/<?php echo $row['post_code']; ?>"><i class="picons-thin-icon-thin-0043_eye_visibility_show_visible"></i></a>
+                                                                <a class="grey danger" data-toggle="tooltip" data-placement="top" data-original-title="<?php echo getEduAppGTLang('delete'); ?>" onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>')" href="<?php echo base_url(); ?>teacher/forum/delete/<?php echo $row['post_code']; ?>/<?php echo $data; ?>/"><i class="picons-thin-icon-thin-0056_bin_trash_recycle_delete_garbage_empty"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -112,71 +114,127 @@
                         </main>
                     </div>
                 </div>
-                <a class="back-to-top" href="#">
-                    <img src="<?php echo base_url();?>public/style/olapp/svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
+                <a class="back-to-top" href="javascript:void(0);">
+                    <img src="<?php echo base_url(); ?>public/style/olapp/svg-icons/back-to-top.svg" alt="arrow" class="back-icon">
                 </a>
             </div>
         </div>
     </div>
-      
+
     <div class="modal fade" id="new_post" tabindex="-1" role="dialog" aria-labelledby="new_post" aria-hidden="true">
         <div class="modal-dialog window-popup edit-my-poll-popup" role="document">
             <div class="modal-content">
-                <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close"></a>
+                <a href="javascript:void(0);" class="close icon-close" data-dismiss="modal" aria-label="Close"></a>
                 <div class="modal-body">
                     <div class="ui-block-title mdl-header">
-                        <h6 class="title text-white"><?php echo getEduAppGTLang('new_topic');?></h6>
+                        <h6 class="title text-white"><?php echo getEduAppGTLang('new_topic'); ?></h6>
                     </div>
                     <div class="ui-block-content">
-        	            <?php echo form_open(base_url() . 'teacher/forum/create/'.$data, array('enctype' => 'multipart/form-data')); ?>
-	                        <div class="row">
-	                            <input type="hidden" value="<?php echo $ids[0];?>" name="class_id"/>
-	                            <input type="hidden" value="<?php echo $ids[1];?>" name="section_id"/>
-                                <input type="hidden" value="<?php echo $ids[2];?>" name="subject_id"/>
-              		            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-	                	            <div class="form-group label-floating">
-                  			            <label class="control-label"><?php echo getEduAppGTLang('title');?></label>
-                  			            <input class="form-control" name="title" type="text" required="">
-	                	            </div>
-            		            </div>
-            		            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-            		                <div class="description-toggle">
+                        <?php echo form_open(base_url() . 'teacher/forum/create/' . $data, array('enctype' => 'multipart/form-data')); ?>
+                        <div class="row">
+                            <input type="hidden" value="<?php echo $ids[0]; ?>" name="class_id" />
+                            <input type="hidden" value="<?php echo $ids[1]; ?>" name="section_id" />
+                            <input type="hidden" value="<?php echo $ids[2]; ?>" name="subject_id" />
+                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="description-toggle">
+                                    <div class="description-toggle-content">
+                                        <div class="h6"><?php echo getEduAppGTLang('show_students'); ?></div>
+                                        <p><?php echo getEduAppGTLang('show_message'); ?></p>
+                                    </div>
+                                    <div class="togglebutton">
+                                        <label><input name="post_status" value="1" type="checkbox"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="description-toggle mb-3">
                                         <div class="description-toggle-content">
-                                            <div class="h6"><?php echo getEduAppGTLang('show_students');?></div>
-                                            <p><?php echo getEduAppGTLang('show_message');?></p>
-                                        </div>          
+                                            <div class="h6"><?php echo getEduAppGTLang('can_comment'); ?></div>
+                                            <p><?php echo getEduAppGTLang('all_people_can_comment_on_this_post'); ?></p>
+                                        </div>
                                         <div class="togglebutton">
-                                            <label><input name="post_status" value="1" type="checkbox"></label>
+                                            <label><input type="checkbox" id="edit_can_comment" name="can_comment" value="1"></label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                                	<div class="form-group label-floating">
-                                	    <label class="control-label"><?php echo getEduAppGTLang('points_exp');?></label>
-                                	    <input class="form-control" name="exp" type="text">
-                                	    <small><?php echo getEduAppGTLang('if_is_enabled_in_rules');?></small>
+                                    <div class="description-toggle mb-3">
+                                        <div class="description-toggle-content">
+                                            <div class="h6"><?php echo getEduAppGTLang('can_reaction'); ?></div>
+                                            <p><?php echo getEduAppGTLang('people_can_react_on_this_post'); ?></p>
+                                        </div>
+                                        <div class="togglebutton">
+                                            <label><input type="checkbox" id="edit_can_reaction" name="can_reaction" value="1"></label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                    		        <div class="form-group">
-                  			            <label class="control-label"><?php echo getEduAppGTLang('description');?></label>
-                  			            <textarea class="form-control" id="ckeditor1" name="description"></textarea>
-                		            </div>
-              		            </div> 
-              		            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                		            <div class="form-group">
-                  			            <label class="control-label"><?php echo getEduAppGTLang('file');?></label>
-                  			            <input class="form-control" name="userfile" type="file">
-	                	            </div>
-              		            </div>
-            	            </div>
-          		            <div class="form-buttons-w text-right">
-	             	            <center><button class="btn btn-rounded btn-success btn-lg" type="submit"><?php echo getEduAppGTLang('save');?></button></center>
-          		            </div>
-          	            <?php echo form_close();?>        
+                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="form-group label-floating">
+                                    <label class="control-label"><?php echo getEduAppGTLang('title'); ?></label>
+                                    <input class="form-control" name="title" type="text" required="">
+                                </div>
+                            </div>
+                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="form-group label-floating">
+                                    <label class="control-label"><?php echo getEduAppGTLang('points_exp'); ?></label>
+                                    <div class="input-group">
+                                        <input type="text" name="exp" class="form-control">
+                                    </div>
+                                    <small><?php echo getEduAppGTLang('if_is_enabled_in_rules'); ?></small>
+                                </div>
+                            </div>
+                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="form-group">
+                                    <label class="control-label"><?php echo getEduAppGTLang('description'); ?></label>
+                                    <textarea class="form-control" id="summernote" name="description"></textarea>
+                                    <?php foreach (getAllReaction() as $reactionIcon) { ?>
+                                            <a href="#" class="emoji-insert" data-emoji="<?= $reactionIcon->reaction_type ?>">
+                                                <?= $reactionIcon->reaction_type ?>
+                                            </a>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="form-group">
+                                    <label class="control-label"><?php echo getEduAppGTLang('file'); ?></label>
+                                    <input class="form-control" name="userfile" type="file">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-buttons-w text-right">
+                            <center><button class="btn btn-rounded btn-success btn-lg" type="submit"><?php echo getEduAppGTLang('save'); ?></button></center>
+                        </div>
+                        <?php echo form_close(); ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<?php endforeach;?>
+<?php endforeach; ?>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            placeholder: 'Write your content here...',
+            tabsize: 2,
+            height: 250,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear', 'fontsize', 'fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture', 'video', 'emoji']],
+                ['view', ['fullscreen', 'codeview']]
+            ]
+        });
+        $('.emoji-insert').on('click', function(e) {
+            e.preventDefault();
+
+            var emoji = $(this).data('emoji');
+            $('#summernote').summernote('insertText', emoji);
+        });
+
+    });
+</script>

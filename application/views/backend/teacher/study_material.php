@@ -1,3 +1,40 @@
+<style>
+    .summernote-content {
+        all: initial;
+        /* Reset semua style */
+        font-family: Arial, sans-serif;
+        /* Atur kembali font */
+        font-size: 14px;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    /* Izinkan kembali elemen umum */
+    .summernote-content * {
+        all: unset;
+        display: revert;
+        box-sizing: border-box;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+    }
+
+    .summernote-content img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .summernote-content a {
+        color: blue;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .summernote-content a:hover {
+        color: darkblue;
+    }
+</style>
 <?php 
     $running_year = $this->crud->getInfo('running_year');
     $info = base64_decode($data);
@@ -58,57 +95,59 @@
                     </ul>
                 </div>
             </div>
-            <div class="content-i">
+                        <div class="content-i">
                 <div class="content-box">
                     <div class="row">
                         <main class="col col-xl-12 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
-                            <div id="newsfeed-items-grid">                
+                            <div id="newsfeed-items-grid">
                                 <div class="element-wrapper">
                                     <div class="element-box-tp">
                                         <h6 class="element-header">
-                                            <?php echo getEduAppGTLang('study_material');?>
-                                            <div class="element-content"><a href="#" data-target="#addmaterial" data-toggle="modal" class="text-white btn btn-control btn-grey-lighter btn-success"><i class="picons-thin-icon-thin-0001_compose_write_pencil_new"></i><div class="ripple-container"></div></a></div>
+                                            <?php echo getEduAppGTLang('study_material'); ?>
+                                            <div class="element-content"><a href="javascript:void(0);" data-target="#addmaterial" data-toggle="modal" class="text-white btn btn-control btn-grey-lighter btn-success"><i class="picons-thin-icon-thin-0001_compose_write_pencil_new"></i>
+                                                    <div class="ripple-container"></div>
+                                                </a></div>
                                         </h6>
                                         <div class="table-responsive">
                                             <table class="table table-padded">
                                                 <tbody>
-                                                <?php
-        		                                    $this->db->order_by('timestamp', 'desc');
-                                		            $this->db->where('class_id', $ex[0]);
-                                		            $this->db->where('section_id', $ex[1]);
-                                		            $this->db->where('subject_id', $ex[2]);
-                                		            $study_material_info = $this->db->get('document')->result_array();
-                                		            foreach ($study_material_info as $row):
-        	                                    ?>   
-                                                    <tr>
-                                                        <td><?php echo $row['description']?></td>
-                                                        <td class="text-left cell-with-media ">
-                                                            <a href="<?php echo base_url();?>teacher/viewFile/<?php echo $row['file_name'];?>" class="grey">
-                                                            <?php if($row['file_type'] == 'PDF'):?>
-							                                    <i class="picons-thin-icon-thin-0077_document_file_pdf_adobe_acrobat px20 grey"></i>
-						                                    <?php endif;?>
-						                                    <?php if($row['file_type'] == 'Zip'):?>
-							                                    <i class="picons-thin-icon-thin-0076_document_file_zip_archive_compressed_rar px20 grey"></i>
-						                                    <?php endif;?>  
-						                                    <?php if($row['file_type'] == 'RAR'):?>
-							                                    <i class="picons-thin-icon-thin-0076_document_file_zip_archive_compressed_rar px20 grey"></i>
-						                                    <?php endif;?>
-						                                    <?php if($row['file_type'] == 'Doc'):?>
-    							                                <i class="picons-thin-icon-thin-0078_document_file_word_office_doc_text px20 grey"></i>
-						                                    <?php endif;?>
-						                                    <?php if($row['file_type'] == 'Image'):?>
-							                                    <i class="picons-thin-icon-thin-0082_image_photo_file px20 grey"></i>
-						                                    <?php endif;?>
-						                                    <?php if($row['file_type'] == 'Other'):?>
-    							                                <i class="picons-thin-icon-thin-0111_folder_files_documents px20 grey"></i>
-						                                    <?php endif;?><span><?php echo $row['file_name'];?></span><span class="smaller">(<?php echo $row['filesize'];?>)</span></a>
-                                                        </td>                     
-                                                        <td class="text-center bolder">
-                                                            <a href="<?php echo base_url();?>teacher/viewFile/<?php echo $row['file_name'];?>" class="grey"> <span><i class="picons-thin-icon-thin-0121_download_file"></i></span> </a>
-                                                            <a class="grey" onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete');?>')" href="<?php echo base_url();?>teacher/study_material/delete/<?php echo $row['document_id']?>/<?php echo $data;?>"><i class="picons-thin-icon-thin-0056_bin_trash_recycle_delete_garbage_empty"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach;?>
+                                                    <?php
+                                                    $this->db->order_by('timestamp', 'desc');
+                                                    $this->db->where('class_id', $ex[0]);
+                                                    $this->db->where('section_id', $ex[1]);
+                                                    $this->db->where('subject_id', $ex[2]);
+                                                    $study_material_info = $this->db->get('document')->result_array();
+                                                    foreach ($study_material_info as $row):
+                                                    ?>
+                                                        <tr>
+                                                            <td><div class="summernote-content"><?= $row['post_content']; ?></div></td>
+                                                            <td class="text-left cell-with-media ">
+                                                                <a href="<?php echo base_url() . 'public/material/' . $row['post_file']; ?>" class="grey">
+                                                                    <?php if ($row['file_type'] == 'PDF'): ?>
+                                                                        <i class="picons-thin-icon-thin-0077_document_file_pdf_adobe_acrobat grey px20"></i>
+                                                                    <?php endif; ?>
+                                                                    <?php if ($row['file_type'] == 'Zip'): ?>
+                                                                        <i class="picons-thin-icon-thin-0076_document_file_zip_archive_compressed_rar grey px20"></i>
+                                                                    <?php endif; ?>
+                                                                    <?php if ($row['file_type'] == 'RAR'): ?>
+                                                                        <i class="picons-thin-icon-thin-0076_document_file_zip_archive_compressed_rar grey px20"></i>
+                                                                    <?php endif; ?>
+                                                                    <?php if ($row['file_type'] == 'Doc'): ?>
+                                                                        <i class="picons-thin-icon-thin-0078_document_file_word_office_doc_text grey px20"></i>
+                                                                    <?php endif; ?>
+                                                                    <?php if ($row['file_type'] == 'Image'): ?>
+                                                                        <i class="picons-thin-icon-thin-0082_image_photo_file grey px20"></i>
+                                                                    <?php endif; ?>
+                                                                    <?php if ($row['file_type'] == 'Other'): ?>
+                                                                        <i class="picons-thin-icon-thin-0111_folder_files_documents grey px20"></i>
+                                                                    <?php endif; ?><span><?php echo $row['post_file']; ?></span><span class="smaller">(<?php echo $row['post_file_type']; ?>)</span></a>
+                                                            </td>
+                                                            <td class="text-center bolder">
+                                                                <a target="_blank" href="<?php echo base_url() . 'public/material/' . $row['post_file']; ?>" class="grey"> <span><i class="picons-thin-icon-thin-0121_download_file"></i></span> </a>
+                                                                <a class="grey" onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>')" href="<?php echo base_url(); ?>teacher/study_material/delete/<?php echo $row['document_id'] ?>/<?php echo $data; ?>"><i class="picons-thin-icon-thin-0056_bin_trash_recycle_delete_garbage_empty"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -121,57 +160,111 @@
             </div>
         </div>
     </div>
-      
+
     <div class="modal fade" id="addmaterial" tabindex="-1" role="dialog" aria-labelledby="addmaterial" aria-hidden="true">
         <div class="modal-dialog window-popup edit-my-poll-popup" role="document">
             <div class="modal-content">
-                <a href="#" class="close icon-close" data-dismiss="modal" aria-label="Close"></a>
+                <a href="javascript:void(0);" class="close icon-close" data-dismiss="modal" aria-label="Close"></a>
                 <div class="modal-body">
                     <div class="ui-block-title mdl-header">
-                        <h6 class="title text-white"><?php echo getEduAppGTLang('upload_study_material');?></h6>
+                        <h6 class="title text-white"><?php echo getEduAppGTLang('upload_study_material'); ?></h6>
                     </div>
                     <div class="ui-block-content">
-        	            <?php echo form_open(base_url() . 'teacher/study_material/create/'.$data, array('enctype' => 'multipart/form-data')); ?>
-	                        <div class="row">
-	                            <input type="hidden" value="<?php echo $ex[0];?>" name="class_id"/>
-	                            <input type="hidden" value="<?php echo $ex[1];?>" name="section_id"/>
-                                <input type="hidden" value="<?php echo $ex[2];?>" name="subject_id"/>
-                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                		            <div class="form-group">
-                  			            <label class="control-label"><?php echo getEduAppGTLang('description');?></label>
-                  			            <textarea class="form-control" rows="5" name="description"></textarea>
-                		            </div>
-              		            </div> 
-              		            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                		            <div class="form-group">
-                  			            <label class="control-label"><?php echo getEduAppGTLang('file');?></label>
-                  			            <input class="form-control" name="file_name" type="file">
-	                	            </div>
-              		            </div>
-              		            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-              		                <div class="form-group label-floating is-select">
-                                        <label class="control-label"><?php echo getEduAppGTLang('file_type');?></label>
-                                        <div class="select">
-                                            <select name="file_type" required="">
-                                                <option value=""><?php echo getEduAppGTLang('select');?></option>
-                                                <option value="PDF">PDF</option>
-						                        <option value="Doc">Doc</option>
-						                        <option value="Zip">Zip</option>
-						                        <option value="RAR">RAR</option>
-						                        <option value="Image"><?php echo getEduAppGTLang('image');?></option>
-						                        <option value="Other"><?php echo getEduAppGTLang('other');?></option>
-                                            </select>
+                        <?php echo form_open(base_url() . 'teacher/study_material/create/' . $data, array('enctype' => 'multipart/form-data')); ?>
+                        <div class="row">
+                            <input type="hidden" value="<?php echo $ex[0]; ?>" name="class_id" />
+                            <input type="hidden" value="<?php echo $ex[1]; ?>" name="section_id" />
+                            <input type="hidden" value="<?php echo $ex[2]; ?>" name="subject_id" />
+                             <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="description-toggle mb-3">
+                                        <div class="description-toggle-content">
+                                            <div class="h6"><?php echo getEduAppGTLang('can_comment'); ?></div>
+                                            <p><?php echo getEduAppGTLang('all_people_can_comment_on_this_post'); ?></p>
+                                        </div>
+                                        <div class="togglebutton">
+                                            <label><input type="checkbox" id="can_comment" name="can_comment" value="1"></label>
                                         </div>
                                     </div>
-              		            </div>
-            	            </div>
-          		            <div class="form-buttons-w text-right">
-	             	            <center><button class="btn btn-rounded btn-success btn-lg" type="submit"><?php echo getEduAppGTLang('save');?></button></center>
-          		            </div>
-          	            <?php echo form_close();?>        
+                                </div>
+                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="description-toggle mb-3">
+                                        <div class="description-toggle-content">
+                                            <div class="h6"><?php echo getEduAppGTLang('can_reaction'); ?></div>
+                                            <p><?php echo getEduAppGTLang('people_can_react_on_this_post'); ?></p>
+                                        </div>
+                                        <div class="togglebutton">
+                                            <label><input type="checkbox" id="can_reaction" name="can_reaction" value="1"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="form-group">
+                                    <label class="control-label"><?php echo getEduAppGTLang('description'); ?></label>
+                                    <textarea class="form-control" id="summernote" name="description"></textarea>
+                                    <?php foreach (getAllReaction() as $reactionIcon) { ?>
+                                            <a href="#" class="emoji-insert" data-emoji="<?= $reactionIcon->reaction_type ?>">
+                                                <?= $reactionIcon->reaction_type ?>
+                                            </a>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="form-group">
+                                    <label class="control-label"><?php echo getEduAppGTLang('file'); ?></label>
+                                    <input class="form-control" name="file_name" type="file">
+                                </div>
+                            </div>
+                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="form-group label-floating is-select">
+                                    <label class="control-label"><?php echo getEduAppGTLang('file_type'); ?></label>
+                                    <div class="select">
+                                        <select name="file_type" required="">
+                                            <option value=""><?php echo getEduAppGTLang('select'); ?></option>
+                                            <option value="PDF">PDF</option>
+                                            <option value="Doc">Doc</option>
+                                            <option value="Zip">Zip</option>
+                                            <option value="RAR">RAR</option>
+                                            <option value="Image"><?php echo getEduAppGTLang('image'); ?></option>
+                                            <option value="Other"><?php echo getEduAppGTLang('other'); ?></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-buttons-w text-right">
+                            <center><button class="btn btn-rounded btn-success btn-lg" type="submit"><?php echo getEduAppGTLang('save'); ?></button></center>
+                        </div>
+                        <?php echo form_close(); ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-<?php endforeach;?>
+<?php endforeach; ?>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            placeholder: 'Write your content here...',
+            tabsize: 2,
+            height: 250,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear', 'fontsize', 'fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture', 'video', 'emoji']],
+                ['view', ['fullscreen', 'codeview']]
+            ]
+        });
+        $('.emoji-insert').on('click', function(e) {
+            e.preventDefault();
+
+            var emoji = $(this).data('emoji');
+            $('#summernote').summernote('insertText', emoji);
+        });
+
+    });
+</script>

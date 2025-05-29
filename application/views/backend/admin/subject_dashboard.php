@@ -1,12 +1,4 @@
-<?php
-$running_year = $this->crud->getInfo('running_year');
-$info = base64_decode($data);
-$ex = explode('-', $info);
-$sub = $this->db->get_where('subject', array('subject_id' => $ex[2]))->result_array();
-
-foreach ($sub as $row) :
-?>
-    <style>
+ <style>
         .custom-modal-responsive {
             width: 90%;
             max-width: 90%;
@@ -125,6 +117,15 @@ foreach ($sub as $row) :
             color: darkblue;
         }
     </style>
+<?php
+$running_year = $this->crud->getInfo('running_year');
+$info = base64_decode($data);
+$ex = explode('-', $info);
+$sub = $this->db->get_where('subject', array('subject_id' => $ex[2]))->result_array();
+
+foreach ($sub as $row) :
+?>
+   
     <meta charset="UTF-8">
     <div class="content-w">
         <div class="conty">
@@ -322,7 +323,7 @@ foreach ($sub as $row) :
                                             $news_id = $wall['homework_id'];
                                             $news = $this->db->get_where('news', ['news_id' => $news_id])->row();
                                             $news_code = $news->news_code;
-                                            $admin_id = 2;
+                                            $admin_id = $this->session->userdata('login_user_id');
                                             $user_type = 'admin';
                                             $comments = getComments($news_id, 'news_comments');
                                             $post_id = $news_id;

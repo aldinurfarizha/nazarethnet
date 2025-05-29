@@ -707,6 +707,11 @@ class Academic extends School
                         'exp' => $homework_references->exp,
                         'sync_status' => $homework_references->sync_status,
                         'attachment_name' => $homework_references->attachment_name,
+                        'can_comment' => $homework_references->can_comment,
+                        'can_reaction' => $homework_references->can_reaction,
+                        'post_file' => $homework_references->post_file,
+                        'post_file_type' => $homework_references->post_file_type,
+                        'post_content' => $homework_references->post_content,
 
                     ));
                 }
@@ -738,6 +743,11 @@ class Academic extends School
                         'exp' => $forums_references->exp,
                         'sync_status' => $forums_references->sync_status,
                         'attachment_name' => $forums_references->attachment_name,
+                        'can_comment' => $forums_references->can_comment,
+                        'can_reaction' => $forums_references->can_reaction,
+                        'post_file' => $forums_references->post_file,
+                        'post_file_type' => $forums_references->post_file_type,
+                        'post_content' => $forums_references->post_content,
 
                     ));
                 }
@@ -770,6 +780,11 @@ class Academic extends School
                         'sync_status' => $study_material_references->sync_status,
                         'attachment_name' => $study_material_references->attachment_name,
                         'drive_id' => $study_material_references->drive_id,
+                        'can_comment' => $study_material_references->can_comment,
+                        'can_reaction' => $study_material_references->can_reaction,
+                        'post_file' => $study_material_references->post_file,
+                        'post_file_type' => $study_material_references->post_file_type,
+                        'post_content' => $study_material_references->post_content,
                     ));
                 }
             }

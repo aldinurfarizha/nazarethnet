@@ -29,45 +29,74 @@
 		                    <div class="pipeline white lined-primary">
 		                        <div class="pipeline-header">
 			                        <h5 class="pipeline-name"><?php echo getEduAppGTLang('update_homework');?></h5>
-		                        </div>
+		                        </div>    
 			                    <?php echo form_open(base_url() . 'teacher/homework/update/' . $homework_code, array('enctype' => 'multipart/form-data')); ?>
 			                        <div class="form-group">
 				                        <label for=""> <?php echo getEduAppGTLang('title');?></label><input class="form-control" required="" name="title" value="<?php echo $row['title'];?>" type="text">
 			                        </div>
 			                        <div class="form-group">
-				                        <label> <?php echo getEduAppGTLang('description');?></label><textarea cols="80" id="ckeditor1" name="description" required rows="2"><?php echo $row['description'];?></textarea>
+				                        <label> <?php echo getEduAppGTLang('description');?></label><textarea cols="80" id="summernote" name="description" required rows="2"><?php echo $row['post_content'];?></textarea>
+										<?php foreach (getAllReaction() as $reactionIcon) { ?>
+                                            <a href="#" class="emoji-insert" data-emoji="<?= $reactionIcon->reaction_type ?>">
+                                                <?= $reactionIcon->reaction_type ?>
+                                            </a>
+                                        <?php } ?>
 				                    </div>
 				                    <div class="form-group">
 				                        <label for=""> <?php echo getEduAppGTLang('delivery_date');?></label>
 				                        <input type='text' class="datepicker-here" data-position="top left" data-language='en' name="date_end" data-multiple-dates-separator="/" value="<?php echo $row['date_end'];?>"/>
 				                    </div>
 				                    <div class="form-group">
-                        				<label for=""> <?php echo getEduAppGTLang('limit_hour');?></label>
+				                        <label for=""> <?php echo getEduAppGTLang('limit_hour');?></label>
 				                        <div class="input-group clockpicker" data-align="top" data-autoclose="true">
-					                        <input type="text" required="" name="time_end" class="form-control" value="<?php echo $row['time_end'];?>">
-					                        <span class="input-group-addon">
-						                        <span class="picons-thin-icon-thin-0029_time_watch_clock_wall"></span>
-					                        </span>
+    					                    <input type="text" required="" name="time_end" class="form-control" value="<?php echo $row['time_end'];?>">
+    					                    <span class="input-group-addon">
+    						                    <span class="picons-thin-icon-thin-0029_time_watch_clock_wall"></span>
+    					                    </span>
 				                        </div>
 				                    </div>
+				                    <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                	    <div class="form-group label-floating">
+                                            <label class="control-label"><?php echo getEduAppGTLang('points_exp');?></label>
+                                            <div class="input-group">
+                                    		    <input type="text" name="exp" class="form-control" value="<?php echo $row['exp'];?>">
+                                	        </div>
+                                	        <small><?php echo getEduAppGTLang('if_is_enabled_in_rules');?></small>
+                                        </div>
+                                    </div>
 				                    <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
             		                    <div class="description-toggle">
                                             <div class="description-toggle-content">
                                                 <div class="h6"><?php echo getEduAppGTLang('show_students');?></div>
-                                                <p><?php echo getEduAppGTLang('show_message');?>.</p>
+                                                <p><?php echo getEduAppGTLang('show_message');?></p>
                                             </div>          
                                             <div class="togglebutton">
                                                 <label><input name="status" value="1" <?php if($row['status'] == 1) echo "checked"?> type="checkbox"></label>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                                    	<div class="form-group label-floating">
-                                    	    <label class="control-label"><?php echo getEduAppGTLang('points_exp');?></label>
-                                    	    <input class="form-control" name="exp" type="text" value="<?php echo $row['exp'];?>">
-                                    	    <small><?php echo getEduAppGTLang('if_is_enabled_in_rules');?></small>
+								<div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="description-toggle mb-3">
+                                        <div class="description-toggle-content">
+                                            <div class="h6"><?php echo getEduAppGTLang('can_comment'); ?></div>
+                                            <p><?php echo getEduAppGTLang('all_people_can_comment_on_this_post'); ?></p>
+                                        </div>
+                                        <div class="togglebutton">
+                                            <label><input type="checkbox" id="edit_can_comment" name="can_comment" <?php if($row['can_comment'] == 1) echo 'checked';?> value="1"></label>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="description-toggle mb-3">
+                                        <div class="description-toggle-content">
+                                            <div class="h6"><?php echo getEduAppGTLang('can_reaction'); ?></div>
+                                            <p><?php echo getEduAppGTLang('people_can_react_on_this_post'); ?></p>
+                                        </div>
+                                        <div class="togglebutton">
+                                            <label><input type="checkbox" id="edit_can_reaction" name="can_reaction" <?php if($row['can_reaction'] == 1) echo 'checked';?> value="1"></label>
+                                        </div>
+                                    </div>
+                                </div>
                                     <div class="row">
                                         <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
             		                        <center><label class="control-label"><?php echo getEduAppGTLang('type');?></label></center>
@@ -81,7 +110,7 @@
                                             <div class="custom-control custom-radio">
                                                 <input  type="radio" <?php if($row['type'] == 2) echo 'checked';?> name="type" id="2" value="2" class="custom-control-input"> <label for="2" class="custom-control-label"><?php echo getEduAppGTLang('files');?></label>
                                             </div>
-                            		    </div>
+            		                    </div>
             		                </div>
 			                        <div class="form-buttons-w text-right">
 			                            <button class="btn btn-rounded btn-success" type="submit"><?php echo getEduAppGTLang('update');?></button>
@@ -93,7 +122,7 @@
 		                    <div class="pipeline white lined-secondary">
 		                        <div class="pipeline-header">
 			                        <h5 class="pipeline-name"><?php echo getEduAppGTLang('information');?></h5>
-                		        </div>
+		                        </div>
 		                        <div class="table-responsive">
 		                            <table class="table table-lightbor table-lightfont">
 			                            <tr>
@@ -105,23 +134,39 @@
 				                            <td><?php echo $this->crud->get_type_name_by_id('class',$row['class_id']);?></td>
 			                            </tr>
 			                            <tr>
-				                            <th><?php echo getEduAppGTLang('section');?>:</th>
+			                                <th><?php echo getEduAppGTLang('section');?>:</th>
 				                            <td><?php echo $this->crud->get_type_name_by_id('section',$row['section_id']);?></td>
 			                            </tr>
 			                            <tr>
-				                            <th><?php echo getEduAppGTLang('total_students');?>:</th>
-				                            <td><a class="btn nc btn-rounded btn-sm btn-secondary text-white"><?php $this->db->where('class_id', $row['class_id']); $this->db->where('section_id', $row['section_id']); echo $this->db->count_all_results('enroll');?></a></td>
-			                            </tr>
+                                                        <th><?php echo getEduAppGTLang('total_students'); ?>:</th>
+                                                        <td><a class="btn nc btn-rounded btn-sm btn-secondary text-white">
+                                                            <?php $students   =   $this->db->get_where('enroll', array('class_id' => $row['class_id'], 'section_id' => $row['section_id'], 'year' => $running_year))->result_array();
+                                                             $totalStudents=0;
+                                                                foreach ($students as $row2):
+                                                                    if (!isStudentActiveEnroll($row2['student_id'], $row['class_id'], $row['section_id'], $running_year)) {
+                                                                        continue;
+                                                                    }
+                                                                    if (isStudentFinishSubject($row2['student_id'], $row['subject_id'])) {
+                                                                        continue;
+                                                                    }
+                                                                    if (!isActiveSubject($row2['student_id'], $row['subject_id'])) {
+                                                                        continue;
+                                                                    }
+                                                                    $totalStudents++;
+                                                                endforeach;
+                                                                echo $totalStudents; ?>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
 			                            <tr>
 				                            <th><?php echo getEduAppGTLang('delivered');?>:</th>
-        				                    <td><a class="btn nc btn-rounded btn-sm btn-success text-white"><?php $this->db->where('class_id', $row['class_id']); $this->db->where('section_id', $row['section_id']); $this->db->where('homework_code', $homework_code); echo $this->db->count_all_results('deliveries');?></a></td>
+				                            <td><a class="btn nc btn-rounded btn-sm btn-success text-white"><?php $this->db->where('class_id', $row['class_id']); $this->db->where('section_id', $row['section_id']); $this->db->where('homework_code', $homework_code); echo $this->db->count_all_results('deliveries');?></a></td>
 			                            </tr>
 			                            <tr>
 				                            <th><?php echo getEduAppGTLang('undeliverable');?>:</th>
 				                            <td>
-                    					        <?php $this->db->where('class_id', $row['class_id']); $this->db->where('section_id', $row['section_id']); $all = $this->db->count_all_results('enroll');?>
 					                            <?php $this->db->where('class_id', $row['class_id']); $this->db->where('section_id', $row['section_id']); $this->db->where('homework_code', $homework_code); $deliveries = $this->db->count_all_results('deliveries');?>
-				                                <a class="btn nc btn-rounded btn-sm btn-danger text-white"><?php echo $all - $deliveries; ?></a>
+				                                <a class="btn nc btn-rounded btn-sm btn-danger text-white"><?php echo $totalStudents - $deliveries; ?></a>
 				                            </td>
 			                            </tr>
 		                            </table>
@@ -130,9 +175,18 @@
 		                    <div class="pipeline white lined-warning">
 		                        <div class="pipeline-header"><h5 class="pipeline-name"><?php echo getEduAppGTLang('students');?></h5></div>
 		                        <div class="users-list-w">
-		                        <?php 
-		                            $students = $this->db->get_where('enroll' , array('class_id' => $row['class_id'], 'section_id' => $row['section_id'] , 'year' => $running_year))->result_array();
-                                    foreach($students as $row2):?>
+    		                        <?php $students   =   $this->db->get_where('enroll' , array('class_id' => $row['class_id'], 'section_id' => $row['section_id'] , 'year' => $running_year))->result_array();
+                                    foreach($students as $row2):
+									if (!isStudentActiveEnroll($row2['student_id'], $row['class_id'], $row['section_id'], $running_year)) {
+                                                    continue;
+                                                }
+                                                if (isStudentFinishSubject($row2['student_id'], $row['subject_id'])) {
+                                                    continue;
+                                                }
+                                                if (!isActiveSubject($row2['student_id'], $row['subject_id'])) {
+                                                    continue;
+                                                }
+									?>
 			                        <div class="user-w">
                                         <div class="user-avatar-w">
                                             <div class="user-avatar">
@@ -147,12 +201,39 @@
                                         </div>
                                     </div>
 			                        <?php endforeach;?>
-		                        </div>
+    		                    </div>
 		                    </div>
-	                    </div>
+    	                </div>
                     </div>
                 </div>
             </div>
-        <?php endforeach;?>
+            <?php endforeach;?>
         </div>
     </div>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+	<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            placeholder: 'Write your content here...',
+            tabsize: 2,
+            height: 250,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear', 'fontsize', 'fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture', 'video', 'emoji']],
+                ['view', ['fullscreen', 'codeview']]
+            ]
+        });
+        $('.emoji-insert').on('click', function(e) {
+            e.preventDefault();
+
+            var emoji = $(this).data('emoji');
+            $('#summernote').summernote('insertText', emoji);
+        });
+
+    });
+</script>

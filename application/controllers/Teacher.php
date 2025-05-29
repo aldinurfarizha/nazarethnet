@@ -1015,7 +1015,7 @@ class Teacher extends EduAppGT
     {
         $this->isTeacher();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if(html_escape($_GET['id']) != "")
+        if(html_escape(@$_GET['id']) != "")
         {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
@@ -1030,7 +1030,7 @@ class Teacher extends EduAppGT
     function grados($param1 = '', $param2 = '' , $param3 = '')
     {
         $this->isTeacher();
-        $page_data['class_id']   = $class_id;
+        $page_data['class_id']   = @$class_id;
         $page_data['page_name']  = 'grados';
         $page_data['page_title'] = getEduAppGTLang('classes');
         $this->load->view('backend/index', $page_data);
@@ -1264,7 +1264,7 @@ class Teacher extends EduAppGT
     }
 
     //Manage news function.
-    function news()
+    function news($param1 = '', $param2 = '', $param3 = '')
     {
         $this->isTeacher();
         if ($param1 == 'create') 
@@ -1363,6 +1363,43 @@ class Teacher extends EduAppGT
         $page_data['page_name']  = 'news';
         $page_data['page_title'] = getEduAppGTLang('news');
         $this->load->view('backend/index', $page_data);
+    }
+    function update_news($data)
+    {
+    $news_id      = $this->input->post('news_id');
+    $can_comment  = $this->input->post('can_comment') ? 1 : 0;
+    $can_react    = $this->input->post('can_reaction') ? 1 : 0;
+    $post_content = $this->input->post('post_content');
+
+    $dataToUpdate = array(
+        'can_comment'   => $can_comment,
+        'can_reaction'  => $can_react,
+        'post_content'  => $post_content
+    );
+
+    if (isset($_FILES['post_file']) && $_FILES['post_file']['error'] == UPLOAD_ERR_OK) {
+        $upload_dir = 'public/news/';
+        if (!is_dir($upload_dir)) {
+            if (!mkdir($upload_dir, 0755, true)) {
+                die("Failed to create folder: " . $upload_dir);
+            }
+        }
+
+        $ext = pathinfo($_FILES["post_file"]["name"], PATHINFO_EXTENSION);
+        $new_filename = uniqid('news', true) . '.' . $ext;
+        $target_file = $upload_dir . $new_filename;
+
+        if (move_uploaded_file($_FILES["post_file"]["tmp_name"], $target_file)) {
+            $dataToUpdate['post_file'] = $new_filename;
+            $dataToUpdate['post_file_type'] = $ext;
+        }
+    }
+
+    $this->db->where('news_id', $news_id);
+    $this->db->update('news', $dataToUpdate);
+
+    $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
+    redirect(base_url('teacher/subject_dashboard/' . $data), 'refresh');
     }
 
     //Update Subject Activity function
@@ -2111,7 +2148,7 @@ class Teacher extends EduAppGT
     { 
         $this->isTeacher();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if(html_escape($_GET['id']) != "")
+        if(html_escape(@$_GET['id']) != "")
         {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
@@ -2148,7 +2185,7 @@ class Teacher extends EduAppGT
     {
         $this->isTeacher();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if(html_escape($_GET['id']) != "")
+        if(html_escape(@$_GET['id']) != "")
         {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
