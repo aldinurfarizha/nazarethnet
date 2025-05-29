@@ -5,7 +5,7 @@ $ex = explode('-', $info);
 $sub = $this->db->get_where('subject', array('subject_id' => $ex[2]))->result_array();
 foreach ($sub as $row) :
 ?>
-<style>
+ <style>
         .custom-modal-responsive {
             width: 90%;
             max-width: 90%;
@@ -88,41 +88,91 @@ foreach ($sub as $row) :
             margin-top: 3px;
         }
 
-        .summernote-content {
-            all: initial;
-            /* Reset semua style */
-            font-family: Arial, sans-serif;
-            /* Atur kembali font */
-            font-size: 14px;
-            line-height: 1.6;
-            color: #333;
-        }
+.summernote-content {
+  all: unset; /* Lebih aman daripada all: initial */
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
 
-        /* Izinkan kembali elemen umum */
-        .summernote-content * {
-            all: unset;
-            display: revert;
-            box-sizing: border-box;
-            font-family: inherit;
-            font-size: inherit;
-            line-height: inherit;
-            color: inherit;
-        }
+.summernote-content * {
+  all: unset;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  word-wrap: break-word;
+  word-break: break-word;
+}
 
-        .summernote-content img {
-            max-width: 100%;
-            height: auto;
-        }
+/* Fix gambar */
+.summernote-content img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
 
-        .summernote-content a {
-            color: blue;
-            text-decoration: underline;
-            cursor: pointer;
-        }
+/* Fix tabel */
+.summernote-content table {
+  width: 100% !important;
+  max-width: 100%;
+  table-layout: auto;
+  overflow-x: auto;
+  display: block;
+  border-collapse: collapse;
+}
 
-        .summernote-content a:hover {
-            color: darkblue;
-        }
+.summernote-content th,
+.summernote-content td {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+/* Fix iframe */
+.summernote-content iframe {
+  max-width: 100% !important;
+  height: auto;
+  display: block;
+}
+
+/* Fix pre/code */
+.summernote-content pre,
+.summernote-content code {
+  max-width: 100%;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  display: block;
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* Fix heading */
+.summernote-content h1,
+.summernote-content h2,
+.summernote-content h3,
+.summernote-content h4,
+.summernote-content h5,
+.summernote-content h6 {
+  font-weight: bold;
+  margin: 1em 0 0.5em;
+}
+
+/* Link */
+.summernote-content a {
+  color: blue;
+  text-decoration: underline;
+}
+
+.summernote-content a:hover {
+  color: darkblue;
+}
+
     </style>
     <div class="content-w">
         <div class="conty">

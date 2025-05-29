@@ -1,3 +1,38 @@
+    <style>
+    /* Membatasi lebar summernote editor agar tidak bablas */.note-editable * {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  white-space: normal !important;
+}
+
+/* Khusus gambar */
+.note-editable img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+/* Khusus iframe */
+.note-editable iframe {
+  max-width: 100% !important;
+  height: auto;
+}
+
+/* Khusus tabel */
+.note-editable table {
+  width: 100% !important;
+  table-layout: auto !important;
+  overflow-x: auto;
+  display: block;
+}
+
+
+
+</style>
+
     <?php 
         $details = $this->db->get_where('forum', array('post_code' => $code))->result_array();
         foreach($details as $row2):
