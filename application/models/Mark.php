@@ -74,7 +74,7 @@ class Mark extends School
                 $queryMark = $this->db->get_where('nota_capacidad', array('mark_activity_id' => $rowx['mark_activity_id'], 'student_id' => $row['student_id']))->result_array();
                 foreach($queryMark as $rm)
                 {
-                    $total += $rm['nota'];
+                    $total += (int)$rm['nota'];
                 }
             }   
             

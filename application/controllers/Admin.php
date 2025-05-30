@@ -3792,6 +3792,15 @@ class Admin extends EduAppGT
         }
         redirect(base_url() . 'admin/certificate_list/'.$course,'refresh');
     }
+    function invalidate_certificate()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $student_subject_id = $this->input->post('student_subject_id');
+        $course = $this->input->post('course');
+        
+    }
 
     //Manage attendance function.
     function manage_attendance($class_id = '', $section_id = '', $timestamp = '')

@@ -71,7 +71,7 @@ foreach ($sub as $subs):
                                 <div class="content-box">
                                     <div class="row">
                                         <div class="table-responsive">
-                                            <table class="table table-striped table-hover">
+                                            <table id="studentTable" class="table table-striped table-hover">
                                                 <thead>
                                                     <tr>
                                                         <td>No.</td>
@@ -123,7 +123,6 @@ foreach ($sub as $subs):
                                                 </tbody>
                                             </table>
                                         </div>
-
                                     </div>
                                 </div>
                                 <a class="back-to-top" href="javascript:void(0);">
@@ -137,3 +136,8 @@ foreach ($sub as $subs):
         </div>
     </div>
 <?php endforeach; ?>
+<script>
+    $(document).ready(function() {
+        $('#studentTable').DataTable();
+    });
+</script>
