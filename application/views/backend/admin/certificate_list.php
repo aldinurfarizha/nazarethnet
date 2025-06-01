@@ -111,6 +111,7 @@ foreach ($sub as $subs):
                                                                 <td>
                                                                     <?php if ($studentSubject->cert_code) { ?>
                                                                         <a class="btn btn-sm btn-success" target="_blank" href="<?= base_url('certificate/download/' . $studentSubject->cert_code) ?>"> <?= getEduAppGTLang('download_certificate'); ?> <i class="fa fa-file-pdf"></i></a>
+                                                                        <button class="btn btn-sm btn-warning" onclick="showAjaxModal('<?= base_url('modal/popup/modal_confirm_invalidate_certificate/' . $data . '/' . $studentSubject->student_subject_id) ?>');"><?= getEduAppGTLang('invalidate_certificate'); ?> <i class="fa fa-ban"></i></button>
                                                                     <?php } else { ?>
                                                                         <button class="btn btn-sm btn-danger" onclick="showAjaxModal('<?= base_url('modal/popup/modal_confirm_certificate/' . $data . '/' . $ex[2] . '/' . $row2['student_id']) ?>');"><?= getEduAppGTLang('generate_certificate'); ?></button>
                                                                     <?php } ?>

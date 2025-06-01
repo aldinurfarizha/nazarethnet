@@ -6,21 +6,46 @@
         <?php echo form_open(base_url() . 'admin/add_student_class_section', array('enctype' => 'multipart/form-data')); ?>
         <div class="row">
             <input type="hidden" name="student_id" value="<?php echo $param2; ?>">
-            <div class="col-12">
-                <div class="form-group label-floating is-select">
-                    <label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
-                    <div class="select">
-                        <select name="class_id" required="" onchange="get_sections(this.value);">
-                            <option value=""><?php echo getEduAppGTLang('select'); ?></option>
-                            <?php $classes = $this->db->get('class')->result_array();
-                            foreach ($classes as $class) :
-                            ?>
-                                <option value="<?php echo $class['class_id']; ?>"><?php echo $class['name']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                </div>
+            <?php $studentDetail = getStudentInfo($param2); ?>
+    <div class="col-12">
+        <div class="form-group label-floating is-select">
+            <label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
+            <div class="select">
+                <select name="class_id" required onchange="get_sections(this.value);">
+                    <option value=""><?php echo getEduAppGTLang('select'); ?></option>
+                    <?php
+                    $allClasses = $this->db->get('class')->result();
+                    $studentBranchId = $studentDetail->branch_id ?? null;
+
+                    if ($studentBranchId) {
+                        $allowedClasses = getClassByBranchId($studentBranchId);
+                        $allowedClassIds = array_column($allowedClasses, 'class_id');
+                    } else {
+                        $allowedClassIds = []; // kosongkan untuk antisipasi
+                    }
+
+                    foreach ($allClasses as $class):
+                        $isNoBranch = !$studentBranchId;
+                        $isAllowed = $isNoBranch || in_array($class->class_id, $allowedClassIds);
+
+                        $style = (!$isNoBranch && !$isAllowed) ? 'style="color:red;"' : '';
+                        $disabled = (!$isNoBranch && !$isAllowed) ? 'disabled' : '';
+                        $label = (!$isNoBranch && !$isAllowed)
+                            ? "❌ " . $class->name . " (" . getEduAppGTLang('different_branch') . ")"
+                            : $class->name;
+                    ?>
+                        <option value="<?php echo $class->class_id; ?>" <?php echo "$disabled $style"; ?>>
+                            <?php echo $label; ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
             </div>
+            <?php if (!$studentBranchId): ?>
+                <small class="text-warning"><?php echo getEduAppGTLang('this_student_is_not_assigned_to_any_branch'); ?></small>
+            <?php endif; ?>
+        </div>
+    </div>
+
             <div class="col-12">
                 <div class="form-group label-floating is-select">
                     <label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>

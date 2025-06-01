@@ -1349,6 +1349,25 @@ class Academic extends School
         $info = $this->db->get('live')->result_array();
         return $info;
     }
+    public function invalidateCertificate($student_subject_id)
+    {
+        $exitingData=$this->db->where('student_subject_id', $student_subject_id);
+        $exitingData=$this->db->get('student_subject')->row();
+        if(!$exitingData){
+            return null;
+        }
+        $invalidateData=[
+            'is_finish'=>0,
+            'cert_code'=>null,
+            'cert_generated_at'=>null,
+        ];
+        $this->db->where('student_subject_id', $student_subject_id);
+        $this->db->update('student_subject', $invalidateData);
+        if(!$this->db->affected_rows()){
+            return false;
+        }
+        return true;
+    }
     
     
     

@@ -3798,8 +3798,13 @@ class Admin extends EduAppGT
             redirect(base_url(), 'refresh');
         }
         $student_subject_id = $this->input->post('student_subject_id');
-        $course = $this->input->post('course');
-        
+        $course= $this->input->post('course');
+        if($this->academic->invalidateCertificate($student_subject_id)==false){
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_update'));
+            return redirect(base_url() . 'admin/certificate_list/'.$course,'refresh');
+        }
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
+        return redirect(base_url() . 'admin/certificate_list/'.$course,'refresh');
     }
 
     //Manage attendance function.
@@ -3820,30 +3825,53 @@ class Admin extends EduAppGT
     function get_sectionss($class_id = '')
     {
         $sections = $this->db->get_where('section', array('class_id' => $class_id))->result_array();
-        foreach ($sections as $row) {
+        if(count($sections)==0){
+            echo '<option value="">❌ '.getEduAppGTLang('no_section_available_for_this_class_please_select_other_class').' </option>';
+        }else{
+            echo '<option value="">--'.getEduAppGTLang('select_section').'--</option>';
+            foreach ($sections as $row) {
             echo '<option value="' . $row['section_id'] . '">' . $row['name'] . '</option>';
+            }
         }
+        
     }
     function get_shifts($branch_id = '')
     {
-        $sections = $this->db->get_where('shifts', array('branch_id' => $branch_id,'status'=>'ACTIVE'))->result_array();
-        foreach ($sections as $row) {
-            echo '<option value="' . $row['shifts_id'] . '">' . $row['name'] . '</option>';
+        $shifts = $this->db->get_where('shifts', array('branch_id' => $branch_id,'status'=>'ACTIVE'))->result_array();
+        if(count($shifts)==0){
+            echo '<option value="">❌ '.getEduAppGTLang('no_shift_available_for_this_branch_please_select_other_branch').' </option>';
+        }else{
+            echo '<option value="">--'.getEduAppGTLang('select_shifts').'--</option>';
+            foreach ($shifts as $row) {
+                echo '<option value="' . $row['shifts_id'] . '">' . $row['name'] . '</option>';
+            }
         }
     }
     function get_class($branch_id = '')
     {
-        $sections = $this->db->get_where('class', array('branch_id' => $branch_id))->result_array();
-        foreach ($sections as $row) {
+        $class = $this->db->get_where('class', array('branch_id' => $branch_id))->result_array();
+        if(count($class)==0){
+            echo '<option value="">❌ '.getEduAppGTLang('no_class_available_for_this_branch_please_select_other_branch').' </option>';
+        }else{
+            echo '<option value="">--'.getEduAppGTLang('select_class').'--</option>';
+            foreach ($class as $row) {
             echo '<option value="' . $row['class_id'] . '">' . $row['name'] . '</option>';
         }
+        }
+        
     }
     function get_exam($subject_id = '')
     {
         $exam = $this->db->get_where('exam', array('subject_id' => $subject_id,'is_final'=>0))->result_array();
-        foreach ($exam as $row) {
+        if(count($exam)==0){
+            echo '<option value="">❌ '.getEduAppGTLang('no_exam_available_for_this_subject_please_select_other_subject').' </option>';
+        }else{
+            echo '<option value="">--'.getEduAppGTLang('select_exam').'--</option>';
+            foreach ($exam as $row) {
             echo '<option value="' . $row['exam_id'] . '">' . $row['name'] . '</option>';
         }
+        }
+        
     }
     function get_exam_section($section_id = '')
     {
@@ -3852,12 +3880,16 @@ class Admin extends EduAppGT
         $this->db->join('subject', 'exam.subject_id = subject.subject_id', 'inner');
         $this->db->where('exam.section_id', $section_id);
         $exam = $this->db->get()->result_array();
-        foreach ($exam as $row) {
+        if(count($exam)==0){
+            echo '<option value="">❌ '.getEduAppGTLang('no_exam_available_for_this_section_please_select_other_section').' </option>';
+        }else{
+            echo '<option value="">--'.getEduAppGTLang('select_exam').'--</option>';
+            foreach ($exam as $row) {
             echo '<option value="' . $row['exam_id'] . '">' . $row['name'].' ('.$row['subject_name'].')' . '</option>';
+            }
         }
     }
     
-
     //Attendance report function.
     function attendance_report($param1 = '', $param2 = '', $param3 = '', $param4 = '', $param5 = '')
     {
@@ -4668,69 +4700,97 @@ class Admin extends EduAppGT
         );
         $this->db->insert('shifts', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
-        redirect(base_url() . 'admin/branch_and_shifts/');
+        redirect(base_url() . 'admin/branch_and_shifts/#shifts');
     }
     function branch_add()
     {
         $name = $this->input->post('name');
         $telephone = $this->input->post('telephone');
         $direction = $this->input->post('direction');
-        $latitude = $this->input->post('latitude');
-        $longitude = $this->input->post('longitude');
+        $maps_link = $this->input->post('maps_link');
         $status = $this->input->post('status');
         $data = array(
             'name' => $name,
             'telephone' => $telephone,
             'direction' => $direction,
-            'latitude' => $latitude,
-            'longitude' => $longitude,
+            'maps_link' => $maps_link,
             'status' => $status
         );
         $this->db->insert('branch', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
-        redirect(base_url() . 'admin/branch_and_shifts/');
+        redirect(base_url() . 'admin/branch_and_shifts/#branch');
+    }
+    function add_student_to_branch_shifts()
+    {
+        $student_id=$this->input->post('student_id');
+        $branch_id=$this->input->post('branch_id');
+        $shifts_id=$this->input->post('shifts_id');
+        $data=array(
+            'branch_id'=>$branch_id,
+            'shifts_id'=>$shifts_id
+        );
+        $this->db->where('student_id', $student_id);
+        $this->db->update('student', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
+        redirect(base_url() . 'admin/branch_and_shifts/#student');
+    }
+    function add_class_to_branch()
+    {
+        $class_id=$this->input->post('class_id');
+        $branch_id=$this->input->post('branch_id');
+        $data=array(
+            'branch_id'=>$branch_id,
+        );
+        $this->db->where('class_id', $class_id);
+        $this->db->update('class', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
+        redirect(base_url() . 'admin/branch_and_shifts/#class');
     }
     function branch_edit()
     {
         $name = $this->input->post('name');
         $telephone = $this->input->post('telephone');
         $direction = $this->input->post('direction');
-        $latitude = $this->input->post('latitude');
-        $longitude = $this->input->post('longitude');
+        $maps_link = $this->input->post('maps_link');
         $branch_id = $this->input->post('branch_id');
         $status = $this->input->post('status');
         $data = array(
             'name' => $name,
             'telephone' => $telephone,
             'direction' => $direction,
-            'latitude' => $latitude,
-            'longitude' => $longitude,
+            'maps_link' => $maps_link,
             'status' => $status
         );
         $this->db->where('branch_id', $branch_id);
         $this->db->update('branch', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
-        redirect(base_url() . 'admin/branch_and_shifts/' . $exam_id);
+        redirect(base_url() . 'admin/branch_and_shifts/#branch' . $exam_id);
     }
     function branch_delete($branch_id)
     {
         $shiftsData=$this->db->get_where('shifts', array('branch_id' => $branch_id))->row();
         if($shiftsData){
             $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('branch_cannot_be_deleted_because_it_is_already_in_use_in_shifts'));
-            redirect(base_url() . 'admin/branch_and_shifts/' );
+            redirect(base_url() . 'admin/branch_and_shifts/#branch' );
             return;
             die();
         }
         if($this->db->get_where('class', array('branch_id' => $branch_id))->num_rows() > 0) {
             $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('branch_cannot_be_deleted_because_it_is_already_in_use_in_classes'));
-            redirect(base_url() . 'admin/branch_and_shifts/' );
+            redirect(base_url() . 'admin/branch_and_shifts/#branch' );
+            return;
+            die();
+        }
+        if($this->db->get_where('student', array('branch_id' => $branch_id))->num_rows() > 0) {
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('branch_cannot_be_deleted_because_it_is_already_in_use_in_student'));
+            redirect(base_url() . 'admin/branch_and_shifts/#branch' );
             return;
             die();
         }
         $this->db->where('branch_id', $branch_id);
         $this->db->delete('branch');
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_delete'));
-        redirect(base_url() . 'admin/branch_and_shifts/');
+        redirect(base_url() . 'admin/branch_and_shifts/#branch');
     }
     function shifts_edit()
     {
@@ -4746,14 +4806,21 @@ class Admin extends EduAppGT
         $this->db->where('shifts_id', $shifts_id);
         $this->db->update('shifts', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
-        redirect(base_url() . 'admin/branch_and_shifts/');
+        redirect(base_url() . 'admin/branch_and_shifts/#shifts');
     }
     function shifts_delete($shifts_id)
     {
+        $studentData=$this->db->get_where('student', array('shifts_id' => $shifts_id))->row();
+        if($studentData){
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('shifts_cannot_be_deleted_because_it_is_already_in_use_in_student'));
+            redirect(base_url() . 'admin/branch_and_shifts/#shifts' );
+            return;
+            die();
+        }
         $this->db->where('shifts_id', $shifts_id);
         $this->db->delete('shifts');
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_delete'));
-        redirect(base_url() . 'admin/branch_and_shifts/');
+        redirect(base_url() . 'admin/branch_and_shifts/#shifts');
     }
     function final_evaluation_delete_exam($exam_id='')
     {
@@ -5029,6 +5096,7 @@ class Admin extends EduAppGT
     $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
     redirect(base_url('admin/subject_dashboard/' . $data), 'refresh');
     }
+    
 
     //End of Admin.php content.
 }

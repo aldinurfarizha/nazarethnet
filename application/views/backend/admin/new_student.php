@@ -115,12 +115,20 @@
 												<div class="form-group label-floating is-select">
 													<label class="control-label"><?php echo getEduAppGTLang('branch'); ?></label>
 													<div class="select">
-														<select name="branch_id" required="" onchange="get_shifts(this.value)">
-															<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+														<select name="branch_id" required="" onchange="get_shifts(this.value);get_class(this.value);">
+															
 															<?php
-															foreach (getActiveBranch() as $row): ?>
+															if(isSuperAdmin()){
+																echo '<option selected value="">--'.getEduAppGTLang('select_branch').'--</option>';
+																foreach (getActiveBranch() as $row): ?>
 																<option value="<?php echo $row->branch_id; ?>"><?php echo $row->name; ?></option>
-															<?php endforeach; ?>
+																<?php endforeach;
+															}else{
+																echo '<option selected value="">--'.getEduAppGTLang('select_branch').'--</option>';
+																$branch=getBranchByAdminId($this->session->userdata('admin_id'));?>
+																<option value="<?php echo $branch->branch_id; ?>"><?php echo $branch->name; ?></option>
+															<?php } ?>
+														
 														</select>
 													</div>
 												</div>
@@ -131,7 +139,13 @@
 													<label class="control-label"><?php echo getEduAppGTLang('shifts'); ?></label>
 													<div class="select">
 													<select name="shifts_id" required id="shifts_holder">
-														<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+														<option value="">--<?php echo getEduAppGTLang('select_shifts'); ?>--</option>
+														<?php if(isSuperAdmin()==false){?>
+														<?php $shifts=getShiftsByBranchId($branch->branch_id);
+															foreach($shifts as $shift):
+															?>
+															<option value="<?php echo $shift->shifts_id; ?>"><?php echo $shift->name; ?></option>
+															<?php endforeach;} ?>
 													</select>
 													</div>
 												</div>
@@ -153,13 +167,8 @@
     											<div class="form-group label-floating is-select">
     												<label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
     												<div class="select">
-    													<select name="class_id_temp" id="class_id" onchange="get_sections(this.value);">
-    														<option value=""><?php echo getEduAppGTLang('select'); ?></option>
-    														<?php $classes = $this->db->get('class')->result_array();
-															foreach ($classes as $class) :
-															?>
-    															<option value="<?php echo $class['class_id']; ?>"><?php echo $class['name']; ?></option>
-    														<?php endforeach; ?>
+    													<select name="class_id_temp" id="class_holder" onchange="get_sections(this.value);">
+    														<option value="">--<?php echo getEduAppGTLang('select_class'); ?>--</option>
     													</select>
     												</div>
     											</div>
@@ -418,7 +427,7 @@
     	let classSections = [];
 
     	function addClassSection() {
-    		const classId = document.getElementById('class_id').value;
+    		const classId = document.getElementById('class_holder').value;
     		const sectionId = document.getElementById('section_holder').value;
     		const roll = document.getElementById('roll').value;
     		const is_active = document.getElementById('is_active').value;
@@ -436,7 +445,7 @@
     		}
 
 
-    		const className = document.querySelector('#class_id option:checked').textContent;
+    		const className = document.querySelector('#class_holder option:checked').textContent;
     		const sectionName = document.querySelector('#section_holder option:checked').textContent;
     		const isActiveName = document.querySelector('#is_active option:checked').textContent;
 
@@ -450,7 +459,7 @@
     			roll
     		});
 
-    		document.getElementById('class_id').value = '';
+    		document.getElementById('class_holder').value = '';
     		document.getElementById('section_holder').value = '';
     		document.getElementById('roll').value = '';
     		document.getElementById('is_active').value = '';
@@ -492,7 +501,7 @@
     		classSections.forEach((section, index) => {
     			const classInput = document.createElement('input');
     			classInput.type = 'hidden';
-    			classInput.name = `class_id[${index}]`;
+    			classInput.name = `class_holder[${index}]`;
     			classInput.value = section.classId;
     			classInput.classList.add('hidden-input');
     			form.appendChild(classInput);

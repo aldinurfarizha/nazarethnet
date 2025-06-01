@@ -273,7 +273,8 @@
                             <use xlink:href="<?php echo base_url(); ?>public/style/olapp/svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use>
                         </svg>
                     </div>
-                    <span class="author-subtitle"><?php echo ucwords($this->session->userdata('login_type')); ?></span>
+                    <span class="author-subtitle"><?php echo ucwords($this->session->userdata('login_type')); ?> <?php if(isSuperAdmin()==false): echo getDetailBranch(getMyBranchId()->branch_id)->name; endif; ?>
+                    </span>
                 </a>
             </div>
         </div>

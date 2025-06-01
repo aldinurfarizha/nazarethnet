@@ -78,6 +78,7 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
                                         <th><?php echo getEduAppGTLang('name'); ?></th>
                                         <th><?php echo getEduAppGTLang('telephone'); ?></th>
                                         <th><?php echo getEduAppGTLang('direction'); ?></th>
+                                        <th><?php echo getEduAppGTLang('maps_link'); ?></th>
                                         <th><?php echo getEduAppGTLang('status'); ?></th>
                                         <th class="text-center"><?php echo getEduAppGTLang('action'); ?></th>
                                       </tr>
@@ -91,6 +92,7 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
                                         <td><?php echo $row['name']; ?></td>
                                         <td><?php echo $row['telephone']; ?></td>
                                         <td><?php echo $row['direction']; ?></td>
+                                        <td><a class="text-primary" href="<?php echo $row['maps_link']; ?>" target="_blank"><?php if($row['maps_link'] !=''){?> <i class="fa fa-link"></i> <?php echo $row['maps_link']; ?> <?php }?></a></td>
                                         <td><?php echo getEduAppGTLang($row['status']); ?></td>
                                         <td class="row-actions">
                                           <a href="javascript:void(0);"
@@ -100,6 +102,7 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
                                             data-telephone="<?= $row['telephone']; ?>"
                                             data-longitude="<?= $row['longitude']; ?>"
                                             data-latitude="<?= $row['latitude']; ?>"
+                                            data-mapslink="<?= $row['maps_link']; ?>"
                                             data-status="<?= $row['status']; ?>"
                                             data-direction="<?= $row['direction']; ?>">
                                             
@@ -167,10 +170,10 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
 
     									<!-- STUDENT TAB -->
     									<div class="tab-pane" id="student">
-    										<div class="row">
-                        <span class="badge badge-warning">This page will show all students who are not assigned to any branch</span>
+    										<div class="row justify-content-center">
+                          <span class="badge badge-warning p-3 text-center m-2">This page will show all students who are not assigned to any branch</span>
                       <div class="table-responsive">
-                        <table class="table table-padded">
+                        <table id="studentTable" class="table table-striped table-hover">
                           <thead>
                             <tr>
                               <th><?php echo getEduAppGTLang('number'); ?></th>
@@ -188,7 +191,7 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
                               <td><?= $no;?></td>
                               <td><?php echo $row['first_name'] . ' ' . $row['last_name']; ?></td>
                               <td class="row-actions">
-                                <a href="<?=base_url('admin/student_update/'.$row['student_id'])?>" class="btn btn-primary" target="_blank"><i class="fa fa-sync"></i> <?php echo getEduAppGTLang('assign'); ?></a>
+                                <a href="#" onclick="showAjaxModal('<?= base_url('modal/popup/modal_add_branch_shifts_student/' . $row['student_id']) ?>');" class="btn btn-primary text-white"><i class="fa fa-sync"></i> <?php echo getEduAppGTLang('assign'); ?></a>
                             </tr>
                           <?php $no++; endforeach; ?>
                           </tbody>
@@ -198,10 +201,10 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
     									</div>
 
                       <div class="tab-pane" id="class">
-    										<div class="row">
-                        <span class="badge badge-warning">This page will show all class who are not assigned to any branch</span>
+    										<div class="row justify-content-center">
+                        <span class="badge badge-warning p-3 text-center m-2">This page will show all class who are not assigned to any branch</span>
                       <div class="table-responsive">
-                        <table class="table table-padded">
+                        <table id="classTable" class="table table-striped table-hover">
                           <thead>
                             <tr>
                               <th><?php echo getEduAppGTLang('number'); ?></th>
@@ -219,7 +222,7 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
                               <td><?= $no;?></td>
                               <td><?php echo $row['name']; ?></td>
                               <td class="row-actions">
-                                <a href="<?=base_url('admin/grados/all')?>" class="btn btn-primary" target="_blank"><i class="fa fa-sync"></i> <?php echo getEduAppGTLang('assign'); ?></a>
+                                <a href="#" onclick="showAjaxModal('<?= base_url('modal/popup/modal_add_branch_class/' . $row['class_id']) ?>');" class="btn btn-primary text-white"><i class="fa fa-sync"></i> <?php echo getEduAppGTLang('assign'); ?></a>
                             </tr>
                           <?php $no++; endforeach; ?>
                           </tbody>
@@ -308,12 +311,8 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
               <input class="form-control" type="text" name="telephone" required>
             </div>
             <div class="form-group">
-              <label><?php echo getEduAppGTLang('longitude'); ?></label>
-              <input class="form-control" type="text" name="longitude" required>
-            </div>
-            <div class="form-group">
-              <label><?php echo getEduAppGTLang('latitude'); ?></label>
-              <input class="form-control" type="text" name="latitude" required>
+              <label><?php echo getEduAppGTLang('maps_link'); ?></label>
+              <input class="form-control" type="text" name="maps_link" placeholder="https://maps.app.goo.gl/xxx" required>
             </div>
             <div class="form-group">
               <label><?php echo getEduAppGTLang('direction'); ?></label>
@@ -394,12 +393,8 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
           <input class="form-control" type="text" name="telephone" id="edit_telephone" required>
         </div>
         <div class="form-group">
-          <label><?php echo getEduAppGTLang('longitude'); ?></label>
-          <input class="form-control" type="text" name="longitude" id="edit_longitude" required>
-        </div>
-        <div class="form-group">
-          <label><?php echo getEduAppGTLang('latitude'); ?></label>
-          <input class="form-control" type="text" name="latitude" id="edit_latitude" required>
+          <label><?php echo getEduAppGTLang('maps_link'); ?></label>
+          <input class="form-control" type="text" name="maps_link" id="edit_maps_link" required>
         </div>
         <div class="form-group">
           <label><?php echo getEduAppGTLang('direction'); ?></label>
@@ -423,6 +418,16 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
 
 <script>
   $(document).ready(function() {
+    var hash = window.location.hash;
+    if (hash) {
+      $('.navs-links').removeClass('active');
+      $('.tab-pane').removeClass('active show');
+
+      $('a[href="' + hash + '"]').addClass('active');
+      $(hash).addClass('active show');
+    }
+    $('#studentTable').DataTable();
+    $('#classTable').DataTable();
     $('.btn-edit-conference').click(function() {
       let id = $(this).data('id');
       let name = $(this).data('name');
@@ -440,16 +445,14 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
       let id = $(this).data('id');
       let name = $(this).data('name');
       let telephone = $(this).data('telephone');
-      let longitude = $(this).data('longitude');
-      let latitude = $(this).data('latitude');
-      let direction = $(this).data('direction');
       let status = $(this).data('status');
+      let maps_link = $(this).data('mapslink');
+      let direction = $(this).data('direction');
 
       $('#edit_branch_id').val(id);
       $('#edit_name_branch').val(name);
       $('#edit_telephone').val(telephone);
-      $('#edit_longitude').val(longitude);
-      $('#edit_latitude').val(latitude);
+      $('#edit_maps_link').val(maps_link);
       $('#edit_direction').val(direction);
       $('#edit_status_branch').val(status);
 

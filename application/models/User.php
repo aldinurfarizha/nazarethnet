@@ -465,6 +465,8 @@ class User extends School
         $data['authorized_person'] = html_escape($this->input->post('auth_person'));
         $data['authorized_phone']  = html_escape($this->input->post('auth_phone'));
         $data['note']              = html_escape($this->input->post('note'));
+        $data['branch_id']         = html_escape($this->input->post('branch_id'));
+        $data['shifts_id']         = html_escape($this->input->post('shifts_id'));
         $this->db->insert('student', $data);
         $student_id = $this->db->insert_id();
         $class_ids = $this->input->post('class_id');

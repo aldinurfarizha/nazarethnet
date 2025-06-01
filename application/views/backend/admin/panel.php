@@ -645,7 +645,7 @@
                                                                             <span class="badge badge-purple"><?php echo getEduAppGTLang('parent');?></span>
                                                                         <?php endif;?>
                                                                         <?php if($row['type'] == 'admin'):?>
-                                                                            <span class="badge badge-primary"><?php echo getEduAppGTLang('admin');?></span> 
+                                                                            <span class="badge badge-primary"><?php echo getEduAppGTLang('admin');?><?php if(getBranchByAdminId($row['id_usuario'])!= null){ echo ' - '.getBranchByAdminId($row['id_usuario'])->name;}?></span> 
                                                                         <?php endif;?>
                                                                         <?php if($row['type'] == 'teacher'):?>
                                                                             <span class="badge badge-success"><?php echo getEduAppGTLang('teacher');?></span>

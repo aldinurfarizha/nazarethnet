@@ -6,29 +6,44 @@
         <?php echo form_open(base_url() . 'admin/edit_student_class_section', array('enctype' => 'multipart/form-data')); ?>
         <?php
 
-        $enrollData = getEnrollById($param2);
-        $classIdSelected = $enrollData->class_id;
-        $sectionIdSelected = $enrollData->section_id;
+    $enrollData = getEnrollById($param2);
+    $classIdSelected = $enrollData->class_id;
+    $sectionIdSelected = $enrollData->section_id;
+    $studentDetail = getStudentInfo($enrollData->student_id);
+    $studentBranchId = $studentDetail->branch_id ?? null;
 
         ?>
         <div class="row">
             <input type="hidden" name="enroll_id" value="<?php echo $param2; ?>">
             <input type="hidden" name="student_id" value="<?= $enrollData->student_id; ?>">
-            <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-                <div class="form-group label-floating is-select">
-                    <label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
-                    <div class="select">
-                        <select name="class_id" onchange="get_sections(this.value);" required="">
-                            <option value=""><?php echo getEduAppGTLang('select'); ?></option>
-                            <?php $classes = $this->db->get('class')->result_array();
-                            foreach ($classes as $class) :
-                            ?>
-                                <option value="<?php echo $class['class_id']; ?>" <?php if ($class['class_id'] == $classIdSelected) echo "selected"; ?>><?php echo $class['name']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-                </div>
-            </div>
+           <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+    <div class="form-group label-floating is-select">
+        <label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
+        <div class="select">
+            <select name="class_id" onchange="get_sections(this.value);" required="">
+                <option value=""><?php echo getEduAppGTLang('select'); ?></option>
+                <?php
+                $classes = $this->db->get('class')->result();
+                foreach ($classes as $class):
+                    $isSameBranch = ($studentBranchId && $class->branch_id == $studentBranchId);
+                    $isNoBranch = !$studentBranchId;
+
+                    $className = (!$isNoBranch && !$isSameBranch) ? '❌ ' . $class->name : $class->name;
+                    $style = (!$isNoBranch && !$isSameBranch) ? 'style="color:red;"' : '';
+                    $disabled = (!$isNoBranch && !$isSameBranch) ? 'disabled' : '';
+                    $selected = ($class->class_id == $classIdSelected) ? 'selected' : '';
+                ?>
+                    <option value="<?php echo $class->class_id; ?>" <?php echo "$selected $disabled"; ?> <?php echo $style; ?>>
+                        <?php echo $className; ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <?php if (!$studentBranchId): ?>
+            <small class="text-warning"><?php echo getEduAppGTLang('this_student_is_not_assigned_to_any_branch'); ?></small>
+        <?php endif; ?>
+    </div>
+</div>
             <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="form-group label-floating is-select">
                     <label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>

@@ -1063,6 +1063,12 @@ function getActiveBranch(){
     $branch = $ci->db->get_where('branch', array('status' => "ACTIVE"))->result();
     return $branch;
 }
+function getClassByBranchId($branch_id)
+{
+    $ci = &get_instance();
+    $class = $ci->db->get_where('class', array('branch_id' => $branch_id))->result();    
+    return $class;
+}
 function getDetailBranch($branch_id)
 {
     $ci = &get_instance();
@@ -1100,6 +1106,20 @@ function getMyBranchId(){
     $admin = $ci->db->get_where('admin', ['admin_id' => $admin_id])->row();
 
     return $admin;
+}
+function getBranchByAdminId($admin_id){
+     $ci = &get_instance();
+    $admin = $ci->db->get_where('admin', array('admin_id' => $admin_id))->row();
+    if($admin==null){
+        return null;
+    }
+    $branch = $ci->db->get_where('branch', array('branch_id' => $admin->branch_id))->row();
+    return $branch;
+}
+function getShiftsByBranchId($branch_id){
+    $ci = &get_instance();
+    $shifts = $ci->db->get_where('shifts', array('branch_id' => $branch_id))->result();
+    return $shifts;
 }
 function isStudentEnrolledToSubject($student_id, $subject_id)
 {
