@@ -19,7 +19,7 @@
 														<img src="<?php echo base_url(); ?>public/uploads/<?php echo $this->crud->getInfo('logo'); ?>" class="authorCv">
 													</div>
 													<div class="author-content">
-														<a href="javascript:void(0);" class="h3 author-name"><?php echo getEduAppGTLang('students'); ?></a>
+														<a href="javascript:void(0);" class="h3 author-name"><?php echo getEduAppGTLang('students'); ?> <small>(<?php if ($class_id > 0) echo $this->db->get_where('class', array('class_id' => $class_id))->row()->name; ?>)</small></a>
 														<div class="country"><?php echo $this->crud->getInfo('system_name'); ?> | <?php echo $this->crud->getInfo('system_title'); ?></div>
 													</div>
 												</div>
@@ -42,11 +42,17 @@
 														<?php echo form_open(base_url() . 'admin/students/', array('class' => 'form m-b')); ?>
 														<div class="row">
 															<div class="col col-lg-4 col-md-6 col-sm-12 col-12">
+																<div class="form-group label-floating bg-white">
+																	<label class="control-label"><?php echo getEduAppGTLang('search'); ?></label>
+																	<input class="form-control" id="filter" type="text" required="">
+																</div>
+															</div>
+															<div class="col col-lg-4 col-md-6 col-sm-12 col-12">
 																<div class="form-group label-floating is-select">
 																	<label class="control-label"><?php echo getEduAppGTLang('filter_by_branch'); ?></label>
 																	<div class="select">
-																		<select onchange="get_class(this.value);" name="branch_id">
-																			<option value=""><?php echo getEduAppGTLang('all'); ?></option>
+																		<select onchange="submit();" name="branch_id">
+																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 																			<?php
 																			if (isSuperAdmin()) {
 																				$branch = $this->db->where('status', 'ACTIVE')->get('branch')->result_array();
@@ -55,7 +61,7 @@
 																			}
 																			foreach ($branch as $row):
 																			?>
-																				<option value="<?php echo $row['branch_id']; ?>" <?php if (@$branch_id == $row['branch_id']) echo 'selected'; ?>><?php echo $row['name']; ?></option>
+																				<option value="<?php echo $row['branch_id']; ?>" <?php if ($branch_id == $row['branch_id']) echo 'selected'; ?>><?php echo $row['name']; ?></option>
 																			<?php endforeach; ?>
 																		</select>
 																	</div>
@@ -65,30 +71,22 @@
 																<div class="form-group label-floating is-select">
 																	<label class="control-label"><?php echo getEduAppGTLang('filter_by_class'); ?></label>
 																	<div class="select">
-																		<select name="class_id" onchange="get_sections(this.value);" id="class_holder">
-																			<option value=""><?php echo getEduAppGTLang('all'); ?></option>
+																		<select onchange="submit();" name="class_id" id="slct">
+																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+																			<?php
+																			if (isSuperAdmin()) {
+																				$cl = $this->db->get('class')->result_array();
+																			} else {
+																				$cl = $this->db->where('branch_id', getMyBranchId()->branch_id)->get('class')->result_array();
+																			}
+																			foreach ($cl as $row):
+																			?>
+																				<option value="<?php echo $row['class_id']; ?>" <?php if ($class_id == $row['class_id']) echo 'selected'; ?>><?php echo $row['name']; ?></option>
+																			<?php endforeach; ?>
 																		</select>
 																	</div>
 																</div>
 															</div>
-															<div class="col col-lg-3 col-md-6 col-sm-12 col-12">
-																<div class="form-group label-floating is-select">
-																	<label class="control-label"><?php echo getEduAppGTLang('filter_by_section'); ?></label>
-																	<div class="select">
-																		<select name="section_id" id="section_holder">
-																			<option value=""><?php echo getEduAppGTLang('all'); ?></option>
-																		</select>
-																	</div>
-																</div>
-															</div>
-															<div class="col col-lg-1 col-md-6 col-sm-12 col-12 d-flex justify-content-center">
-																<div class="form-group mb-0">
-																	<button class="btn btn-primary mt-2">
-																		<?php echo getEduAppGTLang('filter'); ?> <i class="fa fa-search"></i>
-																	</button>
-																</div>
-															</div>
-
 														</div>
 														<?php echo form_close(); ?>
 														<div class="ui-block">
@@ -311,3 +309,21 @@
 		</div>
 	</div>
 </div>
+<script>
+	$(document).ready(function() {
+		{
+			$("#filter").on('keyup', function() {
+				var filter = $(this).val(),
+					count = 0;
+				$('#results div').each(function() {
+					if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+						$(this).hide();
+					} else {
+						$(this).show();
+						count++;
+					}
+				});
+			});
+		}
+	});
+</script>

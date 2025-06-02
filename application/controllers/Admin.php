@@ -3302,9 +3302,13 @@ class Admin extends EduAppGT
     function get_class_section($class_id = '')
     {
         $sections = $this->db->get_where('section', array('class_id' => $class_id))->result_array();
-        echo '<option value="">' . getEduAppGTLang('select') . '</option>';
-        foreach ($sections as $row) {
-            echo '<option value="' . $row['section_id'] . '">' . $row['name'] . '</option>';
+        if (count($sections) == 0) {
+            echo '<option value="">❌ ' . getEduAppGTLang('no_section_available_for_this_class_please_select_other_class') . ' </option>';
+        } else {
+            echo '<option value="">--' . getEduAppGTLang('select_section') . '--</option>';
+            foreach ($sections as $row) {
+                echo '<option value="' . $row['section_id'] . '">' . $row['name'] . '</option>';
+            }
         }
     }
 
