@@ -1622,18 +1622,21 @@ class Admin extends EduAppGT
     }
 
     //Manage students function.
-    function students($id = '')
+    function students()
     {
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
-        $id = $this->input->post('class_id');
-        if ($id == '') {
-            $id = $this->db->get('class')->first_row()->class_id;
-        }
+        $class_id = $this->input->post('class_id');
+        $section_id = $this->input->post('section_id');
+        $branch_id = $this->input->post('branch_id');
+        $shifts_id = $this->input->post('shifts_id');
         $page_data['page_name']   = 'students';
         $page_data['page_title']  = getEduAppGTLang('students');
-        $page_data['class_id']  = $id;
+        $page_data['class_id']  = $class_id;
+        $page_data['section_id']  = $section_id;
+        $page_data['branch_id']  = $branch_id;
+        $page_data['shifts_id']  = $shifts_id;
         $this->load->view('backend/index', $page_data);
     }
 
