@@ -3924,12 +3924,14 @@ class Admin extends EduAppGT
             $data['subject_id']  = $this->input->post('subject_id');
             $data['exam_id']        = $this->input->post('exam_id');
             $data['section_id']  = $this->input->post('section_id');
-            redirect(base_url() . 'admin/grades_report/' . $data['class_id'] . '/' . $data['section_id'] . '/' . $data['subject_id'] . '/' . $data['exam_id'] . '/' , 'refresh');
+            $data['branch_id']  = $this->input->post('branch_id');
+            redirect(base_url() . 'admin/grades_report/' . $data['class_id'] . '/' . $data['section_id'] . '/' . $data['subject_id'] . '/' . $data['exam_id'] . '/' .$data['branch_id'], 'refresh');
         }
         $page_data['class_id']    = $param1;
         $page_data['section_id']  = $param2;
         $page_data['subject_id']  = $param3;
         $page_data['exam_id']       = $param4;
+        $page_data['branch_id']       = $param5;
         $page_data['page_name']   = 'grades_report';
         $page_data['page_title']  = getEduAppGTLang('grades_report');
         $this->load->view('backend/index', $page_data);
@@ -3940,6 +3942,7 @@ class Admin extends EduAppGT
         $page_data['section_id']  = $param2;
         $page_data['subject_id']  = $param3;
         $page_data['exam_id']       = $param4;
+        $page_data['branch_id']       = $param5;
         $this->load->view('backend/admin/grades_report_excel', $page_data);
     }
 

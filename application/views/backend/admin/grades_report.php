@@ -44,22 +44,48 @@
 						<div class="content-box">
 							<?php echo form_open(base_url() . 'admin/grades_report/check', array('class' => 'form m-b')); ?>
 							<div class="row top-rd">
-								<div class="col-sm-3">
+								<div class="col-sm-2">
 									<div class="form-group label-floating is-select">
-										<label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
+										<label class="control-label"><?php echo getEduAppGTLang('branch'); ?></label>
 										<div class="select">
-											<select name="class_id" required="" onchange="get_sections(this.value)">
+											<select name="branch_id" required="" onchange="get_class(this.value)">
 												<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 												<?php
 												if (isSuperAdmin()) {
-													$class = $this->db->get('class')->result_array();
+													$branch = $this->db->where('status', 'ACTIVE')->get('branch')->result_array();
 												} else {
-													$class = $this->db->where('branch_id', getMyBranchId()->branch_id)->get('class')->result_array();
+													$where = [
+														'status' => 'ACTIVE',
+														'branch_id' => getMyBranchId()->branch_id
+													];
+													$branch = $this->db->where($where)->get('branch')->result_array();
 												}
-												foreach ($class as $row): ?>
-													<option value="<?php echo $row['class_id']; ?>" <?php if ($class_id == $row['class_id']) echo "selected"; ?>><?php echo $row['name']; ?></option>
+												foreach ($branch as $row): ?>
+													<option value="<?php echo $row['branch_id']; ?>" <?php if ($branch_id == $row['branch_id']) echo "selected"; ?>><?php echo $row['name']; ?></option>
 												<?php endforeach; ?>
 											</select>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-2">
+									<div class="form-group label-floating is-select">
+										<label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
+										<div class="select">
+											<?php if ($class_id == ""): ?>
+												<select name="class_id" required id="class_holder" onchange="get_sections(this.value);">
+													<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+												</select>
+											<?php else: ?>
+												<select name="class_id" required id="class_holder" onchange="get_sections(this.value);">
+													<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+													<?php
+													$class = $this->db->get_where('class', array('class_id' => $class_id))->result_array();
+													foreach ($class as $key):
+													?>
+														<option value="<?php echo $key['class_id']; ?>" <?php if ($class_id == $key['class_id']) echo "selected"; ?>><?php echo $key['name']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											<?php endif; ?>
 										</div>
 									</div>
 								</div>
@@ -85,7 +111,7 @@
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-2">
 									<div class="form-group label-floating is-select">
 										<label class="control-label"><?php echo getEduAppGTLang('subject'); ?></label>
 										<div class="select">
@@ -136,21 +162,63 @@
 								</div>
 							</div>
 							<?php echo form_close(); ?>
-							<?php if ($class_id != '' && $section_id != '' && $subject_id != '' && $exam_id != ''): ?>
+							<?php if ($class_id != '' && $section_id != '' && $subject_id != '' && $exam_id != '' && $branch_id != ''): ?>
 								<?php
+								$branchDetail = getDetailBranch($branch_id);
 								$finalEvaluaciones = 0;
 								$is_final = $this->db->get_where('exam', array('exam_id' => $exam_id))->row()->is_final; ?>
-								<div class="row">
-									<div class="text-center col-sm-12"><br>
-										<h5><?php echo $this->db->get_where('class', array('class_id' => $class_id))->row()->name; ?> <br> <?php echo $this->db->get_where('section', array('section_id' => $section_id))->row()->name; ?> <br> <?php echo $this->db->get_where('subject', array('subject_id' => $subject_id))->row()->name; ?> <br><?php echo $this->db->get_where('exam', array('exam_id' => $exam_id))->row()->name; ?></h5>
-										<a href="<?php echo base_url(); ?>admin/grades_report_excel/<?= $class_id . '/' . $section_id . '/' . $subject_id . '/' . $exam_id ?>" class="btn btn-success"> <?php echo getEduAppGTLang('excel'); ?> <i class="fa fa-download"></i></a>
+								<div class="row justify-content-center">
+									<div class="text-center col-sm-8 my-4">
+										<div class="d-inline-block text-left mb-4" style="line-height: 1;">
+											<div class="row">
+												<div class="col-sm-6">
+													<p><i class="fa fa-building text-success"></i> <strong><?= getEduAppGTLang('branch'); ?>:</strong>
+														<?= $branchDetail->name ?>
+													</p>
+												</div>
+												<div class="col-sm-6">
+													<p><i class="fa fa-user text-info"></i> <strong><?= getEduAppGTLang('class'); ?>:</strong>
+														<?= $this->db->get_where('class', array('class_id' => $class_id))->row()->name; ?>
+													</p>
+												</div>
+												<div class="col-sm-6">
+													<p><i class="fa fa-calendar text-warning"></i> <strong><?= getEduAppGTLang('section'); ?>:</strong>
+														<?= $this->db->get_where('section', array('section_id' => $section_id))->row()->name; ?>
+													</p>
+												</div>
+												<div class="col-sm-6">
+													<p><i class="fa fa-book text-success"></i> <strong><?= getEduAppGTLang('subject'); ?>:</strong>
+														<?= $this->db->get_where('subject', array('subject_id' => $subject_id))->row()->name; ?>
+													</p>
+												</div>
+												<div class="col-sm-6">
+													<p><i class="fa fa-tasks text-danger"></i> <strong><?= getEduAppGTLang('exam'); ?>:</strong>
+														<?= $this->db->get_where('exam', array('exam_id' => $exam_id))->row()->name; ?>
+													</p>
+												</div>
+												<div class="col-sm-6">
+													<p><i class="fa fa-download text-danger"></i> <strong><?= getEduAppGTLang('download'); ?>:</strong>
+														<a href="<?= base_url(); ?>admin/grades_report_excel/<?= $class_id . '/' . $section_id . '/' . $subject_id . '/' . $exam_id . '/' . $branch_id; ?>"
+															class="btn btn-success btn-sm">
+															<i class="fa fa-file-excel"></i> <?= getEduAppGTLang('excel'); ?>
+														</a>
+													</p>
+												</div>
+											</div>
+
+
+
+
+
+
+										</div>
+
+
 									</div>
-									<hr>
-									<div class="col-7 text-left">
-										<h5 class="form-header"><?php ?>
-										</h5>
-									</div>
+
 								</div>
+								<span class="badge bg-primary"><?php echo getEduAppGTLang('current_value'); ?></span>
+								<span class="badge bg-grey"><?php echo getEduAppGTLang('grades_history'); ?></span>
 								<div class="table-responsive bg-white">
 									<table class="table table-sm table-lightborder table-bordered">
 										<thead>
@@ -215,15 +283,14 @@
 														$updated_at = isset($nota_row->updated_at) ? $nota_row->updated_at : '-';
 														?>
 														<td class="text-center">
-															<div class="fw-bold fs-6 mb-1">
-																<span class="badge bg-primary"><?= htmlspecialchars($nota) ?></span>
-															</div>
-															<div class="text-muted small mb-1">
-																<span class="badge bg-secondary"><?= $updated_at ?></span>
-															</div>
-															<div class="text-secondary small">
-																<span class="badge bg-info"><?= getHistoryNotaCapacidad($nota_row->nota_capacidad_id) ?></span>
-															</div>
+															<?php if ($nota != "" || $nota != null) { ?>
+																<div class="fw-bold fs-6 mb-1">
+																	<span class="badge bg-primary"><b><?= htmlspecialchars($nota) ?></b> <br> <small><?= $updated_at ?></small></span>
+																</div>
+																<div class="text-secondary small">
+																	<span class="badge bg-grey"><?= getHistoryNotaCapacidad($nota_row->nota_capacidad_id) ?></span>
+																</div>
+															<?php } ?>
 														</td>
 													<?php endforeach; ?>
 													<?php if ($is_final) { ?>
