@@ -3775,7 +3775,7 @@ class Admin extends EduAppGT
         if (!file_exists($qr_folder)) {
             mkdir($qr_folder, 0755, true);
         }
-        $params['data'] = base_url() . 'verification/course_certificate/' . $certCode;
+        $params['data'] = base_url() . 'certificate/check/' . $certCode;
         $params['level'] = 'H';
         $params['size'] = 20;
         $params['savename'] = $qr_folder . $qr_filename;

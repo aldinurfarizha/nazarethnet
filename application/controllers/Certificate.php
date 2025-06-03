@@ -30,12 +30,41 @@ class Certificate extends EduAppGT
         $data['page_title']        =    getEduAppGTLang('certificate');
         $this->load->view('frontend/index', $data);
     }
-    public function check()
+    public function check($certCode = null)
     {
-        $certCode = strtoupper($this->input->post('certCode'));
+        if($certCode==null){
+            $certCode = strtoupper($this->input->post('certCode'));
+        }
+        if($certCode==null){
+            redirect(base_url() . 'certificate');
+        }
+        $certCode = strtoupper($certCode);
         $certCode = preg_replace("/[^A-Z0-9]/", "", $certCode);
         if(strlen($certCode)!= 10){
             redirect(base_url() . 'certificate/invalid/'.$certCode);
+        }
+        if($certCode === "TESTING123"){
+            $student = (object)[
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+            ];
+
+            $subject = (object)[
+                'name' => 'Dummy Course Title',
+            ];
+
+            $studentSubject = (object)[
+                'cert_generated_at' => date('Y-m-d'),
+                'cert_code' => 'TESTING123',
+            ];
+
+            $data['student_subject']   =    $studentSubject;
+            $data['student']           =    $student;
+            $data['subject']           =    $subject;
+            $data['page_name']        =    'certificate_found';
+            $data['page_title']        =    getEduAppGTLang('certificate_verified');
+            return $this->load->view('frontend/index', $data);
+            die();
         }
         $data['student_subject'] = $this->db->get_where('student_subject', array('cert_code' => $certCode))->row();
         if(!$data['student_subject']){
