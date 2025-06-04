@@ -170,17 +170,32 @@
                 		                <span class="material-input"></span>
                 	                </div>
                                 </div>
+                                <div class="col-sm-6">
+                                        <div class="form-group label-floating is-select">
+                                            <label class="control-label"><?php echo getEduAppGTLang('branch'); ?></label>
+                                            <div class="select">
+                                                <select onchange="get_class(this.value);" name="branch_id">
+                                                    <option value=""><?php echo getEduAppGTLang('select'); ?></option>
+                                                    <?php
+                                                    if (isSuperAdmin()) {
+                                                        $branch = $this->db->where('status', 'ACTIVE')->get('branch')->result_array();
+                                                    } else {
+                                                        $branch = $this->db->where('branch_id', getMyBranchId()->branch_id)->get('branch')->result_array();
+                                                    }
+                                                    foreach ($branch as $row):
+                                                    ?>
+                                                        <option value="<?php echo $row['branch_id']; ?>"><?php echo $row['name']; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                 <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                     <div class="form-group label-floating is-select">
                                         <label class="control-label"><?php echo getEduAppGTLang('class');?></label>
                                         <div class="select">
-                                            <select name="class_id" onchange="get_sections(this.value); get_class_subject(this.value);">
+                                            <select name="class_id" id="class_holder" onchange="get_sections(this.value); get_class_subject(this.value);">
                                                 <option value=""><?php echo getEduAppGTLang('select');?></option>
-                                                <?php $cl = $this->db->get('class')->result_array();
-                                                    foreach($cl as $row):
-                                                ?>
-                                                <option value="<?php echo $row['class_id'];?>"><?php echo $row['name'];?></option>
-                                                <?php endforeach;?>
                                             </select>
                                         </div>
                                     </div>

@@ -911,9 +911,9 @@ class Academic extends School
     public function createReport()
     {
         $parent_id           = $this->db->get_where('student', array('student_id' => $this->input->post('student_id')))->row()->parent_id;
-        $student_name        = $this->db->get_where('student', array('student_id' => $this->input->post('student_id')))->row()->name;
-        $parent_phone        = $this->db->get_where('parent', array('parent_id' => $parent_id))->row()->phone;
-        $parent_email        = $this->db->get_where('parent', array('parent_id' => $parent_id))->row()->email;
+        $student_name        = @$this->db->get_where('student', array('student_id' => $this->input->post('student_id')))->row()->name;
+        $parent_phone        = @$this->db->get_where('parent', array('parent_id' => $parent_id))->row()->phone;
+        $parent_email        = @$this->db->get_where('parent', array('parent_id' => $parent_id))->row()->email;
         $data['student_id']  = $this->input->post('student_id');
         $data['class_id']    = $this->input->post('class_id');
         $data['section_id']  = $this->input->post('section_id');

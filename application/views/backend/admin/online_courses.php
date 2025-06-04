@@ -20,7 +20,7 @@
         <div class="content-box">
             <div class="row">
              <div class="col col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                <div class="ui-block list" data-mh="friend-groups-item" style="">
+                <div class="ui-block list" data-mh="friend-groups-item">
                     <div class="friend-item friend-groups">
                         <div class="friend-item-content">
                             <div class="friend-avatar">
@@ -37,7 +37,7 @@
             </div>
         
             <div class="col col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                <div class="ui-block list" data-mh="friend-groups-item" style="">
+                <div class="ui-block list" data-mh="friend-groups-item">
                     <div class="friend-item friend-groups">
                         <div class="friend-item-content">
                             <div class="friend-avatar">
@@ -54,7 +54,7 @@
             </div>
         
             <div class="col col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                <div class="ui-block list" data-mh="friend-groups-item" style="">
+                <div class="ui-block list" data-mh="friend-groups-item">
                     <div class="friend-item friend-groups">
                         <div class="friend-item-content">
                             <div class="friend-avatar">
@@ -86,6 +86,7 @@
                         <thead>
                           <tr>
                             <th><?php echo getEduAppGTLang('status');?></th>
+                            <th><?php echo getEduAppGTLang('branch');?></th>
                             <th><?php echo getEduAppGTLang('title');?></th>
                             <th><?php echo getEduAppGTLang('class');?></th>
                             <th><?php echo getEduAppGTLang('lesson_and_section');?></th>
@@ -95,8 +96,24 @@
                           <tbody>
                           <?php
                             $counter = 1;
-                            $this->db->order_by('online_course_id', 'desc');
-                            $onlines = $this->db->get_where('online_course', array('year' => $running_year))->result_array();
+                            if(isSuperAdmin())
+                            {
+                                $this->db->select('online_course.*, class.name as class_name, class.branch_id');
+                                $this->db->from('online_course');
+                                $this->db->join('class', 'class.class_id = online_course.class_id');
+                                $this->db->where('online_course.year', $running_year);
+                                $this->db->order_by('online_course.online_course_id', 'desc');
+                                $onlines = $this->db->get()->result_array();
+                            }else{
+                                $branch_id=getMyBranchId()->branch_id;
+                                $this->db->select('online_course.*, class.name as class_name, class.branch_id');
+                                $this->db->from('online_course');
+                                $this->db->join('class', 'class.class_id = online_course.class_id');
+                                $this->db->where('online_course.year', $running_year);
+                                $this->db->where('class.branch_id', $branch_id);
+                                $this->db->order_by('online_course.online_course_id', 'desc');
+                                $onlines = $this->db->get()->result_array();
+                            }
                             foreach ($onlines as $hm):
                           ?>
                           <tr>
@@ -107,6 +124,14 @@
                                     <span class="status-pill red"></span><span><?php echo getEduAppGTLang('inactive ');?></span>
                                 <?php endif;?>
                             </td>
+                            <td><?php if($hm['branch_id'])
+                            {
+                                $branchDetail=getDetailBranch($hm['branch_id']);
+                                echo $branchDetail->name;
+                            }else{
+                                echo "-";
+                            }
+                            ?></td>
                             <td><span><?php echo $hm['title'];?></span></td>
                             <td>
                                 <span class="badge badge-success"><?php echo $this->db->get_where('class', array('class_id' => $hm['class_id']))->row()->name.' - '.$this->db->get_where('section', array('section_id' => $hm['section_id']))->row()->name;?></span>

@@ -3289,9 +3289,7 @@ class Admin extends EduAppGT
             redirect(base_url(), 'refresh');
         }
         $class = $this->input->post('class_id');
-        if ($class == '') {
-            $class = $this->db->get('class')->first_row()->class_id;
-        }
+        $branch_id = $this->input->post('branch_id');
         if ($param1 == 'create') {
             $this->academic->createSection();
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
@@ -3310,6 +3308,7 @@ class Admin extends EduAppGT
         $page_data['page_name']  = 'section';
         $page_data['page_title'] = getEduAppGTLang('sections');
         $page_data['class_id']   = $class;
+        $page_data['branch_id']  = $branch_id;
         $this->load->view('backend/index', $page_data);
     }
 
@@ -3565,17 +3564,18 @@ class Admin extends EduAppGT
         }
     }
 
-    function class_routine_view($param1 = '', $param2 = '')
+    function class_routine_view($param1 = '', $param2 = '',$param3='')
     {
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
         if ($param1 == 'apply') {
-            redirect(base_url() . 'admin/class_routine_view/' . $this->input->post('class_id') . '/' . $this->input->post('section_id'), 'refresh');
+            redirect(base_url() . 'admin/class_routine_view/' . $this->input->post('class_id') . '/' . $this->input->post('section_id').'/'.$this->input->post('branch_id'), 'refresh');
         }
         $page_data['page_name']  = 'class_routine_view';
         $page_data['id']  =   $param1;
         $page_data['section_id']  =   $param2;
+        $page_data['branch_id']  =   $param3;
         $page_data['page_title'] = getEduAppGTLang('class_routine');
         $this->load->view('backend/index', $page_data);
     }
