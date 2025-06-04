@@ -163,7 +163,7 @@
 																						if($row->branch_id!=null && $row->shifts_id!=null){
 																							$branch=getDetailBranch($row->branch_id);
 																							$shifts=getDetailShifts($row->shifts_id);
-																							$branch_shifts=$branch->name.' - '.$shifts->name;
+																							$branch_shifts=@$branch->name.' - '.@$shifts->name;
 																						}
 																						if($branch_id!=null){
 																							if($row->branch_id!=$branch_id){

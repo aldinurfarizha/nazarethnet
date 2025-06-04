@@ -54,12 +54,16 @@ foreach ($student_info as $row) : ?>
 													<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 														<ul class="widget w-personal-info item-block">
 															<li>
-																<span class="title"><?php echo getEduAppGTLang('name'); ?>:</span>
-																<span class="text"><?php echo $row['first_name']; ?> <?php echo $row['last_name']; ?></span>
+																<span class="title"><?php echo getEduAppGTLang('first_name'); ?>:</span>
+																<span class="text"><?php echo $row['first_name']; ?></span>
 															</li>
 															<li>
-																<span class="title"><?php echo getEduAppGTLang('email'); ?>:</span>
-																<span class="text"><?php echo $row['email']; ?></span>
+																<span class="title"><?php echo getEduAppGTLang('birthday'); ?>:</span>
+																<span class="text"><?php echo $row['birthday']; ?></span>
+															</li>
+															<li>
+																<span class="title"><?php echo getEduAppGTLang('phone'); ?>:</span>
+																<span class="text"><?php echo $row['phone']; ?></span>
 															</li>
 															<li>
 																<span class="title"><?php echo getEduAppGTLang('username'); ?>:</span>
@@ -71,7 +75,7 @@ foreach ($student_info as $row) : ?>
 															</li>
 															<li>
 																<span class="title"><?php echo getEduAppGTLang('classroom'); ?>:</span>
-																<span class="text"><?php echo $this->db->get_where('dormitory', array('dormitory_id' => $row['dormitory_id']))->row()->name; ?></span>
+																<span class="text"><?php echo @$this->db->get_where('dormitory', array('dormitory_id' => $row['dormitory_id']))->row()->name; ?></span>
 															</li>
 															<li>
 																<span class="title"><?php echo getEduAppGTLang('allergies'); ?>:</span>
@@ -86,6 +90,11 @@ foreach ($student_info as $row) : ?>
 																<span class="text"><?php echo $row['authorized_person']; ?></span>
 															</li>
 															<li>
+																<span class="title"><?php echo getEduAppGTLang('branch'); ?>:</span>
+																<span class="text"><?php echo @getDetailBranch($row['branch_id'])->name ?></span>
+															</li>
+
+															<li>
 																<span class="title"><?php echo getEduAppGTLang('note'); ?>:</span>
 																<span class="text"><?php echo $row['note']; ?></span>
 															</li>
@@ -94,16 +103,12 @@ foreach ($student_info as $row) : ?>
 													<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 														<ul class="widget w-personal-info item-block">
 															<li>
-																<span class="title"><?php echo getEduAppGTLang('parent'); ?>:</span>
-																<span class="text"><?php echo $this->db->get_where('parent', array('parent_id' => $row['parent_id']))->row()->first_name . " " . $this->db->get_where('parent', array('parent_id' => $row['parent_id']))->row()->last_name; ?></span>
+																<span class="title"><?php echo getEduAppGTLang('last_name'); ?>:</span>
+																<span class="text"><?php echo $row['last_name']; ?></span>
 															</li>
 															<li>
-																<span class="title"><?php echo getEduAppGTLang('phone'); ?>:</span>
-																<span class="text"><?php echo $row['phone']; ?></span>
-															</li>
-															<li>
-																<span class="title"><?php echo getEduAppGTLang('birthday'); ?>:</span>
-																<span class="text"><?php echo $row['birthday']; ?></span>
+																<span class="title"><?php echo getEduAppGTLang('email'); ?>:</span>
+																<span class="text"><?php echo $row['email']; ?></span>
 															</li>
 															<li>
 																<span class="title"><?php echo getEduAppGTLang('gender'); ?>:</span>
@@ -111,8 +116,12 @@ foreach ($student_info as $row) : ?>
 																					else echo getEduAppGTLang('female'); ?></span>
 															</li>
 															<li>
+																<span class="title"><?php echo getEduAppGTLang('parent'); ?>:</span>
+																<span class="text"><?php echo @$this->db->get_where('parent', array('parent_id' => $row['parent_id']))->row()->first_name . " " . @$this->db->get_where('parent', array('parent_id' => $row['parent_id']))->row()->last_name; ?></span>
+															</li>
+															<li>
 																<span class="title"><?php echo getEduAppGTLang('transport'); ?>:</span>
-																<span class="text"><?php echo $this->db->get_where('transport', array('transport_id' => $row['transport_id']))->row()->route_name; ?></span>
+																<span class="text"><?php echo @$this->db->get_where('transport', array('transport_id' => $row['transport_id']))->row()->route_name; ?></span>
 															</li>
 															<li>
 																<span class="title"><?php echo getEduAppGTLang('conditions_or_diseases'); ?>:</span>
@@ -128,13 +137,16 @@ foreach ($student_info as $row) : ?>
 															</li>
 															<li>
 																<span class="title"><?php echo getEduAppGTLang('status'); ?>:</span>
-																<span class="text"><?php 
-																if($row['is_active']){
-																	echo getEduAppGTLang('active');
-																}else{
-																	echo getEduAppGTLang('disable');
-																}
-																; ?></span>
+																<span class="text"><?php
+																					if ($row['is_active']) {
+																						echo getEduAppGTLang('active');
+																					} else {
+																						echo getEduAppGTLang('disable');
+																					}; ?></span>
+															</li>
+															<li>
+																<span class="title"><?php echo getEduAppGTLang('shifts'); ?>:</span>
+																<span class="text"><?php echo @getDetailShifts($row['shifts_id'])->name ?></span>
 															</li>
 														</ul>
 													</div>
@@ -195,9 +207,13 @@ foreach ($student_info as $row) : ?>
 														<a href="<?php echo base_url(); ?>admin/student_profile_class_section/<?php echo $student_id; ?>/"><?php echo getEduAppGTLang('class_section'); ?></a>
 													</li>
 													<li>
-                                                        <i class="px20 picons-thin-icon-thin-0133_arrow_right_next"></i> &nbsp;&nbsp;&nbsp;
-                                                        <a href="<?php echo base_url(); ?>admin/student_profile_active_course/<?php echo $student_id; ?>/">Active Course</a>
-                                                    </li>
+														<i class="px20 picons-thin-icon-thin-0133_arrow_right_next"></i> &nbsp;&nbsp;&nbsp;
+														<a href="<?php echo base_url(); ?>admin/student_profile_active_course/<?php echo $student_id; ?>/">Active Course</a>
+													</li>
+													<li>
+														<i class="px20 picons-thin-icon-thin-0133_arrow_right_next"></i> &nbsp;&nbsp;&nbsp;
+														<a href="<?php echo base_url(); ?>admin/student_certificate_list/<?php echo $student_id; ?>/"><?php echo getEduAppGTLang('certificate_list'); ?></a>
+													</li>
 												</ul>
 											</div>
 										</div>

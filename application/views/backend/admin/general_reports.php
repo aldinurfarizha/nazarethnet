@@ -44,28 +44,52 @@
 						<div class="content-box">
 							<?php echo form_open(base_url() . 'admin/general_reports/', array('class' => 'form m-b')); ?>
 							<div class="row top-rd">
-								<div class="col-sm-3">
+								<div class="col-sm-2">
 									<div class="form-group label-floating is-select">
-										<label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
+										<label class="control-label"><?php echo getEduAppGTLang('branch'); ?></label>
 										<div class="select">
-											<select name="class_id" required="" onchange="get_sections(this.value)">
+											<select name="branch_id" required="" onchange="get_class(this.value)">
 												<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 												<?php
 												if (isSuperAdmin()) {
-													$classes = $this->db->get('class')->result_array();
+													$branch = $this->db->where('status', 'ACTIVE')->get('branch')->result_array();
 												} else {
-													$classes = $this->db->where('branch_id', getMyBranchId()->branch_id)->get('class')->result_array();
+													$where = [
+														'status' => 'ACTIVE',
+														'branch_id' => getMyBranchId()->branch_id
+													];
+													$branch = $this->db->where($where)->get('branch')->result_array();
 												}
-
-												foreach ($classes as $row):
-												?>
-													<option value="<?php echo $row['class_id']; ?>" <?php if ($class_id == $row['class_id']) echo "selected"; ?>><?php echo $row['name']; ?></option>
+												foreach ($branch as $row): ?>
+													<option value="<?php echo $row['branch_id']; ?>" <?php if ($branch_id == $row['branch_id']) echo "selected"; ?>><?php echo $row['name']; ?></option>
 												<?php endforeach; ?>
 											</select>
 										</div>
 									</div>
 								</div>
 								<div class="col-sm-3">
+									<div class="form-group label-floating is-select">
+										<label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
+										<div class="select">
+											<?php if ($class_id == ""): ?>
+												<select name="class_id" required id="class_holder" onchange="get_sections(this.value);">
+													<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+												</select>
+											<?php else: ?>
+												<select name="class_id" required id="class_holder" onchange="get_sections(this.value);">
+													<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+													<?php
+													$class = $this->db->get_where('class', array('class_id' => $class_id))->result_array();
+													foreach ($class as $key):
+													?>
+														<option value="<?php echo $key['class_id']; ?>" <?php if ($class_id == $key['class_id']) echo "selected"; ?>><?php echo $key['name']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											<?php endif; ?>
+										</div>
+									</div>
+								</div>
+								<div class="col-sm-2">
 									<div class="form-group label-floating is-select">
 										<label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
 										<div class="select">
@@ -92,11 +116,11 @@
 										<label class="control-label"><?php echo getEduAppGTLang('subject'); ?></label>
 										<div class="select">
 											<?php if ($subject_id == ""): ?>
-												<select name="subject_id" required id="subject_holder">
+												<select name="subject_id" required id="subject_holder" onchange="get_exam(this.value);">
 													<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 												</select>
 											<?php else: ?>
-												<select name="subject_id" required id="subject_holder">
+												<select name="subject_id" required id="subject_holder" onchange="get_exam(this.value);">
 													<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 													<?php
 													$subjects = $this->db->get_where('subject', array('class_id' => $class_id, 'section_id' => $section_id))->result_array();

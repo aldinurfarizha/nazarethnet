@@ -1380,6 +1380,7 @@ class Admin extends EduAppGT
         $page_data['class_id']   = html_escape($this->input->post('class_id'));
         $page_data['section_id']   = html_escape($this->input->post('section_id'));
         $page_data['subject_id']   = html_escape($this->input->post('subject_id'));
+        $page_data['branch_id']   = html_escape($this->input->post('branch_id'));
         $page_data['page_name']   = 'students_report';
         $page_data['page_title']  = getEduAppGTLang('students_report');
         $this->load->view('backend/index', $page_data);
@@ -1395,6 +1396,7 @@ class Admin extends EduAppGT
         $page_data['class_id']   = html_escape($this->input->post('class_id'));
         $page_data['section_id']   = html_escape($this->input->post('section_id'));
         $page_data['subject_id']   = html_escape($this->input->post('subject_id'));
+        $page_data['branch_id']   = html_escape($this->input->post('branch_id'));
         $page_data['page_title']  = getEduAppGTLang('general_reports');
         $this->load->view('backend/index', $page_data);
     }
@@ -2220,6 +2222,16 @@ class Admin extends EduAppGT
         }
         $page_data['page_name']  = 'student_profile_class_section';
         $page_data['page_title'] =  getEduAppGTLang('student_portal');
+        $page_data['student_id'] =  $student_id;
+        $this->load->view('backend/index', $page_data);
+    }
+    function student_certificate_list($student_id = '', $param1 = '')
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $page_data['page_name']  = 'student_certificate_list';
+        $page_data['page_title'] =  getEduAppGTLang('student_certificate_list');
         $page_data['student_id'] =  $student_id;
         $this->load->view('backend/index', $page_data);
     }
@@ -3328,9 +3340,13 @@ class Admin extends EduAppGT
     function get_class_subject($section_id = '')
     {
         $subjects = $this->db->get_where('subject', array('section_id' => $section_id))->result_array();
-        echo '<option value="">' . getEduAppGTLang('select') . '</option>';
-        foreach ($subjects as $row) {
-            echo '<option value="' . $row['subject_id'] . '">' . $row['name'] . '</option>';
+        if (count($subjects) == 0) {
+            echo '<option value="">❌ ' . getEduAppGTLang('no_subject_available_for_this_section_please_select_other_section') . ' </option>';
+        } else {
+            echo '<option value="">--' . getEduAppGTLang('select_subject') . '--</option>';
+            foreach ($subjects as $row) {
+                echo '<option value="' . $row['subject_id'] . '">' . $row['name'] . '</option>';
+            }
         }
     }
 
@@ -3353,34 +3369,35 @@ class Admin extends EduAppGT
     }
 
     //Manage semesters function.
-    function semesters($param1 = '', $param2 = '', $param3 = '')
+    function semesters($param1 = '', $param2 = '', $param3 = '',$param4='')
     {
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
         if ($param1 == 'apply') {
-            redirect(base_url() . 'admin/semesters/' . $this->input->post('class_id') . '/' . $this->input->post('section_id') . '/' . $this->input->post('subject_id'), 'refresh');
+            redirect(base_url() . 'admin/semesters/' . $this->input->post('class_id') . '/' . $this->input->post('section_id') . '/' . $this->input->post('subject_id').'/'.$this->input->post('branch_id'), 'refresh');
         }
         if ($param1 == 'create') {
             $this->academic->createSemester();
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
-            redirect(base_url() . 'admin/semesters/' . $this->input->post('class_id') . '/' . $this->input->post('section_id') . '/' . $this->input->post('subject_id'), 'refresh');
+            redirect(base_url() . 'admin/semesters/' . $this->input->post('class_id') . '/' . $this->input->post('section_id') . '/' . $this->input->post('subject_id') . '/' . $this->input->post('branch_id'), 'refresh');
         }
         if ($param1 == 'update') {
             $qrd = $this->db->get_where('exam', array('exam_id' => $param2))->row();
             $this->academic->updateSemester($param2);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
-            redirect(base_url() . 'admin/semesters/' . $qrd->class_id . '/' . $qrd->section_id . '/' . $qrd->subject_id, 'refresh');
+            redirect(base_url() . 'admin/semesters/' . $qrd->class_id . '/' . $qrd->section_id . '/' . $qrd->subject_id.'/'.$qrd->branch_id, 'refresh');
         }
         if ($param1 == 'delete') {
             $qrd = $this->db->get_where('exam', array('exam_id' => $param2))->row();
             $this->academic->deleteSemester($param2);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_deleted'));
-            redirect(base_url() . 'admin/semesters/' . $qrd->class_id . '/' . $qrd->section_id . '/' . $qrd->subject_id, 'refresh');
+            redirect(base_url() . 'admin/semesters/' . $qrd->class_id . '/' . $qrd->section_id . '/' . $qrd->subject_id.'/',$qrd->branch_id, 'refresh');
         }
         $page_data['class_id']  = $param1;
         $page_data['section_id']  = $param2;
         $page_data['subject_id']  = $param3;
+        $page_data['branch_id']   = $param4;
         $page_data['page_name']  = 'semester';
         $page_data['page_title'] = getEduAppGTLang('semesters');
         $this->load->view('backend/index', $page_data);
@@ -3898,7 +3915,7 @@ class Admin extends EduAppGT
     }
     
     //Attendance report function.
-    function attendance_report($param1 = '', $param2 = '', $param3 = '', $param4 = '', $param5 = '')
+    function attendance_report($param1 = '', $param2 = '', $param3 = '', $param4 = '', $param5 = '', $param6 = '')
     {
         if ($param1 == 'check') {
             $data['class_id']    = $this->input->post('class_id');
@@ -3906,13 +3923,15 @@ class Admin extends EduAppGT
             $data['year']        = $this->input->post('year');
             $data['month']       = $this->input->post('month');
             $data['section_id']  = $this->input->post('section_id');
-            redirect(base_url() . 'admin/attendance_report/' . $data['class_id'] . '/' . $data['section_id'] . '/' . $data['subject_id'] . '/' . $data['month'] . '/' . $data['year'], 'refresh');
+            $data['branch_id']   = $this->input->post('branch_id');
+            redirect(base_url() . 'admin/attendance_report/' . $data['class_id'] . '/' . $data['section_id'] . '/' . $data['subject_id'] . '/' . $data['month'] . '/' . $data['year'].'/'.$data['branch_id'], 'refresh');
         }
         $page_data['class_id']    = $param1;
         $page_data['section_id']  = $param2;
         $page_data['subject_id']  = $param3;
         $page_data['month']       = $param4;
         $page_data['year']        = $param5;
+        $page_data['branch_id']   = $param6;
         $page_data['page_name']   = 'attendance_report';
         $page_data['page_title']  = getEduAppGTLang('attendance_report');
         $this->load->view('backend/index', $page_data);
@@ -3995,6 +4014,7 @@ class Admin extends EduAppGT
         $page_data['section_id']   = $this->input->post('section_id');
         $page_data['student_id']   = $this->input->post('student_id');
         $page_data['exam_id']   = $this->input->post('exam_id');
+        $page_data['branch_id']   = $this->input->post('branch_id');
         $page_data['page_name']   = 'marks_report';
         $page_data['page_title']  = getEduAppGTLang('marks_report');
         $this->load->view('backend/index', $page_data);

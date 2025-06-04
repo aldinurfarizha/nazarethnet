@@ -1131,7 +1131,7 @@ function getBranchByAdminId($admin_id){
     if($admin==null){
         return null;
     }
-    $branch = $ci->db->get_where('branch', array('branch_id' => $admin->branch_id))->row();
+    $branch = $ci->db->get_where('branch', array('branch_id' => $admin->branch_id,'status' => "ACTIVE"))->row();
     return $branch;
 }
 function getShiftsByBranchId($branch_id){

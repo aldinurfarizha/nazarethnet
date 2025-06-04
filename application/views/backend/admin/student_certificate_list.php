@@ -1,10 +1,7 @@
 <?php
-$min = $this->db->get_where('academic_settings', array('type' => 'minium_mark'))->row()->description;
 $running_year = $this->crud->getInfo('running_year');
 $student_info = $this->db->get_where('student', array('student_id' => $student_id))->result_array();
 foreach ($student_info as $row) :
-    $class_id = $this->db->get_where('enroll', array('student_id' => $row['student_id'], 'year' => $running_year))->row()->class_id;
-    $section_id = $this->db->get_where('enroll', array('student_id' => $row['student_id'], 'year' => $running_year))->row()->section_id;
 ?>
     <div class="content-w">
         <?php include 'fancy.php'; ?>
@@ -50,75 +47,63 @@ foreach ($student_info as $row) :
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <?php
-                                    foreach (getAvailabeSubject($student_id) as $subject) {
-                                        if (isActiveSubject($student_id, $subject->subject_id)) {
-                                            $exams = $this->db->get_where('exam', array('class_id' => $subject->class_id, 'section_id' => $subject->section_id, 'subject_id' => $subject->subject_id))->result_array();
-                                            foreach ($exams as $row2) { ?>
-                                                <div class="col-sm-12">
-                                                    <div class="element-box lined-primary">
-                                                        <h5 class="form-header"><?php echo getEduAppGTLang('marks'); ?><br> <small><?php echo $row2['name']; ?></small></h5>
-                                                        <div class="table-responsive">
-                                                            <table class="table table-lightborder">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th><?php echo getEduAppGTLang('subject'); ?></th>
-                                                                        <th><?php echo getEduAppGTLang('teacher'); ?></th>
-                                                                        <th><?php echo getEduAppGTLang('mark'); ?></th>
-                                                                        <th><?php echo getEduAppGTLang('average'); ?></th>
-                                                                        <th><?php echo getEduAppGTLang('grade'); ?></th>
-                                                                        <th><?php echo getEduAppGTLang('comment'); ?></th>
-                                                                        <th><?php echo getEduAppGTLang('view_all'); ?></th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <?php
-                                                                    $obtained_mark_query = $this->db->get_where('mark', array('subject_id' => $subject->subject_id, 'exam_id' => $row2['exam_id'], 'class_id' => $class_id, 'student_id' => $student_id, 'year' => $running_year));
-                                                                    if ($obtained_mark_query->num_rows() > 0) {
-                                                                        $marks = $obtained_mark_query->result_array();
-                                                                        foreach ($marks as $row4) :
-
-                                                                    ?>
-                                                                            <tr>
-                                                                                <td><?php echo $subject->name; ?></td>
-                                                                                <td><img alt="" src="<?php echo $this->crud->get_image_url('teacher', $subject->teacher_id); ?>" width="25px" class="tbl-user"> <?php echo $this->crud->get_name('teacher', $subject->teacher_id); ?></td>
-                                                                                <td>
-                                                                                    <?php echo $this->db->get_where('mark', array('subject_id' => $subject->subject_id, 'exam_id' => $row2['exam_id'], 'student_id' => $student_id, 'year' => $running_year))->row()->mark_obtained; ?>
-                                                                                </td>
-                                                                                <td>
-                                                                                    <?php
-                                                                                    $avg = $this->db->get_where('mark', array('subject_id' => $subject->subject_id, 'exam_id' => $row2['exam_id'], 'student_id' => $student_id, 'year' => $running_year))->row()->final;
-                                                                                    if ($avg < $min || $avg == 0) :
-                                                                                    ?>
-                                                                                        <span class="badge badge-danger text-white"><?php echo $avg; ?></span>
-                                                                                    <?php endif; ?>
-                                                                                    <?php if ($avg >= $min) : ?>
-                                                                                        <span class="badge badge-success text-white"><?php echo $avg; ?></span>
-                                                                                    <?php endif; ?>
-                                                                                </td>
-                                                                                <td><?php echo $grade = $this->crud->get_grade($avg); ?></td>
-                                                                                <td><?php echo $this->db->get_where('mark', array('subject_id' => $subject->subject_id, 'exam_id' => $row2['exam_id'], 'student_id' => $student_id, 'year' => $running_year))->row()->comment; ?></td>
-                                                                                <?php $data = base64_encode($row2['exam_id'] . "-" . $student_id . "-" . $subject->subject_id); ?>
-                                                                                <td><a class="btn btn-rounded btn-sm btn-primary text-white" href="<?php echo base_url(); ?>admin/subject_marks/<?php echo $data; ?>"><?php echo getEduAppGTLang('view_all'); ?></a></td>
-                                                                            </tr>
-                                                                    <?php endforeach;
-                                                                    }
-
-                                                                    ?>
-                                                                </tbody>
-                                                            </table>
-                                                            <div class="form-buttons-w text-right">
-                                                                <a target="_blank" href="<?php echo base_url(); ?>admin/marks_print_view/<?php echo $student_id; ?>/<?php echo $row2['exam_id']; ?>"><button class="btn btn-rounded btn-success" type="submit"><i class="picons-thin-icon-thin-0333_printer"></i> <?php echo getEduAppGTLang('print'); ?></button></a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                        <div class="ui-block">
+                                            <div class="ui-block-title">
+                                                <h6 class="title"><?php echo getEduAppGTLang('certificate_list'); ?>
+                                                </h6>
+                                            </div>
+                                            <div class="ui-block-content">
+                                                <div class="table-responsive">
+                                                    <table class="table table-padded">
+                                                        <thead>
+                                                            <tr>
+                                                                <th><?php echo getEduAppGTLang('no'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('class'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('section'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('subject'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('certificate_code'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('cert_generated_at'); ?></th>
+                                                                <th><?php echo getEduAppGTLang('download'); ?></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                            $datax = $this->db->query("SELECT subject_id,cert_code,cert_generated_at FROM student_subject where cert_code is not null and cert_generated_at is not null and student_id = $student_id")->result();
+                                                            $no = 1;
+                                                            foreach ($datax as $item) :
+                                                                $subjectDetail = getSubjectDetailBySubjectId($item->subject_id);
+                                                            ?>
+                                                                <tr>
+                                                                    <td>
+                                                                        <?= $no ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?= getClassNameById($subjectDetail->class_id); ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?= getSectionNameById($subjectDetail->section_id) ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?= $subjectDetail->name ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?= $item->cert_code ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?= $item->cert_generated_at ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <a class="btn btn-sm btn-success" target="_blank" href="<?= base_url('certificate/download/' . $item->cert_code) ?>"> <?= getEduAppGTLang('download_certificate'); ?> <i class="fa fa-file-pdf"></i></a>
+                                                                    </td>
+                                                                </tr>
+                                                            <?php $no++;
+                                                            endforeach; ?>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
-                                    <?php }
-                                        }
-                                    } ?>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </main>
@@ -144,7 +129,7 @@ foreach ($student_info as $row) :
                                                 <h3 class="title"><?php echo getEduAppGTLang('quick_links'); ?></h3>
                                                 <ul class="help-support-list">
                                                     <li>
-                                                        <i class="px20 picons-thin-icon-thin-0133_arrow_right_next"></i> &nbsp;&nbsp;&nbsp;
+                                                        <i class="picons-thin-icon-thin-0133_arrow_right_next px20"></i> &nbsp;&nbsp;&nbsp;
                                                         <a href="<?php echo base_url(); ?>admin/student_portal/<?php echo $student_id; ?>/"><?php echo getEduAppGTLang('personal_information'); ?></a>
                                                     </li>
                                                     <li>
@@ -161,7 +146,7 @@ foreach ($student_info as $row) :
                                                     </li>
                                                     <li>
                                                         <i class="picons-thin-icon-thin-0133_arrow_right_next px20"></i> &nbsp;&nbsp;&nbsp;
-                                                        <a href="<?php echo base_url(); ?>admin/student_profile_attendance/<?php echo $student_id; ?>/"><?php echo getEduAppGTLang('attendance'); ?></a>
+                                                        <a href="<?php echo base_url(); ?>admin/student_profile_attendance/<?php echo $student_id; ?>/"><?php echo getEduAppGTLang('atendance'); ?></a>
                                                     </li>
                                                     <li>
                                                         <i class="picons-thin-icon-thin-0133_arrow_right_next px20"></i> &nbsp;&nbsp;&nbsp;
