@@ -4,6 +4,10 @@
         <div class="content-i">
             <div class="content-box">
                 <div class="conty">
+                    <div class="form-group bg-white">
+                        <input type="text" id="searchClass" class="form-control" placeholder="<?=getEduAppGTLang("search")?>">
+                    </div>
+
                     <div class="row">
                         <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 margintelbot">
                             <div class="friend-item min-h250 friend-groups create-group" data-mh="friend-groups-item">      
@@ -25,7 +29,7 @@
                         }
 			                foreach($classes as $class):
 		                ?>
-                        <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="col col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 class-item" data-class-name="<?php echo strtolower($class['name']); ?>">
                             <div class="ui-block" data-mh="friend-groups-item">        
                                 <div class="friend-item friend-groups">
                                     <div class="friend-item-content">
@@ -122,4 +126,18 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div><script>
+document.getElementById("searchClass").addEventListener("keyup", function() {
+    const filter = this.value.toLowerCase();
+    const classCards = document.querySelectorAll(".class-item");
+
+    classCards.forEach(function(card) {
+        const className = card.getAttribute("data-class-name");
+        if (className.includes(filter)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+});
+</script>

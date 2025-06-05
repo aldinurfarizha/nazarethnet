@@ -44,6 +44,7 @@
                                                 <th><?php echo getEduAppGTLang('priority');?></th>
                                                 <th><?php echo getEduAppGTLang('date');?></th>
                                                 <th><?php echo getEduAppGTLang('created_by');?></th>
+                                                <th><?php echo getEduAppGTLang('branch');?></th>
                                                 <th><?php echo getEduAppGTLang('student');?></th>
                                                 <th><?php echo getEduAppGTLang('class');?></th>
                                                 <th><?php echo getEduAppGTLang('section');?></th>
@@ -58,6 +59,18 @@
 					                        foreach($reports as $row):
 				                            $user = $row['user_id'];
                                             $re = explode('-', $user);
+                                            $studentDetail=getStudentInfo($row['student_id']);
+                                            if(isSuperAdmin()==false){
+                                                $myBranchId=getMyBranchId();
+                                                if($studentDetail['branch_id']!=$myBranchId){
+                                                    continue;
+                                                }
+                                            }
+                                            if(getDetailBranch($studentDetail->branch_id)){
+                                                $branchName=getDetailBranch($studentDetail->branch_id)->name;
+                                            }else{
+                                                $branchName='-';
+                                            }
                                         ?>
                                             <tr>
                                                 <td>
@@ -74,6 +87,9 @@
                                                 <td><span><?php echo $row['date'];?></span></td>
                                                 <td class="cell-with-media">
                                                     <img alt="" src="<?php echo $this->crud->get_image_url($re[0], $re[1]);?>" class="height25"><span><?php echo $this->crud->get_name($re[0], $re[1]);?></span>
+                                                </td>
+                                                <td>
+                                                    <?=$branchName;?>
                                                 </td>
                                                 <td class="cell-with-media">
                                                     <img alt="" src="<?php echo $this->crud->get_image_url('student', $row['student_id']);?>" class="height25"><span> <?php echo $this->crud->get_name('student', $row['student_id']);?></span>

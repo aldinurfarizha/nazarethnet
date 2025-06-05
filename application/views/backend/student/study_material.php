@@ -34,6 +34,18 @@
     .summernote-content a:hover {
         color: darkblue;
     }
+    .emoji-insert {
+            margin-right: 8px;
+            font-size: 35px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .summernote-preview {
+  border: none;
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
 </style>
 <?php 
     $running_year = $this->crud->getInfo('running_year'); 
@@ -126,7 +138,11 @@
         		                                    foreach ($study_material_info as $row):
         	                                    ?>   
                                                     <tr>
-                                                        <td><div class="summernote-content"><?= $row['post_content']; ?></div></td>
+                                                        <td>
+                                                                 <?php if(!empty($row['post_content'])) : ?>
+                                                                    <iframe class="summernote-preview" srcdoc="<?= htmlspecialchars($row['post_content']); ?>"></iframe>
+                                                                <?php endif; ?>
+                                                            </td>
                                                         <td class="text-left cell-with-media ">
                                                             <a href="<?php echo base_url() . 'public/material/' . $row['post_file']; ?>" class="grey">
                                                                 <?php if($row['file_type'] == 'PDF'):?>

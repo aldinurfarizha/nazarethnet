@@ -54,7 +54,7 @@ foreach ($student_info as $row) :
                                             </div>
                                             <div class="ui-block-content">
                                                 <div class="table-responsive">
-                                                    <table class="table table-padded">
+                                                    <table id="studentTable" class="table table-striped table-hover">
                                                         <thead>
                                                             <tr>
                                                                 <th><?php echo getEduAppGTLang('no'); ?></th>
@@ -77,7 +77,7 @@ foreach ($student_info as $row) :
                                                                         <?= $no ?>
                                                                     </td>
                                                                     <td>
-                                                                        <?= $item->name ?>
+                                                                        <a href="<?php echo base_url();?>admin/subject_dashboard/<?php echo base64_encode($item->class_id."-".$item->section_id."-".$item->subject_id);?>"><?= $item->name ?></a>
                                                                     </td>
                                                                     <td>
                                                                         <?= $item->class_name ?>
@@ -206,3 +206,8 @@ foreach ($student_info as $row) :
         </div>
     </div>
 <?php endforeach; ?>
+<script>
+    $(document).ready(function() {
+        $('#studentTable').DataTable();
+    });
+</script>

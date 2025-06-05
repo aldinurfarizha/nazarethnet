@@ -20,7 +20,7 @@ foreach ($sub as $row) :
 
         .emoji-insert {
             margin-right: 8px;
-            font-size: 20px;
+            font-size: 35px;
             text-decoration: none;
             cursor: pointer;
         }
@@ -172,6 +172,12 @@ foreach ($sub as $row) :
 .summernote-content a:hover {
   color: darkblue;
 }
+.summernote-preview {
+  border: none;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
 
     </style>
     <div class="content-w">
@@ -263,7 +269,9 @@ foreach ($sub as $row) :
                                                         </div>
                                                     </div>
                                                     <hr>
-                                                    <div class="summernote-content"><?= $wall['post_content']; ?></div>
+                                                    <?php if(!empty($wall['post_content'])) : ?>
+                                                        <iframe class="summernote-preview" srcdoc="<?= htmlspecialchars($wall['post_content']); ?>"></iframe>
+                                                    <?php endif; ?>
                                                     <hr>
                                                     <?php if (!empty($wall['post_file'])) : ?>
                                                         <a href="<?= base_url('public/news/' . $wall['post_file']) ?>"><?= getEduAppGTLang('download_attachment'); ?> (.<?= $wall['post_file_type'] ?>) <i class="fa fa-paperclip"></i></a>
@@ -439,7 +447,9 @@ foreach ($sub as $row) :
                                                             </div>
                                                             <h3 class="cta-header"><?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->title; ?></h3>
                                                             <div class="descripcion">
-                                                                <div class="summernote-content"><?= $wall['post_content']; ?></div>
+                                                                 <?php if(!empty($wall['post_content'])) : ?>
+                                                                    <iframe class="summernote-preview" srcdoc="<?= htmlspecialchars($wall['post_content']); ?>"></iframe>
+                                                                <?php endif; ?>
                                                                 <br>
                                                                 <?php if ($this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->media_type == 1) : ?>
                                                                     <video src="<?php echo base_url(); ?>public/uploads/homework/video/<?php echo $this->db->get_where('homework', array('homework_id' => $wall['homework_id']))->row()->homework_code; ?>.mp4" controls type="video/mp4" style="width: auto; max-width:100%;"></video>
@@ -719,7 +729,7 @@ foreach ($sub as $row) :
                                                             </div>
                                                             <h3 class="cta-header"><?php echo $this->db->get_where('online_exam', array('online_exam_id' => $wall['homework_id']))->row()->title; ?></h3>
                                                             <div class="descripcion">
-                                                                <?php echo html_entity_decode($this->db->get_where('online_exam', array('online_exam_id' => $wall['homework_id']))->row()->instruction); ?>
+                                                                <?php echo html_entity_decode($this->db->get_where('online_exam', array('online_exam_id' => $wall['homework_id']))->row()->post_content); ?>
                                                             </div>
                                                             <div class="deadtime">
                                                                 <span><?php echo getEduAppGTLang('date'); ?>:</span><i class="picons-thin-icon-thin-0027_stopwatch_timer_running_time"></i><?php echo date('M d, Y', $this->db->get_where('online_exam', array('online_exam_id' => $wall['homework_id']))->row()->exam_date); ?>
@@ -767,7 +777,9 @@ foreach ($sub as $row) :
                                                                 <?php echo $this->db->get_where('class', array('class_id' => $ex[0]))->row()->name; ?> "<?php echo $this->db->get_where('section', array('section_id' => $ex[1]))->row()->name; ?>"
                                                             </div>
                                                             <h3 class="cta-header"><?php echo getEduAppGTLang('study_material'); ?></h3>
-                                                            <div class="summernote-content"><?= $wall['post_content']; ?></div>
+                                                             <?php if(!empty($wall['post_content'])) : ?>
+                                                        <iframe class="summernote-preview" srcdoc="<?= htmlspecialchars($wall['post_content']); ?>"></iframe>
+                                                    <?php endif; ?>
                                                             <?php if($wall['post_file']){ ?>
                                                                 <div class="table-responsive">
                                                                 <table class="table table-down">
@@ -896,7 +908,9 @@ foreach ($sub as $row) :
                                                                 <?php echo $this->db->get_where('class', array('class_id' => $ex[0]))->row()->name; ?> "<?php echo $this->db->get_where('section', array('section_id' => $ex[1]))->row()->name; ?>"
                                                             </div>
                                                             <h3 class="cta-header"><?php echo $this->db->get_where('forum', array('post_id' => $wall['homework_id']))->row()->title; ?></h3>
-                                                            <div class="summernote-content"><?= $wall['post_content']; ?></div>
+                                                             <?php if(!empty($wall['post_content'])) : ?>
+                                                        <iframe class="summernote-preview" srcdoc="<?= htmlspecialchars($wall['post_content']); ?>"></iframe>
+                                                    <?php endif; ?>
                                                             <?php if($wall['post_file']){?>
                                                                 <div class="table-responsive">
                                                                 <table class="table table-down">

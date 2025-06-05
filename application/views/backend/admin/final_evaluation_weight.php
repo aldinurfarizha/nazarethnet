@@ -38,7 +38,8 @@
                             </div>
                             Pesos de evaluación final
                             <p><?= $exam->name; ?></p>
-                            <p><?= getClassNameById($exam->class_id) . ' | ' . getSectionNameById($exam->section_id) . '|' . getSubjectNameById($exam->subject_id); ?> </p>
+                            <?php $class = $this->db->get_where('class', array('class_id' => $exam->class_id))->row(); ?>
+                            <p><?= @getDetailBranch($class->branch_id)->name . ' | ' . getClassNameById($exam->class_id) . ' | ' . getSectionNameById($exam->section_id) . '|' . getSubjectNameById($exam->subject_id); ?> </p>
                             <a class="btn btn-primary" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_add_is_average/<?php echo $exam->exam_id ?>');" href="javascript:void(0);">Relleno automático</a>
                         </h6>
                         <div class="element-box-tp">

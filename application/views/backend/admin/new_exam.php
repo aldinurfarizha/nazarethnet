@@ -1,7 +1,7 @@
     <style>
         .emoji-insert {
             margin-right: 8px;
-            font-size: 20px;
+            font-size: 35px;
             text-decoration: none;
             cursor: pointer;
         }

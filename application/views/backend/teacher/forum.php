@@ -1,3 +1,11 @@
+<style>
+    .emoji-insert {
+            margin-right: 8px;
+            font-size: 35px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+</style>
 <?php 
     $running_year = $this->crud->getInfo('running_year');
     $info = base64_decode($data);

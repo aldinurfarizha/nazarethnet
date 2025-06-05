@@ -28,6 +28,12 @@
   overflow-x: auto;
   display: block;
 }
+.emoji-insert {
+            margin-right: 8px;
+            font-size: 35px;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
 
 

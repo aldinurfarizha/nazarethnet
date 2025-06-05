@@ -2804,6 +2804,11 @@ class Admin extends EduAppGT
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_uploaded'));
             redirect(base_url() . 'admin/study_material/' . $document_id . "/", 'refresh');
         }
+         if ($task == "update") {
+            $this->academic->updateMaterial();
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_uploaded'));
+            redirect(base_url() . 'admin/study_material/' . $document_id . "/", 'refresh');
+        }
         if ($task == "delete") {
             $this->crud->delete_study_material_info($document_id);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_deleted'));

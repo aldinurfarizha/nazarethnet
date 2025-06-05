@@ -1,3 +1,11 @@
+<style>
+        .emoji-insert {
+            margin-right: 8px;
+            font-size: 35px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
     <div class="content-w">
        <div class="conty">
            <?php 

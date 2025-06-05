@@ -452,6 +452,41 @@ class Academic extends School
             $this->db->insert('notification', $notify);
         }
     }
+    public function updateMaterial()
+{
+    $document_id = $this->input->post('document_id');
+    $data['upload_date']       = $this->crud->getDateFormat().' '.date('h:iA');
+    $data['publish_date']      = date('Y-m-d H:i:s');
+    $data['sync_status']       = 1;
+    $data['teacher_id']        = $this->session->userdata('login_user_id');
+    $data['can_reaction']      = $this->input->post('can_reaction') ? 1 : 0;
+    $data['can_comment']       = $this->input->post('can_comment') ? 1 : 0;
+    $data['post_content']      = $this->input->post('post_content');
+
+    // Cek apakah ada file baru yang diupload
+    if (isset($_FILES['file_name']) && $_FILES['file_name']['error'] == UPLOAD_ERR_OK) {
+        $upload_dir = 'public/material/';
+        if (!is_dir($upload_dir)) {
+            mkdir($upload_dir, 0755, true);
+        }
+
+        $ext = pathinfo($_FILES["file_name"]["name"], PATHINFO_EXTENSION);
+        $new_filename = uniqid('material', true) . '.' . $ext;
+        $target_file = $upload_dir . $new_filename;
+
+        if (move_uploaded_file($_FILES["file_name"]["tmp_name"], $target_file)) {
+            $data['post_file'] = $new_filename;
+            $data['post_file_type'] = $ext;
+            $data['filesize'] = $this->crud->formatBytes($_FILES["file_name"]["size"]);
+            $data['attachment_name'] = $_FILES["file_name"]["name"];
+        }
+    }
+
+    // Update ke database
+    $this->db->where('document_id', $document_id);
+    $this->db->update('document', $data);
+}
+
     
     public function update_online_exam()
     {

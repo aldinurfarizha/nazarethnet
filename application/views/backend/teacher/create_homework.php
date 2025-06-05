@@ -22,6 +22,12 @@
             clear: both;
             padding-top: 10px;
         }
+            .emoji-insert {
+            margin-right: 8px;
+            font-size: 35px;
+            text-decoration: none;
+            cursor: pointer;
+        }
 </style>
       <script>
           var base_url = '<?php echo base_url();?>';

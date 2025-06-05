@@ -1,4 +1,15 @@
 <style>
+     .custom-modal-responsive {
+            width: 90%;
+            max-width: 90%;
+        }
+
+        @media (min-width: 768px) {
+            .custom-modal-responsive {
+                width: 50%;
+                max-width: 50%;
+            }
+        }
     .summernote-content {
         all: initial;
         /* Reset semua style */
@@ -34,6 +45,24 @@
     .summernote-content a:hover {
         color: darkblue;
     }
+        .emoji-insert {
+            margin-right: 8px;
+            font-size: 35px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .summernote-preview {
+  border: none;
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
+.emoji-insert-edit {
+            margin-right: 8px;
+            font-size: 35px;
+            text-decoration: none;
+            cursor: pointer;
+        }
 </style>
 <?php 
     $running_year = $this->crud->getInfo('running_year');
@@ -120,7 +149,13 @@
                                                     foreach ($study_material_info as $row):
                                                     ?>
                                                         <tr>
-                                                            <td><div class="summernote-content"><?= $row['post_content']; ?></div></td>
+                                                            <td>
+                                                                 <?php if(!empty($row['post_content'])) : ?>
+                                                                    <iframe class="summernote-preview" srcdoc="<?= htmlspecialchars($row['post_content']); ?>"></iframe>
+                                                                <?php endif; ?>
+                                                            </td>
+                                                            <td><?=getEduAppGTLang('can_comment');?>:<?php if($row['can_comment'] == 1) { echo getEduAppGTLang('yes'); } else { echo getEduAppGTLang('no'); } ?></td>
+                                                            <td><?=getEduAppGTLang('can_reaction');?>:<?php if($row['can_reaction'] == 1) { echo getEduAppGTLang('yes'); } else { echo getEduAppGTLang('no'); } ?></td>
                                                             <td class="text-left cell-with-media ">
                                                                 <a href="<?php echo base_url() . 'public/material/' . $row['post_file']; ?>" class="grey">
                                                                     <?php if ($row['file_type'] == 'PDF'): ?>
@@ -143,6 +178,13 @@
                                                                     <?php endif; ?><span><?php echo $row['post_file']; ?></span><span class="smaller">(<?php echo $row['post_file_type']; ?>)</span></a>
                                                             </td>
                                                             <td class="text-center bolder">
+                                                                <a href="#" class="grey edit-post-btn"
+                                                                        data-id="<?= $row['document_id'] ?>"
+                                                                        data-content="<?= htmlspecialchars($row['post_content'], ENT_QUOTES, 'UTF-8') ?>"
+                                                                        data-comment="<?= $row['can_comment'] ?>"
+                                                                        data-reaction="<?= $row['can_reaction'] ?>"
+                                                                        data-toggle="modal"
+                                                                        data-target="#editPostModal""><i class="picons-thin-icon-thin-0001_compose_write_pencil_new"></i></a>
                                                                 <a target="_blank" href="<?php echo base_url() . 'public/material/' . $row['post_file']; ?>" class="grey"> <span><i class="picons-thin-icon-thin-0121_download_file"></i></span> </a>
                                                                 <a class="grey" onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>')" href="<?php echo base_url(); ?>teacher/study_material/delete/<?php echo $row['document_id'] ?>/<?php echo $data; ?>"><i class="picons-thin-icon-thin-0056_bin_trash_recycle_delete_garbage_empty"></i></a>
                                                             </td>
@@ -241,6 +283,59 @@
         </div>
     </div>
 <?php endforeach; ?>
+ <div class="modal fade" id="editPostModal" tabindex="-1" role="dialog" aria-labelledby="editPostModalLabel" aria-hidden="true">
+        <div class="modal-dialog custom-modal-responsive" role="document">
+            <div class="modal-content">
+                <form action="<?= base_url('teacher/study_material/update/' . $data) ?>" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="document_id" id="edit_post_id">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="editPostModalLabel"><?=getEduAppGTLang('edit_study_material')?></h6>
+                        <button type="button" class="close icon-close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="description-toggle mb-3">
+                            <div class="description-toggle-content">
+                                <div class="h6"><?php echo getEduAppGTLang('can_comment'); ?></div>
+                                <p><?php echo getEduAppGTLang('all_people_can_comment_on_this_post'); ?></p>
+                            </div>
+                            <div class="togglebutton">
+                                <label><input type="checkbox" id="edit_can_comment" name="can_comment" value="1"></label>
+                            </div>
+                        </div>
+
+                        <div class="description-toggle mb-3">
+                            <div class="description-toggle-content">
+                                <div class="h6"><?php echo getEduAppGTLang('can_reaction'); ?></div>
+                                <p><?php echo getEduAppGTLang('people_can_react_on_this_post'); ?></p>
+                            </div>
+                            <div class="togglebutton">
+                                <label><input type="checkbox" id="edit_can_reaction" name="can_reaction" value="1"></label>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_post_content" class="form-label">Post Content</label>
+                            <textarea id="edit_post_content" name="post_content"></textarea>
+                            <?php foreach (getAllReaction() as $reactionIcon) { ?>
+                                <a href="#" class="emoji-insert-edit" data-emoji="<?= $reactionIcon->reaction_type ?>">
+                                    <?= $reactionIcon->reaction_type ?>
+                                </a>
+                            <?php } ?>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="edit_post_file" class="form-label">File</label>
+                            <input type="file" class="form-control" name="post_file" id="edit_post_file">
+                            <small><?= getEduAppGTLang('accepted_file_photos_videos_documents_pdf_excel_powerpoint'); ?></small>
+                            <small><?= getEduAppGTLang('fill_if_want_to_update'); ?></small>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-rounded btn-lg full-width">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
@@ -259,12 +354,50 @@
                 ['view', ['fullscreen', 'codeview']]
             ]
         });
+         $('#edit_post_content').summernote({
+                placeholder: 'Write your content here...',
+                tabsize: 2,
+                height: 250,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear', 'fontsize', 'fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'picture', 'video', 'emoji']],
+                    ['view', ['fullscreen', 'codeview']]
+                ]
+            });
+            $('.emoji-insert-edit').on('click', function(e) {
+                e.preventDefault();
+
+                var emoji = $(this).data('emoji');
+                $('#edit_post_content').summernote('insertText', emoji);
+            });
         $('.emoji-insert').on('click', function(e) {
             e.preventDefault();
 
             var emoji = $(this).data('emoji');
             $('#summernote').summernote('insertText', emoji);
         });
+        function decodeHtml(html) {
+                var txt = document.createElement("textarea");
+                txt.innerHTML = html;
+                return txt.value;
+            }
+        $('.edit-post-btn').on('click', function() {
+                let content = $(this).data('content');
+                let post_id = $(this).data('id');
+                let comment = $(this).data('comment');
+                let reaction = $(this).data('reaction');
+                console.log(comment);
+                console.log(reaction);
+                console.log(post_id);
+                $('#edit_post_id').val(post_id);
+                $('#edit_post_content').summernote('code', decodeHtml(content));
+
+                $('#edit_can_comment').prop('checked', comment == 1);
+                $('#edit_can_reaction').prop('checked', reaction == 1);
+            });
 
     });
 </script>
