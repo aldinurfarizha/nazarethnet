@@ -139,7 +139,8 @@ class Certificate extends EduAppGT
                 'qrCodeFilePath' => $qrCodeFilePath,
             ];
         }
-
+        $certificateSettings=$this->db->get_where('certificate_settings', ['id' => 1])->row();
+        $data['settings'] = $certificateSettings;
         $html = $this->load->view('certificates/certificate_template', $data, true);
         if($type == 'view'){
             $mode= 'I';
@@ -147,7 +148,7 @@ class Certificate extends EduAppGT
             $mode= 'D';
         }
         $this->pdf_generator->generate($html, "nazarethnet-certificate-{$certCode}.pdf", $mode, [
-            'format' => 'A4-L',
+            'format' => [$certificateSettings->width, $certificateSettings->height],
             'margin_left' => 0,
             'margin_right' => 0,
             'margin_top' => 0,
