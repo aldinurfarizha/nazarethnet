@@ -30,6 +30,9 @@
                         <li class="navs-item">
                             <a class="navs-links active" href="<?php echo base_url(); ?>admin/transfer_data/"><i class="picons-thin-icon-thin-0125_cloud_sync"></i> <span><?php echo getEduAppGTLang('transfer_data'); ?></span></a>
                         </li>
+						<li class="navs-item">
+                            <a class="navs-links" href="<?php echo base_url(); ?>admin/export_data/"><i class="picons-thin-icon-thin-0088_download_file"></i> <span><?php echo getEduAppGTLang('export_data'); ?></span></a>
+                        </li>
 			        </ul>
     			</div>
     		</div>

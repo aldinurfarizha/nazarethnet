@@ -3593,6 +3593,15 @@ class Admin extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('branch_and_shifts');
         $this->load->view('backend/index', $page_data);
     }
+    function export_data()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $page_data['page_name']  = 'export_data';
+        $page_data['page_title'] = getEduAppGTLang('export_data');
+        $this->load->view('backend/index', $page_data);
+    }
     function transfer_data($param1=null,$param2=null)
     {
         if ($this->session->userdata('admin_login') != 1) {

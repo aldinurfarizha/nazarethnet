@@ -54,7 +54,6 @@ $sundays = $this->db->get_where('academic_settings', array('type' => 'routine'))
                               <?= $this->db->where(['branch_id'=>null])->count_all_results('class'); ?>
                             </span></a>
     											</li>
-                          
     										</ul>
     									</div>
     								</div>
