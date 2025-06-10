@@ -3362,6 +3362,32 @@ class Admin extends EduAppGT
             echo '<option value="' . $row['student_id'] . '">' . $this->crud->get_name('student', $row['student_id']) . '</option>';
         }
     }
+    function get_student_subject($subject_id = '')
+    {
+        $students = $this->db->get_where('student_subject', array('subject_id' => $subject_id))->result_array();
+        $hasStudent = false;
+
+        foreach ($students as $row2) {
+            if (isStudentFinishSubject($row2['student_id'], $subject_id)) {
+                continue;
+            }
+
+            if (isActiveSubject($row2['student_id'], $subject_id)) {
+                $hasStudent = true;
+                $studentName = $this->crud->get_name('student', $row2['student_id']);
+                $studentId = $row2['student_id'];
+
+                echo '<tr>';
+                echo '<td><input type="checkbox" name="selected_students[]" value="' . $studentId . '"></td>';
+                echo '<td>' . $studentName . '</td>';
+                echo '</tr>';
+            }
+        }
+        if (!$hasStudent) {
+            echo '<tr><td colspan="2" style="text-align:center;">Empty student on this subject source</td></tr>';
+        }
+    }
+
 
     function get_exm_($section_id = '')
     {
@@ -3694,6 +3720,8 @@ class Admin extends EduAppGT
         $homework=$this->input->post('homework');
         $forum=$this->input->post('forum');
         $study_material=$this->input->post('study_material');
+        $selected_students = $this->input->post('selected_students');
+        if (!is_array($selected_students)) $selected_students = [];
 
         $subject_source = getSubjectDetailBySubjectId($subject_id_source);
        
@@ -3731,6 +3759,10 @@ class Admin extends EduAppGT
                                     
                                     //insert new student to subject
                                     foreach($student_subject_source as $students){
+                                        //cek hanya yang di pilih yang di masukin kalau tidak ada di skio
+                                        if (!in_array($students, $selected_students)) {
+                                            continue; // skip siswa yang tidak dipilih
+                                        }
                                         //cek enroll
                                         $isStudentEnrolled=isStudentEnrolled($students, $subject_target->class_id, $subject_target->section_id);
                                         if($isStudentEnrolled==false){
@@ -3777,6 +3809,9 @@ class Admin extends EduAppGT
             $student_subject_source = getStudentBySubjectId($subject_id_source);
             foreach($student_subject_source as $students){
                 //cek enroll
+                if (!in_array($students, $selected_students)) {
+                    continue; // skip siswa yang tidak dipilih
+                }
                 $isStudentEnrolled=isStudentEnrolled($students, $subject_target->class_id, $subject_target->section_id);
                 if($isStudentEnrolled==false){
                     $data=[

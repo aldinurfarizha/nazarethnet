@@ -110,7 +110,7 @@
     												<div class="form-group label-floating is-select">
     													<label class="control-label"><?php echo getEduAppGTLang('subject'); ?></label>
     													<div class="select">
-    														<select name="subject_id_source" id="subject_holder">
+    														<select name="subject_id_source" onchange="get_student_subject(this.value);" id="subject_holder">
     															<option value=""><?php echo getEduAppGTLang('select'); ?></option>
     														</select>
     													</div>
@@ -196,7 +196,7 @@
     									</div>
     									<div class="step-content" id="stepContent3">
     										<div class="row" id="new_parent">
-    											<div class="col-md-12">
+    											<div class="col-md-4">
     												<div class="description-toggle">
     													<div class="description-toggle-content">
     														<div class="h6"><?php echo getEduAppGTLang('transfer_exam'); ?></div>
@@ -207,7 +207,7 @@
     													</div>
     												</div>
     											</div>
-    											<div class="col-md-12">
+    											<div class="col-md-4">
     												<div class="description-toggle">
     													<div class="description-toggle-content">
     														<div class="h6"><?php echo getEduAppGTLang('transfer_activities'); ?></div>
@@ -218,7 +218,7 @@
     													</div>
     												</div>
     											</div>
-    											<div class="col-md-12">
+    											<div class="col-md-4">
     												<div class="description-toggle">
     													<div class="description-toggle-content">
     														<div class="h6"><?php echo getEduAppGTLang('transfer_students_grade'); ?></div>
@@ -229,7 +229,7 @@
     													</div>
     												</div>
     											</div>
-    											<div class="col-md-12">
+    											<div class="col-md-4">
     												<div class="description-toggle">
     													<div class="description-toggle-content">
     														<div class="h6"><?php echo getEduAppGTLang('transfer_attendance'); ?></div>
@@ -240,7 +240,7 @@
     													</div>
     												</div>
     											</div>
-    											<div class="col-md-12">
+    											<div class="col-md-4">
     												<div class="description-toggle">
     													<div class="description-toggle-content">
     														<div class="h6"><?php echo getEduAppGTLang('transfer_homework'); ?></div>
@@ -251,7 +251,7 @@
     													</div>
     												</div>
     											</div>
-    											<div class="col-md-12">
+    											<div class="col-md-4">
     												<div class="description-toggle">
     													<div class="description-toggle-content">
     														<div class="h6"><?php echo getEduAppGTLang('transfer_forum'); ?></div>
@@ -262,7 +262,7 @@
     													</div>
     												</div>
     											</div>
-    											<div class="col-md-12">
+    											<div class="col-md-4">
     												<div class="description-toggle">
     													<div class="description-toggle-content">
     														<div class="h6"><?php echo getEduAppGTLang('study_material'); ?></div>
@@ -271,6 +271,25 @@
     													<div class="togglebutton">
     														<label><input type="checkbox" checked name="study_material"></label>
     													</div>
+    												</div>
+    											</div>
+    											<div class="col-md-12">
+    												<hr>
+    											</div>
+    											<div class="col-md-12">
+    												<h3><?= getEduAppGTLang('select_student'); ?></h3>
+    												<div class="table-responsive">
+    													<table class="table table-striped">
+    														<thead>
+    															<tr>
+    																<th><input type="checkbox" id="checkAll"></th>
+    																<th><?php echo getEduAppGTLang('name'); ?></th>
+    															</tr>
+    														</thead>
+    														<tbody id="studentTable">
+    														</tbody>
+
+    													</table>
     												</div>
     											</div>
     										</div>
@@ -435,6 +454,39 @@
     				subtree: false
     			});
     		</script>
+    		<script>
+    			function get_student_subject(subject_id) {
+    				$.ajax({
+    					url: rootAppURI + 'admin/get_student_subject/' + subject_id,
+    					success: function(response) {
+    						jQuery('#studentTable').html(response);
+    					}
+    				});
+    			}
+    		</script>
+    		<script>
+    			document.addEventListener("DOMContentLoaded", function() {
+    				const checkAllBox = document.getElementById("checkAll");
+    				const studentTable = document.getElementById("studentTable");
+
+    				// Saat #checkAll dicentang / tidak dicentang
+    				checkAllBox.addEventListener("change", function() {
+    					const checkboxes = studentTable.querySelectorAll('input[type="checkbox"][name="selected_students[]"]');
+    					checkboxes.forEach(function(checkbox) {
+    						checkbox.checked = checkAllBox.checked;
+    					});
+    				});
+
+    				// Gunakan event delegation agar checkbox baru tetap bisa trigger
+    				studentTable.addEventListener("change", function() {
+    					const checkboxes = studentTable.querySelectorAll('input[type="checkbox"][name="selected_students[]"]');
+    					const allChecked = Array.from(checkboxes).length > 0 && Array.from(checkboxes).every(cb => cb.checked);
+    					checkAllBox.checked = allChecked;
+    				});
+    			});
+    		</script>
+
+
 
     	</div>
     </div>
