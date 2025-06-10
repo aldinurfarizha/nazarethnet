@@ -1592,7 +1592,8 @@ class Admin extends EduAppGT
     function admins($param1 = '', $param2 = '')
     {
         if(isSuperAdmin()===false){
-            redirect(base_url('admin/panel'), 'refresh');
+            echo "<script>alert('Only Super Admin can access this page!.');</script>";
+            redirect(base_url().'admin/users', 'refresh');
         }
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');

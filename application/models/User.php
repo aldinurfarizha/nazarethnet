@@ -64,6 +64,7 @@ class User extends School
         $data['birthday']     = html_escape($this->input->post('datetimepicker'));
         $data['since']        = $this->crud->getDateFormat();
         $data['username']     = html_escape($this->input->post('username'));
+        $data['branch_id']    = html_escape($this->input->post('branch_id'));
         $data['password']     = sha1($this->input->post('password'));
         $this->db->insert('librarian', $data);
         $teacher_id = $this->db->insert_id();
@@ -81,6 +82,9 @@ class User extends School
         $data['phone']         = html_escape($this->input->post('phone'));
         $data['idcard']        = html_escape($this->input->post('idcard'));
         $data['address']       = html_escape($this->input->post('address'));
+        if(isSuperAdmin()){
+            $data['branch_id']    = html_escape($this->input->post('branch_id'));
+        }
         if ($this->input->post('datetimepicker') != '') {
             $data['birthday']  = html_escape($this->input->post('datetimepicker'));
         }
@@ -116,6 +120,7 @@ class User extends School
         $data['since']        = $this->crud->getDateFormat();
         $data['username']     = html_escape($this->input->post('username'));
         $data['password']     = sha1($this->input->post('password'));
+        $data['branch_id']    = html_escape($this->input->post('branch_id'));
         $this->db->insert('accountant', $data);
         $teacher_id = $this->db->insert_id();
         move_uploaded_file($_FILES['userfile']['tmp_name'], 'public/uploads/accountant_image/' . $md5 . str_replace(' ', '', $_FILES['userfile']['name']));
@@ -132,6 +137,9 @@ class User extends School
         $data['phone']        = html_escape($this->input->post('phone'));
         $data['idcard']       = html_escape($this->input->post('idcard'));
         $data['address']      = html_escape($this->input->post('address'));
+        if(isSuperAdmin()){
+            $data['branch_id']    = html_escape($this->input->post('branch_id'));
+        }
         if ($this->input->post('datetimepicker') != '') {
             $data['birthday'] = html_escape($this->input->post('datetimepicker'));
         }

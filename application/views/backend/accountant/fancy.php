@@ -1,6 +1,7 @@
     <?php $fancy_count = $this->db->get_where('notification', array('user_id' => $this->session->userdata('login_user_id'), 'user_type' => $this->session->userdata('login_type'), 'status' => '0'));?>
     <?php $fancy_number = $this->crud->count_unread_messages();?>
-    <?php $fc_info = base64_decode($data); $fc_ex = explode('-', $fc_info); ?>
+    <?php $fc_info = base64_decode(@$data); $fc_ex = explode('-', $fc_info); ?>
+    <?php $userDetail = $this->db->get_where('accountant', array('accountant_id' => $this->session->userdata('login_user_id')))->row();?>
     <header class="header" id="site-header">
         <div class="page-title"></div>
         <div class="header-content-wrapper">
@@ -98,7 +99,7 @@
                         <div class="author-title">
                             <?php echo $this->crud->get_name('accountant', $this->session->userdata('login_user_id'));?> <svg class="olymp-dropdown-arrow-icon"><use xlink:href="<?php echo base_url();?>public/style/olapp/svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use></svg>
                         </div>
-                        <span class="author-subtitle"><?php echo ucwords($this->session->userdata('login_type'));?></span>
+                        <span class="author-subtitle"><?php echo ucwords($this->session->userdata('login_type'));?> - <?php  echo getDetailBranch($userDetail->branch_id)->name; ?></span>
                     </a>
                 </div>
             </div>
@@ -127,7 +128,7 @@
                     <a class="nav-link" data-toggle="tab" href="#autor" role="tab">
                         <div class="author-page author vcard inline-items more top16">
                           <div class="author-thumb imgs">
-                            <img alt="author" src="<?php echo $this->crud->get_image_url($this->session->userdata('login_type'), $this->session->userdata('login_user_id'));?>" class="avatar bg-white" width="35px">
+                            <img alt="author" src="<?php echo $this->crud->get_image_url($this->session->userdata('login_type'), $this->session->userdata('login_user_id'));?> " class="avatar bg-white" width="35px">
                         </div>  
                       </div>
                     </a>
