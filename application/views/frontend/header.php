@@ -49,7 +49,7 @@
 							<li><a href="<?php echo base_url(); ?>contact/" <?php if ($page_name == 'contact'): ?>class="current" <?php endif; ?>><i class="picons-thin-icon-thin-0133_arrow_right_next"></i> <?php echo getEduAppGTLang('contact_us'); ?></a></li>
 						</ul>
 					</li>
-					<li class="nav-itm"><a href="<?php echo base_url(); ?>certificate/" <?php if ($page_name == 'certificate'): ?>class="current" <?php endif; ?>><?php echo getEduAppGTLang('certificate'); ?></a></li>
+					<li class="nav-itm"><a href="<?php echo base_url(); ?>certificate/" <?php if ($page_name == 'certificate' || $page_name=='certificate_found'): ?>class="current" <?php endif; ?>><?php echo getEduAppGTLang('certificate'); ?></a></li>
 				</ul>
 				<ul class="nav-menu__secondary">
 					<li class="nav-itm"><a href="<?php echo base_url(); ?>login/" class="nav-menu__secondary__log-in btn btn-dark-o "><?php echo getEduAppGTLang('sign_in'); ?></a></li>
