@@ -3749,11 +3749,19 @@ class Admin extends EduAppGT
                                         transferMarkOldToMarkNew($students, $exam_sources->exam_id, $new_exam_id, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
                                         transferNotaCapacidadOldTonotaCapacidadNew($students, $mark_activity_sources->mark_activity_id, $new_mark_activity_id);
                                     }
+                                    //fill notacapacidad if this student exist in target subject
                                     $student_subject_source = getStudentBySubjectId($subject_id_source);
                                     foreach($student_subject_source as $studentExiting){
-                                        addStudentToMark($students, $subject_id_target, $subject_target->class_id, $subject_target->section_id, $new_exam_id);
-                                        addStudentToNotacapacidad($students, $new_mark_activity_id);
+                                        addStudentToMark($studentExiting, $subject_id_target, $subject_target->class_id, $subject_target->section_id, $new_exam_id);
+                                        addStudentToNotacapacidad($studentExiting, $new_mark_activity_id);
                                     }
+                                    //fill notacapacidad from exiting student from target subject
+                                    $student_subject_target = getStudentBySubjectId($subject_id_target);
+                                    foreach ($student_subject_target as $studentExiting) {
+                                        addStudentToMark($studentExiting, $subject_id_target, $subject_target->class_id, $subject_target->section_id, $new_exam_id);
+                                        addStudentToNotacapacidad($studentExiting, $new_mark_activity_id);
+                                    }
+
                                 }
                             }
                         }
