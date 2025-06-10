@@ -1242,7 +1242,7 @@ class Crud extends School
         $this->db->update('settings' , $data);
 
         $data['description'] = strip_tags($this->input->post('running_year'));
-        $this->db->where('type' , 'running_year');
+        $this->db->where('type' , 'running_year_f');
         $this->db->update('settings' , $data);
     }
     

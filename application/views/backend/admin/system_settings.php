@@ -162,7 +162,7 @@
                                                         <label class="control-label"><?php echo getEduAppGTLang('running_year');?></label>
                                                         <div class="select">
                                                             <select name="running_year" required="">
-                                                                <?php $running_year = $this->crud->getInfo('running_year');?>
+                                                                <?php $running_year = $this->crud->getInfo('running_year_f');?>
                                                                 <option value=""><?php echo getEduAppGTLang('select');?></option>
                              		                            <option value="2020" <?php if($running_year == '2020') echo 'selected';?>>2020</option>
                                                          		<option value="2021" <?php if($running_year == '2021') echo 'selected';?>>2021</option>

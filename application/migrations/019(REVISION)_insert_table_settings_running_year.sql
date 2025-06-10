@@ -1,0 +1,1 @@
+INSERT INTO `settings` (`settings_id`, `type`, `description`) VALUES (NULL, 'running_year_f', '2025');
