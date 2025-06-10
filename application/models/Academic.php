@@ -668,7 +668,6 @@ class Academic extends School
                                 'year' => $new_subject->year,
                                 'is_calculate_avg' => $mark_activity_references->is_calculate_avg,
                                 'percent' => $mark_activity_references->percent,
-                                'reason' => $mark_activity_references->reason,
                             ));
                         }
                     }

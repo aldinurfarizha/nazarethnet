@@ -3691,6 +3691,10 @@ class Admin extends EduAppGT
         $activity= $this->input->post('activity');
         $grade= $this->input->post('grade');
         $attendance= $this->input->post('attendance');
+        $homework=$this->input->post('homework');
+        $forum=$this->input->post('forum');
+        $study_material=$this->input->post('study_material');
+
         $subject_source = getSubjectDetailBySubjectId($subject_id_source);
        
         $exam_source = getAllExamBySubjectDetail($subject_id_source,$subject_source->class_id,$subject_source->section_id);
@@ -3792,6 +3796,109 @@ class Admin extends EduAppGT
                 addStudentToNotacapacidadIfNotExist($students, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
                 //belum ada fitur cek dulu sebelum insert
                 transferOldAttendanceToNew($students, $subject_id_source, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+            }
+        }
+        if($homework){
+            $homework_reference = $this->db->get_where('homework', array('subject_id' => "$subject_id_source"))->result();
+            if ($homework_reference) {
+                foreach ($homework_reference as $homework_references) {
+                    $new_homework_code = generateRandomString(7);
+                    $this->db->insert('homework', array(
+                        'homework_code' => $new_homework_code,
+                        'title' => $homework_references->title,
+                        'description' => $homework_references->description,
+                        'class_id' => $subject_target->class_id,
+                        'subject_id' => $subject_target->subject_id,
+                        'uploader_id' => $homework_references->uploader_id,
+                        'time_end' => $homework_references->time_end,
+                        'section_id' => $subject_target->section_id,
+                        'uploader_type' => $homework_references->uploader_type,
+                        'file_name' => $homework_references->file_name,
+                        'date_end' => $homework_references->date_end,
+                        'type' => $homework_references->type,
+                        'user' => $homework_references->user,
+                        'status' => $homework_references->status,
+                        'year' => $subject_target->year,
+                        'filesize' => $homework_references->filesize,
+                        'wall_type' => $homework_references->wall_type,
+                        'publish_date' => $homework_references->publish_date,
+                        'upload_date' => $homework_references->upload_date,
+                        'media_type' => $homework_references->media_type,
+                        'exp' => $homework_references->exp,
+                        'sync_status' => $homework_references->sync_status,
+                        'attachment_name' => $homework_references->attachment_name,
+                        'can_comment' => $homework_references->can_comment,
+                        'can_reaction' => $homework_references->can_reaction,
+                        'post_file' => $homework_references->post_file,
+                        'post_file_type' => $homework_references->post_file_type,
+                        'post_content' => $homework_references->post_content,
+
+                    ));
+                }
+            }
+        }
+        if($forum){
+            $forums_reference = $this->db->get_where('forum', array('subject_id' => "$subject_id_source"))->result();
+            if ($forums_reference) {
+                foreach ($forums_reference as $forums_references) {
+                    $this->db->insert('forum', array(
+                        'teacher_id' => $forums_references->teacher_id,
+                        'subject_id' => $subject_target->subject_id,
+                        'class_id' => $subject_target->class_id,
+                        'timestamp' => $forums_references->timestamp,
+                        'title' => $forums_references->title,
+                        'description' => $forums_references->description,
+                        'post_code' => generateRandomString(7),
+                        'file_name' => $forums_references->file_name,
+                        'section_id' => $subject_target->section_id,
+                        'post_status' => $forums_references->post_status,
+                        'type' => $forums_references->type,
+                        'wall_type' => $forums_references->wall_type,
+                        'publish_date' => $forums_references->publish_date,
+                        'upload_date' => $forums_references->upload_date,
+                        'exp' => $forums_references->exp,
+                        'sync_status' => $forums_references->sync_status,
+                        'attachment_name' => $forums_references->attachment_name,
+                        'can_comment' => $forums_references->can_comment,
+                        'can_reaction' => $forums_references->can_reaction,
+                        'post_file' => $forums_references->post_file,
+                        'post_file_type' => $forums_references->post_file_type,
+                        'post_content' => $forums_references->post_content,
+
+                    ));
+                }
+            }
+        }
+        if($study_material){
+            $study_material_reference = $this->db->get_where('document', array('subject_id' => "$subject_id_source"))->result();
+            if ($study_material_reference) {
+                foreach ($study_material_reference as $study_material_references) {
+                    $this->db->insert('document', array(
+                        'title' => $study_material_references->title,
+                        'description' => $study_material_references->description,
+                        'file_name' => $study_material_references->file_name,
+                        'file_type' => $study_material_references->file_type,
+                        'class_id' => $subject_target->class_id,
+                        'teacher_id' => $subject_target->teacher_id,
+                        'timestamp' => $study_material_references->timestamp,
+                        'subject_id' => $subject_target->subject_id,
+                        'type' => $study_material_references->type,
+                        'year' => $subject_target->year,
+                        'filesize' => $study_material_references->filesize,
+                        'wall_type' => $study_material_references->wall_type,
+                        'publish_date' => $study_material_references->publish_date,
+                        'upload_date' => $study_material_references->upload_date,
+                        'section_id' => $subject_target->section_id,
+                        'sync_status' => $study_material_references->sync_status,
+                        'attachment_name' => $study_material_references->attachment_name,
+                        'drive_id' => $study_material_references->drive_id,
+                        'can_comment' => $study_material_references->can_comment,
+                        'can_reaction' => $study_material_references->can_reaction,
+                        'post_file' => $study_material_references->post_file,
+                        'post_file_type' => $study_material_references->post_file_type,
+                        'post_content' => $study_material_references->post_content,
+                    ));
+                }
             }
         }
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_transfer'));

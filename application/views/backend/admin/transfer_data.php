@@ -6,34 +6,34 @@
     		<div class="os-tabs-w menu-shad">
     			<div class="os-tabs-controls">
     				<ul class="navs navs-tabs upper">
-				        <li class="navs-item">
-    				        <a class="navs-links" href="<?php echo base_url();?>admin/academic_settings/"><i class="os-icon picons-thin-icon-thin-0006_book_writing_reading_read_manual"></i><span><?php echo getEduAppGTLang('academic_settings'); ?></span></a>
-				        </li>
-				        <li class="navs-item">
-				            <a class="navs-links" href="<?php echo base_url();?>admin/section/"><i class="os-icon picons-thin-icon-thin-0002_write_pencil_new_edit"></i><span><?php echo getEduAppGTLang('sections'); ?></span></a>
-				        </li>
-				        <li class="navs-item">
-				            <a class="navs-links" href="<?php echo base_url();?>admin/grade/"><i class="os-icon picons-thin-icon-thin-0729_student_degree_science_university_school_graduate"></i><span><?php echo getEduAppGTLang('grades'); ?></span></a>
-				        </li>
-				        <li class="navs-item">
-				            <a class="navs-links" href="<?php echo base_url();?>admin/semesters/"><i class="os-icon picons-thin-icon-thin-0007_book_reading_read_bookmark"></i><span><?php echo getEduAppGTLang('semesters'); ?></span></a>
-				        </li>
-				        <li class="navs-item">
-				            <a class="navs-links" href="<?php echo base_url();?>admin/student_promotion/"><i class="os-icon picons-thin-icon-thin-0729_student_degree_science_university_school_graduate"></i><span><?php echo getEduAppGTLang('student_promotion'); ?></span></a>
-				        </li>
-				        <li class="navs-item">
-				            <a class="navs-links" href="<?php echo base_url();?>admin/certificates/"><i class="os-icon picons-thin-icon-thin-0178_add_more_layers_slides"></i><span><?php echo getEduAppGTLang('certificates'); ?></span></a>
-				        </li>
-						 <li class="navs-item">
-                            <a class="navs-links" href="<?php echo base_url(); ?>admin/final_evaluation/"><i class="picons-thin-icon-thin-0389_gavel_hammer_law_judge_court"></i> <span>Evaluaciones Finales</span></a>
-                        </li>
-                        <li class="navs-item">
-                            <a class="navs-links active" href="<?php echo base_url(); ?>admin/transfer_data/"><i class="picons-thin-icon-thin-0125_cloud_sync"></i> <span><?php echo getEduAppGTLang('transfer_data'); ?></span></a>
-                        </li>
-						<li class="navs-item">
-                            <a class="navs-links" href="<?php echo base_url(); ?>admin/export_data/"><i class="picons-thin-icon-thin-0088_download_file"></i> <span><?php echo getEduAppGTLang('export_data'); ?></span></a>
-                        </li>
-			        </ul>
+    					<li class="navs-item">
+    						<a class="navs-links" href="<?php echo base_url(); ?>admin/academic_settings/"><i class="os-icon picons-thin-icon-thin-0006_book_writing_reading_read_manual"></i><span><?php echo getEduAppGTLang('academic_settings'); ?></span></a>
+    					</li>
+    					<li class="navs-item">
+    						<a class="navs-links" href="<?php echo base_url(); ?>admin/section/"><i class="os-icon picons-thin-icon-thin-0002_write_pencil_new_edit"></i><span><?php echo getEduAppGTLang('sections'); ?></span></a>
+    					</li>
+    					<li class="navs-item">
+    						<a class="navs-links" href="<?php echo base_url(); ?>admin/grade/"><i class="os-icon picons-thin-icon-thin-0729_student_degree_science_university_school_graduate"></i><span><?php echo getEduAppGTLang('grades'); ?></span></a>
+    					</li>
+    					<li class="navs-item">
+    						<a class="navs-links" href="<?php echo base_url(); ?>admin/semesters/"><i class="os-icon picons-thin-icon-thin-0007_book_reading_read_bookmark"></i><span><?php echo getEduAppGTLang('semesters'); ?></span></a>
+    					</li>
+    					<li class="navs-item">
+    						<a class="navs-links" href="<?php echo base_url(); ?>admin/student_promotion/"><i class="os-icon picons-thin-icon-thin-0729_student_degree_science_university_school_graduate"></i><span><?php echo getEduAppGTLang('student_promotion'); ?></span></a>
+    					</li>
+    					<li class="navs-item">
+    						<a class="navs-links" href="<?php echo base_url(); ?>admin/certificates/"><i class="os-icon picons-thin-icon-thin-0178_add_more_layers_slides"></i><span><?php echo getEduAppGTLang('certificates'); ?></span></a>
+    					</li>
+    					<li class="navs-item">
+    						<a class="navs-links" href="<?php echo base_url(); ?>admin/final_evaluation/"><i class="picons-thin-icon-thin-0389_gavel_hammer_law_judge_court"></i> <span>Evaluaciones Finales</span></a>
+    					</li>
+    					<li class="navs-item">
+    						<a class="navs-links active" href="<?php echo base_url(); ?>admin/transfer_data/"><i class="picons-thin-icon-thin-0125_cloud_sync"></i> <span><?php echo getEduAppGTLang('transfer_data'); ?></span></a>
+    					</li>
+    					<li class="navs-item">
+    						<a class="navs-links" href="<?php echo base_url(); ?>admin/export_data/"><i class="picons-thin-icon-thin-0088_download_file"></i> <span><?php echo getEduAppGTLang('export_data'); ?></span></a>
+    					</li>
+    				</ul>
     			</div>
     		</div>
     		<div class="content-w">
@@ -240,6 +240,39 @@
     													</div>
     												</div>
     											</div>
+    											<div class="col-md-12">
+    												<div class="description-toggle">
+    													<div class="description-toggle-content">
+    														<div class="h6"><?php echo getEduAppGTLang('transfer_homework'); ?></div>
+    														<p><?php echo getEduAppGTLang('transfer_all_homework'); ?></p>
+    													</div>
+    													<div class="togglebutton">
+    														<label><input type="checkbox" checked name="homework"></label>
+    													</div>
+    												</div>
+    											</div>
+    											<div class="col-md-12">
+    												<div class="description-toggle">
+    													<div class="description-toggle-content">
+    														<div class="h6"><?php echo getEduAppGTLang('transfer_forum'); ?></div>
+    														<p><?php echo getEduAppGTLang('transfer_all_forum'); ?></p>
+    													</div>
+    													<div class="togglebutton">
+    														<label><input type="checkbox" checked name="forum"></label>
+    													</div>
+    												</div>
+    											</div>
+    											<div class="col-md-12">
+    												<div class="description-toggle">
+    													<div class="description-toggle-content">
+    														<div class="h6"><?php echo getEduAppGTLang('study_material'); ?></div>
+    														<p><?php echo getEduAppGTLang('transfer_all_study_material'); ?></p>
+    													</div>
+    													<div class="togglebutton">
+    														<label><input type="checkbox" checked name="study_material"></label>
+    													</div>
+    												</div>
+    											</div>
     										</div>
     										<div class="form-buttons-w text-right">
     											<button class="btn btn-rounded btn-success btn-lg" id="transferBtn" type="submit"><?php echo getEduAppGTLang('transfer'); ?></button>
@@ -317,10 +350,10 @@
     					return false;
     				}
 
-					if(subjectSource == subjectTarget){
-						alert("<?php echo getEduAppGTLang('source_and_target_subject_must_be_different'); ?>");
-						return false;
-					}
+    				if (subjectSource == subjectTarget) {
+    					alert("<?php echo getEduAppGTLang('source_and_target_subject_must_be_different'); ?>");
+    					return false;
+    				}
     				const checkboxes = ['exam', 'activity', 'grade', 'attendance'];
     				const isAnyChecked = checkboxes.some(name => {
     					const checkbox = document.querySelector(`input[name="${name}"]`);
@@ -334,7 +367,7 @@
 
     				btn.disabled = true;
     				btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
-					
+
     				document.getElementById('transferForm').submit();
     			});
     		</script>
