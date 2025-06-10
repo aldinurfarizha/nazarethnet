@@ -3602,6 +3602,56 @@ class Admin extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('export_data');
         $this->load->view('backend/index', $page_data);
     }
+    function export_data_student_excel()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $branch_id = $this->input->post('branch_id');
+        $class_id = $this->input->post('class_id');
+        $shifts_id = $this->input->post('shifts_id');
+        $section_id = $this->input->post('section_id');
+        $subject_id = $this->input->post('subject_id');
+        $page_data['branch_id'] = $branch_id;
+        $page_data['class_id'] = $class_id;
+        $page_data['shifts_id'] = $shifts_id;
+        $page_data['section_id'] = $section_id;
+        $page_data['subject_id'] = $subject_id;
+        $this->load->view('backend/admin/export_data_student_excel', $page_data);
+    }
+    function export_data_class_excel()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $branch_id = $this->input->post('branch_id');
+        $page_data['branch_id'] = $branch_id;
+        $this->load->view('backend/admin/export_data_class_excel', $page_data);
+    }
+    function export_data_section_excel()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $branch_id = $this->input->post('branch_id');
+        $class_id = $this->input->post('class_id');
+        $page_data['branch_id'] = $branch_id;
+        $page_data['class_id'] = $class_id;
+        $this->load->view('backend/admin/export_data_section_excel', $page_data);
+    }
+    function export_data_subject_excel()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $branch_id = $this->input->post('branch_id');
+        $class_id = $this->input->post('class_id');
+        $section_id = $this->input->post('section_id');
+        $page_data['branch_id'] = $branch_id;
+        $page_data['class_id'] = $class_id;
+        $page_data['section_id'] = $section_id;
+        $this->load->view('backend/admin/export_data_subject_excel', $page_data);
+    }
     function transfer_data($param1=null,$param2=null)
     {
         if ($this->session->userdata('admin_login') != 1) {

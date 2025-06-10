@@ -283,6 +283,16 @@
             }
         });
     }
+    function get_class3(branch_id)
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class/' + branch_id ,
+            success: function(response)
+            {
+                jQuery('#class_holder3').html(response);
+            }
+        });
+    }
     function get_exam(subject_id) 
     {
         $.ajax({
