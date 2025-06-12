@@ -1,3 +1,14 @@
+<style>
+	.scrollable-box {
+		overflow: auto;
+		border: 1px solid #ccc;
+		padding: 10px;
+		background-color: #f9f9f9;
+		width: auto;
+		/* biar bisa di-set lewat JS */
+		max-width: 100%;
+	}
+</style>
 <?php $running_year = $this->crud->getInfo('running_year'); ?>
 <div class="content-w">
 	<?php include 'fancy.php'; ?>
@@ -156,152 +167,147 @@
 								</div>
 							</div>
 							<?php echo form_close(); ?>
-							<?php if ($class_id != '' && $section_id != '' && $subject_id != '' && $exam_id != '' && $branch_id != ''): ?>
-								<?php
-								$branchDetail = getDetailBranch($branch_id);
-								$finalEvaluaciones = 0;
-								$is_final = $this->db->get_where('exam', array('exam_id' => $exam_id))->row()->is_final; ?>
-								<div class="row justify-content-center">
-									<div class="text-center col-sm-8 my-4">
-										<div class="d-inline-block text-left mb-4" style="line-height: 1;">
-											<div class="row">
-												<div class="col-sm-6">
-													<p><i class="fa fa-building text-success"></i> <strong><?= getEduAppGTLang('branch'); ?>:</strong>
-														<?= $branchDetail->name ?>
-													</p>
-												</div>
-												<div class="col-sm-6">
-													<p><i class="fa fa-user text-info"></i> <strong><?= getEduAppGTLang('class'); ?>:</strong>
-														<?= $this->db->get_where('class', array('class_id' => $class_id))->row()->name; ?>
-													</p>
-												</div>
-												<div class="col-sm-6">
-													<p><i class="fa fa-calendar text-warning"></i> <strong><?= getEduAppGTLang('section'); ?>:</strong>
-														<?= $this->db->get_where('section', array('section_id' => $section_id))->row()->name; ?>
-													</p>
-												</div>
-												<div class="col-sm-6">
-													<p><i class="fa fa-book text-success"></i> <strong><?= getEduAppGTLang('subject'); ?>:</strong>
-														<?= $this->db->get_where('subject', array('subject_id' => $subject_id))->row()->name; ?>
-													</p>
-												</div>
-												<div class="col-sm-6">
-													<p><i class="fa fa-tasks text-danger"></i> <strong><?= getEduAppGTLang('exam'); ?>:</strong>
-														<?= $this->db->get_where('exam', array('exam_id' => $exam_id))->row()->name; ?>
-													</p>
-												</div>
-												<div class="col-sm-6">
-													<p><i class="fa fa-download text-danger"></i> <strong><?= getEduAppGTLang('download'); ?>:</strong>
-														<a href="<?= base_url(); ?>admin/grades_report_excel/<?= $class_id . '/' . $section_id . '/' . $subject_id . '/' . $exam_id . '/' . $branch_id; ?>"
-															class="btn btn-success btn-sm">
-															<i class="fa fa-file-excel"></i> <?= getEduAppGTLang('excel'); ?>
-														</a>
-													</p>
+							<div class="container">
+								<?php if ($class_id != '' && $section_id != '' && $subject_id != '' && $exam_id != '' && $branch_id != ''): ?>
+									<?php
+									$branchDetail = getDetailBranch($branch_id);
+									$finalEvaluaciones = 0;
+									$is_final = $this->db->get_where('exam', array('exam_id' => $exam_id))->row()->is_final; ?>
+									<div class="row justify-content-center">
+										<div class="text-center col-sm-8 my-4">
+											<div class="d-inline-block text-left mb-4" style="line-height: 1;">
+												<div class="row">
+													<div class="col-sm-6">
+														<p><i class="fa fa-building text-success"></i> <strong><?= getEduAppGTLang('branch'); ?>:</strong>
+															<?= $branchDetail->name ?>
+														</p>
+													</div>
+													<div class="col-sm-6">
+														<p><i class="fa fa-user text-info"></i> <strong><?= getEduAppGTLang('class'); ?>:</strong>
+															<?= $this->db->get_where('class', array('class_id' => $class_id))->row()->name; ?>
+														</p>
+													</div>
+													<div class="col-sm-6">
+														<p><i class="fa fa-calendar text-warning"></i> <strong><?= getEduAppGTLang('section'); ?>:</strong>
+															<?= $this->db->get_where('section', array('section_id' => $section_id))->row()->name; ?>
+														</p>
+													</div>
+													<div class="col-sm-6">
+														<p><i class="fa fa-book text-success"></i> <strong><?= getEduAppGTLang('subject'); ?>:</strong>
+															<?= $this->db->get_where('subject', array('subject_id' => $subject_id))->row()->name; ?>
+														</p>
+													</div>
+													<div class="col-sm-6">
+														<p><i class="fa fa-tasks text-danger"></i> <strong><?= getEduAppGTLang('exam'); ?>:</strong>
+															<?= $this->db->get_where('exam', array('exam_id' => $exam_id))->row()->name; ?>
+														</p>
+													</div>
+													<div class="col-sm-6">
+														<p><i class="fa fa-download text-danger"></i> <strong><?= getEduAppGTLang('download'); ?>:</strong>
+															<a href="<?= base_url(); ?>admin/grades_report_excel/<?= $class_id . '/' . $section_id . '/' . $subject_id . '/' . $exam_id . '/' . $branch_id; ?>"
+																class="btn btn-success btn-sm">
+																<i class="fa fa-file-excel"></i> <?= getEduAppGTLang('excel'); ?>
+															</a>
+														</p>
+													</div>
 												</div>
 											</div>
-
-
-
-
-
-
 										</div>
-
-
 									</div>
+									<span class="badge bg-primary"><?php echo getEduAppGTLang('current_value'); ?></span>
+									<span class="badge bg-grey"><?php echo getEduAppGTLang('grades_history'); ?></span>
+									<div class="table-responsive bg-white">
+										<div class="scrollable-box">
+											<table class="table table-sm table-lightborder table-bordered">
+												<thead>
+													<tr class="text-center" height="30px">
+														<td class="tbl-student"><?php echo getEduAppGTLang('student'); ?> </td>
+														<?php $mark_activity = $this->db->get_where('mark_activity', array('exam_id' => $exam_id))->result_array();
+														foreach ($mark_activity as $row): ?>
+															<td class="tbl-student"><?php echo $row['name']; ?></td>
+														<?php endforeach; ?>
+														<?php if ($is_final) { ?>
+															<td class="tbl-student" style="padding:5px">
+																Evaluaciones Finales
+															</td>
+														<?php } else { ?>
+															<td class="tbl-student">
+																Prom
+															</td>
+														<?php } ?>
+													</tr>
+												</thead>
+												<tbody>
+													<?php $data = array();
+													$students = $this->db->get_where('enroll', array('class_id' => $class_id, 'year' => $running_year, 'section_id' => $section_id))->result_array();
+													foreach ($students as $row):
+														if (!isStudentActiveEnroll($row['student_id'], $class_id, $section_id, $running_year)) {
+															continue;
+														}
+														if (isStudentDeactive($row['student_id'])) {
+															continue;
+														}
+														if (isStudentFinishSubject($row['student_id'], $subject_id)) {
+															continue;
+														}
+														if (!isActiveSubject($row['student_id'], $subject_id)) {
+															continue;
+														}
 
-								</div>
-								<span class="badge bg-primary"><?php echo getEduAppGTLang('current_value'); ?></span>
-								<span class="badge bg-grey"><?php echo getEduAppGTLang('grades_history'); ?></span>
-								<div class="table-responsive bg-white">
-									<table class="table table-sm table-lightborder table-bordered">
-										<thead>
-											<tr class="text-center" height="30px">
-												<td class="tbl-student"><?php echo getEduAppGTLang('student'); ?> </td>
-												<?php $mark_activity = $this->db->get_where('mark_activity', array('exam_id' => $exam_id))->result_array();
-												foreach ($mark_activity as $row): ?>
-													<td class="tbl-student"><?php echo $row['name']; ?></td>
-												<?php endforeach; ?>
-												<?php if ($is_final) { ?>
-													<td class="tbl-student" style="padding:5px">
-														Evaluaciones Finales
-													</td>
-												<?php } else { ?>
-													<td class="tbl-student">
-														Prom
-													</td>
-												<?php } ?>
-											</tr>
-										</thead>
-										<tbody>
-											<?php $data = array();
-											$students = $this->db->get_where('enroll', array('class_id' => $class_id, 'year' => $running_year, 'section_id' => $section_id))->result_array();
-											foreach ($students as $row):
-												if (!isStudentActiveEnroll($row['student_id'], $class_id, $section_id, $running_year)) {
-													continue;
-												}
-												if (isStudentDeactive($row['student_id'])) {
-													continue;
-												}
-												if (isStudentFinishSubject($row['student_id'], $subject_id)) {
-													continue;
-												}
-												if (!isActiveSubject($row['student_id'], $subject_id)) {
-													continue;
-												}
+													?>
 
-											?>
+														<tr>
+															<td nowrap>
+																<?php
+																$student_id = $row['student_id'];
+																$image_url = $this->crud->get_image_url('student', $student_id);
+																$student_name = $this->crud->get_name('student', $student_id);
+																?>
+																<img src="<?= htmlspecialchars($image_url) ?>" width="20px" class="tbl-st" alt="">
+																<?= htmlspecialchars($student_name) ?>
+															</td>
 
-												<tr>
-													<td nowrap>
-														<?php
-														$student_id = $row['student_id'];
-														$image_url = $this->crud->get_image_url('student', $student_id);
-														$student_name = $this->crud->get_name('student', $student_id);
-														?>
-														<img src="<?= htmlspecialchars($image_url) ?>" width="20px" class="tbl-st" alt="">
-														<?= htmlspecialchars($student_name) ?>
-													</td>
-
-													<?php foreach ($mark_activity as $row2): ?>
-														<?php
-														$nota_row = $this->db
-															->order_by('nota_capacidad_id', 'ASC')
-															->get_where('nota_capacidad', [
-																'mark_activity_id' => $row2['mark_activity_id'],
-																'student_id'       => $student_id
-															])
-															->row();
-														$nota = isset($nota_row->nota) ? $nota_row->nota : '-';
-														$finalEvaluaciones += ((int)$nota_row->nota * $row2['percent'] / 100);
-														$updated_at = isset($nota_row->updated_at) ? $nota_row->updated_at : '-';
-														?>
-														<td class="text-center">
-															<?php if ($nota != "" || $nota != null) { ?>
-																<div class="fw-bold fs-6 mb-1">
-																	<span class="badge bg-primary"><b><?= htmlspecialchars($nota) ?></b> <br> <small><?= $updated_at ?></small></span>
-																</div>
-																<div class="text-secondary small">
-																	<span class="badge bg-grey"><?= getHistoryNotaCapacidad($nota_row->nota_capacidad_id) ?></span>
-																</div>
+															<?php foreach ($mark_activity as $row2): ?>
+																<?php
+																$nota_row = $this->db
+																	->order_by('nota_capacidad_id', 'ASC')
+																	->get_where('nota_capacidad', [
+																		'mark_activity_id' => $row2['mark_activity_id'],
+																		'student_id'       => $student_id
+																	])
+																	->row();
+																$nota = isset($nota_row->nota) ? $nota_row->nota : '-';
+																$finalEvaluaciones += ((int)$nota_row->nota * $row2['percent'] / 100);
+																$updated_at = isset($nota_row->updated_at) ? $nota_row->updated_at : '-';
+																?>
+																<td class="text-center">
+																	<?php if ($nota != "" || $nota != null) { ?>
+																		<div class="fw-bold fs-6 mb-1">
+																			<span class="badge bg-primary"><b><?= htmlspecialchars($nota) ?></b> <br> <small><?= $updated_at ?></small></span>
+																		</div>
+																		<div class="text-secondary small">
+																			<span class="badge bg-grey"><?= getHistoryNotaCapacidad($nota_row->nota_capacidad_id) ?></span>
+																		</div>
+																	<?php } ?>
+																</td>
+															<?php endforeach; ?>
+															<?php if ($is_final) { ?>
+																<td>
+																	<input type="text" class="commentInput text-center" style="background-color: #d3d3d3;" value="<?= $finalEvaluaciones ?>" disabled>
+																</td>
+															<?php } else { ?>
+																<td class="text-center"><?= getFinalMark($student_id, $subject_id, $exam_id, $running_year) ?></td>
 															<?php } ?>
-														</td>
+														</tr>
+
+
 													<?php endforeach; ?>
-													<?php if ($is_final) { ?>
-														<td>
-															<input type="text" class="commentInput text-center" style="background-color: #d3d3d3;" value="<?= $finalEvaluaciones ?>" disabled>
-														</td>
-													<?php } else { ?>
-														<td class="text-center"><?= getFinalMark($student_id, $subject_id, $exam_id, $running_year) ?></td>
-													<?php } ?>
-												</tr>
-
-
-											<?php endforeach; ?>
-										</tbody>
-									</table>
-								</div>
-							<?php endif; ?>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								<?php endif; ?>
+							</div>
 						</div>
 					</div>
 				</div>

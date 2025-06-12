@@ -81,8 +81,8 @@
                     <h6 class="element-header">
                     <?php echo getEduAppGTLang('online_courses');?>
                     </h6>
-                  <div class="table-responsive">
-                    <table class="table table-padded">
+                  <div class="table-responsive bg-white">
+                    <table id="onlineCourse" class="table table-striped table-hover">
                         <thead>
                           <tr>
                             <th><?php echo getEduAppGTLang('status');?></th>
@@ -168,3 +168,9 @@
 </div>
 <div class="display-type"></div>
 </div>
+
+<script>
+$(document).ready(function() {
+    $('#onlineCourse').DataTable();
+});
+</script>
