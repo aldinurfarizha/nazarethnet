@@ -118,9 +118,17 @@
                                     $poll_code = $this->db->get_where('polls', array('id' => $wall['news_id']))->row()->poll_code;
                                     $admin_id = $this->db->get_where('polls', array('id' => $wall['news_id']))->row()->admin_id;
                                     $options = $this->db->get_where('polls', array('id' => $wall['news_id']))->row()->options;
+                                    $branch_id = $this->db->get_where('polls', array('id' => $wall['news_id']))->row()->branch_id;
+
                                 ?>  
-                                <?php if($usrdb == 'student' || $usrdb == 'all'):?>
+                                <?php if($usrdb == 'student' || $usrdb == 'all' ):?>
                                 <?php 
+                                    if($branch_id!=0){
+                                    if($branch_id != $this->session->userdata('branch_id'))
+                                    {
+                                        continue;
+                                    }
+                                    }
                                     $type = 'student';
                                     $id = $this->session->userdata('login_user_id');
                                     $user = $type. "-".$id;

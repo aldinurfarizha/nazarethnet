@@ -1,0 +1,2 @@
+ALTER TABLE polls
+ADD COLUMN branch_id INT NULL DEFAULT 0;

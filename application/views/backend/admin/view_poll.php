@@ -41,9 +41,14 @@
                                                         <span><?php echo $array[$i];?></span>
                                                     </div>
                                                     <?php 
-                                                        if($res > 0 && $polls > 0)
-                                                        $response = $res/$polls;
-                                                        $response2 = $response*100;
+                                                       if ($res > 0 && $polls > 0) {
+                                                        $response = (int)$res / (int)$polls;
+                                                        $response2 = $response * 100;
+                                                    } else {
+                                                        $response = 0;
+                                                        $response2 = 0;
+                                                    }
+
                                                     ?>
                                                     <div class="bar-label-right">
                                                         <span class="color-primary"><?php echo round($response2);?>/100%</span>

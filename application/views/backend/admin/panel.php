@@ -366,9 +366,16 @@
                                         $poll_code = $this->db->get_where('polls', array('id' => $wall['news_id']))->row()->poll_code;
                                         $admin_id = $this->db->get_where('polls', array('id' => $wall['news_id']))->row()->admin_id;
                                         $options = $this->db->get_where('polls', array('id' => $wall['news_id']))->row()->options;
+                                        $branch_id = $this->db->get_where('polls', array('id' => $wall['news_id']))->row()->branch_id;
                                     ?>  
                                     <?php if($usrdb == 'admin' || $usrdb == 'all'):?>
                                     <?php 
+                                        if(isSuperAdmin()==false){
+                                            $my_branch_id=getMyBranchId()->branch_id;
+                                            if($branch_id!=$my_branch_id){
+                                                continue;
+                                            }
+                                        }
                                         $type = 'admin';
                                         $id = $this->session->userdata('login_user_id');
                                         $user = $type. "-".$id;

@@ -2099,12 +2099,13 @@ class Admin extends EduAppGT
             $data['user'] = $this->input->post('user');
             $data['status'] = 1;
             $data['date'] = $this->crud->getDateFormat();
-            $this->crud->send_polls_notify();
+            //$this->crud->send_polls_notify();
             $data['date2'] = date('h:i A');
             $data['admin_id']        = $this->session->userdata('login_user_id');
             $data['type'] = "polls";
             $data['publish_date']        = date('Y-m-d H:i:s');
             $data['poll_code'] = substr(md5(rand(0, 1000000)), 0, 7);
+            $data['branch_id'] = $this->input->post('branch_id');
             $this->db->insert('polls', $data);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
             redirect(base_url() . 'admin/polls/', 'refresh');

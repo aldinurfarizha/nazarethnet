@@ -42,6 +42,12 @@
 				                                                        $this->db->order_by('id', 'desc');
 				                                                        $polls = $this->db->get('polls')->result_array();
 				                                                        foreach($polls as $poll):
+																			if($poll['branch_id']==0){
+																				$branch=getEduAppGTLang('all_branch');
+																			}else{
+																				$branchDetail=getDetailBranch($poll['branch_id']);
+																				$branch=$branchDetail->name;
+																			}
 				                                                    ?>
 					                                                    <li class="ui-block lists">
     					                                                    <div class="post__author author vcard inline-items">
@@ -50,6 +56,12 @@
     								                                                <a class="h6 post__author-name fn" href="javascript:void(0);"><?php echo $this->crud->get_name('admin', $poll['admin_id']);?></a>
 								                                                    <div class="post__date">
     									                                                <time class="published"><?php echo $poll['date']." ".$poll['date2'];?></time>
+								                                                    </div>
+																					 <div class="post__date">
+    									                                                <time class="published"><i class="fa fa-users"></i> <?=$poll['user'];?></time>
+								                                                    </div>
+																					<div class="post__date">
+    									                                                <time class="published"><i class="fa fa-building"></i> <?=$branch;?></time>
 								                                                    </div>
 							                                                    </div>
 						                                                    </div>
