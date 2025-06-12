@@ -819,16 +819,29 @@ class Crud extends School
             'student_id' => $student_id,
             'pw' => $pw
         );
-        $today = date('d-m-Y_h:i:s');
-        $html = $this->load->view('backend/downloadsheet.php',$data,TRUE); 
-        $stylesheet = file_get_contents(base_url().'public/uploads/css1.css');
-        $pdfFilePath = "student_sheet-".$today.".pdf";
-        $this->load->library('M_pdf');
-        $mpdf = new mPDF('utf-8', 'A4', 0, '', 10, 10, 10, 0, 0, 'L'); 
-        $mpdf->packTableData = true;
-        $mpdf->WriteHTML($stylesheet,1);
-        $mpdf->WriteHTML($html,2);
-        $mpdf->Output($pdfFilePath, "D");
+
+        // Load view dan CSS
+        $html = $this->load->view('backend/downloadsheet.php', $data, TRUE);
+        $stylesheet = file_get_contents(base_url() . 'public/uploads/css1.css');
+
+        // Gabungkan CSS dengan HTML
+        $html = "<style>" . $stylesheet . "</style>" . $html;
+
+        // Nama file PDF
+        $today = date('d-m-Y_H-i-s');
+        $filename = "student_sheet-{$today}.pdf";
+
+        // Load library pdf_generator
+        $this->load->library('pdf_generator');
+
+        // Generate PDF dan download
+        $this->pdf_generator->generate($html, $filename, 'D', [
+            'format' => 'A4',
+            'margin_left' => 10,
+            'margin_right' => 10,
+            'margin_top' => 10,
+            'margin_bottom' => 10,
+        ]);
     }
     
     function create_vimeo() 
@@ -2895,8 +2908,8 @@ class Crud extends School
     
     function get_name($type = '', $id = '')
     {
-        $first = $this->db->get_where(''.$type.'',array($type."_id" => $id))->row()->first_name;
-        $last = $this->db->get_where(''.$type.'',array($type."_id" => $id))->row()->last_name;
+        $first = @$this->db->get_where(''.$type.'',array($type."_id" => $id))->row()->first_name;
+        $last = @$this->db->get_where(''.$type.'',array($type."_id" => $id))->row()->last_name;
         $name = $first." ".$last;
         return $name;
     }

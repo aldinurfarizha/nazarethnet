@@ -477,7 +477,7 @@ class User extends School
         $data['shifts_id']         = html_escape($this->input->post('shifts_id'));
         $this->db->insert('student', $data);
         $student_id = $this->db->insert_id();
-        $class_ids = $this->input->post('class_id');
+        $class_ids = $this->input->post('class_holder');
         $section_ids = $this->input->post('section_id');
         $rolls = $this->input->post('roll');
         $is_actives = $this->input->post('is_active');
