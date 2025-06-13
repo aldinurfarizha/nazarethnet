@@ -222,6 +222,36 @@
             }
         });
     }
+    function get_class_subjects3(section_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_subject/' + section_id ,
+            success: function(response)
+            {
+                jQuery('#subject_holder3').html(response);
+            }
+        });
+    }
+    function get_class_subjects4(section_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_subject/' + section_id ,
+            success: function(response)
+            {
+                jQuery('#subject_holder4').html(response);
+            }
+        });
+    }
+    function get_class_subjects5(section_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_subject/' + section_id ,
+            success: function(response)
+            {
+                jQuery('#subject_holder5').html(response);
+            }
+        });
+    }
     
     function get_sections(class_id) 
     {
@@ -240,6 +270,36 @@
             success: function(response)
             {
                 jQuery('#section_holder2').html(response);
+            }
+        });
+    }
+    function get_sections3(class_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_section/' + class_id ,
+            success: function(response)
+            {
+                jQuery('#section_holder3').html(response);
+            }
+        });
+    }
+    function get_sections4(class_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_section/' + class_id ,
+            success: function(response)
+            {
+                jQuery('#section_holder4').html(response);
+            }
+        });
+    }
+    function get_sections5(class_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_section/' + class_id ,
+            success: function(response)
+            {
+                jQuery('#section_holder5').html(response);
             }
         });
     }
@@ -293,6 +353,26 @@
             }
         });
     }
+    function get_class4(branch_id)
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class/' + branch_id ,
+            success: function(response)
+            {
+                jQuery('#class_holder4').html(response);
+            }
+        });
+    }
+    function get_class5(branch_id)
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class/' + branch_id ,
+            success: function(response)
+            {
+                jQuery('#class_holder5').html(response);
+            }
+        });
+    }
     function get_exam(subject_id) 
     {
         $.ajax({
@@ -300,6 +380,46 @@
             success: function(response)
             {
                 jQuery('#exam_holder').html(response);
+            }
+        });
+    }
+    function get_exam2(subject_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_exam/' + subject_id ,
+            success: function(response)
+            {
+                jQuery('#exam_holder2').html(response);
+            }
+        });
+    }
+    function get_exam3(subject_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_exam/' + subject_id ,
+            success: function(response)
+            {
+                jQuery('#exam_holder3').html(response);
+            }
+        });
+    }
+    function get_exam4(subject_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_exam/' + subject_id ,
+            success: function(response)
+            {
+                jQuery('#exam_holder4').html(response);
+            }
+        });
+    }
+    function get_exam5(subject_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_exam/' + subject_id ,
+            success: function(response)
+            {
+                jQuery('#exam_holder5').html(response);
             }
         });
     }

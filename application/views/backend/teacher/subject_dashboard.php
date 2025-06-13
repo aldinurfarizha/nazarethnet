@@ -38,14 +38,15 @@
             color: #333;
         }
 
-        .reaction-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-weight: bold;
-            user-select: none;
-            cursor: default;
-        }
+             .reaction-item {
+         display: flex;
+         align-items: center;
+         gap: 5px;
+         font-weight: bold;
+         user-select: none;
+         cursor: default;
+         font-size: 1.2rem;
+     }
 
 
 

@@ -3680,6 +3680,42 @@ class Admin extends EduAppGT
         $page_data['section_id'] = $section_id;
         $this->load->view('backend/admin/export_data_subject_excel', $page_data);
     }
+    function export_data_grades_excel()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $branch_id = $this->input->post('branch_id');
+        $class_id = $this->input->post('class_id');
+        $section_id = $this->input->post('section_id');
+        $subject_id = $this->input->post('subject_id');
+        $exan_id = $this->input->post('exam_id');
+        $page_data['branch_id'] = $branch_id;
+        $page_data['class_id'] = $class_id;
+        $page_data['section_id'] = $section_id;
+        $page_data['subject_id'] = $subject_id;
+        $page_data['exam_id'] = $exan_id;
+        $this->load->view('backend/admin/export_data_grades_excel', $page_data);
+    }
+    function export_data_attendance_excel()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $branch_id = $this->input->post('branch_id');
+        $class_id = $this->input->post('class_id');
+        $section_id = $this->input->post('section_id');
+        $subject_id = $this->input->post('subject_id');
+        $from_date = $this->input->post('from_date');
+        $to_date = $this->input->post('to_date');
+        $page_data['branch_id'] = $branch_id;
+        $page_data['class_id'] = $class_id;
+        $page_data['section_id'] = $section_id;
+        $page_data['subject_id'] = $subject_id;
+        $page_data['from_date'] = $from_date;
+        $page_data['to_date'] = $to_date;
+        $this->load->view('backend/admin/export_data_attendance_excel', $page_data);
+    }
     function transfer_data($param1=null,$param2=null)
     {
         if ($this->session->userdata('admin_login') != 1) {

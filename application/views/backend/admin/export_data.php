@@ -64,6 +64,12 @@
     															<li class="navs-item">
     																<a class="navs-links" data-toggle="tab" href="#class"><?php echo getEduAppGTLang('course'); ?></a>
     															</li>
+    															<li class="navs-item">
+    																<a class="navs-links" data-toggle="tab" href="#grades"><?php echo getEduAppGTLang('student_grades'); ?></a>
+    															</li>
+    															<li class="navs-item">
+    																<a class="navs-links" data-toggle="tab" href="#attendance"><?php echo getEduAppGTLang('attendance'); ?></a>
+    															</li>
     														</ul>
     													</div>
     												</div>
@@ -139,7 +145,7 @@
     																		<div class="form-group label-floating is-select">
     																			<label class="control-label"><?php echo getEduAppGTLang('subject'); ?></label>
     																			<div class="select">
-    																				<select name="subject_id" id="subject_holder" onchange="get_exam(this.value);">
+    																				<select name="subject_id" id="subject_holder">
     																					<option value=""><?php echo getEduAppGTLang('all'); ?></option>
     																				</select>
     																			</div>
@@ -300,6 +306,155 @@
     														</div>
     														<?php echo form_close(); ?>
     													</div>
+    													<div class="tab-pane" id="grades">
+    														<?php echo form_open(base_url() . 'admin/export_data_grades_excel', array('class' => 'form m-b')); ?>
+    														<div class="row">
+    															<div class="col col-sm-6">
+    																<div class="form-group label-floating is-select">
+    																	<label class="control-label"><?php echo getEduAppGTLang('branch'); ?></label>
+    																	<div class="select">
+    																		<select onchange="get_class4(this.value);" required name="branch_id">
+    																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+    																			<?php
+																				if (isSuperAdmin()) {
+																					$branch = $this->db->where('status', 'ACTIVE')->get('branch')->result_array();
+																				} else {
+																					$branch = $this->db->where('branch_id', getMyBranchId()->branch_id)->get('branch')->result_array();
+																				}
+																				foreach ($branch as $row):
+																				?>
+    																				<option value="<?php echo $row['branch_id']; ?>"><?php echo $row['name']; ?></option>
+    																			<?php endforeach; ?>
+    																		</select>
+    																	</div>
+    																</div>
+    															</div>
+    															<div class="col col-sm-6">
+    																<div class="form-group label-floating is-select">
+    																	<label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
+    																	<div class="select">
+    																		<select name="class_id" required onchange="get_sections3(this.value);" id="class_holder4">
+    																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+    																		</select>
+    																	</div>
+    																</div>
+    															</div>
+    															<div class="col col-sm-6">
+    																<div class="form-group label-floating is-select">
+    																	<label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
+    																	<div class="select">
+    																		<select name="section_id" required id="section_holder3" onchange="get_class_subjects2(this.value);">
+    																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+    																		</select>
+    																	</div>
+    																</div>
+    															</div>
+    															<div class="col-sm-6">
+    																<div class="form-group label-floating is-select">
+    																	<label class="control-label"><?php echo getEduAppGTLang('subject'); ?></label>
+    																	<div class="select">
+    																		<select name="subject_id" required id="subject_holder2" onchange="get_exam(this.value);">
+    																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+    																		</select>
+    																	</div>
+    																</div>
+    															</div>
+    															<div class="col-sm-6">
+    																<div class="form-group label-floating is-select">
+    																	<label class="control-label"><?php echo getEduAppGTLang('exam'); ?></label>
+    																	<div class="select">
+    																		<select name="exam_id" required id="exam_holder">
+    																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+    																		</select>
+    																	</div>
+    																</div>
+    															</div>
+    															<div class="col col-sm-12 text-right">
+    																<div class="form-group mb-0">
+    																	<button class="btn btn-success mt-2">
+    																		<?php echo getEduAppGTLang('export'); ?> <i class="fa fa-download"></i>
+    																	</button>
+    																</div>
+    															</div>
+    														</div>
+    														<?php echo form_close(); ?>
+    													</div>
+    													<div class="tab-pane" id="attendance">
+    														<?php echo form_open(base_url() . 'admin/export_data_attendance_excel', array('class' => 'form m-b')); ?>
+    														<div class="row">
+    															<div class="col col-sm-6">
+    																<div class="form-group label-floating is-select">
+    																	<label class="control-label"><?php echo getEduAppGTLang('branch'); ?></label>
+    																	<div class="select">
+    																		<select onchange="get_class5(this.value);" required name="branch_id">
+    																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+    																			<?php
+																				if (isSuperAdmin()) {
+																					$branch = $this->db->where('status', 'ACTIVE')->get('branch')->result_array();
+																				} else {
+																					$branch = $this->db->where('branch_id', getMyBranchId()->branch_id)->get('branch')->result_array();
+																				}
+																				foreach ($branch as $row):
+																				?>
+    																				<option value="<?php echo $row['branch_id']; ?>"><?php echo $row['name']; ?></option>
+    																			<?php endforeach; ?>
+    																		</select>
+    																	</div>
+    																</div>
+    															</div>
+    															<div class="col col-sm-6">
+    																<div class="form-group label-floating is-select">
+    																	<label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
+    																	<div class="select">
+    																		<select name="class_id" required onchange="get_sections4(this.value);" id="class_holder5">
+    																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+    																		</select>
+    																	</div>
+    																</div>
+    															</div>
+    															<div class="col col-sm-6">
+    																<div class="form-group label-floating is-select">
+    																	<label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
+    																	<div class="select">
+    																		<select name="section_id" required id="section_holder4" onchange="get_class_subjects3(this.value);">
+    																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+    																		</select>
+    																	</div>
+    																</div>
+    															</div>
+    															<div class="col-sm-6">
+    																<div class="form-group label-floating is-select">
+    																	<label class="control-label"><?php echo getEduAppGTLang('subject'); ?></label>
+    																	<div class="select">
+    																		<select name="subject_id" required id="subject_holder3" onchange="get_exam(this.value);">
+    																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+    																		</select>
+    																	</div>
+    																</div>
+    															</div>
+    															<div class="col-sm-6">
+    																<div class="form-group label-floating">
+																		<label class="control-label"><?= getEduAppGTLang('from'); ?> <?php echo getEduAppGTLang('date'); ?></label>
+																		<input type="date" class="form-control date-picker" name="from_date" value="<?php echo date('Y-m-d'); ?>" required>
+																	</div>
+																</div>
+																<div class="col-sm-6">
+																	<div class="form-group label-floating">
+																		<label class="control-label"><?= getEduAppGTLang('to'); ?> <?php echo getEduAppGTLang('date'); ?></label>
+																		<input type="date" class="form-control date-picker" name="to_date" value="<?php echo date('Y-m-d'); ?>" required>
+																	</div>
+																	</div>
+    															</div>
+    															<div class="col col-sm-12 text-right">
+    																<div class="form-group mb-0">
+    																	<button class="btn btn-success mt-2">
+    																		<?php echo getEduAppGTLang('export'); ?> <i class="fa fa-download"></i>
+    																	</button>
+    																</div>
+    															</div>
+    														</div>
+    														<?php echo form_close(); ?>
+    													</div>
     												</div>
     											</div>
     										</div>
@@ -427,7 +582,7 @@
     		</script>
 
     		<script>
-    			const selectIds = ['class_holder', 'shifts_holder', 'section_holder', 'subject_holder', 'class_holder2','class_holder3', 'section_holder2'];
+    			const selectIds = ['class_holder', 'shifts_holder', 'section_holder', 'subject_holder', 'class_holder2', 'class_holder3', 'section_holder2'];
 
     			function updateOptionText(selectElement) {
     				const options = selectElement.querySelectorAll('option');

@@ -796,13 +796,21 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
         return false;
     }
     }
-    function getFinalMark($student_id, $subject_id,$exam_id, $year)
+    function getFinalMark($student_id, $subject_id, $exam_id, $year)
     {
         $ci = &get_instance();
-        $avg = $ci->db->get_where('mark', array('subject_id' => $subject_id, 'exam_id' => $exam_id, 'student_id' => $student_id, 'year' => $year))->row()->final;
-        return $avg;
+        $query = $ci->db->get_where('mark', [
+            'subject_id' => $subject_id,
+            'exam_id'    => $exam_id,
+            'student_id' => $student_id,
+            'year'       => $year
+        ]);
+
+        $row = $query->row();
+        return $row && isset($row->final) ? $row->final : 0;
     }
-    function countEvaluacionesFinales($exam_id,$student_id)
+
+function countEvaluacionesFinales($exam_id,$student_id)
     {
         $ci = &get_instance();
         $examDetail = $ci->db->get_where('exam', array('exam_id' => $exam_id))->row();
