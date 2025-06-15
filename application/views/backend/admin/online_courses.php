@@ -73,6 +73,103 @@
         <br>
         <div class="content-i">
       <div class="content-box">
+         <div class="row">
+                        <div class="col-sm-12">
+                            <?php echo form_open(base_url() . 'admin/online_courses', array('class' => 'form m-b')); ?>
+                            <div class="row">
+                                <div class="col col-sm-3">
+                                    <div class="form-group label-floating is-select">
+                                        <label class="control-label"><?php echo getEduAppGTLang('filter_branch'); ?></label>
+                                        <div class="select">
+                                            <select onchange="get_class(this.value);" name="branch_id">
+                                                <option value=""><?php echo getEduAppGTLang('all'); ?></option>
+                                                <?php
+                                                if (isSuperAdmin()) {
+                                                    $branch = $this->db->where('status', 'ACTIVE')->get('branch')->result_array();
+                                                } else {
+                                                    $branch = $this->db->where('branch_id', getMyBranchId()->branch_id)->get('branch')->result_array();
+                                                }
+                                                foreach ($branch as $row):
+                                                ?>
+                                                    <option value="<?php echo $row['branch_id']; ?>"<?php if ($branch_id == $row['branch_id']) echo "selected"; ?>><?php echo $row['name']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-sm-3">
+                                    <div class="form-group label-floating is-select">
+                                        <label class="control-label"><?php echo getEduAppGTLang('filter_class'); ?></label>
+                                        <div class="select">
+                                            <?php if ($class_id == ""): ?>
+												<select name="class_id" id="class_holder" onchange="get_sections(this.value);">
+													<option value=""><?php echo getEduAppGTLang('all'); ?></option>
+												</select>
+											<?php else: ?>
+												<select name="class_id" id="class_holder" onchange="get_sections(this.value);">
+													<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+													<?php
+													$class = $this->db->get_where('class', array('class_id' => $class_id))->result_array();
+													foreach ($class as $key):
+													?>
+														<option value="<?php echo $key['class_id']; ?>" <?php if ($class_id == $key['class_id']) echo "selected"; ?>><?php echo $key['name']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											<?php endif; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+									<div class="form-group label-floating is-select">
+										<label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
+										<div class="select">
+											<?php if ($section_id == ""): ?>
+												<select name="section_id" id="section_holder">
+													<option value=""><?php echo getEduAppGTLang('all'); ?></option>
+												</select>
+											<?php else: ?>
+												<select name="section_id" id="section_holder">
+													<option value=""><?php echo getEduAppGTLang('all'); ?></option>
+													<?php
+													$sections = $this->db->get_where('section', array('class_id' => $class_id))->result_array();
+													foreach ($sections as $key):
+													?>
+														<option value="<?php echo $key['section_id']; ?>" <?php if ($section_id == $key['section_id']) echo "selected"; ?>><?php echo $key['name']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											<?php endif; ?>
+										</div>
+									</div>
+								</div>
+                                <div class="col col-sm-2">
+                                    <div class="form-group label-floating is-select">
+                                        <label class="control-label"><?php echo getEduAppGTLang('filter_status'); ?></label>
+                                        <div class="select">
+                                            <select name="status">
+                                                <option value="" <?= ($status == '') ? 'selected' : ''; ?>>
+                                                    <?= getEduAppGTLang('all'); ?>
+                                                </option>
+                                                <option value="1" <?= ($status === '1') ? 'selected' : ''; ?>>
+                                                    <?= getEduAppGTLang('active'); ?>
+                                                </option>
+                                                <option value="0" <?= ($status === '0') ? 'selected' : ''; ?>>
+                                                    <?= getEduAppGTLang('inactive'); ?>
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-sm-1 text-right">
+                                    <div class="form-group mb-0">
+                                        <button class="btn btn-primary mt-2">
+                                            <?php echo getEduAppGTLang('filter'); ?> <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php echo form_close(); ?>
+                        </div>
+                    </div>
         <div class="row">
           <main class="col col-xl-12 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
             <div id="newsfeed-items-grid">                
@@ -115,6 +212,26 @@
                                 $onlines = $this->db->get()->result_array();
                             }
                             foreach ($onlines as $hm):
+                                if($branch_id!=null){
+                                        if($hm['branch_id']!=$branch_id){
+                                            continue;
+                                        }
+                                    }
+                                if($class_id!=null){
+                                        if($hm['class_id']!=$class_id){
+                                            continue;
+                                        }
+                                    }
+                                if($section_id!=null){
+                                        if($hm['section_id']!=$section_id){
+                                            continue;
+                                        }
+                                    }
+                                if($status!=null){
+                                        if($hm['status']!=$status){
+                                            continue;
+                                        }
+                                }
                           ?>
                           <tr>
                             <td>

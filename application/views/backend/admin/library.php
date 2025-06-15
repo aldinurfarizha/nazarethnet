@@ -26,7 +26,14 @@
             						<div class="friend-avatar">
             						    <br><br>
             						    <i class="picons-thin-icon-thin-0017_office_archive iconcls"></i>
-            							<h1 class="text-bold"><?php echo $this->db->count_all_results('book');?></h1>
+            							<h1 class="text-bold"><?php 
+                                        if(isSuperAdmin()) {
+                                            echo $this->db->count_all_results('book');
+                                        }else{
+                                            $myBranchId = getMyBranchId()->branch_id;
+                                            echo $this->db->get_where('book', array('branch_id' => $myBranchId))->num_rows();
+                                        }
+                                        ?></h1>
             							<div class="author-content">
             								<div class="country"><b> <?php echo getEduAppGTLang('total_books');?></b></div>
             							</div>
@@ -42,7 +49,15 @@
 						            <div class="friend-avatar">
 						            <br><br>
 						                <i class="picons-thin-icon-thin-0073_documents_files_paper_text_archive_copy iconcls"></i>
-							            <h1 class="text-bold"><?php $t = 0; $total_copies = $this->db->get('book')->result_array(); foreach($total_copies as $r) {$t += $r['total_copies'];} echo $t;?></h1>
+							            <h1 class="text-bold"><?php 
+                                         if(isSuperAdmin()) {
+                                            $t = 0; $total_copies = $this->db->get('book')->result_array(); foreach($total_copies as $r) {$t += $r['total_copies'];} echo $t;
+                                        }else{
+                                            $myBranchId = getMyBranchId()->branch_id;
+                                            $t = 0; $total_copies = $this->db->get_where('book', array('branch_id' => $myBranchId))->result_array(); foreach($total_copies as $r) {$t += $r['total_copies'];} echo $t;
+                                        }
+
+                                        ?></h1>
 							            <div class="author-content">
 								            <div class="country"><b><?php echo getEduAppGTLang('total_copies');?></b></div>
 							            </div>
@@ -58,7 +73,15 @@
 						            <div class="friend-avatar">
 						                <br><br>
 						                <i class="picons-thin-icon-thin-0086_import_file_load iconcls"></i>
-							            <h1 class="text-bold"><?php $to = 0; $copies =  $this->db->get('book')->result_array(); foreach($copies as $row){$to += $row['issued_copies'];} echo $to;?></h1>
+							            <h1 class="text-bold"><?php 
+                                        if(isSuperAdmin()) {
+                                             $to = 0; $copies =  $this->db->get('book')->result_array(); foreach($copies as $row){$to += $row['issued_copies'];} echo $to;
+                                        }else{
+                                            $myBranchId = getMyBranchId()->branch_id;
+                                            $to = 0; $copies =  $this->db->get_where('book', array('branch_id' => $myBranchId))->result_array(); foreach($copies as $row){$to += $row['issued_copies'];} echo $to;
+                                        }
+                                       
+                                        ?></h1>
 							            <div class="author-content">
 								            <div class="country"><b> <?php echo getEduAppGTLang('delivered_copies');?></b></div>
 							            </div>
@@ -95,8 +118,12 @@
                                         <tbody>
                                         <?php 
                                             $count = 1; 
-                                            $this->db->order_by('book_id', 'desc');
-        				                    $book = $this->db->get_where('book')->result_array();
+                                            if(isSuperAdmin()) {
+                                                $book = $this->db->get_where('book')->result_array();
+                                            }else{
+                                                $book = $this->db->get_where('book', array('branch_id' => getMyBranchId()->branch_id))->result_array();
+                                            }
+        				                    
 			                                foreach($book as $row):?>
 			                                <tr>
 			                                    <td><a class="btn btn-rounded btn-sm btn-warning text-white"><?php echo $this->db->get_where('class', array('class_id' => $row['class_id']))->row()->name; ?></a></td>
@@ -183,7 +210,13 @@
                                             <select name="class_id" required="">
                                                 <option value=""><?php echo getEduAppGTLang('select');?></option>
                                                 <?php 
+                                                if(isSuperAdmin()) {
                                                     $cl = $this->db->get('class')->result_array();
+                                                }else{
+                                                    $myBranchId = getMyBranchId()->branch_id;
+                                                    $cl = $this->db->get_where('class', array('branch_id' => $myBranchId))->result_array();
+                                                }
+                                                    
                                                     foreach($cl as $row):
                   	                            ?>
                                                     <option value="<?php echo $row['class_id'];?>"><?php echo $row['name'];?></option>

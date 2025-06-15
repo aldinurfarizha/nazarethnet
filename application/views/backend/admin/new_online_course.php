@@ -55,7 +55,7 @@
                           $branch = $this->db->where($where)->get('branch')->result_array();
                         }
                         foreach ($branch as $row): ?>
-                         <option value="<?php echo $row['branch_id']; ?>" <?php if ($branch_id == $row['branch_id']) echo "selected"; ?>><?php echo $row['name']; ?></option>
+                         <option value="<?php echo $row['branch_id']; ?>" ><?php echo $row['name']; ?></option>
                        <?php endforeach; ?>
                      </select>
                    </div>

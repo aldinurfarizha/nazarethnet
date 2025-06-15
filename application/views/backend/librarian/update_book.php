@@ -1,4 +1,5 @@
 <?php 
+$librarian_info = $this->db->get_where('librarian', array('librarian_id' => $this->session->userdata('login_user_id')))->row();
     $details = $book = $this->db->get_where('book', array('book_id' => $book_id))->result_array();
 	foreach($details as $row):
  ?>
@@ -71,7 +72,9 @@
                                                     <div class="select">
                                                         <select name="class_id" required="">
                                                             <option value=""><?php echo getEduAppGTLang('select');?></option>
-                                                                <?php $cl = $this->db->get('class')->result_array();
+                                                                <?php 
+
+                                                                 $cl = $this->db->get_where('class', array('branch_id' => $librarian_info->branch_id))->result_array();
                                                                 foreach($cl as $row2):
                       	                                    ?>
                                                             <option value="<?php echo $row2['class_id'];?>" <?php if($row2['class_id'] == $row['class_id']) echo 'selected';?>><?php echo $row2['name'];?></option>

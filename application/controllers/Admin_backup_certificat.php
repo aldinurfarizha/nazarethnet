@@ -4240,80 +4240,6 @@ class Admin extends EduAppGT
         $this->db->where('subject_id', $subject_id);
         $this->db->update('student_subject', $data);
         if ($this->db->affected_rows() > 0) {
-            $exitingCertificateSetting = $this->db->get_where('certificate_settings', ['id' => 1])->row();
-            $certificateSettingStudent = [
-                'student_certificate_code'=>$certCode,
-                'height' => $exitingCertificateSetting->height,
-                'width' => $exitingCertificateSetting->width,
-                'title_font_face' => $exitingCertificateSetting->title_font_face,
-
-                'qr_size' => $exitingCertificateSetting->qr_size,
-                'qr_x' => $exitingCertificateSetting->qr_x,
-                'qr_y' => $exitingCertificateSetting->qr_y,
-                'qr_status' => $exitingCertificateSetting->qr_status,
-
-                'certificate_code_text_size' => $exitingCertificateSetting->certificate_code_text_size,
-                'certificate_code_text_weight' => $exitingCertificateSetting->certificate_code_text_weight,
-                'certificate_code_text_x' => $exitingCertificateSetting->certificate_code_text_x,
-                'certificate_code_text_y' => $exitingCertificateSetting->certificate_code_text_y,
-                'certificate_code_text_color' => $exitingCertificateSetting->certificate_code_text_color,
-                'certificate_code_text_status' => $exitingCertificateSetting->certificate_code_text_status,
-
-                'course_text_size' => $exitingCertificateSetting->course_text_size,
-                'course_text_weight' => $exitingCertificateSetting->course_text_weight,
-                'course_text_x' => $exitingCertificateSetting->course_text_x,
-                'course_text_y' => $exitingCertificateSetting->course_text_y,
-                'course_text_color' => $exitingCertificateSetting->course_text_color,
-                'course_text_status' => $exitingCertificateSetting->course_text_status,
-
-                'student_name_text_size' => $exitingCertificateSetting->student_name_text_size,
-                'student_name_text_weight' => $exitingCertificateSetting->student_name_text_weight,
-                'student_name_text_x' => $exitingCertificateSetting->student_name_text_x,
-                'student_name_text_y' => $exitingCertificateSetting->student_name_text_y,
-                'student_name_text_color' => $exitingCertificateSetting->student_name_text_color,
-                'student_name_text_status' => $exitingCertificateSetting->student_name_text_status,
-
-                'text_1' => $exitingCertificateSetting->text_1,
-                'text_1_size' => $exitingCertificateSetting->text_1_size,
-                'text_1_weight' => $exitingCertificateSetting->text_1_weight,
-                'text_1_x' => $exitingCertificateSetting->text_1_x,
-                'text_1_y' => $exitingCertificateSetting->text_1_y,
-                'text_1_color' => $exitingCertificateSetting->text_1_color,
-                'text_1_status' => $exitingCertificateSetting->text_1_status,
-
-                'text_2' => $exitingCertificateSetting->text_2,
-                'text_2_size' => $exitingCertificateSetting->text_2_size,
-                'text_2_weight' => $exitingCertificateSetting->text_2_weight,
-                'text_2_x' => $exitingCertificateSetting->text_2_x,
-                'text_2_y' => $exitingCertificateSetting->text_2_y,
-                'text_2_color' => $exitingCertificateSetting->text_2_color,
-                'text_2_status' => $exitingCertificateSetting->text_2_status,
-
-                'text_3' => $exitingCertificateSetting->text_3,
-                'text_3_size' => $exitingCertificateSetting->text_3_size,
-                'text_3_weight' => $exitingCertificateSetting->text_3_weight,
-                'text_3_x' => $exitingCertificateSetting->text_3_x,
-                'text_3_y' => $exitingCertificateSetting->text_3_y,
-                'text_3_color' => $exitingCertificateSetting->text_3_color,
-                'text_3_status' => $exitingCertificateSetting->text_3_status,
-
-                'text_4' => $exitingCertificateSetting->text_4,
-                'text_4_size' => $exitingCertificateSetting->text_4_size,
-                'text_4_weight' => $exitingCertificateSetting->text_4_weight,
-                'text_4_x' => $exitingCertificateSetting->text_4_x,
-                'text_4_y' => $exitingCertificateSetting->text_4_y,
-                'text_4_color' => $exitingCertificateSetting->text_4_color,
-                'text_4_status' => $exitingCertificateSetting->text_4_status,
-
-                'text_5' => $exitingCertificateSetting->text_5,
-                'text_5_size' => $exitingCertificateSetting->text_5_size,
-                'text_5_weight' => $exitingCertificateSetting->text_5_weight,
-                'text_5_x' => $exitingCertificateSetting->text_5_x,
-                'text_5_y' => $exitingCertificateSetting->text_5_y,
-                'text_5_color' => $exitingCertificateSetting->text_5_color,
-                'text_5_status' => $exitingCertificateSetting->text_5_status,
-            ];
-            $this->db->insert('student_certificate', $certificateSettingStudent);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
         } else {
             $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_update'));
@@ -4875,8 +4801,20 @@ class Admin extends EduAppGT
             $image="default.png";
         }
         $page_data['image']=$image;
-        $page_data['page_name']  = 'certificate';
-        $page_data['page_title'] = getEduAppGTLang('certificate');
+        $page_data['page_name']  = 'certificate_setting_list';
+        $page_data['page_title'] = getEduAppGTLang('certificate_setting_list');
+        $this->load->view('backend/index', $page_data);
+    }
+    function edit_certificate_settings($id='')
+    {
+        if($this->db->get_where('certificate_image', array('id' => '1'))->row()->image){
+            $image=$this->db->get_where('certificate_image', array('id' => '1'))->row()->image;
+        }else{
+            $image="default.png";
+        }
+        $page_data['image']=$image;
+        $page_data['page_name']  = 'certificate_setting_edit';
+        $page_data['page_title'] = getEduAppGTLang('certificate_setting_edit');
         $this->load->view('backend/index', $page_data);
     }
     public function change_certificate_image()

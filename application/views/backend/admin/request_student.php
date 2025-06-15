@@ -252,7 +252,7 @@
                                 <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group">
                   	                    <label class="control-label"><?php echo getEduAppGTLang('file');?></label>
-                  		                <input class="form-control" placeholder="" type="file" name="file">
+                  		                <input class="form-control" placeholder="" type="file" name="file_name">
                 		                <span class="material-input"></span>
                 	                </div>
                                 </div>

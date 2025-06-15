@@ -31,20 +31,33 @@
             </div>
             <div class="content-i">
                 <div class="content-box">
-                    <div class="element-wrapper">
-                        <h6 class="element-header">
-                            <div class="back backbutton">
+                    <div class="back backbutton">
                                 <a title="Return" href="<?=base_url('admin/final_evaluation/')?>"><i class="picons-thin-icon-thin-0131_arrow_back_undo"></i></a>
                             </div>
-                            Pesos de evaluación final
-                            <p><?= $exam->name; ?></p>
-                            <?php $class = $this->db->get_where('class', array('class_id' => $exam->class_id))->row(); ?>
-                            <p><?= @getDetailBranch($class->branch_id)->name . ' | ' . getClassNameById($exam->class_id) . ' | ' . getSectionNameById($exam->section_id) . '|' . getSubjectNameById($exam->subject_id); ?> </p>
-                            <a class="btn btn-primary" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_add_is_average/<?php echo $exam->exam_id ?>');" href="javascript:void(0);">Relleno automático</a>
-                        </h6>
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-start flex-wrap">
+                                <div>
+                                    <h6 class="element-header mb-1">Pesosde evaluación final</h6>
+                                    <p class="mb-1 fw-bold"><?= $exam->name; ?></p>
+                                    <?php $class = $this->db->get_where('class', array('class_id' => $exam->class_id))->row(); ?>
+                                    <p class="mb-0 text-muted">
+                                        <?= @getDetailBranch($class->branch_id)->name; ?> |
+                                        <?= getClassNameById($exam->class_id); ?> |
+                                        <?= getSectionNameById($exam->section_id); ?> |
+                                        <?= getSubjectNameById($exam->subject_id); ?>
+                                    </p>
+                                </div>
+                                <div class="mt-2 mt-md-0">
+                                    <button class="btn btn-primary" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_add_is_average/<?php echo $exam->exam_id ?>');">
+                                        Relleno automático</button>
+                                </div>
+                            </div>
+                        <div class="card-body">
+                            <div class="element-wrapper">
+                        
                         <div class="element-box-tp">
                             <div class="table-responsive">
-                                <table class="table table-padded">
+                                <table id="markTable" class="table table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th><?php echo getEduAppGTLang('name'); ?></th>
@@ -143,6 +156,8 @@
                     </div>
 
                 </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -155,4 +170,7 @@
                 document.querySelector('#update_percent input[name="percent"]').value = percent;
             });
         });
+          $(document).ready(function() {
+        $('#markTable').DataTable();
+    });
     </script>

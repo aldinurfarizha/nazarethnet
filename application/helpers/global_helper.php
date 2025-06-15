@@ -1054,7 +1054,8 @@ function writeNotaCapacidadHistory($nota_capacidad_id,$value)
         if ($exitingNotaCapacidadValue) {
             $data = array(
                 'nota_capacidad_id' => $nota_capacidad_id,
-                'value' => $exitingNotaCapacidadValue->nota
+                'value' => $exitingNotaCapacidadValue->nota,
+                'created_at' => date('Y-m-d H:i:s')
             );
             $ci->db->insert('nota_capacidad_history', $data);
             return;
@@ -1066,7 +1067,8 @@ function writeNotaCapacidadHistory($nota_capacidad_id,$value)
     }
     $data = array(
         'nota_capacidad_id' => $nota_capacidad_id,
-        'value' => $value
+        'value' => $value,
+        'created_at' => date('Y-m-d H:i:s')
     );
     $ci->db->insert('nota_capacidad_history', $data);
 }

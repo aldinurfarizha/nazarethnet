@@ -974,6 +974,7 @@ class Crud extends School
                 $data['type']        = $this->input->post('type');
                 $data['file_name']   = $_FILES["file_name"]["name"];
                 $data['status']      = $this->input->post('status');
+                $data['branch_id']   = $this->input->post('branch_id');
                 move_uploaded_file($_FILES["file_name"]["tmp_name"], "public/uploads/library/" . $_FILES["file_name"]["name"]);
                 $this->db->insert('book', $data);
 
@@ -1009,6 +1010,7 @@ class Crud extends School
             $data['total_copies']= html_escape($this->input->post('total_copies'));
             $data['type']        = $this->input->post('type');
             $data['status']      = $this->input->post('status');
+            $data['branch_id']   = $this->input->post('branch_id');
             $this->db->insert('book', $data);
 
              $notify['notify'] = "<strong>". $this->crud->get_name($this->session->userdata('login_type'), $this->session->userdata('login_user_id'))."</strong>". " ". getEduAppGTLang('book_added')." <b>".$this->db->get_where('class', array('class_id' => $this->input->post('class_id')))->row()->name."</b>";

@@ -1,4 +1,6 @@
-<?php $running_year = $this->crud->getInfo('running_year'); ?>
+<?php 
+$librarian_info = $this->db->get_where('librarian', array('librarian_id' => $this->session->userdata('login_user_id')))->row();
+$running_year = $this->crud->getInfo('running_year'); ?>
     <div class="content-w">
         <?php include 'fancy.php';?>
         <div class="header-spacer"></div>
@@ -26,7 +28,7 @@
 						            <div class="friend-avatar">
 						                <br><br>
 						                <i class="picons-thin-icon-thin-0017_office_archive iconcls"></i>
-							            <h1 class="text-bold"><?php echo $this->db->count_all_results('book');?></h1>
+							            <h1 class="text-bold"><?php echo $this->db->get_where('book', array('branch_id' => $librarian_info->branch_id))->num_rows();?></h1>
 							            <div class="author-content">
 								            <div class="country"><b> <?php echo getEduAppGTLang('total_books');?></b></div>
 							            </div>
@@ -42,7 +44,7 @@
 						            <div class="friend-avatar">
 						                <br><br>
 						                <i class="picons-thin-icon-thin-0073_documents_files_paper_text_archive_copy iconcls"></i>
-							            <h1 class="text-bold"><?php $t = 0; $total_copies = $this->db->get('book')->result_array(); foreach($total_copies as $r) {$t += $r['total_copies'];} echo $t;?></h1>
+							            <h1 class="text-bold"><?php $t = 0; $total_copies = $this->db->get_where('book', array('branch_id' => $librarian_info->branch_id))->result_array(); foreach($total_copies as $r) {$t += $r['total_copies'];} echo $t;?></h1>
 							            <div class="author-content">
 								            <div class="country"><b><?php echo getEduAppGTLang('total_copies');?></b></div>
 							            </div>
@@ -58,7 +60,7 @@
 						            <div class="friend-avatar">
 						                <br><br>
 						                <i class="picons-thin-icon-thin-0086_import_file_load iconcls"></i>
-							            <h1 class="text-bold"><?php $to = 0; $copies =  $this->db->get('book')->result_array(); foreach($copies as $row){$to += $row['issued_copies'];} echo $to;?></h1>
+							            <h1 class="text-bold"><?php $to = 0; $copies =  $this->db->get_where('book', array('branch_id' => $librarian_info->branch_id))->result_array(); foreach($copies as $row){$to += $row['issued_copies'];} echo $to;?></h1>
 							            <div class="author-content">
 								            <div class="country"><b> <?php echo getEduAppGTLang('delivered_copies');?></b></div>
 							            </div>
@@ -94,8 +96,9 @@
                                         </thead>
                                         <tbody>
                                         <?php $count = 1; 
-				                            $book = $this->db->get_where('book')->result_array();
-			                                foreach($book as $row):?>
+				                            $book = $this->db->get_where('book', array('branch_id' => $librarian_info->branch_id))->result_array();
+			                                foreach($book as $row):
+                                            ?>
 			                                <tr>
                                 			    <td><a class="btn btn-rounded btn-sm btn-warning text-white"><?php echo $this->db->get_where('class', array('class_id' => $row['class_id']))->row()->name; ?></a></td>
                                 				<td>
@@ -155,6 +158,7 @@
                     <div class="ui-block-content">
                         <?php echo form_open(base_url() . 'librarian/library/create' , array('enctype' => 'multipart/form-data'));?>
                             <div class="row">
+                                <input type="hidden" name="branch_id" value="<?php echo $librarian_info->branch_id; ?>">
                                 <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
                                     <div class="form-group label-floating is-empty">
                                         <label class="control-label"><?php echo getEduAppGTLang('book');?></label>
@@ -180,9 +184,9 @@
                                     <div class="form-group label-floating is-select">
                                         <label class="control-label"><?php echo getEduAppGTLang('class');?></label>
                                         <div class="select">
-                                            <select name="class_id" required="">
+                                            <select name="class_id" required>
                                                 <option value=""><?php echo getEduAppGTLang('select');?></option>
-                                                <?php $cl = $this->db->get('class')->result_array();
+                                                <?php $cl = $this->db->get_where('class', array('branch_id' => $librarian_info->branch_id))->result_array();
                                                     foreach($cl as $row):
                   	                            ?>
                                                 <option value="<?php echo $row['class_id'];?>"><?php echo $row['name'];?></option>

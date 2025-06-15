@@ -178,6 +178,7 @@ class Certificate extends EduAppGT
                 'backgroundFilePath' => $backgroundFilePath,
                 'qrCodeFilePath' => $qrCodeFilePath,
             ];
+            $certificateSettings=$this->db->get_where('certificate_settings', ['id' => 1])->row();
         } else {
             $studentSubject = $this->db->get_where('student_subject', ['cert_code' => $certCode])->row();
             if (!$studentSubject) {
@@ -205,8 +206,12 @@ class Certificate extends EduAppGT
                 'backgroundFilePath' => $backgroundFilePath,
                 'qrCodeFilePath' => $qrCodeFilePath,
             ];
+            $certificateSettings=$this->db->get_where('student_certificate', ['student_certificate_code' => $certCode])->row();
+            if(!$certificateSettings){
+                $certificateSettings=$this->db->get_where('certificate_settings', ['id' => 1])->row();
+            }
         }
-        $certificateSettings=$this->db->get_where('certificate_settings', ['id' => 1])->row();
+        
         $data['settings'] = $certificateSettings;
         $html = $this->load->view('certificates/certificate_template', $data, true);
         if($type == 'view'){

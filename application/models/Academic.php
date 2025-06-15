@@ -960,27 +960,27 @@ class Academic extends School
         $data['status']      = 0;
         $data['code']        = substr(md5(rand(0, 1000000)), 0, 7);
         $this->db->insert('reports', $data);
-        $this->crud->students_reports($this->input->post('student_id'),$parent_id);
+        //$this->crud->students_reports($this->input->post('student_id'),$parent_id);
         move_uploaded_file($_FILES["file_name"]["tmp_name"], 'public/uploads/report_files/'. $_FILES["file_name"]["name"]);
         
-        $notify = $this->db->get_where('settings' , array('type' => 'students_reports'))->row()->description;
-        if($notify == 1)
-        {
-            $message = getEduAppGTLang('behavioral_report_has_been_created_for')." " . $student_name;
-            $sms_status = $this->db->get_where('settings' , array('type' => 'sms_status'))->row()->description;
-            if ($sms_status == 'msg91') 
-            {
-                $result = $this->crud->send_sms_via_msg91($message, $parent_phone);
-            }
-            else if ($sms_status == 'twilio') 
-            {
-                $this->crud->twilio_api($message,"".$parent_phone."");
-            }
-            else if ($sms_status == 'clickatell') 
-            {
-                $this->crud->clickatell($message,$parent_phone);
-            }
-        }
+        // $notify = $this->db->get_where('settings' , array('type' => 'students_reports'))->row()->description;
+        // if($notify == 1)
+        // {
+        //     $message = getEduAppGTLang('behavioral_report_has_been_created_for')." " . $student_name;
+        //     $sms_status = $this->db->get_where('settings' , array('type' => 'sms_status'))->row()->description;
+        //     if ($sms_status == 'msg91') 
+        //     {
+        //         $result = $this->crud->send_sms_via_msg91($message, $parent_phone);
+        //     }
+        //     else if ($sms_status == 'twilio') 
+        //     {
+        //         $this->crud->twilio_api($message,"".$parent_phone."");
+        //     }
+        //     else if ($sms_status == 'clickatell') 
+        //     {
+        //         $this->crud->clickatell($message,$parent_phone);
+        //     }
+        // }
     }
     
     public function reportResponse()
@@ -1398,6 +1398,7 @@ class Academic extends School
         $this->db->where('student_subject_id', $student_subject_id);
         $this->db->update('student_subject', $invalidateData);
         if(!$this->db->affected_rows()){
+            $this->db->delete('student_certificate', array('student_certificate_code'=>$exitingData->cert_code));
             return false;
         }
         return true;
