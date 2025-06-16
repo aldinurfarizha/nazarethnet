@@ -3001,7 +3001,11 @@ class Crud extends School
     {
         $data['is_public']           = $this->input->post('is_public');
         $data['news_code']           = substr(md5(rand(100000000, 200000000)), 0, 10);
-        $data['description']         = html_escape($this->input->post('description'));
+        if ($this->input->post('description') != '') {
+            $data['description']    = $this->input->post('description');
+        } else {
+            $data['description']    = '';
+        }
         $data['date']                = $this->getDateFormat();
         $data['publish_date']        = date('Y-m-d H:i:s');
         $data['admin_id']            = $this->session->userdata('login_user_id');
@@ -3011,9 +3015,30 @@ class Crud extends School
         $data['class_id']           = 0;
         $data['section_id']         = 0;
         $data['subject_id']         = 0;
+        $data['post_content']       = $this->input->post('post_content');
+        $data['can_reaction'] = $this->input->post('can_reaction') ? 1 : 0;
+        $data['can_comment']  = $this->input->post('can_comment') ? 1 : 0;
+        // Cek apakah ada file yang diupload
+        if (isset($_FILES['post_file']) && $_FILES['post_file']['error'] == UPLOAD_ERR_OK) {
+            $upload_dir = 'public/news/';
+            if (!is_dir($upload_dir)) {
+                if (!mkdir($upload_dir, 0755, true)) {
+                    die("Failed to create folder: " . $upload_dir);
+                }
+            }
+
+            $ext = pathinfo($_FILES["post_file"]["name"], PATHINFO_EXTENSION);
+            $new_filename = uniqid('news', true) . '.' . $ext;
+            $target_file = $upload_dir . $new_filename;
+
+            if (move_uploaded_file($_FILES["post_file"]["tmp_name"], $target_file)) {
+                $data['post_file'] = $new_filename;
+                $data['post_file_type'] = $ext;
+            }
+        }
+
         $this->db->insert('news', $data);
         $news_code = $this->db->get_where('news' , array('news_id' => $this->db->insert_id()))->row()->news_code;
-        move_uploaded_file($_FILES['userfile']['tmp_name'], 'public/uploads/news_images/' . $news_code . '.jpg');
         return $news_code;
     }
     
