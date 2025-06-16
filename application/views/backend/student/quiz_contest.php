@@ -122,7 +122,7 @@ foreach($quizz as $row):?>
                                         <div class="card-body" style="padding:0px;">
                                             <table style="width: 100%;">
                                                 <tbody>
-                                                    <?php foreach($less as $ss):?>
+                                                    <?php foreach($less as $ss): $lesson_online_id = $ss['lesson_online_id']; $lesson_id = $ss['lesson_online_id'];?>
                                                         <?php if($ss['type'] == 'videos'):?>
                                                         <tr style="width: 100%; padding: 5px 0px;background-color: #E6F2F5;">
                                                             <td style="text-align: left; padding:7px 10px;">

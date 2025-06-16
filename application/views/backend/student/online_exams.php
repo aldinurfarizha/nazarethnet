@@ -113,7 +113,7 @@
                                                                 <a href="javascript:void(0);" class="btn btn-warning btn-roundend"><?php echo getEduAppGTLang('waiting_results');?></a>
                                                             <?php endif; ?>
                                                             <?php if($this->crud->calculate_average($row['online_exam_id'], $this->session->userdata('login_user_id')) == 1 && $row['certificate'] == 1):?>
-                                                                <a href="<?php echo base_url();?>student/exportPDF/<?php echo base64_encode($row['online_exam_id']);?>/" class="btn btn-success btn-purple btn-rounded"><?php echo getEduAppGTLang('download_certificate');?></a>
+                                                                <a href="<?php echo base_url();?>student/exportPDF/<?php echo base64_encode($row['online_exam_id']);?>/" hidden class="btn btn-success btn-purple btn-rounded"><?php echo getEduAppGTLang('download_certificate');?></a>
                                                             <?php endif;?>
                             							<?php endif;?>
                                                         </td>

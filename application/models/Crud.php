@@ -26,7 +26,7 @@ class Crud extends School
         $total_mark = $this->get_total_mark($online_exam_id);
         $required = $this->db->get_where('online_exam', array('online_exam_id' => $online_exam_id))->row()->minimum_percentage;
         $mark = $this->db->get_where('online_exam_result', array('online_exam_id' => $online_exam_id, 'student_id' => $student_id))->row()->obtained_mark;
-        $minumum_required_marks = ($total_mark * $required) / 100;
+        $minumum_required_marks = ((int)$total_mark * (int)$required) / 100;
         if($minumum_required_marks > $mark){
             return 0;
         }else{
@@ -1725,7 +1725,7 @@ class Crud extends School
         $total_mark = $this->get_total_mark($online_exam_id);
         $query = $this->db->get_where('online_exam', array('online_exam_id' => $online_exam_id))->row_array();
         $minimum_percentage = $query['minimum_percentage'];
-        $minumum_required_marks = ($total_mark * $minimum_percentage) / 100;
+        $minumum_required_marks = ((int)$total_mark * (int)$minimum_percentage) / 100;
         if ($minumum_required_marks > $obtained_marks) {
             $data['result'] = 'fail';
         }
