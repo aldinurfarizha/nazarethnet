@@ -88,7 +88,7 @@ class Certificate extends EduAppGT
             $certCode = strtoupper($this->input->post('certCode'));
         }
         if ($certCode == null) {
-            redirect(base_url() . 'certificate');
+            redirect(base_url() . 'certificate/start_iframe');
         }
         $certCode = strtoupper($certCode);
         $certCode = preg_replace("/[^A-Z0-9]/", "", $certCode);

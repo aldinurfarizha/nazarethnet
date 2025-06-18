@@ -2299,7 +2299,7 @@ class Admin extends EduAppGT
                 'date_added' => strtotime(date("Y-m-d H:i:s")),
             );
             $this->db->insert('enroll', $data);
-            generateSubjectNewStudent($student_id);
+            //generateSubjectNewStudent($student_id); tadinya ini aktif untuk generate subject secara otomatis biar langsung pada aktif coursenya tapi permintaan revisi 18062025 meminta agar auto inactive kursusnya
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
             redirect(base_url() . 'admin/student_profile_class_section/' . $student_id);
         }
@@ -2369,11 +2369,17 @@ class Admin extends EduAppGT
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
-        $data['class_id']   = $this->input->post('class_id');
-        $data['subject_id'] = $this->input->post('subject_id');
+        $subject_id= $this->input->post('subject_id');
+        if($subject_id == '' || $subject_id == null){
+             redirect(base_url() . 'admin/student_profile_attendance/');
+        }
+        $detailSubject= getSubjectDetailBySubjectId($subject_id);
+
+        $data['class_id']   = $detailSubject->class_id;
+        $data['subject_id'] = $subject_id;
+        $data['section_id'] = $detailSubject->section_id;
         $data['year']       = $this->input->post('year');
         $data['month']      = $this->input->post('month');
-        $data['section_id'] = $this->input->post('section_id');
         redirect(base_url() . 'admin/student_profile_attendance/' . $this->input->post('student_id') . '/' . $data['class_id'] . '/' . $data['section_id'] . '/' . $data['subject_id'] . '/' . $data['month'] . '/' . $data['year'] . '/', 'refresh');
     }
 

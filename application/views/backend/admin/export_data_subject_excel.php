@@ -1,110 +1,63 @@
 <?php
-// Pengaturan header agar file langsung diunduh sebagai Excel
-header('Content-Type: application/vnd.ms-excel');
+// Aktifkan header untuk file Excel
+header("Content-Type: application/vnd.ms-excel");
 
-// Ambil nama file dari kombinasi class, section, subject, exam dan tanggal saat ini
-$class_name = $this->db->get_where('class', array('class_id' => $class_id))->row()->name;
-$section_name = $this->db->get_where('section', array('section_id' => $section_id))->row()->name;
-$subject_name = $this->db->get_where('subject', array('subject_id' => $subject_id))->row()->name;
-$exam_name = $this->db->get_where('exam', array('exam_id' => $exam_id))->row()->name;
-$branch = $this->db->get_where('branch', array('branch_id' => $branch_id))->row()->name;
-$current_date = date('Y-m-d'); // Menambahkan tanggal saat ini
+header("Pragma: no-cache");
+header("Expires: 0");
 
-// Menyusun nama file
-$filename = $branch . ' - ' . $class_name . ' - ' . $section_name . ' - ' . $subject_name . ' - ' . $exam_name . ' - ' . $current_date . '.xls';
+if ($branch_id == '') {
+    $branch = "All Branches";
+} else {
+    $branch = $this->db->get_where('branch', ['branch_id' => $branch_id])->row()->name.' Branch';
+}
+if ($class_id == '') {
+    $class = "All Class";
+} else {
+    $class = $this->db->get_where('class', ['class_id' => $class_id])->row()->name . ' Class';
+}
+if ($section_id == '') {
+    $section = "All Section";
+} else {
+    $section = $this->db->get_where('section', ['section_id' => $class_id])->row()->name . ' Section';
+}
+$current_date = date('Y-m-d');
+$filename = $branch .' '.$class.'-'. $current_date . '.xls';
+header("Content-Disposition: attachment; filename=Subject list of $filename.xls");
+echo '<table border="1" cellpadding="5" cellspacing="0">';
+echo '<tr><td colspan="5" align="center"><strong>'
+    . 'Subject list of '. $branch .' '.$class.' '.$section.'</strong></td></tr>';
 
-// Mengatur header download
-header('Content-Disposition: attachment; filename="' . $filename . '"');
+echo '<tr>
+        <th>No.</th>
+        <th>Subject Name</th>
+        <th>Branch</th>
+        <th>Class</th>
+        <th>Section</th>
+      </tr>';
 
-// Pengaturan Tahun Ajaran yang sedang berjalan
-$running_year = $this->crud->getInfo('running_year');
-if ($class_id != '' && $section_id != '' && $subject_id != '' && $exam_id != ''):
-    $finalEvaluaciones = 0;
-    $is_final = $this->db->get_where('exam', array('exam_id' => $exam_id))->row()->is_final;
+      if($class_id == '') {
+        $where = [];
+      } else {
+        $where = ['class_id' => $class_id];
+      }
+      if($section_id != '') {
+        $where['section_id'] = $section_id;
+      }
+$subject = $this->db->get_where('subject', $where)->result();
+$no = 1;
 
-    // Output HTML untuk konversi ke Excel
-    echo '<table border="1" cellpadding="5" cellspacing="0">';
-
-    // Header kelas, section, subject, dan exam
-    echo '<tr><td colspan="5" align="center"><strong>'
-        . $branch . ' - '
-        . $class_name . ' - '
-        . $section_name . ' - '
-        . $subject_name . ' - '
-        . $exam_name . '</strong></td></tr>';
-
-    // Header tabel untuk data siswa dan nilai
+foreach ($subject as $row):
+    $classDetail= $this->db->get_where('class', ['class_id' => $row->class_id])->row();
+    $sectionDetail = $this->db->get_where('section', ['section_id' => $row->section_id])->row();
+    $branchDetail = $this->db->get_where('branch', ['branch_id' => @$classDetail->branch_id])->row();
     echo '<tr>';
-    echo '<td><strong>Student</strong></td>';
-
-    // Mengambil aktivitas mark
-    $mark_activity = $this->db->get_where('mark_activity', array('exam_id' => $exam_id))->result_array();
-    foreach ($mark_activity as $row) {
-        echo '<td><strong>' . $row['name'] . '</strong></td>';
-    }
-
-    // Menambahkan kolom evaluasi atau prom
-    if ($is_final) {
-        echo '<td><strong>Evaluaciones Finales</strong></td>';
-    } else {
-        echo '<td><strong>Prom</strong></td>';
-    }
+    echo '<td>' . $no++ . '</td>';
+    echo '<td>' . $row->name . '</td>';
+    echo '<td>' . @$branchDetail->name . '</td>';
+    echo '<td>' . @$classDetail->name . '</td>';
+    echo '<td>' . @$sectionDetail->name . '</td>';
     echo '</tr>';
 
-    // Mendapatkan data siswa dan nilai
-    $students = $this->db->get_where('enroll', array('class_id' => $class_id, 'year' => $running_year, 'section_id' => $section_id))->result_array();
-    foreach ($students as $row):
-        if (!isStudentActiveEnroll($row['student_id'], $class_id, $section_id, $running_year)) {
-            continue;
-        }
-        if (isStudentDeactive($row['student_id'])) {
-            continue;
-        }
-        if (isStudentFinishSubject($row['student_id'], $subject_id)) {
-            continue;
-        }
-        if (!isActiveSubject($row['student_id'], $subject_id)) {
-            continue;
-        }
+endforeach;
 
-        // Menampilkan data siswa
-        $student_id = $row['student_id'];
-        $student_name = $this->crud->get_name('student', $student_id);
-        echo '<tr>';
-        echo '<td style="vertical-align: middle;">' . htmlspecialchars($student_name) . '</td>';
-
-        $finalEvaluaciones = 0;
-        foreach ($mark_activity as $row2) {
-            $nota_row = $this->db
-                ->order_by('nota_capacidad_id', 'ASC')
-                ->get_where('nota_capacidad', [
-                    'mark_activity_id' => $row2['mark_activity_id'],
-                    'student_id'       => $student_id
-                ])
-                ->row();
-            $nota = isset($nota_row->nota) ? $nota_row->nota : '-';
-            $finalEvaluaciones += ((int)$nota_row->nota * $row2['percent'] / 100);
-            $updated_at = isset($nota_row->updated_at) ? $nota_row->updated_at : '-';
-            $notaDisplay = '';
-            if ($nota != "" || $nota != null) {
-                $notaDisplay .= '<b>' . $updated_at . ' = ' . $nota . '</b>';
-                if (getHistoryNotaCapacidad($nota_row->nota_capacidad_id)) {
-                    $notaDisplay .= '<br>' . getHistoryNotaCapacidad($nota_row->nota_capacidad_id);
-                }
-            }
-
-
-            echo '<td style="vertical-align: middle; text-align: center;">' . $notaDisplay . '</td>';
-        }
-
-        if ($is_final) {
-            echo '<td style="vertical-align: middle; text-align: center;">' . $finalEvaluaciones . '</td>';
-        } else {
-            echo '<td style="vertical-align: middle; text-align: center;">' . getFinalMark($student_id, $subject_id, $exam_id, $running_year) . '</td>';
-        }
-        echo '</tr>';
-    endforeach;
-
-    echo '</table>';
-
-endif;
+echo '</table>';

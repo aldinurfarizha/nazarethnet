@@ -3,8 +3,6 @@ $min = $this->db->get_where('academic_settings', array('type' => 'minium_mark'))
 $running_year = $this->crud->getInfo('running_year');
 $student_info = $this->db->get_where('student', array('student_id' => $student_id))->result_array();
 foreach ($student_info as $row) :
-    $class_id = $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->class_id;
-    $section_id = $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->section_id;
 ?>
     <div class="content-w">
         <?php include 'fancy.php'; ?>
@@ -55,11 +53,27 @@ foreach ($student_info as $row) :
                                     <div class="container">
                                         <?php echo form_open(base_url() . 'admin/student_attendance_report_selector/', array('class' => 'form m-b')); ?>
                                         <div class="row">
-                                            <input type="hidden" name="class_id" value="<?php echo $class_id; ?>">
                                             <input type="hidden" name="student_id" value="<?php echo $row['student_id']; ?>">
-                                            <input type="hidden" name="section_id" value="<?php echo $section_id; ?>">
                                             <input type="hidden" name="operation" value="selection">
-                                            <div class="col-sm-5">
+                                            <div class="col-sm-4">
+                                                <div class="form-group label-floating is-select">
+                                                    <label class="control-label"><?php echo getEduAppGTLang('subject'); ?></label>
+                                                    <div class="select">
+                                                        <select name="subject_id" required="">
+                                                            <option value=""><?php echo getEduAppGTLang('select'); ?></option>
+                                                            <?php
+                                                            foreach (getAvailabeSubject($student_id) as $subject) {
+                                                                if (isActiveSubject($student_id, $subject->subject_id)) {
+                                                            ?>
+                                                                    <option value="<?php echo $subject->subject_id; ?>" <?php if ($subject_id == $subject->subject_id) echo 'selected'; ?>><?php echo $subject->name; ?></option>
+
+                                                            <?php }
+                                                            } ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
                                                 <div class="form-group label-floating is-select">
                                                     <label class="control-label"><?php echo getEduAppGTLang('month'); ?></label>
                                                     <div class="select">
@@ -86,25 +100,25 @@ foreach ($student_info as $row) :
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-5">
+                                            <div class="col-sm-2">
                                                 <div class="form-group label-floating is-select">
-                                                    <label class="control-label"><?php echo getEduAppGTLang('subject'); ?></label>
+                                                    <label class="control-label"><?php echo getEduAppGTLang('year'); ?></label>
                                                     <div class="select">
-                                                        <select name="subject_id" required="">
-                                                            <option value=""><?php echo getEduAppGTLang('select'); ?></option>
+                                                        <select name="year" required>
                                                             <?php
-                                                            foreach (getAvailabeSubject($student_id) as $subject) {
-                                                                if (isActiveSubject($student_id, $subject->subject_id)) {
+                                                            $current_year = date('Y');
+                                                            $start_year = 2024;
+                                                            for ($i = $start_year; $i <= $current_year; $i++):
+                                                                $selected = (!isset($year) && $i == $current_year) || (isset($year) && $year == $i) ? 'selected' : '';
                                                             ?>
-                                                                    <option value="<?php echo $subject->subject_id; ?>" <?php if ($subject_id == $subject->subject_id) echo 'selected'; ?>><?php echo $subject->name; ?></option>
-
-                                                            <?php }
-                                                            } ?>
+                                                                <option value="<?php echo $i; ?>" <?php echo $selected; ?>>
+                                                                    <?php echo $i; ?>
+                                                                </option>
+                                                            <?php endfor; ?>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <input type="hidden" name="year" value="<?php echo $running_year; ?>">
                                             <div class="col-sm-2">
                                                 <div class="form-group">
                                                     <button class="btn btn-rounded btn-success btn-upper top-20"><span><?php echo getEduAppGTLang('generate'); ?></span></button>
