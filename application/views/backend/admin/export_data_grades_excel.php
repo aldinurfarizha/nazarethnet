@@ -8,10 +8,16 @@ $section_name = $this->db->get_where('section', array('section_id' => $section_i
 $subject_name = $this->db->get_where('subject', array('subject_id' => $subject_id))->row()->name;
 $exam_name = $this->db->get_where('exam', array('exam_id' => $exam_id))->row()->name;
 $branch = $this->db->get_where('branch', array('branch_id' => $branch_id))->row()->name;
+if ($student_id != '') {
+    $student_name = $this->crud->get_name('student', $student_id);
+    $student = $student_name;
+} else {
+    $student = 'All Students';
+}
 $current_date = date('Y-m-d'); // Menambahkan tanggal saat ini
 
 // Menyusun nama file
-$filename = $branch . ' - ' . $class_name . ' - ' . $section_name . ' - ' . $subject_name . ' - ' . $exam_name . ' - ' . $current_date . '.xls';
+$filename = 'Grades Report of ' . $student . ' - ' . $branch . ' - ' . $class_name . ' - ' . $section_name . ' - ' . $subject_name . ' - ' . $exam_name . ' - ' . $current_date . '.xls';
 
 // Mengatur header download
 header('Content-Disposition: attachment; filename="' . $filename . '"');
@@ -52,7 +58,20 @@ if ($class_id != '' && $section_id != '' && $subject_id != '' && $exam_id != '')
     echo '</tr>';
 
     // Mendapatkan data siswa dan nilai
-    $students = $this->db->get_where('enroll', array('class_id' => $class_id, 'year' => $running_year, 'section_id' => $section_id))->result_array();
+    if ($student_id != '') {
+        $students = $this->db->get_where('enroll', array(
+            'class_id'   => $class_id,
+            'section_id' => $section_id,
+            'year'       => $running_year,
+            'student_id' => $student_id
+        ))->result_array();
+    } else {
+        $students = $this->db->get_where('enroll', array(
+            'class_id'   => $class_id,
+            'section_id' => $section_id,
+            'year'       => $running_year
+        ))->result_array();
+    }
     foreach ($students as $row):
         if (!isStudentActiveEnroll($row['student_id'], $class_id, $section_id, $running_year)) {
             continue;

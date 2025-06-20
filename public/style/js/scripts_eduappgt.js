@@ -465,6 +465,16 @@
             }
         });
     }
+    function get_student_subject2(subject_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_student_subject_option/' + subject_id ,
+            success: function(response)
+            {
+                jQuery('#student_holder2').html(response);
+            }
+        });
+    }
     
     function get_class_students(class_id) {
         $.ajax({

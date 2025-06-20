@@ -3731,6 +3731,8 @@ class Admin extends EduAppGT
         $section_id = $this->input->post('section_id');
         $subject_id = $this->input->post('subject_id');
         $exan_id = $this->input->post('exam_id');
+        $student_id= $this->input->post('student_id');
+        $page_data['student_id'] = $student_id;
         $page_data['branch_id'] = $branch_id;
         $page_data['class_id'] = $class_id;
         $page_data['section_id'] = $section_id;
