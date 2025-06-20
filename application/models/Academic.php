@@ -1390,6 +1390,16 @@ class Academic extends School
         if(!$exitingData){
             return null;
         }
+        if (!empty($exitingData->cert_code)) {
+            $pdfFilePath = FCPATH . "public/generated_certificates/" . $exitingData->cert_code . ".pdf";
+            if (file_exists($pdfFilePath)) {
+                unlink($pdfFilePath);
+            }
+            $qrFilePath = FCPATH . "public/uploads/certificateqr/" . $exitingData->cert_code . ".png";
+            if (file_exists($qrFilePath)) {
+                unlink($qrFilePath);
+            }
+        }
         $invalidateData=[
             'is_finish'=>0,
             'cert_code'=>null,

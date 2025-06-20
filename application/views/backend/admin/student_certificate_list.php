@@ -93,7 +93,7 @@ foreach ($student_info as $row) :
                                                                         <?= $item->cert_generated_at ?>
                                                                     </td>
                                                                     <td>
-                                                                        <a class="btn btn-sm btn-success" target="_blank" href="<?= base_url('certificate/download/' . $item->cert_code) ?>"> <?= getEduAppGTLang('download_certificate'); ?> <i class="fa fa-file-pdf"></i></a>
+                                                                        <a class="btn btn-sm btn-success" target="_blank" href="<?= base_url('certificate/download_pdf/' . $item->cert_code) ?>"> <?= getEduAppGTLang('download_certificate'); ?> <i class="fa fa-file-pdf"></i></a>
                                                                     </td>
                                                                 </tr>
                                                             <?php $no++;

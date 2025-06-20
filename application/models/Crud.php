@@ -4029,4 +4029,24 @@ class Crud extends School
         $this->db->where('poll_code', $pollCode);
         $this->db->delete('polls');
     }
+    public function saveCertificatePdf($certCode, $html, $settings)
+    {
+        $filename = "{$certCode}.pdf";
+        $savePath = FCPATH . "public/generated_certificates/" . $filename;
+
+        if (!is_dir(FCPATH . "public/generated_certificates")) {
+            mkdir(FCPATH . "public/generated_certificates", 0755, true);
+        }
+
+        $this->load->library('pdf_generator');
+        $this->pdf_generator->generate($html, $savePath, 'F', [
+            'format' => [$settings->width, $settings->height],
+            'margin_left' => 0,
+            'margin_right' => 0,
+            'margin_top' => 0,
+            'margin_bottom' => 0,
+        ]);
+
+        return $savePath;
+    }
 }

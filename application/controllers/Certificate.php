@@ -227,4 +227,20 @@ class Certificate extends EduAppGT
             'margin_bottom' => 0,
         ]);
     }
+    public function download_pdf($certCode)
+    {
+        $certCode = preg_replace("/[^A-Z0-9]/", "", $certCode);
+        if (strlen($certCode) != 10) {
+            redirect(base_url() . 'certificate/invalid/' . $certCode);
+        }
+
+        $filePath = FCPATH . "public/generated_certificates/" . $certCode . ".pdf";
+
+        if (!file_exists($filePath)) {
+            redirect(base_url() . 'certificate/invalid/' . $certCode);
+        }
+
+        $this->load->helper('download');
+        force_download($filePath, NULL);
+    }
 }

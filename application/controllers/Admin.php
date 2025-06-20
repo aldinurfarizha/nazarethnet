@@ -4349,6 +4349,24 @@ class Admin extends EduAppGT
                 'text_5_status' => $exitingCertificateSetting->text_5_status,
             ];
             $this->db->insert('student_certificate', $certificateSettingStudent);
+            $student  = $this->db->get_where('student', ['student_id' => $student_id])->row();
+            $subject  = $this->db->get_where('subject', ['subject_id' => $subject_id])->row();
+            $qrPath   = FCPATH . "public/uploads/certificateqr/{$certCode}.png";
+            $bgImage  = $this->db->get_where('certificate_image', ['id' => 1])->row()->image ?? 'default.png';
+            $bgPath   = FCPATH . "public/certificates/$bgImage";
+
+            $dataPdf = [
+                'studentName'        => $student->first_name . ' ' . $student->last_name,
+                'courseTitle'        => $subject->name,
+                'certificateCode'    => $certCode,
+                'issueDate'          => date('Y-m-d'),
+                'backgroundFilePath' => $bgPath,
+                'qrCodeFilePath'     => $qrPath,
+                'settings'           => $exitingCertificateSetting,
+            ];
+
+            $html = $this->load->view('certificates/certificate_template', $dataPdf, true);
+            $this->crud->saveCertificatePdf($certCode, $html, $exitingCertificateSetting);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
         } else {
             $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_update'));

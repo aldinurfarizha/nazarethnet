@@ -133,7 +133,7 @@
             </div>
         </div>
 
-        <a href="<?php echo base_url("certificate/download/" . $student_subject->cert_code); ?>" class="btn-download" target="_blank" rel="noopener">
+        <a href="<?php echo base_url("certificate/download_pdf/" . $student_subject->cert_code); ?>" class="btn-download" target="_blank" rel="noopener">
             <i class="fa-solid fa-download" style="margin-right: 8px;"></i>
             <?php echo getEduAppGTLang("download_certificate"); ?>
         </a>
