@@ -683,6 +683,7 @@ class Academic extends School
                 foreach ($online_exam_reference as $online_exam_references) {
                     $this->db->insert('online_exam', array(
                         'code' => generateRandomString(7),
+                        'title' => $online_exam_references->title,
                         'subject_id' => $new_subject_id,
                         'class_id' => $new_subject->class_id,
                         'section_id' => $new_subject->section_id,
@@ -705,6 +706,22 @@ class Academic extends School
                         'show_random' => $online_exam_references->show_random,
                         'certificate' => $online_exam_references->certificate,
                     ));
+                    $new_online_exam_id = $this->db->insert_id();
+                    $question_bank_reference = $this->db->get_where('question_bank', array('online_exam_id' => "$online_exam_references->online_exam_id"))->result();
+                    if ($question_bank_reference) {
+                        foreach ($question_bank_reference as $question_bank_references) {
+                            $this->db->insert('question_bank', array(
+                                'online_exam_id'    => $new_online_exam_id,
+                                'question_title'    => $question_bank_references->question_title,
+                                'type'              => $question_bank_references->type,
+                                'number_of_options' => $question_bank_references->number_of_options,
+                                'options'           => $question_bank_references->options,
+                                'correct_answers'   => $question_bank_references->correct_answers,
+                                'mark'              => $question_bank_references->mark,
+                                'image'             => $question_bank_references->image,
+                            ));
+                        }
+                    }
                 }
             }
         }

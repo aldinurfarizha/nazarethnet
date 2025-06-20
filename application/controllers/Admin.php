@@ -3804,6 +3804,7 @@ class Admin extends EduAppGT
         $forum=$this->input->post('forum');
         $study_material=$this->input->post('study_material');
         $selected_students = $this->input->post('selected_students');
+        $online_exam = $this->input->post('online_exam');
         if (!is_array($selected_students)) $selected_students = [];
 
         $subject_source = getSubjectDetailBySubjectId($subject_id_source);
@@ -3950,8 +3951,32 @@ class Admin extends EduAppGT
                         'post_file' => $homework_references->post_file,
                         'post_file_type' => $homework_references->post_file_type,
                         'post_content' => $homework_references->post_content,
-
                     ));
+                    $new_homework_id = $this->db->insert_id();
+                    $homework_students_deliveries = $this->db->get_where('deliveries', array('homework_code' => $homework_references->homework_code))->result();
+                    if ($homework_students_deliveries) {
+                        foreach ($homework_students_deliveries as $homework_students_delivery) {
+                            if (!in_array($homework_students_delivery->student_id, $selected_students)) {
+                                continue; // skip siswa yang tidak dipilih
+                            }
+                            $this->db->insert('deliveries', array(
+                                'homework_code' => $new_homework_code,
+                                'student_id' => $homework_students_delivery->student_id,
+                                'date' => $homework_students_delivery->date,
+                                'class_id' => $subject_target->class_id,
+                                'section_id' => $subject_target->section_id,
+                                'file_name' => $homework_students_delivery->file_name,
+                                'student_comment' => $homework_students_delivery->student_comment,
+                                'teacher_comment' => $homework_students_delivery->teacher_comment,
+                                'subject_id' => $subject_target->subject_id,
+                                'status' => $homework_students_delivery->status,
+                                'homework_reply' => $homework_students_delivery->homework_reply,
+                                'mark' => $homework_students_delivery->mark,
+                                'media_type' => $homework_students_delivery->media_type,
+                                'delivery_code' => generateRandomString(7),
+                            ));
+                        }
+                    }
                 }
             }
         }
@@ -4016,6 +4041,73 @@ class Admin extends EduAppGT
                         'post_file_type' => $study_material_references->post_file_type,
                         'post_content' => $study_material_references->post_content,
                     ));
+                }
+            }
+        }
+        if($online_exam){
+            $online_exam_reference = $this->db->get_where('online_exam', array('subject_id' => "$subject_id_source"))->result();
+            if ($online_exam_reference) {
+                foreach ($online_exam_reference as $online_exam_references) {
+                    $this->db->insert('online_exam', array(
+                        'code' => generateRandomString(7),
+                        'title' => $online_exam_references->title,
+                        'subject_id' => $subject_target->subject_id,
+                        'class_id' => $subject_target->class_id,
+                        'section_id' => $subject_target->section_id,
+                        'running_year' => $subject_target->year,
+                        'exam_date' => $online_exam_references->exam_date,
+                        'time_start' => $online_exam_references->time_start,
+                        'time_end' => $online_exam_references->time_end,
+                        'duration' => $online_exam_references->duration,
+                        'minimum_percentage' => $online_exam_references->minimum_percentage,
+                        'instruction' => $online_exam_references->instruction,
+                        'status' => $online_exam_references->status,
+                        'wall_type' => $online_exam_references->wall_type,
+                        'publish_date' => $online_exam_references->publish_date,
+                        'uploader_type' => $online_exam_references->uploader_type,
+                        'uploader_id' => $online_exam_references->uploader_id,
+                        'upload_date' => $online_exam_references->upload_date,
+                        'exp' => $online_exam_references->exp,
+                        'password' => $online_exam_references->password,
+                        'results' => $online_exam_references->results,
+                        'show_random' => $online_exam_references->show_random,
+                        'certificate' => $online_exam_references->certificate,
+                    ));
+                    $new_online_exam_id = $this->db->insert_id();
+                    $question_bank_reference = $this->db->get_where('question_bank', array('online_exam_id' => "$online_exam_references->online_exam_id"))->result();
+                    if ($question_bank_reference) {
+                        foreach ($question_bank_reference as $question_bank_references) {
+                            $this->db->insert('question_bank', array(
+                                'online_exam_id'    => $new_online_exam_id,
+                                'question_title'    => $question_bank_references->question_title,
+                                'type'              => $question_bank_references->type,
+                                'number_of_options' => $question_bank_references->number_of_options,
+                                'options'           => $question_bank_references->options,
+                                'correct_answers'   => $question_bank_references->correct_answers,
+                                'mark'              => $question_bank_references->mark,
+                                'image'             => $question_bank_references->image,
+                            ));
+                        }
+                    }
+                    $online_exam_result_reference = $this->db->get_where('online_exam_result', array('online_exam_id' => "$online_exam_references->online_exam_id"))->result();
+                    if ($online_exam_result_reference) {
+                        foreach ($online_exam_result_reference as $online_exam_result_references) {
+                            if (!in_array($online_exam_result_references->student_id, $selected_students)) {
+                                continue; // skip siswa yang tidak dipilih
+                            }
+                            $this->db->insert('online_exam_result', array(
+                                'online_exam_id'                => $new_online_exam_id,
+                                'student_id'                    => $online_exam_result_references->student_id,
+                                'answer_script'                 => $online_exam_result_references->answer_script,
+                                'obtained_mark'                 => $online_exam_result_references->obtained_mark,
+                                'status'                        => $online_exam_result_references->status,
+                                'exam_started_timestamp'        => $online_exam_result_references->exam_started_timestamp,
+                                'result'                        => $online_exam_result_references->result,
+                            ));
+                        }
+                    }
+
+                    
                 }
             }
         }

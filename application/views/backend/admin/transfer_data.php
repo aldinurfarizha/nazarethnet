@@ -265,11 +265,22 @@
     											<div class="col-md-4">
     												<div class="description-toggle">
     													<div class="description-toggle-content">
-    														<div class="h6"><?php echo getEduAppGTLang('study_material'); ?></div>
+    														<div class="h6"><?php echo getEduAppGTLang('transfer_study_material'); ?></div>
     														<p><?php echo getEduAppGTLang('transfer_all_study_material'); ?></p>
     													</div>
     													<div class="togglebutton">
     														<label><input type="checkbox" checked name="study_material"></label>
+    													</div>
+    												</div>
+    											</div>
+    											<div class="col-md-4">
+    												<div class="description-toggle">
+    													<div class="description-toggle-content">
+    														<div class="h6"><?php echo getEduAppGTLang('transfer_online_exam'); ?></div>
+    														<p><?php echo getEduAppGTLang('transfer_all_online_exam'); ?></p>
+    													</div>
+    													<div class="togglebutton">
+    														<label><input type="checkbox" checked name="online_exam"></label>
     													</div>
     												</div>
     											</div>
