@@ -84,7 +84,10 @@
                                                                                                     <div class="author-content">
                                                                                                         <?php
                                                                                                         if ($finish) { ?>
-                                                                                                            <span class="badge badge-success">Finalizado <i class="fa fa-check"></i></span> - <a class="btn btn-primary btn-sm" href="<?= base_url('certificate/download/' . $studentSubject->cert_code) ?>" target="_blank"><?php echo getEduAppGTLang('certificate'); ?> <i class="fa fa-file-pdf"></i></a>
+                                                                                                            <span class="badge badge-success">Finalizado <i class="fa fa-check"></i></span> 
+                                                                                                            <?php if($studentSubject->cert_code != null){?>
+                                                                                                                - <a class="btn btn-primary btn-sm" href="<?= base_url('certificate/download_pdf/' . $studentSubject->cert_code) ?>" target="_blank"><?php echo getEduAppGTLang('certificate'); ?> <i class="fa fa-file-pdf"></i></a>
+                                                                                                            <?php } ?>
                                                                                                             <br>
                                                                                                             <a href="<?php echo base_url(); ?>student/subject_marks/<?php echo base64_encode($class_id . "-" . $section_id . "-" . $data->subject_id); ?>/" class="h5 author-name"><?php echo $data->name; ?></a><br><br>
                                                                                                         <?php } else { ?>
