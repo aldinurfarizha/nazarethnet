@@ -3403,6 +3403,33 @@ class Admin extends EduAppGT
             echo '<tr><td colspan="2" style="text-align:center;">Empty student on this subject source</td></tr>';
         }
     }
+    function get_student_subject_option($subject_id = '')
+    {
+        $students = $this->db->get_where('student_subject', array('subject_id' => $subject_id))->result_array();
+        $hasStudent = false;
+        if (count($students) == 0) {
+            echo '<option value="">❌ ' . getEduAppGTLang('no_students_assigned_to_this_subject') . '</option>';
+            return;
+        }
+        echo '<option value="">-- ' . getEduAppGTLang('all') . ' --</option>';
+
+        foreach ($students as $row2) {
+            if (isStudentFinishSubject($row2['student_id'], $subject_id)) {
+                continue;
+            }
+            if (isActiveSubject($row2['student_id'], $subject_id)) {
+                $hasStudent = true;
+                $studentName = $this->crud->get_name('student', $row2['student_id']);
+                $studentId = $row2['student_id'];
+
+                echo '<option value="' . $studentId . '">' . $studentName . '</option>';
+            }
+        }
+        if (!$hasStudent) {
+            echo '<option value="">❌ ' . getEduAppGTLang('no_active_students_found_for_this_subject') . '</option>';
+        }
+    }
+
 
 
     function get_exm_($section_id = '')
@@ -3722,12 +3749,14 @@ class Admin extends EduAppGT
         $subject_id = $this->input->post('subject_id');
         $from_date = $this->input->post('from_date');
         $to_date = $this->input->post('to_date');
+        $student_id = $this->input->post('student_id');
         $page_data['branch_id'] = $branch_id;
         $page_data['class_id'] = $class_id;
         $page_data['section_id'] = $section_id;
         $page_data['subject_id'] = $subject_id;
         $page_data['from_date'] = $from_date;
         $page_data['to_date'] = $to_date;
+        $page_data['student_id'] = $student_id;
         $this->load->view('backend/admin/export_data_attendance_excel', $page_data);
     }
     function transfer_data($param1=null,$param2=null)

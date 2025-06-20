@@ -412,7 +412,7 @@
     																	</div>
     																</div>
     															</div>
-    															<div class="col col-sm-6">
+    															<div class="col col-sm-4">
     																<div class="form-group label-floating is-select">
     																	<label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
     																	<div class="select">
@@ -422,39 +422,48 @@
     																	</div>
     																</div>
     															</div>
-    															<div class="col-sm-6">
+    															<div class="col-sm-4">
     																<div class="form-group label-floating is-select">
     																	<label class="control-label"><?php echo getEduAppGTLang('subject'); ?></label>
     																	<div class="select">
-    																		<select name="subject_id" required id="subject_holder3" onchange="get_exam(this.value);">
+    																		<select name="subject_id" required id="subject_holder3" onchange="get_student_subject(this.value);">
     																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+    																		</select>
+    																	</div>
+    																</div>
+    															</div>
+    															<div class="col-sm-4">
+    																<div class="form-group label-floating is-select">
+    																	<label class="control-label"><?php echo getEduAppGTLang('student'); ?></label>
+    																	<div class="select">
+    																		<select name="student_id" id="student_holder">
+    																			<option value=""><?php echo getEduAppGTLang('all'); ?></option>
     																		</select>
     																	</div>
     																</div>
     															</div>
     															<div class="col-sm-6">
     																<div class="form-group label-floating">
-																		<label class="control-label"><?= getEduAppGTLang('from'); ?> <?php echo getEduAppGTLang('date'); ?></label>
-																		<input type="date" class="form-control date-picker" name="from_date" value="<?php echo date('Y-m-d'); ?>" required>
-																	</div>
-																</div>
-																<div class="col-sm-6">
-																	<div class="form-group label-floating">
-																		<label class="control-label"><?= getEduAppGTLang('to'); ?> <?php echo getEduAppGTLang('date'); ?></label>
-																		<input type="date" class="form-control date-picker" name="to_date" value="<?php echo date('Y-m-d'); ?>" required>
-																	</div>
-																	</div>
+    																	<label class="control-label"><?= getEduAppGTLang('from'); ?> <?php echo getEduAppGTLang('date'); ?></label>
+    																	<input type="date" class="form-control date-picker" name="from_date" value="<?php echo date('Y-m-d'); ?>" required>
+    																</div>
     															</div>
-    															<div class="col col-sm-12 text-right">
-    																<div class="form-group mb-0">
-    																	<button class="btn btn-success mt-2">
-    																		<?php echo getEduAppGTLang('export'); ?> <i class="fa fa-download"></i>
-    																	</button>
+    															<div class="col-sm-6">
+    																<div class="form-group label-floating">
+    																	<label class="control-label"><?= getEduAppGTLang('to'); ?> <?php echo getEduAppGTLang('date'); ?></label>
+    																	<input type="date" class="form-control date-picker" name="to_date" value="<?php echo date('Y-m-d'); ?>" required>
     																</div>
     															</div>
     														</div>
-    														<?php echo form_close(); ?>
+    														<div class="col col-sm-12 text-right">
+    															<div class="form-group mb-0">
+    																<button class="btn btn-success mt-2">
+    																	<?php echo getEduAppGTLang('export'); ?> <i class="fa fa-download"></i>
+    																</button>
+    															</div>
+    														</div>
     													</div>
+    													<?php echo form_close(); ?>
     												</div>
     											</div>
     										</div>
@@ -463,157 +472,158 @@
     							</div>
     						</div>
     					</div>
-
     				</div>
+
     			</div>
     		</div>
-    		<script>
-    			document.getElementById('transferBtn').addEventListener('click', function(event) {
-    				// prevent default submit
-    				event.preventDefault();
-    				const btn = this;
-    				// Ambil nilai source
-    				const branchSource = document.querySelector('select[name="branch_id_source"]').value.trim();
-    				const shiftsSource = document.querySelector('select[name="shifts_id_source"]').value.trim();
-    				const classSource = document.querySelector('select[name="class_id_source"]').value.trim();
-    				const sectionSource = document.querySelector('select[name="section_id_source"]').value.trim();
-    				const subjectSource = document.querySelector('select[name="subject_id_source"]').value.trim();
+    	</div>
+    	<script>
+    		document.getElementById('transferBtn').addEventListener('click', function(event) {
+    			// prevent default submit
+    			event.preventDefault();
+    			const btn = this;
+    			// Ambil nilai source
+    			const branchSource = document.querySelector('select[name="branch_id_source"]').value.trim();
+    			const shiftsSource = document.querySelector('select[name="shifts_id_source"]').value.trim();
+    			const classSource = document.querySelector('select[name="class_id_source"]').value.trim();
+    			const sectionSource = document.querySelector('select[name="section_id_source"]').value.trim();
+    			const subjectSource = document.querySelector('select[name="subject_id_source"]').value.trim();
 
-    				// Ambil nilai target
-    				const branchTarget = document.querySelector('select[name="branch_id_target"]').value.trim();
-    				const shiftsTarget = document.querySelector('select[name="shifts_id_target"]').value.trim();
-    				const classTarget = document.querySelector('select[name="class_id_target"]').value.trim();
-    				const sectionTarget = document.querySelector('select[name="section_id_target"]').value.trim();
-    				const subjectTarget = document.querySelector('select[name="subject_id_target"]').value.trim();
+    			// Ambil nilai target
+    			const branchTarget = document.querySelector('select[name="branch_id_target"]').value.trim();
+    			const shiftsTarget = document.querySelector('select[name="shifts_id_target"]').value.trim();
+    			const classTarget = document.querySelector('select[name="class_id_target"]').value.trim();
+    			const sectionTarget = document.querySelector('select[name="section_id_target"]').value.trim();
+    			const subjectTarget = document.querySelector('select[name="subject_id_target"]').value.trim();
 
-    				// Validasi source
-    				if (!branchSource) {
-    					alert("<?php echo getEduAppGTLang('please_select_branch_source'); ?>");
-    					return false;
-    				}
-    				if (!shiftsSource) {
-    					alert("<?php echo getEduAppGTLang('please_select_shifts_source'); ?>");
-    					return false;
-    				}
-    				if (!classSource) {
-    					alert("<?php echo getEduAppGTLang('please_select_class_source'); ?>");
-    					return false;
-    				}
-    				if (!sectionSource) {
-    					alert("<?php echo getEduAppGTLang('please_select_section_source'); ?>");
-    					return false;
-    				}
-    				if (!subjectSource) {
-    					alert("<?php echo getEduAppGTLang('please_select_subject_source'); ?>");
-    					return false;
-    				}
-
-    				// Validasi target
-    				if (!branchTarget) {
-    					alert("<?php echo getEduAppGTLang('please_select_branch_target'); ?>");
-    					return false;
-    				}
-    				if (!shiftsTarget) {
-    					alert("<?php echo getEduAppGTLang('please_select_shifts_target'); ?>");
-    					return false;
-    				}
-    				if (!classTarget) {
-    					alert("<?php echo getEduAppGTLang('please_select_class_target'); ?>");
-    					return false;
-    				}
-    				if (!sectionTarget) {
-    					alert("<?php echo getEduAppGTLang('please_select_section_target'); ?>");
-    					return false;
-    				}
-    				if (!subjectTarget) {
-    					alert("<?php echo getEduAppGTLang('please_select_subject_target'); ?>");
-    					return false;
-    				}
-
-    				if (subjectSource == subjectTarget) {
-    					alert("<?php echo getEduAppGTLang('source_and_target_subject_must_be_different'); ?>");
-    					return false;
-    				}
-    				const checkboxes = ['exam', 'activity', 'grade', 'attendance'];
-    				const isAnyChecked = checkboxes.some(name => {
-    					const checkbox = document.querySelector(`input[name="${name}"]`);
-    					return checkbox && checkbox.checked;
-    				});
-
-    				if (!isAnyChecked) {
-    					alert("<?php echo getEduAppGTLang('please_check_at_least_one_transfer_option'); ?>");
-    					return false;
-    				}
-
-    				btn.disabled = true;
-    				btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
-
-    				document.getElementById('transferForm').submit();
-    			});
-    		</script>
-
-    		<script>
-    			$(document).ready(function() {
-    				function toggleDependencies() {
-    					const examChecked = $('input[name="exam"]').is(':checked');
-    					const activityCheckbox = $('input[name="activity"]');
-    					const gradeCheckbox = $('input[name="grade"]');
-
-    					activityCheckbox.prop('disabled', !examChecked);
-    					if (!examChecked) {
-    						activityCheckbox.prop('checked', false);
-    					}
-
-    					const activityChecked = activityCheckbox.is(':checked');
-    					gradeCheckbox.prop('disabled', !activityChecked);
-    					if (!activityChecked) {
-    						gradeCheckbox.prop('checked', false);
-    					}
-    				}
-
-    				// Inisialisasi
-    				toggleDependencies();
-
-    				// Event listener saat checkbox berubah
-    				$('input[name="exam"], input[name="activity"]').on('change', function() {
-    					toggleDependencies();
-    				});
-    			});
-    		</script>
-
-    		<script>
-    			const selectIds = ['class_holder', 'shifts_holder', 'section_holder', 'subject_holder', 'class_holder2', 'class_holder3', 'section_holder2'];
-
-    			function updateOptionText(selectElement) {
-    				const options = selectElement.querySelectorAll('option');
-    				options.forEach(option => {
-    					if (option.value === "") {
-    						const text = option.textContent.trim();
-    						if (text.startsWith('--Select')) {
-    							option.textContent = text.replace('--Select', '--All');
-    						}
-    					}
-    				});
+    			// Validasi source
+    			if (!branchSource) {
+    				alert("<?php echo getEduAppGTLang('please_select_branch_source'); ?>");
+    				return false;
+    			}
+    			if (!shiftsSource) {
+    				alert("<?php echo getEduAppGTLang('please_select_shifts_source'); ?>");
+    				return false;
+    			}
+    			if (!classSource) {
+    				alert("<?php echo getEduAppGTLang('please_select_class_source'); ?>");
+    				return false;
+    			}
+    			if (!sectionSource) {
+    				alert("<?php echo getEduAppGTLang('please_select_section_source'); ?>");
+    				return false;
+    			}
+    			if (!subjectSource) {
+    				alert("<?php echo getEduAppGTLang('please_select_subject_source'); ?>");
+    				return false;
     			}
 
-    			selectIds.forEach(id => {
-    				const select = document.getElementById(id);
-    				if (!select) return;
-    				const observer = new MutationObserver(() => {
-    					updateOptionText(select);
-    				});
+    			// Validasi target
+    			if (!branchTarget) {
+    				alert("<?php echo getEduAppGTLang('please_select_branch_target'); ?>");
+    				return false;
+    			}
+    			if (!shiftsTarget) {
+    				alert("<?php echo getEduAppGTLang('please_select_shifts_target'); ?>");
+    				return false;
+    			}
+    			if (!classTarget) {
+    				alert("<?php echo getEduAppGTLang('please_select_class_target'); ?>");
+    				return false;
+    			}
+    			if (!sectionTarget) {
+    				alert("<?php echo getEduAppGTLang('please_select_section_target'); ?>");
+    				return false;
+    			}
+    			if (!subjectTarget) {
+    				alert("<?php echo getEduAppGTLang('please_select_subject_target'); ?>");
+    				return false;
+    			}
 
-    				observer.observe(select, {
-    					childList: true,
-    					subtree: true
-    				});
-    				document.addEventListener('DOMContentLoaded', () => {
-    					updateOptionText(select);
-    				});
+    			if (subjectSource == subjectTarget) {
+    				alert("<?php echo getEduAppGTLang('source_and_target_subject_must_be_different'); ?>");
+    				return false;
+    			}
+    			const checkboxes = ['exam', 'activity', 'grade', 'attendance'];
+    			const isAnyChecked = checkboxes.some(name => {
+    				const checkbox = document.querySelector(`input[name="${name}"]`);
+    				return checkbox && checkbox.checked;
+    			});
+
+    			if (!isAnyChecked) {
+    				alert("<?php echo getEduAppGTLang('please_check_at_least_one_transfer_option'); ?>");
+    				return false;
+    			}
+
+    			btn.disabled = true;
+    			btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+
+    			document.getElementById('transferForm').submit();
+    		});
+    	</script>
+
+    	<script>
+    		$(document).ready(function() {
+    			function toggleDependencies() {
+    				const examChecked = $('input[name="exam"]').is(':checked');
+    				const activityCheckbox = $('input[name="activity"]');
+    				const gradeCheckbox = $('input[name="grade"]');
+
+    				activityCheckbox.prop('disabled', !examChecked);
+    				if (!examChecked) {
+    					activityCheckbox.prop('checked', false);
+    				}
+
+    				const activityChecked = activityCheckbox.is(':checked');
+    				gradeCheckbox.prop('disabled', !activityChecked);
+    				if (!activityChecked) {
+    					gradeCheckbox.prop('checked', false);
+    				}
+    			}
+
+    			// Inisialisasi
+    			toggleDependencies();
+
+    			// Event listener saat checkbox berubah
+    			$('input[name="exam"], input[name="activity"]').on('change', function() {
+    				toggleDependencies();
+    			});
+    		});
+    	</script>
+
+    	<script>
+    		const selectIds = ['class_holder', 'shifts_holder', 'section_holder', 'subject_holder', 'class_holder2', 'class_holder3', 'section_holder2'];
+
+    		function updateOptionText(selectElement) {
+    			const options = selectElement.querySelectorAll('option');
+    			options.forEach(option => {
+    				if (option.value === "") {
+    					const text = option.textContent.trim();
+    					if (text.startsWith('--Select')) {
+    						option.textContent = text.replace('--Select', '--All');
+    					}
+    				}
+    			});
+    		}
+
+    		selectIds.forEach(id => {
+    			const select = document.getElementById(id);
+    			if (!select) return;
+    			const observer = new MutationObserver(() => {
     				updateOptionText(select);
     			});
-    		</script>
+
+    			observer.observe(select, {
+    				childList: true,
+    				subtree: true
+    			});
+    			document.addEventListener('DOMContentLoaded', () => {
+    				updateOptionText(select);
+    			});
+    			updateOptionText(select);
+    		});
+    	</script>
 
 
-    	</div>
+    </div>
     </div>

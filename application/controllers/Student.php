@@ -436,6 +436,7 @@ class Student extends EduAppGT
         $sectionId    = $this->db->get_where('online_exam', array('online_exam_id' => $param1))->row()->section_id;
         $subjectId    = $this->db->get_where('online_exam', array('online_exam_id' => $param1))->row()->subject_id;
         $redirect = base64_encode($classId . '-' . $sectionId . '-' . $subjectId);
+        $addMinutes = 0;
         if ($results == 3) {
             $addMinutes = 15;
         } elseif ($results == 4) {

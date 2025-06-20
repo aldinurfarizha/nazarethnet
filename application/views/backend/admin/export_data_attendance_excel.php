@@ -5,9 +5,15 @@ $class_name   = $this->db->get_where('class', array('class_id' => $class_id))->r
 $section_name = $this->db->get_where('section', array('section_id' => $section_id))->row()->name;
 $subject_name = $this->db->get_where('subject', array('subject_id' => $subject_id))->row()->name;
 $branch       = $this->db->get_where('branch', array('branch_id' => $branch_id))->row()->name;
+if($student_id != '') {
+    $student_name = $this->crud->get_name('student', $student_id);
+    $student = $student_name;
+} else {
+    $student = 'All Students';
+}
 $current_date = date('Y-m-d');
 
-$filename = $branch . ' - ' . $class_name . ' - ' . $section_name . ' - ' . $subject_name . ' - Attendance - ' . $current_date . '.xls';
+$filename = 'Attendance Report of ' . $student . ' - ' . $branch . ' - ' . $class_name . ' - ' . $section_name . ' - ' . $subject_name . $current_date . '.xls';
 header('Content-Disposition: attachment; filename="' . $filename . '"');
 
 $running_year = $this->crud->getInfo('running_year');
@@ -29,7 +35,7 @@ if ($class_id != '' && $section_id != '' && $subject_id != ''):
         . $class_name . ' - '
         . $section_name . ' - '
         . $subject_name . ' - '
-        . 'Attendance Report (' . $from_date . ' to ' . $to_date . ')'
+        . 'Attendance Report (' . $from_date . ' - ' . $to_date . ')'
         . '</strong></td></tr>';
 
     // Header kolom
@@ -41,11 +47,20 @@ if ($class_id != '' && $section_id != '' && $subject_id != ''):
     echo '</tr>';
 
     // Ambil data siswa
-    $students = $this->db->get_where('enroll', array(
-        'class_id'   => $class_id,
-        'section_id' => $section_id,
-        'year'       => $running_year
-    ))->result_array();
+    if($student_id != '') {
+        $students = $this->db->get_where('enroll', array(
+            'class_id'   => $class_id,
+            'section_id' => $section_id,
+            'year'       => $running_year,
+            'student_id' => $student_id
+        ))->result_array();
+    } else {
+        $students = $this->db->get_where('enroll', array(
+            'class_id'   => $class_id,
+            'section_id' => $section_id,
+            'year'       => $running_year
+        ))->result_array();
+    }
 
     foreach ($students as $row):
         if (!isStudentActiveEnroll($row['student_id'], $class_id, $section_id, $running_year)) continue;

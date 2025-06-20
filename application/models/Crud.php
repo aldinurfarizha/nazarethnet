@@ -3797,6 +3797,7 @@ class Crud extends School
                 $attn_data['subject_id'] = $data['subject_id'];
                 $attn_data['section_id'] = $data['section_id'];
                 $attn_data['student_id'] = $row['student_id'];
+                $attn_data['updated_at'] = date('Y-m-d H:i:s');
                 $this->db->insert('attendance' , $attn_data);  
             }
         }
@@ -3843,8 +3844,21 @@ class Crud extends School
         foreach($attendance_of_students as $row) 
         {
             $attendance_status = $this->input->post('status_'.$row['attendance_id']);
-            $this->db->where('attendance_id' , $row['attendance_id']);
-            $this->db->update('attendance' , array('status' => $attendance_status));
+            $this->db->select('status');
+            $this->db->where('attendance_id', $row['attendance_id']);
+            $current = $this->db->get('attendance')->row();
+
+            if ($current && $current->status !== $attendance_status) {
+                $this->db->where('attendance_id', $row['attendance_id']);
+                $this->db->update('attendance', [
+                    'status' => $attendance_status,
+                    'updated_at' => date('Y-m-d H:i:s')
+                ]);
+            }else{
+                $this->db->where('attendance_id', $row['attendance_id']);
+                $this->db->update('attendance', array('status' => $attendance_status));
+            }
+            
             if ($attendance_status == 2) 
             {
                 $student_name   = $this->crud->get_name('student',$row['student_id']);
