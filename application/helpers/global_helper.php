@@ -264,6 +264,75 @@ function deactiveStudentSubject($student_id, $subject_id)
     $delete = $ci->db->delete('student_subject', $where);
     return $delete;
 }
+function deleteStudentFromSubject($student_id, $subject_id)
+{
+    $ci = &get_instance();
+    return $ci->db->delete('student_subject', [
+        'student_id' => $student_id,
+        'subject_id' => $subject_id
+    ]);
+}
+function deleteStudentMarks($student_id, $subject_id, $class_id, $section_id)
+{
+    $ci = &get_instance();
+    return $ci->db->delete('mark', [
+        'student_id' => $student_id,
+        'subject_id' => $subject_id,
+        'class_id' => $class_id,
+        'section_id' => $section_id
+    ]);
+}
+function deleteStudentNotaCapacidad($student_id, $subject_id, $class_id, $section_id)
+{
+    $ci = &get_instance();
+
+    // Ambil mark_id yang relevan
+    $ci->db->select('mark_id');
+    $ci->db->where([
+        'student_id' => $student_id,
+        'subject_id' => $subject_id,
+        'class_id' => $class_id,
+        'section_id' => $section_id
+    ]);
+    $mark_ids = $ci->db->get('mark')->result_array();
+
+    if (!empty($mark_ids)) {
+        $mark_activity_ids = array_column($mark_ids, 'mark_id');
+        $ci->db->where_in('mark_activity_id', $mark_activity_ids);
+        $ci->db->where('student_id', $student_id);
+        return $ci->db->delete('nota_capacidad');
+    }
+
+    return true;
+}
+function deleteStudentAttendance($student_id, $subject_id)
+{
+    $ci = &get_instance();
+    return $ci->db->delete('attendance', [
+        'student_id' => $student_id,
+        'subject_id' => $subject_id
+    ]);
+}
+function deleteStudentDeliveries($student_id,$homework_code)
+{
+    $ci = &get_instance();
+    return $ci->db->delete('deliveries', [
+        'student_id' => $student_id,
+        'homework_code' => $homework_code,
+    ]);
+}
+function deleteStudentOnlineExamResults($student_id, $online_exam_result_id)
+{
+    $ci = &get_instance();
+    return $ci->db->delete('online_exam_result', [
+            'student_id' => $student_id,
+            'online_exam_result_id' => $online_exam_result_id,
+    ]);
+}
+
+
+
+
 function generateSubjectAllStudent()
 {
     $success = 0;

@@ -110,7 +110,7 @@
     												<div class="form-group label-floating is-select">
     													<label class="control-label"><?php echo getEduAppGTLang('subject'); ?></label>
     													<div class="select">
-    														<select name="subject_id_source" onchange="get_student_subject(this.value);" id="subject_holder">
+    														<select name="subject_id_source" onchange="get_student_subject_table(this.value);" id="subject_holder">
     															<option value=""><?php echo getEduAppGTLang('select'); ?></option>
     														</select>
     													</div>
@@ -466,7 +466,7 @@
     			});
     		</script>
     		<script>
-    			function get_student_subject(subject_id) {
+    			function get_student_subject_table(subject_id) {
     				$.ajax({
     					url: rootAppURI + 'admin/get_student_subject/' + subject_id,
     					success: function(response) {

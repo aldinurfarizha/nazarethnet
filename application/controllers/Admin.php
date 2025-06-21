@@ -3868,6 +3868,12 @@ class Admin extends EduAppGT
                                         //masukan nilai mark lama ke mark subject baru
                                         transferMarkOldToMarkNew($students, $exam_sources->exam_id, $new_exam_id, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
                                         transferNotaCapacidadOldTonotaCapacidadNew($students, $mark_activity_sources->mark_activity_id, $new_mark_activity_id);
+
+                                        //lakukan delete pada subject, mark,nota terkait
+                                        deleteStudentFromSubject($students, $subject_id_source);
+                                        deleteStudentMarks($students, $subject_id_source, $subject_source->class_id, $subject_source->section_id);
+                                        deleteStudentNotacapacidad($students, $subject_id_source, $subject_source->class_id, $subject_source->section_id);
+
                                     }
                                     //fill notacapacidad if this student exist in target subject
                                     $student_subject_source = getStudentBySubjectId($subject_id_source);
@@ -3915,6 +3921,8 @@ class Admin extends EduAppGT
                 addStudentToNotacapacidadIfNotExist($students, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
                 //belum ada fitur cek dulu sebelum insert
                 transferOldAttendanceToNew($students, $subject_id_source, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+                deleteStudentAttendance($students, $subject_id_source);
+
             }
         }
         if($homework){
@@ -3975,6 +3983,7 @@ class Admin extends EduAppGT
                                 'media_type' => $homework_students_delivery->media_type,
                                 'delivery_code' => generateRandomString(7),
                             ));
+                            deleteStudentDeliveries($homework_students_delivery->student_id, $homework_students_delivery->homework_code);
                         }
                     }
                 }
@@ -4104,10 +4113,9 @@ class Admin extends EduAppGT
                                 'exam_started_timestamp'        => $online_exam_result_references->exam_started_timestamp,
                                 'result'                        => $online_exam_result_references->result,
                             ));
+                            deleteStudentOnlineExamResults($online_exam_result_references->student_id, $online_exam_references->online_exam_result_id);
                         }
                     }
-
-                    
                 }
             }
         }
