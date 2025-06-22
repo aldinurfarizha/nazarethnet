@@ -132,7 +132,7 @@ class Certificate extends EduAppGT
         }
         $data['page_name']        =    'certificate_found';
         $data['page_title']        =    getEduAppGTLang('certificate_verified');
-        $this->load->view('frontend/index', $data);
+        $this->load->view('frontend/pages/certificate_found', $data);
     }
     public function invalid($certCode = '')
     {

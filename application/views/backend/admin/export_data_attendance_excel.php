@@ -1,117 +1,104 @@
 <?php
 header('Content-Type: application/vnd.ms-excel');
 
-$class_name   = $this->db->get_where('class', array('class_id' => $class_id))->row()->name;
-$section_name = $this->db->get_where('section', array('section_id' => $section_id))->row()->name;
-$subject_name = $this->db->get_where('subject', array('subject_id' => $subject_id))->row()->name;
-$branch       = $this->db->get_where('branch', array('branch_id' => $branch_id))->row()->name;
-if($student_id != '') {
-    $student_name = $this->crud->get_name('student', $student_id);
-    $student = $student_name;
-} else {
-    $student = 'All Students';
-}
+$class_name   = $this->db->get_where('class', ['class_id' => $class_id])->row()->name;
+$branch       = $this->db->get_where('branch', ['branch_id' => $branch_id])->row()->name;
+$student_name = $student_id != '' ? $this->crud->get_name('student', $student_id) : 'All Students';
 $current_date = date('Y-m-d');
-
-$filename = 'Attendance Report of ' . $student . ' - ' . $branch . ' - ' . $class_name . ' - ' . $section_name . ' - ' . $subject_name . $current_date . '.xls';
+$filename = 'Attendance Report - ' . $student_name . ' - ' . $branch . ' - ' . $class_name . ' - ' . $current_date . '.xls';
 header('Content-Disposition: attachment; filename="' . $filename . '"');
 
 $running_year = $this->crud->getInfo('running_year');
 
-if ($class_id != '' && $section_id != '' && $subject_id != ''):
+// Generate tanggal dalam range
+$dates = [];
+$from = strtotime($from_date);
+$to   = strtotime($to_date);
+while ($from <= $to) {
+    $dates[] = $from;
+    $from = strtotime('+1 day', $from);
+}
 
-    // Buat array tanggal dalam range
-    $dates = [];
-    $from = strtotime($from_date);
-    $to   = strtotime($to_date);
-    while ($from <= $to) {
-        $dates[] = $from;
-        $from = strtotime('+1 day', $from);
-    }
+echo '<table border="1" cellpadding="5" cellspacing="0">';
+echo '<tr><td colspan="' . (count($dates) + 1) . '" align="center"><strong>'
+    . $branch . ' - ' . $class_name . ' - Attendance Report (' . $from_date . ' - ' . $to_date . ')'
+    . '</strong></td></tr>';
 
-    echo '<table border="1" cellpadding="5" cellspacing="0">';
-    echo '<tr><td colspan="' . (count($dates) + 1) . '" align="center"><strong>'
-        . $branch . ' - '
-        . $class_name . ' - '
-        . $section_name . ' - '
-        . $subject_name . ' - '
-        . 'Attendance Report (' . $from_date . ' - ' . $to_date . ')'
-        . '</strong></td></tr>';
+// Ambil section dan subject
+$sectionList = !empty($section_id)
+    ? [$this->db->get_where('section', ['section_id' => $section_id])->row()]
+    : $this->db->get_where('section', ['class_id' => $class_id])->result();
 
-    // Header kolom
-    echo '<tr>';
-    echo '<td><strong>Student</strong></td>';
-    foreach ($dates as $timestamp) {
-        echo '<td><strong>' . date('d M Y', $timestamp) . '</strong></td>';
-    }
-    echo '</tr>';
+$subjectList = !empty($subject_id)
+    ? [$this->db->get_where('subject', ['subject_id' => $subject_id])->row()]
+    : $this->db->get_where('subject', ['class_id' => $class_id])->result();
 
-    // Ambil data siswa
-    if($student_id != '') {
-        $students = $this->db->get_where('enroll', array(
-            'class_id'   => $class_id,
-            'section_id' => $section_id,
-            'year'       => $running_year,
-            'student_id' => $student_id
-        ))->result_array();
-    } else {
-        $students = $this->db->get_where('enroll', array(
-            'class_id'   => $class_id,
-            'section_id' => $section_id,
-            'year'       => $running_year
-        ))->result_array();
-    }
+foreach ($sectionList as $section):
+    if (!$section) continue;
+    foreach ($subjectList as $subject):
+        if (!$subject) continue;
 
-    foreach ($students as $row):
-        if (!isStudentActiveEnroll($row['student_id'], $class_id, $section_id, $running_year)) continue;
-        if (isStudentDeactive($row['student_id'])) continue;
-        if (isStudentFinishSubject($row['student_id'], $subject_id)) continue;
-        if (!isActiveSubject($row['student_id'], $subject_id)) continue;
+        echo '<tr><td colspan="' . (count($dates) + 1) . '"><strong>Section:</strong> ' . $section->name . ' &nbsp;&nbsp; <strong>Subject:</strong> ' . $subject->name . '</td></tr>';
 
-        $student_id   = $row['student_id'];
-        $student_name = $this->crud->get_name('student', $student_id);
-
+        // Header tanggal
         echo '<tr>';
-        echo '<td>' . htmlspecialchars($student_name) . '</td>';
-
+        echo '<td><strong>Student</strong></td>';
         foreach ($dates as $timestamp) {
-            $status = '-';
-            $takenTime = '';
+            echo '<td><strong>' . date('d M Y', $timestamp) . '</strong></td>';
+        }
+        echo '</tr>';
 
-            $attendance = $this->db->get_where('attendance', array(
-                'subject_id'  => $subject_id,
-                'section_id'  => $section_id,
-                'class_id'    => $class_id,
-                'year'        => $running_year,
-                'timestamp'   => $timestamp,
-                'student_id'  => $student_id
-            ))->row();
+        // Ambil siswa berdasarkan section
+        $this->db->where('class_id', $class_id);
+        $this->db->where('section_id', $section->section_id);
+        if (!empty($student_id)) $this->db->where('student_id', $student_id);
+        $this->db->where('year', $running_year);
+        $students = $this->db->get('enroll')->result_array();
 
-            if ($attendance) {
-                switch ($attendance->status) {
-                    case 1:
-                        $status = 'Present';
-                        break;
-                    case 2:
-                        $status = 'Absent';
-                        break;
-                    case 3:
-                        $status = 'Late';
-                        break;
-                    default:
-                        $status = getStatusNameFromId($attendance->status);
-                        break;
+        foreach ($students as $stu):
+            $sid = $stu['student_id'];
+            if (!isStudentActiveEnroll($sid, $class_id, $section->section_id, $running_year)) continue;
+            if (isStudentDeactive($sid)) continue;
+            if (isStudentFinishSubject($sid, $subject->subject_id)) continue;
+            if (!isActiveSubject($sid, $subject->subject_id)) continue;
+
+            $studentName = htmlspecialchars($this->crud->get_name('student', $sid));
+            echo '<tr>';
+            echo '<td>' . $studentName . '</td>';
+
+            foreach ($dates as $timestamp):
+                $this->db->where([
+                    'class_id'   => $class_id,
+                    'section_id' => $section->section_id,
+                    'subject_id' => $subject->subject_id,
+                    'student_id' => $sid,
+                    'year'       => $running_year,
+                    'timestamp'  => $timestamp
+                ]);
+                $attendance = $this->db->get('attendance')->row();
+
+                $status = '-';
+                if ($attendance) {
+                    switch ($attendance->status) {
+                        case 1: $status = 'Present'; break;
+                        case 2: $status = 'Absent'; break;
+                        case 3: $status = 'Late'; break;
+                        default: $status = getStatusNameFromId($attendance->status); break;
+                    }
+
+                    if ($attendance->updated_at != '0000-00-00 00:00:00') {
+                        $status .= ' @ ' . $attendance->updated_at;
+                    }
                 }
 
-                $takenTime = ($attendance->updated_at != '0000-00-00 00:00:00') ? $attendance->updated_at : '';
-                $status .= $takenTime ? ' @ ' . $takenTime : '';
-            }
+                echo '<td>' . $status . '</td>';
+            endforeach;
 
-            echo '<td>' . $status . '</td>';
-        }
+            echo '</tr>';
+        endforeach;
 
-        echo '</tr>';
     endforeach;
+endforeach;
 
-    echo '</table>';
-endif;
+echo '</table>';
+?>

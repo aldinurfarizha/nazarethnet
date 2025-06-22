@@ -3347,6 +3347,19 @@ class Admin extends EduAppGT
         }
     }
 
+     function get_class_section_all($class_id = '')
+    {
+        $sections = $this->db->get_where('section', array('class_id' => $class_id))->result_array();
+        if (count($sections) == 0) {
+            echo '<option value="">❌ ' . getEduAppGTLang('no_section_available_for_this_class_please_select_other_class') . ' </option>';
+        } else {
+            echo '<option value="">' . getEduAppGTLang('all') . '</option>';
+            foreach ($sections as $row) {
+                echo '<option value="' . $row['section_id'] . '">' . $row['name'] . '</option>';
+            }
+        }
+    }
+
     //Get Students by sectionId function.
     function get_class_stundets($section_id = '')
     {
@@ -3364,6 +3377,18 @@ class Admin extends EduAppGT
             echo '<option value="">❌ ' . getEduAppGTLang('no_subject_available_for_this_section_please_select_other_section') . ' </option>';
         } else {
             echo '<option value="">--' . getEduAppGTLang('select_subject') . '--</option>';
+            foreach ($subjects as $row) {
+                echo '<option value="' . $row['subject_id'] . '">' . $row['name'] . '</option>';
+            }
+        }
+    }
+    function get_class_subject_all($section_id = '')
+    {
+        $subjects = $this->db->get_where('subject', array('section_id' => $section_id))->result_array();
+        if (count($subjects) == 0) {
+            echo '<option value="">❌ ' . getEduAppGTLang('no_subject_available_for_this_section_please_select_other_section') . ' </option>';
+        } else {
+            echo '<option value="">' . getEduAppGTLang('all') . '</option>';
             foreach ($subjects as $row) {
                 echo '<option value="' . $row['subject_id'] . '">' . $row['name'] . '</option>';
             }
@@ -3813,13 +3838,339 @@ class Admin extends EduAppGT
 
         $subject_target = getSubjectDetailBySubjectId($subject_id_target);
         
+        $subject_source = getSubjectDetailBySubjectId($subject_id_source);
+        $exam_source = getAllExamBySubjectDetail($subject_id_source, $subject_source->class_id, $subject_source->section_id);
+        $subject_target = getSubjectDetailBySubjectId($subject_id_target);
+
+        if ($exam && $exam_source) {
+            foreach ($exam_source as $exam_sources) {
+
+                // CARI exam di target berdasarkan NAME
+                $target_exam = $this->db->get_where('exam', array(
+                    'name' => $exam_sources->name,
+                    'subject_id' => $subject_id_target,
+                    'class_id' => $subject_target->class_id,
+                    'section_id' => $subject_target->section_id
+                ))->row();
+
+                if (!$target_exam) {
+                    continue; // skip jika tidak ada exam dengan nama yang sama
+                }
+
+                $new_exam_id = $target_exam->exam_id;
+
+                if ($activity) {
+                    $mark_activity_source = $this->db->get_where('mark_activity', array('exam_id' => $exam_sources->exam_id))->result();
+
+                    if ($mark_activity_source) {
+                        foreach ($mark_activity_source as $mark_activity_sources) {
+
+                            // CARI mark_activity di target berdasarkan NAME
+                            $target_activity = $this->db->get_where('mark_activity', array(
+                                'name' => $mark_activity_sources->name,
+                                'exam_id' => $new_exam_id,
+                                'subject_id' => $subject_id_target,
+                                'class_id' => $subject_target->class_id,
+                                'section_id' => $subject_target->section_id
+                            ))->row();
+
+                            if (!$target_activity) {
+                                continue; // skip jika tidak ada mark_activity yang sesuai
+                            }
+
+                            $new_mark_activity_id = $target_activity->mark_activity_id;
+
+                            if ($grade) {
+                                $student_subject_source = getStudentBySubjectId($subject_id_source);
+
+                                foreach ($student_subject_source as $students) {
+                                    if (!in_array($students, $selected_students)) {
+                                        continue;
+                                    }
+
+                                    $isStudentEnrolled = isStudentEnrolled($students, $subject_target->class_id, $subject_target->section_id);
+                                    if ($isStudentEnrolled == false) {
+                                        $data = [
+                                            'student_id' => $students,
+                                            'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7),
+                                            'class_id' => $subject_target->class_id,
+                                            'section_id' => $subject_target->section_id,
+                                            'roll' => getRollByClassAndSection($subject_source->class_id, $subject_source->section_id)->roll,
+                                            'is_active' => 1,
+                                            'date_added' => strtotime(date("Y-m-d H:i:s")),
+                                            'year' => getRunningYear(),
+                                        ];
+                                        $this->db->insert('enroll', $data);
+                                    }
+
+                                    transferStudentSubject($students, $subject_id_target);
+                                    nu ieu acan addStudentToMark($students, $subject_id_target, $subject_target->class_id, $subject_target->section_id, $new_exam_id);
+                                    nu ieu acan addStudentToNotacapacidad($students, $new_mark_activity_id);
+
+                                    transferMarkOldToMarkNew($students, $exam_sources->exam_id, $new_exam_id, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+                                    transferNotaCapacidadOldTonotaCapacidadNew($students, $mark_activity_sources->mark_activity_id, $new_mark_activity_id);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        if($attendance){
+            $student_subject_source = getStudentBySubjectId($subject_id_source);
+            foreach($student_subject_source as $students){
+                //cek enroll
+                if (!in_array($students, $selected_students)) {
+                    continue; // skip siswa yang tidak dipilih
+                }
+                $isStudentEnrolled=isStudentEnrolled($students, $subject_target->class_id, $subject_target->section_id);
+                if($isStudentEnrolled==false){
+                    $data=[
+                        'student_id' => $students,
+                        'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7),
+                        'class_id' => $subject_target->class_id,
+                        'section_id' => $subject_target->section_id,
+                        'roll' => getRollByClassAndSection($subject_source->class_id, $subject_source->section_id)->roll,
+                        'is_active' => 1,
+                        'date_added' => strtotime(date("Y-m-d H:i:s")),
+                        'year' =>getRunningYear(),
+                    ];
+                    $this->db->insert('enroll', $data);
+                }
+                addStudentToSubject($students, $subject_id_target);
+                addStudentToMarkIfNotExist($students, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+                addStudentToNotacapacidadIfNotExist($students, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+                //belum ada fitur cek dulu sebelum insert
+                transferOldAttendanceToNew($students, $subject_id_source, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+                deleteStudentAttendance($students, $subject_id_source);
+
+            }
+        }
+        if($homework){
+            $homework_reference = $this->db->get_where('homework', array('subject_id' => "$subject_id_source"))->result();
+            if ($homework_reference) {
+                foreach ($homework_reference as $homework_references) {
+                    $new_homework_code = generateRandomString(7);
+                    $this->db->insert('homework', array(
+                        'homework_code' => $new_homework_code,
+                        'title' => $homework_references->title,
+                        'description' => $homework_references->description,
+                        'class_id' => $subject_target->class_id,
+                        'subject_id' => $subject_target->subject_id,
+                        'uploader_id' => $homework_references->uploader_id,
+                        'time_end' => $homework_references->time_end,
+                        'section_id' => $subject_target->section_id,
+                        'uploader_type' => $homework_references->uploader_type,
+                        'file_name' => $homework_references->file_name,
+                        'date_end' => $homework_references->date_end,
+                        'type' => $homework_references->type,
+                        'user' => $homework_references->user,
+                        'status' => $homework_references->status,
+                        'year' => $subject_target->year,
+                        'filesize' => $homework_references->filesize,
+                        'wall_type' => $homework_references->wall_type,
+                        'publish_date' => $homework_references->publish_date,
+                        'upload_date' => $homework_references->upload_date,
+                        'media_type' => $homework_references->media_type,
+                        'exp' => $homework_references->exp,
+                        'sync_status' => $homework_references->sync_status,
+                        'attachment_name' => $homework_references->attachment_name,
+                        'can_comment' => $homework_references->can_comment,
+                        'can_reaction' => $homework_references->can_reaction,
+                        'post_file' => $homework_references->post_file,
+                        'post_file_type' => $homework_references->post_file_type,
+                        'post_content' => $homework_references->post_content,
+                    ));
+                    $new_homework_id = $this->db->insert_id();
+                    $homework_students_deliveries = $this->db->get_where('deliveries', array('homework_code' => $homework_references->homework_code))->result();
+                    if ($homework_students_deliveries) {
+                        foreach ($homework_students_deliveries as $homework_students_delivery) {
+                            if (!in_array($homework_students_delivery->student_id, $selected_students)) {
+                                continue; // skip siswa yang tidak dipilih
+                            }
+                            $this->db->insert('deliveries', array(
+                                'homework_code' => $new_homework_code,
+                                'student_id' => $homework_students_delivery->student_id,
+                                'date' => $homework_students_delivery->date,
+                                'class_id' => $subject_target->class_id,
+                                'section_id' => $subject_target->section_id,
+                                'file_name' => $homework_students_delivery->file_name,
+                                'student_comment' => $homework_students_delivery->student_comment,
+                                'teacher_comment' => $homework_students_delivery->teacher_comment,
+                                'subject_id' => $subject_target->subject_id,
+                                'status' => $homework_students_delivery->status,
+                                'homework_reply' => $homework_students_delivery->homework_reply,
+                                'mark' => $homework_students_delivery->mark,
+                                'media_type' => $homework_students_delivery->media_type,
+                                'delivery_code' => generateRandomString(7),
+                            ));
+                            deleteStudentDeliveries($homework_students_delivery->student_id, $homework_students_delivery->homework_code);
+                        }
+                    }
+                }
+            }
+        }
+        if($forum){
+            $forums_reference = $this->db->get_where('forum', array('subject_id' => "$subject_id_source"))->result();
+            if ($forums_reference) {
+                foreach ($forums_reference as $forums_references) {
+                    $this->db->insert('forum', array(
+                        'teacher_id' => $forums_references->teacher_id,
+                        'subject_id' => $subject_target->subject_id,
+                        'class_id' => $subject_target->class_id,
+                        'timestamp' => $forums_references->timestamp,
+                        'title' => $forums_references->title,
+                        'description' => $forums_references->description,
+                        'post_code' => generateRandomString(7),
+                        'file_name' => $forums_references->file_name,
+                        'section_id' => $subject_target->section_id,
+                        'post_status' => $forums_references->post_status,
+                        'type' => $forums_references->type,
+                        'wall_type' => $forums_references->wall_type,
+                        'publish_date' => $forums_references->publish_date,
+                        'upload_date' => $forums_references->upload_date,
+                        'exp' => $forums_references->exp,
+                        'sync_status' => $forums_references->sync_status,
+                        'attachment_name' => $forums_references->attachment_name,
+                        'can_comment' => $forums_references->can_comment,
+                        'can_reaction' => $forums_references->can_reaction,
+                        'post_file' => $forums_references->post_file,
+                        'post_file_type' => $forums_references->post_file_type,
+                        'post_content' => $forums_references->post_content,
+
+                    ));
+                }
+            }
+        }
+        if($study_material){
+            $study_material_reference = $this->db->get_where('document', array('subject_id' => "$subject_id_source"))->result();
+            if ($study_material_reference) {
+                foreach ($study_material_reference as $study_material_references) {
+                    $this->db->insert('document', array(
+                        'title' => $study_material_references->title,
+                        'description' => $study_material_references->description,
+                        'file_name' => $study_material_references->file_name,
+                        'file_type' => $study_material_references->file_type,
+                        'class_id' => $subject_target->class_id,
+                        'teacher_id' => $subject_target->teacher_id,
+                        'timestamp' => $study_material_references->timestamp,
+                        'subject_id' => $subject_target->subject_id,
+                        'type' => $study_material_references->type,
+                        'year' => $subject_target->year,
+                        'filesize' => $study_material_references->filesize,
+                        'wall_type' => $study_material_references->wall_type,
+                        'publish_date' => $study_material_references->publish_date,
+                        'upload_date' => $study_material_references->upload_date,
+                        'section_id' => $subject_target->section_id,
+                        'sync_status' => $study_material_references->sync_status,
+                        'attachment_name' => $study_material_references->attachment_name,
+                        'drive_id' => $study_material_references->drive_id,
+                        'can_comment' => $study_material_references->can_comment,
+                        'can_reaction' => $study_material_references->can_reaction,
+                        'post_file' => $study_material_references->post_file,
+                        'post_file_type' => $study_material_references->post_file_type,
+                        'post_content' => $study_material_references->post_content,
+                    ));
+                }
+            }
+        }
+        if($online_exam){
+            $online_exam_reference = $this->db->get_where('online_exam', array('subject_id' => "$subject_id_source"))->result();
+            if ($online_exam_reference) {
+                foreach ($online_exam_reference as $online_exam_references) {
+                    $this->db->insert('online_exam', array(
+                        'code' => generateRandomString(7),
+                        'title' => $online_exam_references->title,
+                        'subject_id' => $subject_target->subject_id,
+                        'class_id' => $subject_target->class_id,
+                        'section_id' => $subject_target->section_id,
+                        'running_year' => $subject_target->year,
+                        'exam_date' => $online_exam_references->exam_date,
+                        'time_start' => $online_exam_references->time_start,
+                        'time_end' => $online_exam_references->time_end,
+                        'duration' => $online_exam_references->duration,
+                        'minimum_percentage' => $online_exam_references->minimum_percentage,
+                        'instruction' => $online_exam_references->instruction,
+                        'status' => $online_exam_references->status,
+                        'wall_type' => $online_exam_references->wall_type,
+                        'publish_date' => $online_exam_references->publish_date,
+                        'uploader_type' => $online_exam_references->uploader_type,
+                        'uploader_id' => $online_exam_references->uploader_id,
+                        'upload_date' => $online_exam_references->upload_date,
+                        'exp' => $online_exam_references->exp,
+                        'password' => $online_exam_references->password,
+                        'results' => $online_exam_references->results,
+                        'show_random' => $online_exam_references->show_random,
+                        'certificate' => $online_exam_references->certificate,
+                    ));
+                    $new_online_exam_id = $this->db->insert_id();
+                    $question_bank_reference = $this->db->get_where('question_bank', array('online_exam_id' => "$online_exam_references->online_exam_id"))->result();
+                    if ($question_bank_reference) {
+                        foreach ($question_bank_reference as $question_bank_references) {
+                            $this->db->insert('question_bank', array(
+                                'online_exam_id'    => $new_online_exam_id,
+                                'question_title'    => $question_bank_references->question_title,
+                                'type'              => $question_bank_references->type,
+                                'number_of_options' => $question_bank_references->number_of_options,
+                                'options'           => $question_bank_references->options,
+                                'correct_answers'   => $question_bank_references->correct_answers,
+                                'mark'              => $question_bank_references->mark,
+                                'image'             => $question_bank_references->image,
+                            ));
+                        }
+                    }
+                    $online_exam_result_reference = $this->db->get_where('online_exam_result', array('online_exam_id' => "$online_exam_references->online_exam_id"))->result();
+                    if ($online_exam_result_reference) {
+                        foreach ($online_exam_result_reference as $online_exam_result_references) {
+                            if (!in_array($online_exam_result_references->student_id, $selected_students)) {
+                                continue; // skip siswa yang tidak dipilih
+                            }
+                            $this->db->insert('online_exam_result', array(
+                                'online_exam_id'                => $new_online_exam_id,
+                                'student_id'                    => $online_exam_result_references->student_id,
+                                'answer_script'                 => $online_exam_result_references->answer_script,
+                                'obtained_mark'                 => $online_exam_result_references->obtained_mark,
+                                'status'                        => $online_exam_result_references->status,
+                                'exam_started_timestamp'        => $online_exam_result_references->exam_started_timestamp,
+                                'result'                        => $online_exam_result_references->result,
+                            ));
+                            deleteStudentOnlineExamResults($online_exam_result_references->student_id, $online_exam_references->online_exam_result_id);
+                        }
+                    }
+                }
+            }
+        }
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_transfer'));
+        return redirect(base_url() . 'admin/transfer_data/');
+    }
+    function transfer_data_action_backup()
+    {
+        $this->output->enable_profiler(TRUE);
+        $subject_id_source = $this->input->post('subject_id_source');
+        $subject_id_target = $this->input->post('subject_id_target');
+        $exam= $this->input->post('exam');
+        $activity= $this->input->post('activity');
+        $grade= $this->input->post('grade');
+        $attendance= $this->input->post('attendance');
+        $homework=$this->input->post('homework');
+        $forum=$this->input->post('forum');
+        $study_material=$this->input->post('study_material');
+        $selected_students = $this->input->post('selected_students');
+        $online_exam = $this->input->post('online_exam');
+        if (!is_array($selected_students)) $selected_students = [];
+
+        $subject_source = getSubjectDetailBySubjectId($subject_id_source);
+       
+        $exam_source = getAllExamBySubjectDetail($subject_id_source,$subject_source->class_id,$subject_source->section_id);
+
+        $subject_target = getSubjectDetailBySubjectId($subject_id_target);
+        
         if($exam){
             if ($exam_source) {
                 foreach ($exam_source as $exam_sources) {
                     $this->db->insert('exam', array('name' => $exam_sources->name, 'subject_id' => $subject_id_target, 'class_id' => $subject_target->class_id, 'section_id' => $subject_target->section_id));
                     $new_exam_id = $this->db->insert_id();
-
-
                     if($activity){
                         $mark_activity_source = $this->db->get_where('mark_activity', array('exam_id' => $exam_sources->exam_id))->result();
                         if ($mark_activity_source) {
@@ -3836,8 +4187,6 @@ class Admin extends EduAppGT
                                     'percent' => $mark_activity_sources->percent,
                                 ));
                                 $new_mark_activity_id = $this->db->insert_id();
-
-
                                 if($grade){
                                     $student_subject_source = getStudentBySubjectId($subject_id_source);
                                     
@@ -4556,6 +4905,19 @@ class Admin extends EduAppGT
         }
         
     }
+    function get_exam_all($subject_id = '')
+    {
+        $exam = $this->db->get_where('exam', array('subject_id' => $subject_id,'is_final'=>0))->result_array();
+        if(count($exam)==0){
+            echo '<option value="">❌ '.getEduAppGTLang('no_exam_available_for_this_subject_please_select_other_subject').' </option>';
+        }else{
+            echo '<option value="">--'.getEduAppGTLang('all').'--</option>';
+            foreach ($exam as $row) {
+            echo '<option value="' . $row['exam_id'] . '">' . $row['name'] . '</option>';
+        }
+        }
+        
+    }
     function get_exam_section($section_id = '')
     {
         $this->db->select('exam.*, subject.name as subject_name');
@@ -5039,14 +5401,6 @@ class Admin extends EduAppGT
     if (!empty($_FILES['certificate_image']['name'])) {
 
         $check = getimagesize($_FILES["certificate_image"]["tmp_name"]);
-
-        // Validasi ukuran HARUS 1122 x 794
-        if ($check[0] != 1122 || $check[1] != 794) {
-            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('image_must_1122_x_794'));
-            redirect(base_url('admin/certificate'));
-            return;
-        }
-
         // Lokasi folder upload
         $upload_dir = 'public/certificates/';
         if (!is_dir($upload_dir)) {

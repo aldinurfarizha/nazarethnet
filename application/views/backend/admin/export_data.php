@@ -333,7 +333,7 @@
     																<div class="form-group label-floating is-select">
     																	<label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
     																	<div class="select">
-    																		<select name="class_id" required onchange="get_sections3(this.value);" id="class_holder4">
+    																		<select name="class_id" required onchange="get_sections3_all(this.value);" id="class_holder4">
     																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
     																		</select>
     																	</div>
@@ -343,8 +343,8 @@
     																<div class="form-group label-floating is-select">
     																	<label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
     																	<div class="select">
-    																		<select name="section_id" required id="section_holder3" onchange="get_class_subjects2(this.value);">
-    																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+    																		<select name="section_id" id="section_holder3" onchange="get_class_subjects2_all(this.value);">
+    																			<option value=""><?php echo getEduAppGTLang('all'); ?></option>
     																		</select>
     																	</div>
     																</div>
@@ -353,8 +353,8 @@
     																<div class="form-group label-floating is-select">
     																	<label class="control-label"><?php echo getEduAppGTLang('subject'); ?></label>
     																	<div class="select">
-    																		<select name="subject_id" required id="subject_holder2" onchange="get_exam(this.value); get_student_subject_option(this.value);">
-    																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+    																		<select name="subject_id" id="subject_holder2" onchange="get_exam_all(this.value); get_student_subject_option(this.value);">
+    																			<option value=""><?php echo getEduAppGTLang('all'); ?></option>
     																		</select>
     																	</div>
     																</div>
@@ -373,8 +373,8 @@
     																<div class="form-group label-floating is-select">
     																	<label class="control-label"><?php echo getEduAppGTLang('exam'); ?></label>
     																	<div class="select">
-    																		<select name="exam_id" required id="exam_holder">
-    																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+    																		<select name="exam_id" id="exam_holder">
+    																			<option value=""><?php echo getEduAppGTLang('all'); ?></option>
     																		</select>
     																	</div>
     																</div>
@@ -416,7 +416,7 @@
     																<div class="form-group label-floating is-select">
     																	<label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
     																	<div class="select">
-    																		<select name="class_id" required onchange="get_sections4(this.value);" id="class_holder5">
+    																		<select name="class_id" required onchange="get_sections4_all(this.value);" id="class_holder5">
     																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
     																		</select>
     																	</div>
@@ -426,8 +426,8 @@
     																<div class="form-group label-floating is-select">
     																	<label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
     																	<div class="select">
-    																		<select name="section_id" required id="section_holder4" onchange="get_class_subjects3(this.value);">
-    																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+    																		<select name="section_id"  id="section_holder4" onchange="get_class_subjects3(this.value);">
+    																			<option value=""><?php echo getEduAppGTLang('all'); ?></option>
     																		</select>
     																	</div>
     																</div>
@@ -436,8 +436,8 @@
     																<div class="form-group label-floating is-select">
     																	<label class="control-label"><?php echo getEduAppGTLang('subject'); ?></label>
     																	<div class="select">
-    																		<select name="subject_id" required id="subject_holder3" onchange="get_student_subject_option2(this.value);">
-    																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+    																		<select name="subject_id" id="subject_holder3" onchange="get_student_subject_option2(this.value);">
+    																			<option value=""><?php echo getEduAppGTLang('all'); ?></option>
     																		</select>
     																	</div>
     																</div>

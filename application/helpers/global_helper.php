@@ -520,6 +520,8 @@ function addStudentToMark($student_id, $subject_id, $class_id, $section_id,$exam
     $insert = $ci->db->insert('mark', $data);
     return $insert ? true : false;
 }
+
+
 function addStudentToMarkIfNotExist($student_id, $subject_id, $class_id, $section_id)
 {
     $exam =  getAllExamBySubjectDetail($subject_id,$class_id,$section_id);
@@ -1245,6 +1247,38 @@ function addStudentToSubject($student_id, $subject_id)
 
     return $insert ? true : false;
 }
+function transferStudentSubject($student_id, $subject_id_source, $subject_id_target)
+{
+    $ci = &get_instance();
+
+    $existing_target = $ci->db->get_where('student_subject', array(
+        'student_id' => $student_id,
+        'subject_id' => $subject_id_target
+    ))->row();
+
+    if ($existing_target) {
+        return 'already_in_target';
+    }
+
+    $source_data = $ci->db->get_where('student_subject', array(
+        'student_id' => $student_id,
+        'subject_id' => $subject_id_source
+    ))->row();
+
+    if ($source_data) {
+        $ci->db->where('student_id', $student_id);
+        $ci->db->where('subject_id', $subject_id_source);
+        $update = $ci->db->update('student_subject', [
+            'subject_id' => $subject_id_target,
+        ]);
+
+        return $update ? 'subject_updated' : 'update_failed';
+    }
+    return 'source_not_found';
+}
+
+
+
 function transferMarkOldToMarkNew($student_id, $oldExamId, $newExamId, $targetSubjectId, $targetClassId, $targetSectionId)
 {
     $ci = &get_instance();

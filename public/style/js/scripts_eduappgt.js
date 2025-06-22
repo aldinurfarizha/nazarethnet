@@ -222,10 +222,30 @@
             }
         });
     }
+    function get_class_subjects2_all(section_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_subject_all/' + section_id ,
+            success: function(response)
+            {
+                jQuery('#subject_holder2').html(response);
+            }
+        });
+    }
     function get_class_subjects3(section_id) 
     {
         $.ajax({
             url: rootAppURI+'admin/get_class_subject/' + section_id ,
+            success: function(response)
+            {
+                jQuery('#subject_holder3').html(response);
+            }
+        });
+    }
+    function get_class_subjects3_all(section_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_subject_all/' + section_id ,
             success: function(response)
             {
                 jQuery('#subject_holder3').html(response);
@@ -283,10 +303,30 @@
             }
         });
     }
+    function get_sections3_all(class_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_section_all/' + class_id ,
+            success: function(response)
+            {
+                jQuery('#section_holder3').html(response);
+            }
+        });
+    }
     function get_sections4(class_id) 
     {
         $.ajax({
             url: rootAppURI+'admin/get_class_section/' + class_id ,
+            success: function(response)
+            {
+                jQuery('#section_holder4').html(response);
+            }
+        });
+    }
+    function get_sections4_all(class_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_section_all/' + class_id ,
             success: function(response)
             {
                 jQuery('#section_holder4').html(response);
@@ -377,6 +417,16 @@
     {
         $.ajax({
             url: rootAppURI+'admin/get_exam/' + subject_id ,
+            success: function(response)
+            {
+                jQuery('#exam_holder').html(response);
+            }
+        });
+    }
+    function get_exam_all(subject_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_exam_all/' + subject_id ,
             success: function(response)
             {
                 jQuery('#exam_holder').html(response);
