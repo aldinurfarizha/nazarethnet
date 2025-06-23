@@ -17,6 +17,8 @@ foreach ($edit_data as $row):
                             <label class="control-label"><?php echo getEduAppGTLang('name'); ?></label>
                             <input class="form-control" placeholder="" value="<?php echo $row['name'] . ' - ' . getEduAppGTLang('duplicate') . ' ' . rand(1000, 9999); ?>" name="name" type="text" required>
                             <input type="hidden" name="subject_id" value="<?php echo $row['subject_id']; ?>">
+                            <input type="hidden" name="reference_class_id" value="<?php echo $row['class_id']; ?>">
+                            <input type="hidden" name="reference_section_id" value="<?php echo $row['section_id']; ?>">
                             <input type="hidden" name="duplicate" value="1">
                         </div>
                     </div>

@@ -644,16 +644,18 @@ class Academic extends School
         
         $new_subject_id = $this->db->insert_id();
         $reference_subject_id = $this->input->post('subject_id');
+        $reference_class_id = $this->input->post('reference_class_id');
+        $reference_section_id = $this->input->post('reference_section_id');
         $new_subject=$this->db->get_where('subject', array('subject_id' => "$new_subject_id"))->row();
         
         $this->load->helper('string');
         //fill mark section (Grades)
        if($this->input->post('duplicate_grades'))
        {
-            $exam_reference = $this->db->get_where('exam', array('subject_id' => "$reference_subject_id"))->result();
+            $exam_reference = $this->db->get_where('exam', array('subject_id' => "$reference_subject_id",'class_id'=> "$reference_class_id",'section_id'=>"$reference_section_id"))->result();
             if ($exam_reference) {
                 foreach ($exam_reference as $exam_references) {
-                    $this->db->insert('exam', array('name' => $exam_references->name, 'subject_id' => $new_subject_id, 'class_id' => $new_subject->class_id, 'section_id' => $new_subject->section_id));
+                    $this->db->insert('exam', array('name' => $exam_references->name, 'subject_id' => $new_subject_id, 'class_id' => $new_subject->class_id, 'section_id' => $new_subject->section_id,'is_final' => $exam_references->is_final, 'is_count' => $exam_references->is_count));
                     $new_exam_id = $this->db->insert_id();
                     $mark_activity_reference = $this->db->get_where('mark_activity', array('exam_id' => "$exam_references->exam_id"))->result();
                     if ($mark_activity_reference) {

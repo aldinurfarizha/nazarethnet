@@ -1125,7 +1125,7 @@ function writeNotaCapacidadHistory($nota_capacidad_id,$value)
         if ($exitingNotaCapacidadValue) {
             $data = array(
                 'nota_capacidad_id' => $nota_capacidad_id,
-                'value' => $exitingNotaCapacidadValue->nota,
+                'value' => isset($exitingNotaCapacidadValue->nota) ? $exitingNotaCapacidadValue->nota : 0,
                 'created_at' => date('Y-m-d H:i:s')
             );
             $ci->db->insert('nota_capacidad_history', $data);
@@ -1136,12 +1136,16 @@ function writeNotaCapacidadHistory($nota_capacidad_id,$value)
     if($exitingNotaCapacidadValue==$value){
         return;
     }
-    $data = array(
-        'nota_capacidad_id' => $nota_capacidad_id,
-        'value' => $value,
-        'created_at' => date('Y-m-d H:i:s')
-    );
-    $ci->db->insert('nota_capacidad_history', $data);
+
+    if($value)
+    {
+        $data = array(
+            'nota_capacidad_id' => $nota_capacidad_id,
+            'value' => $value,
+            'created_at' => date('Y-m-d H:i:s')
+        );
+        $ci->db->insert('nota_capacidad_history', $data);
+    }
 }
 function getHistoryNotaCapacidad($nota_capacidad_id)
 {
@@ -1279,93 +1283,62 @@ function transferStudentSubject($student_id, $subject_id_source, $subject_id_tar
 
 
 
-function transferMarkOldToMarkNew($student_id, $oldExamId, $newExamId, $targetSubjectId, $targetClassId, $targetSectionId)
+function transferMarkOldToMarkNew($student_id, $sourceExamId, $targetExamId, $targetSubjectId, $targetClassId, $targetSectionId)
 {
     $ci = &get_instance();
 
-    // Ambil data dari ujian lama
     $data = $ci->db->select('*')
         ->from('mark')
         ->where([
             'student_id' => $student_id,
-            'exam_id' => $oldExamId
+            'exam_id'    => $sourceExamId
         ])
         ->get();
 
     if ($data->num_rows() > 0) {
         foreach ($data->result() as $row) {
-            // Cek apakah data target sudah ada
-            $target = $ci->db->select('mark_id')
-                ->from('mark')
-                ->where([
-                    'student_id' => $student_id,
-                    'subject_id' => $targetSubjectId,
-                    'class_id' => $targetClassId,
-                    'section_id' => $targetSectionId,
-                    'exam_id' => $newExamId
-                ])
-                ->get()
-                ->row();
+            $updateData = array(
+                'exam_id'    => $targetExamId,
+                'subject_id' => $targetSubjectId,
+                'class_id'   => $targetClassId,
+                'section_id' => $targetSectionId
+            );
 
-            if ($target) {
-                // Update jika ditemukan
-                $updateData = array(
-                    'mark_obtained' => $row->mark_obtained,
-                    'comment'       => $row->comment,
-                    'year'          => $row->year,
-                    'final'         => $row->final
-                );
-
-                $ci->db->where('mark_id', $target->mark_id);
-                $ci->db->update('mark', $updateData);
-            }
+            $ci->db->where('mark_id', $row->mark_id);
+            $ci->db->update('mark', $updateData);
         }
-        return true;
-    } else {
-        return false;
-    }
+    } 
 }
+
 
 function transferNotaCapacidadOldTonotaCapacidadNew($student_id, $oldMarkActivityId, $newMarkActivityId)
 {
     $ci = &get_instance();
 
-    // Ambil data lama berdasarkan mark_activity_id yang lama
-    $data = $ci->db->select('*')
-        ->from('nota_capacidad')
-        ->where([
+    // Cek apakah data lama (dengan oldMarkActivityId) ada
+    $oldData = $ci->db->get_where('nota_capacidad', [
+        'student_id' => $student_id,
+        'mark_activity_id' => $oldMarkActivityId
+    ]);
+
+    // Cek apakah sudah ada data dengan newMarkActivityId
+    $newDataExists = $ci->db->get_where('nota_capacidad', [
+        'student_id' => $student_id,
+        'mark_activity_id' => $newMarkActivityId
+    ])->num_rows() > 0;
+
+    if ($oldData->num_rows() > 0 && !$newDataExists) {
+        // Jika data lama ada dan data baru belum ada, lakukan update
+        $ci->db->where([
             'student_id' => $student_id,
             'mark_activity_id' => $oldMarkActivityId
-        ])
-        ->get();
-
-    if ($data->num_rows() > 0) {
-        foreach ($data->result() as $row) {
-            // Cari apakah data target sudah ada
-            $target = $ci->db->select('nota_capacidad_id') // Ganti dengan nama primary key tabel nota_capacidad
-                ->from('nota_capacidad')
-                ->where([
-                    'student_id' => $student_id,
-                    'mark_activity_id' => $newMarkActivityId
-                ])
-                ->get()
-                ->row();
-
-            if ($target) {
-                // Update jika data sudah ada
-                $updateData = array(
-                    'nota' => $row->nota
-                );
-
-                $ci->db->where('nota_capacidad_id', $target->nota_capacidad_id); // Ganti 'id' dengan nama primary key tabel kamu
-                $ci->db->update('nota_capacidad', $updateData);
-            }
-        }
-        return true;
-    } else {
-        return false;
+        ])->update('nota_capacidad', [
+            'mark_activity_id' => $newMarkActivityId
+        ]);
     }
 }
+
+
 function transferOldAttendanceToNew($students_id, $subject_id_source, $subject_id_target, $target_class_id, $target_section_id) 
 {
     $ci = &get_instance();

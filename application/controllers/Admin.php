@@ -3821,31 +3821,26 @@ class Admin extends EduAppGT
         $this->output->enable_profiler(TRUE);
         $subject_id_source = $this->input->post('subject_id_source');
         $subject_id_target = $this->input->post('subject_id_target');
-        $exam= $this->input->post('exam');
-        $activity= $this->input->post('activity');
-        $grade= $this->input->post('grade');
-        $attendance= $this->input->post('attendance');
-        $homework=$this->input->post('homework');
-        $forum=$this->input->post('forum');
-        $study_material=$this->input->post('study_material');
+        $exam = $this->input->post('exam');
+        $activity = $this->input->post('activity');
+        $grade = $this->input->post('grade');
+        $attendance = $this->input->post('attendance');
+        $homework = $this->input->post('homework');
+        $forum = $this->input->post('forum');
+        $study_material = $this->input->post('study_material');
         $selected_students = $this->input->post('selected_students');
         $online_exam = $this->input->post('online_exam');
         if (!is_array($selected_students)) $selected_students = [];
 
+        $copied_exams = [];
+        $copied_mark_activities = [];
+        $called = 0;
         $subject_source = getSubjectDetailBySubjectId($subject_id_source);
-       
-        $exam_source = getAllExamBySubjectDetail($subject_id_source,$subject_source->class_id,$subject_source->section_id);
-
         $subject_target = getSubjectDetailBySubjectId($subject_id_target);
-        
-        $subject_source = getSubjectDetailBySubjectId($subject_id_source);
         $exam_source = getAllExamBySubjectDetail($subject_id_source, $subject_source->class_id, $subject_source->section_id);
-        $subject_target = getSubjectDetailBySubjectId($subject_id_target);
-
+        $unique_ids = [];
         if ($exam && $exam_source) {
             foreach ($exam_source as $exam_sources) {
-
-                // CARI exam di target berdasarkan NAME
                 $target_exam = $this->db->get_where('exam', array(
                     'name' => $exam_sources->name,
                     'subject_id' => $subject_id_target,
@@ -3853,43 +3848,37 @@ class Admin extends EduAppGT
                     'section_id' => $subject_target->section_id
                 ))->row();
 
-                if (!$target_exam) {
-                    continue; // skip jika tidak ada exam dengan nama yang sama
-                }
+                if (!$target_exam) continue;
 
                 $new_exam_id = $target_exam->exam_id;
+                $copied_exams[] = $target_exam->name;
 
                 if ($activity) {
-                    $mark_activity_source = $this->db->get_where('mark_activity', array('exam_id' => $exam_sources->exam_id))->result();
+                    $mark_activity_source = $this->db->get_where('mark_activity', array(
+                        'exam_id' => $exam_sources->exam_id
+                    ))->result();
 
                     if ($mark_activity_source) {
                         foreach ($mark_activity_source as $mark_activity_sources) {
-
-                            // CARI mark_activity di target berdasarkan NAME
-                            $target_activity = $this->db->get_where('mark_activity', array(
+                            $target_activities = $this->db->get_where('mark_activity', array(
                                 'name' => $mark_activity_sources->name,
                                 'exam_id' => $new_exam_id,
                                 'subject_id' => $subject_id_target,
                                 'class_id' => $subject_target->class_id,
                                 'section_id' => $subject_target->section_id
-                            ))->row();
+                            ))->result();
 
-                            if (!$target_activity) {
-                                continue; // skip jika tidak ada mark_activity yang sesuai
-                            }
+                            if (!$target_activities) continue;
 
+                            foreach ($target_activities as $target_activity) {
+                                $unique_ids[] = $target_activity->mark_activity_id;
+                                $copied_mark_activities[] = $target_activity->name . '-' . $target_activity->mark_activity_id;
                             $new_mark_activity_id = $target_activity->mark_activity_id;
-
                             if ($grade) {
-                                $student_subject_source = getStudentBySubjectId($subject_id_source);
-
-                                foreach ($student_subject_source as $students) {
-                                    if (!in_array($students, $selected_students)) {
-                                        continue;
-                                    }
-
+                                foreach ($selected_students as $students) {
+                                    $called++;
                                     $isStudentEnrolled = isStudentEnrolled($students, $subject_target->class_id, $subject_target->section_id);
-                                    if ($isStudentEnrolled == false) {
+                                    if (!$isStudentEnrolled) {
                                         $data = [
                                             'student_id' => $students,
                                             'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7),
@@ -3903,30 +3892,29 @@ class Admin extends EduAppGT
                                         $this->db->insert('enroll', $data);
                                     }
 
-                                    transferStudentSubject($students, $subject_id_target);
-                                    nu ieu acan addStudentToMark($students, $subject_id_target, $subject_target->class_id, $subject_target->section_id, $new_exam_id);
-                                    nu ieu acan addStudentToNotacapacidad($students, $new_mark_activity_id);
-
+                                    transferStudentSubject($students, $subject_id_source, $subject_id_target);
+                                    transferNotaCapacidadOldTonotaCapacidadNew($students, $mark_activity_sources->mark_activity_id, $target_activity->mark_activity_id);
                                     transferMarkOldToMarkNew($students, $exam_sources->exam_id, $new_exam_id, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
-                                    transferNotaCapacidadOldTonotaCapacidadNew($students, $mark_activity_sources->mark_activity_id, $new_mark_activity_id);
+                                    
                                 }
                             }
+                         }
                         }
                     }
                 }
             }
         }
 
-        if($attendance){
+        if ($attendance) {
             $student_subject_source = getStudentBySubjectId($subject_id_source);
-            foreach($student_subject_source as $students){
+            foreach ($student_subject_source as $students) {
                 //cek enroll
                 if (!in_array($students, $selected_students)) {
                     continue; // skip siswa yang tidak dipilih
                 }
-                $isStudentEnrolled=isStudentEnrolled($students, $subject_target->class_id, $subject_target->section_id);
-                if($isStudentEnrolled==false){
-                    $data=[
+                $isStudentEnrolled = isStudentEnrolled($students, $subject_target->class_id, $subject_target->section_id);
+                if ($isStudentEnrolled == false) {
+                    $data = [
                         'student_id' => $students,
                         'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7),
                         'class_id' => $subject_target->class_id,
@@ -3934,7 +3922,7 @@ class Admin extends EduAppGT
                         'roll' => getRollByClassAndSection($subject_source->class_id, $subject_source->section_id)->roll,
                         'is_active' => 1,
                         'date_added' => strtotime(date("Y-m-d H:i:s")),
-                        'year' =>getRunningYear(),
+                        'year' => getRunningYear(),
                     ];
                     $this->db->insert('enroll', $data);
                 }
@@ -3944,10 +3932,9 @@ class Admin extends EduAppGT
                 //belum ada fitur cek dulu sebelum insert
                 transferOldAttendanceToNew($students, $subject_id_source, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
                 deleteStudentAttendance($students, $subject_id_source);
-
             }
         }
-        if($homework){
+        if ($homework) {
             $homework_reference = $this->db->get_where('homework', array('subject_id' => "$subject_id_source"))->result();
             if ($homework_reference) {
                 foreach ($homework_reference as $homework_references) {
@@ -4011,7 +3998,7 @@ class Admin extends EduAppGT
                 }
             }
         }
-        if($forum){
+        if ($forum) {
             $forums_reference = $this->db->get_where('forum', array('subject_id' => "$subject_id_source"))->result();
             if ($forums_reference) {
                 foreach ($forums_reference as $forums_references) {
@@ -4043,7 +4030,7 @@ class Admin extends EduAppGT
                 }
             }
         }
-        if($study_material){
+        if ($study_material) {
             $study_material_reference = $this->db->get_where('document', array('subject_id' => "$subject_id_source"))->result();
             if ($study_material_reference) {
                 foreach ($study_material_reference as $study_material_references) {
@@ -4075,7 +4062,7 @@ class Admin extends EduAppGT
                 }
             }
         }
-        if($online_exam){
+        if ($online_exam) {
             $online_exam_reference = $this->db->get_where('online_exam', array('subject_id' => "$subject_id_source"))->result();
             if ($online_exam_reference) {
                 foreach ($online_exam_reference as $online_exam_references) {
@@ -4144,6 +4131,7 @@ class Admin extends EduAppGT
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_transfer'));
         return redirect(base_url() . 'admin/transfer_data/');
     }
+
     function transfer_data_action_backup()
     {
         $this->output->enable_profiler(TRUE);
