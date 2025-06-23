@@ -22,19 +22,10 @@
 						<a class="navs-links" href="<?php echo base_url(); ?>admin/marks_report/"><i class="picons-thin-icon-thin-0100_to_do_list_reminder_done"></i> <span><?php echo getEduAppGTLang('final_marks'); ?></span></a>
 					</li>
 					<li class="navs-item">
-						<a class="navs-links" href="<?php echo base_url(); ?>admin/final_evaluation/"><i class="picons-thin-icon-thin-0389_gavel_hammer_law_judge_court"></i> <span>Evaluaciones Finales</span></a>
-					</li>
-					<li class="navs-item">
 						<a class="navs-links" href="<?php echo base_url(); ?>admin/tabulation_report/"><i class="picons-thin-icon-thin-0070_paper_role"></i> <span><?php echo getEduAppGTLang('tabulation_sheet'); ?></span></a>
 					</li>
 					<li class="navs-item">
 						<a class="navs-links" href="<?php echo base_url(); ?>admin/accounting_report/"><i class="picons-thin-icon-thin-0406_money_dollar_euro_currency_exchange_cash"></i> <span><?php echo getEduAppGTLang('accounting'); ?></span></a>
-					</li>
-					<li class="navs-item">
-						<a class="navs-links" href="<?php echo base_url(); ?>admin/import_data/"><i class="picons-thin-icon-thin-0126_cloud_upload_backup"></i> <span><?php echo getEduAppGTLang('import_data'); ?></span></a>
-					</li>
-					<li class="navs-item">
-						<a class="navs-links" href="<?php echo base_url(); ?>admin/export_data/"><i class="picons-thin-icon-thin-0122_download_file_computer_drive"></i> <span><?php echo getEduAppGTLang('export_data'); ?></span></a>
 					</li>
 				</ul>
 			</div>
@@ -46,21 +37,24 @@
 					<div class="content-box">
 						<?php echo form_open(base_url() . 'admin/students_report/', array('class' => 'form m-b')); ?>
 						<div class="row top-rd">
-							<div class="col-sm-3">
+							<div class="col-sm-2">
 								<div class="form-group label-floating is-select">
-									<label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
+									<label class="control-label"><?php echo getEduAppGTLang('branch'); ?></label>
 									<div class="select">
-										<select name="class_id" required="" onchange="get_sections(this.value)">
+										<select name="branch_id" required="" onchange="get_class(this.value)">
 											<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 											<?php
-											if(isSuperAdmin()){
-													$classes = $this->db->get('class')->result_array();
-												}else{
-													$classes = $this->db->where('branch_id',getMyBranchId()->branch_id)->get('class')->result_array();
-												}
-											foreach ($classes as $row):
-											?>
-												<option value="<?php echo $row['class_id']; ?>" <?php if ($class_id == $row['class_id']) echo "selected"; ?>><?php echo $row['name']; ?></option>
+											if (isSuperAdmin()) {
+												$branch = $this->db->where('status', 'ACTIVE')->get('branch')->result_array();
+											} else {
+												$where = [
+													'status' => 'ACTIVE',
+													'branch_id' => getMyBranchId()->branch_id
+												];
+												$branch = $this->db->where($where)->get('branch')->result_array();
+											}
+											foreach ($branch as $row): ?>
+												<option value="<?php echo $row['branch_id']; ?>" <?php if ($branch_id == $row['branch_id']) echo "selected"; ?>><?php echo $row['name']; ?></option>
 											<?php endforeach; ?>
 										</select>
 									</div>
@@ -68,14 +62,36 @@
 							</div>
 							<div class="col-sm-3">
 								<div class="form-group label-floating is-select">
-									<label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
+									<label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
 									<div class="select">
-										<?php if ($section_id == ""): ?>
-											<select name="section_id" required id="section_holder" onchange="get_class_subjects(this.value)">
+										<?php if ($class_id == ""): ?>
+											<select name="class_id" required id="class_holder" onchange="get_sections(this.value);">
 												<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 											</select>
 										<?php else: ?>
-											<select name="section_id" required id="section_holder" onchange="get_class_subjects(this.value)">
+											<select name="class_id" required id="class_holder" onchange="get_sections(this.value);">
+												<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+												<?php
+												$class = $this->db->get_where('class', array('class_id' => $class_id))->result_array();
+												foreach ($class as $key):
+												?>
+													<option value="<?php echo $key['class_id']; ?>" <?php if ($class_id == $key['class_id']) echo "selected"; ?>><?php echo $key['name']; ?></option>
+												<?php endforeach; ?>
+											</select>
+										<?php endif; ?>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<div class="form-group label-floating is-select">
+									<label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
+									<div class="select">
+										<?php if ($section_id == ""): ?>
+											<select name="section_id" required id="section_holder" onchange="get_class_subjects(this.value);">
+												<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+											</select>
+										<?php else: ?>
+											<select name="section_id" required id="section_holder" onchange="get_class_subjects(this.value);">
 												<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 												<?php
 												$sections = $this->db->get_where('section', array('class_id' => $class_id))->result_array();
@@ -93,11 +109,11 @@
 									<label class="control-label"><?php echo getEduAppGTLang('subject'); ?></label>
 									<div class="select">
 										<?php if ($subject_id == ""): ?>
-											<select name="subject_id" required id="subject_holder">
+											<select name="subject_id" required id="subject_holder" onchange="get_exam(this.value);">
 												<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 											</select>
 										<?php else: ?>
-											<select name="subject_id" required id="subject_holder">
+											<select name="subject_id" required id="subject_holder" onchange="get_exam(this.value);">
 												<option value=""><?php echo getEduAppGTLang('select'); ?></option>
 												<?php
 												$subjects = $this->db->get_where('subject', array('class_id' => $class_id, 'section_id' => $section_id))->result_array();
@@ -110,7 +126,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-3">
+							<div class="col-sm-2">
 								<div class="form-group">
 									<button class="btn btn-success btn-upper top-20" type="submit"><span><?php echo getEduAppGTLang('get_report'); ?></span></button>
 								</div>
@@ -193,12 +209,14 @@
 		<?php
 		$male = 0;
 		$female = 0;
-		foreach ($studentList as $row) {
+		if(isset($studentList) && !empty($studentList)){
+			foreach ($studentList as $row) {
 			if ($this->db->get_where('student', array('student_id' => $row->student_id))->row()->sex == "F") {
 				$female += 1;
 			} else {
 				$male += 1;
 			}
+		}
 		}
 		?>
 		<input type="hidden" value="<?php echo getEduAppGTLang('female'); ?>" id="female" />

@@ -2,6 +2,41 @@
     $details = $this->db->get_where('online_exam', array('code' => $code))->result_array();
 	foreach($details as $row):
 ?>
+<style>
+	.summernote-content {
+  all: initial; /* Reset semua style */
+  font-family: Arial, sans-serif; /* Atur kembali font */
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Izinkan kembali elemen umum */
+.summernote-content * {
+  all: unset;
+  display: revert;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.summernote-content img {
+  max-width: 100%;
+  height: auto;
+}
+.summernote-content a {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.summernote-content a:hover {
+  color: darkblue;
+}
+
+
+</style>
     <div class="content-w">
         <div class="conty">
         <?php include 'fancy.php';?>
@@ -12,7 +47,7 @@
     	                <input type="hidden" value="<?php echo $row['code'];?>" name="rand">
 		                <div class="element-box lined-primary shadow text-center">
 			                <div class="col-sm-8 mauto"><h3 class="form-header"><?php echo getEduAppGTLang('exam_information');?></h3><br>
-				                <p><?php echo $row['instruction'];?></p><br>
+							<div class="summernote-content"><?= $row['post_content']; ?></div>
 			                </div>
 			                <div class="table-responsive col-sm-8 mauto text-left">
 			                    <table class="table table-lightbor table-lightfont">
@@ -38,6 +73,12 @@
 				                        <th><i class="picons-thin-icon-thin-0207_list_checkbox_todo_done px30"></i></th>
 				                        <td><?php echo getEduAppGTLang('answer_all_questions');?>.</td>
 			                        </tr>
+									<?php if($row['post_file']):?>
+										<tr>
+											<th><i class="picons-thin-icon-thin-0071_document_file_paper px30"></i></th>
+											<td><a href="<?php echo base_url(); ?>public/exam/<?php echo $row['post_file'];?>" class="btn btn-rounded btn-sm btn-primary text-white" target="_blank"><?php echo getEduAppGTLang('download_this_attachment');?></a></td>
+										</tr>
+									<?php endif;?>
 			                        <tr>
 				                        <th><i class="picons-thin-icon-thin-0376_screen_analytics_line_graph_growth px30"></i></th>
 				                        <td><?php echo getEduAppGTLang('finish_message');?></td>

@@ -92,7 +92,7 @@
             </div>
         </div>
     <?php endif; ?>
-    <?php if ($page_name == 'meet' || $page_name == 'subject_dashboard' || $page_name == 'upload_marks' || $page_name == 'online_exams' || $page_name == 'homework' || $page_name == 'forum' || $page_name == 'study_material' || $page_name == 'subject_marks'): ?>
+    <?php if ($page_name == 'meet' || $page_name == 'subject_dashboard' || $page_name == 'upload_marks' || $page_name == 'online_exams' || $page_name == 'homework' || $page_name == 'forum' || $page_name == 'study_material' || $page_name == 'subject_marks'|| $page_name == 'blocked_mark'|| $page_name == 'attendance' || $page_name=='student_list' || $page_name == 'certificate_list'): ?>
         <?php $fc_info_data = base64_decode($data);
         $fc_ex = explode("-", $fc_info_data); ?>
         <div class="page-title">
@@ -273,7 +273,8 @@
                             <use xlink:href="<?php echo base_url(); ?>public/style/olapp/svg-icons/sprites/icons.svg#olymp-dropdown-arrow-icon"></use>
                         </svg>
                     </div>
-                    <span class="author-subtitle"><?php echo ucwords($this->session->userdata('login_type')); ?></span>
+                    <span class="author-subtitle"><?php echo ucwords($this->session->userdata('login_type')); ?> <?php if(isSuperAdmin()==false): echo getDetailBranch(getMyBranchId()->branch_id)->name; endif; ?>
+                    </span>
                 </a>
             </div>
         </div>

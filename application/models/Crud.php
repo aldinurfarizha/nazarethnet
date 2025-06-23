@@ -26,7 +26,7 @@ class Crud extends School
         $total_mark = $this->get_total_mark($online_exam_id);
         $required = $this->db->get_where('online_exam', array('online_exam_id' => $online_exam_id))->row()->minimum_percentage;
         $mark = $this->db->get_where('online_exam_result', array('online_exam_id' => $online_exam_id, 'student_id' => $student_id))->row()->obtained_mark;
-        $minumum_required_marks = ($total_mark * $required) / 100;
+        $minumum_required_marks = ((int)$total_mark * (int)$required) / 100;
         if($minumum_required_marks > $mark){
             return 0;
         }else{
@@ -819,16 +819,29 @@ class Crud extends School
             'student_id' => $student_id,
             'pw' => $pw
         );
-        $today = date('d-m-Y_h:i:s');
-        $html = $this->load->view('backend/downloadsheet.php',$data,TRUE); 
-        $stylesheet = file_get_contents(base_url().'public/uploads/css1.css');
-        $pdfFilePath = "student_sheet-".$today.".pdf";
-        $this->load->library('M_pdf');
-        $mpdf = new mPDF('utf-8', 'A4', 0, '', 10, 10, 10, 0, 0, 'L'); 
-        $mpdf->packTableData = true;
-        $mpdf->WriteHTML($stylesheet,1);
-        $mpdf->WriteHTML($html,2);
-        $mpdf->Output($pdfFilePath, "D");
+
+        // Load view dan CSS
+        $html = $this->load->view('backend/downloadsheet.php', $data, TRUE);
+        $stylesheet = file_get_contents(base_url() . 'public/uploads/css1.css');
+
+        // Gabungkan CSS dengan HTML
+        $html = "<style>" . $stylesheet . "</style>" . $html;
+
+        // Nama file PDF
+        $today = date('d-m-Y_H-i-s');
+        $filename = "student_sheet-{$today}.pdf";
+
+        // Load library pdf_generator
+        $this->load->library('pdf_generator');
+
+        // Generate PDF dan download
+        $this->pdf_generator->generate($html, $filename, 'D', [
+            'format' => 'A4',
+            'margin_left' => 10,
+            'margin_right' => 10,
+            'margin_top' => 10,
+            'margin_bottom' => 10,
+        ]);
     }
     
     function create_vimeo() 
@@ -961,6 +974,7 @@ class Crud extends School
                 $data['type']        = $this->input->post('type');
                 $data['file_name']   = $_FILES["file_name"]["name"];
                 $data['status']      = $this->input->post('status');
+                $data['branch_id']   = $this->input->post('branch_id');
                 move_uploaded_file($_FILES["file_name"]["tmp_name"], "public/uploads/library/" . $_FILES["file_name"]["name"]);
                 $this->db->insert('book', $data);
 
@@ -996,6 +1010,7 @@ class Crud extends School
             $data['total_copies']= html_escape($this->input->post('total_copies'));
             $data['type']        = $this->input->post('type');
             $data['status']      = $this->input->post('status');
+            $data['branch_id']   = $this->input->post('branch_id');
             $this->db->insert('book', $data);
 
              $notify['notify'] = "<strong>". $this->crud->get_name($this->session->userdata('login_type'), $this->session->userdata('login_user_id'))."</strong>". " ". getEduAppGTLang('book_added')." <b>".$this->db->get_where('class', array('class_id' => $this->input->post('class_id')))->row()->name."</b>";
@@ -1142,10 +1157,16 @@ class Crud extends School
     
     function delete_news($param2)
     {
-        unlink('public/uploads/news_images/'.$param2. ".jpg");
-        $id = $this->db->get_where('news', array('news_code' => $param2))->row()->news_id;
-        $this->db->where('news_code' , $param2);
+        $newsDetail = $this->db->get_where('news', array('news_code' => $param2))->row();
+
+        $this->db->where('news_code', $param2);
         $this->db->delete('news');
+
+        $this->db->where('news_id', $newsDetail->news_id);
+        $this->db->delete('news_reactions');
+
+        $this->db->where('news_id', $newsDetail->news_id);
+        $this->db->delete('news_comments');
     }
     
     function updateSettings()
@@ -1236,7 +1257,7 @@ class Crud extends School
         $this->db->update('settings' , $data);
 
         $data['description'] = strip_tags($this->input->post('running_year'));
-        $this->db->where('type' , 'running_year');
+        $this->db->where('type' , 'running_year_f');
         $this->db->update('settings' , $data);
     }
     
@@ -1704,7 +1725,7 @@ class Crud extends School
         $total_mark = $this->get_total_mark($online_exam_id);
         $query = $this->db->get_where('online_exam', array('online_exam_id' => $online_exam_id))->row_array();
         $minimum_percentage = $query['minimum_percentage'];
-        $minumum_required_marks = ($total_mark * $minimum_percentage) / 100;
+        $minumum_required_marks = ((int)$total_mark * (int)$minimum_percentage) / 100;
         if ($minumum_required_marks > $obtained_marks) {
             $data['result'] = 'fail';
         }
@@ -1769,22 +1790,32 @@ class Crud extends School
     
     function check_availability_for_student($online_exam_id)
     {
-        $result = $this->db->get_where('online_exam_result', array('online_exam_id' => $online_exam_id, 'student_id' => $this->session->userdata('login_user_id')))->row_array();
-        return $result['status'];
+        $student_id = $this->session->userdata('login_user_id');
+        $result = $this->db->get_where('online_exam_result', [
+            'online_exam_id' => $online_exam_id,
+            'student_id' => $student_id
+        ])->row_array();
+    
+        return isset($result['status']) ? $result['status'] : null;
     }
+    
     
     function parent_check_availability_for_student($online_exam_id, $student_id)
     {
-        $result = $this->db->get_where('online_exam_result', array('online_exam_id' => $online_exam_id, 'student_id' => $student_id))->row_array();
-        return $result['status'];
+        $result = $this->db->get_where('online_exam_result', [
+            'online_exam_id' => $online_exam_id,
+            'student_id' => $student_id
+        ])->row_array();
+
+        return isset($result['status']) ? $result['status'] : null;
     }
-    
+
+
     function available_exams($student_id,$subject_id) 
     {
         $running_year = $this->db->get_where('settings' , array('type' => 'running_year'))->row()->description;
-        $class_id = $this->db->get_where('enroll', array('student_id' => $student_id))->row()->class_id;
-        $section_id = $this->db->get_where('enroll', array('student_id' => $student_id))->row()->section_id;
-        $match = array('running_year' => $running_year, 'class_id' => $class_id, 'section_id' => $section_id,'subject_id' => $subject_id, 'status' => 'published');
+        $subjectData=getSubjectDetailBySubjectId($subject_id);
+        $match = array('running_year' => $running_year, 'class_id' => $subjectData->class_id, 'section_id' => $subjectData->section_id,'subject_id' => $subject_id, 'status' => 'published');
         $this->db->order_by("online_exam_id", "dsc");
         $exams = $this->db->where($match)->get('online_exam')->result_array();
         return $exams;
@@ -2879,8 +2910,8 @@ class Crud extends School
     
     function get_name($type = '', $id = '')
     {
-        $first = $this->db->get_where(''.$type.'',array($type."_id" => $id))->row()->first_name;
-        $last = $this->db->get_where(''.$type.'',array($type."_id" => $id))->row()->last_name;
+        $first = @$this->db->get_where(''.$type.'',array($type."_id" => $id))->row()->first_name;
+        $last = @$this->db->get_where(''.$type.'',array($type."_id" => $id))->row()->last_name;
         $name = $first." ".$last;
         return $name;
     }
@@ -2970,7 +3001,11 @@ class Crud extends School
     {
         $data['is_public']           = $this->input->post('is_public');
         $data['news_code']           = substr(md5(rand(100000000, 200000000)), 0, 10);
-        $data['description']         = html_escape($this->input->post('description'));
+        if ($this->input->post('description') != '') {
+            $data['description']    = $this->input->post('description');
+        } else {
+            $data['description']    = '';
+        }
         $data['date']                = $this->getDateFormat();
         $data['publish_date']        = date('Y-m-d H:i:s');
         $data['admin_id']            = $this->session->userdata('login_user_id');
@@ -2980,9 +3015,30 @@ class Crud extends School
         $data['class_id']           = 0;
         $data['section_id']         = 0;
         $data['subject_id']         = 0;
+        $data['post_content']       = $this->input->post('post_content');
+        $data['can_reaction'] = $this->input->post('can_reaction') ? 1 : 0;
+        $data['can_comment']  = $this->input->post('can_comment') ? 1 : 0;
+        // Cek apakah ada file yang diupload
+        if (isset($_FILES['post_file']) && $_FILES['post_file']['error'] == UPLOAD_ERR_OK) {
+            $upload_dir = 'public/news/';
+            if (!is_dir($upload_dir)) {
+                if (!mkdir($upload_dir, 0755, true)) {
+                    die("Failed to create folder: " . $upload_dir);
+                }
+            }
+
+            $ext = pathinfo($_FILES["post_file"]["name"], PATHINFO_EXTENSION);
+            $new_filename = uniqid('news', true) . '.' . $ext;
+            $target_file = $upload_dir . $new_filename;
+
+            if (move_uploaded_file($_FILES["post_file"]["tmp_name"], $target_file)) {
+                $data['post_file'] = $new_filename;
+                $data['post_file_type'] = $ext;
+            }
+        }
+
         $this->db->insert('news', $data);
         $news_code = $this->db->get_where('news' , array('news_id' => $this->db->insert_id()))->row()->news_code;
-        move_uploaded_file($_FILES['userfile']['tmp_name'], 'public/uploads/news_images/' . $news_code . '.jpg');
         return $news_code;
     }
     
@@ -2991,22 +3047,49 @@ class Crud extends School
         $info = base64_decode($codd);
         $ex = explode('-', $info);
         
-        $data['news_code']              = substr(md5(rand(100000000, 200000000)), 0, 10);
-        $data['description']            = $this->input->post('description');
-        $data['date']                   = $this->getDateFormat();
-        $data['publish_date']           = date('Y-m-d H:i:s');
-        $data['admin_id']               = $this->session->userdata('login_user_id');
-        $data['user']               = $this->session->userdata('login_type');
-        $data['date2']                  = date('H:i A');
-        $data['type']                   = "news";
-        $data['class_id']               = $ex[0];
-        $data['section_id']             = $ex[1];
-        $data['subject_id']             = $ex[2];
+        $data['news_code']      = substr(md5(rand(100000000, 200000000)), 0, 10);
+        if($this->input->post('description') != ''){
+            $data['description']    = $this->input->post('description');
+        }else{
+            $data['description']    ='';
+        }
+        $data['date']           = $this->getDateFormat();
+        $data['publish_date']   = date('Y-m-d H:i:s');
+        $data['admin_id']       = $this->session->userdata('login_user_id');
+        $data['user']           = $this->session->userdata('login_type');
+        $data['date2']          = date('H:i A');
+        $data['type']           = "news";
+        $data['class_id']       = $ex[0];
+        $data['section_id']     = $ex[1];
+        $data['subject_id']     = $ex[2];
+        $data['post_content']   = $this->input->post('post_content');
+        $data['can_reaction'] = $this->input->post('can_reaction') ? 1 : 0;
+        $data['can_comment']  = $this->input->post('can_comment') ? 1 : 0;
+
+        // Cek apakah ada file yang diupload
+        if (isset($_FILES['post_file']) && $_FILES['post_file']['error'] == UPLOAD_ERR_OK) {
+            $upload_dir = 'public/news/';
+            if (!is_dir($upload_dir)) {
+                if (!mkdir($upload_dir, 0755, true)) {
+                    die("Failed to create folder: " . $upload_dir);
+                }
+            }
+
+            $ext = pathinfo($_FILES["post_file"]["name"], PATHINFO_EXTENSION);
+            $new_filename = uniqid('news', true) . '.' . $ext;
+            $target_file = $upload_dir . $new_filename;
+
+            if (move_uploaded_file($_FILES["post_file"]["tmp_name"], $target_file)) {
+                $data['post_file'] = $new_filename;
+                $data['post_file_type'] = $ext;
+            }
+        }
+
         $this->db->insert('news', $data);
-        $news_code = $this->db->get_where('news' , array('news_id' => $this->db->insert_id()))->row()->news_code;
-        move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/news_images/' . $news_code . '.jpg');
+        $news_code = $this->db->get_where('news', array('news_id' => $this->db->insert_id()))->row()->news_code;
         return $news_code;
     }
+
 
     function import_db()
     {
@@ -3714,6 +3797,7 @@ class Crud extends School
                 $attn_data['subject_id'] = $data['subject_id'];
                 $attn_data['section_id'] = $data['section_id'];
                 $attn_data['student_id'] = $row['student_id'];
+                $attn_data['updated_at'] = date('Y-m-d H:i:s');
                 $this->db->insert('attendance' , $attn_data);  
             }
         }
@@ -3760,8 +3844,21 @@ class Crud extends School
         foreach($attendance_of_students as $row) 
         {
             $attendance_status = $this->input->post('status_'.$row['attendance_id']);
-            $this->db->where('attendance_id' , $row['attendance_id']);
-            $this->db->update('attendance' , array('status' => $attendance_status));
+            $this->db->select('status');
+            $this->db->where('attendance_id', $row['attendance_id']);
+            $current = $this->db->get('attendance')->row();
+
+            if ($current && $current->status !== $attendance_status) {
+                $this->db->where('attendance_id', $row['attendance_id']);
+                $this->db->update('attendance', [
+                    'status' => $attendance_status,
+                    'updated_at' => date('Y-m-d H:i:s')
+                ]);
+            }else{
+                $this->db->where('attendance_id', $row['attendance_id']);
+                $this->db->update('attendance', array('status' => $attendance_status));
+            }
+            
             if ($attendance_status == 2) 
             {
                 $student_name   = $this->crud->get_name('student',$row['student_id']);
@@ -3931,5 +4028,25 @@ class Crud extends School
     {
         $this->db->where('poll_code', $pollCode);
         $this->db->delete('polls');
+    }
+    public function saveCertificatePdf($certCode, $html, $settings)
+    {
+        $filename = "{$certCode}.pdf";
+        $savePath = FCPATH . "public/generated_certificates/" . $filename;
+
+        if (!is_dir(FCPATH . "public/generated_certificates")) {
+            mkdir(FCPATH . "public/generated_certificates", 0755, true);
+        }
+
+        $this->load->library('pdf_generator');
+        $this->pdf_generator->generate($html, $savePath, 'F', [
+            'format' => [$settings->width, $settings->height],
+            'margin_left' => 0,
+            'margin_right' => 0,
+            'margin_top' => 0,
+            'margin_bottom' => 0,
+        ]);
+
+        return $savePath;
     }
 }

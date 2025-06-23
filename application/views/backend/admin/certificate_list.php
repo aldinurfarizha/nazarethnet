@@ -71,13 +71,13 @@ foreach ($sub as $subs):
                                 <div class="content-box">
                                     <div class="row">
                                         <div class="table-responsive">
-                                            <table class="table table-striped table-hover">
+                                            <table id="studentTable" class="table table-striped table-hover">
                                                 <thead>
                                                     <tr>
                                                         <td>No.</td>
                                                         <td><?= getEduAppGTLang('name'); ?></td>
-                                                        <td>falta de clase</td>
-                                                        <td><?= getEduAppGTLang('status'); ?></td>
+                                                        <td class="text-center"><?= getEduAppGTLang('course_status'); ?></td>
+                                                        <td class="text-center"><?= getEduAppGTLang('certificate_code'); ?></td>
                                                         <td><?= getEduAppGTLang('action'); ?></td>
                                                     </tr>
                                                 </thead>
@@ -91,27 +91,29 @@ foreach ($sub as $subs):
                                                         if (isStudentDeactive($row2['student_id'])) {
                                                             continue;
                                                         }
-                                                        if (isStudentFinishSubject($row2['student_id'], $ex[2])) {
-                                                            continue;
-                                                        }
                                                         if (isActiveSubject($row2['student_id'], $ex[2])) {
+                                                            $studentData = getStudentInfo($row2['student_id']);
+                                                            $studentSubject = getStudentSubject($row2['student_id'], $ex[2]);
                                                     ?>
                                                             <tr>
                                                                 <td><?= $no ?></td>
                                                                 <td><?= $this->crud->get_name('student', $row2['student_id']) ?></td>
-                                                                <td><?= countMissingClass($row2['student_id'], $ex[2]) ?></td>
-                                                                <td class="text-center">
-                                                                    <?php if (isMarkBlocked($row2['student_id'], $ex[2])) { ?>
-                                                                        <div class="value badge badge-pill badge-danger"><?= getEduAppGTLang('bloquear'); ?></div> <br><small class="text-muted"><?= getMarkBlockedReason($row2['student_id'], $ex[2]) ?></small>
+                                                                <td class="text-center"><?php
+                                                                                        if (isStudentFinishSubject($row2['student_id'], $ex[2])) { ?>
+                                                                        <div class="value badge badge-pill badge-success"><?= getEduAppGTLang('finished'); ?></div>
                                                                     <?php } else { ?>
-                                                                        <div class="value badge badge-pill badge-success"><?= getEduAppGTLang('desatascar'); ?></div>
+                                                                        <div class="value badge badge-pill badge-warning"><?= getEduAppGTLang('in_progress'); ?></div>
                                                                     <?php } ?>
                                                                 </td>
+                                                                <td class="text-center">
+                                                                    <?= $studentSubject->cert_code ?>
+                                                                </td>
                                                                 <td>
-                                                                    <?php if (isMarkBlocked($row2['student_id'], $ex[2])) { ?>
-                                                                        <a class="btn btn-sm btn-success" href="<?= base_url('admin/unblock_mark/' . $row2['student_id'] . '/' . $ex[2] . '/' . $data) ?>"> abrir el bloque de valor <i class="fa fa-check-circle"></i></a>
+                                                                    <?php if ($studentSubject->cert_code) { ?>
+                                                                        <a class="btn btn-sm btn-success" target="_blank" href="<?= base_url('certificate/download_pdf/' . $studentSubject->cert_code) ?>"> <?= getEduAppGTLang('download_certificate'); ?> <i class="fa fa-file-pdf"></i></a>
+                                                                        <button class="btn btn-sm btn-warning" onclick="showAjaxModal('<?= base_url('modal/popup/modal_confirm_invalidate_certificate/' . $data . '/' . $studentSubject->student_subject_id) ?>');"><?= getEduAppGTLang('invalidate_certificate'); ?> <i class="fa fa-ban"></i></button>
                                                                     <?php } else { ?>
-                                                                        <button class="btn btn-sm btn-danger" onclick="showAjaxModal('<?= base_url('modal/popup/modal_block_mark/' . $data . '/' . $ex[2] . '/' . $row2['student_id']) ?>');">bloque de valor</button>
+                                                                        <button class="btn btn-sm btn-danger" onclick="showAjaxModal('<?= base_url('modal/popup/modal_confirm_certificate/' . $data . '/' . $ex[2] . '/' . $row2['student_id']) ?>');"><?= getEduAppGTLang('generate_certificate'); ?></button>
                                                                     <?php } ?>
                                                                 </td>
                                                             </tr>
@@ -122,7 +124,6 @@ foreach ($sub as $subs):
                                                 </tbody>
                                             </table>
                                         </div>
-
                                     </div>
                                 </div>
                                 <a class="back-to-top" href="javascript:void(0);">
@@ -136,3 +137,8 @@ foreach ($sub as $subs):
         </div>
     </div>
 <?php endforeach; ?>
+<script>
+    $(document).ready(function() {
+        $('#studentTable').DataTable();
+    });
+</script>

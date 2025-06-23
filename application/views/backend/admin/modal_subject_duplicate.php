@@ -13,37 +13,53 @@ foreach ($edit_data as $row):
             <div class="ui-block-content">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="form-group">
+                        <div class="form-group label-floating">
                             <label class="control-label"><?php echo getEduAppGTLang('name'); ?></label>
                             <input class="form-control" placeholder="" value="<?php echo $row['name'] . ' - ' . getEduAppGTLang('duplicate') . ' ' . rand(1000, 9999); ?>" name="name" type="text" required>
                             <input type="hidden" name="subject_id" value="<?php echo $row['subject_id']; ?>">
+                            <input type="hidden" name="reference_class_id" value="<?php echo $row['class_id']; ?>">
+                            <input type="hidden" name="reference_section_id" value="<?php echo $row['section_id']; ?>">
                             <input type="hidden" name="duplicate" value="1">
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="form-group">
+                        <div class="form-group label-floating">
                             <label class="control-label"><?php echo getEduAppGTLang('about_the_subject'); ?></label>
                             <textarea class="form-control" name="about" required><?php echo $row['about']; ?></textarea>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="form-group">
+                        <div class="form-group label-floating">
                             <label class="control-label"><?php echo getEduAppGTLang('icon'); ?></label>
                             <input class="form-control" name="userfile" type="file">
                         </div>
                     </div>
-
+                    <div class="col col-sm-6">
+                        <div class="form-group label-floating is-select">
+                            <label class="control-label"><?php echo getEduAppGTLang('branch'); ?></label>
+                            <div class="select">
+                                <select onchange="get_class(this.value);" required name="branch_id">
+                                    <option value=""><?php echo getEduAppGTLang('select'); ?></option>
+                                    <?php
+                                    if (isSuperAdmin()) {
+                                        $branch = $this->db->where('status', 'ACTIVE')->get('branch')->result_array();
+                                    } else {
+                                        $branch = $this->db->where('branch_id', getMyBranchId()->branch_id)->get('branch')->result_array();
+                                    }
+                                    foreach ($branch as $row):
+                                    ?>
+                                        <option value="<?php echo $row['branch_id']; ?>"><?php echo $row['name']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-lg-6">
                         <div class="form-group label-floating is-select">
                             <label class="control-label"><?php echo getEduAppGTLang('class'); ?></label>
                             <div class="select">
-                                <select name="class_id" required="">
+                                <select name="class_id" id="class_holder" onchange="get_sections(this.value);" required>
                                     <option value=""><?php echo getEduAppGTLang('select'); ?></option>
-                                    <?php
-                                    $class_info = $this->db->get('class')->result_array();
-                                    foreach ($class_info as $rowd) { ?>
-                                        <option value="<?php echo $rowd['class_id']; ?>" <?php if ($row['class_id'] == $rowd['class_id']) echo "selected"; ?>><?php echo $rowd['name']; ?></option>
-                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -52,13 +68,8 @@ foreach ($edit_data as $row):
                         <div class="form-group label-floating is-select">
                             <label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
                             <div class="select">
-                                <select name="section_id" required="">
+                                <select name="section_id" id="section_holder" required>
                                     <option value=""><?php echo getEduAppGTLang('select'); ?></option>
-                                    <?php
-                                    $class_info = $this->db->get_where('section', array('class_id' => $row['class_id']))->result_array();
-                                    foreach ($class_info as $rowd) { ?>
-                                        <option value="<?php echo $rowd['section_id']; ?>" <?php if ($row['section_id'] == $rowd['section_id']) echo "selected"; ?>><?php echo $rowd['name']; ?></option>
-                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -67,12 +78,12 @@ foreach ($edit_data as $row):
                         <div class="form-group label-floating is-select">
                             <label class="control-label"><?php echo getEduAppGTLang('teacher'); ?></label>
                             <div class="select">
-                                <select name="teacher_id" required="">
+                                <select name="teacher_id" required>
                                     <option value=""><?php echo getEduAppGTLang('select'); ?></option>
                                     <?php $teachers = $this->db->get('teacher')->result_array();
                                     foreach ($teachers as $teacher):
                                     ?>
-                                        <option value="<?php echo $teacher['teacher_id']; ?>" <?php if ($row['teacher_id'] == $teacher['teacher_id']) echo 'selected'; ?>><?php echo $teacher['first_name'] . " " . $teacher['last_name']; ?></option>
+                                        <option value="<?php echo $teacher['teacher_id']; ?>"><?php echo $teacher['first_name'] . " " . $teacher['last_name']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -103,7 +114,7 @@ foreach ($edit_data as $row):
                     <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="form-group label-floating">
                             <label class="control-label text-white"><?php echo getEduAppGTLang('color'); ?></label>
-                            <input class="jscolor" name="color" value="<?php echo $row['color']; ?>">
+                            <input class="jscolor" name="color" value="#27FF30">
                         </div>
                     </div>
                     <div class="col-lg-12">

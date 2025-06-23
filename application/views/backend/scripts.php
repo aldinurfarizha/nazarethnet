@@ -70,3 +70,4 @@
     <script defer src="<?php echo base_url(); ?>public/style/olapp/fonts/fontawesome-all.js"></script>
     <script src="<?php echo base_url(); ?>public/style/olapp/Bootstrap/dist/js/bootstrap.bundle.js"></script>
     <script src="<?php echo base_url(); ?>public/style/js/scripts_eduappgt.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

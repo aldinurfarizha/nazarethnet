@@ -74,7 +74,7 @@ class Mark extends School
                 $queryMark = $this->db->get_where('nota_capacidad', array('mark_activity_id' => $rowx['mark_activity_id'], 'student_id' => $row['student_id']))->result_array();
                 foreach($queryMark as $rm)
                 {
-                    $total += $rm['nota'];
+                    $total += (int)$rm['nota'];
                 }
             }   
             
@@ -179,10 +179,11 @@ class Mark extends School
                 $nota_cap = $this->db->order_by('nota_capacidad_id', 'ASC')->get_where('nota_capacidad', array('mark_activity_id' => $cap['mark_activity_id'], 'student_id' => $row['student_id']))->result_array();
                 foreach ($nota_cap as $nota) 
                 {
-                    if($nota['nota'] != null) {
-                        writeNotaCapacidadHistory($nota['nota_capacidad_id'], $nota['nota']);
-                    }
+                    $data2['updated_at'] = date('Y-m-d H:i:s');
                     $data2['nota'] = $this->input->post('mark_' . $row['student_id'] . '_' . $cap['mark_activity_id'] . '');
+                    if($nota['nota'] != null) {
+                        writeNotaCapacidadHistory($nota['nota_capacidad_id'], $data2['nota']);
+                    }
                     $this->db->where('nota_capacidad_id', $nota['nota_capacidad_id']);
                     $this->db->update('nota_capacidad', $data2);
                 }

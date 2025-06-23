@@ -71,7 +71,13 @@
                                                     <div class="select">
                                                         <select name="class_id" required="">
                                                             <option value=""><?php echo getEduAppGTLang('select');?></option>
-                                                                <?php $cl = $this->db->get('class')->result_array();
+                                                                <?php 
+                                                                  if(isSuperAdmin()) {
+                                                                    $cl = $this->db->get('class')->result_array();
+                                                                }else{
+                                                                    $myBranchId = getMyBranchId()->branch_id;
+                                                                    $cl = $this->db->get_where('class', array('branch_id' => $myBranchId))->result_array();
+                                                                }
                                                                 foreach($cl as $row2):
                   	                                        ?>
                                                             <option value="<?php echo $row2['class_id'];?>" <?php if($row2['class_id'] == $row['class_id']) echo 'selected';?>><?php echo $row2['name'];?></option>

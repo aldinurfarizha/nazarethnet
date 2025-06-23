@@ -1,3 +1,37 @@
+    <style>
+    /* Membatasi lebar summernote editor agar tidak bablas */.note-editable * {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  white-space: normal !important;
+}
+
+/* Khusus gambar */
+.note-editable img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+/* Khusus iframe */
+.note-editable iframe {
+  max-width: 100% !important;
+  height: auto;
+}
+
+/* Khusus tabel */
+.note-editable table {
+  width: 100% !important;
+  table-layout: auto !important;
+  overflow-x: auto;
+  display: block;
+}
+
+
+
+</style>
 <?php $running_year = $this->crud->getInfo('running_year'); ?>
     <div class="content-w">
         <div class="conty">
@@ -18,130 +52,171 @@
                         </ul>
                     </div>
                 </div>
-                <div class="content-i">
-                    <div class="content-box">
-                        <div>
-                            <div class="pipeline white lined-primary">
-                            <?php
-                                $online_exam = $this->db->get_where('online_exam', array('online_exam_id' => $online_exam_id))->row_array();
-                                $sections    = $this->db->get_where('section', array('class_id' => $online_exam['class_id']))->result_array();
-                                $subjects    = $this->db->get_where('subject', array('class_id' => $online_exam['class_id']))->result_array();
-                            ?>
-                                <?php echo form_open(base_url() . 'teacher/online_exams/edit/', array('enctype' => 'multipart/form-data')); ?>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="col-form-label" for=""><?php echo getEduAppGTLang('title');?></label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" name="exam_title" value="<?php echo $online_exam['title']; ?>">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="col-form-label" for=""><?php echo getEduAppGTLang('date');?></label>
-                                                <div class="input-group">
-                                                    <input type='text' class="datepicker-here" data-position="bottom left" data-language='en' name="exam_date" data-multiple-dates-separator="/" value="<?php echo date('m/d/Y', $online_exam['exam_date']); ?>"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                                        	<div class="form-group label-floating">
-                                        	    <label class="control-label"><?php echo getEduAppGTLang('points_exp');?></label>
-                                        	    <input class="form-control" name="exp" type="text" value="<?php echo $online_exam['exp'];?>">
-                                        	    <small><?php echo getEduAppGTLang('if_is_enabled_in_rules');?></small>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <label class="col-form-label" for=""><?php echo getEduAppGTLang('start_time');?></label>
-                                                <div class="input-group clockpicker" data-align="top" data-autoclose="true">
-                                                    <input type="text" required="" name="time_start" class="form-control" value="<?php echo $online_exam['time_start'];?>">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <label class="col-form-label" for=""><?php echo getEduAppGTLang('end_time');?></label>
-                                                <div class="input-group clockpicker" data-align="top" data-autoclose="true">
-                                                    <input type="text" required="" name="time_end" class="form-control" value="<?php echo $online_exam['time_end'];?>">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <label class="col-form-label" for=""><?php echo getEduAppGTLang('percentage_required');?></label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" name="minimum_percentage" value="<?php echo $online_exam['minimum_percentage']; ?>">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <label class="col-form-label" for=""><?php echo getEduAppGTLang('password');?></label>
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control" name="password" value="<?php echo $online_exam['password']; ?>">
-                                                </div>
-                                                <small><?php echo getEduAppGTLang('optional');?></small>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4"><br>
-                                            <div class="form-group is-select">
-                                                <label class="control-label"><?php echo getEduAppGTLang('show_results');?></label>
-                                                <div class="select">
-                                                    <select name="results" required="">
-                                                        <option value=""><?php echo getEduAppGTLang('select');?></option>
-                                                        <option value="1" <?php if($online_exam['results'] == 1) echo 'selected';?>><?php echo getEduAppGTLang('keep_hidden');?></option>
-                                                        <option value="2" <?php if($online_exam['results'] == 2) echo 'selected';?>><?php echo getEduAppGTLang('show_when_exam_is_finished');?></option>
-                                                        <option value="3" <?php if($online_exam['results'] == 3) echo 'selected';?>><?php echo getEduAppGTLang('15_minutes_after_finished');?></option>
-                                                        <option value="4" <?php if($online_exam['results'] == 4) echo 'selected';?>><?php echo getEduAppGTLang('30_minutes_after_finished');?></option> 
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-2"><br>
-                                            <div class="form-group is-select">
-                                                <label class="control-label"><?php echo getEduAppGTLang('issue_certificate');?></label>
-                                                <div class="select">
-                                                    <select name="certificate" required="">
-                                                        <option value=""><?php echo getEduAppGTLang('select');?></option>
-                                                        <option value="1" <?php if($online_exam['certificate'] == 1) echo 'selected';?>><?php echo getEduAppGTLang('yes');?></option>
-                                                        <option value="2" <?php if($online_exam['certificate'] == 2) echo 'selected';?>><?php echo getEduAppGTLang('no');?></option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="description-toggle">
-                                                <div class="description-toggle-content">
-                                                    <label><?php echo getEduAppGTLang('show_questions_randomly'); ?></label>
-                                                </div>
-                                                <div class="togglebutton">
-                                                    <label><input name="show_random" value="1" type="checkbox" <?php if($online_exam['show_random'] == 1) echo 'checked';?>></label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <div class="form-group">
-                                                <label class="col-form-label" for=""><?php echo getEduAppGTLang('description');?></label>
-                                                <textarea class="form-control" name="instruction" id="ckeditorEmail"><?php echo $online_exam['instruction']; ?></textarea>
-                                            </div>
-                                        </div>
-                                        <input type="hidden" value="<?php echo $online_exam['class_id'];?>" name="class_id">
-                                        <input type="hidden" value="<?php echo $online_exam['section_id'];?>" name="section_id">
-                                        <input type="hidden" value="<?php echo $online_exam['subject_id'];?>" name="subject_id">
-                                        <input type="hidden" name="online_exam_id" value="<?php echo $online_exam['online_exam_id']; ?>"/>
+                            <div class="content-i">
+                <div class="content-box">
+                    <div>
+                        <div class="pipeline white lined-primary">
+                        <?php
+                            $online_exam = $this->db->get_where('online_exam', array('online_exam_id' => $online_exam_id))->row_array();
+                            $sections    = $this->db->get_where('section', array('class_id' => $online_exam['class_id']))->result_array();
+                            $subjects    = $this->db->get_where('subject', array('class_id' => $online_exam['class_id']))->result_array();
+                        ?>
+                            <?php echo form_open(base_url() . 'teacher/online_exams/edit/', array('enctype' => 'multipart/form-data')); ?>
+                                <div class="row">
+                                    <div class="col-sm-6">
                                         <div class="form-group">
-                                            <div class="col-sm-12 text-center">
-                                                <button type="submit" class="btn btn-success"><?php echo getEduAppGTLang('update');?></button>
+                                            <label class="col-form-label" for=""><?php echo getEduAppGTLang('title');?></label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" name="exam_title" value="<?php echo $online_exam['title']; ?>">
                                             </div>
                                         </div>
                                     </div>
-                                <?php echo form_close();?>
-                            </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for=""><?php echo getEduAppGTLang('date');?></label>
+                                            <div class="input-group">
+                                                <input type='text' class="datepicker-here" data-position="top left" data-language='en' name="exam_date" data-multiple-dates-separator="/" value="<?php echo date('m/d/Y', $online_exam['exam_date']); ?>"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for=""><?php echo getEduAppGTLang('start_time');?></label>
+                                            <div class="input-group clockpicker" data-align="top" data-autoclose="true">
+                                                <input type="text" required="" name="time_start" class="form-control" value="<?php echo $online_exam['time_start'];?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for=""><?php echo getEduAppGTLang('end_time');?></label>
+                                            <div class="input-group clockpicker" data-align="top" data-autoclose="true">
+                                                <input type="text" required="" name="time_end" class="form-control" value="<?php echo $online_exam['time_end'];?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for=""><?php echo getEduAppGTLang('percentage_required');?></label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" name="minimum_percentage" value="<?php echo $online_exam['minimum_percentage']; ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                	    <div class="form-group label-floating">
+                                            <label class="control-label"><?php echo getEduAppGTLang('points_exp');?></label>
+                                            <div class="input-group">
+                                    		    <input type="text" name="exp" class="form-control" value="<?php echo $online_exam['exp'];?>">
+                                	        </div>
+                                	        <small><?php echo getEduAppGTLang('if_is_enabled_in_rules');?></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label" for=""><?php echo getEduAppGTLang('password');?></label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" name="password" value="<?php echo $online_exam['password']; ?>">
+                                            </div>
+                                            <small><?php echo getEduAppGTLang('optional');?></small>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4"><br>
+                                        <div class="form-group is-select">
+                                            <label class="control-label"><?php echo getEduAppGTLang('show_results');?></label>
+                                            <div class="select">
+                                                <select name="results" required="">
+                                                    <option value=""><?php echo getEduAppGTLang('select');?></option>
+                                                    <option value="1" <?php if($online_exam['results'] == 1) echo 'selected';?>><?php echo getEduAppGTLang('keep_hidden');?></option>
+                                                    <option value="2" <?php if($online_exam['results'] == 2) echo 'selected';?>><?php echo getEduAppGTLang('show_when_exam_is_finished');?></option>
+                                                    <option value="3" <?php if($online_exam['results'] == 3) echo 'selected';?>><?php echo getEduAppGTLang('15_minutes_after_finished');?></option>
+                                                    <option value="4" <?php if($online_exam['results'] == 4) echo 'selected';?>><?php echo getEduAppGTLang('30_minutes_after_finished');?></option> 
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4"><br>
+                                        <div class="form-group is-select">
+                                            <label class="control-label"><?php echo getEduAppGTLang('issue_certificate');?></label>
+                                            <div class="select">
+                                                <select name="certificate" required="">
+                                                    <option value=""><?php echo getEduAppGTLang('select');?></option>
+                                                    <option value="1" <?php if($online_exam['certificate'] == 1) echo 'selected';?>><?php echo getEduAppGTLang('yes');?></option>
+                                                    <option value="2" <?php if($online_exam['certificate'] == 2) echo 'selected';?>><?php echo getEduAppGTLang('no');?></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="description-toggle">
+                                            <div class="description-toggle-content">
+                                                <label><?php echo getEduAppGTLang('show_questions_randomly'); ?></label>
+                                            </div>
+                                            <div class="togglebutton">
+                                                <label><input name="show_random" value="1" type="checkbox" <?php if($online_exam['show_random'] == 1) echo 'checked';?>></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4"><br>
+                                            <div class="form-group">
+                                                <label class="control-label"><?php echo getEduAppGTLang('file');?></label>
+                                                <div class="input-group">
+                                                    <input type="file" class="form-control" name="post_file">
+                                                </div>
+                                            </div>
+                                        </div>
+                                     <div class="col-sm-12">
+                                            <div class="form-group">
+                                                <label class="col-form-label" for=""><?php echo getEduAppGTLang('description');?></label>
+                                                <textarea class="form-control" name="instruction" id="summernote"><?=$online_exam['post_content'];?></textarea>
+                                                <?php foreach(getAllReaction() as $reactionIcon){ ?>
+                                                    <a href="#" class="emoji-insert" data-emoji="<?=$reactionIcon->reaction_type?>">
+                                                        <?=$reactionIcon->reaction_type?>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+                                    <input type="hidden" value="<?php echo $online_exam['class_id'];?>" name="class_id">
+                                    <input type="hidden" value="<?php echo $online_exam['section_id'];?>" name="section_id">
+                                    <input type="hidden" value="<?php echo $online_exam['subject_id'];?>" name="subject_id">
+                                    <input type="hidden" name="online_exam_id" value="<?php echo $online_exam['online_exam_id']; ?>"/>
+                                    <div class="form-group">
+                                        <div class="col-sm-12 text-center">
+                                            <button type="submit" class="btn btn-success btn-rounded"><?php echo getEduAppGTLang('update');?></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php echo form_close();?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                placeholder: 'Write your content here...',
+                tabsize: 2,
+                height: 250,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear', 'fontsize', 'fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['insert', ['link', 'picture', 'video', 'emoji']],
+                    ['view', ['fullscreen', 'codeview']]
+                ]
+            });
+            $('.emoji-insert').on('click', function(e) {
+                e.preventDefault();
+
+                var emoji = $(this).data('emoji');
+                $('#summernote').summernote('insertText', emoji);
+            });
+
+        });
+    </script>

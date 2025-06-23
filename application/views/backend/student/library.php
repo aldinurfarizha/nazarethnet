@@ -2,6 +2,7 @@
     $running_year = $this->crud->getInfo('running_year'); 
     $class_id = $this->db->get_where('enroll', array('student_id' => $this->session->userdata('login_user_id'), 'year' => $running_year))->row()->class_id;
     $section_id = $this->db->get_where('enroll' , array('student_id' => $this->session->userdata('login_user_id'),'class_id' => $class_id,'year' => $running_year))->row()->section_id;
+
 ?>
     <div class="content-w">
         <?php include 'fancy.php';?>
@@ -50,6 +51,7 @@
                                             <tr>
                                                 <th><?php echo getEduAppGTLang('type');?></th>
                                                 <th><?php echo getEduAppGTLang('name');?></th>
+                                                <th><?php echo getEduAppGTLang('class');?></th>
                                                 <th><?php echo getEduAppGTLang('author');?></th>
                                                 <th><?php echo getEduAppGTLang('description');?></th>
                                                 <th><?php echo getEduAppGTLang('status');?></th>
@@ -60,8 +62,17 @@
                                         <tbody>
                                         <?php 
                                             $count = 1; 
-                                            $book = $this->db->get_where('book', array('class_id' => $class_id))->result_array();
-                                            foreach($book as $row):?>
+                                            $classSection=getStudentClassAndSectionByIdAll($this->session->userdata('login_user_id'));
+                                            $activeClassIds = [];
+                                            foreach ($classSection as $item) {
+                                                if ($item->is_active == 1) {
+                                                    $activeClassIds[] = $item->class_id;
+                                                }
+                                            }
+                                            $book = $this->db->get('book')->result_array();
+                                            foreach($book as $row):
+                                                if (!in_array($row['class_id'], $activeClassIds)) continue;
+                                            ?>
                                             <tr>
                                                 <td>
                                                 <?php if($row['type'] == 'virtual'):?>
@@ -71,6 +82,7 @@
                                                 <?php endif;?>
                                                 </td>
                                                 <td><?php echo $row['name'];?></td>
+                                                <td><?php echo $this->db->get_where('class', array('class_id' => $row['class_id']))->row()->name; ?></td>
                                                 <td><?php echo $row['author'];?></td>
                                                 <td><?php echo $row['description'];?></td>
                                                 <td>

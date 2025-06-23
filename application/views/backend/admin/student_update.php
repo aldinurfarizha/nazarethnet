@@ -220,44 +220,50 @@ foreach ($student_info as $row) :
                                             </div>
                                             <div class="col col-lg-6 col-md-6 col-sm-12 col-12" id="branchContainerEdit">
                                                 <div class="form-group label-floating is-select">
-                                                    <label class="control-label"><?php echo getEduAppGTLang('branch');?></label>
+                                                    <label class="control-label"><?php echo getEduAppGTLang('branch'); ?></label>
                                                     <div class="select">
                                                         <select name="branch_id" required="" onchange="get_shifts(this.value)">
-                                                            <option value=""><?php echo getEduAppGTLang('select');?></option>
-                                                            <?php foreach(getActiveBranch() as $branch):
-                                                                if($row['branch_id'] == $branch->branch_id){
+                                                            <option value=""><?php echo getEduAppGTLang('select'); ?></option>
+                                                            <?php 
+                                                            if(isSuperAdmin()){
+                                                                $branches= getActiveBranch();
+                                                            }else{
+                                                                $branches = getBranchByAdminId($this->session->userdata('admin_id'));
+                                                            }
+                                                            foreach ($branches as $branch):
+                                                                if ($row['branch_id'] == $branch->branch_id) {
                                                                     $selected = 'selected';
-                                                                }else{
+                                                                } else {
                                                                     $selected = '';
                                                                 }
-                                                                ?>
-                                                                <option value="<?php echo $branch->branch_id;?>" <?=$selected?>><?php echo $branch->name;?></option>
-                                                            <?php endforeach;?>
+                                                            ?>
+                                                                <option value="<?php echo $branch->branch_id; ?>" <?= $selected ?>><?php echo $branch->name; ?></option>
+                                                            <?php endforeach; ?>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-												<div class="form-group label-floating is-select">
-													<label class="control-label"><?php echo getEduAppGTLang('shifts'); ?></label>
-													<div class="select">
-                                                    <?php if ($row['shifts_id'] == ""): ?>
-                                                        <select name="shifts_id" required id="shifts_holder">
-                                                            <option value=""><?php echo getEduAppGTLang('select'); ?></option>
-                                                        </select>
-                                                    <?php else: ?>
-                                                        <select name="shifts_id" required id="shifts_holder">
-                                                            <?php
-                                                            $shift = $this->db->get_where('shifts', ['branch_id' => $row['branch_id']])->row();
-                                                            ?>
-                                                            <option value="<?php echo $shift->shifts_id; ?>" selected>
-                                                                <?php echo $shift->name; ?>
-                                                            </option>
-                                                        </select>
-                                                    <?php endif; ?>
-													</div>
-												</div>
-											</div>
+                                                <div class="form-group label-floating is-select">
+                                                    <label class="control-label"><?php echo getEduAppGTLang('shifts'); ?></label>
+                                                    <div class="select">
+                                                        <?php if ($row['shifts_id'] == ""): ?>
+                                                            <select name="shifts_id" required id="shifts_holder">
+                                                                <option value=""><?php echo getEduAppGTLang('select'); ?></option>
+                                                            </select>
+                                                        <?php else: ?>
+                                                            <select name="shifts_id" required id="shifts_holder">
+                                                                <?php
+                                                                $shift = $this->db->get_where('shifts', ['branch_id' => $row['branch_id']])->row();
+                                                                ?>
+                                                                <option value="<?php echo $shift->shifts_id; ?>" selected>
+                                                                    <?php echo $shift->name; ?>
+                                                                </option>
+                                                            </select>
+                                                        <?php endif; ?>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                                                 <div class="form-group">
                                                     <label class="control-label"><?php echo getEduAppGTLang('photo'); ?></label>
@@ -327,6 +333,10 @@ foreach ($student_info as $row) :
                                                     <li>
                                                         <i class="px20 picons-thin-icon-thin-0133_arrow_right_next"></i> &nbsp;&nbsp;&nbsp;
                                                         <a href="<?php echo base_url(); ?>admin/student_profile_active_course/<?php echo $student_id; ?>/">Active Course</a>
+                                                    </li>
+                                                    <li>
+                                                        <i class="px20 picons-thin-icon-thin-0133_arrow_right_next"></i> &nbsp;&nbsp;&nbsp;
+                                                        <a href="<?php echo base_url(); ?>admin/student_certificate_list/<?php echo $student_id; ?>/"><?php echo getEduAppGTLang('certificate_list'); ?></a>
                                                     </li>
                                                 </ul>
                                             </div>

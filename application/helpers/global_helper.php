@@ -8,7 +8,7 @@ function print_json($data)
 }
 function generateRandomString($length = 10)
 {
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
 
@@ -22,6 +22,19 @@ function generateRandomString($length = 10)
     }
 
     return $randomString;
+}
+function isCertCodeCanUse($certCode)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('student_subject')
+        ->where('cert_code', $certCode)
+        ->get();
+    if ($data->num_rows() > 0) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 
@@ -71,6 +84,42 @@ function getEnrollById($enroll_id)
         ->where('enroll_id', $enroll_id)
         ->get();
     return $data->row();
+}
+function getStudentSubject($student_id, $subject_id)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('student_subject')
+        ->where(['student_id' => $student_id, 'subject_id' => $subject_id])
+        ->get();
+    return $data->row();
+}
+function getStudentBySubjectId($subject_id)
+{
+    $ci = &get_instance();
+    $subjectData = getSubjectDetailBySubjectId($subject_id);
+    $student = $ci->db->select('student.student_id')
+        ->from('student_subject')
+        ->join('student', 'student.student_id = student_subject.student_id')
+        ->where(['student_subject.subject_id' => $subject_id])
+        ->get();
+    $student=$student->result();
+    $student_id = array();
+    foreach($student as $data){
+        if (!isStudentActiveEnroll($data->student_id, $subjectData->class_id, $subjectData->section_id, getRunningYear())) {
+            continue;
+        }
+        if (isStudentDeactive($data->student_id)) {
+            continue;
+        }
+        if (isStudentFinishSubject($data->student_id, $subject_id)) {
+            continue;
+        }
+        if (isActiveSubject($data->student_id, $subject_id)) {
+            $student_id[] = $data->student_id;
+        }
+    }
+    return $student_id;
 }
 function getStudentInfo($student_id)
 {
@@ -165,6 +214,15 @@ function isStudentEnrolled($student_id, $class_id, $section_id)
         return false;
     }
 }
+function getRollByClassAndSection($class_id, $section_id)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('roll')
+        ->from('enroll')
+        ->where(['class_id' => $class_id, 'section_id' => $section_id])
+        ->get();
+    return $data->row();
+}
 function isActiveSubject($student_id, $subject_id)
 {
     $ci = &get_instance();
@@ -206,6 +264,75 @@ function deactiveStudentSubject($student_id, $subject_id)
     $delete = $ci->db->delete('student_subject', $where);
     return $delete;
 }
+function deleteStudentFromSubject($student_id, $subject_id)
+{
+    $ci = &get_instance();
+    return $ci->db->delete('student_subject', [
+        'student_id' => $student_id,
+        'subject_id' => $subject_id
+    ]);
+}
+function deleteStudentMarks($student_id, $subject_id, $class_id, $section_id)
+{
+    $ci = &get_instance();
+    return $ci->db->delete('mark', [
+        'student_id' => $student_id,
+        'subject_id' => $subject_id,
+        'class_id' => $class_id,
+        'section_id' => $section_id
+    ]);
+}
+function deleteStudentNotaCapacidad($student_id, $subject_id, $class_id, $section_id)
+{
+    $ci = &get_instance();
+
+    // Ambil mark_id yang relevan
+    $ci->db->select('mark_id');
+    $ci->db->where([
+        'student_id' => $student_id,
+        'subject_id' => $subject_id,
+        'class_id' => $class_id,
+        'section_id' => $section_id
+    ]);
+    $mark_ids = $ci->db->get('mark')->result_array();
+
+    if (!empty($mark_ids)) {
+        $mark_activity_ids = array_column($mark_ids, 'mark_id');
+        $ci->db->where_in('mark_activity_id', $mark_activity_ids);
+        $ci->db->where('student_id', $student_id);
+        return $ci->db->delete('nota_capacidad');
+    }
+
+    return true;
+}
+function deleteStudentAttendance($student_id, $subject_id)
+{
+    $ci = &get_instance();
+    return $ci->db->delete('attendance', [
+        'student_id' => $student_id,
+        'subject_id' => $subject_id
+    ]);
+}
+function deleteStudentDeliveries($student_id,$homework_code)
+{
+    $ci = &get_instance();
+    return $ci->db->delete('deliveries', [
+        'student_id' => $student_id,
+        'homework_code' => $homework_code,
+    ]);
+}
+function deleteStudentOnlineExamResults($student_id, $online_exam_result_id)
+{
+    $ci = &get_instance();
+    return $ci->db->delete('online_exam_result', [
+            'student_id' => $student_id,
+            'online_exam_result_id' => $online_exam_result_id,
+    ]);
+}
+
+
+
+
 function generateSubjectAllStudent()
 {
     $success = 0;
@@ -291,7 +418,20 @@ function getAllExamBySubject($subjectId)
     $data = $ci->db->select('*')
         ->from('exam')
         ->where([
-            'subject_id'=>$subjectId
+            'subject_id'=>$subjectId,
+        ])
+        ->get();
+    return $data->result();
+}
+function getAllExamBySubjectDetail($subjectId,$classId,$sectionId)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('exam')
+        ->where([
+            'subject_id'=>$subjectId,
+            'class_id'=>$classId,
+            'section_id'=>$sectionId
         ])
         ->get();
     return $data->result();
@@ -380,6 +520,33 @@ function addStudentToMark($student_id, $subject_id, $class_id, $section_id,$exam
     $insert = $ci->db->insert('mark', $data);
     return $insert ? true : false;
 }
+
+
+function addStudentToMarkIfNotExist($student_id, $subject_id, $class_id, $section_id)
+{
+    $exam =  getAllExamBySubjectDetail($subject_id,$class_id,$section_id);
+    foreach ($exam as $ex) {
+        $exam_id = $ex->exam_id;
+        if(isStudentExistMark($student_id,$exam_id)){
+        continue;
+        }
+        $runningYear = getRunningYear();
+        $data=[
+            'student_id'=>$student_id,
+            'subject_id'=>$subject_id,
+            'class_id'=>$class_id,
+            'section_id'=>$section_id,
+            'exam_id'=>$exam_id,
+            'mark_obtained'=>0,
+            'comment'=>'',
+            'year'=>$runningYear,
+            'final'=>0,
+        ];
+        $ci = &get_instance();
+        $ci->db->insert('mark', $data);
+    }
+    
+}
 function isStudentExistNotaCapacidad($student_id,$markActivtyId)
 {
     $ci = &get_instance();
@@ -409,6 +576,36 @@ function addStudentToNotacapacidad($student_id, $markActivtyId)
     $ci = &get_instance();
     $insert = $ci->db->insert('nota_capacidad', $data);
     return $insert ? true : false;
+}
+function addStudentToNotacapacidadIfNotExist($student_id, $subject_id, $class_id,$section_id)
+{
+    $ci = &get_instance();
+    $exam =  getAllExamBySubjectDetail($subject_id,$class_id,$section_id);
+    foreach($exam as $ex){
+        $exam_id = $ex->exam_id;
+        $markActivity = $ci->db->select('*')
+        ->from('mark_activity')
+        ->where([
+            'exam_id'=>$exam_id,
+            'subject_id'=>$subject_id,
+            'class_id'=>$class_id,
+            'section_id'=>$section_id
+        ])
+        ->get()->result();
+        foreach($markActivity as $mark){
+            $markActivtyId = $mark->mark_activity_id;
+            if(isStudentExistNotaCapacidad($student_id,$markActivtyId)){
+                continue;
+            }
+            $data=[
+                'student_id'=>$student_id,
+                'mark_activity_id'=>$markActivtyId,
+                'nota'=>0
+            ];
+            $ci = &get_instance();
+            $ci->db->insert('nota_capacidad', $data);
+        }
+    }
 }
 function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
 {
@@ -670,13 +867,21 @@ function addStudentToMarkAndNotaCapacidadFromSubject($student_id,$subject_id)
         return false;
     }
     }
-    function getFinalMark($student_id, $subject_id,$exam_id, $year)
+    function getFinalMark($student_id, $subject_id, $exam_id, $year)
     {
         $ci = &get_instance();
-        $avg = $ci->db->get_where('mark', array('subject_id' => $subject_id, 'exam_id' => $exam_id, 'student_id' => $student_id, 'year' => $year))->row()->final;
-        return $avg;
+        $query = $ci->db->get_where('mark', [
+            'subject_id' => $subject_id,
+            'exam_id'    => $exam_id,
+            'student_id' => $student_id,
+            'year'       => $year
+        ]);
+
+        $row = $query->row();
+        return $row && isset($row->final) ? $row->final : 0;
     }
-    function countEvaluacionesFinales($exam_id,$student_id)
+
+function countEvaluacionesFinales($exam_id,$student_id)
     {
         $ci = &get_instance();
         $examDetail = $ci->db->get_where('exam', array('exam_id' => $exam_id))->row();
@@ -910,32 +1115,62 @@ function isClassExist($class_id)
 function writeNotaCapacidadHistory($nota_capacidad_id,$value)
 {
     $ci = &get_instance();
-    $exitingNotaCapacidadValueHistory=$ci->db->query("SELECT * FROM nota_capacidad_history where nota_capacidad_id=$nota_capacidad_id ORDER BY nota_capacidad_history_id DESC")->row()->value;
-    if($exitingNotaCapacidadValueHistory==$value){
-        return;
+    $exitingNotaCapacidadValueHistory=$ci->db->query("SELECT * FROM nota_capacidad_history where nota_capacidad_id=$nota_capacidad_id ORDER BY nota_capacidad_history_id DESC")->row();
+    if($exitingNotaCapacidadValueHistory){
+        if ($exitingNotaCapacidadValueHistory->value == $value) {
+            return;
+        }
+    }else{
+        $exitingNotaCapacidadValue = $ci->db->query("SELECT * FROM nota_capacidad where nota_capacidad_id=$nota_capacidad_id")->row();
+        if ($exitingNotaCapacidadValue) {
+            $data = array(
+                'nota_capacidad_id' => $nota_capacidad_id,
+                'value' => isset($exitingNotaCapacidadValue->nota) ? $exitingNotaCapacidadValue->nota : 0,
+                'created_at' => date('Y-m-d H:i:s')
+            );
+            $ci->db->insert('nota_capacidad_history', $data);
+            return;
+        }
     }
     $exitingNotaCapacidadValue=$ci->db->query("SELECT * FROM nota_capacidad where nota_capacidad_id=$nota_capacidad_id")->row()->nota;
     if($exitingNotaCapacidadValue==$value){
         return;
     }
-    $data = array(
-        'nota_capacidad_id' => $nota_capacidad_id,
-        'value' => $value
-    );
-    $ci->db->insert('nota_capacidad_history', $data);
+
+    if($value)
+    {
+        $data = array(
+            'nota_capacidad_id' => $nota_capacidad_id,
+            'value' => $value,
+            'created_at' => date('Y-m-d H:i:s')
+        );
+        $ci->db->insert('nota_capacidad_history', $data);
+    }
 }
-function getHistoryNotaCapacidad($nota_capacidad_id) {
+function getHistoryNotaCapacidad($nota_capacidad_id)
+{
     $ci = &get_instance();
-    $query = $ci->db->query("SELECT value FROM nota_capacidad_history WHERE nota_capacidad_id = $nota_capacidad_id ORDER BY nota_capacidad_history_id ASC");
+    $query = $ci->db->query("SELECT value, created_at FROM nota_capacidad_history WHERE nota_capacidad_id = ? ORDER BY nota_capacidad_history_id DESC", [$nota_capacidad_id]);
     $result = $query->result_array();
 
-    $values = array_column($result, 'value');
-    return implode(',', $values);
+    $output = [];
+    for ($i = 1; $i < count($result); $i++) {
+        $output[] = $result[$i]['created_at'] . '=' . $result[$i]['value'];
+    }
+
+    return implode('<br>', $output);
 }
+
 function getActiveBranch(){
     $ci = &get_instance();
     $branch = $ci->db->get_where('branch', array('status' => "ACTIVE"))->result();
     return $branch;
+}
+function getClassByBranchId($branch_id)
+{
+    $ci = &get_instance();
+    $class = $ci->db->get_where('class', array('branch_id' => $branch_id))->result();    
+    return $class;
 }
 function getDetailBranch($branch_id)
 {
@@ -975,6 +1210,457 @@ function getMyBranchId(){
 
     return $admin;
 }
+function getBranchByAdminId($admin_id){
+     $ci = &get_instance();
+    $admin = $ci->db->get_where('admin', array('admin_id' => $admin_id))->row();
+    if($admin==null){
+        return null;
+    }
+    $branch = $ci->db->get_where('branch', array('branch_id' => $admin->branch_id,'status' => "ACTIVE"))->row();
+    return $branch;
+}
+function getShiftsByBranchId($branch_id){
+    $ci = &get_instance();
+    $shifts = $ci->db->get_where('shifts', array('branch_id' => $branch_id))->result();
+    return $shifts;
+}
+function isStudentEnrolledToSubject($student_id, $subject_id)
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('student_subject')
+        ->where(['student_id' => $student_id, 'subject_id' => $subject_id])
+        ->get();
+    if ($data->num_rows() > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function addStudentToSubject($student_id, $subject_id)
+{
+    if (isStudentEnrolledToSubject($student_id, $subject_id)) {
+        return false;
+    }
+    $ci = &get_instance();
+    $data = array(
+        'student_id' => $student_id,
+        'subject_id' => $subject_id
+    );
+    $insert = $ci->db->insert('student_subject', $data);
+
+    return $insert ? true : false;
+}
+function transferStudentSubject($student_id, $subject_id_source, $subject_id_target)
+{
+    $ci = &get_instance();
+
+    $existing_target = $ci->db->get_where('student_subject', array(
+        'student_id' => $student_id,
+        'subject_id' => $subject_id_target
+    ))->row();
+
+    if ($existing_target) {
+        return 'already_in_target';
+    }
+
+    $source_data = $ci->db->get_where('student_subject', array(
+        'student_id' => $student_id,
+        'subject_id' => $subject_id_source
+    ))->row();
+
+    if ($source_data) {
+        $ci->db->where('student_id', $student_id);
+        $ci->db->where('subject_id', $subject_id_source);
+        $update = $ci->db->update('student_subject', [
+            'subject_id' => $subject_id_target,
+        ]);
+
+        return $update ? 'subject_updated' : 'update_failed';
+    }
+    return 'source_not_found';
+}
+
+
+
+function transferMarkOldToMarkNew($student_id, $sourceExamId, $targetExamId, $targetSubjectId, $targetClassId, $targetSectionId)
+{
+    $ci = &get_instance();
+
+    $data = $ci->db->select('*')
+        ->from('mark')
+        ->where([
+            'student_id' => $student_id,
+            'exam_id'    => $sourceExamId
+        ])
+        ->get();
+
+    if ($data->num_rows() > 0) {
+        foreach ($data->result() as $row) {
+            $updateData = array(
+                'exam_id'    => $targetExamId,
+                'subject_id' => $targetSubjectId,
+                'class_id'   => $targetClassId,
+                'section_id' => $targetSectionId
+            );
+
+            $ci->db->where('mark_id', $row->mark_id);
+            $ci->db->update('mark', $updateData);
+        }
+    } 
+}
+
+
+function transferNotaCapacidadOldTonotaCapacidadNew($student_id, $oldMarkActivityId, $newMarkActivityId)
+{
+    $ci = &get_instance();
+
+    // Cek apakah data lama (dengan oldMarkActivityId) ada
+    $oldData = $ci->db->get_where('nota_capacidad', [
+        'student_id' => $student_id,
+        'mark_activity_id' => $oldMarkActivityId
+    ]);
+
+    // Cek apakah sudah ada data dengan newMarkActivityId
+    $newDataExists = $ci->db->get_where('nota_capacidad', [
+        'student_id' => $student_id,
+        'mark_activity_id' => $newMarkActivityId
+    ])->num_rows() > 0;
+
+    if ($oldData->num_rows() > 0 && !$newDataExists) {
+        // Jika data lama ada dan data baru belum ada, lakukan update
+        $ci->db->where([
+            'student_id' => $student_id,
+            'mark_activity_id' => $oldMarkActivityId
+        ])->update('nota_capacidad', [
+            'mark_activity_id' => $newMarkActivityId
+        ]);
+    }
+}
+
+
+function transferOldAttendanceToNew($students_id, $subject_id_source, $subject_id_target, $target_class_id, $target_section_id) 
+{
+    $ci = &get_instance();
+
+    $attendances = $ci->db->select('*')
+        ->from('attendance')
+        ->where([
+            'student_id'    => $students_id,
+            'subject_id'    => $subject_id_source,
+        ])
+        ->get();
+
+    if ($attendances->num_rows() > 0) {
+        foreach ($attendances->result() as $row) {
+            $insertData = array(
+                'timestamp'     => $row->timestamp,
+                'year'          => $row->year,
+                'class_id'      => $target_class_id,
+                'section_id'    => $target_section_id,
+                'student_id'    => $row->student_id,
+                'subject_id'    => $subject_id_target,
+                'status'        => $row->status,
+                'time'          => $row->time,
+                'updated_at'    => date('Y-m-d H:i:s')
+            );
+            $ci->db->insert('attendance', $insertData);
+        }
+        return true;
+    }
+
+    return false;
+}
+function getAllReaction()
+{
+    $ci = &get_instance();
+    $data = $ci->db->select('*')
+        ->from('reaction')
+        ->get();
+    return $data->result();
+}
+function insertAllReaction()
+{
+    if(sizeof(getAllReaction()) > 0){
+        return false;
+    }
+    $reaction = [
+        ['reaction_type' => '👍'],
+        ['reaction_type' => '❤️'],
+        ['reaction_type' => '😂'],
+        ['reaction_type' => '😮'],
+        ['reaction_type' => '😢'],
+        ['reaction_type' => '😡'],
+        ['reaction_type' => '👏'],
+        ['reaction_type' => '🔥'],
+        ['reaction_type' => '🎉'],
+        ['reaction_type' => '💯'],
+    ];
+
+    $ci = &get_instance();
+    $ci->db->insert_batch('reaction', $reaction);
+    return true;
+}
+function countReaction($id, $table_name)
+{
+    $ci = &get_instance();
+
+    $table_id_fields = [
+        'news_reactions'     => 'news_id',
+        'document_reactions' => 'document_id',
+        'forum_reactions'    => 'forum_id',
+        'homework_reactions' => 'homework_id'
+    ];
+
+    if (!array_key_exists($table_name, $table_id_fields)) {
+        return [];
+    }
+
+    $id_field = $table_id_fields[$table_name];
+
+    $ci->db->select('r.reaction_id, r.reaction_type, COUNT(nr.reaction_id) as total');
+    $ci->db->from("$table_name nr");
+    $ci->db->join('reaction r', 'r.reaction_id = nr.reaction_id');
+    $ci->db->where("nr.$id_field", $id);
+    $ci->db->group_by('nr.reaction_id');
+    $ci->db->order_by('total', 'DESC');
+    $query = $ci->db->get();
+
+    return $query->result();
+}
+function getComments($content_id,$table_name)
+{
+    $ci = &get_instance();
+
+    // Mapping nama tabel ke field ID yang sesuai
+    $table_id_fields = [
+        'news_comments'     => 'news_id',
+        'document_comments' => 'document_id',
+        'forum_comments'    => 'forum_id',
+        'homework_comments' => 'homework_id'
+    ];
+
+    if (!array_key_exists($table_name, $table_id_fields)) {
+        return [];
+    }
+
+    $id_field = $table_id_fields[$table_name];
+
+    $ci->db->from($table_name);
+    $ci->db->where($id_field, $content_id);
+    $ci->db->order_by('created_at', 'ASC');
+    $comments = $ci->db->get()->result_array();
+
+    $results = [];
+
+    foreach ($comments as $comment) {
+        $comment_id = $comment[$table_name . '_id'];
+        $student_id = $comment['student_id'];
+        $admin_id   = $comment['admin_id'];
+        $teacher_id = isset($comment['teacher_id']) ? $comment['teacher_id'] : 0;
+
+        $name = '';
+        $role = '';
+        
+        if ($student_id && $student_id != 0) {
+            $ci->db->where('student_id', $student_id);
+            $user = $ci->db->get('student')->row();
+            $name = $user ? $user->first_name : '';
+            $role = 'student';
+        } elseif ($teacher_id && $teacher_id != 0) {
+            $ci->db->where('teacher_id', $teacher_id);
+            $user = $ci->db->get('teacher')->row();
+            $name = $user ? $user->first_name : '';
+            $role = 'teacher';
+        } elseif ($admin_id && $admin_id != 0) {
+            $ci->db->where('admin_id', $admin_id);
+            $user = $ci->db->get('admin')->row();
+            $name = $user ? $user->first_name : '';
+            $role = 'admin';
+        }
+
+        $results[] = [
+            'comments_id' => $comment_id,
+            'comments'    => $comment['comments'],
+            'student_id'  => $student_id,
+            'teacher_id'  => $teacher_id,
+            'admin_id'    => $admin_id,
+            'first_name'  => $name,
+            'role'        => $role,
+            'created_at'  => $comment['created_at']
+        ];
+    }
+
+    return $results;
+}
+if (!function_exists('getUserIcon')) {
+    function getUserIcon($student_id, $teacher_id, $admin_id)
+    {
+        if (!empty($student_id) && $student_id != 0) {
+            return '<i class="picons-thin-icon-thin-0704_users_profile_group_couple_man_woman text-secondary" title="Student"></i> ';
+        } elseif (!empty($teacher_id) && $teacher_id != 0) {
+            return '<i class="picons-thin-icon-thin-0729_student_degree_science_university_school_graduate text-primary" title="Teacher"></i> ';
+            
+        } elseif (!empty($admin_id) && $admin_id != 0) {
+            return '<i class="os-icon picons-thin-icon-thin-0047_home_flat text-success" title="Admin"></i> ';
+            
+        } else {
+            return ''; // atau bisa juga return default icon
+        }
+    }
+}
+if (!function_exists('hasReacted')) {
+    function hasReacted($table, $content_id, $id_user)
+    {
+        $ci = &get_instance();
+
+        $table_id_fields = [
+            'news_reactions'     => 'news_id',
+            'document_reactions' => 'document_id',
+            'forum_reactions'    => 'forum_id',
+            'homework_reactions' => 'homework_id',
+        ];
+        if (!isset($table_id_fields[$table])) {
+            return false; 
+        }
+
+        $content_id_field = $table_id_fields[$table];
+        $ci->db->from($table);
+        $ci->db->where($content_id_field, $content_id);
+        $login_type = $ci->session->userdata('login_type');
+        switch ($login_type) {
+            case 'student':
+                $ci->db->where('student_id',$id_user);
+                break;
+            case 'teacher':
+                $ci->db->where('teacher_id', $id_user);
+                break;
+            case 'admin':
+                $ci->db->where('admin_id', $id_user);
+                break;
+            default:
+                return false;
+        }
+
+        return $ci->db->count_all_results() > 0;
+    }
+}
+function give_reaction($content_id, $reaction_id, $table)
+    {
+        $ci = &get_instance();
+
+        $table_id_fields = [
+            'news_reactions'     => 'news_id',
+            'document_reactions' => 'document_id',
+            'forum_reactions'    => 'forum_id',
+            'homework_reactions' => 'homework_id',
+        ];
+
+        if (!isset($table_id_fields[$table])) {
+            return false;
+        }
+
+        $content_field = $table_id_fields[$table];
+        $user_id   = $ci->session->userdata('login_user_id');
+        $user_type = $ci->session->userdata('login_type');
+        $user_field = "{$user_type}_id";
+
+        if (!in_array($user_field, ['admin_id', 'teacher_id', 'student_id'])) {
+            return false;
+        }
+        $dataInsert = [
+            $content_field   => $content_id,
+            'reaction_id'    => $reaction_id,
+            'student_id'     => 0,
+            'teacher_id'     => 0,
+            'admin_id'       => 0,
+            'created_at'     => date('Y-m-d H:i:s'),
+        ];
+
+        $dataInsert[$user_field] = $user_id;
+        $ci->db->where($content_field, $content_id);
+        $ci->db->where($user_field, $user_id);
+        $query = $ci->db->get($table);
+
+        if ($query->num_rows() > 0) {
+            // Update
+            $ci->db->where($content_field, $content_id);
+            $ci->db->where($user_field, $user_id);
+            return $ci->db->update($table, [
+                'reaction_id' => $reaction_id,
+                'created_at'  => date('Y-m-d H:i:s')
+            ]);
+        } else {
+            // Insert
+            return $ci->db->insert($table, $dataInsert);
+        }
+    }
+    function post_comment($content_id, $comment_text, $table)
+    {
+        $ci = &get_instance();
+
+        $table_id_fields = [
+            'news_comments'     => 'news_id',
+            'document_comments' => 'document_id',
+            'forum_comments'    => 'forum_id',
+            'homework_comments' => 'homework_id',
+        ];
+
+        if (!isset($table_id_fields[$table])) return false;
+
+        $content_field = $table_id_fields[$table];
+        $user_id   = $ci->session->userdata('login_user_id');
+        $user_type = $ci->session->userdata('login_type');
+        $user_field = "{$user_type}_id";
+
+        if (!in_array($user_field, ['admin_id', 'teacher_id', 'student_id'])) return false;
+
+        $data = [
+            $content_field   => $content_id,
+            'comments'        => $comment_text,
+            'student_id'     => 0,
+            'teacher_id'     => 0,
+            'admin_id'       => 0,
+            'created_at'     => date('Y-m-d H:i:s'),
+        ];
+        $data[$user_field] = $user_id;
+
+        return $ci->db->insert($table, $data);
+    }
+    function timeElapsed($datetime, $full = false) {
+        $now = new DateTime;
+        $ago = new DateTime($datetime);
+        $diff = $now->diff($ago);
+
+        $diff->w = floor($diff->d / 7); // optional: weeks
+        $diff->d -= $diff->w * 7;
+
+        $string = [
+            'y' => 'year',
+            'm' => 'month',
+            'w' => 'week',
+            'd' => 'day',
+            'h' => 'hour',
+            'i' => 'minute',
+            's' => 'second',
+        ];
+        
+        foreach ($string as $k => &$v) {
+            if ($diff->$k) {
+                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+            } else {
+                unset($string[$k]);
+            }
+        }
+
+        if (!$full) $string = array_slice($string, 0, 1);
+        return $string ? implode(', ', $string) . ' ago' : 'just now';
+    }
+
+
+
+
+
 
 
 

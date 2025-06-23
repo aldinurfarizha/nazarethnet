@@ -19,7 +19,7 @@
 														<img src="<?php echo base_url(); ?>public/uploads/<?php echo $this->crud->getInfo('logo'); ?>" class="authorCv">
 													</div>
 													<div class="author-content">
-														<a href="javascript:void(0);" class="h3 author-name"><?php echo getEduAppGTLang('students'); ?> <small>(<?php if ($class_id > 0) echo $this->db->get_where('class', array('class_id' => $class_id))->row()->name; ?>)</small></a>
+														<a href="javascript:void(0);" class="h3 author-name"><?php echo getEduAppGTLang('students'); ?></a>
 														<div class="country"><?php echo $this->crud->getInfo('system_name'); ?> | <?php echo $this->crud->getInfo('system_title'); ?></div>
 													</div>
 												</div>
@@ -41,157 +41,202 @@
 													<div class="col-sm-12">
 														<?php echo form_open(base_url() . 'admin/students/', array('class' => 'form m-b')); ?>
 														<div class="row">
-															<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
-																<div class="form-group label-floating bg-white">
-																	<label class="control-label"><?php echo getEduAppGTLang('search'); ?></label>
-																	<input class="form-control" id="filter" type="text" required="">
-																</div>
-															</div>
-															<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
+															<div class="col col-lg-2 col-md-6 col-sm-12 col-12">
 																<div class="form-group label-floating is-select">
-																	<label class="control-label"><?php echo getEduAppGTLang('filter_by_class'); ?></label>
+																	<label class="control-label"><?php echo getEduAppGTLang('filter_by_branch'); ?></label>
 																	<div class="select">
-																		<select onchange="submit();" name="class_id" id="slct">
-																			<option value=""><?php echo getEduAppGTLang('select'); ?></option>
-																			<?php 
-																			if(isSuperAdmin()){
-																				$cl = $this->db->get('class')->result_array();
+																		<select onchange="get_class(this.value); get_shifts(this.value);" name="branch_id">
+																			<option value=""><?php echo getEduAppGTLang('all'); ?></option>
+																			<?php
+																			if (isSuperAdmin()) {
+																				$branch = $this->db->where('status', 'ACTIVE')->get('branch')->result_array();
+																			} else {
+																				$branch = $this->db->where('branch_id', getMyBranchId()->branch_id)->get('branch')->result_array();
 																			}
-																			else{
-																				$cl = $this->db->where('branch_id',getMyBranchId()->branch_id)->get('class')->result_array();
-																			}
-																			foreach ($cl as $row):
+																			foreach ($branch as $row):
 																			?>
-																				<option value="<?php echo $row['class_id']; ?>" <?php if ($class_id == $row['class_id']) echo 'selected'; ?>><?php echo $row['name']; ?></option>
+																				<option value="<?php echo $row['branch_id']; ?>" <?php if (@$branch_id == $row['branch_id']) echo 'selected'; ?>><?php echo $row['name']; ?></option>
 																			<?php endforeach; ?>
 																		</select>
 																	</div>
 																</div>
 															</div>
+															<div class="col col-lg-2 col-md-6 col-sm-12 col-12">
+																<div class="form-group label-floating is-select">
+																	<label class="control-label"><?php echo getEduAppGTLang('filter_by_shifts'); ?></label>
+																	<div class="select">
+																		<select name="shifts_id" id="shifts_holder">
+																			<?php if($shifts_id!=null){?>
+																				<option value="<?php echo $shifts_id; ?>"><?php echo $this->db->get_where('shifts', array('shifts_id' => $shifts_id))->row()->name; ?></option>
+																			<?php }else{?>
+																			<option value=""><?php echo getEduAppGTLang('all'); ?></option>
+																			<?php }?>
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="col col-lg-4 col-md-6 col-sm-12 col-12">
+																<div class="form-group label-floating is-select">
+																	<label class="control-label"><?php echo getEduAppGTLang('filter_by_class'); ?></label>
+																	<div class="select">
+																		<select name="class_id" onchange="get_sections(this.value);" id="class_holder">
+																			<?php if($class_id!=null){?>
+																				<option selected value="<?php echo $class_id; ?>"><?php echo $this->db->get_where('class', array('class_id' => $class_id))->row()->name; ?></option>
+																				<?php
+																			if (isSuperAdmin()) {
+																				 $class=$this->db->get('class')->result_array();
+																			} else {
+																				 $class=$this->db->get_where('class', array('branch_id' => $branch_id))->result_array();
+																			}?>
+																			<option value=""><?php echo getEduAppGTLang('all'); ?></option>
+
+																			<?php foreach ($class as $row):?>
+																				<option value="<?php echo $row['class_id']; ?>"><?php echo $row['name']; ?></option>
+																			<?php endforeach; ?>
+																			<?php }else{?>
+																				<?php
+																			if (isSuperAdmin()) {
+																				 $class=$this->db->get('class')->result_array();
+																			} else {
+																				 $class=$this->db->get_where('class', array('branch_id' => $branch_id))->result_array();
+																			}?>
+																			<option value=""><?php echo getEduAppGTLang('all'); ?></option>
+
+																			<?php foreach ($class as $row):?>
+																				<option value="<?php echo $row['class_id']; ?>"><?php echo $row['name']; ?></option>
+																			<?php endforeach; ?>
+																			<?php }?>
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="col col-lg-3 col-md-6 col-sm-12 col-12">
+																<div class="form-group label-floating is-select">
+																	<label class="control-label"><?php echo getEduAppGTLang('filter_by_section'); ?></label>
+																	<div class="select">
+																		<select name="section_id" id="section_holder">
+																			<?php if($section_id!=null){?>
+																				<option value="<?php echo $section_id; ?>"><?php echo $this->db->get_where('section', array('section_id' => $section_id))->row()->name; ?></option>
+																			<?php }else{?>
+																			<option value=""><?php echo getEduAppGTLang('all'); ?></option>
+																			<?php }?>
+																		</select>
+																	</div>
+																</div>
+															</div>
+															<div class="col col-lg-1 col-md-6 col-sm-12 col-12 d-flex justify-content-center">
+																<div class="form-group mb-0">
+																	<button class="btn btn-primary mt-2">
+																		<?php echo getEduAppGTLang('filter'); ?> <i class="fa fa-search"></i>
+																	</button>
+																</div>
+															</div>
+
 														</div>
 														<?php echo form_close(); ?>
-														<div class="ui-block">
-															<div class="os-tabs-w">
-																<div class="os-tabs-controls">
-																	<ul class="navs navs-tabs upper nvs">
-																		<li class="navs-item show-inline2">
-																			<a class="navs-link active text-black" data-toggle="tab" href="#all"><?php echo getEduAppGTLang('all'); ?></a>
-																		</li>
-																		<?php $query = $this->db->get_where('section', array('class_id' => $class_id));
-																		if ($query->num_rows() > 0):
-																			$sections = $query->result_array();
-																			foreach ($sections as $rows): ?>
-																				<li class="navs-item">
-																					<a class="navs-link text-black" data-toggle="tab" href="#tab<?php echo $rows['section_id']; ?>"><?php echo getEduAppGTLang('section'); ?> <?php echo $rows['name']; ?></a>
-																				</li>
-																			<?php endforeach; ?>
-																		<?php endif; ?>
-																	</ul>
-																</div>
-															</div>
-														</div>
-														<div class="tab-content">
-															<div class="tab-pane active" id="all">
-																<div class="row" id="results">
-																	<?php if ($students = $this->db->get_where('enroll', array('class_id' => $class_id, 'year' => $running_year))->num_rows() > 0): ?>
-																		<?php $students = $this->db->get_where('enroll', array('class_id' => $class_id, 'year' => $running_year))->result_array();
-																		foreach ($students as $row):
-																			$student_branch_id = $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->branch_id; 
-																			$student_shifts = $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->shifts_id; 
-																		if(isSuperAdmin()==false){
-																			if($student_branch_id != getMyBranchId()->branch_id){
-																			continue;
-																		}
-																		}
-																		?>
-																			<div class="col-xl-4 col-md-6 results">
-																				<div class="card-box widget-user ui-block list">
-																					<div class="more pull-right">
-																						<i class="icon-options"></i>
-																						<ul class="more-dropdown">
-																							<li><a href="javascript:void(0);" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_card/<?php echo $row['student_id']; ?>');"><?php echo getEduAppGTLang('generate_id_card'); ?></a></li>
-																							<li><a href="javascript:void(0);" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_estudiante/<?php echo $row['student_id']; ?>');"><?php echo getEduAppGTLang('edit'); ?></a></li>
-																							<li><a onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>')" href="<?php echo base_url(); ?>admin/delete_student/<?php echo $row['student_id']; ?>"><?php echo getEduAppGTLang('delete'); ?></a></li>
-																						</ul>
-																					</div>
-																					<div>
-																						<img src="<?php echo $this->crud->get_image_url('student', $row['student_id']); ?>" class="img-responsive rounded-circle" alt="user">
-																						<div class="wid-u-info">
-																							<a href="<?php echo base_url(); ?>admin/student_portal/<?php echo $row['student_id']; ?>/" class="h6 author-name">
-																								<h5 class="mt-0 m-b-5"> <?php echo $this->crud->get_name('student', $row['student_id']); ?></h5>
-																							</a>
-																							<p class="text-muted m-b-5 font-13"><b><i class="picons-thin-icon-thin-0291_phone_mobile_contact"></i></b> <?php echo $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->phone; ?><br>
-																								<b><i class="picons-thin-icon-thin-0321_email_mail_post_at"></i></b> <?php echo $this->db->get_where('student', array('student_id' => $row['student_id']))->row()->email; ?><br>
-																								<b><i class="picons-thin-icon-thin-0729_student_degree_science_university_school_graduate"></i></b> <span class="badge badge-primary px10"><?php echo $this->db->get_where('class', array('class_id' => $row['class_id']))->row()->name; ?> - <?php echo $this->db->get_where('section', array('section_id' => $row['section_id']))->row()->name; ?></span><br>
-																								<b><i class="fas fa-map-marker-alt"></i></b> <span class="badge badge-primary px10"><?=getDetailBranch($student_branch_id)->name.' - '.getDetailShifts($student_shifts)->name?></span>
-																							</p>
-																						</div>
-																					</div>
-																				</div>
-																			</div>
-																		<?php endforeach; ?>
-																	<?php else: ?>
-																		<div class="col-xl-12 col-md-12 bg-white">
-																			<center><img src="<?php echo base_url(); ?>public/uploads/empty.png"></center>
-																		</div>
-																	<?php endif; ?>
-																</div>
-															</div>
-															<?php $query = $this->db->get_where('section', array('class_id' => $class_id));
-															if ($query->num_rows() > 0):
-																$sections = $query->result_array();
-																foreach ($sections as $row): ?>
-																	<div class="tab-pane" id="tab<?php echo $row['section_id']; ?>">
+														<div class="row">
+															<div class="col-md-12">
+																<div class="card">
+																<div class="card-body">
+																	<div class="content-box">
 																		<div class="row">
-																			<?php if ($students = $this->db->get_where('enroll', array('class_id' => $class_id, 'section_id' => $row['section_id'], 'year' => $running_year))->num_rows() > 0): ?>
-																				<?php $students = $this->db->get_where('enroll', array('class_id' => $class_id, 'section_id' => $row['section_id'], 'year' => $running_year))->result_array();
-																				foreach ($students as $row2): 
-																				$student_branch_id = $this->db->get_where('student', array('student_id' => $row2['student_id']))->row()->branch_id; 
-																					$student_shifts = $this->db->get_where('student', array('student_id' => $row2['student_id']))->row()->shifts_id; 
-																						if(isSuperAdmin()==false){
-																						if($student_branch_id != getMyBranchId()->branch_id){
-																						continue;
-																					}
-																					}
-																				?>
-																					<div class="col-xl-4 col-md-6">
-																						<div class="card-box widget-user ui-block list">
-																							<div class="more pull-right">
-																								<i class="icon-options"></i>
-																								<ul class="more-dropdown">
-																									<li><a href="javascript:void(0);" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_estudiante/<?php echo $row2['student_id']; ?>');"><?php echo getEduAppGTLang('edit'); ?></a></li>
-																									<li><a onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>')" href="<?php echo base_url(); ?>admin/delete_student/<?php echo $row2['student_id']; ?>"><?php echo getEduAppGTLang('delete'); ?></a></li>
-																								</ul>
-																							</div>
-																							<div>
-																								<img src="<?php echo $this->crud->get_image_url('student', $row2['student_id']); ?>" class="img-responsive rounded-circle" alt="user">
-																								<div class="wid-u-info">
-																									<a href="<?php echo base_url(); ?>admin/student_portal/<?php echo $row2['student_id']; ?>/" class="h6 author-name">
-																										<h5 class="mt-0 m-b-5"> <?php echo $this->crud->get_name('student', $row2['student_id']); ?></h5>
-																									</a>
-																									<p class="text-muted m-b-5 font-13"><b><i class="picons-thin-icon-thin-0291_phone_mobile_contact"></i></b> <?php echo $this->db->get_where('student', array('student_id' => $row2['student_id']))->row()->phone; ?><br>
-																										<b><i class="picons-thin-icon-thin-0321_email_mail_post_at"></i></b> <?php echo $this->db->get_where('student', array('student_id' => $row2['student_id']))->row()->email; ?><br>
-																										<b><i class="picons-thin-icon-thin-0729_student_degree_science_university_school_graduate"></i></b> <span class="badge badge-primary px10"><?php echo $this->db->get_where('class', array('class_id' => $row2['class_id']))->row()->name; ?> - <?php echo $this->db->get_where('section', array('section_id' => $row2['section_id']))->row()->name; ?></span>
-																										<?php if (!isStudentActiveEnroll($row['student_id'], $class_id, $row['section_id'], $running_year)) { ?>
-																											<span class="badge badge-danger px10"> Inactive</span>
-																										<?php } ?>
-																										<br>
-																										<b><i class="fas fa-map-marker-alt"></i></b> <span class="badge badge-primary px10"><?=getDetailBranch($student_branch_id)->name.' - '.getDetailShifts($student_shifts)->name?></span>
-																									</p>
+																			<div class="table-responsive">
+																				<table id="studentTable" class="table table-striped table-hover">
+																					<thead>
+																						<tr>
+																							<td>No.</td>
+																							<td><?= getEduAppGTLang('name'); ?></td>
+																							<td><?= getEduAppGTLang('phone'); ?></td>
+																							<td><?= getEduAppGTLang('email'); ?></td>
+																							<td><?= getEduAppGTLang('branch_and_shifts'); ?></td>
+																							<td><?= getEduAppGTLang('class_section'); ?></td>
+																							<td><?= getEduAppGTLang('action'); ?></td>
+																						</tr>
+																					</thead>
+																					<tbody>
+																						<?php
+																						$where['is_active'] = 1;
+																						$students = $this->db->get_where('student', $where)->result();
+																						$no = 1;
+																						foreach($students as $row): 
+																						$branch_shifts='<span class="badge bg-danger">'.getEduAppGTLang('not_assigned').'</span>';
+																						if($row->branch_id!=null && $row->shifts_id!=null){
+																							$branch=getDetailBranch($row->branch_id);
+																							$shifts=getDetailShifts($row->shifts_id);
+																							$branch_shifts=@$branch->name.' - '.@$shifts->name;
+																						}
+																						if($branch_id!=null){
+																							if($row->branch_id!=$branch_id){
+																								continue;
+																							}
+																							
+																						}
+																						if($shifts_id!=null){
+																							if($row->shifts_id!=$shifts_id){
+																								continue;
+																							}
+																						}
+																						$activeClassAndSection=getStudentClassAndSectionById($row->student_id);
+																						if($class_id!=null){
+																							$totalClassMatched=0;
+																							foreach($activeClassAndSection as $classAndSection){
+																								if($classAndSection->class_id==$class_id){
+																									$totalClassMatched++;
+																								}
+																							}
+																							if($totalClassMatched==0){
+																								continue;
+																							}
+																						}
+																						if($section_id!=null){
+																							$totalSectionMatched=0;
+																							foreach($activeClassAndSection as $classAndSection){
+																								if($classAndSection->section_id==$section_id){
+																									$totalSectionMatched++;
+																								}
+																							}
+																							if($totalSectionMatched==0){
+																								continue;
+																							}
+																						}
+																						
+																						$classSection='';
+																						if(count($activeClassAndSection)==0){
+																							$classSection='<span class="badge bg-danger">'.getEduAppGTLang('not_assigned').'</span>';
+																						}else{
+																							foreach($activeClassAndSection as $classAndSection){
+																							$classSection.='<span class="badge bg-primary">'.$classAndSection->class_name.' - '.$classAndSection->section_name.'</span><br/>';
+																							}
+																						}
+																						
+																						?>
+																						<tr>
+																							<td><?=$no;?></td>
+																							<td><a href="<?=base_url('admin/student_profile_active_course/'.$row->student_id.'');?>"><?=$row->first_name.' '.$row->last_name; ?></a></td>
+																							<td><?=$row->phone; ?></td>
+																							<td><?=$row->email; ?></td>
+																							<td><?=$branch_shifts; ?></td>
+																							<td><?=$classSection; ?></td>
+																							<td>
+																								<div class="more">
+																									<i class="icon-options"></i>
+																									<ul class="more-dropdown">
+																										<li><a href="javascript:void(0);" onclick="showAjaxModal('<?php echo base_url(); ?>modal/popup/modal_estudiante/<?php echo $row->student_id; ?>');"><?php echo getEduAppGTLang('edit'); ?></a></li>
+																										<li><a onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete'); ?>')" href="<?php echo base_url(); ?>admin/delete_student/<?php echo $row->student_id; ?>"><?php echo getEduAppGTLang('delete'); ?></a></li>
+																										<li><a href="<?=base_url('admin/student_profile_active_course/'.$row->student_id.'');?>"><?=getEduAppGTLang('profile'); ?></a></li>
+																									</ul>
 																								</div>
-																							</div>
-																						</div>
-																					</div>
-																				<?php endforeach; ?>
-																			<?php else: ?>
-																				<div class="col-xl-12 col-md-12 bg-white">
-																					<center><img src="<?php echo base_url(); ?>public/uploads/empty.png"></center>
-																				</div>
-																			<?php endif; ?>
+																							</td>
+																						</tr>
+																						<?php $no++; endforeach;?>
+																					</tbody>
+																				</table>
+																			</div>
 																		</div>
 																	</div>
-																<?php endforeach; ?>
-															<?php endif; ?>
+																</div>
+															</div>
+															</div>
 														</div>
 													</div>
 												</div>
@@ -290,3 +335,8 @@
 		</div>
 	</div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('#studentTable').DataTable();
+    });
+</script>

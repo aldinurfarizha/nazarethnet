@@ -73,7 +73,6 @@
                 $hasPermission = isset($role) && isset($role->permissions) && $role->permissions == 1;
                 ?>
 
-                <?php if ($hasPermission || $admin_type == 1): ?>
                     <li <?php if ($page_name == 'lessons' || $page_name == 'new_lesson_online' || $page_name == 'new_online_course' || $page_name == 'new_quiz_online' || $page_name == 'new_secction_online' || $page_name == 'online_courses' || $page_name == 'online_quiz_result' || $page_name == 'question_quiz_online' || $page_name == 'quiz_contest' || $page_name == 'quiz_response' || $page_name == 'update_lesson_online' || $page_name == 'update_question_quiz' || $page_name == 'update_quiz_online' || $page_name == 'view_lesson' || $page_name == 'watch'): ?>class="currentItem" <?php endif; ?>>
                         <a href="<?php echo base_url(); ?>admin/online_courses/" data-toggle="tooltip" data-placement="right" data-original-title="<?php echo getEduAppGTLang('online_courses'); ?>">
                             <div class="left-menu-icon">
@@ -81,7 +80,6 @@
                             </div>
                         </a>
                     </li>
-                <?php endif; ?>
                 <li>
                     <a href="<?php echo base_url(); ?>admin/team_conferences/" data-toggle="tooltip" data-placement="right" data-original-title="<?php echo getEduAppGTLang('team_conferences'); ?>">
                         <div class="left-menu-icon">

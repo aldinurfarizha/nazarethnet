@@ -270,9 +270,6 @@
                                                              <a href="javascript:void(0);" class="options-message" onclick="post()" data-toggle="tooltip" data-placement="top"   data-original-title="<?php echo getEduAppGTLang('local_video');?>">
                                                                 <i class="picons-social-icon-html5"></i>
                                                               </a>
-                                                              <!--<a href="javascript:void(0);" class="options-message" onclick="html5()" data-toggle="tooltip" data-placement="top"   data-original-title="<?php//echo getEduAppGTLang('html5_video');?>">
-                                                                <i class="picons-social-icon-html5"></i>
-                                                              </a>-->
                                                               <a href="javascript:void(0);" class="options-message" onclick="poll()" data-toggle="tooltip" data-placement="top"   data-original-title="<?php echo getEduAppGTLang('vimeo_video');?>">
                                                                 <i class="picons-social-icon-vimeo"></i>
                                                               </a>
@@ -304,9 +301,6 @@
                                                              <a href="javascript:void(0);" class="options-message" onclick="post()" data-toggle="tooltip" data-placement="top"   data-original-title="<?php echo getEduAppGTLang('local_video');?>">
                                                                 <i class="picons-social-icon-html5"></i>
                                                               </a>
-                                                              <!--<a href="javascript:void(0);" class="options-message" onclick="html5()" data-toggle="tooltip" data-placement="top"   data-original-title="<?php //echo getEduAppGTLang('html5_video');?>">
-                                                                <i class="picons-social-icon-html5"></i>
-                                                              </a>-->
                                                               <a href="javascript:void(0);" class="options-message" onclick="poll()" data-toggle="tooltip" data-placement="top"   data-original-title="<?php echo getEduAppGTLang('vimeo_video');?>">
                                                                 <i class="picons-social-icon-vimeo"></i>
                                                               </a>

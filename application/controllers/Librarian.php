@@ -135,7 +135,7 @@ class Librarian extends EduAppGT
     {
         $this->isLibrarian();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if(html_escape($_GET['id']) != "")
+        if(html_escape(@$_GET['id']) != "")
         {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));

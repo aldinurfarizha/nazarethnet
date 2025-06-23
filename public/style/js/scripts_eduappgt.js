@@ -212,6 +212,66 @@
             }
         });
     }
+    function get_class_subjects2(section_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_subject/' + section_id ,
+            success: function(response)
+            {
+                jQuery('#subject_holder2').html(response);
+            }
+        });
+    }
+    function get_class_subjects2_all(section_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_subject_all/' + section_id ,
+            success: function(response)
+            {
+                jQuery('#subject_holder2').html(response);
+            }
+        });
+    }
+    function get_class_subjects3(section_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_subject/' + section_id ,
+            success: function(response)
+            {
+                jQuery('#subject_holder3').html(response);
+            }
+        });
+    }
+    function get_class_subjects3_all(section_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_subject_all/' + section_id ,
+            success: function(response)
+            {
+                jQuery('#subject_holder3').html(response);
+            }
+        });
+    }
+    function get_class_subjects4(section_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_subject/' + section_id ,
+            success: function(response)
+            {
+                jQuery('#subject_holder4').html(response);
+            }
+        });
+    }
+    function get_class_subjects5(section_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_subject/' + section_id ,
+            success: function(response)
+            {
+                jQuery('#subject_holder5').html(response);
+            }
+        });
+    }
     
     function get_sections(class_id) 
     {
@@ -220,6 +280,66 @@
             success: function(response)
             {
                 jQuery('#section_holder').html(response);
+            }
+        });
+    }
+    function get_sections2(class_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_section/' + class_id ,
+            success: function(response)
+            {
+                jQuery('#section_holder2').html(response);
+            }
+        });
+    }
+    function get_sections3(class_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_section/' + class_id ,
+            success: function(response)
+            {
+                jQuery('#section_holder3').html(response);
+            }
+        });
+    }
+    function get_sections3_all(class_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_section_all/' + class_id ,
+            success: function(response)
+            {
+                jQuery('#section_holder3').html(response);
+            }
+        });
+    }
+    function get_sections4(class_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_section/' + class_id ,
+            success: function(response)
+            {
+                jQuery('#section_holder4').html(response);
+            }
+        });
+    }
+    function get_sections4_all(class_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_section_all/' + class_id ,
+            success: function(response)
+            {
+                jQuery('#section_holder4').html(response);
+            }
+        });
+    }
+    function get_sections5(class_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class_section/' + class_id ,
+            success: function(response)
+            {
+                jQuery('#section_holder5').html(response);
             }
         });
     }
@@ -233,6 +353,16 @@
             }
         });
     }
+    function get_shifts2(branch_id)
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_shifts/' + branch_id ,
+            success: function(response)
+            {
+                jQuery('#shifts_holder2').html(response);
+            }
+        });
+    }
     function get_class(branch_id)
     {
         $.ajax({
@@ -243,6 +373,46 @@
             }
         });
     }
+    function get_class2(branch_id)
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class/' + branch_id ,
+            success: function(response)
+            {
+                jQuery('#class_holder2').html(response);
+            }
+        });
+    }
+    function get_class3(branch_id)
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class/' + branch_id ,
+            success: function(response)
+            {
+                jQuery('#class_holder3').html(response);
+            }
+        });
+    }
+    function get_class4(branch_id)
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class/' + branch_id ,
+            success: function(response)
+            {
+                jQuery('#class_holder4').html(response);
+            }
+        });
+    }
+    function get_class5(branch_id)
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_class/' + branch_id ,
+            success: function(response)
+            {
+                jQuery('#class_holder5').html(response);
+            }
+        });
+    }
     function get_exam(subject_id) 
     {
         $.ajax({
@@ -250,6 +420,56 @@
             success: function(response)
             {
                 jQuery('#exam_holder').html(response);
+            }
+        });
+    }
+    function get_exam_all(subject_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_exam_all/' + subject_id ,
+            success: function(response)
+            {
+                jQuery('#exam_holder').html(response);
+            }
+        });
+    }
+    function get_exam2(subject_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_exam/' + subject_id ,
+            success: function(response)
+            {
+                jQuery('#exam_holder2').html(response);
+            }
+        });
+    }
+    function get_exam3(subject_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_exam/' + subject_id ,
+            success: function(response)
+            {
+                jQuery('#exam_holder3').html(response);
+            }
+        });
+    }
+    function get_exam4(subject_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_exam/' + subject_id ,
+            success: function(response)
+            {
+                jQuery('#exam_holder4').html(response);
+            }
+        });
+    }
+    function get_exam5(subject_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_exam/' + subject_id ,
+            success: function(response)
+            {
+                jQuery('#exam_holder5').html(response);
             }
         });
     }
@@ -282,6 +502,46 @@
             success: function(response)
             {
                 jQuery('#student_holder').html(response);
+            }
+        });
+    }
+    function get_student_subject(subject_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_student_subject/' + subject_id ,
+            success: function(response)
+            {
+                jQuery('#student_holder').html(response);
+            }
+        });
+    }
+    function get_student_subject2(subject_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_student_subject/' + subject_id ,
+            success: function(response)
+            {
+                jQuery('#student_holder2').html(response);
+            }
+        });
+    }
+    function get_student_subject_option(subject_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_student_subject_option/' + subject_id ,
+            success: function(response)
+            {
+                jQuery('#student_holder').html(response);
+            }
+        });
+    }
+    function get_student_subject_option2(subject_id) 
+    {
+        $.ajax({
+            url: rootAppURI+'admin/get_student_subject_option/' + subject_id ,
+            success: function(response)
+            {
+                jQuery('#student_holder2').html(response);
             }
         });
     }

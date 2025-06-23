@@ -90,6 +90,7 @@ class Login extends EduAppGT
             $this->session->set_userdata('login_user_id', $row->student_id);
             $this->session->set_userdata('name', $row->first_name);
             $this->session->set_userdata('login_type', 'student');
+            $this->session->set_userdata('branch_id', $row->branch_id);
             redirect(base_url() . 'student/panel/', 'refresh');
         }
         $query = $this->db->get_where('parent', $credential);

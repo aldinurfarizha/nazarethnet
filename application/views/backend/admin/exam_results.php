@@ -43,7 +43,17 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php foreach ($students_array as $row):?>
+                                        <?php foreach ($students_array as $row):
+                                            if (!isStudentActiveEnroll($row['student_id'], $row['class_id'], $row['section_id'], $running_year)) {
+                                                                        continue;
+                                                                    }
+                                                                    if (isStudentFinishSubject($row['student_id'],$online_exam_details['subject_id'])) {
+                                                                        continue;
+                                                                    }
+                                                                    if (!isActiveSubject($row['student_id'],$online_exam_details['subject_id'])) {
+                                                                        continue;
+                                                                    }
+                                            ?>
                                             <tr>
                                                 <td><?php $student_details = $this->crud->get_student_info_by_id($row['student_id']); echo $student_details['first_name']." ".$student_details['last_name']; ?></td>
                                                 <td>
@@ -108,6 +118,15 @@
                                     <?php 
                                         $students = $this->db->get_where('enroll' , array('class_id' => $online_exam_details['class_id'], 'section_id' => $online_exam_details['section_id'] , 'year' => $running_year))->result_array();
                                         foreach($students as $row2):
+                                             if (!isStudentActiveEnroll($row2['student_id'], $row['class_id'], $row['section_id'], $running_year)) {
+                                                                        continue;
+                                                                    }
+                                                                    if (isStudentFinishSubject($row2['student_id'],($online_exam_details['subject_id']))) {
+                                                                        continue;
+                                                                    }
+                                                                    if (!isActiveSubject($row2['student_id'],($online_exam_details['subject_id']))) {
+                                                                        continue;
+                                                                    }
                                     ?>
                                     <div class="user-w">
                                         <div class="user-avatar-w">

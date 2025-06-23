@@ -87,6 +87,7 @@
                                         $sec_id = $this->db->get_where('enroll', array('student_id' => $row['student_id']))->row()->section_id;?>
                                         <h5><a class="badge badge-success" href="javascript:void(0);"><?php echo $this->db->get_where('class', array('class_id' => $cl_id))->row()->name;?></a></h5>
                                         <h5><a class="badge badge-info" href="javascript:void(0);"><?php echo getEduAppGTLang('section');?>: <?php echo $this->db->get_where('section', array('section_id' => $sec_id))->row()->name;?></a></h5>
+										<h5><a href="#" class="badge badge-primary"><?= getEduAppGTLang('branch').' '.@getDetailBranch($student_branch_id)->name . ' - ' . @getDetailShifts($student_shifts)->name ?></a></h5>
                                        <br>
                                 </div>
                             </div>

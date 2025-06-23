@@ -436,6 +436,7 @@ class Student extends EduAppGT
         $sectionId    = $this->db->get_where('online_exam', array('online_exam_id' => $param1))->row()->section_id;
         $subjectId    = $this->db->get_where('online_exam', array('online_exam_id' => $param1))->row()->subject_id;
         $redirect = base64_encode($classId . '-' . $sectionId . '-' . $subjectId);
+        $addMinutes = 0;
         if ($results == 3) {
             $addMinutes = 15;
         } elseif ($results == 4) {
@@ -823,7 +824,7 @@ class Student extends EduAppGT
     {
         $this->isStudent();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if (html_escape($_GET['id']) != "") {
+        if (html_escape(@$_GET['id']) != "") {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
             $this->db->update('notification', $notify);
@@ -952,7 +953,7 @@ class Student extends EduAppGT
     {
         $this->isStudent();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if (html_escape($_GET['id']) != "") {
+        if (html_escape(@$_GET['id']) != "") {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
             $this->db->update('notification', $notify);
@@ -968,7 +969,7 @@ class Student extends EduAppGT
     {
         $this->isStudent();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if (html_escape($_GET['id']) != "") {
+        if (html_escape(@$_GET['id']) != "") {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
             $this->db->update('notification', $notify);
@@ -988,7 +989,7 @@ class Student extends EduAppGT
     {
         $this->isStudent();
         parse_str(substr(strrchr($_SERVER['REQUEST_URI'], "?"), 1), $_GET);
-        if (html_escape($_GET['id']) != "") {
+        if (html_escape(@$_GET['id']) != "") {
             $notify['status'] = 1;
             $this->db->where('id', html_escape($_GET['id']));
             $this->db->update('notification', $notify);

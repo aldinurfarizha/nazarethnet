@@ -1,0 +1,2 @@
+ALTER TABLE book
+ADD branch_id INT NULL DEFAULT NULL;

@@ -76,13 +76,17 @@ foreach ($student_info as $row) :
 																<span class="title"><?php echo getEduAppGTLang('classroom'); ?>:</span>
 																<span class="text"><?php echo $this->db->get_where('dormitory', array('dormitory_id' => $row['dormitory_id']))->row()->name; ?></span>
 															</li>
+															<li>
+																<span class="title"><?php echo getEduAppGTLang('branch'); ?>:</span>
+																<span class="text"><?php echo @getDetailBranch($row['branch_id'])->name ?></span>
+															</li>
 														</ul>
 													</div>
 													<div class="col col-lg-6 col-md-6 col-sm-12 col-12">
 														<ul class="widget w-personal-info item-block">
 															<li>
 																<span class="title"><?php echo getEduAppGTLang('parent'); ?>:</span>
-																<span class="text"><?php echo $this->db->get_where('parent', array('parent_id' => $row['parent_id']))->row()->first_name . " " . $this->db->get_where('parent', array('parent_id' => $row['parent_id']))->row()->last_name; ?></span>
+																<span class="text"><?php echo @$this->db->get_where('parent', array('parent_id' => $row['parent_id']))->row()->first_name . " " . @$this->db->get_where('parent', array('parent_id' => $row['parent_id']))->row()->last_name; ?></span>
 															</li>
 															<li>
 																<span class="title"><?php echo getEduAppGTLang('phone'); ?>:</span>
@@ -99,7 +103,11 @@ foreach ($student_info as $row) :
 															</li>
 															<li>
 																<span class="title"><?php echo getEduAppGTLang('transport'); ?>:</span>
-																<span class="text"><?php echo $this->db->get_where('transport', array('transport_id' => $row['transport_id']))->row()->name; ?></span>
+																<span class="text"><?php echo @$this->db->get_where('transport', array('transport_id' => $row['transport_id']))->row()->name; ?></span>
+															</li>
+															<li>
+																<span class="title"><?php echo getEduAppGTLang('shifts'); ?>:</span>
+																<span class="text"><?php echo @getDetailShifts($row['shifts_id'])->name ?></span>
 															</li>
 														</ul>
 													</div>
@@ -189,17 +197,17 @@ foreach ($student_info as $row) :
 																	<?php } ?>
 																</td>
 																<td class="text-center">
-                                                                        <?php if (isActiveSubject($row['student_id'], $item->subject_id)) { ?>
-                                                                            <?php if (isStudentFinishSubject($row['student_id'], $item->subject_id)) { ?>
-                                                                                <div class="value badge badge-pill badge-success">Finalizado</div>
-                                                                            <?php } else { ?>
-                                                                                <div class="value badge badge-pill badge-primary">Proceso</div>
-                                                                            <?php } ?>
-                                                                        <?php } else { ?>
-                                                                            --
-                                                                        <?php } ?>
+																	<?php if (isActiveSubject($row['student_id'], $item->subject_id)) { ?>
+																		<?php if (isStudentFinishSubject($row['student_id'], $item->subject_id)) { ?>
+																			<div class="value badge badge-pill badge-success">Finalizado</div>
+																		<?php } else { ?>
+																			<div class="value badge badge-pill badge-primary">Proceso</div>
+																		<?php } ?>
+																	<?php } else { ?>
+																		--
+																	<?php } ?>
 
-                                                                    </td>
+																</td>
 															</tr>
 														<?php $no++;
 														endforeach; ?>
@@ -273,7 +281,7 @@ foreach ($student_info as $row) :
 												<div class="plan-body"><br><br>
 													<div class="plan-btn-w">
 														<?php if ($id == "") : ?>
-															<a class="btn btn-success btn-rounded" href="<?php echo $loginURL; ?>"><?php echo getEduAppGTLang('link'); ?></a>
+															<a class="btn btn-success btn-rounded" href="<?php echo @$loginURL; ?>"><?php echo getEduAppGTLang('link'); ?></a>
 														<?php else : ?>
 															<a class="btn btn-danger btn-rounded" href="<?php echo base_url(); ?>student/my_profile/remove_facebook/"><?php echo getEduAppGTLang('unlink'); ?></a>
 														<?php endif; ?>

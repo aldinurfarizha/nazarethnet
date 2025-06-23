@@ -191,7 +191,7 @@ class Academic extends School
     public function createHomework()
     {
         $data['title']          = html_escape($this->input->post('title'));
-        $data['description']    = html_escape($this->input->post('description'));
+        $data['description']    = $this->input->post('description');
         $data['time_end']       = html_escape($this->input->post('time_end'));
         $data['date_end']       = html_escape($this->input->post('date_end'));
         $data['type']           = $this->input->post('type');
@@ -216,6 +216,26 @@ class Academic extends School
         //$data['homework_code']  = substr(md5(rand(100000000, 200000000)), 0, 10);
         $data['homework_code']  = $this->input->post('homework_code');
         $data['media_type']     = $this->input->post('media_type');
+        $data['can_reaction'] = $this->input->post('can_reaction') ? 1 : 0;
+        $data['can_comment']  = $this->input->post('can_comment') ? 1 : 0;
+        $data['post_content']   = $this->input->post('description');
+        if (isset($_FILES['file_name']) && $_FILES['file_name']['error'] == UPLOAD_ERR_OK) {
+            $upload_dir = 'public/homework/';
+            if (!is_dir($upload_dir)) {
+                if (!mkdir($upload_dir, 0755, true)) {
+                    die("Failed to create folder: " . $upload_dir);
+                }
+            }
+
+            $ext = pathinfo($_FILES["file_name"]["name"], PATHINFO_EXTENSION);
+            $new_filename = uniqid('homework', true) . '.' . $ext;
+            $target_file = $upload_dir . $new_filename;
+
+            if (move_uploaded_file($_FILES["file_name"]["tmp_name"], $target_file)) {
+                $data['post_file'] = $new_filename;
+                $data['post_file_type'] = $ext;
+            }
+        }
         $this->db->insert('homework', $data);
         move_uploaded_file($_FILES["file_name"]["tmp_name"], "public/uploads/homework/" . $_FILES["file_name"]["name"]);
         //$this->crud->send_homework_notify();
@@ -252,6 +272,9 @@ class Academic extends School
         $data['user']        = $this->session->userdata('login_type');
         $data['status']      = $this->input->post('status');
         $data['type']        = $this->input->post('type');
+        $data['can_reaction'] = $this->input->post('can_reaction') ? 1 : 0;
+        $data['can_comment']  = $this->input->post('can_comment') ? 1 : 0;
+        $data['post_content']   = $this->input->post('description');
         $this->db->where('homework_code', $homework_code);
         $this->db->update('homework', $data);
     }
@@ -297,21 +320,21 @@ class Academic extends School
     public function createForum()
     {
         $data['title']           = html_escape($this->input->post('title'));
-        $data['description']     = html_escape($this->input->post('description'));
+        $data['description']     = $this->input->post('description');
         $data['class_id']        = $this->input->post('class_id');
         $data['type']            = $this->session->userdata('login_type');
         $data['exp']            = $this->input->post('exp');
         $data['sync_status']     = 1;
         $data['section_id']      = $this->input->post('section_id');
-        if($this->input->post('post_status') != "1"){
-            $data['post_status'] = 0;
-        }else{
-            $data['post_status'] = $this->input->post('post_status');   
-        }
-        if($_FILES['userfile']['size'] > 0 && $this->db->get_where('settings' , array('type' => 'account_id'))->row()->description != ''){
-            $data['attachment_name'] = $_FILES["userfile"]["name"];
-            $data['file_name']       = $this->drive_model->uploadForum($this->input->post('subject_id'));
-        }
+        // if($this->input->post('post_status') != "1"){
+        //     $data['post_status'] = 0;
+        // }else{
+        //     $data['post_status'] = $this->input->post('post_status');   
+        // }
+        // if($_FILES['userfile']['size'] > 0 && $this->db->get_where('settings' , array('type' => 'account_id'))->row()->description != ''){
+        //     $data['attachment_name'] = $_FILES["userfile"]["name"];
+        //     $data['file_name']       = $this->drive_model->uploadForum($this->input->post('subject_id'));
+        // }
         $data['publish_date']    = date('Y-m-d H:i:s');
         $data['upload_date']     = $this->crud->getDateFormat().' '.date('h:iA');
         $data['wall_type']       = "forum";
@@ -319,6 +342,26 @@ class Academic extends School
         $data['subject_id']      = $this->input->post('subject_id');
         $data['teacher_id']      = $this->session->userdata('login_user_id');
         $data['post_code']       = substr(md5(rand(100000000, 200000000)), 0, 10);
+        $data['can_reaction'] = $this->input->post('can_reaction') ? 1 : 0;
+        $data['can_comment']  = $this->input->post('can_comment') ? 1 : 0;
+        $data['post_content']   = $this->input->post('description');
+        if (isset($_FILES['userfile']) && $_FILES['userfile']['error'] == UPLOAD_ERR_OK) {
+            $upload_dir = 'public/forum/';
+            if (!is_dir($upload_dir)) {
+                if (!mkdir($upload_dir, 0755, true)) {
+                    die("Failed to create folder: " . $upload_dir);
+                }
+            }
+
+            $ext = pathinfo($_FILES["userfile"]["name"], PATHINFO_EXTENSION);
+            $new_filename = uniqid('forum', true) . '.' . $ext;
+            $target_file = $upload_dir . $new_filename;
+
+            if (move_uploaded_file($_FILES["userfile"]["tmp_name"], $target_file)) {
+                $data['post_file'] = $new_filename;
+                $data['post_file_type'] = $ext;
+            }
+        }
         $this->db->insert('forum', $data);
         $this->crud->send_forum_notify();
         move_uploaded_file($_FILES["userfile"]["tmp_name"], "public/uploads/forum/" . $_FILES["userfile"]["name"]);
@@ -333,10 +376,13 @@ class Academic extends School
         }
         $data['exp']            = $this->input->post('exp');
         $data['title']           = html_escape($this->input->post('title'));
-        $data['description']     = html_escape($this->input->post('description'));
+        $data['description']     = $this->input->post('description');
         $data['type']            = $this->session->userdata('login_type');
         $data['timestamp']       = $this->crud->getDateFormat().' '.date("h:iA");
         $data['teacher_id']      = $this->session->userdata('login_user_id');
+        $data['can_reaction']   = $this->input->post('can_reaction') ? 1 : 0;
+        $data['can_comment']    = $this->input->post('can_comment') ? 1 : 0;
+        $data['post_content']   = $this->input->post('description');
         $this->db->where('post_code', $code);
         $this->db->update('forum', $data);
     }
@@ -346,16 +392,16 @@ class Academic extends School
         $data['type']              = $this->session->userdata('login_type');
         $data['timestamp']         = strtotime(date("Y-m-d H:i:s"));
         $data['title']             = html_escape($this->input->post('title'));
-        $data['description']       = html_escape($this->input->post('description'));
+        $data['description']       = $this->input->post('description');
         $data['upload_date']       = $this->crud->getDateFormat().' '.date('h:iA');
         $data['publish_date']      = date('Y-m-d H:i:s');
         $data['sync_status']       = 1;
-        if($_FILES['file_name']['size'] > 0 && $this->db->get_where('settings' , array('type' => 'account_id'))->row()->description != ''){
-            $data['file_name']         = $this->drive_model->uploadStudyMaterial($this->input->post('subject_id'));
-            $data['filesize']          = $this->crud->formatBytes($_FILES["file_name"]["size"]);
-            $data['attachment_name']   = $_FILES["file_name"]["name"];
-            $data['drive_id']          = $this->crud->formatBytes($_FILES["file_name"]["size"]);
-        }
+        // if($_FILES['file_name']['size'] > 0 && $this->db->get_where('settings' , array('type' => 'account_id'))->row()->description != ''){
+        //     $data['file_name']         = $this->drive_model->uploadStudyMaterial($this->input->post('subject_id'));
+        //     $data['filesize']          = $this->crud->formatBytes($_FILES["file_name"]["size"]);
+        //     $data['attachment_name']   = $_FILES["file_name"]["name"];
+        //     $data['drive_id']          = $this->crud->formatBytes($_FILES["file_name"]["size"]);
+        // }
         $data['filesize']          = $this->crud->formatBytes($_FILES["file_name"]["size"]);
         $data['wall_type']         = 'material';
         $data['file_type']         = $this->input->post('file_type');
@@ -363,8 +409,28 @@ class Academic extends School
         $data['subject_id']        = $this->input->post('subject_id');
         $data['section_id']        = $this->input->post('section_id');
         $data['teacher_id']        = $this->session->userdata('login_user_id');
+        $data['can_reaction']       = $this->input->post('can_reaction') ? 1 : 0;
+        $data['can_comment']        = $this->input->post('can_comment') ? 1 : 0;
+        $data['post_content']       = $this->input->post('description');
+        if (isset($_FILES['file_name']) && $_FILES['file_name']['error'] == UPLOAD_ERR_OK) {
+            $upload_dir = 'public/material/';
+            if (!is_dir($upload_dir)) {
+                if (!mkdir($upload_dir, 0755, true)) {
+                    die("Failed to create folder: " . $upload_dir);
+                }
+            }
+
+            $ext = pathinfo($_FILES["file_name"]["name"], PATHINFO_EXTENSION);
+            $new_filename = uniqid('material', true) . '.' . $ext;
+            $target_file = $upload_dir . $new_filename;
+
+            if (move_uploaded_file($_FILES["file_name"]["tmp_name"], $target_file)) {
+                $data['post_file'] = $new_filename;
+                $data['post_file_type'] = $ext;
+            }
+        }
         $this->db->insert('document',$data);
-        move_uploaded_file($_FILES["file_name"]["tmp_name"], "public/uploads/document/" . str_replace(" ", "",$_FILES["file_name"]["name"]));
+        
         
         $notify['notify'] = "<strong>".$this->crud->get_name($this->session->userdata('login_type'), $this->session->userdata('login_user_id'))."</strong> ". " ".getEduAppGTLang('study_material_notify');
         $students = $this->db->get_where('enroll', array('class_id' => $this->input->post('class_id'),'section_id' => $this->input->post('section_id'), 'year' => $this->runningYear))->result_array();
@@ -386,6 +452,41 @@ class Academic extends School
             $this->db->insert('notification', $notify);
         }
     }
+    public function updateMaterial()
+{
+    $document_id = $this->input->post('document_id');
+    $data['upload_date']       = $this->crud->getDateFormat().' '.date('h:iA');
+    $data['publish_date']      = date('Y-m-d H:i:s');
+    $data['sync_status']       = 1;
+    $data['teacher_id']        = $this->session->userdata('login_user_id');
+    $data['can_reaction']      = $this->input->post('can_reaction') ? 1 : 0;
+    $data['can_comment']       = $this->input->post('can_comment') ? 1 : 0;
+    $data['post_content']      = $this->input->post('post_content');
+
+    // Cek apakah ada file baru yang diupload
+    if (isset($_FILES['file_name']) && $_FILES['file_name']['error'] == UPLOAD_ERR_OK) {
+        $upload_dir = 'public/material/';
+        if (!is_dir($upload_dir)) {
+            mkdir($upload_dir, 0755, true);
+        }
+
+        $ext = pathinfo($_FILES["file_name"]["name"], PATHINFO_EXTENSION);
+        $new_filename = uniqid('material', true) . '.' . $ext;
+        $target_file = $upload_dir . $new_filename;
+
+        if (move_uploaded_file($_FILES["file_name"]["tmp_name"], $target_file)) {
+            $data['post_file'] = $new_filename;
+            $data['post_file_type'] = $ext;
+            $data['filesize'] = $this->crud->formatBytes($_FILES["file_name"]["size"]);
+            $data['attachment_name'] = $_FILES["file_name"]["name"];
+        }
+    }
+
+    // Update ke database
+    $this->db->where('document_id', $document_id);
+    $this->db->update('document', $data);
+}
+
     
     public function update_online_exam()
     {
@@ -416,6 +517,26 @@ class Academic extends School
             $data['time_end']         = $this->input->post('time_end').':00';
         }
         $data['duration']           = strtotime(date('Y-m-d', $data['exam_date']).' '.$data['time_end']) - strtotime(date('Y-m-d', $data['exam_date']).' '.$data['time_start']);
+        $data['post_content']       = $this->input->post('instruction');
+        $data['can_comment']        = 0;
+        $data['can_reaction']       = 0;
+        if (isset($_FILES['post_file']) && $_FILES['post_file']['error'] == UPLOAD_ERR_OK) {
+            $upload_dir = 'public/exam/';
+            if (!is_dir($upload_dir)) {
+                if (!mkdir($upload_dir, 0755, true)) {
+                    die("Failed to create folder: " . $upload_dir);
+                }
+            }
+
+            $ext = pathinfo($_FILES["post_file"]["name"], PATHINFO_EXTENSION);
+            $new_filename = uniqid('exam', true) . '.' . $ext;
+            $target_file = $upload_dir . $new_filename;
+
+            if (move_uploaded_file($_FILES["post_file"]["tmp_name"], $target_file)) {
+                $data['post_file'] = $new_filename;
+                $data['post_file_type'] = $ext;
+            }
+        }
 
         $this->db->where('online_exam_id', $this->input->post('online_exam_id'));
         $this->db->update('online_exam', $data);
@@ -445,6 +566,26 @@ class Academic extends School
         $data['time_end']           = html_escape($this->input->post('time_end').":00");
         $data['duration']           = strtotime(date('Y-m-d', $data['exam_date']).' '.$data['time_end']) - strtotime(date('Y-m-d', $data['exam_date']).' '.$data['time_start']);
         $data['running_year']       = $this->runningYear;
+        $data['post_content']       = $this->input->post('instruction');
+        $data['can_comment']        = 0;
+        $data['can_reaction']       = 0;
+        if (isset($_FILES['post_file']) && $_FILES['post_file']['error'] == UPLOAD_ERR_OK) {
+            $upload_dir = 'public/exam/';
+            if (!is_dir($upload_dir)) {
+                if (!mkdir($upload_dir, 0755, true)) {
+                    die("Failed to create folder: " . $upload_dir);
+                }
+            }
+
+            $ext = pathinfo($_FILES["post_file"]["name"], PATHINFO_EXTENSION);
+            $new_filename = uniqid('exam', true) . '.' . $ext;
+            $target_file = $upload_dir . $new_filename;
+
+            if (move_uploaded_file($_FILES["post_file"]["tmp_name"], $target_file)) {
+                $data['post_file'] = $new_filename;
+                $data['post_file_type'] = $ext;
+            }
+        }
         $this->crud->send_exam_notify();
         $this->db->insert('online_exam', $data);
     }
@@ -503,16 +644,18 @@ class Academic extends School
         
         $new_subject_id = $this->db->insert_id();
         $reference_subject_id = $this->input->post('subject_id');
+        $reference_class_id = $this->input->post('reference_class_id');
+        $reference_section_id = $this->input->post('reference_section_id');
         $new_subject=$this->db->get_where('subject', array('subject_id' => "$new_subject_id"))->row();
         
         $this->load->helper('string');
         //fill mark section (Grades)
        if($this->input->post('duplicate_grades'))
        {
-            $exam_reference = $this->db->get_where('exam', array('subject_id' => "$reference_subject_id"))->result();
+            $exam_reference = $this->db->get_where('exam', array('subject_id' => "$reference_subject_id",'class_id'=> "$reference_class_id",'section_id'=>"$reference_section_id"))->result();
             if ($exam_reference) {
                 foreach ($exam_reference as $exam_references) {
-                    $this->db->insert('exam', array('name' => $exam_references->name, 'subject_id' => $new_subject_id, 'class_id' => $new_subject->class_id, 'section_id' => $new_subject->section_id));
+                    $this->db->insert('exam', array('name' => $exam_references->name, 'subject_id' => $new_subject_id, 'class_id' => $new_subject->class_id, 'section_id' => $new_subject->section_id,'is_final' => $exam_references->is_final, 'is_count' => $exam_references->is_count));
                     $new_exam_id = $this->db->insert_id();
                     $mark_activity_reference = $this->db->get_where('mark_activity', array('exam_id' => "$exam_references->exam_id"))->result();
                     if ($mark_activity_reference) {
@@ -527,7 +670,6 @@ class Academic extends School
                                 'year' => $new_subject->year,
                                 'is_calculate_avg' => $mark_activity_references->is_calculate_avg,
                                 'percent' => $mark_activity_references->percent,
-                                'reason' => $mark_activity_references->reason,
                             ));
                         }
                     }
@@ -543,6 +685,7 @@ class Academic extends School
                 foreach ($online_exam_reference as $online_exam_references) {
                     $this->db->insert('online_exam', array(
                         'code' => generateRandomString(7),
+                        'title' => $online_exam_references->title,
                         'subject_id' => $new_subject_id,
                         'class_id' => $new_subject->class_id,
                         'section_id' => $new_subject->section_id,
@@ -565,6 +708,22 @@ class Academic extends School
                         'show_random' => $online_exam_references->show_random,
                         'certificate' => $online_exam_references->certificate,
                     ));
+                    $new_online_exam_id = $this->db->insert_id();
+                    $question_bank_reference = $this->db->get_where('question_bank', array('online_exam_id' => "$online_exam_references->online_exam_id"))->result();
+                    if ($question_bank_reference) {
+                        foreach ($question_bank_reference as $question_bank_references) {
+                            $this->db->insert('question_bank', array(
+                                'online_exam_id'    => $new_online_exam_id,
+                                'question_title'    => $question_bank_references->question_title,
+                                'type'              => $question_bank_references->type,
+                                'number_of_options' => $question_bank_references->number_of_options,
+                                'options'           => $question_bank_references->options,
+                                'correct_answers'   => $question_bank_references->correct_answers,
+                                'mark'              => $question_bank_references->mark,
+                                'image'             => $question_bank_references->image,
+                            ));
+                        }
+                    }
                 }
             }
         }
@@ -601,6 +760,11 @@ class Academic extends School
                         'exp' => $homework_references->exp,
                         'sync_status' => $homework_references->sync_status,
                         'attachment_name' => $homework_references->attachment_name,
+                        'can_comment' => $homework_references->can_comment,
+                        'can_reaction' => $homework_references->can_reaction,
+                        'post_file' => $homework_references->post_file,
+                        'post_file_type' => $homework_references->post_file_type,
+                        'post_content' => $homework_references->post_content,
 
                     ));
                 }
@@ -632,6 +796,11 @@ class Academic extends School
                         'exp' => $forums_references->exp,
                         'sync_status' => $forums_references->sync_status,
                         'attachment_name' => $forums_references->attachment_name,
+                        'can_comment' => $forums_references->can_comment,
+                        'can_reaction' => $forums_references->can_reaction,
+                        'post_file' => $forums_references->post_file,
+                        'post_file_type' => $forums_references->post_file_type,
+                        'post_content' => $forums_references->post_content,
 
                     ));
                 }
@@ -664,6 +833,11 @@ class Academic extends School
                         'sync_status' => $study_material_references->sync_status,
                         'attachment_name' => $study_material_references->attachment_name,
                         'drive_id' => $study_material_references->drive_id,
+                        'can_comment' => $study_material_references->can_comment,
+                        'can_reaction' => $study_material_references->can_reaction,
+                        'post_file' => $study_material_references->post_file,
+                        'post_file_type' => $study_material_references->post_file_type,
+                        'post_content' => $study_material_references->post_content,
                     ));
                 }
             }
@@ -671,6 +845,11 @@ class Academic extends School
         
 
 
+    }
+    public function transferSubject($subject_id_source, $subject_id_target)
+    {
+        //getting base date source subject
+        $subject_source = $this->db->get_where('subject', array('subject_id' => $subject_id_source))->row();
     }
     
     public function updateCourseActivity($courseId)
@@ -785,9 +964,9 @@ class Academic extends School
     public function createReport()
     {
         $parent_id           = $this->db->get_where('student', array('student_id' => $this->input->post('student_id')))->row()->parent_id;
-        $student_name        = $this->db->get_where('student', array('student_id' => $this->input->post('student_id')))->row()->name;
-        $parent_phone        = $this->db->get_where('parent', array('parent_id' => $parent_id))->row()->phone;
-        $parent_email        = $this->db->get_where('parent', array('parent_id' => $parent_id))->row()->email;
+        $student_name        = @$this->db->get_where('student', array('student_id' => $this->input->post('student_id')))->row()->name;
+        $parent_phone        = @$this->db->get_where('parent', array('parent_id' => $parent_id))->row()->phone;
+        $parent_email        = @$this->db->get_where('parent', array('parent_id' => $parent_id))->row()->email;
         $data['student_id']  = $this->input->post('student_id');
         $data['class_id']    = $this->input->post('class_id');
         $data['section_id']  = $this->input->post('section_id');
@@ -800,27 +979,27 @@ class Academic extends School
         $data['status']      = 0;
         $data['code']        = substr(md5(rand(0, 1000000)), 0, 7);
         $this->db->insert('reports', $data);
-        $this->crud->students_reports($this->input->post('student_id'),$parent_id);
+        //$this->crud->students_reports($this->input->post('student_id'),$parent_id);
         move_uploaded_file($_FILES["file_name"]["tmp_name"], 'public/uploads/report_files/'. $_FILES["file_name"]["name"]);
         
-        $notify = $this->db->get_where('settings' , array('type' => 'students_reports'))->row()->description;
-        if($notify == 1)
-        {
-            $message = getEduAppGTLang('behavioral_report_has_been_created_for')." " . $student_name;
-            $sms_status = $this->db->get_where('settings' , array('type' => 'sms_status'))->row()->description;
-            if ($sms_status == 'msg91') 
-            {
-                $result = $this->crud->send_sms_via_msg91($message, $parent_phone);
-            }
-            else if ($sms_status == 'twilio') 
-            {
-                $this->crud->twilio_api($message,"".$parent_phone."");
-            }
-            else if ($sms_status == 'clickatell') 
-            {
-                $this->crud->clickatell($message,$parent_phone);
-            }
-        }
+        // $notify = $this->db->get_where('settings' , array('type' => 'students_reports'))->row()->description;
+        // if($notify == 1)
+        // {
+        //     $message = getEduAppGTLang('behavioral_report_has_been_created_for')." " . $student_name;
+        //     $sms_status = $this->db->get_where('settings' , array('type' => 'sms_status'))->row()->description;
+        //     if ($sms_status == 'msg91') 
+        //     {
+        //         $result = $this->crud->send_sms_via_msg91($message, $parent_phone);
+        //     }
+        //     else if ($sms_status == 'twilio') 
+        //     {
+        //         $this->crud->twilio_api($message,"".$parent_phone."");
+        //     }
+        //     else if ($sms_status == 'clickatell') 
+        //     {
+        //         $this->crud->clickatell($message,$parent_phone);
+        //     }
+        // }
     }
     
     public function reportResponse()
@@ -1222,6 +1401,36 @@ class Academic extends School
         $this->db->where('subject_id',$subjectId);
         $info = $this->db->get('live')->result_array();
         return $info;
+    }
+    public function invalidateCertificate($student_subject_id)
+    {
+        $exitingData=$this->db->where('student_subject_id', $student_subject_id);
+        $exitingData=$this->db->get('student_subject')->row();
+        if(!$exitingData){
+            return null;
+        }
+        if (!empty($exitingData->cert_code)) {
+            $pdfFilePath = FCPATH . "public/generated_certificates/" . $exitingData->cert_code . ".pdf";
+            if (file_exists($pdfFilePath)) {
+                unlink($pdfFilePath);
+            }
+            $qrFilePath = FCPATH . "public/uploads/certificateqr/" . $exitingData->cert_code . ".png";
+            if (file_exists($qrFilePath)) {
+                unlink($qrFilePath);
+            }
+        }
+        $invalidateData=[
+            'is_finish'=>0,
+            'cert_code'=>null,
+            'cert_generated_at'=>null,
+        ];
+        $this->db->where('student_subject_id', $student_subject_id);
+        $this->db->update('student_subject', $invalidateData);
+        if(!$this->db->affected_rows()){
+            $this->db->delete('student_certificate', array('student_certificate_code'=>$exitingData->cert_code));
+            return false;
+        }
+        return true;
     }
     
     

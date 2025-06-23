@@ -7,10 +7,11 @@ $class_name = $this->db->get_where('class', array('class_id' => $class_id))->row
 $section_name = $this->db->get_where('section', array('section_id' => $section_id))->row()->name;
 $subject_name = $this->db->get_where('subject', array('subject_id' => $subject_id))->row()->name;
 $exam_name = $this->db->get_where('exam', array('exam_id' => $exam_id))->row()->name;
+$branch = $this->db->get_where('branch', array('branch_id' => $branch_id))->row()->name;
 $current_date = date('Y-m-d'); // Menambahkan tanggal saat ini
 
 // Menyusun nama file
-$filename = $class_name . ' - ' . $section_name . ' - ' . $subject_name . ' - ' . $exam_name . ' - ' . $current_date . '.xls';
+$filename = $branch . ' - ' . $class_name . ' - ' . $section_name . ' - ' . $subject_name . ' - ' . $exam_name . ' - ' . $current_date . '.xls';
 
 // Mengatur header download
 header('Content-Disposition: attachment; filename="' . $filename . '"');
@@ -25,7 +26,9 @@ if ($class_id != '' && $section_id != '' && $subject_id != '' && $exam_id != '')
     echo '<table border="1" cellpadding="5" cellspacing="0">';
     
     // Header kelas, section, subject, dan exam
-    echo '<tr><td colspan="5" align="center"><strong>' . $class_name . ' - ' 
+    echo '<tr><td colspan="5" align="center"><strong>' 
+        .$branch.' - '
+        . $class_name . ' - ' 
         . $section_name . ' - ' 
         . $subject_name . ' - ' 
         . $exam_name . '</strong></td></tr>';
@@ -68,7 +71,7 @@ if ($class_id != '' && $section_id != '' && $subject_id != '' && $exam_id != '')
         $student_id = $row['student_id'];
         $student_name = $this->crud->get_name('student', $student_id);
         echo '<tr>';
-        echo '<td>' . htmlspecialchars($student_name) . '</td>';
+        echo '<td style="vertical-align: middle;">' . htmlspecialchars($student_name) . '</td>';
 
         $finalEvaluaciones = 0;
         foreach ($mark_activity as $row2) {
@@ -81,13 +84,24 @@ if ($class_id != '' && $section_id != '' && $subject_id != '' && $exam_id != '')
                 ->row();
             $nota = isset($nota_row->nota) ? $nota_row->nota : '-';
             $finalEvaluaciones += ((int)$nota_row->nota * $row2['percent'] / 100);
-            echo '<td>' . htmlspecialchars($nota) . '</td>';
+            $updated_at = isset($nota_row->updated_at) ? $nota_row->updated_at : '-';
+            $notaDisplay = '';
+            if ($nota != "" || $nota != null) {
+                $notaDisplay .= '<b>'.$updated_at . ' = ' . $nota.'</b>';
+                if(getHistoryNotaCapacidad($nota_row->nota_capacidad_id))
+                {
+                    $notaDisplay .= '<br>'.getHistoryNotaCapacidad($nota_row->nota_capacidad_id);
+                }
+            }
+            
+
+            echo '<td style="vertical-align: middle; text-align: center;">' . $notaDisplay . '</td>';
         }
 
         if ($is_final) {
-            echo '<td>' . $finalEvaluaciones . '</td>';
+            echo '<td style="vertical-align: middle; text-align: center;">' . $finalEvaluaciones . '</td>';
         } else {
-            echo '<td>' . getFinalMark($student_id, $subject_id, $exam_id, $running_year) . '</td>';
+            echo '<td style="vertical-align: middle; text-align: center;">' . getFinalMark($student_id, $subject_id, $exam_id, $running_year) . '</td>';
         }
         echo '</tr>';
     endforeach;

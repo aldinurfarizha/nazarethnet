@@ -76,37 +76,37 @@ foreach ($student_info as $row) :
                                                                 </thead>
                                                                 <tbody>
                                                                     <?php
-                                                                            $obtained_mark_query = $this->db->get_where('mark', array('subject_id' => $subject->subject_id, 'exam_id' => $row2['exam_id'], 'class_id' => $class_id, 'student_id' => $student_id, 'year' => $running_year));
-                                                                            if ($obtained_mark_query->num_rows() > 0) {
-                                                                                $marks = $obtained_mark_query->result_array();
-                                                                                foreach ($marks as $row4) :
+                                                                    $obtained_mark_query = $this->db->get_where('mark', array('subject_id' => $subject->subject_id, 'exam_id' => $row2['exam_id'], 'class_id' => $class_id, 'student_id' => $student_id, 'year' => $running_year));
+                                                                    if ($obtained_mark_query->num_rows() > 0) {
+                                                                        $marks = $obtained_mark_query->result_array();
+                                                                        foreach ($marks as $row4) :
 
                                                                     ?>
-                                                                                    <tr>
-                                                                                        <td><?php echo $subject->name; ?></td>
-                                                                                        <td><img alt="" src="<?php echo $this->crud->get_image_url('teacher', $subject->teacher_id); ?>" width="25px" class="tbl-user"> <?php echo $this->crud->get_name('teacher', $subject->teacher_id); ?></td>
-                                                                                        <td>
-                                                                                            <?php echo $this->db->get_where('mark', array('subject_id' => $subject->subject_id, 'exam_id' => $row2['exam_id'], 'student_id' => $student_id, 'year' => $running_year))->row()->mark_obtained; ?>
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            <?php
-                                                                                            $avg = $this->db->get_where('mark', array('subject_id' => $subject->subject_id, 'exam_id' => $row2['exam_id'], 'student_id' => $student_id, 'year' => $running_year))->row()->final;
-                                                                                            if ($avg < $min || $avg == 0) :
-                                                                                            ?>
-                                                                                                <span class="badge badge-danger text-white"><?php echo $avg; ?></span>
-                                                                                            <?php endif; ?>
-                                                                                            <?php if ($avg >= $min) : ?>
-                                                                                                <span class="badge badge-success text-white"><?php echo $avg; ?></span>
-                                                                                            <?php endif; ?>
-                                                                                        </td>
-                                                                                        <td><?php echo $grade = $this->crud->get_grade($avg); ?></td>
-                                                                                        <td><?php echo $this->db->get_where('mark', array('subject_id' => $subject->subject_id, 'exam_id' => $row2['exam_id'], 'student_id' => $student_id, 'year' => $running_year))->row()->comment; ?></td>
-                                                                                        <?php $data = base64_encode($row2['exam_id'] . "-" . $student_id . "-" . $subject->subject_id); ?>
-                                                                                        <td><a class="btn btn-rounded btn-sm btn-primary text-white" href="<?php echo base_url(); ?>admin/subject_marks/<?php echo $data; ?>"><?php echo getEduAppGTLang('view_all'); ?></a></td>
-                                                                                    </tr>
+                                                                            <tr>
+                                                                                <td><?php echo $subject->name; ?></td>
+                                                                                <td><img alt="" src="<?php echo $this->crud->get_image_url('teacher', $subject->teacher_id); ?>" width="25px" class="tbl-user"> <?php echo $this->crud->get_name('teacher', $subject->teacher_id); ?></td>
+                                                                                <td>
+                                                                                    <?php echo $this->db->get_where('mark', array('subject_id' => $subject->subject_id, 'exam_id' => $row2['exam_id'], 'student_id' => $student_id, 'year' => $running_year))->row()->mark_obtained; ?>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <?php
+                                                                                    $avg = $this->db->get_where('mark', array('subject_id' => $subject->subject_id, 'exam_id' => $row2['exam_id'], 'student_id' => $student_id, 'year' => $running_year))->row()->final;
+                                                                                    if ($avg < $min || $avg == 0) :
+                                                                                    ?>
+                                                                                        <span class="badge badge-danger text-white"><?php echo $avg; ?></span>
+                                                                                    <?php endif; ?>
+                                                                                    <?php if ($avg >= $min) : ?>
+                                                                                        <span class="badge badge-success text-white"><?php echo $avg; ?></span>
+                                                                                    <?php endif; ?>
+                                                                                </td>
+                                                                                <td><?php echo $grade = $this->crud->get_grade($avg); ?></td>
+                                                                                <td><?php echo $this->db->get_where('mark', array('subject_id' => $subject->subject_id, 'exam_id' => $row2['exam_id'], 'student_id' => $student_id, 'year' => $running_year))->row()->comment; ?></td>
+                                                                                <?php $data = base64_encode($row2['exam_id'] . "-" . $student_id . "-" . $subject->subject_id); ?>
+                                                                                <td><a class="btn btn-rounded btn-sm btn-primary text-white" href="<?php echo base_url(); ?>admin/subject_marks/<?php echo $data; ?>"><?php echo getEduAppGTLang('view_all'); ?></a></td>
+                                                                            </tr>
                                                                     <?php endforeach;
-                                                                            }
-                                                                    
+                                                                    }
+
                                                                     ?>
                                                                 </tbody>
                                                             </table>
@@ -116,7 +116,7 @@ foreach ($student_info as $row) :
                                                         </div>
                                                     </div>
                                                 </div>
-                                        <?php }
+                                    <?php }
                                         }
                                     } ?>
                                 </div>
@@ -174,6 +174,10 @@ foreach ($student_info as $row) :
                                                     <li>
                                                         <i class="px20 picons-thin-icon-thin-0133_arrow_right_next"></i> &nbsp;&nbsp;&nbsp;
                                                         <a href="<?php echo base_url(); ?>admin/student_profile_active_course/<?php echo $student_id; ?>/">Active Course</a>
+                                                    </li>
+                                                    <li>
+                                                        <i class="px20 picons-thin-icon-thin-0133_arrow_right_next"></i> &nbsp;&nbsp;&nbsp;
+                                                        <a href="<?php echo base_url(); ?>admin/student_certificate_list/<?php echo $student_id; ?>/"><?php echo getEduAppGTLang('certificate_list'); ?></a>
                                                     </li>
                                                 </ul>
                                             </div>

@@ -1,3 +1,11 @@
+<style>
+    .emoji-insert {
+            margin-right: 8px;
+            font-size: 35px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+</style>
 <?php
 $running_year = $this->crud->getInfo('running_year');
 $info = base64_decode($data);
@@ -142,12 +150,6 @@ foreach ($sub as $row):
                             <input type="hidden" value="<?php echo $ids[1]; ?>" name="section_id" />
                             <input type="hidden" value="<?php echo $ids[2]; ?>" name="subject_id" />
                             <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="form-group label-floating">
-                                    <label class="control-label"><?php echo getEduAppGTLang('title'); ?></label>
-                                    <input class="form-control" name="title" type="text" required="">
-                                </div>
-                            </div>
-                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="description-toggle">
                                     <div class="description-toggle-content">
                                         <div class="h6"><?php echo getEduAppGTLang('show_students'); ?></div>
@@ -156,6 +158,34 @@ foreach ($sub as $row):
                                     <div class="togglebutton">
                                         <label><input name="post_status" value="1" type="checkbox"></label>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="description-toggle mb-3">
+                                        <div class="description-toggle-content">
+                                            <div class="h6"><?php echo getEduAppGTLang('can_comment'); ?></div>
+                                            <p><?php echo getEduAppGTLang('all_people_can_comment_on_this_post'); ?></p>
+                                        </div>
+                                        <div class="togglebutton">
+                                            <label><input type="checkbox" id="edit_can_comment" name="can_comment" value="1"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="description-toggle mb-3">
+                                        <div class="description-toggle-content">
+                                            <div class="h6"><?php echo getEduAppGTLang('can_reaction'); ?></div>
+                                            <p><?php echo getEduAppGTLang('people_can_react_on_this_post'); ?></p>
+                                        </div>
+                                        <div class="togglebutton">
+                                            <label><input type="checkbox" id="edit_can_reaction" name="can_reaction" value="1"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="form-group label-floating">
+                                    <label class="control-label"><?php echo getEduAppGTLang('title'); ?></label>
+                                    <input class="form-control" name="title" type="text" required="">
                                 </div>
                             </div>
                             <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
@@ -170,7 +200,12 @@ foreach ($sub as $row):
                             <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="form-group">
                                     <label class="control-label"><?php echo getEduAppGTLang('description'); ?></label>
-                                    <textarea class="form-control" id="ckeditor1" name="description"></textarea>
+                                    <textarea class="form-control" id="summernote" name="description"></textarea>
+                                    <?php foreach (getAllReaction() as $reactionIcon) { ?>
+                                            <a href="#" class="emoji-insert" data-emoji="<?= $reactionIcon->reaction_type ?>">
+                                                <?= $reactionIcon->reaction_type ?>
+                                            </a>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
@@ -190,3 +225,30 @@ foreach ($sub as $row):
         </div>
     </div>
 <?php endforeach; ?>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            placeholder: 'Write your content here...',
+            tabsize: 2,
+            height: 250,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear', 'fontsize', 'fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture', 'video', 'emoji']],
+                ['view', ['fullscreen', 'codeview']]
+            ]
+        });
+        $('.emoji-insert').on('click', function(e) {
+            e.preventDefault();
+
+            var emoji = $(this).data('emoji');
+            $('#summernote').summernote('insertText', emoji);
+        });
+
+    });
+</script>

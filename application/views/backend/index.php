@@ -18,6 +18,7 @@
     <link href="<?php echo base_url();?>public/style/cms/css/main.css" media="all" rel="stylesheet">
     <script src="<?php echo base_url();?>public/style/jquery.min.js"></script>
     <script src="<?php echo base_url();?>public/style/js/sweetalert2.all.min.js"></script> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
     <?php include 'topcss.php';?>	
     <script>
         'use strict';
@@ -37,7 +38,7 @@
 </head>
 <body class="menu-position-side menu-side-left full-screen with-content-panel">
     <div class="with-side-panel">
-        <div class="<?php if($page_name != 'subject_dashboard' && $page_name != 'manage_attendance' && $page_name != 'online_exams' && $page_name != 'homework' && $page_name != 'forum' && $page_name != 'study_material' && $page_name != 'upload_marks' && $page_name != 'meet' && $page_name != 'gamification'):?>layout-w<?php endif;?>">
+        <div class="<?php if($page_name != 'subject_dashboard' && $page_name != 'manage_attendance' && $page_name != 'online_exams' && $page_name != 'homework' && $page_name != 'forum' && $page_name != 'study_material' && $page_name != 'upload_marks' && $page_name != 'meet' && $page_name != 'gamification' && $page_name != 'blocked_mark' && $page_name != 'attendance' && $page_name != 'student_list' && $page_name != 'certificate_list'):?>layout-w<?php endif;?>">
             <?php include $account_type.'/navigation.php';?>
             <?php  include $account_type.'/'.$page_name.'.php'; ?>
         </div>

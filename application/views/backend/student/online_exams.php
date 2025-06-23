@@ -74,11 +74,13 @@
                                                 <tbody>
                                                 <?php
                                                     foreach ($exams as $row):
+                                                        $addMinutes = 0;
                                                     if($row['results'] == 3){
                                                         $addMinutes = 15;   
                                                     }elseif($row['results'] == 4){
                                                         $addMinutes = 30;
                                                     }
+                                                    
                     	                            $current_time          = time();
                     	                            $exam_start_time       = strtotime(date('Y-m-d', $row['exam_date']).' '.$row['time_start']);
                     	                            $exam_end_time         = strtotime(date('Y-m-d', $row['exam_date']).' '.$row['time_end']);
@@ -102,7 +104,7 @@
                             								<?php endif; ?>
                             							<?php else: ?>
                             								<?php if($row['results'] == 0 || $row['results'] == 1):?>
-                            								    <a href="javascript:void(0);" class="btn btn-success btn-rounded"><?php echo getEduAppGTLang('ask_for_results');?></a>
+                            								    <span class="badge badge-warning"><?php echo getEduAppGTLang('result_is_hidden');?></span>
                             								<?php elseif($row['results'] == 2):?>
                                                                 <a href="<?php echo base_url();?>student/online_exam_result/<?php echo $row['online_exam_id'];?>/" class="btn btn-success btn-rounded"><?php echo getEduAppGTLang('view_results');?></a>
                             								<?php elseif($current_time > $exam_end_time && $current_time > $exam_end_time_results):?>
@@ -110,9 +112,6 @@
                                                             <?php else:?>
                                                                 <a href="javascript:void(0);" class="btn btn-warning btn-roundend"><?php echo getEduAppGTLang('waiting_results');?></a>
                                                             <?php endif; ?>
-                                                            <?php if($this->crud->calculate_average($row['online_exam_id'], $this->session->userdata('login_user_id')) == 1 && $row['certificate'] == 1):?>
-                                                                <a href="<?php echo base_url();?>student/exportPDF/<?php echo base64_encode($row['online_exam_id']);?>/" class="btn btn-success btn-purple btn-rounded"><?php echo getEduAppGTLang('download_certificate');?></a>
-                                                            <?php endif;?>
                             							<?php endif;?>
                                                         </td>
                                                     </tr>

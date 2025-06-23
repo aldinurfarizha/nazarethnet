@@ -22,19 +22,10 @@
     						<a class="navs-links" href="<?php echo base_url(); ?>admin/marks_report/"><i class="picons-thin-icon-thin-0100_to_do_list_reminder_done"></i> <span><?php echo getEduAppGTLang('final_marks'); ?></span></a>
     					</li>
     					<li class="navs-item">
-    						<a class="navs-links" href="<?php echo base_url(); ?>admin/final_evaluation/"><i class="picons-thin-icon-thin-0389_gavel_hammer_law_judge_court"></i> <span>Evaluaciones Finales</span></a>
-    					</li>
-    					<li class="navs-item">
     						<a class="navs-links <?php if ($page_name == 'tabulation_report') echo "active"; ?>" href="<?php echo base_url(); ?>admin/tabulation_report/"><i class="picons-thin-icon-thin-0070_paper_role"></i> <span><?php echo getEduAppGTLang('tabulation_sheet'); ?></span></a>
     					</li>
     					<li class="navs-item">
     						<a class="navs-links" href="<?php echo base_url(); ?>admin/accounting_report/"><i class="picons-thin-icon-thin-0406_money_dollar_euro_currency_exchange_cash"></i> <span><?php echo getEduAppGTLang('accounting'); ?></span></a>
-    					</li>
-    					<li class="navs-item">
-    						<a class="navs-links" href="<?php echo base_url(); ?>admin/import_data/"><i class="picons-thin-icon-thin-0122_download_file_computer_drive"></i> <span><?php echo getEduAppGTLang('import_data'); ?></span></a>
-    					</li>
-    					<li class="navs-item">
-    						<a class="navs-links" href="<?php echo base_url(); ?>admin/export_data/"><i class="picons-thin-icon-thin-0126_cloud_upload_backup"></i> <span><?php echo getEduAppGTLang('export_data'); ?></span></a>
     					</li>
     				</ul>
     			</div>
@@ -52,11 +43,11 @@
     								<select name="class_id" required="" onchange="get_sections(this.value);">
     									<option value=""><?php echo getEduAppGTLang('select'); ?></option>
     									<?php
-										if(isSuperAdmin()){
-													$class = $this->db->get('class')->result_array();
-												}else{
-													$class = $this->db->where('branch_id',getMyBranchId()->branch_id)->get('class')->result_array();
-												}
+										if (isSuperAdmin()) {
+											$class = $this->db->get('class')->result_array();
+										} else {
+											$class = $this->db->where('branch_id', getMyBranchId()->branch_id)->get('class')->result_array();
+										}
 										foreach ($class as $row): ?>
     										<option value="<?php echo $row['class_id']; ?>" <?php if ($class_id == $row['class_id']) echo "selected"; ?>><?php echo $row['name']; ?></option>
     									<?php endforeach; ?>

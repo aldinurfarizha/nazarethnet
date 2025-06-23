@@ -96,7 +96,7 @@ foreach($course as $row):?>
                                                         <tr style="width: 100%; padding: 5px 0px;background-color: #E6F2F5;">
                                                             <td style="text-align: left; padding:7px 10px;">
                                                                 <div class="form-group"> <?php $vv  = $this->db->get_where('progress_course', array('online_course_id' => $online_course_id, 'student_id' => $this->session->userdata('login_user_id'), 'lesson_id' => $lesson_online_id))->num_rows(); ?>
-                                                                    <a href="<?php echo base_url();?>student/view_lesson/video/<?php echo $online_course_id;?>/<?php echo $ss['lesson_online_id'];?>" id="1" <?php if($ss['lesson_online_id'] == $lesson_id || $vv > 0 ):?>style="color:#90be2e; font-size: 20px;font-weight: 500;" <?php else: ?> style="font-size: 14px;font-weight: 400;" <?php endif;?>>
+                                                                    <a href="<?php echo base_url();?>student/view_lesson/video/<?php echo $online_course_id;?>/<?php echo $ss['lesson_online_id'];?>" id="1" <?php if($ss['lesson_online_id'] == $lesson_online_id || $vv > 0 ):?>style="color:#90be2e; font-size: 20px;font-weight: 500;" <?php else: ?> style="font-size: 14px;font-weight: 400;" <?php endif;?>>
                                                                     <?php echo $n2++; ?>: <b><?php echo $ss['name'];?></b></a>
                                                                 </div>
                                                                 <div class="lesson_duration">
@@ -108,7 +108,7 @@ foreach($course as $row):?>
                                                         <tr style="width: 100%; padding: 5px 0px;background-color: #E6F2F5;">
                                                             <td style="text-align: left; padding:7px 10px;">
                                                                 <div class="form-group"><?php $vv  = $this->db->get_where('progress_course', array('online_course_id' => $online_course_id, 'student_id' => $this->session->userdata('login_user_id'), 'lesson_id' => $lesson_online_id))->num_rows(); ?>
-                                                                    <a href="<?php echo base_url();?>student/view_lesson/archive/<?php echo $online_course_id;?>/<?php echo $ss['lesson_online_id'];?>" id="1" <?php if($ss['lesson_online_id'] == $lesson_id || $vv > 0 ):?>style="color:#90be2e; font-size: 20px;font-weight: 500;" <?php else: ?> style="font-size: 14px;font-weight: 400;" <?php endif;?>>
+                                                                    <a href="<?php echo base_url();?>student/view_lesson/archive/<?php echo $online_course_id;?>/<?php echo $ss['lesson_online_id'];?>" id="1" <?php if($ss['lesson_online_id'] == $lesson_online_id || $vv > 0 ):?>style="color:#90be2e; font-size: 20px;font-weight: 500;" <?php else: ?> style="font-size: 14px;font-weight: 400;" <?php endif;?>>
                                                                     <?php echo $n2++; ?>: <b><?php echo $ss['name'];?></b></a>
                                                                 </div>
                                                                 <div>

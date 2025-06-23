@@ -39,23 +39,49 @@
       <div class="content-box">
         <?php echo form_open(base_url() . 'admin/class_routine_view/apply', array('class' => 'form m-b'));?>
             <div class="row">
-                <div class="col-sm-5">
+              <div class="col-sm-4">
+                  <div class="form-group label-floating is-select">
+                      <label class="control-label"><?php echo getEduAppGTLang('filter_by_branch'); ?></label>
+                      <div class="select">
+                          <select onchange="get_class(this.value);" name="branch_id">
+                              <option value=""><?php echo getEduAppGTLang('all'); ?></option>
+                              <?php
+                              if (isSuperAdmin()) {
+                                  $branch = $this->db->where('status', 'ACTIVE')->get('branch')->result_array();
+                              } else {
+                                  $branch = $this->db->where('branch_id', getMyBranchId()->branch_id)->get('branch')->result_array();
+                              }
+                              foreach ($branch as $row):
+                              ?>
+                                  <option value="<?php echo $row['branch_id']; ?>" <?php if ($branch_id == $row['branch_id']) echo 'selected'; ?>><?php echo $row['name']; ?></option>
+                              <?php endforeach; ?>
+                          </select>
+                      </div>
+                  </div>
+              </div>
+                <div class="col-sm-4">
             <div class="form-group label-floating is-select">
                         <label class="control-label"><?php echo getEduAppGTLang('class');?></label>
-                        <div class="select">
-                            <select name="class_id" required="" onchange="get_class_sections(this.value)" >
-                                <option value=""><?php echo getEduAppGTLang('select');?></option>
-                                <?php
-                    $classes = $this->db->get('class')->result_array();
-                    foreach($classes as $row):                        
-                  ?>                
-                    <option value="<?php echo $row['class_id'];?>" <?php if($id == $row['class_id']) echo "selected";?>><?php echo $row['name'];?></option>            
-                  <?php endforeach;?>
-                            </select>
-                        </div>
+                         <div class="select">
+                                            <?php if ($id == ""): ?>
+                                        <select  name="class_id" id="class_holder" onchange="get_sections(this.value);">
+                                            <option value=""><?php echo getEduAppGTLang('select'); ?></option>
+                                        </select>
+                                    <?php else: ?>
+                                        <select onchange="submit();" name="class_id" required id="class_holder" onchange="get_sections(this.value);">
+                                            <option value=""><?php echo getEduAppGTLang('select'); ?></option>
+                                            <?php
+                                            $class = $this->db->get_where('class', array('class_id' => $id))->result_array();
+                                            foreach ($class as $key):
+                                            ?>
+                                                <option value="<?php echo $key['class_id']; ?>" <?php if ($id == $key['class_id']) echo "selected"; ?>><?php echo $key['name']; ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    <?php endif; ?>
+                                        </div>
                     </div>
           </div>
-          <div class="col-sm-5">
+          <div class="col-sm-4">
             <div class="form-group label-floating is-select">
                         <label class="control-label"><?php echo getEduAppGTLang('section');?></label>
                         <div class="select">

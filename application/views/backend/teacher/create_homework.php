@@ -22,6 +22,12 @@
             clear: both;
             padding-top: 10px;
         }
+            .emoji-insert {
+            margin-right: 8px;
+            font-size: 35px;
+            text-decoration: none;
+            cursor: pointer;
+        }
 </style>
       <script>
           var base_url = '<?php echo base_url();?>';
@@ -72,192 +78,222 @@
         </ul>
       </div>
     </div>
-  <div class="content-i">
-  <div class="content-box">
-  <div class="col-lg-12">   
-  <link rel="stylesheet" href="<?php echo base_url();?>public/style/video_main.css">
-    <link rel="stylesheet" href="<?php echo base_url();?>public/style/video_tag.css">
-  <div class="back hidden-sm-down" style="margin-top:-20px;margin-bottom:10px">   
-  <a href="<?php echo base_url();?>teacher/homework/<?php echo $data;?>/"><i class="picons-thin-icon-thin-0131_arrow_back_undo"></i></a>  
-  </div>  
-  <div class="element-wrapper"> 
-    <div class="element-box lined-primary shadow">
-        <h5><?php echo getEduAppGTLang('create_homework');?></h5><hr>
-      <?php echo form_open(base_url() . 'teacher/homework/create/', array('enctype' => 'multipart/form-data')); ?>
-        <input type="hidden" value="<?php echo substr(md5(rand(100000000, 200000000)), 0, 10);?>" id="homework_code" name="homework_code">
-        <div class="row">
-            <div class="col-sm-12" id='progress' style='display:none'><center>Uploading media file, please wait.<br><img src='<?php echo base_url();?>public/uploads/uploading.gif' style="width:190px"></center></div>
-                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                    <label class="control-label"><?php echo getEduAppGTLang('media_type');?></label>
-                </div>
-                <div class="col col-lg-6 col-md-6 col-sm-6 col-6">
-                    <center>
-                        <div class="custom-control">
-                            <input  type="radio" name="media_type" id="m1" required="" value="1" class="form-control"> 
-                            <label for="m1" class="control-label"><?php echo getEduAppGTLang('video_record');?></label>
-                        </div>
-                    </center>
-                </div>
-                <div class="col col-lg-6 col-md-6 col-sm-6 col-6">
-                    <div class="custom-control">
-                        <center>
-                            <input type="radio" name="media_type" id="m2" value="2" class="form-control">
-                            <label for="m2" class="control-label"><?php echo getEduAppGTLang('audio_record');?></label>
-                        </center>
+<div class="content-i">
+            <div class="content-box">
+                <div class="col-lg-12">
+                    <link rel="stylesheet" href="<?php echo base_url(); ?>public/style/video_main.css">
+                    <link rel="stylesheet" href="<?php echo base_url(); ?>public/style/video_tag.css">
+                    <div class="back hidden-sm-down" style="margin-top:-20px;margin-bottom:10px">
+                        <a href="<?php echo base_url(); ?>teacher/homework/<?php echo $data; ?>/"><i class="picons-thin-icon-thin-0131_arrow_back_undo"></i></a>
                     </div>
-                </div>
-                
-                <div class="col col-sm-12" id='video' style='display:none;'>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <center>
-                                <video id="gum" playsinline autoplay muted></video><br>
-                                <button type="button" id="start" class="btn btn-success"><?php echo getEduAppGTLang('start_camera');?></button>
-                                <button type="button" id="record" class="btn btn-primary start" disabled><?php echo getEduAppGTLang('record');?></button>
-                                <button type="button" id="play" class="btn btn-info" disabled><?php echo getEduAppGTLang('play');?></button>
-                                <button type="button" class="btn btn-purple" onclick="videoReload()"><?php echo getEduAppGTLang('restart');?></button>
-                                <button type="button" id="saveVideo" class="btn btn-warning" disabled><?php echo getEduAppGTLang('save');?></button>
-                            </center>
-                        </div>
-                        <div class="col-sm-6">
-                            <center>
-                                <video id="recorded" playsinline></video>         
-                                <br>
-                                <h3 class="control-label"><?php echo getEduAppGTLang('video_preview');?></h3>
-                            </center>
-                            <div>
-                                <span id="errorMsg"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                </div>
-                
-                <div class='col col-sm-12' id='audio' style='display:none;'>
-                    <hr>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <center>
-                                <label class="control-label"><?php echo getEduAppGTLang('audio_controls');?></label><br>
-                                <a class="btn btn-success" href="javascript:void(0);" id="recordButton"><?php echo getEduAppGTLang('start');?></a>
-                                <a class="btn btn-info" href="javascript:void(0);" onclick="audioReload()"><?php echo getEduAppGTLang('again');?></a>
-                                <a class="btn btn-primary" id="saveAudio" href="javascript:void(0);"><?php echo getEduAppGTLang('save');?></a>
-                                <div>
-                                    <span id="errorMsg"></span>
-                                </div>  
-                            </center>
-                        </div>
-                        <div class="col-sm-6">
-                            <center><label class="control-label"><?php echo getEduAppGTLang('audio_preview');?></label><br><audio id="final" controls disabled></audio></center>
-                        </div>
-                    </div>
-                    <hr>
-                </div>
-                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="form-group label-floating">
-                            <label class="control-label"><?php echo getEduAppGTLang('title');?></label>
-                            <input class="form-control" name="title" type="text" required="">
-                        </div>
-                    </div>
-                    <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                    <label class="control-label"><?php echo getEduAppGTLang('type');?></label>
-                    </div>
-                    <div class="col col-lg-6 col-md-6 col-sm-6 col-6">
-                        <center><div class="custom-control custom-radio" style="float: right">
-                            <input  type="radio" name="type" id="1" required="" value="1" class="custom-control-input"> <label for="1" class="custom-control-label"><?php echo getEduAppGTLang('online_text');?></label>
-                        </div></center>
-                    </div>
-                    <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                                	<div class="form-group label-floating">
-                                        <label class="control-label"><?php echo getEduAppGTLang('points_exp');?></label>
-                                        <div class="input-group">
-                                		    <input type="text" name="exp" class="form-control">
-                                	      </div>
-                                	    <small><?php echo getEduAppGTLang('if_is_enabled_in_rules');?></small>
+                    <div class="element-wrapper">
+                        <div class="element-box lined-primary shadow">
+                            <h5><?php echo getEduAppGTLang('create_homework'); ?></h5>
+                            <hr>
+                            <?php echo form_open(base_url() . 'teacher/homework/create/', array('enctype' => 'multipart/form-data')); ?>
+                            <input type="hidden" value="<?php echo substr(md5(rand(100000000, 200000000)), 0, 10); ?>" id="homework_code" name="homework_code">
+                            <div class="row">
+                                <div class="col-sm-12" id='progress' style='display:none'>
+                                    <center>Uploading media file, please wait.<br><img src='<?php echo base_url(); ?>public/uploads/uploading.gif' style="width:190px"></center>
+                                </div>
+                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <label class="control-label"><?php echo getEduAppGTLang('media_type'); ?></label>
+                                </div>
+                                <div class="col col-lg-6 col-md-6 col-sm-6 col-6">
+                                    <center>
+                                        <div class="custom-control">
+                                            <input type="radio" name="media_type" id="m1" required="" value="1" class="form-control">
+                                            <label for="m1" class="control-label"><?php echo getEduAppGTLang('video_record'); ?></label>
+                                        </div>
+                                    </center>
+                                </div>
+                                <div class="col col-lg-6 col-md-6 col-sm-6 col-6">
+                                    <div class="custom-control">
+                                        <center>
+                                            <input type="radio" name="media_type" id="m2" value="2" class="form-control">
+                                            <label for="m2" class="control-label"><?php echo getEduAppGTLang('audio_record'); ?></label>
+                                        </center>
                                     </div>
                                 </div>
-                    <div class="col col-lg-6 col-md-6 col-sm-6 col-6">
-                        <div class="custom-control custom-radio">
-                            <input  type="radio" name="type" id="2" value="2" class="custom-control-input"> <label for="2" class="custom-control-label"><?php echo getEduAppGTLang('files');?></label>
-                        </div>
-                    </div>
-                    <div class="col col-lg-6 col-md-6 col-sm-6 col-12">
-                        <div class="form-group label-floating">
-                            <label class="control-label"><?php echo getEduAppGTLang('date');?></label>
-                            <input type='text' class="datepicker-here" required="" data-position="bottom left" data-language='en' name="date_end" data-multiple-dates-separator="/"/>
-                        </div>
-                    </div>
-                    <div class="col col-lg-6 col-md-6 col-sm-6 col-12">
-                        <div class="form-group label-floating">
-                            <label class="control-label"><?php echo getEduAppGTLang('time');?></label>
-                            <div class="input-group clockpicker" data-align="top" data-autoclose="true">
-                                <input type="text" required="" name="time_end" class="form-control" value="09:30">
+
+                                <div class="col col-sm-12" id='video' style='display:none;'>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <center>
+                                                <video id="gum" playsinline autoplay muted></video><br>
+                                                <button type="button" id="start" class="btn btn-success"><?php echo getEduAppGTLang('start_camera'); ?></button>
+                                                <button type="button" id="record" class="btn btn-primary start" disabled><?php echo getEduAppGTLang('record'); ?></button>
+                                                <button type="button" id="play" class="btn btn-info" disabled><?php echo getEduAppGTLang('play'); ?></button>
+                                                <button type="button" class="btn btn-purple" onclick="videoReload()"><?php echo getEduAppGTLang('restart'); ?></button>
+                                                <button type="button" id="saveVideo" class="btn btn-warning" disabled><?php echo getEduAppGTLang('save'); ?></button>
+                                            </center>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <center>
+                                                <video id="recorded" playsinline></video>
+                                                <br>
+                                                <h3 class="control-label"><?php echo getEduAppGTLang('video_preview'); ?></h3>
+                                            </center>
+                                            <div>
+                                                <span id="errorMsg"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+
+                                <div class='col col-sm-12' id='audio' style='display:none;'>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <center>
+                                                <label class="control-label"><?php echo getEduAppGTLang('audio_controls'); ?></label><br>
+                                                <a class="btn btn-success" href="javascript:void(0);" id="recordButton"><?php echo getEduAppGTLang('start'); ?></a>
+                                                <a class="btn btn-info" href="javascript:void(0);" onclick="audioReload()"><?php echo getEduAppGTLang('again'); ?></a>
+                                                <a class="btn btn-primary" id="saveAudio" href="javascript:void(0);"><?php echo getEduAppGTLang('save'); ?></a>
+                                                <div>
+                                                    <span id="errorMsg"></span>
+                                                </div>
+                                            </center>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <center><label class="control-label"><?php echo getEduAppGTLang('audio_preview'); ?></label><br><audio id="final" controls disabled></audio></center>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label"><?php echo getEduAppGTLang('title'); ?></label>
+                                        <input class="form-control" name="title" type="text" required="">
+                                    </div>
+                                </div>
+                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <label class="control-label"><?php echo getEduAppGTLang('type'); ?></label>
+                                </div>
+                                <div class="col col-lg-6 col-md-6 col-sm-6 col-6">
+                                    <center>
+                                        <div class="custom-control custom-radio" style="float: right">
+                                            <input type="radio" name="type" id="1" required="" value="1" class="custom-control-input"> <label for="1" class="custom-control-label"><?php echo getEduAppGTLang('online_text'); ?></label>
+                                        </div>
+                                    </center>
+                                </div>
+                                <div class="col col-lg-6 col-md-6 col-sm-6 col-6">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" name="type" id="2" value="2" class="custom-control-input"> <label for="2" class="custom-control-label"><?php echo getEduAppGTLang('files'); ?></label>
+                                    </div>
+                                </div>
+                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label"><?php echo getEduAppGTLang('points_exp'); ?></label>
+                                        <div class="input-group">
+                                            <input type="text" name="exp" class="form-control">
+                                        </div>
+                                        <small><?php echo getEduAppGTLang('if_is_enabled_in_rules'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label"><?php echo getEduAppGTLang('date'); ?></label>
+                                        <input type='text' class="datepicker-here" required="" data-position="bottom left" data-language='en' name="date_end" data-multiple-dates-separator="/" />
+                                    </div>
+                                </div>
+                                <div class="col col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group label-floating">
+                                        <label class="control-label"><?php echo getEduAppGTLang('time'); ?></label>
+                                        <div class="input-group clockpicker" data-align="top" data-autoclose="true">
+                                            <input type="text" required="" name="time_end" class="form-control" value="09:30">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="description-toggle">
+                                        <div class="description-toggle-content">
+                                            <div class="h6"><?php echo getEduAppGTLang('show_students'); ?></div>
+                                            <p><?php echo getEduAppGTLang('show_message'); ?></p>
+                                        </div>
+                                        <div class="togglebutton">
+                                            <label><input name="status" value="1" type="checkbox"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="description-toggle mb-3">
+                                        <div class="description-toggle-content">
+                                            <div class="h6"><?php echo getEduAppGTLang('can_comment'); ?></div>
+                                            <p><?php echo getEduAppGTLang('all_people_can_comment_on_this_post'); ?></p>
+                                        </div>
+                                        <div class="togglebutton">
+                                            <label><input type="checkbox" id="edit_can_comment" name="can_comment" value="1"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="description-toggle mb-3">
+                                        <div class="description-toggle-content">
+                                            <div class="h6"><?php echo getEduAppGTLang('can_reaction'); ?></div>
+                                            <p><?php echo getEduAppGTLang('people_can_react_on_this_post'); ?></p>
+                                        </div>
+                                        <div class="togglebutton">
+                                            <label><input type="checkbox" id="edit_can_reaction" name="can_reaction" value="1"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label class="control-label"><?php echo getEduAppGTLang('description'); ?></label>
+                                        <textarea class="form-control" id="summernote" name="description" required=""></textarea>
+                                        <?php foreach (getAllReaction() as $reactionIcon) { ?>
+                                            <a href="#" class="emoji-insert" data-emoji="<?= $reactionIcon->reaction_type ?>">
+                                                <?= $reactionIcon->reaction_type ?>
+                                            </a>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                                <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <label class="control-label"><?php echo getEduAppGTLang('file'); ?></label>
+                                        <input class="form-control" name="file_name" type="file">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="description-toggle">
-                            <div class="description-toggle-content">
-                                <div class="h6"><?php echo getEduAppGTLang('show_students');?></div>
-                                <p><?php echo getEduAppGTLang('show_message');?></p>
-                            </div>          
-                            <div class="togglebutton">
-                                <label><input name="status" value="1" type="checkbox"></label>
+                            <div class="form-buttons-w text-right">
+                                <center><button class="btn btn-rounded btn-success" type="submit"><?php echo getEduAppGTLang('save'); ?></button></center>
                             </div>
+                            <input type="hidden" value="<?php echo $ex[0]; ?>" name="class_id">
+                            <input type="hidden" value="<?php echo $ex[1]; ?>" name="section_id">
+                            <input type="hidden" value="<?php echo $ex[2]; ?>" name="subject_id">
                         </div>
-                    </div>
-                    <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="form-group">
-                            <label class="control-label"><?php echo getEduAppGTLang('description');?></label>
-                            <textarea class="form-control" id="ckeditor1" name="description" required=""></textarea>
-                        </div>
-                    </div> 
-                    <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
-                        <div class="form-group">
-                            <label class="control-label"><?php echo getEduAppGTLang('file');?></label>
-                            <input class="form-control" name="file_name" type="file">
-                        </div>
+                        <?php echo form_close(); ?>
                     </div>
                 </div>
-                <div class="form-buttons-w text-right">
-                    <center><button class="btn btn-rounded btn-success" type="submit"><?php echo getEduAppGTLang('save');?></button></center>
-                </div>
-                <input type="hidden" value="<?php echo $ex[0];?>" name="class_id">
-                <input type="hidden" value="<?php echo $ex[1];?>" name="section_id">
-                <input type="hidden" value="<?php echo $ex[2];?>" name="subject_id">
-            </div>
-            <?php echo form_close();?>
-          </div>
-        </div>
-      </div>
-    </div>  
             </div>
         </div>
     </div>
+</div>
+</div>
 
-    <script src="<?php echo base_url();?>public/style/adapter-latest.js"></script>
-    <script src="<?php echo base_url();?>public/style/video_main.js" async></script>
+<script src="<?php echo base_url(); ?>public/style/adapter-latest.js"></script>
+<script src="<?php echo base_url(); ?>public/style/video_main.js" async></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
 
 <script>
-    function audioReload()
-    {
+    function audioReload() {
         document.getElementById("final").src = '';
     }
-    
-    function videoReload()
-    {
+
+    function videoReload() {
         document.getElementById("recorded").src = '';
     }
 
     $('input[type=radio][name=media_type]').change(function() {
-        if (this.value == '1') 
-        {
+        if (this.value == '1') {
             $("#video").show(500);
             $("#audio").hide(500);
-        }
-        else if (this.value == '2') 
-        {
+        } else if (this.value == '2') {
             $("#audio").show(500);
             $("#video").hide(500);
         }
@@ -266,57 +302,78 @@
     var recorders, gumStreams;
     var recordButtons = document.getElementById("recordButton");
     recordButtons.addEventListener("click", toggleRecording);
-    
-    function toggleRecording() 
-    {
-        if (recorders && recorders.state == "recording") 
-        {
-            $("#recordButton").html('<?php echo getEduAppGTLang('record');?>');
+
+    function toggleRecording() {
+        if (recorders && recorders.state == "recording") {
+            $("#recordButton").html('<?php echo getEduAppGTLang('record'); ?>');
             $('#recordButton').removeClass('btn btn-danger');
             $('#recordButton').addClass('btn btn-success');
             recorders.stop();
             gumStreams.getAudioTracks()[0].stop();
         } else {
-            $("#recordButton").html('<?php echo getEduAppGTLang('stop');?>');
+            $("#recordButton").html('<?php echo getEduAppGTLang('stop'); ?>');
             $('#recordButton').addClass('btn btn-danger');
             navigator.mediaDevices
                 .getUserMedia({
-                audio: true
-            })
-            .then(function (streams) 
-            {
-                gumStreams = streams;
-                recorders = new MediaRecorder(streams);
-                recorders.ondataavailable = function (e) {
-                    var url = URL.createObjectURL(e.data);
-                    document.getElementById("final").src = url;
-                    
-                    $( "#saveAudio").click(function() {
-                        var audioName = $('#homework_code').val();
-                        var audio_data = new FormData();
-                        audio_data.append('audio', e.data); 
-                        $("#progress").show(500);
-                        $.ajax({
-                            type: "POST",
-                            enctype: 'multipart/form-data',
-                            url: "<?php echo base_url();?>teacher/upload_audio/"+audioName,
-                            data: audio_data,
-                            processData: false,
-                            contentType: false,
-                            cache: false,
-                            timeout: 600000,
-                            success: function (data) {
-                                $("#progress").hide(500);
-                                console.log(data);
-                            },
-                            error: function (e) {
-                                console.log("ERROR : ", e);
-                            }
+                    audio: true
+                })
+                .then(function(streams) {
+                    gumStreams = streams;
+                    recorders = new MediaRecorder(streams);
+                    recorders.ondataavailable = function(e) {
+                        var url = URL.createObjectURL(e.data);
+                        document.getElementById("final").src = url;
+
+                        $("#saveAudio").click(function() {
+                            var audioName = $('#homework_code').val();
+                            var audio_data = new FormData();
+                            audio_data.append('audio', e.data);
+                            $("#progress").show(500);
+                            $.ajax({
+                                type: "POST",
+                                enctype: 'multipart/form-data',
+                                url: "<?php echo base_url(); ?>teacher/upload_audio/" + audioName,
+                                data: audio_data,
+                                processData: false,
+                                contentType: false,
+                                cache: false,
+                                timeout: 600000,
+                                success: function(data) {
+                                    $("#progress").hide(500);
+                                    console.log(data);
+                                },
+                                error: function(e) {
+                                    console.log("ERROR : ", e);
+                                }
+                            });
                         });
-                    });
-                };
-                recorders.start();
-            });
+                    };
+                    recorders.start();
+                });
         }
     }
+</script>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote({
+            placeholder: 'Write your content here...',
+            tabsize: 2,
+            height: 250,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear', 'fontsize', 'fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture', 'video', 'emoji']],
+                ['view', ['fullscreen', 'codeview']]
+            ]
+        });
+        $('.emoji-insert').on('click', function(e) {
+            e.preventDefault();
+
+            var emoji = $(this).data('emoji');
+            $('#summernote').summernote('insertText', emoji);
+        });
+
+    });
 </script>

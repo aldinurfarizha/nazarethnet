@@ -54,7 +54,7 @@ foreach ($student_info as $row) :
                                             </div>
                                             <div class="ui-block-content">
                                                 <div class="table-responsive">
-                                                    <table class="table table-padded">
+                                                    <table id="studentTable" class="table table-striped table-hover">
                                                         <thead>
                                                             <tr>
                                                                 <th><?php echo getEduAppGTLang('no'); ?></th>
@@ -77,7 +77,7 @@ foreach ($student_info as $row) :
                                                                         <?= $no ?>
                                                                     </td>
                                                                     <td>
-                                                                        <?= $item->name ?>
+                                                                        <a href="<?php echo base_url();?>admin/subject_dashboard/<?php echo base64_encode($item->class_id."-".$item->section_id."-".$item->subject_id);?>"><?= $item->name ?></a>
                                                                     </td>
                                                                     <td>
                                                                         <?= $item->class_name ?>
@@ -110,10 +110,10 @@ foreach ($student_info as $row) :
                                                                             <ul class="more-dropdown">
                                                                                 <?php if (isActiveSubject($student_id, $item->subject_id) == false) { ?>
                                                                                     <a style="color: black;" href="<?= base_url('admin/activate_subject_student/' . $student_id . '/' . $item->subject_id) ?>">Activate <i class="fa fa-check-circle"></i></a>
-                                                                                <?php } else { 
-                                                                                    if(isStudentFinishSubject($student_id, $item->subject_id)==false){?>
-                                                                                    <a style="color: black;" href="<?= base_url('admin/deactive_subject_student/' . $student_id . '/' . $item->subject_id) ?>">Deactive <i class="fa fa-times-circle"></i></a>
-                                                                                    <?php }?>
+                                                                                    <?php } else {
+                                                                                    if (isStudentFinishSubject($student_id, $item->subject_id) == false) { ?>
+                                                                                        <a style="color: black;" href="<?= base_url('admin/deactive_subject_student/' . $student_id . '/' . $item->subject_id) ?>">Deactive <i class="fa fa-times-circle"></i></a>
+                                                                                    <?php } ?>
                                                                                     <?php if (isStudentFinishSubject($student_id, $item->subject_id) == false) { ?>
                                                                                         <a style="color: black;" href="<?= base_url('admin/finish_student_subject/' . $student_id . '/' . $item->subject_id) ?>">Finalizar</a>
                                                                                     <?php } else { ?>
@@ -189,6 +189,10 @@ foreach ($student_info as $row) :
                                                         <i class="px20 picons-thin-icon-thin-0133_arrow_right_next"></i> &nbsp;&nbsp;&nbsp;
                                                         <a href="<?php echo base_url(); ?>admin/student_profile_active_course/<?php echo $student_id; ?>/">Active Course</a>
                                                     </li>
+                                                    <li>
+                                                        <i class="px20 picons-thin-icon-thin-0133_arrow_right_next"></i> &nbsp;&nbsp;&nbsp;
+                                                        <a href="<?php echo base_url(); ?>admin/student_certificate_list/<?php echo $student_id; ?>/"><?php echo getEduAppGTLang('certificate_list'); ?></a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -202,3 +206,8 @@ foreach ($student_info as $row) :
         </div>
     </div>
 <?php endforeach; ?>
+<script>
+    $(document).ready(function() {
+        $('#studentTable').DataTable();
+    });
+</script>

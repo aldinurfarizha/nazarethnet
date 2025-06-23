@@ -20,7 +20,7 @@
         <div class="content-box">
             <div class="row">
              <div class="col col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                <div class="ui-block list" data-mh="friend-groups-item" style="">
+                <div class="ui-block list" data-mh="friend-groups-item">
                     <div class="friend-item friend-groups">
                         <div class="friend-item-content">
                             <div class="friend-avatar">
@@ -37,7 +37,7 @@
             </div>
         
             <div class="col col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                <div class="ui-block list" data-mh="friend-groups-item" style="">
+                <div class="ui-block list" data-mh="friend-groups-item">
                     <div class="friend-item friend-groups">
                         <div class="friend-item-content">
                             <div class="friend-avatar">
@@ -54,7 +54,7 @@
             </div>
         
             <div class="col col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-                <div class="ui-block list" data-mh="friend-groups-item" style="">
+                <div class="ui-block list" data-mh="friend-groups-item">
                     <div class="friend-item friend-groups">
                         <div class="friend-item-content">
                             <div class="friend-avatar">
@@ -73,6 +73,103 @@
         <br>
         <div class="content-i">
       <div class="content-box">
+         <div class="row">
+                        <div class="col-sm-12">
+                            <?php echo form_open(base_url() . 'admin/online_courses', array('class' => 'form m-b')); ?>
+                            <div class="row">
+                                <div class="col col-sm-3">
+                                    <div class="form-group label-floating is-select">
+                                        <label class="control-label"><?php echo getEduAppGTLang('filter_branch'); ?></label>
+                                        <div class="select">
+                                            <select onchange="get_class(this.value);" name="branch_id">
+                                                <option value=""><?php echo getEduAppGTLang('all'); ?></option>
+                                                <?php
+                                                if (isSuperAdmin()) {
+                                                    $branch = $this->db->where('status', 'ACTIVE')->get('branch')->result_array();
+                                                } else {
+                                                    $branch = $this->db->where('branch_id', getMyBranchId()->branch_id)->get('branch')->result_array();
+                                                }
+                                                foreach ($branch as $row):
+                                                ?>
+                                                    <option value="<?php echo $row['branch_id']; ?>"<?php if ($branch_id == $row['branch_id']) echo "selected"; ?>><?php echo $row['name']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-sm-3">
+                                    <div class="form-group label-floating is-select">
+                                        <label class="control-label"><?php echo getEduAppGTLang('filter_class'); ?></label>
+                                        <div class="select">
+                                            <?php if ($class_id == ""): ?>
+												<select name="class_id" id="class_holder" onchange="get_sections(this.value);">
+													<option value=""><?php echo getEduAppGTLang('all'); ?></option>
+												</select>
+											<?php else: ?>
+												<select name="class_id" id="class_holder" onchange="get_sections(this.value);">
+													<option value=""><?php echo getEduAppGTLang('select'); ?></option>
+													<?php
+													$class = $this->db->get_where('class', array('class_id' => $class_id))->result_array();
+													foreach ($class as $key):
+													?>
+														<option value="<?php echo $key['class_id']; ?>" <?php if ($class_id == $key['class_id']) echo "selected"; ?>><?php echo $key['name']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											<?php endif; ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+									<div class="form-group label-floating is-select">
+										<label class="control-label"><?php echo getEduAppGTLang('section'); ?></label>
+										<div class="select">
+											<?php if ($section_id == ""): ?>
+												<select name="section_id" id="section_holder">
+													<option value=""><?php echo getEduAppGTLang('all'); ?></option>
+												</select>
+											<?php else: ?>
+												<select name="section_id" id="section_holder">
+													<option value=""><?php echo getEduAppGTLang('all'); ?></option>
+													<?php
+													$sections = $this->db->get_where('section', array('class_id' => $class_id))->result_array();
+													foreach ($sections as $key):
+													?>
+														<option value="<?php echo $key['section_id']; ?>" <?php if ($section_id == $key['section_id']) echo "selected"; ?>><?php echo $key['name']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											<?php endif; ?>
+										</div>
+									</div>
+								</div>
+                                <div class="col col-sm-2">
+                                    <div class="form-group label-floating is-select">
+                                        <label class="control-label"><?php echo getEduAppGTLang('filter_status'); ?></label>
+                                        <div class="select">
+                                            <select name="status">
+                                                <option value="" <?= ($status == '') ? 'selected' : ''; ?>>
+                                                    <?= getEduAppGTLang('all'); ?>
+                                                </option>
+                                                <option value="1" <?= ($status === '1') ? 'selected' : ''; ?>>
+                                                    <?= getEduAppGTLang('active'); ?>
+                                                </option>
+                                                <option value="0" <?= ($status === '0') ? 'selected' : ''; ?>>
+                                                    <?= getEduAppGTLang('inactive'); ?>
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col col-sm-1 text-right">
+                                    <div class="form-group mb-0">
+                                        <button class="btn btn-primary mt-2">
+                                            <?php echo getEduAppGTLang('filter'); ?> <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php echo form_close(); ?>
+                        </div>
+                    </div>
         <div class="row">
           <main class="col col-xl-12 order-xl-2 col-lg-12 order-lg-1 col-md-12 col-sm-12 col-12">
             <div id="newsfeed-items-grid">                
@@ -81,11 +178,12 @@
                     <h6 class="element-header">
                     <?php echo getEduAppGTLang('online_courses');?>
                     </h6>
-                  <div class="table-responsive">
-                    <table class="table table-padded">
+                  <div class="table-responsive bg-white">
+                    <table id="onlineCourse" class="table table-striped table-hover">
                         <thead>
                           <tr>
                             <th><?php echo getEduAppGTLang('status');?></th>
+                            <th><?php echo getEduAppGTLang('branch');?></th>
                             <th><?php echo getEduAppGTLang('title');?></th>
                             <th><?php echo getEduAppGTLang('class');?></th>
                             <th><?php echo getEduAppGTLang('lesson_and_section');?></th>
@@ -95,9 +193,45 @@
                           <tbody>
                           <?php
                             $counter = 1;
-                            $this->db->order_by('online_course_id', 'desc');
-                            $onlines = $this->db->get_where('online_course', array('year' => $running_year))->result_array();
+                            if(isSuperAdmin())
+                            {
+                                $this->db->select('online_course.*, class.name as class_name, class.branch_id');
+                                $this->db->from('online_course');
+                                $this->db->join('class', 'class.class_id = online_course.class_id');
+                                $this->db->where('online_course.year', $running_year);
+                                $this->db->order_by('online_course.online_course_id', 'desc');
+                                $onlines = $this->db->get()->result_array();
+                            }else{
+                                $branch_id=getMyBranchId()->branch_id;
+                                $this->db->select('online_course.*, class.name as class_name, class.branch_id');
+                                $this->db->from('online_course');
+                                $this->db->join('class', 'class.class_id = online_course.class_id');
+                                $this->db->where('online_course.year', $running_year);
+                                $this->db->where('class.branch_id', $branch_id);
+                                $this->db->order_by('online_course.online_course_id', 'desc');
+                                $onlines = $this->db->get()->result_array();
+                            }
                             foreach ($onlines as $hm):
+                                if($branch_id!=null){
+                                        if($hm['branch_id']!=$branch_id){
+                                            continue;
+                                        }
+                                    }
+                                if($class_id!=null){
+                                        if($hm['class_id']!=$class_id){
+                                            continue;
+                                        }
+                                    }
+                                if($section_id!=null){
+                                        if($hm['section_id']!=$section_id){
+                                            continue;
+                                        }
+                                    }
+                                if($status!=null){
+                                        if($hm['status']!=$status){
+                                            continue;
+                                        }
+                                }
                           ?>
                           <tr>
                             <td>
@@ -107,6 +241,14 @@
                                     <span class="status-pill red"></span><span><?php echo getEduAppGTLang('inactive ');?></span>
                                 <?php endif;?>
                             </td>
+                            <td><?php if($hm['branch_id'])
+                            {
+                                $branchDetail=getDetailBranch($hm['branch_id']);
+                                echo $branchDetail->name;
+                            }else{
+                                echo "-";
+                            }
+                            ?></td>
                             <td><span><?php echo $hm['title'];?></span></td>
                             <td>
                                 <span class="badge badge-success"><?php echo $this->db->get_where('class', array('class_id' => $hm['class_id']))->row()->name.' - '.$this->db->get_where('section', array('section_id' => $hm['section_id']))->row()->name;?></span>
@@ -143,3 +285,9 @@
 </div>
 <div class="display-type"></div>
 </div>
+
+<script>
+$(document).ready(function() {
+    $('#onlineCourse').DataTable();
+});
+</script>

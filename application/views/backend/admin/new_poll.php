@@ -56,6 +56,28 @@
                                                 </div>
               					            </div>            	
           					            </div>
+										<div class="form-group">
+											<div class="col-sm-12">
+												<div class="form-group label-floating is-select">
+												<label class="control-label"><?php echo getEduAppGTLang('branch'); ?></label>
+												<div class="select">
+													<select name="branch_id" required="" onchange="get_shifts(this.value);get_class(this.value);">
+
+														<?php
+														if (isSuperAdmin()) {
+															echo '<option selected value="0">--' . getEduAppGTLang('all_branch') . '--</option>';
+															foreach (getActiveBranch() as $row): ?>
+																<option value="<?php echo $row->branch_id; ?>"><?php echo $row->name; ?></option>
+															<?php endforeach;
+														} else {
+															$branch = getBranchByAdminId($this->session->userdata('admin_id')); ?>
+															<option value="<?php echo $branch->branch_id; ?>"><?php echo $branch->name; ?></option>
+														<?php } ?>
+													</select>
+												</div>
+											</div>
+											</div>
+										</div>
 		  					            <div class="form-buttons-w">
 								            <button class="btn btn-primary btn-rounded" type="submit"> <?php echo getEduAppGTLang('save');?></button>
 		  					            </div>

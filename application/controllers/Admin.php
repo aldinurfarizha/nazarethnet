@@ -829,6 +829,14 @@ class Admin extends EduAppGT
             $this->db->update('online_course', $data);
             redirect(base_url() . 'admin/online_courses/', 'refresh');
         }
+        $branch_id = $this->input->post('branch_id');
+        $class_id  = $this->input->post('class_id');
+        $status  = $this->input->post('status');
+        $section_id  = $this->input->post('section_id');
+        $page_data['section_id'] = $section_id;
+        $page_data['status']     = $status;
+        $page_data['branch_id']  = $branch_id;
+        $page_data['class_id']   = $class_id;
         $page_data['data']       = $param1;
         $page_data['page_name']  = 'online_courses';
         $page_data['page_title'] = getEduAppGTLang('online_courses');
@@ -1225,7 +1233,7 @@ class Admin extends EduAppGT
                 redirect(base_url() . 'admin/subject_dashboard/' . $param2, 'refresh');
             } else {
                 $this->crud->create_news();
-                $this->crud->send_news_notify();
+                //$this->crud->send_news_notify();
                 $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
                 redirect(base_url() . 'admin/panel/', 'refresh');
             }
@@ -1380,6 +1388,7 @@ class Admin extends EduAppGT
         $page_data['class_id']   = html_escape($this->input->post('class_id'));
         $page_data['section_id']   = html_escape($this->input->post('section_id'));
         $page_data['subject_id']   = html_escape($this->input->post('subject_id'));
+        $page_data['branch_id']   = html_escape($this->input->post('branch_id'));
         $page_data['page_name']   = 'students_report';
         $page_data['page_title']  = getEduAppGTLang('students_report');
         $this->load->view('backend/index', $page_data);
@@ -1395,6 +1404,7 @@ class Admin extends EduAppGT
         $page_data['class_id']   = html_escape($this->input->post('class_id'));
         $page_data['section_id']   = html_escape($this->input->post('section_id'));
         $page_data['subject_id']   = html_escape($this->input->post('subject_id'));
+        $page_data['branch_id']   = html_escape($this->input->post('branch_id'));
         $page_data['page_title']  = getEduAppGTLang('general_reports');
         $this->load->view('backend/index', $page_data);
     }
@@ -1590,7 +1600,8 @@ class Admin extends EduAppGT
     function admins($param1 = '', $param2 = '')
     {
         if(isSuperAdmin()===false){
-            redirect(base_url('admin/panel'), 'refresh');
+            echo "<script>alert('Only Super Admin can access this page!.');</script>";
+            redirect(base_url().'admin/users', 'refresh');
         }
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
@@ -1622,18 +1633,21 @@ class Admin extends EduAppGT
     }
 
     //Manage students function.
-    function students($id = '')
+    function students()
     {
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
-        $id = $this->input->post('class_id');
-        if ($id == '') {
-            $id = $this->db->get('class')->first_row()->class_id;
-        }
+        $class_id = $this->input->post('class_id');
+        $section_id = $this->input->post('section_id');
+        $branch_id = $this->input->post('branch_id');
+        $shifts_id = $this->input->post('shifts_id');
         $page_data['page_name']   = 'students';
         $page_data['page_title']  = getEduAppGTLang('students');
-        $page_data['class_id']  = $id;
+        $page_data['class_id']  = $class_id;
+        $page_data['section_id']  = $section_id;
+        $page_data['branch_id']  = $branch_id;
+        $page_data['shifts_id']  = $shifts_id;
         $this->load->view('backend/index', $page_data);
     }
 
@@ -2093,12 +2107,13 @@ class Admin extends EduAppGT
             $data['user'] = $this->input->post('user');
             $data['status'] = 1;
             $data['date'] = $this->crud->getDateFormat();
-            $this->crud->send_polls_notify();
+            //$this->crud->send_polls_notify();
             $data['date2'] = date('h:i A');
             $data['admin_id']        = $this->session->userdata('login_user_id');
             $data['type'] = "polls";
             $data['publish_date']        = date('Y-m-d H:i:s');
             $data['poll_code'] = substr(md5(rand(0, 1000000)), 0, 7);
+            $data['branch_id'] = $this->input->post('branch_id');
             $this->db->insert('polls', $data);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
             redirect(base_url() . 'admin/polls/', 'refresh');
@@ -2220,6 +2235,16 @@ class Admin extends EduAppGT
         $page_data['student_id'] =  $student_id;
         $this->load->view('backend/index', $page_data);
     }
+    function student_certificate_list($student_id = '', $param1 = '')
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $page_data['page_name']  = 'student_certificate_list';
+        $page_data['page_title'] =  getEduAppGTLang('student_certificate_list');
+        $page_data['student_id'] =  $student_id;
+        $this->load->view('backend/index', $page_data);
+    }
     function student_profile_active_course($student_id = '', $param1 = '')
     {
         if ($this->session->userdata('admin_login') != 1) {
@@ -2274,7 +2299,7 @@ class Admin extends EduAppGT
                 'date_added' => strtotime(date("Y-m-d H:i:s")),
             );
             $this->db->insert('enroll', $data);
-            generateSubjectNewStudent($student_id);
+            //generateSubjectNewStudent($student_id); tadinya ini aktif untuk generate subject secara otomatis biar langsung pada aktif coursenya tapi permintaan revisi 18062025 meminta agar auto inactive kursusnya
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
             redirect(base_url() . 'admin/student_profile_class_section/' . $student_id);
         }
@@ -2344,11 +2369,17 @@ class Admin extends EduAppGT
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
-        $data['class_id']   = $this->input->post('class_id');
-        $data['subject_id'] = $this->input->post('subject_id');
+        $subject_id= $this->input->post('subject_id');
+        if($subject_id == '' || $subject_id == null){
+             redirect(base_url() . 'admin/student_profile_attendance/');
+        }
+        $detailSubject= getSubjectDetailBySubjectId($subject_id);
+
+        $data['class_id']   = $detailSubject->class_id;
+        $data['subject_id'] = $subject_id;
+        $data['section_id'] = $detailSubject->section_id;
         $data['year']       = $this->input->post('year');
         $data['month']      = $this->input->post('month');
-        $data['section_id'] = $this->input->post('section_id');
         redirect(base_url() . 'admin/student_profile_attendance/' . $this->input->post('student_id') . '/' . $data['class_id'] . '/' . $data['section_id'] . '/' . $data['subject_id'] . '/' . $data['month'] . '/' . $data['year'] . '/', 'refresh');
     }
 
@@ -2786,6 +2817,11 @@ class Admin extends EduAppGT
         }
         if ($task == "create") {
             $this->academic->createMaterial();
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_uploaded'));
+            redirect(base_url() . 'admin/study_material/' . $document_id . "/", 'refresh');
+        }
+         if ($task == "update") {
+            $this->academic->updateMaterial();
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_uploaded'));
             redirect(base_url() . 'admin/study_material/' . $document_id . "/", 'refresh');
         }
@@ -3274,9 +3310,7 @@ class Admin extends EduAppGT
             redirect(base_url(), 'refresh');
         }
         $class = $this->input->post('class_id');
-        if ($class == '') {
-            $class = $this->db->get('class')->first_row()->class_id;
-        }
+        $branch_id = $this->input->post('branch_id');
         if ($param1 == 'create') {
             $this->academic->createSection();
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
@@ -3295,6 +3329,7 @@ class Admin extends EduAppGT
         $page_data['page_name']  = 'section';
         $page_data['page_title'] = getEduAppGTLang('sections');
         $page_data['class_id']   = $class;
+        $page_data['branch_id']  = $branch_id;
         $this->load->view('backend/index', $page_data);
     }
 
@@ -3302,9 +3337,26 @@ class Admin extends EduAppGT
     function get_class_section($class_id = '')
     {
         $sections = $this->db->get_where('section', array('class_id' => $class_id))->result_array();
-        echo '<option value="">' . getEduAppGTLang('select') . '</option>';
-        foreach ($sections as $row) {
-            echo '<option value="' . $row['section_id'] . '">' . $row['name'] . '</option>';
+        if (count($sections) == 0) {
+            echo '<option value="">❌ ' . getEduAppGTLang('no_section_available_for_this_class_please_select_other_class') . ' </option>';
+        } else {
+            echo '<option value="">--' . getEduAppGTLang('select_section') . '--</option>';
+            foreach ($sections as $row) {
+                echo '<option value="' . $row['section_id'] . '">' . $row['name'] . '</option>';
+            }
+        }
+    }
+
+     function get_class_section_all($class_id = '')
+    {
+        $sections = $this->db->get_where('section', array('class_id' => $class_id))->result_array();
+        if (count($sections) == 0) {
+            echo '<option value="">❌ ' . getEduAppGTLang('no_section_available_for_this_class_please_select_other_class') . ' </option>';
+        } else {
+            echo '<option value="">' . getEduAppGTLang('all') . '</option>';
+            foreach ($sections as $row) {
+                echo '<option value="' . $row['section_id'] . '">' . $row['name'] . '</option>';
+            }
         }
     }
 
@@ -3321,9 +3373,25 @@ class Admin extends EduAppGT
     function get_class_subject($section_id = '')
     {
         $subjects = $this->db->get_where('subject', array('section_id' => $section_id))->result_array();
-        echo '<option value="">' . getEduAppGTLang('select') . '</option>';
-        foreach ($subjects as $row) {
-            echo '<option value="' . $row['subject_id'] . '">' . $row['name'] . '</option>';
+        if (count($subjects) == 0) {
+            echo '<option value="">❌ ' . getEduAppGTLang('no_subject_available_for_this_section_please_select_other_section') . ' </option>';
+        } else {
+            echo '<option value="">--' . getEduAppGTLang('select_subject') . '--</option>';
+            foreach ($subjects as $row) {
+                echo '<option value="' . $row['subject_id'] . '">' . $row['name'] . '</option>';
+            }
+        }
+    }
+    function get_class_subject_all($section_id = '')
+    {
+        $subjects = $this->db->get_where('subject', array('section_id' => $section_id))->result_array();
+        if (count($subjects) == 0) {
+            echo '<option value="">❌ ' . getEduAppGTLang('no_subject_available_for_this_section_please_select_other_section') . ' </option>';
+        } else {
+            echo '<option value="">' . getEduAppGTLang('all') . '</option>';
+            foreach ($subjects as $row) {
+                echo '<option value="' . $row['subject_id'] . '">' . $row['name'] . '</option>';
+            }
         }
     }
 
@@ -3335,6 +3403,59 @@ class Admin extends EduAppGT
             echo '<option value="' . $row['student_id'] . '">' . $this->crud->get_name('student', $row['student_id']) . '</option>';
         }
     }
+    function get_student_subject($subject_id = '')
+    {
+        $students = $this->db->get_where('student_subject', array('subject_id' => $subject_id))->result_array();
+        $hasStudent = false;
+
+        foreach ($students as $row2) {
+            if (isStudentFinishSubject($row2['student_id'], $subject_id)) {
+                continue;
+            }
+
+            if (isActiveSubject($row2['student_id'], $subject_id)) {
+                $hasStudent = true;
+                $studentName = $this->crud->get_name('student', $row2['student_id']);
+                $studentId = $row2['student_id'];
+
+                echo '<tr>';
+                echo '<td><input type="checkbox" name="selected_students[]" value="' . $studentId . '"></td>';
+                echo '<td>' . $studentName . '</td>';
+                echo '</tr>';
+            }
+        }
+        if (!$hasStudent) {
+            echo '<tr><td colspan="2" style="text-align:center;">Empty student on this subject source</td></tr>';
+        }
+    }
+    function get_student_subject_option($subject_id = '')
+    {
+        $students = $this->db->get_where('student_subject', array('subject_id' => $subject_id))->result_array();
+        $hasStudent = false;
+        if (count($students) == 0) {
+            echo '<option value="">❌ ' . getEduAppGTLang('no_students_assigned_to_this_subject') . '</option>';
+            return;
+        }
+        echo '<option value="">-- ' . getEduAppGTLang('all') . ' --</option>';
+
+        foreach ($students as $row2) {
+            if (isStudentFinishSubject($row2['student_id'], $subject_id)) {
+                continue;
+            }
+            if (isActiveSubject($row2['student_id'], $subject_id)) {
+                $hasStudent = true;
+                $studentName = $this->crud->get_name('student', $row2['student_id']);
+                $studentId = $row2['student_id'];
+
+                echo '<option value="' . $studentId . '">' . $studentName . '</option>';
+            }
+        }
+        if (!$hasStudent) {
+            echo '<option value="">❌ ' . getEduAppGTLang('no_active_students_found_for_this_subject') . '</option>';
+        }
+    }
+
+
 
     function get_exm_($section_id = '')
     {
@@ -3346,34 +3467,35 @@ class Admin extends EduAppGT
     }
 
     //Manage semesters function.
-    function semesters($param1 = '', $param2 = '', $param3 = '')
+    function semesters($param1 = '', $param2 = '', $param3 = '',$param4='')
     {
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
         if ($param1 == 'apply') {
-            redirect(base_url() . 'admin/semesters/' . $this->input->post('class_id') . '/' . $this->input->post('section_id') . '/' . $this->input->post('subject_id'), 'refresh');
+            redirect(base_url() . 'admin/semesters/' . $this->input->post('class_id') . '/' . $this->input->post('section_id') . '/' . $this->input->post('subject_id').'/'.$this->input->post('branch_id'), 'refresh');
         }
         if ($param1 == 'create') {
             $this->academic->createSemester();
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
-            redirect(base_url() . 'admin/semesters/' . $this->input->post('class_id') . '/' . $this->input->post('section_id') . '/' . $this->input->post('subject_id'), 'refresh');
+            redirect(base_url() . 'admin/semesters/' . $this->input->post('class_id') . '/' . $this->input->post('section_id') . '/' . $this->input->post('subject_id') . '/' . $this->input->post('branch_id'), 'refresh');
         }
         if ($param1 == 'update') {
             $qrd = $this->db->get_where('exam', array('exam_id' => $param2))->row();
             $this->academic->updateSemester($param2);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
-            redirect(base_url() . 'admin/semesters/' . $qrd->class_id . '/' . $qrd->section_id . '/' . $qrd->subject_id, 'refresh');
+            redirect(base_url() . 'admin/semesters/' . $qrd->class_id . '/' . $qrd->section_id . '/' . $qrd->subject_id.'/'.$qrd->branch_id, 'refresh');
         }
         if ($param1 == 'delete') {
             $qrd = $this->db->get_where('exam', array('exam_id' => $param2))->row();
             $this->academic->deleteSemester($param2);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_deleted'));
-            redirect(base_url() . 'admin/semesters/' . $qrd->class_id . '/' . $qrd->section_id . '/' . $qrd->subject_id, 'refresh');
+            redirect(base_url() . 'admin/semesters/' . $qrd->class_id . '/' . $qrd->section_id . '/' . $qrd->subject_id.'/',$qrd->branch_id, 'refresh');
         }
         $page_data['class_id']  = $param1;
         $page_data['section_id']  = $param2;
         $page_data['subject_id']  = $param3;
+        $page_data['branch_id']   = $param4;
         $page_data['page_name']  = 'semester';
         $page_data['page_title'] = getEduAppGTLang('semesters');
         $this->load->view('backend/index', $page_data);
@@ -3541,17 +3663,18 @@ class Admin extends EduAppGT
         }
     }
 
-    function class_routine_view($param1 = '', $param2 = '')
+    function class_routine_view($param1 = '', $param2 = '',$param3='')
     {
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
         if ($param1 == 'apply') {
-            redirect(base_url() . 'admin/class_routine_view/' . $this->input->post('class_id') . '/' . $this->input->post('section_id'), 'refresh');
+            redirect(base_url() . 'admin/class_routine_view/' . $this->input->post('class_id') . '/' . $this->input->post('section_id').'/'.$this->input->post('branch_id'), 'refresh');
         }
         $page_data['page_name']  = 'class_routine_view';
         $page_data['id']  =   $param1;
         $page_data['section_id']  =   $param2;
+        $page_data['branch_id']  =   $param3;
         $page_data['page_title'] = getEduAppGTLang('class_routine');
         $this->load->view('backend/index', $page_data);
     }
@@ -3564,17 +3687,777 @@ class Admin extends EduAppGT
         $page_data['page_title'] = getEduAppGTLang('branch_and_shifts');
         $this->load->view('backend/index', $page_data);
     }
-    function import_data($param1=null,$param2=null)
+    function export_data()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $page_data['page_name']  = 'export_data';
+        $page_data['page_title'] = getEduAppGTLang('export_data');
+        $this->load->view('backend/index', $page_data);
+    }
+    function export_data_student_excel()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $branch_id = $this->input->post('branch_id');
+        $class_id = $this->input->post('class_id');
+        $shifts_id = $this->input->post('shifts_id');
+        $section_id = $this->input->post('section_id');
+        $subject_id = $this->input->post('subject_id');
+        $page_data['branch_id'] = $branch_id;
+        $page_data['class_id'] = $class_id;
+        $page_data['shifts_id'] = $shifts_id;
+        $page_data['section_id'] = $section_id;
+        $page_data['subject_id'] = $subject_id;
+        $this->load->view('backend/admin/export_data_student_excel', $page_data);
+    }
+    function export_data_class_excel()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $branch_id = $this->input->post('branch_id');
+        $page_data['branch_id'] = $branch_id;
+        $this->load->view('backend/admin/export_data_class_excel', $page_data);
+    }
+    function export_data_section_excel()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $branch_id = $this->input->post('branch_id');
+        $class_id = $this->input->post('class_id');
+        $page_data['branch_id'] = $branch_id;
+        $page_data['class_id'] = $class_id;
+        $this->load->view('backend/admin/export_data_section_excel', $page_data);
+    }
+    function export_data_subject_excel()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $branch_id = $this->input->post('branch_id');
+        $class_id = $this->input->post('class_id');
+        $section_id = $this->input->post('section_id');
+        $page_data['branch_id'] = $branch_id;
+        $page_data['class_id'] = $class_id;
+        $page_data['section_id'] = $section_id;
+        $this->load->view('backend/admin/export_data_subject_excel', $page_data);
+    }
+    function export_data_grades_excel()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $branch_id = $this->input->post('branch_id');
+        $class_id = $this->input->post('class_id');
+        $section_id = $this->input->post('section_id');
+        $subject_id = $this->input->post('subject_id');
+        $exan_id = $this->input->post('exam_id');
+        $student_id= $this->input->post('student_id');
+        $page_data['student_id'] = $student_id;
+        $page_data['branch_id'] = $branch_id;
+        $page_data['class_id'] = $class_id;
+        $page_data['section_id'] = $section_id;
+        $page_data['subject_id'] = $subject_id;
+        $page_data['exam_id'] = $exan_id;
+        $this->load->view('backend/admin/export_data_grades_excel', $page_data);
+    }
+    function export_data_attendance_excel()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $branch_id = $this->input->post('branch_id');
+        $class_id = $this->input->post('class_id');
+        $section_id = $this->input->post('section_id');
+        $subject_id = $this->input->post('subject_id');
+        $from_date = $this->input->post('from_date');
+        $to_date = $this->input->post('to_date');
+        $student_id = $this->input->post('student_id');
+        $page_data['branch_id'] = $branch_id;
+        $page_data['class_id'] = $class_id;
+        $page_data['section_id'] = $section_id;
+        $page_data['subject_id'] = $subject_id;
+        $page_data['from_date'] = $from_date;
+        $page_data['to_date'] = $to_date;
+        $page_data['student_id'] = $student_id;
+        $this->load->view('backend/admin/export_data_attendance_excel', $page_data);
+    }
+    function transfer_data($param1=null,$param2=null)
     {
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
         if($param1 == 'failed'){
-            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_add').' '. urldecode($param2));
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_transfer').' '. urldecode($param2));
         }
-        $page_data['page_name']  = 'import_data';
-        $page_data['page_title'] = getEduAppGTLang('import_data');
+        $page_data['page_name']  = 'transfer_data';
+        $page_data['page_title'] = getEduAppGTLang('transfer_data');
         $this->load->view('backend/index', $page_data);
+    }
+    // function transfer_data_action()
+    // {
+    //     if ($this->session->userdata('admin_login') != 1) {
+    //         redirect(base_url(), 'refresh');
+    //     }
+    //     $subject_id_source= $this->input->post('subject_id_source');
+    //     $subject_id_target= $this->input->post('subject_id_target');
+    //     if($subject_id_source == $subject_id_target){
+    //         redirect(base_url() . 'admin/transfer_data/failed/'.getEduAppGTLang('source_and_target_subjects_are_same'));
+    //     }
+    //     $response = $this->academic->transferSubject($subject_id_source,$subject_id_target);
+    //     if ($response['status'] === true) {
+    //         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_transfer'));
+    //         redirect(base_url() . 'admin/transfer_data/');
+    //     } else {
+    //         redirect(base_url() . 'admin/transfer_data/failed/' . $response['message']);
+    //     }
+    // }
+    function transfer_data_action()
+    {
+        $this->output->enable_profiler(TRUE);
+        $subject_id_source = $this->input->post('subject_id_source');
+        $subject_id_target = $this->input->post('subject_id_target');
+        $exam = $this->input->post('exam');
+        $activity = $this->input->post('activity');
+        $grade = $this->input->post('grade');
+        $attendance = $this->input->post('attendance');
+        $homework = $this->input->post('homework');
+        $forum = $this->input->post('forum');
+        $study_material = $this->input->post('study_material');
+        $selected_students = $this->input->post('selected_students');
+        $online_exam = $this->input->post('online_exam');
+        if (!is_array($selected_students)) $selected_students = [];
+
+        $copied_exams = [];
+        $copied_mark_activities = [];
+        $called = 0;
+        $subject_source = getSubjectDetailBySubjectId($subject_id_source);
+        $subject_target = getSubjectDetailBySubjectId($subject_id_target);
+        $exam_source = getAllExamBySubjectDetail($subject_id_source, $subject_source->class_id, $subject_source->section_id);
+        $unique_ids = [];
+        if ($exam && $exam_source) {
+            foreach ($exam_source as $exam_sources) {
+                $target_exam = $this->db->get_where('exam', array(
+                    'name' => $exam_sources->name,
+                    'subject_id' => $subject_id_target,
+                    'class_id' => $subject_target->class_id,
+                    'section_id' => $subject_target->section_id
+                ))->row();
+
+                if (!$target_exam) continue;
+
+                $new_exam_id = $target_exam->exam_id;
+                $copied_exams[] = $target_exam->name;
+
+                if ($activity) {
+                    $mark_activity_source = $this->db->get_where('mark_activity', array(
+                        'exam_id' => $exam_sources->exam_id
+                    ))->result();
+
+                    if ($mark_activity_source) {
+                        foreach ($mark_activity_source as $mark_activity_sources) {
+                            $target_activities = $this->db->get_where('mark_activity', array(
+                                'name' => $mark_activity_sources->name,
+                                'exam_id' => $new_exam_id,
+                                'subject_id' => $subject_id_target,
+                                'class_id' => $subject_target->class_id,
+                                'section_id' => $subject_target->section_id
+                            ))->result();
+
+                            if (!$target_activities) continue;
+
+                            foreach ($target_activities as $target_activity) {
+                                $unique_ids[] = $target_activity->mark_activity_id;
+                                $copied_mark_activities[] = $target_activity->name . '-' . $target_activity->mark_activity_id;
+                            $new_mark_activity_id = $target_activity->mark_activity_id;
+                            if ($grade) {
+                                foreach ($selected_students as $students) {
+                                    $called++;
+                                    $isStudentEnrolled = isStudentEnrolled($students, $subject_target->class_id, $subject_target->section_id);
+                                    if (!$isStudentEnrolled) {
+                                        $data = [
+                                            'student_id' => $students,
+                                            'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7),
+                                            'class_id' => $subject_target->class_id,
+                                            'section_id' => $subject_target->section_id,
+                                            'roll' => getRollByClassAndSection($subject_source->class_id, $subject_source->section_id)->roll,
+                                            'is_active' => 1,
+                                            'date_added' => strtotime(date("Y-m-d H:i:s")),
+                                            'year' => getRunningYear(),
+                                        ];
+                                        $this->db->insert('enroll', $data);
+                                    }
+
+                                    transferStudentSubject($students, $subject_id_source, $subject_id_target);
+                                    transferNotaCapacidadOldTonotaCapacidadNew($students, $mark_activity_sources->mark_activity_id, $target_activity->mark_activity_id);
+                                    transferMarkOldToMarkNew($students, $exam_sources->exam_id, $new_exam_id, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+                                    
+                                }
+                            }
+                         }
+                        }
+                    }
+                }
+            }
+        }
+
+        if ($attendance) {
+            $student_subject_source = getStudentBySubjectId($subject_id_source);
+            foreach ($student_subject_source as $students) {
+                //cek enroll
+                if (!in_array($students, $selected_students)) {
+                    continue; // skip siswa yang tidak dipilih
+                }
+                $isStudentEnrolled = isStudentEnrolled($students, $subject_target->class_id, $subject_target->section_id);
+                if ($isStudentEnrolled == false) {
+                    $data = [
+                        'student_id' => $students,
+                        'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7),
+                        'class_id' => $subject_target->class_id,
+                        'section_id' => $subject_target->section_id,
+                        'roll' => getRollByClassAndSection($subject_source->class_id, $subject_source->section_id)->roll,
+                        'is_active' => 1,
+                        'date_added' => strtotime(date("Y-m-d H:i:s")),
+                        'year' => getRunningYear(),
+                    ];
+                    $this->db->insert('enroll', $data);
+                }
+                addStudentToSubject($students, $subject_id_target);
+                addStudentToMarkIfNotExist($students, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+                addStudentToNotacapacidadIfNotExist($students, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+                //belum ada fitur cek dulu sebelum insert
+                transferOldAttendanceToNew($students, $subject_id_source, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+                deleteStudentAttendance($students, $subject_id_source);
+            }
+        }
+        if ($homework) {
+            $homework_reference = $this->db->get_where('homework', array('subject_id' => "$subject_id_source"))->result();
+            if ($homework_reference) {
+                foreach ($homework_reference as $homework_references) {
+                    $new_homework_code = generateRandomString(7);
+                    $this->db->insert('homework', array(
+                        'homework_code' => $new_homework_code,
+                        'title' => $homework_references->title,
+                        'description' => $homework_references->description,
+                        'class_id' => $subject_target->class_id,
+                        'subject_id' => $subject_target->subject_id,
+                        'uploader_id' => $homework_references->uploader_id,
+                        'time_end' => $homework_references->time_end,
+                        'section_id' => $subject_target->section_id,
+                        'uploader_type' => $homework_references->uploader_type,
+                        'file_name' => $homework_references->file_name,
+                        'date_end' => $homework_references->date_end,
+                        'type' => $homework_references->type,
+                        'user' => $homework_references->user,
+                        'status' => $homework_references->status,
+                        'year' => $subject_target->year,
+                        'filesize' => $homework_references->filesize,
+                        'wall_type' => $homework_references->wall_type,
+                        'publish_date' => $homework_references->publish_date,
+                        'upload_date' => $homework_references->upload_date,
+                        'media_type' => $homework_references->media_type,
+                        'exp' => $homework_references->exp,
+                        'sync_status' => $homework_references->sync_status,
+                        'attachment_name' => $homework_references->attachment_name,
+                        'can_comment' => $homework_references->can_comment,
+                        'can_reaction' => $homework_references->can_reaction,
+                        'post_file' => $homework_references->post_file,
+                        'post_file_type' => $homework_references->post_file_type,
+                        'post_content' => $homework_references->post_content,
+                    ));
+                    $new_homework_id = $this->db->insert_id();
+                    $homework_students_deliveries = $this->db->get_where('deliveries', array('homework_code' => $homework_references->homework_code))->result();
+                    if ($homework_students_deliveries) {
+                        foreach ($homework_students_deliveries as $homework_students_delivery) {
+                            if (!in_array($homework_students_delivery->student_id, $selected_students)) {
+                                continue; // skip siswa yang tidak dipilih
+                            }
+                            $this->db->insert('deliveries', array(
+                                'homework_code' => $new_homework_code,
+                                'student_id' => $homework_students_delivery->student_id,
+                                'date' => $homework_students_delivery->date,
+                                'class_id' => $subject_target->class_id,
+                                'section_id' => $subject_target->section_id,
+                                'file_name' => $homework_students_delivery->file_name,
+                                'student_comment' => $homework_students_delivery->student_comment,
+                                'teacher_comment' => $homework_students_delivery->teacher_comment,
+                                'subject_id' => $subject_target->subject_id,
+                                'status' => $homework_students_delivery->status,
+                                'homework_reply' => $homework_students_delivery->homework_reply,
+                                'mark' => $homework_students_delivery->mark,
+                                'media_type' => $homework_students_delivery->media_type,
+                                'delivery_code' => generateRandomString(7),
+                            ));
+                            deleteStudentDeliveries($homework_students_delivery->student_id, $homework_students_delivery->homework_code);
+                        }
+                    }
+                }
+            }
+        }
+        if ($forum) {
+            $forums_reference = $this->db->get_where('forum', array('subject_id' => "$subject_id_source"))->result();
+            if ($forums_reference) {
+                foreach ($forums_reference as $forums_references) {
+                    $this->db->insert('forum', array(
+                        'teacher_id' => $forums_references->teacher_id,
+                        'subject_id' => $subject_target->subject_id,
+                        'class_id' => $subject_target->class_id,
+                        'timestamp' => $forums_references->timestamp,
+                        'title' => $forums_references->title,
+                        'description' => $forums_references->description,
+                        'post_code' => generateRandomString(7),
+                        'file_name' => $forums_references->file_name,
+                        'section_id' => $subject_target->section_id,
+                        'post_status' => $forums_references->post_status,
+                        'type' => $forums_references->type,
+                        'wall_type' => $forums_references->wall_type,
+                        'publish_date' => $forums_references->publish_date,
+                        'upload_date' => $forums_references->upload_date,
+                        'exp' => $forums_references->exp,
+                        'sync_status' => $forums_references->sync_status,
+                        'attachment_name' => $forums_references->attachment_name,
+                        'can_comment' => $forums_references->can_comment,
+                        'can_reaction' => $forums_references->can_reaction,
+                        'post_file' => $forums_references->post_file,
+                        'post_file_type' => $forums_references->post_file_type,
+                        'post_content' => $forums_references->post_content,
+
+                    ));
+                }
+            }
+        }
+        if ($study_material) {
+            $study_material_reference = $this->db->get_where('document', array('subject_id' => "$subject_id_source"))->result();
+            if ($study_material_reference) {
+                foreach ($study_material_reference as $study_material_references) {
+                    $this->db->insert('document', array(
+                        'title' => $study_material_references->title,
+                        'description' => $study_material_references->description,
+                        'file_name' => $study_material_references->file_name,
+                        'file_type' => $study_material_references->file_type,
+                        'class_id' => $subject_target->class_id,
+                        'teacher_id' => $subject_target->teacher_id,
+                        'timestamp' => $study_material_references->timestamp,
+                        'subject_id' => $subject_target->subject_id,
+                        'type' => $study_material_references->type,
+                        'year' => $subject_target->year,
+                        'filesize' => $study_material_references->filesize,
+                        'wall_type' => $study_material_references->wall_type,
+                        'publish_date' => $study_material_references->publish_date,
+                        'upload_date' => $study_material_references->upload_date,
+                        'section_id' => $subject_target->section_id,
+                        'sync_status' => $study_material_references->sync_status,
+                        'attachment_name' => $study_material_references->attachment_name,
+                        'drive_id' => $study_material_references->drive_id,
+                        'can_comment' => $study_material_references->can_comment,
+                        'can_reaction' => $study_material_references->can_reaction,
+                        'post_file' => $study_material_references->post_file,
+                        'post_file_type' => $study_material_references->post_file_type,
+                        'post_content' => $study_material_references->post_content,
+                    ));
+                }
+            }
+        }
+        if ($online_exam) {
+            $online_exam_reference = $this->db->get_where('online_exam', array('subject_id' => "$subject_id_source"))->result();
+            if ($online_exam_reference) {
+                foreach ($online_exam_reference as $online_exam_references) {
+                    $this->db->insert('online_exam', array(
+                        'code' => generateRandomString(7),
+                        'title' => $online_exam_references->title,
+                        'subject_id' => $subject_target->subject_id,
+                        'class_id' => $subject_target->class_id,
+                        'section_id' => $subject_target->section_id,
+                        'running_year' => $subject_target->year,
+                        'exam_date' => $online_exam_references->exam_date,
+                        'time_start' => $online_exam_references->time_start,
+                        'time_end' => $online_exam_references->time_end,
+                        'duration' => $online_exam_references->duration,
+                        'minimum_percentage' => $online_exam_references->minimum_percentage,
+                        'instruction' => $online_exam_references->instruction,
+                        'status' => $online_exam_references->status,
+                        'wall_type' => $online_exam_references->wall_type,
+                        'publish_date' => $online_exam_references->publish_date,
+                        'uploader_type' => $online_exam_references->uploader_type,
+                        'uploader_id' => $online_exam_references->uploader_id,
+                        'upload_date' => $online_exam_references->upload_date,
+                        'exp' => $online_exam_references->exp,
+                        'password' => $online_exam_references->password,
+                        'results' => $online_exam_references->results,
+                        'show_random' => $online_exam_references->show_random,
+                        'certificate' => $online_exam_references->certificate,
+                    ));
+                    $new_online_exam_id = $this->db->insert_id();
+                    $question_bank_reference = $this->db->get_where('question_bank', array('online_exam_id' => "$online_exam_references->online_exam_id"))->result();
+                    if ($question_bank_reference) {
+                        foreach ($question_bank_reference as $question_bank_references) {
+                            $this->db->insert('question_bank', array(
+                                'online_exam_id'    => $new_online_exam_id,
+                                'question_title'    => $question_bank_references->question_title,
+                                'type'              => $question_bank_references->type,
+                                'number_of_options' => $question_bank_references->number_of_options,
+                                'options'           => $question_bank_references->options,
+                                'correct_answers'   => $question_bank_references->correct_answers,
+                                'mark'              => $question_bank_references->mark,
+                                'image'             => $question_bank_references->image,
+                            ));
+                        }
+                    }
+                    $online_exam_result_reference = $this->db->get_where('online_exam_result', array('online_exam_id' => "$online_exam_references->online_exam_id"))->result();
+                    if ($online_exam_result_reference) {
+                        foreach ($online_exam_result_reference as $online_exam_result_references) {
+                            if (!in_array($online_exam_result_references->student_id, $selected_students)) {
+                                continue; // skip siswa yang tidak dipilih
+                            }
+                            $this->db->insert('online_exam_result', array(
+                                'online_exam_id'                => $new_online_exam_id,
+                                'student_id'                    => $online_exam_result_references->student_id,
+                                'answer_script'                 => $online_exam_result_references->answer_script,
+                                'obtained_mark'                 => $online_exam_result_references->obtained_mark,
+                                'status'                        => $online_exam_result_references->status,
+                                'exam_started_timestamp'        => $online_exam_result_references->exam_started_timestamp,
+                                'result'                        => $online_exam_result_references->result,
+                            ));
+                            deleteStudentOnlineExamResults($online_exam_result_references->student_id, $online_exam_references->online_exam_result_id);
+                        }
+                    }
+                }
+            }
+        }
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_transfer'));
+        return redirect(base_url() . 'admin/transfer_data/');
+    }
+
+    function transfer_data_action_backup()
+    {
+        $this->output->enable_profiler(TRUE);
+        $subject_id_source = $this->input->post('subject_id_source');
+        $subject_id_target = $this->input->post('subject_id_target');
+        $exam= $this->input->post('exam');
+        $activity= $this->input->post('activity');
+        $grade= $this->input->post('grade');
+        $attendance= $this->input->post('attendance');
+        $homework=$this->input->post('homework');
+        $forum=$this->input->post('forum');
+        $study_material=$this->input->post('study_material');
+        $selected_students = $this->input->post('selected_students');
+        $online_exam = $this->input->post('online_exam');
+        if (!is_array($selected_students)) $selected_students = [];
+
+        $subject_source = getSubjectDetailBySubjectId($subject_id_source);
+       
+        $exam_source = getAllExamBySubjectDetail($subject_id_source,$subject_source->class_id,$subject_source->section_id);
+
+        $subject_target = getSubjectDetailBySubjectId($subject_id_target);
+        
+        if($exam){
+            if ($exam_source) {
+                foreach ($exam_source as $exam_sources) {
+                    $this->db->insert('exam', array('name' => $exam_sources->name, 'subject_id' => $subject_id_target, 'class_id' => $subject_target->class_id, 'section_id' => $subject_target->section_id));
+                    $new_exam_id = $this->db->insert_id();
+                    if($activity){
+                        $mark_activity_source = $this->db->get_where('mark_activity', array('exam_id' => $exam_sources->exam_id))->result();
+                        if ($mark_activity_source) {
+                            foreach ($mark_activity_source as $mark_activity_sources) {
+                                $this->db->insert('mark_activity', array(
+                                    'name' => $mark_activity_sources->name,
+                                    'exam_id' => $new_exam_id,
+                                    'promedio' => $mark_activity_sources->promedio,
+                                    'class_id' => $subject_target->class_id,
+                                    'section_id' => $subject_target->section_id,
+                                    'subject_id' => $subject_id_target,
+                                    'year' => $subject_target->year,
+                                    'is_calculate_avg' => $mark_activity_sources->is_calculate_avg,
+                                    'percent' => $mark_activity_sources->percent,
+                                ));
+                                $new_mark_activity_id = $this->db->insert_id();
+                                if($grade){
+                                    $student_subject_source = getStudentBySubjectId($subject_id_source);
+                                    
+                                    //insert new student to subject
+                                    foreach($student_subject_source as $students){
+                                        //cek hanya yang di pilih yang di masukin kalau tidak ada di skio
+                                        if (!in_array($students, $selected_students)) {
+                                            continue; // skip siswa yang tidak dipilih
+                                        }
+                                        //cek enroll
+                                        $isStudentEnrolled=isStudentEnrolled($students, $subject_target->class_id, $subject_target->section_id);
+                                        if($isStudentEnrolled==false){
+                                            $data=[
+                                                'student_id' => $students,
+                                                'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7),
+                                                'class_id' => $subject_target->class_id,
+                                                'section_id' => $subject_target->section_id,
+                                                'roll' => getRollByClassAndSection($subject_source->class_id, $subject_source->section_id)->roll,
+                                                'is_active' => 1,
+                                                'date_added' => strtotime(date("Y-m-d H:i:s")),
+                                                'year' =>getRunningYear(),
+                                            ];
+                                            $this->db->insert('enroll', $data);
+                                        }
+                                        addStudentToSubject($students,$subject_id_target);
+                                        addStudentToMark($students,$subject_id_target,$subject_target->class_id,$subject_target->section_id,$new_exam_id);
+                                        addStudentToNotacapacidad($students,$new_mark_activity_id);
+                                        //masukan nilai mark lama ke mark subject baru
+                                        transferMarkOldToMarkNew($students, $exam_sources->exam_id, $new_exam_id, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+                                        transferNotaCapacidadOldTonotaCapacidadNew($students, $mark_activity_sources->mark_activity_id, $new_mark_activity_id);
+
+                                        //lakukan delete pada subject, mark,nota terkait
+                                        deleteStudentFromSubject($students, $subject_id_source);
+                                        deleteStudentMarks($students, $subject_id_source, $subject_source->class_id, $subject_source->section_id);
+                                        deleteStudentNotacapacidad($students, $subject_id_source, $subject_source->class_id, $subject_source->section_id);
+
+                                    }
+                                    //fill notacapacidad if this student exist in target subject
+                                    $student_subject_source = getStudentBySubjectId($subject_id_source);
+                                    foreach($student_subject_source as $studentExiting){
+                                        addStudentToMark($studentExiting, $subject_id_target, $subject_target->class_id, $subject_target->section_id, $new_exam_id);
+                                        addStudentToNotacapacidad($studentExiting, $new_mark_activity_id);
+                                    }
+                                    //fill notacapacidad from exiting student from target subject
+                                    $student_subject_target = getStudentBySubjectId($subject_id_target);
+                                    foreach ($student_subject_target as $studentExiting) {
+                                        addStudentToMark($studentExiting, $subject_id_target, $subject_target->class_id, $subject_target->section_id, $new_exam_id);
+                                        addStudentToNotacapacidad($studentExiting, $new_mark_activity_id);
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if($attendance){
+            $student_subject_source = getStudentBySubjectId($subject_id_source);
+            foreach($student_subject_source as $students){
+                //cek enroll
+                if (!in_array($students, $selected_students)) {
+                    continue; // skip siswa yang tidak dipilih
+                }
+                $isStudentEnrolled=isStudentEnrolled($students, $subject_target->class_id, $subject_target->section_id);
+                if($isStudentEnrolled==false){
+                    $data=[
+                        'student_id' => $students,
+                        'enroll_code' => substr(md5(rand(0, 1000000)), 0, 7),
+                        'class_id' => $subject_target->class_id,
+                        'section_id' => $subject_target->section_id,
+                        'roll' => getRollByClassAndSection($subject_source->class_id, $subject_source->section_id)->roll,
+                        'is_active' => 1,
+                        'date_added' => strtotime(date("Y-m-d H:i:s")),
+                        'year' =>getRunningYear(),
+                    ];
+                    $this->db->insert('enroll', $data);
+                }
+                addStudentToSubject($students, $subject_id_target);
+                addStudentToMarkIfNotExist($students, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+                addStudentToNotacapacidadIfNotExist($students, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+                //belum ada fitur cek dulu sebelum insert
+                transferOldAttendanceToNew($students, $subject_id_source, $subject_id_target, $subject_target->class_id, $subject_target->section_id);
+                deleteStudentAttendance($students, $subject_id_source);
+
+            }
+        }
+        if($homework){
+            $homework_reference = $this->db->get_where('homework', array('subject_id' => "$subject_id_source"))->result();
+            if ($homework_reference) {
+                foreach ($homework_reference as $homework_references) {
+                    $new_homework_code = generateRandomString(7);
+                    $this->db->insert('homework', array(
+                        'homework_code' => $new_homework_code,
+                        'title' => $homework_references->title,
+                        'description' => $homework_references->description,
+                        'class_id' => $subject_target->class_id,
+                        'subject_id' => $subject_target->subject_id,
+                        'uploader_id' => $homework_references->uploader_id,
+                        'time_end' => $homework_references->time_end,
+                        'section_id' => $subject_target->section_id,
+                        'uploader_type' => $homework_references->uploader_type,
+                        'file_name' => $homework_references->file_name,
+                        'date_end' => $homework_references->date_end,
+                        'type' => $homework_references->type,
+                        'user' => $homework_references->user,
+                        'status' => $homework_references->status,
+                        'year' => $subject_target->year,
+                        'filesize' => $homework_references->filesize,
+                        'wall_type' => $homework_references->wall_type,
+                        'publish_date' => $homework_references->publish_date,
+                        'upload_date' => $homework_references->upload_date,
+                        'media_type' => $homework_references->media_type,
+                        'exp' => $homework_references->exp,
+                        'sync_status' => $homework_references->sync_status,
+                        'attachment_name' => $homework_references->attachment_name,
+                        'can_comment' => $homework_references->can_comment,
+                        'can_reaction' => $homework_references->can_reaction,
+                        'post_file' => $homework_references->post_file,
+                        'post_file_type' => $homework_references->post_file_type,
+                        'post_content' => $homework_references->post_content,
+                    ));
+                    $new_homework_id = $this->db->insert_id();
+                    $homework_students_deliveries = $this->db->get_where('deliveries', array('homework_code' => $homework_references->homework_code))->result();
+                    if ($homework_students_deliveries) {
+                        foreach ($homework_students_deliveries as $homework_students_delivery) {
+                            if (!in_array($homework_students_delivery->student_id, $selected_students)) {
+                                continue; // skip siswa yang tidak dipilih
+                            }
+                            $this->db->insert('deliveries', array(
+                                'homework_code' => $new_homework_code,
+                                'student_id' => $homework_students_delivery->student_id,
+                                'date' => $homework_students_delivery->date,
+                                'class_id' => $subject_target->class_id,
+                                'section_id' => $subject_target->section_id,
+                                'file_name' => $homework_students_delivery->file_name,
+                                'student_comment' => $homework_students_delivery->student_comment,
+                                'teacher_comment' => $homework_students_delivery->teacher_comment,
+                                'subject_id' => $subject_target->subject_id,
+                                'status' => $homework_students_delivery->status,
+                                'homework_reply' => $homework_students_delivery->homework_reply,
+                                'mark' => $homework_students_delivery->mark,
+                                'media_type' => $homework_students_delivery->media_type,
+                                'delivery_code' => generateRandomString(7),
+                            ));
+                            deleteStudentDeliveries($homework_students_delivery->student_id, $homework_students_delivery->homework_code);
+                        }
+                    }
+                }
+            }
+        }
+        if($forum){
+            $forums_reference = $this->db->get_where('forum', array('subject_id' => "$subject_id_source"))->result();
+            if ($forums_reference) {
+                foreach ($forums_reference as $forums_references) {
+                    $this->db->insert('forum', array(
+                        'teacher_id' => $forums_references->teacher_id,
+                        'subject_id' => $subject_target->subject_id,
+                        'class_id' => $subject_target->class_id,
+                        'timestamp' => $forums_references->timestamp,
+                        'title' => $forums_references->title,
+                        'description' => $forums_references->description,
+                        'post_code' => generateRandomString(7),
+                        'file_name' => $forums_references->file_name,
+                        'section_id' => $subject_target->section_id,
+                        'post_status' => $forums_references->post_status,
+                        'type' => $forums_references->type,
+                        'wall_type' => $forums_references->wall_type,
+                        'publish_date' => $forums_references->publish_date,
+                        'upload_date' => $forums_references->upload_date,
+                        'exp' => $forums_references->exp,
+                        'sync_status' => $forums_references->sync_status,
+                        'attachment_name' => $forums_references->attachment_name,
+                        'can_comment' => $forums_references->can_comment,
+                        'can_reaction' => $forums_references->can_reaction,
+                        'post_file' => $forums_references->post_file,
+                        'post_file_type' => $forums_references->post_file_type,
+                        'post_content' => $forums_references->post_content,
+
+                    ));
+                }
+            }
+        }
+        if($study_material){
+            $study_material_reference = $this->db->get_where('document', array('subject_id' => "$subject_id_source"))->result();
+            if ($study_material_reference) {
+                foreach ($study_material_reference as $study_material_references) {
+                    $this->db->insert('document', array(
+                        'title' => $study_material_references->title,
+                        'description' => $study_material_references->description,
+                        'file_name' => $study_material_references->file_name,
+                        'file_type' => $study_material_references->file_type,
+                        'class_id' => $subject_target->class_id,
+                        'teacher_id' => $subject_target->teacher_id,
+                        'timestamp' => $study_material_references->timestamp,
+                        'subject_id' => $subject_target->subject_id,
+                        'type' => $study_material_references->type,
+                        'year' => $subject_target->year,
+                        'filesize' => $study_material_references->filesize,
+                        'wall_type' => $study_material_references->wall_type,
+                        'publish_date' => $study_material_references->publish_date,
+                        'upload_date' => $study_material_references->upload_date,
+                        'section_id' => $subject_target->section_id,
+                        'sync_status' => $study_material_references->sync_status,
+                        'attachment_name' => $study_material_references->attachment_name,
+                        'drive_id' => $study_material_references->drive_id,
+                        'can_comment' => $study_material_references->can_comment,
+                        'can_reaction' => $study_material_references->can_reaction,
+                        'post_file' => $study_material_references->post_file,
+                        'post_file_type' => $study_material_references->post_file_type,
+                        'post_content' => $study_material_references->post_content,
+                    ));
+                }
+            }
+        }
+        if($online_exam){
+            $online_exam_reference = $this->db->get_where('online_exam', array('subject_id' => "$subject_id_source"))->result();
+            if ($online_exam_reference) {
+                foreach ($online_exam_reference as $online_exam_references) {
+                    $this->db->insert('online_exam', array(
+                        'code' => generateRandomString(7),
+                        'title' => $online_exam_references->title,
+                        'subject_id' => $subject_target->subject_id,
+                        'class_id' => $subject_target->class_id,
+                        'section_id' => $subject_target->section_id,
+                        'running_year' => $subject_target->year,
+                        'exam_date' => $online_exam_references->exam_date,
+                        'time_start' => $online_exam_references->time_start,
+                        'time_end' => $online_exam_references->time_end,
+                        'duration' => $online_exam_references->duration,
+                        'minimum_percentage' => $online_exam_references->minimum_percentage,
+                        'instruction' => $online_exam_references->instruction,
+                        'status' => $online_exam_references->status,
+                        'wall_type' => $online_exam_references->wall_type,
+                        'publish_date' => $online_exam_references->publish_date,
+                        'uploader_type' => $online_exam_references->uploader_type,
+                        'uploader_id' => $online_exam_references->uploader_id,
+                        'upload_date' => $online_exam_references->upload_date,
+                        'exp' => $online_exam_references->exp,
+                        'password' => $online_exam_references->password,
+                        'results' => $online_exam_references->results,
+                        'show_random' => $online_exam_references->show_random,
+                        'certificate' => $online_exam_references->certificate,
+                    ));
+                    $new_online_exam_id = $this->db->insert_id();
+                    $question_bank_reference = $this->db->get_where('question_bank', array('online_exam_id' => "$online_exam_references->online_exam_id"))->result();
+                    if ($question_bank_reference) {
+                        foreach ($question_bank_reference as $question_bank_references) {
+                            $this->db->insert('question_bank', array(
+                                'online_exam_id'    => $new_online_exam_id,
+                                'question_title'    => $question_bank_references->question_title,
+                                'type'              => $question_bank_references->type,
+                                'number_of_options' => $question_bank_references->number_of_options,
+                                'options'           => $question_bank_references->options,
+                                'correct_answers'   => $question_bank_references->correct_answers,
+                                'mark'              => $question_bank_references->mark,
+                                'image'             => $question_bank_references->image,
+                            ));
+                        }
+                    }
+                    $online_exam_result_reference = $this->db->get_where('online_exam_result', array('online_exam_id' => "$online_exam_references->online_exam_id"))->result();
+                    if ($online_exam_result_reference) {
+                        foreach ($online_exam_result_reference as $online_exam_result_references) {
+                            if (!in_array($online_exam_result_references->student_id, $selected_students)) {
+                                continue; // skip siswa yang tidak dipilih
+                            }
+                            $this->db->insert('online_exam_result', array(
+                                'online_exam_id'                => $new_online_exam_id,
+                                'student_id'                    => $online_exam_result_references->student_id,
+                                'answer_script'                 => $online_exam_result_references->answer_script,
+                                'obtained_mark'                 => $online_exam_result_references->obtained_mark,
+                                'status'                        => $online_exam_result_references->status,
+                                'exam_started_timestamp'        => $online_exam_result_references->exam_started_timestamp,
+                                'result'                        => $online_exam_result_references->result,
+                            ));
+                            deleteStudentOnlineExamResults($online_exam_result_references->student_id, $online_exam_references->online_exam_result_id);
+                        }
+                    }
+                }
+            }
+        }
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_transfer'));
+        return redirect(base_url() . 'admin/transfer_data/');
     }
     function import($type)
     {
@@ -3623,6 +4506,326 @@ class Admin extends EduAppGT
         $page_data['page_title'] =  getEduAppGTLang('certificate_list');
         $this->load->view('backend/index', $page_data);
     }
+    function certificate_setting()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+
+        //global Section
+        $height = $this->input->post('height');
+        $width = $this->input->post('width');
+        $title_font_face = $this->input->post('title_font_face');
+
+        //qrcode Section
+        $qr_size = $this->input->post('qr_size');
+        $qr_x = $this->input->post('qr_x');
+        $qr_y = $this->input->post('qr_y');
+        $qr_status = $this->input->post('qr_status')? 1 : 0;
+
+        //certificate code section
+        $certificate_code_text_size = $this->input->post('certificate_code_text_size');
+        $certificate_code_text_weight = $this->input->post('certificate_code_text_weight');
+        $certificate_code_text_x = $this->input->post('certificate_code_text_x');
+        $certificate_code_text_y = $this->input->post('certificate_code_text_y');
+        $certificate_code_text_color = $this->input->post('certificate_code_text_color');
+        $certificate_code_text_status = $this->input->post('certificate_code_text_status')? 1 : 0;
+
+        //certificate issue date section
+        $certificate_issue_date_text_size = $this->input->post('certificate_issue_date_text_size');
+        $certificate_issue_date_text_weight = $this->input->post('certificate_issue_date_text_weight');
+        $certificate_issue_date_text_x = $this->input->post('certificate_issue_date_text_x');
+        $certificate_issue_date_text_y = $this->input->post('certificate_issue_date_text_y');
+        $certificate_issue_date_text_color = $this->input->post('certificate_issue_date_text_color');
+        $certificate_issue_date_text_status = $this->input->post('certificate_issue_date_text_status')? 1 : 0;
+
+        //course section
+        $course_text_size = $this->input->post('course_text_size');
+        $course_text_weight = $this->input->post('course_text_weight');
+        $course_text_x = $this->input->post('course_text_x');
+        $course_text_y = $this->input->post('course_text_y');
+        $course_text_color = $this->input->post('course_text_color');
+        $course_text_status = $this->input->post('course_text_status')? 1 : 0;
+
+        //student name section
+        $student_name_text_size = $this->input->post('student_name_text_size');
+        $student_name_text_weight = $this->input->post('student_name_text_weight');
+        $student_name_text_x = $this->input->post('student_name_text_x');
+        $student_name_text_y = $this->input->post('student_name_text_y');
+        $student_name_text_color = $this->input->post('student_name_text_color');
+        $student_name_text_status = $this->input->post('student_name_text_status') ? 1 : 0;
+      
+        $text_1 = $this->input->post('text_1');
+        $text_1_size = $this->input->post('text_1_size');
+        $text_1_weight = $this->input->post('text_1_weight');
+        $text_1_x = $this->input->post('text_1_x');
+        $text_1_y = $this->input->post('text_1_y');
+        $text_1_color = $this->input->post('text_1_color');
+        $text_1_status = $this->input->post('text_1_status') ? 1 : 0;
+
+        $text_2 = $this->input->post('text_2');
+        $text_2_size = $this->input->post('text_2_size');
+        $text_2_weight = $this->input->post('text_2_weight');
+        $text_2_x = $this->input->post('text_2_x');
+        $text_2_y = $this->input->post('text_2_y');
+        $text_2_color = $this->input->post('text_2_color');
+        $text_2_status = $this->input->post('text_2_status') ? 1 : 0;
+
+        $text_3 = $this->input->post('text_3');
+        $text_3_size = $this->input->post('text_3_size');
+        $text_3_weight = $this->input->post('text_3_weight');
+        $text_3_x = $this->input->post('text_3_x');
+        $text_3_y = $this->input->post('text_3_y');
+        $text_3_color = $this->input->post('text_3_color');
+        $text_3_status = $this->input->post('text_3_status') ? 1 : 0;
+
+        $text_4 = $this->input->post('text_4');
+        $text_4_size = $this->input->post('text_4_size');
+        $text_4_weight = $this->input->post('text_4_weight');
+        $text_4_x = $this->input->post('text_4_x');
+        $text_4_y = $this->input->post('text_4_y');
+        $text_4_color = $this->input->post('text_4_color');
+        $text_4_status = $this->input->post('text_4_status') ? 1 : 0;
+
+        $text_5 = $this->input->post('text_5');
+        $text_5_size = $this->input->post('text_5_size');
+        $text_5_weight = $this->input->post('text_5_weight');
+        $text_5_x = $this->input->post('text_5_x');
+        $text_5_y = $this->input->post('text_5_y');
+        $text_5_color = $this->input->post('text_5_color');
+        $text_5_status = $this->input->post('text_5_status') ? 1 : 0;
+
+        $data=[
+            'height' => $height,
+            'width' => $width,
+            'title_font_face' => $title_font_face,
+
+            'qr_size' => $qr_size,
+            'qr_x' => $qr_x,
+            'qr_y' => $qr_y,
+            'qr_status' => $qr_status,
+
+            'certificate_code_text_size' => $certificate_code_text_size,
+            'certificate_code_text_x' => $certificate_code_text_x,
+            'certificate_code_text_y' => $certificate_code_text_y,
+            'certificate_code_text_color' => $certificate_code_text_color,
+            'certificate_code_text_status' => $certificate_code_text_status,
+            
+            'certificate_issue_date_text_size' => $certificate_issue_date_text_size,
+            'certificate_issue_date_text_x' => $certificate_issue_date_text_x,
+            'certificate_issue_date_text_y' => $certificate_issue_date_text_y,
+            'certificate_issue_date_text_color' => $certificate_issue_date_text_color,
+            'certificate_issue_date_text_status' => $certificate_issue_date_text_status,
+
+            'course_text_size' => $course_text_size,
+            'course_text_x' => $course_text_x,
+            'course_text_y' => $course_text_y,
+            'course_text_color' => $course_text_color,
+            'course_text_status' => $course_text_status,
+            
+            'student_name_text_size' => $student_name_text_size,
+            'student_name_text_weight' => $student_name_text_weight,
+            'student_name_text_x' => $student_name_text_x,
+            'student_name_text_y' => $student_name_text_y,
+            'student_name_text_color' => $student_name_text_color,
+            'student_name_text_status' => $student_name_text_status,
+
+            'text_1' => $text_1,
+            'text_1_size' => $text_1_size,
+            'text_1_x' => $text_1_x,
+            'text_1_y' => $text_1_y,
+            'text_1_color' => $text_1_color,
+            'text_1_status' => $text_1_status,
+
+            'text_2' => $text_2,
+            'text_2_size' => $text_2_size,
+            'text_2_x' => $text_2_x,
+            'text_2_y' => $text_2_y,
+            'text_2_color' => $text_2_color,
+            'text_2_status' => $text_2_status,
+
+            'text_3' => $text_3,
+            'text_3_size' => $text_3_size,
+            'text_3_x' => $text_3_x,
+            'text_3_y' => $text_3_y,
+            'text_3_color' => $text_3_color,
+            'text_3_status' => $text_3_status,
+
+            'text_4' => $text_4,
+            'text_4_size' => $text_4_size,
+            'text_4_x' => $text_4_x,
+            'text_4_y' => $text_4_y,
+            'text_4_color' => $text_4_color,
+            'text_4_status' => $text_4_status,
+
+            'text_5' => $text_5,
+            'text_5_size' => $text_5_size,
+            'text_5_x' => $text_5_x,
+            'text_5_y' => $text_5_y,
+            'text_5_color' => $text_5_color,
+            'text_5_status' => $text_5_status,
+        ];
+
+        $this->db->where('id', 1);
+        $this->db->update('certificate_settings', $data);
+          if ($this->db->affected_rows() > 0) {
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
+        } else {
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_update'));
+        }
+        redirect(base_url() . 'admin/certificate', 'refresh');
+
+    }
+    function generate_certificate()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $student_id = $this->input->post('student_id');
+        $subject_id = $this->input->post('subject_id');
+        $course= $this->input->post('course');
+        $certCode=generateRandomString(10);
+        do {
+            $certCode = generateRandomString(10);
+        } while (!isCertCodeCanUse($certCode));
+        $this->load->library('ciqrcode');
+
+        $qr_folder = FCPATH . "public/uploads/certificateqr/";
+        $qr_filename = $certCode . ".png";
+
+        if (!file_exists($qr_folder)) {
+            mkdir($qr_folder, 0755, true);
+        }
+        $params['data'] = base_url() . 'certificate/check/' . $certCode;
+        $params['level'] = 'H';
+        $params['size'] = 20;
+        $params['savename'] = $qr_folder . $qr_filename;
+
+        // Generate QR Code
+        $this->ciqrcode->generate($params);
+
+        $data = [
+            'cert_code' => $certCode,
+            'cert_generated_at' => date('Y-m-d H:i:s'),
+            'is_finish'=> 1,
+        ];
+
+        $this->db->where('student_id', $student_id);
+        $this->db->where('subject_id', $subject_id);
+        $this->db->update('student_subject', $data);
+        if ($this->db->affected_rows() > 0) {
+            $exitingCertificateSetting = $this->db->get_where('certificate_settings', ['id' => 1])->row();
+            $certificateSettingStudent = [
+                'student_certificate_code'=>$certCode,
+                'height' => $exitingCertificateSetting->height,
+                'width' => $exitingCertificateSetting->width,
+                'title_font_face' => $exitingCertificateSetting->title_font_face,
+
+                'qr_size' => $exitingCertificateSetting->qr_size,
+                'qr_x' => $exitingCertificateSetting->qr_x,
+                'qr_y' => $exitingCertificateSetting->qr_y,
+                'qr_status' => $exitingCertificateSetting->qr_status,
+
+                'certificate_code_text_size' => $exitingCertificateSetting->certificate_code_text_size,
+                'certificate_code_text_weight' => $exitingCertificateSetting->certificate_code_text_weight,
+                'certificate_code_text_x' => $exitingCertificateSetting->certificate_code_text_x,
+                'certificate_code_text_y' => $exitingCertificateSetting->certificate_code_text_y,
+                'certificate_code_text_color' => $exitingCertificateSetting->certificate_code_text_color,
+                'certificate_code_text_status' => $exitingCertificateSetting->certificate_code_text_status,
+
+                'course_text_size' => $exitingCertificateSetting->course_text_size,
+                'course_text_weight' => $exitingCertificateSetting->course_text_weight,
+                'course_text_x' => $exitingCertificateSetting->course_text_x,
+                'course_text_y' => $exitingCertificateSetting->course_text_y,
+                'course_text_color' => $exitingCertificateSetting->course_text_color,
+                'course_text_status' => $exitingCertificateSetting->course_text_status,
+
+                'student_name_text_size' => $exitingCertificateSetting->student_name_text_size,
+                'student_name_text_weight' => $exitingCertificateSetting->student_name_text_weight,
+                'student_name_text_x' => $exitingCertificateSetting->student_name_text_x,
+                'student_name_text_y' => $exitingCertificateSetting->student_name_text_y,
+                'student_name_text_color' => $exitingCertificateSetting->student_name_text_color,
+                'student_name_text_status' => $exitingCertificateSetting->student_name_text_status,
+
+                'text_1' => $exitingCertificateSetting->text_1,
+                'text_1_size' => $exitingCertificateSetting->text_1_size,
+                'text_1_weight' => $exitingCertificateSetting->text_1_weight,
+                'text_1_x' => $exitingCertificateSetting->text_1_x,
+                'text_1_y' => $exitingCertificateSetting->text_1_y,
+                'text_1_color' => $exitingCertificateSetting->text_1_color,
+                'text_1_status' => $exitingCertificateSetting->text_1_status,
+
+                'text_2' => $exitingCertificateSetting->text_2,
+                'text_2_size' => $exitingCertificateSetting->text_2_size,
+                'text_2_weight' => $exitingCertificateSetting->text_2_weight,
+                'text_2_x' => $exitingCertificateSetting->text_2_x,
+                'text_2_y' => $exitingCertificateSetting->text_2_y,
+                'text_2_color' => $exitingCertificateSetting->text_2_color,
+                'text_2_status' => $exitingCertificateSetting->text_2_status,
+
+                'text_3' => $exitingCertificateSetting->text_3,
+                'text_3_size' => $exitingCertificateSetting->text_3_size,
+                'text_3_weight' => $exitingCertificateSetting->text_3_weight,
+                'text_3_x' => $exitingCertificateSetting->text_3_x,
+                'text_3_y' => $exitingCertificateSetting->text_3_y,
+                'text_3_color' => $exitingCertificateSetting->text_3_color,
+                'text_3_status' => $exitingCertificateSetting->text_3_status,
+
+                'text_4' => $exitingCertificateSetting->text_4,
+                'text_4_size' => $exitingCertificateSetting->text_4_size,
+                'text_4_weight' => $exitingCertificateSetting->text_4_weight,
+                'text_4_x' => $exitingCertificateSetting->text_4_x,
+                'text_4_y' => $exitingCertificateSetting->text_4_y,
+                'text_4_color' => $exitingCertificateSetting->text_4_color,
+                'text_4_status' => $exitingCertificateSetting->text_4_status,
+
+                'text_5' => $exitingCertificateSetting->text_5,
+                'text_5_size' => $exitingCertificateSetting->text_5_size,
+                'text_5_weight' => $exitingCertificateSetting->text_5_weight,
+                'text_5_x' => $exitingCertificateSetting->text_5_x,
+                'text_5_y' => $exitingCertificateSetting->text_5_y,
+                'text_5_color' => $exitingCertificateSetting->text_5_color,
+                'text_5_status' => $exitingCertificateSetting->text_5_status,
+            ];
+            $this->db->insert('student_certificate', $certificateSettingStudent);
+            $student  = $this->db->get_where('student', ['student_id' => $student_id])->row();
+            $subject  = $this->db->get_where('subject', ['subject_id' => $subject_id])->row();
+            $qrPath   = FCPATH . "public/uploads/certificateqr/{$certCode}.png";
+            $bgImage  = $this->db->get_where('certificate_image', ['id' => 1])->row()->image ?? 'default.png';
+            $bgPath   = FCPATH . "public/certificates/$bgImage";
+
+            $dataPdf = [
+                'studentName'        => $student->first_name . ' ' . $student->last_name,
+                'courseTitle'        => $subject->name,
+                'certificateCode'    => $certCode,
+                'issueDate'          => date('Y-m-d'),
+                'backgroundFilePath' => $bgPath,
+                'qrCodeFilePath'     => $qrPath,
+                'settings'           => $exitingCertificateSetting,
+            ];
+
+            $html = $this->load->view('certificates/certificate_template', $dataPdf, true);
+            $this->crud->saveCertificatePdf($certCode, $html, $exitingCertificateSetting);
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
+        } else {
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_update'));
+        }
+        redirect(base_url() . 'admin/certificate_list/'.$course,'refresh');
+    }
+    function invalidate_certificate()
+    {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+        $student_subject_id = $this->input->post('student_subject_id');
+        $course= $this->input->post('course');
+        if($this->academic->invalidateCertificate($student_subject_id)==false){
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_update'));
+            return redirect(base_url() . 'admin/certificate_list/'.$course,'refresh');
+        }
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
+        return redirect(base_url() . 'admin/certificate_list/'.$course,'refresh');
+    }
 
     //Manage attendance function.
     function manage_attendance($class_id = '', $section_id = '', $timestamp = '')
@@ -3642,30 +4845,66 @@ class Admin extends EduAppGT
     function get_sectionss($class_id = '')
     {
         $sections = $this->db->get_where('section', array('class_id' => $class_id))->result_array();
-        foreach ($sections as $row) {
+        if(count($sections)==0){
+            echo '<option value="">❌ '.getEduAppGTLang('no_section_available_for_this_class_please_select_other_class').' </option>';
+        }else{
+            echo '<option value="">--'.getEduAppGTLang('select_section').'--</option>';
+            foreach ($sections as $row) {
             echo '<option value="' . $row['section_id'] . '">' . $row['name'] . '</option>';
+            }
         }
+        
     }
     function get_shifts($branch_id = '')
     {
-        $sections = $this->db->get_where('shifts', array('branch_id' => $branch_id,'status'=>'ACTIVE'))->result_array();
-        foreach ($sections as $row) {
-            echo '<option value="' . $row['shifts_id'] . '">' . $row['name'] . '</option>';
+        $shifts = $this->db->get_where('shifts', array('branch_id' => $branch_id,'status'=>'ACTIVE'))->result_array();
+        if(count($shifts)==0){
+            echo '<option value="">❌ '.getEduAppGTLang('no_shift_available_for_this_branch_please_select_other_branch').' </option>';
+        }else{
+            echo '<option value="">--'.getEduAppGTLang('select_shifts').'--</option>';
+            foreach ($shifts as $row) {
+                echo '<option value="' . $row['shifts_id'] . '">' . $row['name'] . '</option>';
+            }
         }
     }
     function get_class($branch_id = '')
     {
-        $sections = $this->db->get_where('class', array('branch_id' => $branch_id))->result_array();
-        foreach ($sections as $row) {
+        $class = $this->db->get_where('class', array('branch_id' => $branch_id))->result_array();
+        if(count($class)==0){
+            echo '<option value="">❌ '.getEduAppGTLang('no_class_available_for_this_branch_please_select_other_branch').' </option>';
+        }else{
+            echo '<option value="">--'.getEduAppGTLang('select_class').'--</option>';
+            foreach ($class as $row) {
             echo '<option value="' . $row['class_id'] . '">' . $row['name'] . '</option>';
         }
+        }
+        
     }
     function get_exam($subject_id = '')
     {
         $exam = $this->db->get_where('exam', array('subject_id' => $subject_id,'is_final'=>0))->result_array();
-        foreach ($exam as $row) {
+        if(count($exam)==0){
+            echo '<option value="">❌ '.getEduAppGTLang('no_exam_available_for_this_subject_please_select_other_subject').' </option>';
+        }else{
+            echo '<option value="">--'.getEduAppGTLang('select_exam').'--</option>';
+            foreach ($exam as $row) {
             echo '<option value="' . $row['exam_id'] . '">' . $row['name'] . '</option>';
         }
+        }
+        
+    }
+    function get_exam_all($subject_id = '')
+    {
+        $exam = $this->db->get_where('exam', array('subject_id' => $subject_id,'is_final'=>0))->result_array();
+        if(count($exam)==0){
+            echo '<option value="">❌ '.getEduAppGTLang('no_exam_available_for_this_subject_please_select_other_subject').' </option>';
+        }else{
+            echo '<option value="">--'.getEduAppGTLang('all').'--</option>';
+            foreach ($exam as $row) {
+            echo '<option value="' . $row['exam_id'] . '">' . $row['name'] . '</option>';
+        }
+        }
+        
     }
     function get_exam_section($section_id = '')
     {
@@ -3674,14 +4913,18 @@ class Admin extends EduAppGT
         $this->db->join('subject', 'exam.subject_id = subject.subject_id', 'inner');
         $this->db->where('exam.section_id', $section_id);
         $exam = $this->db->get()->result_array();
-        foreach ($exam as $row) {
+        if(count($exam)==0){
+            echo '<option value="">❌ '.getEduAppGTLang('no_exam_available_for_this_section_please_select_other_section').' </option>';
+        }else{
+            echo '<option value="">--'.getEduAppGTLang('select_exam').'--</option>';
+            foreach ($exam as $row) {
             echo '<option value="' . $row['exam_id'] . '">' . $row['name'].' ('.$row['subject_name'].')' . '</option>';
+            }
         }
     }
     
-
     //Attendance report function.
-    function attendance_report($param1 = '', $param2 = '', $param3 = '', $param4 = '', $param5 = '')
+    function attendance_report($param1 = '', $param2 = '', $param3 = '', $param4 = '', $param5 = '', $param6 = '')
     {
         if ($param1 == 'check') {
             $data['class_id']    = $this->input->post('class_id');
@@ -3689,13 +4932,15 @@ class Admin extends EduAppGT
             $data['year']        = $this->input->post('year');
             $data['month']       = $this->input->post('month');
             $data['section_id']  = $this->input->post('section_id');
-            redirect(base_url() . 'admin/attendance_report/' . $data['class_id'] . '/' . $data['section_id'] . '/' . $data['subject_id'] . '/' . $data['month'] . '/' . $data['year'], 'refresh');
+            $data['branch_id']   = $this->input->post('branch_id');
+            redirect(base_url() . 'admin/attendance_report/' . $data['class_id'] . '/' . $data['section_id'] . '/' . $data['subject_id'] . '/' . $data['month'] . '/' . $data['year'].'/'.$data['branch_id'], 'refresh');
         }
         $page_data['class_id']    = $param1;
         $page_data['section_id']  = $param2;
         $page_data['subject_id']  = $param3;
         $page_data['month']       = $param4;
         $page_data['year']        = $param5;
+        $page_data['branch_id']   = $param6;
         $page_data['page_name']   = 'attendance_report';
         $page_data['page_title']  = getEduAppGTLang('attendance_report');
         $this->load->view('backend/index', $page_data);
@@ -3707,12 +4952,14 @@ class Admin extends EduAppGT
             $data['subject_id']  = $this->input->post('subject_id');
             $data['exam_id']        = $this->input->post('exam_id');
             $data['section_id']  = $this->input->post('section_id');
-            redirect(base_url() . 'admin/grades_report/' . $data['class_id'] . '/' . $data['section_id'] . '/' . $data['subject_id'] . '/' . $data['exam_id'] . '/' , 'refresh');
+            $data['branch_id']  = $this->input->post('branch_id');
+            redirect(base_url() . 'admin/grades_report/' . $data['class_id'] . '/' . $data['section_id'] . '/' . $data['subject_id'] . '/' . $data['exam_id'] . '/' .$data['branch_id'], 'refresh');
         }
         $page_data['class_id']    = $param1;
         $page_data['section_id']  = $param2;
         $page_data['subject_id']  = $param3;
         $page_data['exam_id']       = $param4;
+        $page_data['branch_id']       = $param5;
         $page_data['page_name']   = 'grades_report';
         $page_data['page_title']  = getEduAppGTLang('grades_report');
         $this->load->view('backend/index', $page_data);
@@ -3723,6 +4970,7 @@ class Admin extends EduAppGT
         $page_data['section_id']  = $param2;
         $page_data['subject_id']  = $param3;
         $page_data['exam_id']       = $param4;
+        $page_data['branch_id']       = $param5;
         $this->load->view('backend/admin/grades_report_excel', $page_data);
     }
 
@@ -3775,6 +5023,7 @@ class Admin extends EduAppGT
         $page_data['section_id']   = $this->input->post('section_id');
         $page_data['student_id']   = $this->input->post('student_id');
         $page_data['exam_id']   = $this->input->post('exam_id');
+        $page_data['branch_id']   = $this->input->post('branch_id');
         $page_data['page_name']   = 'marks_report';
         $page_data['page_title']  = getEduAppGTLang('marks_report');
         $this->load->view('backend/index', $page_data);
@@ -4140,14 +5389,6 @@ class Admin extends EduAppGT
     if (!empty($_FILES['certificate_image']['name'])) {
 
         $check = getimagesize($_FILES["certificate_image"]["tmp_name"]);
-
-        // Validasi ukuran HARUS 1920 x 1080
-        if ($check[0] != 1920 || $check[1] != 1080) {
-            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('image_must_1920x1080'));
-            redirect(base_url('admin/certificate'));
-            return;
-        }
-
         // Lokasi folder upload
         $upload_dir = 'public/certificates/';
         if (!is_dir($upload_dir)) {
@@ -4301,9 +5542,17 @@ class Admin extends EduAppGT
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
         }
-        $page_data['page_name']  = 'grados';
-        $page_data['page_title'] = getEduAppGTLang('classes');
-        $this->load->view('backend/index', $page_data);
+        if($param1){
+            $page_data['selected_branch'] = $param1;
+            $page_data['page_name']  = 'grados';
+            $page_data['page_title'] = getEduAppGTLang('classes');
+            $this->load->view('backend/index', $page_data);
+        }else{
+            $page_data['page_name']  = 'select_branch';
+            $page_data['page_title'] = getEduAppGTLang('select_branch');
+            $this->load->view('backend/index', $page_data);
+        }
+      
     }
 
     //Subjects function.
@@ -4386,6 +5635,14 @@ class Admin extends EduAppGT
         $getClient=$this->drive_model->refreshTokenManual();
         var_dump($getClient);
     }
+    function add_default_reaction()
+    {
+        if(insertAllReaction()){
+            echo "SUCCESS";
+        }else{
+            echo "ALREADY";
+        }
+    }
     function add_custom_status_attendance()
     {
         $teacher_id = $this->input->post('teacher_id');
@@ -4424,6 +5681,14 @@ class Admin extends EduAppGT
         if ($this->session->userdata('admin_login') != 1) {
             redirect(site_url('login'), 'refresh');
         }
+        $branch_id=$this->input->post('branch_id');
+        $class_id=$this->input->post('class_id');
+        $section_id=$this->input->post('section_id');
+        $subject_id=$this->input->post('subject_id');
+        $page_data['branch_id']  = $branch_id;
+        $page_data['class_id']   = $class_id;
+        $page_data['section_id'] = $section_id;
+        $page_data['subject_id'] = $subject_id;
         $page_data['page_name']  = 'final_evaluation';
         $page_data['page_title'] = 'Evaluaciones Finales';
         $this->load->view('backend/index', $page_data);
@@ -4474,63 +5739,97 @@ class Admin extends EduAppGT
         );
         $this->db->insert('shifts', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
-        redirect(base_url() . 'admin/branch_and_shifts/');
+        redirect(base_url() . 'admin/branch_and_shifts/#shifts');
     }
     function branch_add()
     {
         $name = $this->input->post('name');
         $telephone = $this->input->post('telephone');
         $direction = $this->input->post('direction');
-        $latitude = $this->input->post('latitude');
-        $longitude = $this->input->post('longitude');
+        $maps_link = $this->input->post('maps_link');
         $status = $this->input->post('status');
         $data = array(
             'name' => $name,
             'telephone' => $telephone,
             'direction' => $direction,
-            'latitude' => $latitude,
-            'longitude' => $longitude,
+            'maps_link' => $maps_link,
             'status' => $status
         );
         $this->db->insert('branch', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
-        redirect(base_url() . 'admin/branch_and_shifts/');
+        redirect(base_url() . 'admin/branch_and_shifts/#branch');
+    }
+    function add_student_to_branch_shifts()
+    {
+        $student_id=$this->input->post('student_id');
+        $branch_id=$this->input->post('branch_id');
+        $shifts_id=$this->input->post('shifts_id');
+        $data=array(
+            'branch_id'=>$branch_id,
+            'shifts_id'=>$shifts_id
+        );
+        $this->db->where('student_id', $student_id);
+        $this->db->update('student', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
+        redirect(base_url() . 'admin/branch_and_shifts/#student');
+    }
+    function add_class_to_branch()
+    {
+        $class_id=$this->input->post('class_id');
+        $branch_id=$this->input->post('branch_id');
+        $data=array(
+            'branch_id'=>$branch_id,
+        );
+        $this->db->where('class_id', $class_id);
+        $this->db->update('class', $data);
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
+        redirect(base_url() . 'admin/branch_and_shifts/#class');
     }
     function branch_edit()
     {
         $name = $this->input->post('name');
         $telephone = $this->input->post('telephone');
         $direction = $this->input->post('direction');
-        $latitude = $this->input->post('latitude');
-        $longitude = $this->input->post('longitude');
+        $maps_link = $this->input->post('maps_link');
         $branch_id = $this->input->post('branch_id');
         $status = $this->input->post('status');
         $data = array(
             'name' => $name,
             'telephone' => $telephone,
             'direction' => $direction,
-            'latitude' => $latitude,
-            'longitude' => $longitude,
+            'maps_link' => $maps_link,
             'status' => $status
         );
         $this->db->where('branch_id', $branch_id);
         $this->db->update('branch', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
-        redirect(base_url() . 'admin/branch_and_shifts/' . $exam_id);
+        redirect(base_url() . 'admin/branch_and_shifts/#branch' . $exam_id);
     }
     function branch_delete($branch_id)
     {
         $shiftsData=$this->db->get_where('shifts', array('branch_id' => $branch_id))->row();
         if($shiftsData){
             $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('branch_cannot_be_deleted_because_it_is_already_in_use_in_shifts'));
-            redirect(base_url() . 'admin/branch_and_shifts/' );
+            redirect(base_url() . 'admin/branch_and_shifts/#branch' );
+            return;
+            die();
+        }
+        if($this->db->get_where('class', array('branch_id' => $branch_id))->num_rows() > 0) {
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('branch_cannot_be_deleted_because_it_is_already_in_use_in_classes'));
+            redirect(base_url() . 'admin/branch_and_shifts/#branch' );
+            return;
+            die();
+        }
+        if($this->db->get_where('student', array('branch_id' => $branch_id))->num_rows() > 0) {
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('branch_cannot_be_deleted_because_it_is_already_in_use_in_student'));
+            redirect(base_url() . 'admin/branch_and_shifts/#branch' );
             return;
             die();
         }
         $this->db->where('branch_id', $branch_id);
         $this->db->delete('branch');
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_delete'));
-        redirect(base_url() . 'admin/branch_and_shifts/');
+        redirect(base_url() . 'admin/branch_and_shifts/#branch');
     }
     function shifts_edit()
     {
@@ -4546,14 +5845,21 @@ class Admin extends EduAppGT
         $this->db->where('shifts_id', $shifts_id);
         $this->db->update('shifts', $data);
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
-        redirect(base_url() . 'admin/branch_and_shifts/');
+        redirect(base_url() . 'admin/branch_and_shifts/#shifts');
     }
     function shifts_delete($shifts_id)
     {
+        $studentData=$this->db->get_where('student', array('shifts_id' => $shifts_id))->row();
+        if($studentData){
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('shifts_cannot_be_deleted_because_it_is_already_in_use_in_student'));
+            redirect(base_url() . 'admin/branch_and_shifts/#shifts' );
+            return;
+            die();
+        }
         $this->db->where('shifts_id', $shifts_id);
         $this->db->delete('shifts');
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_delete'));
-        redirect(base_url() . 'admin/branch_and_shifts/');
+        redirect(base_url() . 'admin/branch_and_shifts/#shifts');
     }
     function final_evaluation_delete_exam($exam_id='')
     {
@@ -4761,6 +6067,112 @@ class Admin extends EduAppGT
         $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_update'));
         redirect(base_url() . 'admin/final_evaluation_selected/' . $exam_id_final.'/'.$mark_activity_id);
     }
+     function give_reaction($data, $id, $reaction_id, $table,$redirect)
+        {
+        if ($this->session->userdata('admin_login') != 1) {
+            redirect(base_url(), 'refresh');
+        }
+          if (give_reaction($id, $reaction_id, $table)) {
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_reacted'));
+        } else {
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('failed_to_give_reaction'));
+        }
+
+        redirect(base_url() . 'admin/'.$redirect.'/' . $data, 'refresh');
+        }
+    function give_comment($data, $id, $table,$redirect)
+    {
+        $comment = $this->input->post('comment');
+        if (!$comment) {
+            $this->session->set_flashdata('flash_message_failed', getEduAppGTLang('comment_cannot_be_empty'));
+            redirect(base_url() . 'admin/'.$redirect.'/'. $data, 'refresh');
+        }
+
+        $result = post_comment($id, $comment,$table);
+
+        if ($result) {
+            $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added_comment'));
+        } else {
+            $this->session->set_flashdata('flash_message_failed',getEduAppGTLang('failed_to_add_comment'));
+        }
+
+        redirect(base_url() . 'admin/'.$redirect.'/'. $data, 'refresh');
+    }
+    function update_news($data)
+    {
+    $news_id      = $this->input->post('news_id');
+    $can_comment  = $this->input->post('can_comment') ? 1 : 0;
+    $can_react    = $this->input->post('can_reaction') ? 1 : 0;
+    $post_content = $this->input->post('post_content');
+
+    $dataToUpdate = array(
+        'can_comment'   => $can_comment,
+        'can_reaction'  => $can_react,
+        'post_content'  => $post_content
+    );
+
+    if (isset($_FILES['post_file']) && $_FILES['post_file']['error'] == UPLOAD_ERR_OK) {
+        $upload_dir = 'public/news/';
+        if (!is_dir($upload_dir)) {
+            if (!mkdir($upload_dir, 0755, true)) {
+                die("Failed to create folder: " . $upload_dir);
+            }
+        }
+
+        $ext = pathinfo($_FILES["post_file"]["name"], PATHINFO_EXTENSION);
+        $new_filename = uniqid('news', true) . '.' . $ext;
+        $target_file = $upload_dir . $new_filename;
+
+        if (move_uploaded_file($_FILES["post_file"]["tmp_name"], $target_file)) {
+            $dataToUpdate['post_file'] = $new_filename;
+            $dataToUpdate['post_file_type'] = $ext;
+        }
+    }
+
+    $this->db->where('news_id', $news_id);
+    $this->db->update('news', $dataToUpdate);
+
+    $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
+    redirect(base_url('admin/subject_dashboard/' . $data), 'refresh');
+    }
+    function update_news_panel()
+    {
+        $news_id      = $this->input->post('news_id');
+        $can_comment  = $this->input->post('can_comment') ? 1 : 0;
+        $can_react    = $this->input->post('can_reaction') ? 1 : 0;
+        $post_content = $this->input->post('post_content');
+
+        $dataToUpdate = array(
+            'can_comment'   => $can_comment,
+            'can_reaction'  => $can_react,
+            'post_content'  => $post_content
+        );
+
+        if (isset($_FILES['post_file']) && $_FILES['post_file']['error'] == UPLOAD_ERR_OK) {
+            $upload_dir = 'public/news/';
+            if (!is_dir($upload_dir)) {
+                if (!mkdir($upload_dir, 0755, true)) {
+                    die("Failed to create folder: " . $upload_dir);
+                }
+            }
+
+            $ext = pathinfo($_FILES["post_file"]["name"], PATHINFO_EXTENSION);
+            $new_filename = uniqid('news', true) . '.' . $ext;
+            $target_file = $upload_dir . $new_filename;
+
+            if (move_uploaded_file($_FILES["post_file"]["tmp_name"], $target_file)) {
+                $dataToUpdate['post_file'] = $new_filename;
+                $dataToUpdate['post_file_type'] = $ext;
+            }
+        }
+
+        $this->db->where('news_id', $news_id);
+        $this->db->update('news', $dataToUpdate);
+
+        $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
+        redirect(base_url('admin/panel/'), 'refresh');
+    }
     
+
     //End of Admin.php content.
 }
