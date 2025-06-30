@@ -3406,9 +3406,15 @@ class Admin extends EduAppGT
     function get_student_subject($subject_id = '')
     {
         $students = $this->db->get_where('student_subject', array('subject_id' => $subject_id))->result_array();
+        $subjectDetail=$this->db->get_where('subject', array('subject_id' => $subject_id))->row();
+        $running_year = $this->db->get_where('settings', array('type' => 'running_year'))->row()->description;
+
         $hasStudent = false;
 
         foreach ($students as $row2) {
+            if (!isStudentActiveEnroll($row2['student_id'], $subjectDetail->class_id, $subjectDetail->section_id, $running_year)) {
+                    continue;
+                }
             if (isStudentFinishSubject($row2['student_id'], $subject_id)) {
                 continue;
             }
