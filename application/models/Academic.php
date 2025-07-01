@@ -657,7 +657,11 @@ class Academic extends School
                 foreach ($exam_reference as $exam_references) {
                     $this->db->insert('exam', array('name' => $exam_references->name, 'subject_id' => $new_subject_id, 'class_id' => $new_subject->class_id, 'section_id' => $new_subject->section_id,'is_final' => $exam_references->is_final, 'is_count' => $exam_references->is_count));
                     $new_exam_id = $this->db->insert_id();
-                    $mark_activity_reference = $this->db->get_where('mark_activity', array('exam_id' => "$exam_references->exam_id"))->result();
+                    $mark_activity_reference = $this->db
+                        ->where('exam_id', $exam_references->exam_id)
+                        ->order_by('mark_activity_id', 'ASC')
+                        ->get('mark_activity')
+                        ->result();
                     if ($mark_activity_reference) {
                         foreach ($mark_activity_reference as $mark_activity_references) {
                             $this->db->insert('mark_activity', array(

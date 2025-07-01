@@ -134,7 +134,13 @@ class Mark extends School
                 $queryMark = $this->db->get_where('nota_capacidad', array('mark_activity_id' => $row['mark_activity_id'], 'student_id' => $rows['student_id']))->result_array();
                 foreach($queryMark as $rm)
                 {
-                    $total += $rm['nota'];
+                     $nota = $rm['nota'];
+
+                    if (is_numeric($nota)) {
+                        $total += (float)$nota;
+                    } else {
+                        $total += 0;
+                    }
                 }
             }   
             

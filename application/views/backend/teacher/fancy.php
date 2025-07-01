@@ -22,7 +22,7 @@ $fancy_number = $this->crud->count_unread_messages();
                 </div>
                 <div class="fancy-selector-options">
                     <?php
-                    $fancy_subjects = $this->db->get_where('subject', array('class_id' => $fc_ex[0], 'teacher_id' => $this->session->userdata('login_user_id')))->result_array();
+                    $fancy_subjects = $this->db->get_where('subject', array('class_id' => $fc_ex[0], 'teacher_id' => $this->session->userdata('login_user_id'),'section_id' => $fc_ex[1]))->result_array();
                     foreach ($fancy_subjects as $fancy_row2):
                     ?>
                         <a href="<?php echo base_url(); ?>teacher/subject_dashboard/<?php echo base64_encode($fc_ex[0] . '-' . $fc_ex[1] . '-' . $fancy_row2['subject_id']); ?>/">

@@ -3262,7 +3262,7 @@ class Admin extends EduAppGT
     }
 
     //Manage your classes.
-    function manage_classes($param1 = '', $param2 = '')
+    function manage_classes($param1 = '', $param2 = '', $param3 = '')
     {
         if ($this->session->userdata('admin_login') != 1) {
             redirect(base_url(), 'refresh');
@@ -3270,17 +3270,17 @@ class Admin extends EduAppGT
         if ($param1 == 'create') {
             $this->academic->createClass();
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_added'));
-            redirect(base_url() . 'admin/grados/', 'refresh');
+            redirect(base_url() . 'admin/grados/'.$param2, 'refresh');
         }
         if ($param1 == 'update') {
             $this->academic->updateClass($param2);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_updated'));
-            redirect(base_url() . 'admin/grados/', 'refresh');
+            redirect(base_url() . 'admin/grados/'.$param3, 'refresh');
         }
         if ($param1 == 'delete') {
             $this->academic->deleteClass($param2);
             $this->session->set_flashdata('flash_message', getEduAppGTLang('successfully_deleted'));
-            redirect(base_url() . 'admin/grados/', 'refresh');
+            redirect(base_url() . 'admin/grados/'.$param3, 'refresh');
         }
     }
 
@@ -3406,9 +3406,15 @@ class Admin extends EduAppGT
     function get_student_subject($subject_id = '')
     {
         $students = $this->db->get_where('student_subject', array('subject_id' => $subject_id))->result_array();
+        $subjectDetail=$this->db->get_where('subject', array('subject_id' => $subject_id))->row();
+        $running_year = $this->db->get_where('settings', array('type' => 'running_year'))->row()->description;
+
         $hasStudent = false;
 
         foreach ($students as $row2) {
+            if (!isStudentActiveEnroll($row2['student_id'], $subjectDetail->class_id, $subjectDetail->section_id, $running_year)) {
+                    continue;
+                }
             if (isStudentFinishSubject($row2['student_id'], $subject_id)) {
                 continue;
             }
@@ -4882,7 +4888,10 @@ class Admin extends EduAppGT
     }
     function get_exam($subject_id = '')
     {
-        $exam = $this->db->get_where('exam', array('subject_id' => $subject_id,'is_final'=>0))->result_array();
+        $subjectDetail=$this->db->get_where('subject', array('subject_id' => $subject_id))->row();
+        $class_id=$subjectDetail->class_id;
+        $section_id=$subjectDetail->section_id;
+        $exam = $this->db->get_where('exam', array('class_id'=>$class_id,'section_id'=>$section_id,'subject_id' => $subject_id,))->result_array();
         if(count($exam)==0){
             echo '<option value="">❌ '.getEduAppGTLang('no_exam_available_for_this_subject_please_select_other_subject').' </option>';
         }else{
@@ -4895,7 +4904,10 @@ class Admin extends EduAppGT
     }
     function get_exam_all($subject_id = '')
     {
-        $exam = $this->db->get_where('exam', array('subject_id' => $subject_id,'is_final'=>0))->result_array();
+        $subjectDetail = $this->db->get_where('subject', array('subject_id' => $subject_id))->row();
+        $class_id = $subjectDetail->class_id;
+        $section_id = $subjectDetail->section_id;
+        $exam = $this->db->get_where('exam', array('class_id' => $class_id, 'section_id' => $section_id, 'subject_id' => $subject_id))->result_array();
         if(count($exam)==0){
             echo '<option value="">❌ '.getEduAppGTLang('no_exam_available_for_this_subject_please_select_other_subject').' </option>';
         }else{

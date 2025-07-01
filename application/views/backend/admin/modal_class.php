@@ -2,7 +2,7 @@
     $edit_data = $this->db->get_where('class' , array('class_id' => $param2) )->result_array();
     foreach($edit_data as $row):
 ?>    
-    <?php echo form_open(base_url() . 'admin/manage_classes/update/'.$row['class_id'], array('enctype' => 'multipart/form-data')); ?>
+    <?php echo form_open(base_url() . 'admin/manage_classes/update/'.$row['class_id'].'/'.$param3, array('enctype' => 'multipart/form-data')); ?>
         <div class="modal-content">
             <div class="modal-header">
                 <h6 class="title"><?php echo getEduAppGTLang('update');?></h6>
