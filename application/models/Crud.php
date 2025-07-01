@@ -1890,8 +1890,9 @@ class Crud extends School
     }
 
     function add_multiple_choice_question_to_online_exam($online_exam_id){
-        if (sizeof($this->input->post('options')) != $this->input->post('number_of_options')) {
-            $this->session->set_flashdata('error_message' , getEduAppGTLang('no_options_can_be_blank'));
+        $options = $this->input->post('options');
+        if (!is_array($options) || sizeof($options) != $this->input->post('number_of_options')) {
+            $this->session->set_flashdata('error_message', getEduAppGTLang('no_options_can_be_blank'));
             return;
         }
         foreach ($this->input->post('options') as $option) {
@@ -3370,7 +3371,7 @@ class Crud extends School
     function delete_study_material_info($document_id)
     {
         $file_n = $this->db->get_where('document', array('document_id' => $document_id))->row()->file_name;
-        $this->drive_model->deleteFile($file_n);
+        //$this->drive_model->deleteFile($file_n);
         unlink("public/uploads/document/" . $file_n);
         $this->db->where('document_id',$document_id);
         $this->db->delete('document');

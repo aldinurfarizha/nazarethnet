@@ -1112,7 +1112,7 @@ function isClassExist($class_id)
     }
     
 }
-function writeNotaCapacidadHistory($nota_capacidad_id,$value)
+function writeNotaCapacidadHistory___Backup($nota_capacidad_id,$value)
 {
     $ci = &get_instance();
     $exitingNotaCapacidadValueHistory=$ci->db->query("SELECT * FROM nota_capacidad_history where nota_capacidad_id=$nota_capacidad_id ORDER BY nota_capacidad_history_id DESC")->row();
@@ -1123,13 +1123,18 @@ function writeNotaCapacidadHistory($nota_capacidad_id,$value)
     }else{
         $exitingNotaCapacidadValue = $ci->db->query("SELECT * FROM nota_capacidad where nota_capacidad_id=$nota_capacidad_id")->row();
         if ($exitingNotaCapacidadValue) {
-            $data = array(
-                'nota_capacidad_id' => $nota_capacidad_id,
-                'value' => isset($exitingNotaCapacidadValue->nota) ? $exitingNotaCapacidadValue->nota : 0,
-                'created_at' => date('Y-m-d H:i:s')
-            );
-            $ci->db->insert('nota_capacidad_history', $data);
-            return;
+            if($exitingNotaCapacidadValue->nota == $value){
+                return;
+            }else{
+                $data = array(
+                    'nota_capacidad_id' => $nota_capacidad_id,
+                    'value' => isset($exitingNotaCapacidadValue->nota) ? $exitingNotaCapacidadValue->nota : 0,
+                    'created_at' => date('Y-m-d H:i:s')
+                );
+                $ci->db->insert('nota_capacidad_history', $data);
+                writeUniqueLog('insertatas');
+                return;
+            }
         }
     }
     $exitingNotaCapacidadValue=$ci->db->query("SELECT * FROM nota_capacidad where nota_capacidad_id=$nota_capacidad_id")->row()->nota;
@@ -1145,8 +1150,58 @@ function writeNotaCapacidadHistory($nota_capacidad_id,$value)
             'created_at' => date('Y-m-d H:i:s')
         );
         $ci->db->insert('nota_capacidad_history', $data);
+        writeUniqueLog('insertbawah');
+    }
+    
+}
+function writeNotaCapacidadHistory($nota_capacidad_id, $value)
+{
+    $ci = &get_instance();
+
+    // Ambil data saat ini
+    $exitingNotaCapacidadValue = $ci->db->query("SELECT * FROM nota_capacidad WHERE nota_capacidad_id = ?", [$nota_capacidad_id])->row();
+
+    // Pastikan data ditemukan
+    if ($exitingNotaCapacidadValue) {
+        // Cek apakah nilai 'nota' sama dengan $value
+        if ($exitingNotaCapacidadValue->nota == $value) {
+            // Sama, tidak perlu insert history
+            return;
+        }
+
+        // Berbeda, insert nilai exiting ke history
+        $data = array(
+            'nota_capacidad_id' => $nota_capacidad_id,
+            'value' => $exitingNotaCapacidadValue->nota, // nilai sebelumnya
+            'created_at' => $exitingNotaCapacidadValue->updated_at
+        );
+
+        $ci->db->insert('nota_capacidad_history', $data);
     }
 }
+
+
+function writeUniqueLog($logContent)
+{
+    // Folder logs
+    $logDir = APPPATH . 'logs/';
+
+    // Buat nama file unik dengan timestamp + uniqid
+    $fileName = 'log_' . date('Ymd_His') . '_' . uniqid() . '.log';
+
+    // Path lengkap
+    $filePath = $logDir . $fileName;
+
+    // Format isi log (ditambah waktu)
+    $logMessage = date('Y-m-d H:i:s') . ' - ' . $logContent . PHP_EOL;
+
+    // Tulis file
+    file_put_contents($filePath, $logMessage);
+
+    // Return nama file kalau mau info
+    return $fileName;
+}
+
 function getHistoryNotaCapacidad($nota_capacidad_id)
 {
     $ci = &get_instance();
@@ -1154,7 +1209,7 @@ function getHistoryNotaCapacidad($nota_capacidad_id)
     $result = $query->result_array();
 
     $output = [];
-    for ($i = 1; $i < count($result); $i++) {
+    for ($i = 0; $i < count($result); $i++) {
         $output[] = $result[$i]['created_at'] . '=' . $result[$i]['value'];
     }
 

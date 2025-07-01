@@ -36,10 +36,10 @@
                                         <div class="more">
                                             <i class="icon-feather-more-horizontal"></i>
                                             <ul class="more-dropdown">
-                                                <li><a href="javascript:void(0);" onclick="showAjaxModal('<?php echo base_url();?>modal/popup/modal_class/<?php echo $class['class_id'];?>');"><?php echo getEduAppGTLang('edit');?></a></li>
+                                                <li><a href="javascript:void(0);" onclick="showAjaxModal('<?php echo base_url();?>modal/popup/modal_class/<?php echo $class['class_id'].'/'.$selected_branch;?>');"><?php echo getEduAppGTLang('edit');?></a></li>
                                                 <li><a href="<?php echo base_url();?>admin/cursos/<?php echo base64_encode($class['class_id']);?>/"><?php echo getEduAppGTLang('subjects');?></a></li>
                                                 <li><a href="javascript:void(0);" onclick="showAjaxModal('<?php echo base_url();?>modal/popup/modal_send_marks/<?php echo $class['class_id'];?>');"><?php echo getEduAppGTLang('send_marks_by_email');?></a></li>
-                                                <li><a href="<?php echo base_url();?>admin/manage_classes/delete/<?php echo $class['class_id'];?>" onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete');?>')"><?php echo getEduAppGTLang('delete');?></a></li>
+                                                <li><a href="<?php echo base_url();?>admin/manage_classes/delete/<?php echo $class['class_id'].'/'.$selected_branch;?>" onClick="return confirm('<?php echo getEduAppGTLang('confirm_delete');?>')"><?php echo getEduAppGTLang('delete');?></a></li>
                                             </ul>
                                         </div>
                                         <div class="friend-avatar">
@@ -71,7 +71,7 @@
                         <h6 class="title"><?php echo getEduAppGTLang('create_new_class');?></h6>
                     </div>
                     <div class="modal-body">
-                        <?php echo form_open(base_url() . 'admin/manage_classes/create/', array('enctype' => 'multipart/form-data')); ?>
+                        <?php echo form_open(base_url() . 'admin/manage_classes/create/'.$selected_branch, array('enctype' => 'multipart/form-data')); ?>
                             <div class="row">
                                 <div class="col col-lg-12 col-md-12 col-sm-12 col-12">
                                     <div class="form-group label-floating">
