@@ -76,10 +76,10 @@
                         <div class="form-group label-floating is-select">
                             <label class="control-label"><?php echo getEduAppGTLang('status');?></label>
                             <div class="select">
-                                <select name="student_session">
+                                <select name="is_active">
                                     <option value=""><?php echo getEduAppGTLang('select');?></option>
-                                    <option value="1" <?php if($row['student_session'] == 1) echo 'selected';?>><?php echo getEduAppGTLang('active');?></option>
-                                    <option value="2" <?php if($row['student_session'] != 1) echo 'selected';?>><?php echo getEduAppGTLang('inactive');?></option>
+                                    <option value="1" <?php if($row['is_active'] == 1) echo 'selected';?>><?php echo getEduAppGTLang('active');?></option>
+                                    <option value="0" <?php if($row['is_active'] == 0) echo 'selected';?>><?php echo getEduAppGTLang('inactive');?></option>
                                 </select>
                             </div>
                         </div>
