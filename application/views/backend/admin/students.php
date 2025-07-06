@@ -150,13 +150,13 @@
 																							<td><?= getEduAppGTLang('email'); ?></td>
 																							<td><?= getEduAppGTLang('branch_and_shifts'); ?></td>
 																							<td><?= getEduAppGTLang('class_section'); ?></td>
+																							<td><?= getEduAppGTLang('status'); ?></td>
 																							<td><?= getEduAppGTLang('action'); ?></td>
 																						</tr>
 																					</thead>
 																					<tbody>
 																						<?php
-																						$where['is_active'] = 1;
-																						$students = $this->db->get_where('student', $where)->result();
+																						$students = $this->db->get('student')->result();
 																						$no = 1;
 																						foreach($students as $row): 
 																						$branch_shifts='<span class="badge bg-danger">'.getEduAppGTLang('not_assigned').'</span>';
@@ -217,6 +217,7 @@
 																							<td><?=$row->email; ?></td>
 																							<td><?=$branch_shifts; ?></td>
 																							<td><?=$classSection; ?></td>
+																							<td><?php if($row->is_active==1){echo '<span class="badge bg-success">'.getEduAppGTLang('active').'</span>';}else{echo '<span class="badge bg-danger">'.getEduAppGTLang('inactive').'</span>';} ?></td>
 																							<td>
 																								<div class="more">
 																									<i class="icon-options"></i>

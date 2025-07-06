@@ -690,7 +690,7 @@ class User extends School
             $data['image']         = $md5 . str_replace(' ', '', $_FILES['userfile']['name']);
         }
         $data['parent_id']         = $this->input->post('parent_id');
-        $data['student_session']   = $this->input->post('student_session');
+        $data['is_active']   = $this->input->post('is_active');
         $this->db->where('student_id', $studentId);
         $this->db->update('student', $data);
         move_uploaded_file($_FILES['userfile']['tmp_name'], 'public/uploads/student_image/' . $md5 . str_replace(' ', '', $_FILES['userfile']['name']));
@@ -722,7 +722,7 @@ class User extends School
         $data['phone']           = html_escape($this->input->post('phone'));
         $data['address']         = html_escape($this->input->post('address'));
         $data['parent_id']       = $this->input->post('parent_id');
-        $data['student_session'] = $this->input->post('student_session');
+        $data['is_active'] = $this->input->post('is_active');
         $data['email']           = html_escape($this->input->post('email'));
         if ($_FILES['userfile']['size'] > 0) {
             $data['image']     = $md5 . str_replace(' ', '', $_FILES['userfile']['name']);
