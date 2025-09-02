@@ -184,6 +184,9 @@ foreach ($sub as $subs) :
                                                             if (!isActiveSubject($rows['student_id'], $subs['subject_id'])) {
                                                                 continue;
                                                             }
+                                                            if (isStudentDeactive($row['student_id'])) {
+                                                                continue;
+                                                            }
                                                             $block = false;
                                                             $reason = '';
 

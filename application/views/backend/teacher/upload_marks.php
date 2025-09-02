@@ -156,6 +156,9 @@ foreach ($sub as $subs) :
                                                         if(isStudentFinishSubject($rows['student_id'], $subs['subject_id'])){
                                                             continue;
                                                         }
+                                                        if (isStudentDeactive($row['student_id'])) {
+                                                            continue;
+                                                        }
                                                         if (isActiveSubject($rows['student_id'], $subs['subject_id'])) {
                                                             if(isMarkBlocked($rows['student_id'], $subs['subject_id'])){
                                                                 $block=true;
